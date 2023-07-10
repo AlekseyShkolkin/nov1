@@ -1,10 +1,11 @@
 // import 'package:permission_handler/permission_handler.dart';
 import 'package:flutter/material.dart';
-import 'package:qualcontr/start_page.dart';
+import 'package:qualcontr/load_prog.dart';
+import './auth.dart';
+import './start_page.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
 
-// import 'package:image_picker/image_picker.dart';
-
-import './objects_list.dart';
+import 'objects_list_lkp.dart';
 
 void main() => runApp(QualContr());
 
@@ -17,7 +18,11 @@ class QualContrState extends State<QualContr> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      home: StartPage(),
+      theme: ThemeData(
+        primaryColor: Color(0xFF007CB0),
+        accentColor: Color(0xFFF6B600),
+      ),
+      home: LoadProg(),
     );
   }
 }

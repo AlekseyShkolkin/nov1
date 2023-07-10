@@ -45,6 +45,10 @@ dependencies:
   camera: any
   badges: ^2.0.3
   path: ^1.8.2
+  permission_handler: any
+  flutter_spinkit: ^5.2.0
+  tab_indicator_styler: ^1.0.0
+  
  
   #any or ^0.8.6 
   
@@ -74,9 +78,46 @@ flutter:
   uses-material-design: true
 
   # To add assets to your application, add an assets section, like this:
-  # assets:
-  #   - images/a_dot_burr.jpeg
-  #   - images/a_dot_ham.jpeg
+  assets:
+    - assets/images/grade_A.jpg
+    - assets/images/grade_B.jpg
+    - assets/images/grade_C.jpg
+    - assets/images/grade_D.jpg
+    - assets/images/B_St_2.jpg
+    - assets/images/C_St_2.jpg
+    - assets/images/D_St_2.jpg
+    - assets/images/B_St_3.jpg
+    - assets/images/C_St_3.jpg
+    - assets/images/D_St_3.jpg
+    - assets/images/B_Sa_1.jpg
+    - assets/images/C_Sa_1.jpg
+    - assets/images/D_Sa_1.jpg
+    - assets/images/B_Sa_2.jpg
+    - assets/images/C_Sa_2.jpg
+    - assets/images/D_Sa_2.jpg
+    - assets/images/A_Sa_25.jpg
+    - assets/images/B_Sa_25.jpg
+    - assets/images/C_Sa_25.jpg
+    - assets/images/D_Sa_25.jpg
+    - assets/images/A_Sa_3.jpg
+    - assets/images/B_Sa_3.jpg
+    - assets/images/C_Sa_3.jpg
+    - assets/images/D_Sa_3.jpg
+    - assets/images/A_Fl.jpg
+    - assets/images/B_Fl.jpg
+    - assets/images/C_Fl.jpg
+    - assets/images/D_Fl.jpg
+    - assets/images/imagenull.jpg
+    - assets/images/dust1.jpg
+    - assets/images/dust2.jpg
+    - assets/images/dust3.jpg
+    - assets/images/dust4.jpg
+    - assets/images/dust5.jpg
+    - assets/images/roughness.jpg
+    - assets/images/logo2.png
+    - assets/images/defaultimage.png
+
+    
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware

@@ -1,19 +1,19 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
-import 'package:qualcontr/dbhelper_ip.dart';
-import 'package:qualcontr/model_ip.dart';
-import 'package:qualcontr/object_detail_ip.dart';
+import 'package:qualcontr/object_detail_lkp.dart';
 import 'package:sqflite/sqflite.dart';
+import './model_lkp.dart';
+import './dbhelper_lkp.dart';
 
 DbHelper helper = DbHelper();
 
-class ObjectListIp extends StatefulWidget {
+class ObjectList extends StatefulWidget {
   @override
-  State<StatefulWidget> createState() => ObjectListIpState();
+  State<StatefulWidget> createState() => _ObjectListState();
 }
 
-class ObjectListIpState extends State {
+class _ObjectListState extends State<ObjectList> {
   DbHelper helper = DbHelper();
   List<Todo> todos;
 
@@ -29,7 +29,7 @@ class ObjectListIpState extends State {
         backgroundColor: Theme.of(context).primaryColor,
         title: Center(
             child: Text(
-          'ПРОВЕРКА КАЧЕСТВА ИП',
+          'ПРОВЕРКА КАЧЕСТВА ЛКП',
           style: TextStyle(
             fontSize: 22,
             fontWeight: FontWeight.w400,
@@ -43,7 +43,7 @@ class ObjectListIpState extends State {
         onPressed: () {
           navigateToDetail(Todo('', ''));
         },
-        tooltip: 'Добавляет объект',
+        tooltip: 'Добавить объект',
         child: Icon(
           Icons.add,
           size: 35.0,
@@ -106,7 +106,7 @@ class ObjectListIpState extends State {
                 });
                 ScaffoldMessenger.of(context).showSnackBar(
                   SnackBar(
-                    content: Text('$title - УДАЛЕНО'),
+                    content: Text('$title - удалено'),
                   ),
                 );
               },
@@ -129,7 +129,7 @@ class ObjectListIpState extends State {
                     title: Padding(
                       padding: const EdgeInsets.only(bottom: 8.0),
                       child: Text(
-                        todos[position].title ?? '' '',
+                        todos[position].title ?? '',
                         style: const TextStyle(
                             fontSize: 15.0, fontWeight: FontWeight.w800),
                       ),
@@ -138,7 +138,7 @@ class ObjectListIpState extends State {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: <Widget>[
                         Text(
-                          descriptionParser(todos[position].osnovanie ?? ''),
+                          descriptionParser(todos[position].description ?? ''),
                           style: const TextStyle(
                               fontSize: 13.0,
                               fontWeight: FontWeight.w600,
@@ -146,7 +146,7 @@ class ObjectListIpState extends State {
                         ),
                         const SizedBox(
                           height: 15.0,
-                        ),
+                        ), // it smell
                         Text(
                           'СОЗДАНО ' + todos[position].todoDate,
                           style: const TextStyle(
@@ -186,11 +186,12 @@ class ObjectListIpState extends State {
           todoList.add(Todo.fromObject(result[i]));
           debugPrint(todoList[i].title);
         }
+
         setState(() {
           todos = todoList;
         });
+
         debugPrint('Items: ' + todos.length.toString());
-        var lenlistip = todos.length.toString();
       });
     });
   }
@@ -199,7 +200,7 @@ class ObjectListIpState extends State {
     final bool result = await Navigator.push(
       context,
       MaterialPageRoute(
-          builder: (BuildContext context) => ObjectDetailIp(object: object)),
+          builder: (BuildContext context) => ObjectDetail(object: object)),
     );
 
     if (result == true) {
