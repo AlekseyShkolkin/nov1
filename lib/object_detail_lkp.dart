@@ -237,7 +237,7 @@ class ObjectDetailState extends State<ObjectDetail> {
   void initState() {
     super.initState();
     isEdit = object.title == '' ? false : true;
-    titleController.text == object.title ?? '';
+    titleController.text = object.title ?? '';
     images.add(File('assets/images/grade_A.jpg'));
     images.add(File('assets/images/grade_B.jpg'));
     images.add(File('assets/images/grade_C.jpg'));
@@ -1573,6 +1573,24 @@ class ObjectDetailState extends State<ObjectDetail> {
                           ),
                         ),
                         keyboardType: TextInputType.number,
+                      ),
+                      SizedBox(height: 10),
+                      ElevatedButton(
+                        style: ElevatedButton.styleFrom(
+                            primary: Colors.amber,
+                            onPrimary: Colors.white,
+                            elevation: 2,
+                            padding: const EdgeInsets.all(13.0),
+                            shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(10.0))),
+                        onPressed: () {},
+                        child: Text(
+                          'Сформировать "Протокол подготовки поверхности к окраске" по ф.И2 СТО Газпром 9.1-035-2014',
+                          style: const TextStyle(
+                            fontSize: 18.0,
+                            fontWeight: FontWeight.w300,
+                          ),
+                        ),
                       ),
                       SizedBox(height: 10),
                       ElevatedButton(
