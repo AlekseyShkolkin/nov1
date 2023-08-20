@@ -39,20 +39,40 @@ class Todo {
   String _diameter;
   String _thickpipe;
   String _gradesteel;
+
   String _metalldamage;
-  String _charmetdamage;
-  String _locmetdamage;
-  String _sizemetdamage;
+
+  String _charmetdamage1;
+  String _locmetdamage1;
+  String _sizemetdamage1;
+
+  String _charmetdamage2;
+  String _locmetdamage2;
+  String _sizemetdamage2;
+
+  String _charmetdamage3;
+  String _locmetdamage3;
+  String _sizemetdamage3;
 
   String _typeinsul;
   String _insuladhes;
   String _insulcharadhes;
   String _insulcondit;
   String _thickinsul;
+
   String _insuldamage;
-  String _charinsuldamage;
-  String _locinsuldamage;
-  String _sizeinsuldamage;
+
+  String _charinsuldamage1;
+  String _locinsuldamage1;
+  String _sizeinsuldamage1;
+
+  String _charinsuldamage2;
+  String _locinsuldamage2;
+  String _sizeinsuldamage2;
+
+  String _charinsuldamage3;
+  String _locinsuldamage3;
+  String _sizeinsuldamage3;
 
   String _typeinsulrest;
   String _insuladhesrest;
@@ -67,10 +87,32 @@ class Todo {
 
   String _description;
   String _date;
+  String _dateObsl;
+  String _location;
+
+  String _filial; //филиал
+  String _dolzhnpredskom; //должность председателя комиссии
+  String _fiopredskom; //фио председеателя комиссии
+  String _dolzhnproizvrab; //должность производителя работ
+  String _fioproizvrab; //фио производителя работ
+  String _dolzhnnachuchastka; //должность начальника участка
+  String _fionachuchastka; //фио начальника участка
+  String _dolzhnpredstzakazch; //должность представителя заказчика
+  String _fiopredstzakazch; //фио представителя заказчика
+  String _dolzhnpredstzakazchSK; //должность представителя заказчика по СК
+  String _fiopredstzakazchSK; //фио представителя заказчика
+  String _dolzhnpredststroitSK; //должность представителя строителя по СК
+  String _fiopredststroitSK; //фио представителя строителя по СК
+  String _dolzhnpredststroit; //должность представителя строителя
+  String _fiopredststroit; //фио представителя строителя
+  String _dolzhndruglic; //должность других лиц
+  String _fiodruglic; //фио других лиц
 
   Todo(
     this._title,
     this._date, [
+    this._location,
+    this._dateObsl,
     this._photometdef1,
     this._photometdef2,
     this._photometdef3,
@@ -104,18 +146,30 @@ class Todo {
     this._thickpipe,
     this._gradesteel,
     this._metalldamage,
-    this._charmetdamage,
-    this._locmetdamage,
-    this._sizemetdamage,
+    this._charmetdamage1,
+    this._locmetdamage1,
+    this._sizemetdamage1,
+    this._charmetdamage2,
+    this._locmetdamage2,
+    this._sizemetdamage2,
+    this._charmetdamage3,
+    this._locmetdamage3,
+    this._sizemetdamage3,
     this._typeinsul,
     this._insuladhes,
     this._insulcharadhes,
     this._insulcondit,
     this._thickinsul,
     this._insuldamage,
-    this._charinsuldamage,
-    this._locinsuldamage,
-    this._sizeinsuldamage,
+    this._charinsuldamage1,
+    this._locinsuldamage1,
+    this._sizeinsuldamage1,
+    this._charinsuldamage2,
+    this._locinsuldamage2,
+    this._sizeinsuldamage2,
+    this._charinsuldamage3,
+    this._locinsuldamage3,
+    this._sizeinsuldamage3,
     this._typeinsulrest,
     this._insuladhesrest,
     this._thickinsulrest,
@@ -125,12 +179,31 @@ class Todo {
     this._adhesmeter,
     this._continmeter,
     this._setvik,
+    this._filial,
+    this._dolzhnpredskom,
+    this._fiopredskom,
+    this._dolzhnproizvrab,
+    this._fioproizvrab,
+    this._dolzhnnachuchastka,
+    this._fionachuchastka,
+    this._dolzhnpredstzakazch,
+    this._fiopredstzakazch,
+    this._dolzhnpredstzakazchSK,
+    this._fiopredstzakazchSK,
+    this._dolzhnpredststroitSK,
+    this._fiopredststroitSK,
+    this._dolzhnpredststroit,
+    this._fiopredststroit,
+    this._dolzhndruglic,
+    this._fiodruglic,
   ]);
 
   Todo.withId(
     this._id,
     this._title,
     this._date, [
+    this._location,
+    this._dateObsl,
     this._photometdef1,
     this._photometdef2,
     this._photometdef3,
@@ -164,18 +237,30 @@ class Todo {
     this._thickpipe,
     this._gradesteel,
     this._metalldamage,
-    this._charmetdamage,
-    this._locmetdamage,
-    this._sizemetdamage,
+    this._charmetdamage1,
+    this._locmetdamage1,
+    this._sizemetdamage1,
+    this._charmetdamage2,
+    this._locmetdamage2,
+    this._sizemetdamage2,
+    this._charmetdamage3,
+    this._locmetdamage3,
+    this._sizemetdamage3,
     this._typeinsul,
     this._insuladhes,
     this._insulcharadhes,
     this._insulcondit,
     this._thickinsul,
     this._insuldamage,
-    this._charinsuldamage,
-    this._locinsuldamage,
-    this._sizeinsuldamage,
+    this._charinsuldamage1,
+    this._locinsuldamage1,
+    this._sizeinsuldamage1,
+    this._charinsuldamage2,
+    this._locinsuldamage2,
+    this._sizeinsuldamage2,
+    this._charinsuldamage3,
+    this._locinsuldamage3,
+    this._sizeinsuldamage3,
     this._typeinsulrest,
     this._insuladhesrest,
     this._thickinsulrest,
@@ -185,6 +270,23 @@ class Todo {
     this._adhesmeter,
     this._continmeter,
     this._setvik,
+    this._filial,
+    this._dolzhnpredskom,
+    this._fiopredskom,
+    this._dolzhnproizvrab,
+    this._fioproizvrab,
+    this._dolzhnnachuchastka,
+    this._fionachuchastka,
+    this._dolzhnpredstzakazch,
+    this._fiopredstzakazch,
+    this._dolzhnpredstzakazchSK,
+    this._fiopredstzakazchSK,
+    this._dolzhnpredststroitSK,
+    this._fiopredststroitSK,
+    this._dolzhnpredststroit,
+    this._fiopredststroit,
+    this._dolzhndruglic,
+    this._fiodruglic,
   ]);
 
   int get id => _id;
@@ -218,24 +320,46 @@ class Todo {
   String get depthpit => _depthpit;
   String get osnovanie => _osnovanie;
   String get todoDate => _date;
+  String get dateObsl => _dateObsl;
+  String get location => _location;
   String get description => _description;
 
   String get diameter => _diameter;
   String get thickpipe => _thickpipe;
   String get gradesteel => _gradesteel;
   String get metalldamage => _metalldamage;
-  String get charmetdamage => _charmetdamage;
-  String get locmetdamage => _locmetdamage;
-  String get sizemetdamage => _sizemetdamage;
+
+  String get charmetdamage1 => _charmetdamage1;
+  String get locmetdamage1 => _locmetdamage1;
+  String get sizemetdamage1 => _sizemetdamage1;
+
+  String get charmetdamage2 => _charmetdamage2;
+  String get locmetdamage2 => _locmetdamage2;
+  String get sizemetdamage2 => _sizemetdamage2;
+
+  String get charmetdamage3 => _charmetdamage3;
+  String get locmetdamage3 => _locmetdamage3;
+  String get sizemetdamage3 => _sizemetdamage3;
+
   String get typeinsul => _typeinsul;
   String get insuladhes => _insuladhes;
   String get insulcharadhes => _insulcharadhes;
   String get insulcondit => _insulcondit;
   String get thickinsul => _thickinsul;
   String get insuldamage => _insuldamage;
-  String get charinsuldamage => _charinsuldamage;
-  String get locinsuldamage => _locinsuldamage;
-  String get sizeinsuldamage => _sizeinsuldamage;
+
+  String get charinsuldamage1 => _charinsuldamage1;
+  String get locinsuldamage1 => _locinsuldamage1;
+  String get sizeinsuldamage1 => _sizeinsuldamage1;
+
+  String get charinsuldamage2 => _charinsuldamage2;
+  String get locinsuldamage2 => _locinsuldamage2;
+  String get sizeinsuldamage2 => _sizeinsuldamage2;
+
+  String get charinsuldamage3 => _charinsuldamage3;
+  String get locinsuldamage3 => _locinsuldamage3;
+  String get sizeinsuldamage3 => _sizeinsuldamage3;
+
   String get typeinsulrest => _typeinsulrest;
   String get insuladhesrest => _insuladhesrest;
   String get thickinsulrest => _thickinsulrest;
@@ -246,9 +370,33 @@ class Todo {
   String get continmeter => _continmeter;
   String get setvik => _setvik;
 
+  String get filial => _filial;
+  String get dolzhnpredskom => _dolzhnpredskom;
+  String get fiopredskom => _fiopredskom;
+  String get dolzhnproizvrab => _dolzhnproizvrab;
+  String get fioproizvrab => _fioproizvrab;
+  String get dolzhnnachuchastka => _dolzhnnachuchastka;
+  String get fionachuchastka => _fionachuchastka;
+  String get dolzhnpredstzakazch => _dolzhnpredstzakazch;
+  String get fiopredstzakazch => _fiopredstzakazch;
+  String get dolzhnpredstzakazchSK => _dolzhnpredstzakazchSK;
+  String get fiopredstzakazchSK => _fiopredstzakazchSK;
+  String get dolzhnpredststroitSK => _dolzhnpredststroitSK;
+  String get fiopredststroitSK => _fiopredststroitSK;
+  String get dolzhnpredststroit => _dolzhnpredststroit;
+  String get fiopredststroit => _fiopredststroit;
+  String get dolzhndruglic => _dolzhndruglic;
+  String get fiodruglic => _fiodruglic;
+
   set title(String newTitle) {
     if ((newTitle?.length ?? 0) <= 255) {
       _title = newTitle;
+    }
+  }
+
+  set location(String newlocation) {
+    if ((newlocation?.length ?? 0) <= 255) {
+      _location = newlocation;
     }
   }
 
@@ -424,6 +572,16 @@ class Todo {
     _date = newDate;
   }
 
+  // set dateObsl(newDateObsl) {
+  //   _dateObsl = newDateObsl;
+  // }
+
+  set dateObsl(String newdateObsl) {
+    if ((newdateObsl?.length ?? 0) <= 255) {
+      _dateObsl = newdateObsl;
+    }
+  }
+
   set description(String newDescription) {
     if ((newDescription?.length ?? 0) <= 255) {
       _description = newDescription;
@@ -454,21 +612,57 @@ class Todo {
     }
   }
 
-  set charmetdamage(String newcharmetdamage) {
-    if ((newcharmetdamage?.length ?? 0) <= 255) {
-      _charmetdamage = newcharmetdamage;
+  set charmetdamage1(String newcharmetdamage1) {
+    if ((newcharmetdamage1?.length ?? 0) <= 255) {
+      _charmetdamage1 = newcharmetdamage1;
     }
   }
 
-  set locmetdamage(String newlocmetdamage) {
-    if ((newlocmetdamage?.length ?? 0) <= 255) {
-      _locmetdamage = newlocmetdamage;
+  set locmetdamage1(String newlocmetdamage1) {
+    if ((newlocmetdamage1?.length ?? 0) <= 255) {
+      _locmetdamage1 = newlocmetdamage1;
     }
   }
 
-  set sizemetdamage(String newsizemetdamage) {
-    if ((newsizemetdamage?.length ?? 0) <= 255) {
-      _sizemetdamage = newsizemetdamage;
+  set sizemetdamage1(String newsizemetdamage1) {
+    if ((newsizemetdamage1?.length ?? 0) <= 255) {
+      _sizemetdamage1 = newsizemetdamage1;
+    }
+  }
+
+  set charmetdamage2(String newcharmetdamage2) {
+    if ((newcharmetdamage2?.length ?? 0) <= 255) {
+      _charmetdamage2 = newcharmetdamage2;
+    }
+  }
+
+  set locmetdamage2(String newlocmetdamage2) {
+    if ((newlocmetdamage2?.length ?? 0) <= 255) {
+      _locmetdamage2 = newlocmetdamage2;
+    }
+  }
+
+  set sizemetdamage2(String newsizemetdamage2) {
+    if ((newsizemetdamage2?.length ?? 0) <= 255) {
+      _sizemetdamage2 = newsizemetdamage2;
+    }
+  }
+
+  set charmetdamage3(String newcharmetdamage3) {
+    if ((newcharmetdamage3?.length ?? 0) <= 255) {
+      _charmetdamage3 = newcharmetdamage3;
+    }
+  }
+
+  set locmetdamage3(String newlocmetdamage3) {
+    if ((newlocmetdamage3?.length ?? 0) <= 255) {
+      _locmetdamage3 = newlocmetdamage3;
+    }
+  }
+
+  set sizemetdamage3(String newsizemetdamage3) {
+    if ((newsizemetdamage3?.length ?? 0) <= 255) {
+      _sizemetdamage3 = newsizemetdamage3;
     }
   }
 
@@ -508,21 +702,57 @@ class Todo {
     }
   }
 
-  set charinsuldamage(String newcharinsuldamage) {
-    if ((newcharinsuldamage?.length ?? 0) <= 255) {
-      _charinsuldamage = newcharinsuldamage;
+  set charinsuldamage1(String newcharinsuldamage1) {
+    if ((newcharinsuldamage1?.length ?? 0) <= 255) {
+      _charinsuldamage1 = newcharinsuldamage1;
     }
   }
 
-  set locinsuldamage(String newlocinsuldamage) {
-    if ((newlocinsuldamage?.length ?? 0) <= 255) {
-      _locinsuldamage = newlocinsuldamage;
+  set locinsuldamage1(String newlocinsuldamage1) {
+    if ((newlocinsuldamage1?.length ?? 0) <= 255) {
+      _locinsuldamage1 = newlocinsuldamage1;
     }
   }
 
-  set sizeinsuldamage(String newsizeinsuldamage) {
-    if ((newsizeinsuldamage?.length ?? 0) <= 255) {
-      _sizeinsuldamage = newsizeinsuldamage;
+  set sizeinsuldamage1(String newsizeinsuldamage1) {
+    if ((newsizeinsuldamage1?.length ?? 0) <= 255) {
+      _sizeinsuldamage1 = newsizeinsuldamage1;
+    }
+  }
+
+  set charinsuldamage2(String newcharinsuldamage2) {
+    if ((newcharinsuldamage2?.length ?? 0) <= 255) {
+      _charinsuldamage2 = newcharinsuldamage2;
+    }
+  }
+
+  set locinsuldamage2(String newlocinsuldamage2) {
+    if ((newlocinsuldamage2?.length ?? 0) <= 255) {
+      _locinsuldamage2 = newlocinsuldamage2;
+    }
+  }
+
+  set sizeinsuldamage2(String newsizeinsuldamage2) {
+    if ((newsizeinsuldamage2?.length ?? 0) <= 255) {
+      _sizeinsuldamage2 = newsizeinsuldamage2;
+    }
+  }
+
+  set charinsuldamage3(String newcharinsuldamage3) {
+    if ((newcharinsuldamage3?.length ?? 0) <= 255) {
+      _charinsuldamage3 = newcharinsuldamage3;
+    }
+  }
+
+  set locinsuldamage3(String newlocinsuldamage3) {
+    if ((newlocinsuldamage3?.length ?? 0) <= 255) {
+      _locinsuldamage3 = newlocinsuldamage3;
+    }
+  }
+
+  set sizeinsuldamage3(String newsizeinsuldamage3) {
+    if ((newsizeinsuldamage3?.length ?? 0) <= 255) {
+      _sizeinsuldamage3 = newsizeinsuldamage3;
     }
   }
 
@@ -580,24 +810,136 @@ class Todo {
     }
   }
 
+  set filial(String newfilial) {
+    if ((newfilial?.length ?? 0) <= 255) {
+      _filial = newfilial;
+    }
+  }
+
+  set dolzhnpredskom(String newdolzhnpredskom) {
+    if ((newdolzhnpredskom?.length ?? 0) <= 255) {
+      _dolzhnpredskom = newdolzhnpredskom;
+    }
+  }
+
+  set fiopredskom(String newfiopredskom) {
+    if ((newfiopredskom?.length ?? 0) <= 255) {
+      _fiopredskom = newfiopredskom;
+    }
+  }
+
+  set dolzhnproizvrab(String newdolzhnproizvrab) {
+    if ((newdolzhnproizvrab?.length ?? 0) <= 255) {
+      _dolzhnproizvrab = newdolzhnproizvrab;
+    }
+  }
+
+  set fioproizvrab(String newfioproizvrab) {
+    if ((newfioproizvrab?.length ?? 0) <= 255) {
+      _fioproizvrab = newfioproizvrab;
+    }
+  }
+
+  set dolzhnnachuchastka(String newdolzhnnachuchastka) {
+    if ((newdolzhnnachuchastka?.length ?? 0) <= 255) {
+      _dolzhnnachuchastka = newdolzhnnachuchastka;
+    }
+  }
+
+  set fionachuchastka(String newfionachuchastka) {
+    if ((newfionachuchastka?.length ?? 0) <= 255) {
+      _fionachuchastka = newfionachuchastka;
+    }
+  }
+
+  set dolzhnpredstzakazch(String newdolzhnpredstzakazch) {
+    if ((newdolzhnpredstzakazch?.length ?? 0) <= 255) {
+      _dolzhnpredstzakazch = newdolzhnpredstzakazch;
+    }
+  }
+
+  set fiopredstzakazch(String newfiopredstzakazch) {
+    if ((newfiopredstzakazch?.length ?? 0) <= 255) {
+      _fiopredstzakazch = newfiopredstzakazch;
+    }
+  }
+
+  set dolzhnpredstzakazchSK(String newdolzhnpredstzakazchSK) {
+    if ((newdolzhnpredstzakazchSK?.length ?? 0) <= 255) {
+      _dolzhnpredstzakazchSK = newdolzhnpredstzakazchSK;
+    }
+  }
+
+  set fiopredstzakazchSK(String newfiopredstzakazchSK) {
+    if ((newfiopredstzakazchSK?.length ?? 0) <= 255) {
+      _fiopredstzakazchSK = newfiopredstzakazchSK;
+    }
+  }
+
+  set dolzhnpredststroitSK(String newdolzhnpredststroitSK) {
+    if ((newdolzhnpredststroitSK?.length ?? 0) <= 255) {
+      _dolzhnpredststroitSK = newdolzhnpredststroitSK;
+    }
+  }
+
+  set fiopredststroitSK(String newfiopredststroitSK) {
+    if ((newfiopredststroitSK?.length ?? 0) <= 255) {
+      _fiopredststroitSK = newfiopredststroitSK;
+    }
+  }
+
+  set dolzhnpredststroit(String newdolzhnpredststroit) {
+    if ((newdolzhnpredststroit?.length ?? 0) <= 255) {
+      _dolzhnpredststroit = newdolzhnpredststroit;
+    }
+  }
+
+  set fiopredststroit(String newfiopredststroit) {
+    if ((newfiopredststroit?.length ?? 0) <= 255) {
+      _fiopredststroit = newfiopredststroit;
+    }
+  }
+
+  set dolzhndruglic(String newdolzhndruglic) {
+    if ((newdolzhndruglic?.length ?? 0) <= 255) {
+      _dolzhndruglic = newdolzhndruglic;
+    }
+  }
+
+  set fiodruglic(String newfiodruglic) {
+    if ((newfiodruglic?.length ?? 0) <= 255) {
+      _fiodruglic = newfiodruglic;
+    }
+  }
+
   Map<String, dynamic> toMap() {
     final Map<String, dynamic> map = <String, dynamic>{};
     map['title'] = _title;
+    map['location'] = _location;
     map['piketkm'] = _piketkm;
     map['coordinate'] = _coordinate;
     map['lengthpit'] = _lengthpit;
     map['depthpit'] = _depthpit;
     map['osnovanie'] = _osnovanie;
     map['date'] = _date;
+    map['dateObsl'] = _dateObsl;
     map['description'] = _description;
 
     map['diameter'] = _diameter;
     map['thickpipe'] = _thickpipe;
     map['gradesteel'] = _gradesteel;
     map['metalldamage'] = _metalldamage;
-    map['charmetdamage'] = _charmetdamage;
-    map['locmetdamage'] = _locmetdamage;
-    map['sizemetdamage'] = _sizemetdamage;
+    map['charmetdamage1'] = _charmetdamage1;
+    map['locmetdamage1'] = _locmetdamage1;
+    map['sizemetdamage1'] = _sizemetdamage1;
+
+    map['charmetdamage2'] = _charmetdamage2;
+    map['locmetdamage2'] = _locmetdamage2;
+    map['sizemetdamage2'] = _sizemetdamage2;
+
+    map['charmetdamage3'] = _charmetdamage3;
+    map['locmetdamage3'] = _locmetdamage3;
+    map['sizemetdamage3'] = _sizemetdamage3;
 
     map['typeinsul'] = _typeinsul;
     map['insuladhes'] = _insuladhes;
@@ -605,9 +947,18 @@ class Todo {
     map['insulcondit'] = _insulcondit;
     map['thickinsul'] = _thickinsul;
     map['insuldamage'] = _insuldamage;
-    map['charinsuldamage'] = _charinsuldamage;
-    map['locinsuldamage'] = _locinsuldamage;
-    map['sizeinsuldamage'] = _sizeinsuldamage;
+    map['charinsuldamage1'] = _charinsuldamage1;
+    map['locinsuldamage1'] = _locinsuldamage1;
+    map['sizeinsuldamage1'] = _sizeinsuldamage1;
+
+    map['charinsuldamage2'] = _charinsuldamage2;
+    map['locinsuldamage2'] = _locinsuldamage2;
+    map['sizeinsuldamage2'] = _sizeinsuldamage2;
+
+    map['charinsuldamage3'] = _charinsuldamage3;
+    map['locinsuldamage3'] = _locinsuldamage3;
+    map['sizeinsuldamage3'] = _sizeinsuldamage3;
+
     map['typeinsulrest'] = _typeinsulrest;
     map['insuladhesrest'] = _insuladhesrest;
     map['thickinsulrest'] = _thickinsulrest;
@@ -643,6 +994,24 @@ class Todo {
     map['photorest'] = _photorest;
     map['photodesc'] = _photodesc;
 
+    map['filial '] = _filial;
+    map['dolzhnpredskom '] = _dolzhnpredskom;
+    map['fiopredskom '] = _fiopredskom;
+    map['dolzhnproizvrab '] = _dolzhnproizvrab;
+    map['fioproizvrab '] = _fioproizvrab;
+    map['dolzhnnachuchastka '] = _dolzhnnachuchastka;
+    map['fionachuchastka '] = _fionachuchastka;
+    map['dolzhnpredstzakazch '] = _dolzhnpredstzakazch;
+    map['fiopredstzakazch '] = _fiopredstzakazch;
+    map['dolzhnpredstzakazchSK '] = _dolzhnpredstzakazchSK;
+    map['fiopredstzakazchSK '] = _fiopredstzakazchSK;
+    map['dolzhnpredststroitSK '] = _dolzhnpredststroitSK;
+    map['fiopredststroitSK '] = _fiopredststroitSK;
+    map['dolzhnpredststroit '] = _dolzhnpredststroit;
+    map['fiopredststroit '] = _fiopredststroit;
+    map['dolzhndruglic '] = _dolzhndruglic;
+    map['fiodruglic '] = _fiodruglic;
+
     if (_id != null) {
       map['id'] = _id;
     }
@@ -652,21 +1021,32 @@ class Todo {
   Todo.fromObject(dynamic o) {
     _id = o['id'];
     _title = o['title'];
+    _location = o['location'];
     _piketkm = o['piketkm'];
     _coordinate = o['coordinate'];
     _lengthpit = o['lengthpit'];
     _depthpit = o['depthpit'];
     _osnovanie = o['osnovanie'];
     _date = o['date'];
+    _dateObsl = o['dateObsl'];
     _description = o['description'];
 
     _diameter = o['diameter'];
     _thickpipe = o['thickpipe'];
     _gradesteel = o['gradesteel'];
     _metalldamage = o['metalldamage'];
-    _charmetdamage = o['charmetdamage'];
-    _locmetdamage = o['locmetdamage'];
-    _sizemetdamage = o['sizemetdamage'];
+
+    _charmetdamage1 = o['charmetdamage1'];
+    _locmetdamage1 = o['locmetdamage1'];
+    _sizemetdamage1 = o['sizemetdamage1'];
+
+    _charmetdamage2 = o['charmetdamage2'];
+    _locmetdamage2 = o['locmetdamage2'];
+    _sizemetdamage2 = o['sizemetdamage2'];
+
+    _charmetdamage3 = o['charmetdamage3'];
+    _locmetdamage3 = o['locmetdamage3'];
+    _sizemetdamage3 = o['sizemetdamage3'];
 
     _typeinsul = o['typeinsul'];
     _insuladhes = o['insuladhes'];
@@ -674,9 +1054,17 @@ class Todo {
     _insulcondit = o['insulcondit'];
     _thickinsul = o['thickinsul'];
     _insuldamage = o['insuldamage'];
-    _charinsuldamage = o['charinsuldamage'];
-    _locinsuldamage = o['locinsuldamage'];
-    _sizeinsuldamage = o['sizeinsuldamage'];
+    _charinsuldamage1 = o['charinsuldamage1'];
+    _locinsuldamage1 = o['locinsuldamage1'];
+    _sizeinsuldamage1 = o['sizeinsuldamage1'];
+
+    _charinsuldamage2 = o['charinsuldamage2'];
+    _locinsuldamage2 = o['locinsuldamage2'];
+    _sizeinsuldamage2 = o['sizeinsuldamage2'];
+
+    _charinsuldamage3 = o['charinsuldamage3'];
+    _locinsuldamage3 = o['locinsuldamage3'];
+    _sizeinsuldamage3 = o['sizeinsuldamage3'];
     _typeinsulrest = o['typeinsulrest'];
     _insuladhesrest = o['insuladhesrest'];
     _thickinsulrest = o['thickinsulrest'];
@@ -710,5 +1098,23 @@ class Todo {
     _photoinsuldef10 = o['photoinsuldef10'];
     _photorest = o['photorest'];
     _photodesc = o['photodesc'];
+
+    _filial = o['filial'];
+    _dolzhnpredskom = o['dolzhnpredskom'];
+    _fiopredskom = o['fiopredskom'];
+    _dolzhnproizvrab = o['dolzhnproizvrab'];
+    _fioproizvrab = o['fioproizvrab'];
+    _dolzhnnachuchastka = o['dolzhnnachuchastka'];
+    _fionachuchastka = o['fionachuchastka'];
+    _dolzhnpredstzakazch = o['dolzhnpredstzakazch'];
+    _fiopredstzakazch = o['fiopredstzakazch'];
+    _dolzhnpredstzakazchSK = o['dolzhnpredstzakazchSK'];
+    _fiopredstzakazchSK = o['fiopredstzakazchSK'];
+    _dolzhnpredststroitSK = o['dolzhnpredststroitSK'];
+    _fiopredststroitSK = o['fiopredststroitSK'];
+    _dolzhnpredststroit = o['dolzhnpredststroit'];
+    _fiopredststroit = o['fiopredststroit'];
+    _dolzhndruglic = o['dolzhndruglic'];
+    _fiodruglic = o['fiodruglic'];
   }
 }

@@ -6,7 +6,7 @@ import 'package:qualcontr/model_ip.dart';
 import 'package:qualcontr/object_detail_ip.dart';
 import 'package:sqflite/sqflite.dart';
 
-DbHelper helper = DbHelper();
+DbHelperIp helper = DbHelperIp();
 
 class ObjectListIp extends StatefulWidget {
   @override
@@ -14,7 +14,7 @@ class ObjectListIp extends StatefulWidget {
 }
 
 class ObjectListIpState extends State {
-  DbHelper helper = DbHelper();
+  DbHelperIp helper = DbHelperIp();
   List<Todo> todos;
 
   @override
@@ -206,4 +206,5 @@ class ObjectListIpState extends State {
       getData();
     }
   }
+  // Navigator.pop
 }

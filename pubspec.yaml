@@ -30,14 +30,12 @@ environment:
 # versions available, run `flutter pub outdated`.
 dependencies:
   flutter:
-    sdk: flutter
-  
-
+     sdk: flutter
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^1.0.2
   intl: ^0.18.0
-  path_provider: ^2.0.2
+  path_provider: any
   provider: ^6.0.5
   sqflite: ^2.2.2
   color_picker_camera: ^1.0.0
@@ -48,9 +46,16 @@ dependencies:
   permission_handler: any
   flutter_spinkit: ^5.2.0
   tab_indicator_styler: ^1.0.0
+  excel: ^2.0.4
+  url_launcher: ^6.0.3
+  open_file: ^3.3.2
+  pdf: ^3.10.1
+  geolocator: ^6.2.1
+  
+
+  
   
  
-  #any or ^0.8.6 
   
 # dependency_overrides:
 #   image_picker: ^0.8.0+4
@@ -79,6 +84,17 @@ flutter:
 
   # To add assets to your application, add an assets section, like this:
   assets:
+    - assets/form/IP/AO.xlsx
+    - assets/form/IP/AKSZT.xlsx
+    - assets/form/IP/APUZT.xlsx
+    - assets/form/IP/RAZR.xlsx
+    - assets/form/IP/ZHIUR.xlsx
+    - assets/form/LKP/AOSR.xlsx
+    - assets/form/LKP/APSLP.xlsx
+    - assets/form/LKP/PKNLM.xlsx
+    - assets/form/LKP/PKPPO.xlsx    
+    - assets/form/LKP/ZHPPKR.xlsx
+    - assets/form/VHK/VHK.xlsx
     - assets/images/grade_A.jpg
     - assets/images/grade_B.jpg
     - assets/images/grade_C.jpg
@@ -116,6 +132,7 @@ flutter:
     - assets/images/roughness.jpg
     - assets/images/logo2.png
     - assets/images/defaultimage.png
+  
 
     
 

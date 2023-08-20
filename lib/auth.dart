@@ -2,6 +2,9 @@ import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:path_provider/path_provider.dart';
+import 'package:qualcontr/dbhelper_ip.dart';
+import 'package:qualcontr/dbhelper_lkp.dart';
+import 'package:qualcontr/dbhelper_vh_contr.dart';
 import './start_page.dart';
 
 class PasswordScreen extends StatefulWidget {
@@ -41,8 +44,7 @@ class _PasswordScreenState extends State<PasswordScreen> {
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
             Padding(
-              padding:
-                  EdgeInsets.only(top: 0, bottom: 0, left: 100, right: 100),
+              padding: EdgeInsets.all(8),
               child: TextField(
                 cursorColor: Theme.of(context).primaryColor,
                 controller: _passwordController,
@@ -57,6 +59,7 @@ class _PasswordScreenState extends State<PasswordScreen> {
                     color: Theme.of(context).primaryColor,
                   ),
                   labelText: 'Введите пароль',
+                  helperText: 'Пароль должен состоять из 6 цифр',
                   errorText: _errorMessage,
                 ),
               ),
@@ -88,6 +91,12 @@ class _PasswordScreenState extends State<PasswordScreen> {
   }
 
   void _onSubmit() async {
+    DbHelperIp dbHelperIp = DbHelperIp();
+    DbHelperLkp dbHelperLkp = DbHelperLkp();
+    // DbHelperVhk dbHelperVhk = DbHelperVhk();
+    int countIp = await dbHelperIp.getTodoCountIp();
+    int countLkp = await dbHelperLkp.getTodoCountLkp();
+    // int countVhk = await dbHelperVhk.getTodoCountVhk();
     final password = _passwordController.text.trim();
     if (password.isEmpty) {
       setState(() {
@@ -102,9 +111,15 @@ class _PasswordScreenState extends State<PasswordScreen> {
         final storedPassword = await file.readAsString();
         if (password == storedPassword) {
           // Доступ разрешен
+
           Navigator.pushReplacement(
             context,
-            MaterialPageRoute(builder: (_) => StartPage()),
+            MaterialPageRoute(
+                builder: (_) => StartPage(
+                      countIp: countIp,
+                      countLkp: countLkp,
+                      // countVhk: countVhk,
+                    )),
           );
         } else {
           // Неверный пароль
@@ -123,7 +138,12 @@ class _PasswordScreenState extends State<PasswordScreen> {
           // Пароль успешно установлен
           Navigator.pushReplacement(
             context,
-            MaterialPageRoute(builder: (_) => StartPage()),
+            MaterialPageRoute(
+                builder: (_) => StartPage(
+                      countIp: countIp,
+                      countLkp: countLkp,
+                      // countVhk: countVhk,
+                    )),
           );
         }
       }

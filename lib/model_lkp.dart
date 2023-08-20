@@ -56,6 +56,24 @@ class Todo {
   String _chalking; //меление
   String _description;
 
+  String _filial; //филиал
+  String _dolzhnpredskom; //должность председателя комиссии
+  String _fiopredskom; //фио председеателя комиссии
+  String _dolzhnproizvrab; //должность производителя работ
+  String _fioproizvrab; //фио производителя работ
+  String _dolzhnnachuchastka; //должность начальника участка
+  String _fionachuchastka; //фио начальника участка
+  String _dolzhnpredstzakazch; //должность представителя заказчика
+  String _fiopredstzakazch; //фио представителя заказчика
+  String _dolzhnpredstzakazchSK; //должность представителя заказчика по СК
+  String _fiopredstzakazchSK; //фио представителя заказчика
+  String _dolzhnpredststroitSK; //должность представителя строителя по СК
+  String _fiopredststroitSK; //фио представителя строителя по СК
+  String _dolzhnpredststroit; //должность представителя строителя
+  String _fiopredststroit; //фио представителя строителя
+  String _dolzhndruglic; //должность других лиц
+  String _fiodruglic; //фио других лиц
+
   Todo(
     this._title,
     this._date, [
@@ -101,6 +119,23 @@ class Todo {
     this._mudretant,
     this._chalking,
     this._description,
+    this._filial,
+    this._dolzhnpredskom,
+    this._fiopredskom,
+    this._dolzhnproizvrab,
+    this._fioproizvrab,
+    this._dolzhnnachuchastka,
+    this._fionachuchastka,
+    this._dolzhnpredstzakazch,
+    this._fiopredstzakazch,
+    this._dolzhnpredstzakazchSK,
+    this._fiopredstzakazchSK,
+    this._dolzhnpredststroitSK,
+    this._fiopredststroitSK,
+    this._dolzhnpredststroit,
+    this._fiopredststroit,
+    this._dolzhndruglic,
+    this._fiodruglic,
   ]);
 
   Todo.withId(
@@ -149,6 +184,23 @@ class Todo {
     this._mudretant,
     this._chalking,
     this._description,
+    this._filial,
+    this._dolzhnpredskom,
+    this._fiopredskom,
+    this._dolzhnproizvrab,
+    this._fioproizvrab,
+    this._dolzhnnachuchastka,
+    this._fionachuchastka,
+    this._dolzhnpredstzakazch,
+    this._fiopredstzakazch,
+    this._dolzhnpredstzakazchSK,
+    this._fiopredstzakazchSK,
+    this._dolzhnpredststroitSK,
+    this._fiopredststroitSK,
+    this._dolzhnpredststroit,
+    this._fiopredststroit,
+    this._dolzhndruglic,
+    this._fiodruglic,
   ]);
 
   int get id => _id;
@@ -201,6 +253,24 @@ class Todo {
   String get mudretant => _mudretant;
   String get chalking => _chalking;
   String get description => _description;
+
+  String get filial => _filial;
+  String get dolzhnpredskom => _dolzhnpredskom;
+  String get fiopredskom => _fiopredskom;
+  String get dolzhnproizvrab => _dolzhnproizvrab;
+  String get fioproizvrab => _fioproizvrab;
+  String get dolzhnnachuchastka => _dolzhnnachuchastka;
+  String get fionachuchastka => _fionachuchastka;
+  String get dolzhnpredstzakazch => _dolzhnpredstzakazch;
+  String get fiopredstzakazch => _fiopredstzakazch;
+  String get dolzhnpredstzakazchSK => _dolzhnpredstzakazchSK;
+  String get fiopredstzakazchSK => _fiopredstzakazchSK;
+  String get dolzhnpredststroitSK => _dolzhnpredststroitSK;
+  String get fiopredststroitSK => _fiopredststroitSK;
+  String get dolzhnpredststroit => _dolzhnpredststroit;
+  String get fiopredststroit => _fiopredststroit;
+  String get dolzhndruglic => _dolzhndruglic;
+  String get fiodruglic => _fiodruglic;
 
   set photo(String newphoto) {
     if ((newphoto?.length ?? 0) <= 255) {
@@ -460,6 +530,108 @@ class Todo {
     }
   }
 
+  set filial(String newfilial) {
+    if ((newfilial?.length ?? 0) <= 255) {
+      _filial = newfilial;
+    }
+  }
+
+  set dolzhnpredskom(String newdolzhnpredskom) {
+    if ((newdolzhnpredskom?.length ?? 0) <= 255) {
+      _dolzhnpredskom = newdolzhnpredskom;
+    }
+  }
+
+  set fiopredskom(String newfiopredskom) {
+    if ((newfiopredskom?.length ?? 0) <= 255) {
+      _fiopredskom = newfiopredskom;
+    }
+  }
+
+  set dolzhnproizvrab(String newdolzhnproizvrab) {
+    if ((newdolzhnproizvrab?.length ?? 0) <= 255) {
+      _dolzhnproizvrab = newdolzhnproizvrab;
+    }
+  }
+
+  set fioproizvrab(String newfioproizvrab) {
+    if ((newfioproizvrab?.length ?? 0) <= 255) {
+      _fioproizvrab = newfioproizvrab;
+    }
+  }
+
+  set dolzhnnachuchastka(String newdolzhnnachuchastka) {
+    if ((newdolzhnnachuchastka?.length ?? 0) <= 255) {
+      _dolzhnnachuchastka = newdolzhnnachuchastka;
+    }
+  }
+
+  set fionachuchastka(String newfionachuchastka) {
+    if ((newfionachuchastka?.length ?? 0) <= 255) {
+      _fionachuchastka = newfionachuchastka;
+    }
+  }
+
+  set dolzhnpredstzakazch(String newdolzhnpredstzakazch) {
+    if ((newdolzhnpredstzakazch?.length ?? 0) <= 255) {
+      _dolzhnpredstzakazch = newdolzhnpredstzakazch;
+    }
+  }
+
+  set fiopredstzakazch(String newfiopredstzakazch) {
+    if ((newfiopredstzakazch?.length ?? 0) <= 255) {
+      _fiopredstzakazch = newfiopredstzakazch;
+    }
+  }
+
+  set dolzhnpredstzakazchSK(String newdolzhnpredstzakazchSK) {
+    if ((newdolzhnpredstzakazchSK?.length ?? 0) <= 255) {
+      _dolzhnpredstzakazchSK = newdolzhnpredstzakazchSK;
+    }
+  }
+
+  set fiopredstzakazchSK(String newfiopredstzakazchSK) {
+    if ((newfiopredstzakazchSK?.length ?? 0) <= 255) {
+      _fiopredstzakazchSK = newfiopredstzakazchSK;
+    }
+  }
+
+  set dolzhnpredststroitSK(String newdolzhnpredststroitSK) {
+    if ((newdolzhnpredststroitSK?.length ?? 0) <= 255) {
+      _dolzhnpredststroitSK = newdolzhnpredststroitSK;
+    }
+  }
+
+  set fiopredststroitSK(String newfiopredststroitSK) {
+    if ((newfiopredststroitSK?.length ?? 0) <= 255) {
+      _fiopredststroitSK = newfiopredststroitSK;
+    }
+  }
+
+  set dolzhnpredststroit(String newdolzhnpredststroit) {
+    if ((newdolzhnpredststroit?.length ?? 0) <= 255) {
+      _dolzhnpredststroit = newdolzhnpredststroit;
+    }
+  }
+
+  set fiopredststroit(String newfiopredststroit) {
+    if ((newfiopredststroit?.length ?? 0) <= 255) {
+      _fiopredststroit = newfiopredststroit;
+    }
+  }
+
+  set dolzhndruglic(String newdolzhndruglic) {
+    if ((newdolzhndruglic?.length ?? 0) <= 255) {
+      _dolzhndruglic = newdolzhndruglic;
+    }
+  }
+
+  set fiodruglic(String newfiodruglic) {
+    if ((newfiodruglic?.length ?? 0) <= 255) {
+      _fiodruglic = newfiodruglic;
+    }
+  }
+
   set todoDate(newDate) {
     _date = newDate;
   }
@@ -517,6 +689,24 @@ class Todo {
     map['photoDust'] = _photoDust;
     map['photoRoughness'] = _photoRoughness;
 
+    map['filial '] = _filial;
+    map['dolzhnpredskom '] = _dolzhnpredskom;
+    map['fiopredskom '] = _fiopredskom;
+    map['dolzhnproizvrab '] = _dolzhnproizvrab;
+    map['fioproizvrab '] = _fioproizvrab;
+    map['dolzhnnachuchastka '] = _dolzhnnachuchastka;
+    map['fionachuchastka '] = _fionachuchastka;
+    map['dolzhnpredstzakazch '] = _dolzhnpredstzakazch;
+    map['fiopredstzakazch '] = _fiopredstzakazch;
+    map['dolzhnpredstzakazchSK '] = _dolzhnpredstzakazchSK;
+    map['fiopredstzakazchSK '] = _fiopredstzakazchSK;
+    map['dolzhnpredststroitSK '] = _dolzhnpredststroitSK;
+    map['fiopredststroitSK '] = _fiopredststroitSK;
+    map['dolzhnpredststroit '] = _dolzhnpredststroit;
+    map['fiopredststroit '] = _fiopredststroit;
+    map['dolzhndruglic '] = _dolzhndruglic;
+    map['fiodruglic '] = _fiodruglic;
+
     if (_id != null) {
       map['id'] = _id;
     }
@@ -570,5 +760,23 @@ class Todo {
     _photoISO = o['photoISO'];
     _photoDust = o['photoDust'];
     _photoRoughness = o['photoRoughness'];
+
+    _filial = o['filial'];
+    _dolzhnpredskom = o['dolzhnpredskom'];
+    _fiopredskom = o['fiopredskom'];
+    _dolzhnproizvrab = o['dolzhnproizvrab'];
+    _fioproizvrab = o['fioproizvrab'];
+    _dolzhnnachuchastka = o['dolzhnnachuchastka'];
+    _fionachuchastka = o['fionachuchastka'];
+    _dolzhnpredstzakazch = o['dolzhnpredstzakazch'];
+    _fiopredstzakazch = o['fiopredstzakazch'];
+    _dolzhnpredstzakazchSK = o['dolzhnpredstzakazchSK'];
+    _fiopredstzakazchSK = o['fiopredstzakazchSK'];
+    _dolzhnpredststroitSK = o['dolzhnpredststroitSK'];
+    _fiopredststroitSK = o['fiopredststroitSK'];
+    _dolzhnpredststroit = o['dolzhnpredststroit'];
+    _fiopredststroit = o['fiopredststroit'];
+    _dolzhndruglic = o['dolzhndruglic'];
+    _fiodruglic = o['fiodruglic'];
   }
 }

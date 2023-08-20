@@ -9,6 +9,9 @@ import './camera_page.dart';
 import './img_screen_ip.dart';
 import './objects_list_lkp.dart';
 import './model_lkp.dart';
+import 'package:excel/excel.dart';
+import 'package:url_launcher/url_launcher.dart';
+import 'package:open_file/open_file.dart';
 
 class ObjectDetail extends StatefulWidget {
   final Object object;
@@ -64,6 +67,16 @@ class ObjectDetailState extends State<ObjectDetail> {
   FocusNode focusNode38 = FocusNode();
   FocusNode focusNode39 = FocusNode();
   FocusNode focusNode40 = FocusNode();
+  FocusNode focusNode41 = FocusNode();
+  FocusNode focusNode42 = FocusNode();
+  FocusNode focusNode43 = FocusNode();
+  FocusNode focusNode44 = FocusNode();
+  FocusNode focusNode45 = FocusNode();
+  FocusNode focusNode46 = FocusNode();
+  FocusNode focusNode47 = FocusNode();
+  FocusNode focusNode48 = FocusNode();
+  FocusNode focusNode49 = FocusNode();
+  FocusNode focusNode50 = FocusNode();
 
   List<File> images = [];
   final List<String> _inSt = ['A', 'B', 'C', 'D', 'нет данных'];
@@ -178,6 +191,43 @@ class ObjectDetailState extends State<ObjectDetail> {
   final List<String> _mudretant = ['0', '1', '2', '3', '4', '5'];
   final List<String> _chalking = ['0', '1', '2', '3', '4', '5'];
 
+  final List<String> _filial = [
+    'Арзамасское ЛПУМГ',
+    'Владимирское ЛПУМГ',
+    'Волжское ЛПУМГ',
+    'Вятское ЛПУМГ',
+    'Заволжское ЛПУМГ',
+    'Ивановское ЛПУМГ',
+    'Кировское ЛПУМГ',
+    'Моркинское ЛПУМГ',
+    'Пензенское ЛПУМГ',
+    'Пильнинское ЛПУМГ',
+    'Починковское ЛПУМГ',
+    'Приокское ЛПУМГ',
+    'Семеновское ЛПУМГ',
+    'Сеченовское ЛПУМГ',
+    'Торбеевское ЛПУМГ',
+    'Чебоксарское ЛПУМГ',
+    'ИТЦ',
+    'УАВР'
+  ];
+  final List<String> _predskom = [
+    'Начальник',
+    'Главный инженер',
+    'Заместитель начальника',
+    'ВрИО начальника',
+    // '',
+    // '',
+  ];
+  final List<String> _dolzhnnachuchastka = [
+    'Начальник службы ЗоК',
+    'ВрИО начальника службы ЗоК',
+    'ИО начальника службы ЗоК',
+    'Начальник ЛЭС',
+    'ВрИО начальника службы ЛЭС',
+    'ИО начальника службы ЛЭС',
+  ];
+
   Color bgColor;
   String selectedColor = "";
   Color _cardColor = Colors.white;
@@ -226,6 +276,10 @@ class ObjectDetailState extends State<ObjectDetail> {
   TextEditingController chalkingController = TextEditingController();
   TextEditingController descriptionController = TextEditingController();
 
+  TextEditingController filialController = TextEditingController();
+  TextEditingController predskomController = TextEditingController();
+  TextEditingController fiopredskomController = TextEditingController();
+
   bool isEdit;
   final GlobalKey<FormState> _1formKey = GlobalKey<FormState>();
   final GlobalKey<FormState> _2formKey = GlobalKey<FormState>();
@@ -233,6 +287,7 @@ class ObjectDetailState extends State<ObjectDetail> {
   final GlobalKey<FormState> _4formKey = GlobalKey<FormState>();
   final GlobalKey<FormState> _5formKey = GlobalKey<FormState>();
   final GlobalKey<FormState> _6formKey = GlobalKey<FormState>();
+  final GlobalKey<FormState> _7formKey = GlobalKey<FormState>();
   @override
   void initState() {
     super.initState();
@@ -290,6 +345,10 @@ class ObjectDetailState extends State<ObjectDetail> {
     mudretantController.text = object.mudretant ?? '';
     chalkingController.text = object.chalking ?? '';
     descriptionController.text = object.description ?? '';
+
+    filialController.text = object.filial ?? '';
+    predskomController.text = object.dolzhnpredskom ?? '';
+    fiopredskomController.text = object.fiopredskom ?? '';
   }
 
   ObjectDetailState(this.object);
@@ -302,21 +361,98 @@ class ObjectDetailState extends State<ObjectDetail> {
     );
 
     return DefaultTabController(
-      length: 6,
+      length: 7,
       child: Scaffold(
         resizeToAvoidBottomInset: true,
         backgroundColor: _cardColor,
         appBar: AppBar(
             backgroundColor: Theme.of(context).primaryColor,
-            title: Center(
-              child: Text(
-                isEdit ? 'ИЗМЕНИТЬ ЗАПИСЬ' : 'ДОБАВИТЬ ЗАПИСЬ',
-                style: TextStyle(
-                  fontSize: 22,
-                  fontWeight: FontWeight.w400,
-                ),
-              ),
-            ),
+            title: isEdit
+                ? Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      const Text(
+                        'ИЗМЕНИТЬ ЗАПИСЬ',
+                        style: TextStyle(
+                          fontSize: 22,
+                          fontWeight: FontWeight.w400,
+                        ),
+                      ),
+                      IconButton(
+                        icon: const Icon(Icons.delete),
+                        onPressed: () {
+                          debugPrint('Click Floated Back.');
+                          confirmDelete();
+                        },
+                      ),
+                      IconButton(
+                        icon: const Icon(Icons.save),
+                        onPressed: () {
+                          if (_1formKey.currentState != null) {
+                            _1formKey.currentState.validate();
+                            saveForm1();
+                          } else if (_2formKey.currentState != null) {
+                            _2formKey.currentState.validate();
+                            saveForm2();
+                          } else if (_3formKey.currentState != null) {
+                            _3formKey.currentState.validate();
+                            saveForm3();
+                          } else if (_4formKey.currentState != null) {
+                            _4formKey.currentState.validate();
+                            saveForm4();
+                          } else if (_5formKey.currentState != null) {
+                            _5formKey.currentState.validate();
+                            saveForm5();
+                          } else if (_6formKey.currentState != null) {
+                            _6formKey.currentState.validate();
+                            saveForm6();
+                          } else if (_7formKey.currentState != null) {
+                            _7formKey.currentState.validate();
+                            saveForm7();
+                          }
+                        },
+                      ),
+                    ],
+                  )
+                : Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      const Text(
+                        'ДОБАВИТЬ ЗАПИСЬ',
+                        style: TextStyle(
+                          fontSize: 22,
+                          fontWeight: FontWeight.w400,
+                        ),
+                      ),
+                      IconButton(
+                        icon: const Icon(Icons.save),
+                        onPressed: () {
+                          if (_1formKey.currentState != null) {
+                            _1formKey.currentState.validate();
+                            saveForm1();
+                          } else if (_2formKey.currentState != null) {
+                            _2formKey.currentState.validate();
+                            saveForm2();
+                          } else if (_3formKey.currentState != null) {
+                            _3formKey.currentState.validate();
+                            saveForm3();
+                          } else if (_4formKey.currentState != null) {
+                            _4formKey.currentState.validate();
+                            saveForm4();
+                          } else if (_5formKey.currentState != null) {
+                            _5formKey.currentState.validate();
+                            saveForm5();
+                          } else if (_6formKey.currentState != null) {
+                            _6formKey.currentState.validate();
+                            saveForm6();
+                          } else if (_7formKey.currentState != null) {
+                            _7formKey.currentState.validate();
+                            saveForm7();
+                          }
+                        },
+                      ),
+                    ],
+                  ),
             bottom: TabBar(
               indicator: UnderlineTabIndicator(
                 borderSide: BorderSide(
@@ -328,38 +464,43 @@ class ObjectDetailState extends State<ObjectDetail> {
                 fontSize: 44,
                 color: Theme.of(context).accentColor, // цвет выбранной иконки
               ),
-              unselectedLabelStyle: TextStyle(
+              unselectedLabelStyle: const TextStyle(
                 color: Colors.white, // цвет невыбранных иконок
               ),
               tabs: [
-                Tab(
+                const Tab(
                     icon: Icon(
                   Icons.notes_rounded,
                   size: 32,
                 )),
-                Tab(
+                const Tab(
                     icon: Icon(
                   Icons.radio_button_unchecked_sharp,
                   size: 32,
                 )),
-                Tab(
+                const Tab(
                     icon: Icon(
                   Icons.radio_button_on_sharp,
                   size: 32,
                 )),
-                Tab(
+                const Tab(
                     icon: Icon(
                   Icons.build_circle_sharp,
                   size: 32,
                 )),
-                Tab(
+                const Tab(
                     icon: Icon(
                   Icons.design_services_sharp,
                   size: 32,
                 )),
-                Tab(
+                const Tab(
                     icon: Icon(
                   Icons.playlist_add_circle_sharp,
+                  size: 32,
+                )),
+                const Tab(
+                    icon: Icon(
+                  Icons.person_add_alt_rounded,
                   size: 32,
                 )),
               ],
@@ -373,7 +514,7 @@ class ObjectDetailState extends State<ObjectDetail> {
                   key: _1formKey,
                   child: ListView(
                     children: <Widget>[
-                      SizedBox(height: 20),
+                      const SizedBox(height: 20),
                       Container(
                           alignment: Alignment.center,
                           child: Text(
@@ -383,12 +524,21 @@ class ObjectDetailState extends State<ObjectDetail> {
                                 color: Theme.of(context).primaryColor,
                                 fontWeight: FontWeight.w300),
                           )),
-                      SizedBox(height: 20),
+                      const SizedBox(height: 20),
                       TextFormField(
+                        focusNode: focusNode1,
+                        onChanged: (String value) {
+                          setState(() {});
+                          focusNode1.requestFocus();
+                        },
                         maxLength: 50,
-                        onFieldSubmitted: (String value) {
+                        onFieldSubmitted: (value) {
                           object.title = value;
                         },
+                        onSaved: (value) {
+                          object.title = value;
+                        },
+                        controller: titleController,
                         validator: (String value) {
                           if (value.isEmpty) {
                             return 'Наименование не введено';
@@ -399,8 +549,6 @@ class ObjectDetailState extends State<ObjectDetail> {
                           }
                         },
                         keyboardType: TextInputType.text,
-                        controller: titleController,
-                        focusNode: focusNode1,
                         style: textStyle,
                         decoration: InputDecoration(
                           focusColor: Theme.of(context).primaryColor,
@@ -428,35 +576,35 @@ class ObjectDetailState extends State<ObjectDetail> {
                             onTap: () {
                               titleController.clear();
                             },
-                            child: Icon(
+                            child: const Icon(
                               Icons.delete_outline,
                               color: Color.fromRGBO(187, 30, 16, 1.0),
                             ),
                           ),
-                          enabledBorder: OutlineInputBorder(
+                          enabledBorder: const OutlineInputBorder(
                             borderRadius: BorderRadius.all(Radius.circular(10)),
                             borderSide:
                                 BorderSide(color: Colors.grey, width: 2),
                           ),
                           focusedBorder: OutlineInputBorder(
-                            borderRadius: BorderRadius.all(Radius.circular(20)),
+                            borderRadius:
+                                const BorderRadius.all(Radius.circular(20)),
                             borderSide: BorderSide(
                                 color: Theme.of(context).primaryColor,
                                 width: 2),
                           ),
                         ),
-                        onChanged: (String value) {
-                          focusNode1.requestFocus();
-                          setState(() {});
-                        },
                       ),
-                      SizedBox(height: 10),
+                      const SizedBox(height: 10),
                       TextFormField(
                           focusNode: focusNode2,
-                          maxLength: 5,
                           onChanged: (String value) {
-                            focusNode2.requestFocus();
                             setState(() {});
+                            focusNode2.requestFocus();
+                          },
+                          maxLength: 5,
+                          onFieldSubmitted: (value) {
+                            object.squareclear = value;
                           },
                           onSaved: (value) {
                             object.squareclear = value;
@@ -489,12 +637,12 @@ class ObjectDetailState extends State<ObjectDetail> {
                                 onTap: () {
                                   squareclearController.clear();
                                 },
-                                child: Icon(
+                                child: const Icon(
                                   Icons.delete_outline,
                                   color: Color.fromRGBO(187, 30, 16, 1.0),
                                 ),
                               ),
-                              enabledBorder: OutlineInputBorder(
+                              enabledBorder: const OutlineInputBorder(
                                 borderRadius:
                                     BorderRadius.all(Radius.circular(10)),
                                 borderSide:
@@ -502,7 +650,7 @@ class ObjectDetailState extends State<ObjectDetail> {
                               ),
                               focusedBorder: OutlineInputBorder(
                                 borderRadius:
-                                    BorderRadius.all(Radius.circular(20)),
+                                    const BorderRadius.all(Radius.circular(20)),
                                 borderSide: BorderSide(
                                     color: Theme.of(context).primaryColor,
                                     width: 2),
@@ -513,13 +661,13 @@ class ObjectDetailState extends State<ObjectDetail> {
                                 RegExp(r'^[()\d -]{1,15}'),
                                 allow: true)
                           ]),
-                      SizedBox(height: 10),
+                      const SizedBox(height: 10),
                       DropdownButtonFormField(
                         focusNode: focusNode3,
                         decoration: InputDecoration(
                             focusColor: Theme.of(context).primaryColor,
-                            border: OutlineInputBorder(),
-                            enabledBorder: OutlineInputBorder(
+                            border: const OutlineInputBorder(),
+                            enabledBorder: const OutlineInputBorder(
                               borderRadius:
                                   BorderRadius.all(Radius.circular(10)),
                               borderSide:
@@ -527,7 +675,7 @@ class ObjectDetailState extends State<ObjectDetail> {
                             ),
                             focusedBorder: OutlineInputBorder(
                               borderRadius:
-                                  BorderRadius.all(Radius.circular(20)),
+                                  const BorderRadius.all(Radius.circular(20)),
                               borderSide: BorderSide(
                                   color: Theme.of(context).primaryColor,
                                   width: 2),
@@ -599,7 +747,7 @@ class ObjectDetailState extends State<ObjectDetail> {
                                     });
                                   });
                                 },
-                                child: Icon(Icons.camera_alt_sharp,
+                                child: const Icon(Icons.camera_alt_sharp,
                                     color: Colors.green))),
                         items: _inSt.map((String value) {
                           return DropdownMenuItem(
@@ -613,7 +761,7 @@ class ObjectDetailState extends State<ObjectDetail> {
                           object.inst = value;
                         },
                       ),
-                      SizedBox(height: 10),
+                      const SizedBox(height: 10),
                       Container(
                         height: 100,
                         child: Column(
@@ -637,25 +785,26 @@ class ObjectDetailState extends State<ObjectDetail> {
                                           width: 100,
                                           height: 100,
                                         )
-                                      : Text('Изображение отсутствует'),
+                                      : const Text('Изображение отсутствует'),
                                 ),
                               ),
                             ),
                           ],
                         ),
                       ),
-                      SizedBox(height: 10),
+                      const SizedBox(height: 10),
                       DropdownButtonFormField(
                         focusNode: focusNode4,
                         decoration: InputDecoration(
-                          border: OutlineInputBorder(),
-                          enabledBorder: OutlineInputBorder(
+                          border: const OutlineInputBorder(),
+                          enabledBorder: const OutlineInputBorder(
                             borderRadius: BorderRadius.all(Radius.circular(10)),
                             borderSide:
                                 BorderSide(color: Colors.grey, width: 2),
                           ),
                           focusedBorder: OutlineInputBorder(
-                            borderRadius: BorderRadius.all(Radius.circular(20)),
+                            borderRadius:
+                                const BorderRadius.all(Radius.circular(20)),
                             borderSide: BorderSide(
                                 color: Theme.of(context).primaryColor,
                                 width: 2),
@@ -688,18 +837,19 @@ class ObjectDetailState extends State<ObjectDetail> {
                           object.prepmethod = value;
                         },
                       ),
-                      SizedBox(height: 10),
+                      const SizedBox(height: 10),
                       DropdownButtonFormField(
                         focusNode: focusNode5,
                         decoration: InputDecoration(
-                          border: OutlineInputBorder(),
-                          enabledBorder: OutlineInputBorder(
+                          border: const OutlineInputBorder(),
+                          enabledBorder: const OutlineInputBorder(
                             borderRadius: BorderRadius.all(Radius.circular(10)),
                             borderSide:
                                 BorderSide(color: Colors.grey, width: 2),
                           ),
                           focusedBorder: OutlineInputBorder(
-                            borderRadius: BorderRadius.all(Radius.circular(20)),
+                            borderRadius:
+                                const BorderRadius.all(Radius.circular(20)),
                             borderSide: BorderSide(
                                 color: Theme.of(context).primaryColor,
                                 width: 2),
@@ -731,18 +881,19 @@ class ObjectDetailState extends State<ObjectDetail> {
                           object.degrofdegr = value;
                         },
                       ),
-                      SizedBox(height: 10),
+                      const SizedBox(height: 10),
                       DropdownButtonFormField(
                         focusNode: focusNode6,
                         decoration: InputDecoration(
-                          border: OutlineInputBorder(),
-                          enabledBorder: OutlineInputBorder(
+                          border: const OutlineInputBorder(),
+                          enabledBorder: const OutlineInputBorder(
                             borderRadius: BorderRadius.all(Radius.circular(10)),
                             borderSide:
                                 BorderSide(color: Colors.grey, width: 2),
                           ),
                           focusedBorder: OutlineInputBorder(
-                            borderRadius: BorderRadius.all(Radius.circular(20)),
+                            borderRadius:
+                                const BorderRadius.all(Radius.circular(20)),
                             borderSide: BorderSide(
                                 color: Theme.of(context).primaryColor,
                                 width: 2),
@@ -774,40 +925,40 @@ class ObjectDetailState extends State<ObjectDetail> {
                           object.degrofoxid = value;
                         },
                       ),
-                      SizedBox(height: 10),
+                      const SizedBox(height: 10),
                       Column(
                         children: [
                           Row(
                             children: [
                               Container(
-                                child: SizedBox(
+                                child: const SizedBox(
                                   width: 40,
                                 ),
                               ),
-                              Text(
+                              const Text(
                                 'Степень обеспыливания по ISO 8502-3',
                                 style: TextStyle(
                                     fontSize: 16, color: Colors.black54),
                               ),
                             ],
                           ),
-                          SizedBox(height: 10),
+                          const SizedBox(height: 10),
                           Row(
                             children: [
                               Expanded(
                                 child: DropdownButtonFormField(
                                   focusNode: focusNode7,
                                   decoration: InputDecoration(
-                                    border: OutlineInputBorder(),
-                                    enabledBorder: OutlineInputBorder(
+                                    border: const OutlineInputBorder(),
+                                    enabledBorder: const OutlineInputBorder(
                                       borderRadius:
                                           BorderRadius.all(Radius.circular(10)),
                                       borderSide: BorderSide(
                                           color: Colors.grey, width: 2),
                                     ),
                                     focusedBorder: OutlineInputBorder(
-                                      borderRadius:
-                                          BorderRadius.all(Radius.circular(20)),
+                                      borderRadius: const BorderRadius.all(
+                                          Radius.circular(20)),
                                       borderSide: BorderSide(
                                           color: Theme.of(context).primaryColor,
                                           width: 2),
@@ -843,19 +994,19 @@ class ObjectDetailState extends State<ObjectDetail> {
                                   },
                                 ),
                               ),
-                              SizedBox(width: 1),
+                              const SizedBox(width: 1),
                               Expanded(
                                 child: DropdownButtonFormField(
                                   decoration: InputDecoration(
-                                      border: OutlineInputBorder(),
-                                      enabledBorder: OutlineInputBorder(
+                                      border: const OutlineInputBorder(),
+                                      enabledBorder: const OutlineInputBorder(
                                         borderRadius: BorderRadius.all(
                                             Radius.circular(10)),
                                         borderSide: BorderSide(
                                             color: Colors.grey, width: 2),
                                       ),
                                       focusedBorder: OutlineInputBorder(
-                                        borderRadius: BorderRadius.all(
+                                        borderRadius: const BorderRadius.all(
                                             Radius.circular(20)),
                                         borderSide: BorderSide(
                                             color:
@@ -928,7 +1079,8 @@ class ObjectDetailState extends State<ObjectDetail> {
                                               });
                                             });
                                           },
-                                          child: Icon(Icons.camera_alt_sharp,
+                                          child: const Icon(
+                                              Icons.camera_alt_sharp,
                                               color: Colors.green))),
                                   items: _degrofdedust2.map((String value) {
                                     return DropdownMenuItem(
@@ -945,7 +1097,7 @@ class ObjectDetailState extends State<ObjectDetail> {
                           ),
                         ],
                       ),
-                      SizedBox(height: 10),
+                      const SizedBox(height: 10),
                       Container(
                         height: 100,
                         child: Column(
@@ -969,18 +1121,18 @@ class ObjectDetailState extends State<ObjectDetail> {
                                           width: 100,
                                           height: 100,
                                         )
-                                      : Text('Изображение отсутствует'),
+                                      : const Text('Изображение отсутствует'),
                                 ),
                               ),
                             ),
                           ],
                         ),
                       ),
-                      SizedBox(height: 10),
+                      const SizedBox(height: 10),
                       DropdownButtonFormField(
                         decoration: InputDecoration(
-                            border: OutlineInputBorder(),
-                            enabledBorder: OutlineInputBorder(
+                            border: const OutlineInputBorder(),
+                            enabledBorder: const OutlineInputBorder(
                               borderRadius:
                                   BorderRadius.all(Radius.circular(10)),
                               borderSide:
@@ -988,7 +1140,7 @@ class ObjectDetailState extends State<ObjectDetail> {
                             ),
                             focusedBorder: OutlineInputBorder(
                               borderRadius:
-                                  BorderRadius.all(Radius.circular(20)),
+                                  const BorderRadius.all(Radius.circular(20)),
                               borderSide: BorderSide(
                                   color: Theme.of(context).primaryColor,
                                   width: 2),
@@ -1052,7 +1204,7 @@ class ObjectDetailState extends State<ObjectDetail> {
                                     });
                                   });
                                 },
-                                child: Icon(Icons.camera_alt_sharp,
+                                child: const Icon(Icons.camera_alt_sharp,
                                     color: Colors.green))),
                         items: _roughness.map((String value) {
                           return DropdownMenuItem(
@@ -1064,7 +1216,7 @@ class ObjectDetailState extends State<ObjectDetail> {
                           object.roughness = value;
                         },
                       ),
-                      SizedBox(height: 10),
+                      const SizedBox(height: 10),
                       Container(
                         height: 100,
                         child: Column(
@@ -1088,18 +1240,18 @@ class ObjectDetailState extends State<ObjectDetail> {
                                           width: 100,
                                           height: 100,
                                         )
-                                      : Text('Изображение отсутствует'),
+                                      : const Text('Изображение отсутствует'),
                                 ),
                               ),
                             ),
                           ],
                         ),
                       ),
-                      SizedBox(height: 10),
+                      const SizedBox(height: 10),
                       DropdownButtonFormField(
                           decoration: InputDecoration(
-                              border: OutlineInputBorder(),
-                              enabledBorder: OutlineInputBorder(
+                              border: const OutlineInputBorder(),
+                              enabledBorder: const OutlineInputBorder(
                                 borderRadius:
                                     BorderRadius.all(Radius.circular(10)),
                                 borderSide:
@@ -1107,7 +1259,7 @@ class ObjectDetailState extends State<ObjectDetail> {
                               ),
                               focusedBorder: OutlineInputBorder(
                                 borderRadius:
-                                    BorderRadius.all(Radius.circular(20)),
+                                    const BorderRadius.all(Radius.circular(20)),
                                 borderSide: BorderSide(
                                     color: Theme.of(context).primaryColor,
                                     width: 2),
@@ -1218,7 +1370,7 @@ class ObjectDetailState extends State<ObjectDetail> {
                                       });
                                     });
                                   },
-                                  child: Icon(Icons.camera_alt_sharp,
+                                  child: const Icon(Icons.camera_alt_sharp,
                                       color: Colors.green))),
                           items: _iso8501A.map((String value) {
                             return DropdownMenuItem(
@@ -1229,7 +1381,7 @@ class ObjectDetailState extends State<ObjectDetail> {
                           onChanged: (String value) {
                             object.iso8501 = value;
                           }),
-                      SizedBox(height: 10),
+                      const SizedBox(height: 10),
                       Container(
                         height: 100,
                         child: Column(
@@ -1253,14 +1405,14 @@ class ObjectDetailState extends State<ObjectDetail> {
                                           width: 100,
                                           height: 100,
                                         )
-                                      : Text('Изображение отсутствует'),
+                                      : const Text('Изображение отсутствует'),
                                 ),
                               ),
                             ),
                           ],
                         ),
                       ),
-                      SizedBox(height: 10),
+                      const SizedBox(height: 10),
                       ElevatedButton(
                         style: ElevatedButton.styleFrom(
                             primary: Colors.amber,
@@ -1290,7 +1442,7 @@ class ObjectDetailState extends State<ObjectDetail> {
                   key: _2formKey,
                   child: ListView(
                     children: <Widget>[
-                      SizedBox(height: 20),
+                      const SizedBox(height: 20),
                       Container(
                           alignment: Alignment.center,
                           child: Text(
@@ -1300,7 +1452,7 @@ class ObjectDetailState extends State<ObjectDetail> {
                                 color: Theme.of(context).primaryColor,
                                 fontWeight: FontWeight.w300),
                           )),
-                      SizedBox(height: 20),
+                      const SizedBox(height: 20),
                       TextFormField(
                         focusNode: focusNode10,
                         onChanged: (String value) {
@@ -1329,18 +1481,19 @@ class ObjectDetailState extends State<ObjectDetail> {
                             onTap: () {
                               tempairController.clear();
                             },
-                            child: Icon(
+                            child: const Icon(
                               Icons.delete_outline,
                               color: Colors.red,
                             ),
                           ),
-                          enabledBorder: OutlineInputBorder(
+                          enabledBorder: const OutlineInputBorder(
                             borderRadius: BorderRadius.all(Radius.circular(10)),
                             borderSide:
                                 BorderSide(color: Colors.grey, width: 2),
                           ),
                           focusedBorder: OutlineInputBorder(
-                            borderRadius: BorderRadius.all(Radius.circular(20)),
+                            borderRadius:
+                                const BorderRadius.all(Radius.circular(20)),
                             borderSide: BorderSide(
                                 color: Theme.of(context).primaryColor,
                                 width: 2),
@@ -1353,7 +1506,7 @@ class ObjectDetailState extends State<ObjectDetail> {
                         ),
                         keyboardType: TextInputType.number,
                       ),
-                      SizedBox(height: 10),
+                      const SizedBox(height: 10),
                       TextFormField(
                         focusNode: focusNode11,
                         onChanged: (String value) {
@@ -1383,18 +1536,19 @@ class ObjectDetailState extends State<ObjectDetail> {
                             onTap: () {
                               tempsurfController.clear();
                             },
-                            child: Icon(
+                            child: const Icon(
                               Icons.delete_outline,
                               color: Colors.red,
                             ),
                           ),
-                          enabledBorder: OutlineInputBorder(
+                          enabledBorder: const OutlineInputBorder(
                             borderRadius: BorderRadius.all(Radius.circular(10)),
                             borderSide:
                                 BorderSide(color: Colors.grey, width: 2),
                           ),
                           focusedBorder: OutlineInputBorder(
-                            borderRadius: BorderRadius.all(Radius.circular(20)),
+                            borderRadius:
+                                const BorderRadius.all(Radius.circular(20)),
                             borderSide: BorderSide(
                                 color: Theme.of(context).primaryColor,
                                 width: 2),
@@ -1407,7 +1561,7 @@ class ObjectDetailState extends State<ObjectDetail> {
                         ),
                         keyboardType: TextInputType.number,
                       ),
-                      SizedBox(height: 10),
+                      const SizedBox(height: 10),
                       TextFormField(
                         focusNode: focusNode12,
                         onChanged: (String value) {
@@ -1436,18 +1590,19 @@ class ObjectDetailState extends State<ObjectDetail> {
                             onTap: () {
                               relathumidController.clear();
                             },
-                            child: Icon(
+                            child: const Icon(
                               Icons.delete_outline,
                               color: Colors.red,
                             ),
                           ),
-                          enabledBorder: OutlineInputBorder(
+                          enabledBorder: const OutlineInputBorder(
                             borderRadius: BorderRadius.all(Radius.circular(10)),
                             borderSide:
                                 BorderSide(color: Colors.grey, width: 2),
                           ),
                           focusedBorder: OutlineInputBorder(
-                            borderRadius: BorderRadius.all(Radius.circular(20)),
+                            borderRadius:
+                                const BorderRadius.all(Radius.circular(20)),
                             borderSide: BorderSide(
                                 color: Theme.of(context).primaryColor,
                                 width: 2),
@@ -1460,7 +1615,7 @@ class ObjectDetailState extends State<ObjectDetail> {
                         ),
                         keyboardType: TextInputType.number,
                       ),
-                      SizedBox(height: 10),
+                      const SizedBox(height: 10),
                       TextFormField(
                         focusNode: focusNode13,
                         onChanged: (String value) {
@@ -1489,19 +1644,20 @@ class ObjectDetailState extends State<ObjectDetail> {
                             onTap: () {
                               calcdewpoint();
                             },
-                            child: Icon(
+                            child: const Icon(
                               Icons.calculate_sharp,
                               color: Colors.green,
                               size: 44,
                             ),
                           ),
-                          enabledBorder: OutlineInputBorder(
+                          enabledBorder: const OutlineInputBorder(
                             borderRadius: BorderRadius.all(Radius.circular(10)),
                             borderSide:
                                 BorderSide(color: Colors.grey, width: 2),
                           ),
                           focusedBorder: OutlineInputBorder(
-                            borderRadius: BorderRadius.all(Radius.circular(20)),
+                            borderRadius:
+                                const BorderRadius.all(Radius.circular(20)),
                             borderSide: BorderSide(
                                 color: Theme.of(context).primaryColor,
                                 width: 2),
@@ -1514,7 +1670,7 @@ class ObjectDetailState extends State<ObjectDetail> {
                         ),
                         keyboardType: TextInputType.number,
                       ),
-                      SizedBox(height: 10),
+                      const SizedBox(height: 10),
                       TextFormField(
                         focusNode: focusNode14,
                         onChanged: (String value) {
@@ -1549,19 +1705,20 @@ class ObjectDetailState extends State<ObjectDetail> {
                               object.difftemp = difftemp.toStringAsFixed(2);
                               difftempController.text = object.difftemp;
                             },
-                            child: Icon(
+                            child: const Icon(
                               Icons.calculate_sharp,
                               color: Colors.green,
                               size: 44,
                             ),
                           ),
-                          enabledBorder: OutlineInputBorder(
+                          enabledBorder: const OutlineInputBorder(
                             borderRadius: BorderRadius.all(Radius.circular(10)),
                             borderSide:
                                 BorderSide(color: Colors.grey, width: 2),
                           ),
                           focusedBorder: OutlineInputBorder(
-                            borderRadius: BorderRadius.all(Radius.circular(20)),
+                            borderRadius:
+                                const BorderRadius.all(Radius.circular(20)),
                             borderSide: BorderSide(
                                 color: Theme.of(context).primaryColor,
                                 width: 2),
@@ -1574,25 +1731,7 @@ class ObjectDetailState extends State<ObjectDetail> {
                         ),
                         keyboardType: TextInputType.number,
                       ),
-                      SizedBox(height: 10),
-                      ElevatedButton(
-                        style: ElevatedButton.styleFrom(
-                            primary: Colors.amber,
-                            onPrimary: Colors.white,
-                            elevation: 2,
-                            padding: const EdgeInsets.all(13.0),
-                            shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(10.0))),
-                        onPressed: () {},
-                        child: Text(
-                          'Сформировать "Протокол подготовки поверхности к окраске" по ф.И2 СТО Газпром 9.1-035-2014',
-                          style: const TextStyle(
-                            fontSize: 18.0,
-                            fontWeight: FontWeight.w300,
-                          ),
-                        ),
-                      ),
-                      SizedBox(height: 10),
+                      const SizedBox(height: 10),
                       ElevatedButton(
                         style: ElevatedButton.styleFrom(
                             primary: Colors.amber,
@@ -1620,7 +1759,7 @@ class ObjectDetailState extends State<ObjectDetail> {
                   key: _3formKey,
                   child: ListView(
                     children: <Widget>[
-                      SizedBox(height: 20),
+                      const SizedBox(height: 20),
                       Container(
                           alignment: Alignment.center,
                           child: Text(
@@ -1630,7 +1769,7 @@ class ObjectDetailState extends State<ObjectDetail> {
                                 color: Theme.of(context).primaryColor,
                                 fontWeight: FontWeight.w300),
                           )),
-                      SizedBox(height: 20),
+                      const SizedBox(height: 20),
                       TextFormField(
                           focusNode: focusNode15,
                           onChanged: (String value) {
@@ -1659,12 +1798,12 @@ class ObjectDetailState extends State<ObjectDetail> {
                               onTap: () {
                                 techcondmatController.clear();
                               },
-                              child: Icon(
+                              child: const Icon(
                                 Icons.delete_outline,
                                 color: Colors.red,
                               ),
                             ),
-                            enabledBorder: OutlineInputBorder(
+                            enabledBorder: const OutlineInputBorder(
                               borderRadius:
                                   BorderRadius.all(Radius.circular(10)),
                               borderSide:
@@ -1672,7 +1811,7 @@ class ObjectDetailState extends State<ObjectDetail> {
                             ),
                             focusedBorder: OutlineInputBorder(
                               borderRadius:
-                                  BorderRadius.all(Radius.circular(20)),
+                                  const BorderRadius.all(Radius.circular(20)),
                               borderSide: BorderSide(
                                   color: Theme.of(context).primaryColor,
                                   width: 2),
@@ -1689,7 +1828,7 @@ class ObjectDetailState extends State<ObjectDetail> {
                                 RegExp(r'^[()\d -]{1,15}'),
                                 allow: true)
                           ]),
-                      SizedBox(height: 10),
+                      const SizedBox(height: 10),
                       TextFormField(
                         focusNode: focusNode16,
                         onChanged: (String value) {
@@ -1718,18 +1857,19 @@ class ObjectDetailState extends State<ObjectDetail> {
                             onTap: () {
                               numdoflayController.clear();
                             },
-                            child: Icon(
+                            child: const Icon(
                               Icons.delete_outline,
                               color: Colors.red,
                             ),
                           ),
-                          enabledBorder: OutlineInputBorder(
+                          enabledBorder: const OutlineInputBorder(
                             borderRadius: BorderRadius.all(Radius.circular(10)),
                             borderSide:
                                 BorderSide(color: Colors.grey, width: 2),
                           ),
                           focusedBorder: OutlineInputBorder(
-                            borderRadius: BorderRadius.all(Radius.circular(20)),
+                            borderRadius:
+                                const BorderRadius.all(Radius.circular(20)),
                             borderSide: BorderSide(
                                 color: Theme.of(context).primaryColor,
                                 width: 2),
@@ -1742,7 +1882,7 @@ class ObjectDetailState extends State<ObjectDetail> {
                         ),
                         keyboardType: TextInputType.text,
                       ),
-                      SizedBox(height: 10),
+                      const SizedBox(height: 10),
                       TextFormField(
                           focusNode: focusNode17,
                           onChanged: (String value) {
@@ -1771,12 +1911,12 @@ class ObjectDetailState extends State<ObjectDetail> {
                               onTap: () {
                                 squarenewController.clear();
                               },
-                              child: Icon(
+                              child: const Icon(
                                 Icons.delete_outline,
                                 color: Colors.red,
                               ),
                             ),
-                            enabledBorder: OutlineInputBorder(
+                            enabledBorder: const OutlineInputBorder(
                               borderRadius:
                                   BorderRadius.all(Radius.circular(10)),
                               borderSide:
@@ -1784,7 +1924,7 @@ class ObjectDetailState extends State<ObjectDetail> {
                             ),
                             focusedBorder: OutlineInputBorder(
                               borderRadius:
-                                  BorderRadius.all(Radius.circular(20)),
+                                  const BorderRadius.all(Radius.circular(20)),
                               borderSide: BorderSide(
                                   color: Theme.of(context).primaryColor,
                                   width: 2),
@@ -1801,7 +1941,7 @@ class ObjectDetailState extends State<ObjectDetail> {
                                 RegExp(r'^[()\d -]{1,15}'),
                                 allow: true)
                           ]),
-                      SizedBox(height: 10),
+                      const SizedBox(height: 10),
                       TextFormField(
                           focusNode: focusNode18,
                           onChanged: (String value) {
@@ -1830,12 +1970,12 @@ class ObjectDetailState extends State<ObjectDetail> {
                               onTap: () {
                                 thickofwellayController.clear();
                               },
-                              child: Icon(
+                              child: const Icon(
                                 Icons.delete_outline,
                                 color: Colors.red,
                               ),
                             ),
-                            enabledBorder: OutlineInputBorder(
+                            enabledBorder: const OutlineInputBorder(
                               borderRadius:
                                   BorderRadius.all(Radius.circular(10)),
                               borderSide:
@@ -1843,7 +1983,7 @@ class ObjectDetailState extends State<ObjectDetail> {
                             ),
                             focusedBorder: OutlineInputBorder(
                               borderRadius:
-                                  BorderRadius.all(Radius.circular(20)),
+                                  const BorderRadius.all(Radius.circular(20)),
                               borderSide: BorderSide(
                                   color: Theme.of(context).primaryColor,
                                   width: 2),
@@ -1860,18 +2000,19 @@ class ObjectDetailState extends State<ObjectDetail> {
                                 RegExp(r'^[()\d -]{1,15}'),
                                 allow: true)
                           ]),
-                      SizedBox(height: 10),
+                      const SizedBox(height: 10),
                       DropdownButtonFormField(
                         focusNode: focusNode19,
                         decoration: InputDecoration(
-                          border: OutlineInputBorder(),
-                          enabledBorder: OutlineInputBorder(
+                          border: const OutlineInputBorder(),
+                          enabledBorder: const OutlineInputBorder(
                             borderRadius: BorderRadius.all(Radius.circular(10)),
                             borderSide:
                                 BorderSide(color: Colors.grey, width: 2),
                           ),
                           focusedBorder: OutlineInputBorder(
-                            borderRadius: BorderRadius.all(Radius.circular(20)),
+                            borderRadius:
+                                const BorderRadius.all(Radius.circular(20)),
                             borderSide: BorderSide(
                                 color: Theme.of(context).primaryColor,
                                 width: 2),
@@ -1903,7 +2044,7 @@ class ObjectDetailState extends State<ObjectDetail> {
                           object.contin = value;
                         },
                       ),
-                      SizedBox(height: 10),
+                      const SizedBox(height: 10),
                       TextFormField(
                           focusNode: focusNode20,
                           onChanged: (String value) {
@@ -1932,12 +2073,12 @@ class ObjectDetailState extends State<ObjectDetail> {
                               onTap: () {
                                 timedryController.clear();
                               },
-                              child: Icon(
+                              child: const Icon(
                                 Icons.delete_outline,
                                 color: Colors.red,
                               ),
                             ),
-                            enabledBorder: OutlineInputBorder(
+                            enabledBorder: const OutlineInputBorder(
                               borderRadius:
                                   BorderRadius.all(Radius.circular(10)),
                               borderSide:
@@ -1945,7 +2086,7 @@ class ObjectDetailState extends State<ObjectDetail> {
                             ),
                             focusedBorder: OutlineInputBorder(
                               borderRadius:
-                                  BorderRadius.all(Radius.circular(20)),
+                                  const BorderRadius.all(Radius.circular(20)),
                               borderSide: BorderSide(
                                   color: Theme.of(context).primaryColor,
                                   width: 2),
@@ -1962,18 +2103,19 @@ class ObjectDetailState extends State<ObjectDetail> {
                                 RegExp(r'^[()\d -]{1,15}'),
                                 allow: true)
                           ]),
-                      SizedBox(height: 10),
+                      const SizedBox(height: 10),
                       DropdownButtonFormField(
                         focusNode: focusNode21,
                         decoration: InputDecoration(
-                          border: OutlineInputBorder(),
-                          enabledBorder: OutlineInputBorder(
+                          border: const OutlineInputBorder(),
+                          enabledBorder: const OutlineInputBorder(
                             borderRadius: BorderRadius.all(Radius.circular(10)),
                             borderSide:
                                 BorderSide(color: Colors.grey, width: 2),
                           ),
                           focusedBorder: OutlineInputBorder(
-                            borderRadius: BorderRadius.all(Radius.circular(20)),
+                            borderRadius:
+                                const BorderRadius.all(Radius.circular(20)),
                             borderSide: BorderSide(
                                 color: Theme.of(context).primaryColor,
                                 width: 2),
@@ -2006,18 +2148,19 @@ class ObjectDetailState extends State<ObjectDetail> {
                           object.degrdry = value;
                         },
                       ),
-                      SizedBox(height: 10),
+                      const SizedBox(height: 10),
                       DropdownButtonFormField(
                         focusNode: focusNode22,
                         decoration: InputDecoration(
-                          border: OutlineInputBorder(),
-                          enabledBorder: OutlineInputBorder(
+                          border: const OutlineInputBorder(),
+                          enabledBorder: const OutlineInputBorder(
                             borderRadius: BorderRadius.all(Radius.circular(10)),
                             borderSide:
                                 BorderSide(color: Colors.grey, width: 2),
                           ),
                           focusedBorder: OutlineInputBorder(
-                            borderRadius: BorderRadius.all(Radius.circular(20)),
+                            borderRadius:
+                                const BorderRadius.all(Radius.circular(20)),
                             borderSide: BorderSide(
                                 color: Theme.of(context).primaryColor,
                                 width: 2),
@@ -2050,7 +2193,7 @@ class ObjectDetailState extends State<ObjectDetail> {
                           object.defdur = value;
                         },
                       ),
-                      SizedBox(height: 10),
+                      const SizedBox(height: 10),
                       TextFormField(
                           focusNode: focusNode23,
                           onChanged: (String value) {
@@ -2080,12 +2223,12 @@ class ObjectDetailState extends State<ObjectDetail> {
                               onTap: () {
                                 thickofdrylayController.clear();
                               },
-                              child: Icon(
+                              child: const Icon(
                                 Icons.delete_outline,
                                 color: Colors.red,
                               ),
                             ),
-                            enabledBorder: OutlineInputBorder(
+                            enabledBorder: const OutlineInputBorder(
                               borderRadius:
                                   BorderRadius.all(Radius.circular(10)),
                               borderSide:
@@ -2093,7 +2236,7 @@ class ObjectDetailState extends State<ObjectDetail> {
                             ),
                             focusedBorder: OutlineInputBorder(
                               borderRadius:
-                                  BorderRadius.all(Radius.circular(20)),
+                                  const BorderRadius.all(Radius.circular(20)),
                               borderSide: BorderSide(
                                   color: Theme.of(context).primaryColor,
                                   width: 2),
@@ -2110,7 +2253,7 @@ class ObjectDetailState extends State<ObjectDetail> {
                                 RegExp(r'^[()\d -]{1,15}'),
                                 allow: true)
                           ]),
-                      SizedBox(height: 10),
+                      const SizedBox(height: 10),
                       ElevatedButton(
                         style: ElevatedButton.styleFrom(
                             primary: Colors.amber,
@@ -2138,7 +2281,7 @@ class ObjectDetailState extends State<ObjectDetail> {
                   key: _4formKey,
                   child: ListView(
                     children: <Widget>[
-                      SizedBox(height: 20),
+                      const SizedBox(height: 20),
                       Container(
                           alignment: Alignment.center,
                           child: Text(
@@ -2148,18 +2291,19 @@ class ObjectDetailState extends State<ObjectDetail> {
                                 color: Theme.of(context).primaryColor,
                                 fontWeight: FontWeight.w300),
                           )),
-                      SizedBox(height: 20),
+                      const SizedBox(height: 20),
                       DropdownButtonFormField(
                         focusNode: focusNode24,
                         decoration: InputDecoration(
-                          border: OutlineInputBorder(),
-                          enabledBorder: OutlineInputBorder(
+                          border: const OutlineInputBorder(),
+                          enabledBorder: const OutlineInputBorder(
                             borderRadius: BorderRadius.all(Radius.circular(10)),
                             borderSide:
                                 BorderSide(color: Colors.grey, width: 2),
                           ),
                           focusedBorder: OutlineInputBorder(
-                            borderRadius: BorderRadius.all(Radius.circular(20)),
+                            borderRadius:
+                                const BorderRadius.all(Radius.circular(20)),
                             borderSide: BorderSide(
                                 color: Theme.of(context).primaryColor,
                                 width: 2),
@@ -2191,7 +2335,7 @@ class ObjectDetailState extends State<ObjectDetail> {
                           object.apperance = value;
                         },
                       ),
-                      SizedBox(height: 10),
+                      const SizedBox(height: 10),
                       TextFormField(
                           focusNode: focusNode25,
                           onChanged: (String value) {
@@ -2220,12 +2364,12 @@ class ObjectDetailState extends State<ObjectDetail> {
                               onTap: () {
                                 adhesionController.clear();
                               },
-                              child: Icon(
+                              child: const Icon(
                                 Icons.delete_outline,
                                 color: Colors.red,
                               ),
                             ),
-                            enabledBorder: OutlineInputBorder(
+                            enabledBorder: const OutlineInputBorder(
                               borderRadius:
                                   BorderRadius.all(Radius.circular(10)),
                               borderSide:
@@ -2233,7 +2377,7 @@ class ObjectDetailState extends State<ObjectDetail> {
                             ),
                             focusedBorder: OutlineInputBorder(
                               borderRadius:
-                                  BorderRadius.all(Radius.circular(20)),
+                                  const BorderRadius.all(Radius.circular(20)),
                               borderSide: BorderSide(
                                   color: Theme.of(context).primaryColor,
                                   width: 2),
@@ -2250,18 +2394,19 @@ class ObjectDetailState extends State<ObjectDetail> {
                                 RegExp(r'^[()\d -]{1,15}'),
                                 allow: true)
                           ]),
-                      SizedBox(height: 10),
+                      const SizedBox(height: 10),
                       DropdownButtonFormField(
                         focusNode: focusNode26,
                         decoration: InputDecoration(
-                          border: OutlineInputBorder(),
-                          enabledBorder: OutlineInputBorder(
+                          border: const OutlineInputBorder(),
+                          enabledBorder: const OutlineInputBorder(
                             borderRadius: BorderRadius.all(Radius.circular(10)),
                             borderSide:
                                 BorderSide(color: Colors.grey, width: 2),
                           ),
                           focusedBorder: OutlineInputBorder(
-                            borderRadius: BorderRadius.all(Radius.circular(20)),
+                            borderRadius:
+                                const BorderRadius.all(Radius.circular(20)),
                             borderSide: BorderSide(
                                 color: Theme.of(context).primaryColor,
                                 width: 2),
@@ -2293,7 +2438,7 @@ class ObjectDetailState extends State<ObjectDetail> {
                           object.dielcont = value;
                         },
                       ),
-                      SizedBox(height: 10),
+                      const SizedBox(height: 10),
                       ElevatedButton(
                           style: ElevatedButton.styleFrom(
                               backgroundColor: object.bgcolor == null
@@ -2312,8 +2457,8 @@ class ObjectDetailState extends State<ObjectDetail> {
                               object.bgcolor == null
                                   ? "Определить цвет покрытия "
                                   : 'Цвет покрытия ${object.bgcolor}',
-                              style: TextStyle(color: Colors.black))),
-                      SizedBox(height: 10),
+                              style: const TextStyle(color: Colors.black))),
+                      const SizedBox(height: 10),
                       ElevatedButton(
                         style: ElevatedButton.styleFrom(
                             primary: Colors.amber,
@@ -2341,7 +2486,7 @@ class ObjectDetailState extends State<ObjectDetail> {
                   key: _5formKey,
                   child: ListView(
                     children: <Widget>[
-                      SizedBox(height: 20),
+                      const SizedBox(height: 20),
                       Container(
                           alignment: Alignment.center,
                           child: Text(
@@ -2351,7 +2496,7 @@ class ObjectDetailState extends State<ObjectDetail> {
                                 color: Theme.of(context).primaryColor,
                                 fontWeight: FontWeight.w300),
                           )),
-                      SizedBox(height: 20),
+                      const SizedBox(height: 20),
                       TextFormField(
                         focusNode: focusNode27,
                         onChanged: (String value) {
@@ -2380,18 +2525,19 @@ class ObjectDetailState extends State<ObjectDetail> {
                             onTap: () {
                               thickinsulmeterController.clear();
                             },
-                            child: Icon(
+                            child: const Icon(
                               Icons.delete_outline,
                               color: Colors.red,
                             ),
                           ),
-                          enabledBorder: OutlineInputBorder(
+                          enabledBorder: const OutlineInputBorder(
                             borderRadius: BorderRadius.all(Radius.circular(10)),
                             borderSide:
                                 BorderSide(color: Colors.grey, width: 2),
                           ),
                           focusedBorder: OutlineInputBorder(
-                            borderRadius: BorderRadius.all(Radius.circular(20)),
+                            borderRadius:
+                                const BorderRadius.all(Radius.circular(20)),
                             borderSide: BorderSide(
                                 color: Theme.of(context).primaryColor,
                                 width: 2),
@@ -2404,7 +2550,7 @@ class ObjectDetailState extends State<ObjectDetail> {
                         ),
                         keyboardType: TextInputType.number,
                       ),
-                      SizedBox(height: 10),
+                      const SizedBox(height: 10),
                       TextFormField(
                         focusNode: focusNode28,
                         onChanged: (String value) {
@@ -2433,18 +2579,19 @@ class ObjectDetailState extends State<ObjectDetail> {
                             onTap: () {
                               adhesmeterController.clear();
                             },
-                            child: Icon(
+                            child: const Icon(
                               Icons.delete_outline,
                               color: Colors.red,
                             ),
                           ),
-                          enabledBorder: OutlineInputBorder(
+                          enabledBorder: const OutlineInputBorder(
                             borderRadius: BorderRadius.all(Radius.circular(10)),
                             borderSide:
                                 BorderSide(color: Colors.grey, width: 2),
                           ),
                           focusedBorder: OutlineInputBorder(
-                            borderRadius: BorderRadius.all(Radius.circular(20)),
+                            borderRadius:
+                                const BorderRadius.all(Radius.circular(20)),
                             borderSide: BorderSide(
                                 color: Theme.of(context).primaryColor,
                                 width: 2),
@@ -2457,7 +2604,7 @@ class ObjectDetailState extends State<ObjectDetail> {
                         ),
                         keyboardType: TextInputType.number,
                       ),
-                      SizedBox(height: 10),
+                      const SizedBox(height: 10),
                       TextFormField(
                         focusNode: focusNode29,
                         onChanged: (String value) {
@@ -2486,18 +2633,19 @@ class ObjectDetailState extends State<ObjectDetail> {
                             onTap: () {
                               continmeterController.clear();
                             },
-                            child: Icon(
+                            child: const Icon(
                               Icons.delete_outline,
                               color: Colors.red,
                             ),
                           ),
-                          enabledBorder: OutlineInputBorder(
+                          enabledBorder: const OutlineInputBorder(
                             borderRadius: BorderRadius.all(Radius.circular(10)),
                             borderSide:
                                 BorderSide(color: Colors.grey, width: 2),
                           ),
                           focusedBorder: OutlineInputBorder(
-                            borderRadius: BorderRadius.all(Radius.circular(20)),
+                            borderRadius:
+                                const BorderRadius.all(Radius.circular(20)),
                             borderSide: BorderSide(
                                 color: Theme.of(context).primaryColor,
                                 width: 2),
@@ -2510,7 +2658,7 @@ class ObjectDetailState extends State<ObjectDetail> {
                         ),
                         keyboardType: TextInputType.number,
                       ),
-                      SizedBox(height: 10),
+                      const SizedBox(height: 10),
                       TextFormField(
                         focusNode: focusNode30,
                         onChanged: (String value) {
@@ -2539,18 +2687,19 @@ class ObjectDetailState extends State<ObjectDetail> {
                             onTap: () {
                               setvikController.clear();
                             },
-                            child: Icon(
+                            child: const Icon(
                               Icons.delete_outline,
                               color: Colors.red,
                             ),
                           ),
-                          enabledBorder: OutlineInputBorder(
+                          enabledBorder: const OutlineInputBorder(
                             borderRadius: BorderRadius.all(Radius.circular(10)),
                             borderSide:
                                 BorderSide(color: Colors.grey, width: 2),
                           ),
                           focusedBorder: OutlineInputBorder(
-                            borderRadius: BorderRadius.all(Radius.circular(20)),
+                            borderRadius:
+                                const BorderRadius.all(Radius.circular(20)),
                             borderSide: BorderSide(
                                 color: Theme.of(context).primaryColor,
                                 width: 2),
@@ -2563,7 +2712,7 @@ class ObjectDetailState extends State<ObjectDetail> {
                         ),
                         keyboardType: TextInputType.number,
                       ),
-                      SizedBox(height: 20),
+                      const SizedBox(height: 20),
                       ElevatedButton(
                         style: ElevatedButton.styleFrom(
                             primary: Colors.amber,
@@ -2591,7 +2740,7 @@ class ObjectDetailState extends State<ObjectDetail> {
                   key: _6formKey,
                   child: ListView(
                     children: <Widget>[
-                      SizedBox(height: 20),
+                      const SizedBox(height: 20),
                       Container(
                           alignment: Alignment.center,
                           child: Text(
@@ -2601,18 +2750,19 @@ class ObjectDetailState extends State<ObjectDetail> {
                                 color: Theme.of(context).primaryColor,
                                 fontWeight: FontWeight.w300),
                           )),
-                      SizedBox(height: 20),
+                      const SizedBox(height: 20),
                       DropdownButtonFormField(
                         focusNode: focusNode31,
                         decoration: InputDecoration(
-                          border: OutlineInputBorder(),
-                          enabledBorder: OutlineInputBorder(
+                          border: const OutlineInputBorder(),
+                          enabledBorder: const OutlineInputBorder(
                             borderRadius: BorderRadius.all(Radius.circular(10)),
                             borderSide:
                                 BorderSide(color: Colors.grey, width: 2),
                           ),
                           focusedBorder: OutlineInputBorder(
-                            borderRadius: BorderRadius.all(Radius.circular(20)),
+                            borderRadius:
+                                const BorderRadius.all(Radius.circular(20)),
                             borderSide: BorderSide(
                                 color: Theme.of(context).primaryColor,
                                 width: 2),
@@ -2644,18 +2794,19 @@ class ObjectDetailState extends State<ObjectDetail> {
                           object.changecolor = value;
                         },
                       ),
-                      SizedBox(height: 10),
+                      const SizedBox(height: 10),
                       DropdownButtonFormField(
                         focusNode: focusNode32,
                         decoration: InputDecoration(
-                          border: OutlineInputBorder(),
-                          enabledBorder: OutlineInputBorder(
+                          border: const OutlineInputBorder(),
+                          enabledBorder: const OutlineInputBorder(
                             borderRadius: BorderRadius.all(Radius.circular(10)),
                             borderSide:
                                 BorderSide(color: Colors.grey, width: 2),
                           ),
                           focusedBorder: OutlineInputBorder(
-                            borderRadius: BorderRadius.all(Radius.circular(20)),
+                            borderRadius:
+                                const BorderRadius.all(Radius.circular(20)),
                             borderSide: BorderSide(
                                 color: Theme.of(context).primaryColor,
                                 width: 2),
@@ -2688,18 +2839,19 @@ class ObjectDetailState extends State<ObjectDetail> {
                           object.changegloss = value;
                         },
                       ),
-                      SizedBox(height: 10),
+                      const SizedBox(height: 10),
                       DropdownButtonFormField(
                         focusNode: focusNode33,
                         decoration: InputDecoration(
-                          border: OutlineInputBorder(),
-                          enabledBorder: OutlineInputBorder(
+                          border: const OutlineInputBorder(),
+                          enabledBorder: const OutlineInputBorder(
                             borderRadius: BorderRadius.all(Radius.circular(10)),
                             borderSide:
                                 BorderSide(color: Colors.grey, width: 2),
                           ),
                           focusedBorder: OutlineInputBorder(
-                            borderRadius: BorderRadius.all(Radius.circular(20)),
+                            borderRadius:
+                                const BorderRadius.all(Radius.circular(20)),
                             borderSide: BorderSide(
                                 color: Theme.of(context).primaryColor,
                                 width: 2),
@@ -2731,18 +2883,19 @@ class ObjectDetailState extends State<ObjectDetail> {
                           object.mudretant = value;
                         },
                       ),
-                      SizedBox(height: 10),
+                      const SizedBox(height: 10),
                       DropdownButtonFormField(
                         focusNode: focusNode34,
                         decoration: InputDecoration(
-                          border: OutlineInputBorder(),
-                          enabledBorder: OutlineInputBorder(
+                          border: const OutlineInputBorder(),
+                          enabledBorder: const OutlineInputBorder(
                             borderRadius: BorderRadius.all(Radius.circular(10)),
                             borderSide:
                                 BorderSide(color: Colors.grey, width: 2),
                           ),
                           focusedBorder: OutlineInputBorder(
-                            borderRadius: BorderRadius.all(Radius.circular(20)),
+                            borderRadius:
+                                const BorderRadius.all(Radius.circular(20)),
                             borderSide: BorderSide(
                                 color: Theme.of(context).primaryColor,
                                 width: 2),
@@ -2774,7 +2927,7 @@ class ObjectDetailState extends State<ObjectDetail> {
                           object.chalking = value;
                         },
                       ),
-                      SizedBox(height: 10),
+                      const SizedBox(height: 10),
                       TextFormField(
                         focusNode: focusNode35,
                         onChanged: (String value) {
@@ -2790,14 +2943,15 @@ class ObjectDetailState extends State<ObjectDetail> {
                           labelText: 'Доплнительные сведения',
                           hintText:
                               'Особенности, дефекты, условия, замечания...',
-                          border: OutlineInputBorder(),
-                          enabledBorder: OutlineInputBorder(
+                          border: const OutlineInputBorder(),
+                          enabledBorder: const OutlineInputBorder(
                             borderRadius: BorderRadius.all(Radius.circular(10)),
                             borderSide:
                                 BorderSide(color: Colors.grey, width: 2),
                           ),
                           focusedBorder: OutlineInputBorder(
-                            borderRadius: BorderRadius.all(Radius.circular(20)),
+                            borderRadius:
+                                const BorderRadius.all(Radius.circular(20)),
                             borderSide: BorderSide(
                                 color: Theme.of(context).primaryColor,
                                 width: 2),
@@ -2813,7 +2967,7 @@ class ObjectDetailState extends State<ObjectDetail> {
                           LengthLimitingTextInputFormatter(137),
                         ],
                       ),
-                      SizedBox(height: 10),
+                      const SizedBox(height: 10),
                       ElevatedButton(
                         style: ElevatedButton.styleFrom(
                             primary: Colors.amber,
@@ -2834,29 +2988,680 @@ class ObjectDetailState extends State<ObjectDetail> {
                 ),
               ),
             ),
+            Center(
+              child: Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Form(
+                  key: _7formKey,
+                  child: ListView(
+                    children: <Widget>[
+                      const SizedBox(height: 20),
+                      Container(
+                          alignment: Alignment.center,
+                          child: Text(
+                            'ИСПОЛНИТЕЛИ И КОМИССИЯ',
+                            style: TextStyle(
+                                fontSize: 24,
+                                color: Theme.of(context).primaryColor,
+                                fontWeight: FontWeight.w300),
+                          )),
+                      const SizedBox(height: 20),
+                      DropdownButtonFormField(
+                        focusNode: focusNode41,
+                        decoration: InputDecoration(
+                          border: const OutlineInputBorder(),
+                          enabledBorder: const OutlineInputBorder(
+                            borderRadius: BorderRadius.all(Radius.circular(10)),
+                            borderSide:
+                                BorderSide(color: Colors.grey, width: 2),
+                          ),
+                          focusedBorder: OutlineInputBorder(
+                            borderRadius:
+                                const BorderRadius.all(Radius.circular(20)),
+                            borderSide: BorderSide(
+                                color: Theme.of(context).primaryColor,
+                                width: 2),
+                          ),
+                          labelStyle: TextStyle(
+                            fontSize: 22,
+                            fontWeight: FontWeight.w300,
+                            color: Theme.of(context).primaryColor,
+                          ),
+                          prefixIcon: Icon(
+                            Icons.wysiwyg_rounded,
+                            color: focusNode41.hasFocus ||
+                                    filialController.text.isNotEmpty
+                                ? Theme.of(context).primaryColor
+                                : Colors.grey,
+                            size: 32,
+                          ),
+                          labelText: 'Филиал',
+                        ),
+                        items: _filial.map((String value) {
+                          return DropdownMenuItem(
+                              value: value, child: Text(value));
+                        }).toList(),
+                        style: textStyle,
+                        value: object.filial,
+                        onChanged: (String value) {
+                          setState(() {});
+                          focusNode41.requestFocus();
+                          object.filial = value;
+                        },
+                      ),
+                      const SizedBox(height: 10),
+                      DropdownButtonFormField(
+                        focusNode: focusNode42,
+                        decoration: InputDecoration(
+                          border: const OutlineInputBorder(),
+                          enabledBorder: const OutlineInputBorder(
+                            borderRadius: BorderRadius.all(Radius.circular(10)),
+                            borderSide:
+                                BorderSide(color: Colors.grey, width: 2),
+                          ),
+                          focusedBorder: OutlineInputBorder(
+                            borderRadius:
+                                const BorderRadius.all(Radius.circular(20)),
+                            borderSide: BorderSide(
+                                color: Theme.of(context).primaryColor,
+                                width: 2),
+                          ),
+                          labelStyle: TextStyle(
+                            fontSize: 16,
+                            fontWeight: FontWeight.w300,
+                            color: Theme.of(context).primaryColor,
+                          ),
+                          prefixIcon: Icon(
+                            Icons.wysiwyg_rounded,
+                            color: focusNode42.hasFocus ||
+                                    predskomController.text.isNotEmpty
+                                ? Theme.of(context).primaryColor
+                                : Colors.grey,
+                            size: 32,
+                          ),
+                          labelText: 'Должность председателя',
+                        ),
+                        items: _predskom.map((String value) {
+                          return DropdownMenuItem(
+                              value: value, child: Text(value));
+                        }).toList(),
+                        style: textStyle,
+                        value: object.dolzhnpredskom,
+                        onChanged: (String value) {
+                          setState(() {});
+                          focusNode42.requestFocus();
+                          object.dolzhnpredskom = value;
+                        },
+                      ),
+                      const SizedBox(height: 10),
+                      TextFormField(
+                        focusNode: focusNode43,
+                        onChanged: (String value) {
+                          setState(() {});
+                          focusNode43.requestFocus();
+                        },
+                        // maxLength: 20,
+                        onSaved: (value) {
+                          object.fiopredskom = value;
+                        },
+                        controller: fiopredskomController,
+                        style: textStyle,
+                        decoration: InputDecoration(
+                          labelText: 'ФИО председателя комиссии',
+                          hintText: 'Введите ФИО председателя комиссии',
+                          helperText: 'Фамилия И.О.',
+                          prefixIcon: Icon(
+                            Icons.account_balance_outlined,
+                            color: focusNode43.hasFocus ||
+                                    fiopredskomController.text.isNotEmpty
+                                ? Theme.of(context).primaryColor
+                                : Colors.grey,
+                            size: 32,
+                          ),
+                          suffixIcon: GestureDetector(
+                            onTap: () {
+                              fiopredskomController.clear();
+                            },
+                            child: const Icon(
+                              Icons.delete_outline,
+                              color: Colors.red,
+                            ),
+                          ),
+                          enabledBorder: const OutlineInputBorder(
+                            borderRadius: BorderRadius.all(Radius.circular(10)),
+                            borderSide:
+                                BorderSide(color: Colors.grey, width: 2),
+                          ),
+                          focusedBorder: OutlineInputBorder(
+                            borderRadius:
+                                const BorderRadius.all(Radius.circular(20)),
+                            borderSide: BorderSide(
+                                color: Theme.of(context).primaryColor,
+                                width: 2),
+                          ),
+                          labelStyle: TextStyle(
+                            fontSize: 22,
+                            fontWeight: FontWeight.w300,
+                            color: Theme.of(context).primaryColor,
+                          ),
+                        ),
+                        keyboardType: TextInputType.text,
+                      ),
+                      const SizedBox(height: 10),
+                      const SizedBox(height: 10),
+                      const SizedBox(height: 10),
+                      ElevatedButton(
+                        style: ElevatedButton.styleFrom(
+                            primary: Colors.amber,
+                            onPrimary: Colors.white,
+                            elevation: 2,
+                            padding: const EdgeInsets.all(13.0),
+                            shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(10.0))),
+                        onPressed: () {
+                          editExcelFile('PKPPO');
+                        },
+                        child: const Text(
+                          'Сформировать Протокол контроля подготовки поверхности к окраске',
+                          style: const TextStyle(
+                            fontSize: 18.0,
+                            fontWeight: FontWeight.w300,
+                          ),
+                        ),
+                      ),
+                      const SizedBox(height: 10),
+                      ElevatedButton(
+                        style: ElevatedButton.styleFrom(
+                            primary: Colors.amber,
+                            onPrimary: Colors.white,
+                            elevation: 2,
+                            padding: const EdgeInsets.all(13.0),
+                            shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(10.0))),
+                        onPressed: () {
+                          editExcelFile('ZHPPKR');
+                        },
+                        child: const Text(
+                          'Сформировать Журнал производства противокоррозионных работ',
+                          style: const TextStyle(
+                            fontSize: 18.0,
+                            fontWeight: FontWeight.w300,
+                          ),
+                        ),
+                      ),
+                      const SizedBox(height: 10),
+                      ElevatedButton(
+                        style: ElevatedButton.styleFrom(
+                            primary: Colors.amber,
+                            onPrimary: Colors.white,
+                            elevation: 2,
+                            padding: const EdgeInsets.all(13.0),
+                            shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(10.0))),
+                        onPressed: () {
+                          editExcelFile('PKNLM');
+                        },
+                        child: const Text(
+                          'Сформировать Протокол качества нанесения лакокрасочных покрытий',
+                          style: TextStyle(
+                            fontSize: 18.0,
+                            fontWeight: FontWeight.w300,
+                          ),
+                        ),
+                      ),
+                      const SizedBox(height: 10),
+                      ElevatedButton(
+                        style: ElevatedButton.styleFrom(
+                            primary: Colors.amber,
+                            onPrimary: Colors.white,
+                            elevation: 2,
+                            padding: const EdgeInsets.all(13.0),
+                            shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(10.0))),
+                        onPressed: () {
+                          editExcelFile('AOSR');
+                        },
+                        child: const Text(
+                          'Сформировать Акт освидетельствования скрытых работ',
+                          style: TextStyle(
+                            fontSize: 18.0,
+                            fontWeight: FontWeight.w300,
+                          ),
+                        ),
+                      ),
+                      const SizedBox(height: 10),
+                      ElevatedButton(
+                        style: ElevatedButton.styleFrom(
+                            primary: Colors.amber,
+                            onPrimary: Colors.white,
+                            elevation: 2,
+                            padding: const EdgeInsets.all(13.0),
+                            shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(10.0))),
+                        onPressed: () {
+                          editExcelFile('APSLP');
+                        },
+                        child: const Text(
+                          'Сформировать Акт приемки системы лакокрасочных покрытий, выполненных по объекту ',
+                          style: TextStyle(
+                            fontSize: 18.0,
+                            fontWeight: FontWeight.w300,
+                          ),
+                        ),
+                      ),
+                      const SizedBox(height: 10),
+                      ElevatedButton(
+                        style: ElevatedButton.styleFrom(
+                            primary: Colors.amber,
+                            onPrimary: Colors.white,
+                            elevation: 2,
+                            padding: const EdgeInsets.all(13.0),
+                            shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(10.0))),
+                        onPressed: () => saveForm7(),
+                        child: Text(
+                          isEdit ? 'Редактировать' : 'Добавить',
+                          style: const TextStyle(
+                              fontSize: 18.0, fontWeight: FontWeight.w300),
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+            ),
           ],
         ),
-        floatingActionButton: isEdit
-            ? FloatingActionButton(
-                onPressed: () {
-                  debugPrint('Click Floated Back.');
-                  confirmDelete();
-                },
-                elevation: 5.0,
-                backgroundColor: Colors.red,
-                tooltip: 'Удалить запись',
-                child: const Icon(Icons.clear, size: 35.0))
-            : null,
-        floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
+        // floatingActionButton: isEdit
+        //     ? FloatingActionButton(
+        //         onPressed: () {
+        //           debugPrint('Click Floated Back.');
+        //           confirmDelete();
+        //         },
+        //         elevation: 5.0,
+        //         backgroundColor: Colors.red,
+        //         tooltip: 'Удалить запись',
+        //         child: const Icon(Icons.clear, size: 35.0))
+        //     : null,
+        // floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
       ),
     );
+  }
+
+  void editExcelFile(String buttonName) async {
+    try {
+      if (buttonName == 'ZHPPKR') {
+        // Получаем путь к файлу Excel в папке assets
+        ByteData data = await rootBundle.load('assets/form/LKP/ZHPPKR.xlsx');
+        List<int> bytes = data.buffer.asUint8List();
+
+        // Открываем файл Excel
+        var excel = Excel.decodeBytes(bytes);
+
+        // Получаем страницу, на которой нужно вставить данные
+        var sheet = excel['ZHPPKR'];
+        var filial = 'Филиал';
+
+        // Вставляем данные в определенные ячейки
+        if (object.filial == 'Арзамасское ЛПУМГ') {
+          filial = 'Арзамасского ЛПУМГ-филиала';
+        } else if (object.filial == 'Владимирское ЛПУМГ') {
+          filial = 'Владимирского ЛПУМГ-филиала';
+        } else if (object.filial == 'Волжское ЛПУМГ') {
+          filial = 'Волжского ЛПУМГ-филиала';
+        } else if (object.filial == 'Вятское ЛПУМГ') {
+          filial = 'Вятского ЛПУМГ-филиала';
+        } else if (object.filial == 'Заволжское ЛПУМГ') {
+          filial = 'Заволжского ЛПУМГ-филиала';
+        } else if (object.filial == 'Ивановское ЛПУМГ') {
+          filial = 'Ивановского ЛПУМГ-филиала';
+        } else if (object.filial == 'Кировское ЛПУМГ') {
+          filial = 'Кировского ЛПУМГ-филиала';
+        } else if (object.filial == 'Моркинское ЛПУМГ') {
+          filial = 'Моркинского ЛПУМГ-филиала';
+        } else if (object.filial == 'Пензенское ЛПУМГ') {
+          filial = 'Пензенского ЛПУМГ-филиала';
+        } else if (object.filial == 'Пильнинское ЛПУМГ') {
+          filial = 'Пильнинского ЛПУМГ-филиала';
+        } else if (object.filial == 'Починковское ЛПУМГ') {
+          filial = 'Починковского ЛПУМГ-филиала';
+        } else if (object.filial == 'Приокское ЛПУМГ') {
+          filial = 'Приокского ЛПУМГ-филиала';
+        } else if (object.filial == 'Семеновское ЛПУМГ') {
+          filial = 'Семеновского ЛПУМГ-филиала';
+        } else if (object.filial == 'Сеченовское ЛПУМГ') {
+          filial = 'Сеченовского ЛПУМГ-филиала';
+        } else if (object.filial == 'Торбеевское ЛПУМГ') {
+          filial = 'Торбеевского ЛПУМГ-филиала';
+        } else if (object.filial == 'Чебоксарское ЛПУМГ') {
+          filial = 'Чебоксарского ЛПУМГ-филиала';
+        } else if (object.filial == 'ИТЦ ЛПУМГ') {
+          filial = 'ИТЦ-филиала';
+        } else if (object.filial == 'УАВР') {
+          filial = 'УАВР-филиала';
+        }
+        sheet.cell(CellIndex.indexByString("E5")).value = filial;
+        print(object.filial);
+        sheet.cell(CellIndex.indexByString("E4")).value = object.dolzhnpredskom;
+        print(object.dolzhnpredskom);
+        sheet.cell(CellIndex.indexByString("J7")).value = object.fiopredskom;
+        print(object.fiopredskom);
+
+        // Получаем путь к папке "Downloads" на внешнем хранилище
+        Directory externalStorageDirectory =
+            await getExternalStorageDirectory();
+        String downloadsFolderPath = '${externalStorageDirectory.path}';
+
+        // Получаем путь к сохраненному файлу
+        var newFile = '${object.title}.xlsx';
+        var file = File('$downloadsFolderPath/$newFile');
+        var excelBytes = excel.encode();
+        await file.writeAsBytes(excelBytes);
+        String filePath = '$downloadsFolderPath/$newFile';
+
+        // Открываем новый файл
+        await OpenFile.open(filePath);
+      } else if (buttonName == 'PKPPO') {
+        // Получаем путь к файлу Excel в папке assets
+        ByteData data = await rootBundle.load('assets/form/LKP/PKPPO.xlsx');
+        List<int> bytes = data.buffer.asUint8List();
+
+        // Открываем файл Excel
+        var excel = Excel.decodeBytes(bytes);
+
+        // Получаем страницу, на которой нужно вставить данные
+        var sheet = excel['PKPPO'];
+        var filial = 'Филиал';
+
+        // Вставляем данные в определенные ячейки
+        if (object.filial == 'Арзамасское ЛПУМГ') {
+          filial = 'Арзамасского ЛПУМГ-филиала';
+        } else if (object.filial == 'Владимирское ЛПУМГ') {
+          filial = 'Владимирского ЛПУМГ-филиала';
+        } else if (object.filial == 'Волжское ЛПУМГ') {
+          filial = 'Волжского ЛПУМГ-филиала';
+        } else if (object.filial == 'Вятское ЛПУМГ') {
+          filial = 'Вятского ЛПУМГ-филиала';
+        } else if (object.filial == 'Заволжское ЛПУМГ') {
+          filial = 'Заволжского ЛПУМГ-филиала';
+        } else if (object.filial == 'Ивановское ЛПУМГ') {
+          filial = 'Ивановского ЛПУМГ-филиала';
+        } else if (object.filial == 'Кировское ЛПУМГ') {
+          filial = 'Кировского ЛПУМГ-филиала';
+        } else if (object.filial == 'Моркинское ЛПУМГ') {
+          filial = 'Моркинского ЛПУМГ-филиала';
+        } else if (object.filial == 'Пензенское ЛПУМГ') {
+          filial = 'Пензенского ЛПУМГ-филиала';
+        } else if (object.filial == 'Пильнинское ЛПУМГ') {
+          filial = 'Пильнинского ЛПУМГ-филиала';
+        } else if (object.filial == 'Починковское ЛПУМГ') {
+          filial = 'Починковского ЛПУМГ-филиала';
+        } else if (object.filial == 'Приокское ЛПУМГ') {
+          filial = 'Приокского ЛПУМГ-филиала';
+        } else if (object.filial == 'Семеновское ЛПУМГ') {
+          filial = 'Семеновского ЛПУМГ-филиала';
+        } else if (object.filial == 'Сеченовское ЛПУМГ') {
+          filial = 'Сеченовского ЛПУМГ-филиала';
+        } else if (object.filial == 'Торбеевское ЛПУМГ') {
+          filial = 'Торбеевского ЛПУМГ-филиала';
+        } else if (object.filial == 'Чебоксарское ЛПУМГ') {
+          filial = 'Чебоксарского ЛПУМГ-филиала';
+        } else if (object.filial == 'ИТЦ ЛПУМГ') {
+          filial = 'ИТЦ-филиала';
+        } else if (object.filial == 'УАВР') {
+          filial = 'УАВР-филиала';
+        }
+        sheet.cell(CellIndex.indexByString("E5")).value = filial;
+        print(object.filial);
+        sheet.cell(CellIndex.indexByString("E4")).value = object.dolzhnpredskom;
+        print(object.dolzhnpredskom);
+        sheet.cell(CellIndex.indexByString("J7")).value = object.fiopredskom;
+        print(object.fiopredskom);
+
+        // Получаем путь к папке "Downloads" на внешнем хранилище
+        Directory externalStorageDirectory =
+            await getExternalStorageDirectory();
+        String downloadsFolderPath = '${externalStorageDirectory.path}';
+
+        // Получаем путь к сохраненному файлу
+        var newFile = '${object.title}.xlsx';
+        var file = File('$downloadsFolderPath/$newFile');
+        var excelBytes = excel.encode();
+        await file.writeAsBytes(excelBytes);
+        String filePath = '$downloadsFolderPath/$newFile';
+
+        // Открываем новый файл
+        await OpenFile.open(filePath);
+      } else if (buttonName == 'PKNLM') {
+        // Получаем путь к файлу Excel в папке assets
+        ByteData data = await rootBundle.load('assets/form/LKP/PKNLM.xlsx');
+        List<int> bytes = data.buffer.asUint8List();
+
+        // Открываем файл Excel
+        var excel = Excel.decodeBytes(bytes);
+
+        // Получаем страницу, на которой нужно вставить данные
+        var sheet = excel['PKNLM'];
+        var filial = 'Филиал';
+
+        // Вставляем данные в определенные ячейки
+        if (object.filial == 'Арзамасское ЛПУМГ') {
+          filial = 'Арзамасского ЛПУМГ-филиала';
+        } else if (object.filial == 'Владимирское ЛПУМГ') {
+          filial = 'Владимирского ЛПУМГ-филиала';
+        } else if (object.filial == 'Волжское ЛПУМГ') {
+          filial = 'Волжского ЛПУМГ-филиала';
+        } else if (object.filial == 'Вятское ЛПУМГ') {
+          filial = 'Вятского ЛПУМГ-филиала';
+        } else if (object.filial == 'Заволжское ЛПУМГ') {
+          filial = 'Заволжского ЛПУМГ-филиала';
+        } else if (object.filial == 'Ивановское ЛПУМГ') {
+          filial = 'Ивановского ЛПУМГ-филиала';
+        } else if (object.filial == 'Кировское ЛПУМГ') {
+          filial = 'Кировского ЛПУМГ-филиала';
+        } else if (object.filial == 'Моркинское ЛПУМГ') {
+          filial = 'Моркинского ЛПУМГ-филиала';
+        } else if (object.filial == 'Пензенское ЛПУМГ') {
+          filial = 'Пензенского ЛПУМГ-филиала';
+        } else if (object.filial == 'Пильнинское ЛПУМГ') {
+          filial = 'Пильнинского ЛПУМГ-филиала';
+        } else if (object.filial == 'Починковское ЛПУМГ') {
+          filial = 'Починковского ЛПУМГ-филиала';
+        } else if (object.filial == 'Приокское ЛПУМГ') {
+          filial = 'Приокского ЛПУМГ-филиала';
+        } else if (object.filial == 'Семеновское ЛПУМГ') {
+          filial = 'Семеновского ЛПУМГ-филиала';
+        } else if (object.filial == 'Сеченовское ЛПУМГ') {
+          filial = 'Сеченовского ЛПУМГ-филиала';
+        } else if (object.filial == 'Торбеевское ЛПУМГ') {
+          filial = 'Торбеевского ЛПУМГ-филиала';
+        } else if (object.filial == 'Чебоксарское ЛПУМГ') {
+          filial = 'Чебоксарского ЛПУМГ-филиала';
+        } else if (object.filial == 'ИТЦ ЛПУМГ') {
+          filial = 'ИТЦ-филиала';
+        } else if (object.filial == 'УАВР') {
+          filial = 'УАВР-филиала';
+        }
+        sheet.cell(CellIndex.indexByString("E5")).value = filial;
+        print(object.filial);
+        sheet.cell(CellIndex.indexByString("E4")).value = object.dolzhnpredskom;
+        print(object.dolzhnpredskom);
+        sheet.cell(CellIndex.indexByString("J7")).value = object.fiopredskom;
+        print(object.fiopredskom);
+
+        // Получаем путь к папке "Downloads" на внешнем хранилище
+        Directory externalStorageDirectory =
+            await getExternalStorageDirectory();
+        String downloadsFolderPath = '${externalStorageDirectory.path}';
+
+        // Получаем путь к сохраненному файлу
+        var newFile = '${object.title}.xlsx';
+        var file = File('$downloadsFolderPath/$newFile');
+        var excelBytes = excel.encode();
+        await file.writeAsBytes(excelBytes);
+        String filePath = '$downloadsFolderPath/$newFile';
+
+        // Открываем новый файл
+        await OpenFile.open(filePath);
+      } else if (buttonName == 'AOSR') {
+        // Получаем путь к файлу Excel в папке assets
+        ByteData data = await rootBundle.load('assets/form/LKP/AOSR.xlsx');
+        List<int> bytes = data.buffer.asUint8List();
+
+        // Открываем файл Excel
+        var excel = Excel.decodeBytes(bytes);
+
+        // Получаем страницу, на которой нужно вставить данные
+        var sheet = excel['AOSR'];
+        var filial = 'Филиал';
+
+        // Вставляем данные в определенные ячейки
+        if (object.filial == 'Арзамасское ЛПУМГ') {
+          filial = 'Арзамасского ЛПУМГ-филиала';
+        } else if (object.filial == 'Владимирское ЛПУМГ') {
+          filial = 'Владимирского ЛПУМГ-филиала';
+        } else if (object.filial == 'Волжское ЛПУМГ') {
+          filial = 'Волжского ЛПУМГ-филиала';
+        } else if (object.filial == 'Вятское ЛПУМГ') {
+          filial = 'Вятского ЛПУМГ-филиала';
+        } else if (object.filial == 'Заволжское ЛПУМГ') {
+          filial = 'Заволжского ЛПУМГ-филиала';
+        } else if (object.filial == 'Ивановское ЛПУМГ') {
+          filial = 'Ивановского ЛПУМГ-филиала';
+        } else if (object.filial == 'Кировское ЛПУМГ') {
+          filial = 'Кировского ЛПУМГ-филиала';
+        } else if (object.filial == 'Моркинское ЛПУМГ') {
+          filial = 'Моркинского ЛПУМГ-филиала';
+        } else if (object.filial == 'Пензенское ЛПУМГ') {
+          filial = 'Пензенского ЛПУМГ-филиала';
+        } else if (object.filial == 'Пильнинское ЛПУМГ') {
+          filial = 'Пильнинского ЛПУМГ-филиала';
+        } else if (object.filial == 'Починковское ЛПУМГ') {
+          filial = 'Починковского ЛПУМГ-филиала';
+        } else if (object.filial == 'Приокское ЛПУМГ') {
+          filial = 'Приокского ЛПУМГ-филиала';
+        } else if (object.filial == 'Семеновское ЛПУМГ') {
+          filial = 'Семеновского ЛПУМГ-филиала';
+        } else if (object.filial == 'Сеченовское ЛПУМГ') {
+          filial = 'Сеченовского ЛПУМГ-филиала';
+        } else if (object.filial == 'Торбеевское ЛПУМГ') {
+          filial = 'Торбеевского ЛПУМГ-филиала';
+        } else if (object.filial == 'Чебоксарское ЛПУМГ') {
+          filial = 'Чебоксарского ЛПУМГ-филиала';
+        } else if (object.filial == 'ИТЦ ЛПУМГ') {
+          filial = 'ИТЦ-филиала';
+        } else if (object.filial == 'УАВР') {
+          filial = 'УАВР-филиала';
+        }
+        sheet.cell(CellIndex.indexByString("E5")).value = filial;
+        print(object.filial);
+        sheet.cell(CellIndex.indexByString("E4")).value = object.dolzhnpredskom;
+        print(object.dolzhnpredskom);
+        sheet.cell(CellIndex.indexByString("J7")).value = object.fiopredskom;
+        print(object.fiopredskom);
+
+        // Получаем путь к папке "Downloads" на внешнем хранилище
+        Directory externalStorageDirectory =
+            await getExternalStorageDirectory();
+        String downloadsFolderPath = '${externalStorageDirectory.path}';
+
+        // Получаем путь к сохраненному файлу
+        var newFile = '${object.title}.xlsx';
+        var file = File('$downloadsFolderPath/$newFile');
+        var excelBytes = excel.encode();
+        await file.writeAsBytes(excelBytes);
+        String filePath = '$downloadsFolderPath/$newFile';
+
+        // Открываем новый файл
+        await OpenFile.open(filePath);
+      } else if (buttonName == 'APSLP') {
+        // Получаем путь к файлу Excel в папке assets
+        ByteData data = await rootBundle.load('assets/form/LKP/APSLP.xlsx');
+        List<int> bytes = data.buffer.asUint8List();
+
+        // Открываем файл Excel
+        var excel = Excel.decodeBytes(bytes);
+
+        // Получаем страницу, на которой нужно вставить данные
+        var sheet = excel['APSLP'];
+        var filial = 'Филиал';
+
+        // Вставляем данные в определенные ячейки
+        if (object.filial == 'Арзамасское ЛПУМГ') {
+          filial = 'Арзамасского ЛПУМГ-филиала';
+        } else if (object.filial == 'Владимирское ЛПУМГ') {
+          filial = 'Владимирского ЛПУМГ-филиала';
+        } else if (object.filial == 'Волжское ЛПУМГ') {
+          filial = 'Волжского ЛПУМГ-филиала';
+        } else if (object.filial == 'Вятское ЛПУМГ') {
+          filial = 'Вятского ЛПУМГ-филиала';
+        } else if (object.filial == 'Заволжское ЛПУМГ') {
+          filial = 'Заволжского ЛПУМГ-филиала';
+        } else if (object.filial == 'Ивановское ЛПУМГ') {
+          filial = 'Ивановского ЛПУМГ-филиала';
+        } else if (object.filial == 'Кировское ЛПУМГ') {
+          filial = 'Кировского ЛПУМГ-филиала';
+        } else if (object.filial == 'Моркинское ЛПУМГ') {
+          filial = 'Моркинского ЛПУМГ-филиала';
+        } else if (object.filial == 'Пензенское ЛПУМГ') {
+          filial = 'Пензенского ЛПУМГ-филиала';
+        } else if (object.filial == 'Пильнинское ЛПУМГ') {
+          filial = 'Пильнинского ЛПУМГ-филиала';
+        } else if (object.filial == 'Починковское ЛПУМГ') {
+          filial = 'Починковского ЛПУМГ-филиала';
+        } else if (object.filial == 'Приокское ЛПУМГ') {
+          filial = 'Приокского ЛПУМГ-филиала';
+        } else if (object.filial == 'Семеновское ЛПУМГ') {
+          filial = 'Семеновского ЛПУМГ-филиала';
+        } else if (object.filial == 'Сеченовское ЛПУМГ') {
+          filial = 'Сеченовского ЛПУМГ-филиала';
+        } else if (object.filial == 'Торбеевское ЛПУМГ') {
+          filial = 'Торбеевского ЛПУМГ-филиала';
+        } else if (object.filial == 'Чебоксарское ЛПУМГ') {
+          filial = 'Чебоксарского ЛПУМГ-филиала';
+        } else if (object.filial == 'ИТЦ ЛПУМГ') {
+          filial = 'ИТЦ-филиала';
+        } else if (object.filial == 'УАВР') {
+          filial = 'УАВР-филиала';
+        }
+        sheet.cell(CellIndex.indexByString("E5")).value = filial;
+        print(object.filial);
+        sheet.cell(CellIndex.indexByString("E4")).value = object.dolzhnpredskom;
+        print(object.dolzhnpredskom);
+        sheet.cell(CellIndex.indexByString("J7")).value = object.fiopredskom;
+        print(object.fiopredskom);
+
+        // Получаем путь к папке "Downloads" на внешнем хранилище
+        Directory externalStorageDirectory =
+            await getExternalStorageDirectory();
+        String downloadsFolderPath = '${externalStorageDirectory.path}';
+
+        // Получаем путь к сохраненному файлу
+        var newFile = '${object.title}.xlsx';
+        var file = File('$downloadsFolderPath/$newFile');
+        var excelBytes = excel.encode();
+        await file.writeAsBytes(excelBytes);
+        String filePath = '$downloadsFolderPath/$newFile';
+
+        // Открываем новый файл
+        await OpenFile.open(filePath);
+      }
+    } catch (e) {
+      print('Ошибка при открытии файла: $e');
+    }
   }
 
   void calcdewpoint() {
     double a = 17.27;
     double b = 237.7;
     double temperature = double.parse(tempairController.text);
-    double relativeHumidity = double.parse(relathumidController.text);
+    double relativeHumidity = 1.0;
+    if (relathumidController.text != null) {
+      double parsedValue = double.tryParse(relathumidController.text);
+      if (parsedValue != null) {
+        relativeHumidity = parsedValue;
+      }
+    }
     double dewpoint = (b *
             (((a * temperature) / (b + temperature)) +
                 log(relativeHumidity / 100))) /
@@ -2964,6 +3769,20 @@ class ObjectDetailState extends State<ObjectDetail> {
 
   void saveForm6() {
     final form = _6formKey.currentState;
+    if (form.validate()) {
+      form.save();
+      object.todoDate = DateFormat.yMMMMd().format(DateTime.now());
+      if (object.id != null) {
+        helper.updateTodo(object);
+      } else {
+        helper.insertTodo(object);
+      }
+      Navigator.pop(context, true);
+    }
+  }
+
+  void saveForm7() {
+    final form = _7formKey.currentState;
     if (form.validate()) {
       form.save();
       object.todoDate = DateFormat.yMMMMd().format(DateTime.now());
@@ -3208,5 +4027,52 @@ class ObjectDetailState extends State<ObjectDetail> {
     setState(() {
       object.description = descriptionController.text;
     });
+  }
+
+  void updatefilial() {
+    setState(() {
+      object.filial = filialController.text;
+    });
+  }
+
+  void updatepredskom() {
+    setState(() {
+      object.dolzhnpredskom = predskomController.text;
+    });
+  }
+
+  void updatefiopredskom() {
+    setState(() {
+      object.fiopredskom = fiopredskomController.text;
+    });
+  }
+}
+
+class ExampleScreen extends StatelessWidget {
+  final String filePath;
+
+  ExampleScreen({this.filePath});
+
+  void openExcelFile() async {
+    if (await canLaunch(filePath)) {
+      await launch(filePath);
+    } else {
+      throw 'Не удалось открыть файл $filePath';
+    }
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text('Предпросмотр файла'),
+      ),
+      body: Center(
+        child: ElevatedButton(
+          onPressed: openExcelFile,
+          child: const Text('Открыть файл'),
+        ),
+      ),
+    );
   }
 }

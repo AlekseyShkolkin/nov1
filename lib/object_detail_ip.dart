@@ -1,13 +1,16 @@
 import 'dart:io';
 
+import 'package:excel/excel.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:intl/intl.dart';
+import 'package:open_file/open_file.dart';
 import 'package:path_provider/path_provider.dart';
 import './camera_page_ip.dart';
 import './img_screen_ip.dart';
 import './model_ip.dart';
 import './object_list_ip.dart';
+import 'package:geolocator/geolocator.dart';
 
 class ObjectDetailIp extends StatefulWidget {
   const ObjectDetailIp({Key key, @required this.object});
@@ -18,6 +21,7 @@ class ObjectDetailIp extends StatefulWidget {
 
 class ObjectDetailIpState extends State<ObjectDetailIp> {
   Todo object;
+  String locationData = '';
 
   FocusNode focusNode1 = FocusNode();
   FocusNode focusNode2 = FocusNode();
@@ -59,11 +63,76 @@ class ObjectDetailIpState extends State<ObjectDetailIp> {
   FocusNode focusNode38 = FocusNode();
   FocusNode focusNode39 = FocusNode();
   FocusNode focusNode40 = FocusNode();
+  FocusNode focusNode41 = FocusNode();
+  FocusNode focusNode42 = FocusNode();
+  FocusNode focusNode43 = FocusNode();
+  FocusNode focusNode44 = FocusNode();
+  FocusNode focusNode45 = FocusNode();
+  FocusNode focusNode46 = FocusNode();
+  FocusNode focusNode47 = FocusNode();
+  FocusNode focusNode48 = FocusNode();
+  FocusNode focusNode49 = FocusNode();
+  FocusNode focusNode50 = FocusNode();
+  FocusNode focusNode51 = FocusNode();
+  FocusNode focusNode52 = FocusNode();
+  FocusNode focusNode53 = FocusNode();
+  FocusNode focusNode54 = FocusNode();
+  FocusNode focusNode55 = FocusNode();
+  FocusNode focusNode56 = FocusNode();
+  FocusNode focusNode57 = FocusNode();
+  FocusNode focusNode58 = FocusNode();
+  FocusNode focusNode59 = FocusNode();
+  FocusNode focusNode60 = FocusNode();
 
   File _image;
+
   File _imageDefmet1;
+  File _imageDefmet2;
+  File _imageDefmet3;
+
+  File _imageDefInsul1;
+  File _imageDefInsul2;
+  File _imageDefInsul3;
 
   Color _cardColor = Colors.white;
+
+  final List<String> _filial = [
+    'Арзамасское ЛПУМГ',
+    'Владимирское ЛПУМГ',
+    'Волжское ЛПУМГ',
+    'Вятское ЛПУМГ',
+    'Заволжское ЛПУМГ',
+    'Ивановское ЛПУМГ',
+    'Кировское ЛПУМГ',
+    'Моркинское ЛПУМГ',
+    'Пензенское ЛПУМГ',
+    'Пильнинское ЛПУМГ',
+    'Починковское ЛПУМГ',
+    'Приокское ЛПУМГ',
+    'Семеновское ЛПУМГ',
+    'Сеченовское ЛПУМГ',
+    'Торбеевское ЛПУМГ',
+    'Чебоксарское ЛПУМГ',
+    'ИТЦ',
+    'УАВР'
+  ];
+  final List<String> _predskom = [
+    'Начальник',
+    'Главный инженер',
+    'Заместитель начальника',
+    'ВрИО начальника',
+    // '',
+    // '',
+  ];
+  final List<String> _dolzhnnachuchastka = [
+    'Начальник службы ЗоК',
+    'ВрИО начальника службы ЗоК',
+    'ИО начальника службы ЗоК',
+    'Начальник ЛЭС',
+    'ВрИО начальника службы ЛЭС',
+    'ИО начальника службы ЛЭС',
+  ];
+
   final List<String> _osnovanie = [
     'ВТД',
     'Коррозионное обследование',
@@ -108,13 +177,39 @@ class ObjectDetailIpState extends State<ObjectDetailIp> {
     'Да',
     'Нет',
   ];
-  final List<String> _charmetdamage = [
+  final List<String> _charmetdamage1 = [
     'Сплошная коррозия',
     'Местная коррозия',
     'КРН',
     'Механическое повреждение',
   ];
-  final List<String> _charinsuldamage = [
+  final List<String> _charmetdamage2 = [
+    'Сплошная коррозия',
+    'Местная коррозия',
+    'КРН',
+    'Механическое повреждение',
+  ];
+  final List<String> _charmetdamage3 = [
+    'Сплошная коррозия',
+    'Местная коррозия',
+    'КРН',
+    'Механическое повреждение',
+  ];
+  final List<String> _charinsuldamage1 = [
+    'Отслоение',
+    'Сдир',
+    'Царапина',
+    'Пропуск',
+    'Вмятина',
+  ];
+  final List<String> _charinsuldamage2 = [
+    'Отслоение',
+    'Сдир',
+    'Царапина',
+    'Пропуск',
+    'Вмятина',
+  ];
+  final List<String> _charinsuldamage3 = [
     'Отслоение',
     'Сдир',
     'Царапина',
@@ -156,10 +251,20 @@ class ObjectDetailIpState extends State<ObjectDetailIp> {
   TextEditingController diameterController = TextEditingController();
   TextEditingController thickpipeController = TextEditingController();
   TextEditingController gradesteelController = TextEditingController();
+
   TextEditingController metalldamageController = TextEditingController();
-  TextEditingController charmetdamageController = TextEditingController();
-  TextEditingController locmetdamageController = TextEditingController();
-  TextEditingController sizemetdamageController = TextEditingController();
+
+  TextEditingController charmetdamageController1 = TextEditingController();
+  TextEditingController locmetdamageController1 = TextEditingController();
+  TextEditingController sizemetdamageController1 = TextEditingController();
+
+  TextEditingController charmetdamageController2 = TextEditingController();
+  TextEditingController locmetdamageController2 = TextEditingController();
+  TextEditingController sizemetdamageController2 = TextEditingController();
+
+  TextEditingController charmetdamageController3 = TextEditingController();
+  TextEditingController locmetdamageController3 = TextEditingController();
+  TextEditingController sizemetdamageController3 = TextEditingController();
 
   TextEditingController typeinsulController = TextEditingController();
   TextEditingController insuladhesController = TextEditingController();
@@ -167,9 +272,18 @@ class ObjectDetailIpState extends State<ObjectDetailIp> {
   TextEditingController insulconditController = TextEditingController();
   TextEditingController thickinsulController = TextEditingController();
   TextEditingController insuldamageController = TextEditingController();
-  TextEditingController charinsuldamageController = TextEditingController();
-  TextEditingController locinsuldamageController = TextEditingController();
-  TextEditingController sizeinsuldamageController = TextEditingController();
+
+  TextEditingController charinsuldamageController1 = TextEditingController();
+  TextEditingController locinsuldamageController1 = TextEditingController();
+  TextEditingController sizeinsuldamageController1 = TextEditingController();
+
+  TextEditingController charinsuldamageController2 = TextEditingController();
+  TextEditingController locinsuldamageController2 = TextEditingController();
+  TextEditingController sizeinsuldamageController2 = TextEditingController();
+
+  TextEditingController charinsuldamageController3 = TextEditingController();
+  TextEditingController locinsuldamageController3 = TextEditingController();
+  TextEditingController sizeinsuldamageController3 = TextEditingController();
 
   TextEditingController typeinsulrestController = TextEditingController();
   TextEditingController insuladhesrestController = TextEditingController();
@@ -184,6 +298,14 @@ class ObjectDetailIpState extends State<ObjectDetailIp> {
 
   TextEditingController osnovanieController = TextEditingController();
   TextEditingController descriptionController = TextEditingController();
+
+  TextEditingController filialController = TextEditingController();
+  TextEditingController predskomController = TextEditingController();
+  TextEditingController fiopredskomController = TextEditingController();
+
+  TextEditingController dateObslController = TextEditingController();
+  TextEditingController locationController = TextEditingController();
+
   bool isEdit;
   final GlobalKey<FormState> _1formKey = GlobalKey<FormState>();
   final GlobalKey<FormState> _2formKey = GlobalKey<FormState>();
@@ -191,6 +313,7 @@ class ObjectDetailIpState extends State<ObjectDetailIp> {
   final GlobalKey<FormState> _4formKey = GlobalKey<FormState>();
   final GlobalKey<FormState> _5formKey = GlobalKey<FormState>();
   final GlobalKey<FormState> _6formKey = GlobalKey<FormState>();
+  final GlobalKey<FormState> _7formKey = GlobalKey<FormState>();
 
   @override
   void initState() {
@@ -200,6 +323,9 @@ class ObjectDetailIpState extends State<ObjectDetailIp> {
     object.photo == '' ? false : true;
     object.photometdef1 == '' ? false : true;
     titleController.text = object.title ?? '';
+    locationController.text = object.location ?? '';
+    print('дата обследования: ${object.dateObsl}');
+    dateObslController.text = object.dateObsl ?? '';
     piketkmController.text = object.piketkm ?? '';
     coordinateController.text = object.coordinate ?? '';
     lengthpitController.text = object.lengthpit ?? '';
@@ -208,20 +334,40 @@ class ObjectDetailIpState extends State<ObjectDetailIp> {
     diameterController.text = object.diameter ?? '';
     thickpipeController.text = object.thickpipe ?? '';
     gradesteelController.text = object.gradesteel ?? '';
+
     metalldamageController.text = object.metalldamage ?? '';
-    charmetdamageController.text = object.charmetdamage ?? '';
-    locmetdamageController.text = object.locmetdamage ?? '';
-    sizemetdamageController.text = object.sizemetdamage ?? '';
+
+    charmetdamageController1.text = object.charmetdamage1 ?? '';
+    locmetdamageController1.text = object.locmetdamage1 ?? '';
+    sizemetdamageController1.text = object.sizemetdamage1 ?? '';
+
+    charmetdamageController2.text = object.charmetdamage2 ?? '';
+    locmetdamageController2.text = object.locmetdamage2 ?? '';
+    sizemetdamageController2.text = object.sizemetdamage2 ?? '';
+
+    charmetdamageController3.text = object.charmetdamage3 ?? '';
+    locmetdamageController3.text = object.locmetdamage3 ?? '';
+    sizemetdamageController3.text = object.sizemetdamage3 ?? '';
 
     typeinsulController.text = object.typeinsul ?? '';
     insuladhesController.text = object.insuladhes ?? '';
     insulcharadhesController.text = object.insulcharadhes ?? '';
     insulconditController.text = object.insulcondit ?? '';
     thickinsulController.text = object.thickinsul ?? '';
+
     insuldamageController.text = object.insuldamage ?? '';
-    charinsuldamageController.text = object.charinsuldamage ?? '';
-    locinsuldamageController.text = object.locinsuldamage ?? '';
-    sizeinsuldamageController.text = object.sizeinsuldamage ?? '';
+
+    charinsuldamageController1.text = object.charinsuldamage1 ?? '';
+    locinsuldamageController1.text = object.locinsuldamage1 ?? '';
+    sizeinsuldamageController1.text = object.sizeinsuldamage1 ?? '';
+
+    charinsuldamageController2.text = object.charinsuldamage2 ?? '';
+    locinsuldamageController2.text = object.locinsuldamage2 ?? '';
+    sizeinsuldamageController2.text = object.sizeinsuldamage2 ?? '';
+
+    charinsuldamageController3.text = object.charinsuldamage3 ?? '';
+    locinsuldamageController3.text = object.locinsuldamage3 ?? '';
+    sizeinsuldamageController3.text = object.sizeinsuldamage3 ?? '';
 
     typeinsulrestController.text = object.typeinsulrest ?? '';
     insuladhesrestController.text = object.insuladhesrest ?? '';
@@ -236,6 +382,10 @@ class ObjectDetailIpState extends State<ObjectDetailIp> {
 
     osnovanieController.text = object.osnovanie ?? '';
     descriptionController.text = object.description ?? '';
+
+    filialController.text = object.filial ?? '';
+    predskomController.text = object.dolzhnpredskom ?? '';
+    fiopredskomController.text = object.fiopredskom ?? '';
   }
 
   ObjectDetailIpState(this.object);
@@ -249,21 +399,98 @@ class ObjectDetailIpState extends State<ObjectDetailIp> {
     );
 
     return DefaultTabController(
-      length: 6,
+      length: 7,
       child: Scaffold(
         resizeToAvoidBottomInset: true,
         backgroundColor: _cardColor,
         appBar: AppBar(
             backgroundColor: Theme.of(context).primaryColor,
-            title: Center(
-              child: Text(
-                isEdit ? 'ИЗМЕНИТЬ ЗАПИСЬ' : 'ДОБАВИТЬ ЗАПИСЬ',
-                style: TextStyle(
-                  fontSize: 22,
-                  fontWeight: FontWeight.w400,
-                ),
-              ),
-            ),
+            title: isEdit
+                ? Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Text(
+                        'ИЗМЕНИТЬ ЗАПИСЬ',
+                        style: TextStyle(
+                          fontSize: 22,
+                          fontWeight: FontWeight.w400,
+                        ),
+                      ),
+                      IconButton(
+                        icon: Icon(Icons.delete),
+                        onPressed: () {
+                          debugPrint('Click Floated Back.');
+                          confirmDelete();
+                        },
+                      ),
+                      IconButton(
+                        icon: Icon(Icons.save),
+                        onPressed: () {
+                          if (_1formKey.currentState != null) {
+                            _1formKey.currentState.validate();
+                            saveForm1();
+                          } else if (_2formKey.currentState != null) {
+                            _2formKey.currentState.validate();
+                            saveForm2();
+                          } else if (_3formKey.currentState != null) {
+                            _3formKey.currentState.validate();
+                            saveForm3();
+                          } else if (_4formKey.currentState != null) {
+                            _4formKey.currentState.validate();
+                            saveForm4();
+                          } else if (_5formKey.currentState != null) {
+                            _5formKey.currentState.validate();
+                            saveForm5();
+                          } else if (_6formKey.currentState != null) {
+                            _6formKey.currentState.validate();
+                            saveForm6();
+                          } else if (_7formKey.currentState != null) {
+                            _7formKey.currentState.validate();
+                            saveForm7();
+                          }
+                        },
+                      ),
+                    ],
+                  )
+                : Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Text(
+                        'ДОБАВИТЬ ЗАПИСЬ',
+                        style: TextStyle(
+                          fontSize: 22,
+                          fontWeight: FontWeight.w400,
+                        ),
+                      ),
+                      IconButton(
+                        icon: Icon(Icons.save),
+                        onPressed: () {
+                          if (_1formKey.currentState != null) {
+                            _1formKey.currentState.validate();
+                            saveForm1();
+                          } else if (_2formKey.currentState != null) {
+                            _2formKey.currentState.validate();
+                            saveForm2();
+                          } else if (_3formKey.currentState != null) {
+                            _3formKey.currentState.validate();
+                            saveForm3();
+                          } else if (_4formKey.currentState != null) {
+                            _4formKey.currentState.validate();
+                            saveForm4();
+                          } else if (_5formKey.currentState != null) {
+                            _5formKey.currentState.validate();
+                            saveForm5();
+                          } else if (_6formKey.currentState != null) {
+                            _6formKey.currentState.validate();
+                            saveForm6();
+                          } else if (_7formKey.currentState != null) {
+                            _7formKey.currentState.validate();
+                            saveForm7();
+                          }
+                        },
+                      ),
+                    ],
+                  ),
             bottom: TabBar(
               indicator: UnderlineTabIndicator(
                 borderSide: BorderSide(
@@ -315,6 +542,11 @@ class ObjectDetailIpState extends State<ObjectDetailIp> {
                   Icons.playlist_add_circle_sharp,
                   size: 32,
                   // color: Colors.white,
+                )),
+                Tab(
+                    icon: Icon(
+                  Icons.person_add_alt_rounded,
+                  size: 32,
                 )),
               ],
             )),
@@ -403,6 +635,56 @@ class ObjectDetailIpState extends State<ObjectDetailIp> {
                           focusNode1.requestFocus();
                           setState(() {});
                         },
+                      ),
+                      SizedBox(height: 10),
+                      Row(
+                        children: [
+                          IconButton(
+                            focusNode: focusNode41,
+                            onPressed: () async {
+                              DateTime selectedDate = await showDatePicker(
+                                context: context,
+                                initialDate: DateTime.now(),
+                                firstDate: DateTime(2015),
+                                lastDate: DateTime(2030),
+                              );
+
+                              if (selectedDate != null) {
+                                setState(() {
+                                  dateObslController.text =
+                                      DateFormat.yMMMd().format(selectedDate);
+                                  object.dateObsl = dateObslController.text;
+                                });
+                                // ScaffoldMessenger.of(context).showSnackBar(
+                                //   SnackBar(
+                                //     content: Text(
+                                //         'Дата обследования: ${dateObslController.text}'),
+                                //   ),
+                                // );
+                              }
+                            },
+                            icon: Icon(
+                              Icons.calendar_month_outlined,
+                              color: focusNode41.hasFocus ||
+                                      dateObslController.text.isNotEmpty
+                                  ? Theme.of(context).primaryColor
+                                  : Colors.grey,
+                              size: 32,
+                            ),
+                          ),
+                          SizedBox(width: 10),
+                          Container(
+                            alignment: Alignment.center,
+                            child: Text(
+                              dateObslController.text,
+                              style: TextStyle(
+                                fontSize: 24,
+                                color: Theme.of(context).primaryColor,
+                                fontWeight: FontWeight.w300,
+                              ),
+                            ),
+                          ),
+                        ],
                       ),
                       SizedBox(height: 10),
                       DropdownButtonFormField(
@@ -521,11 +803,11 @@ class ObjectDetailIpState extends State<ObjectDetailIp> {
                       SizedBox(height: 10),
                       TextFormField(
                         focusNode: focusNode4,
-                        maxLength: 20,
+                        maxLength: 50,
                         onSaved: (value) {
-                          object.coordinate = value;
+                          object.location = value;
                         },
-                        controller: coordinateController,
+                        controller: locationController,
                         style: textStyle,
                         decoration: InputDecoration(
                           focusColor: Theme.of(context).primaryColor,
@@ -545,18 +827,18 @@ class ObjectDetailIpState extends State<ObjectDetailIp> {
                           prefixIcon: Icon(
                             Icons.map_sharp,
                             color: focusNode4.hasFocus ||
-                                    coordinateController.text.isNotEmpty
+                                    locationController.text.isNotEmpty
                                 ? Theme.of(context).primaryColor
                                 : Colors.grey,
                             size: 32,
                           ),
                           suffixIcon: GestureDetector(
                             onTap: () {
-                              coordinateController.clear();
+                              getLocation();
                             },
                             child: Icon(
-                              Icons.delete_outline,
-                              color: Color.fromRGBO(187, 30, 16, 1.0),
+                              Icons.location_on_outlined,
+                              color: Colors.green,
                             ),
                           ),
                           enabledBorder: OutlineInputBorder(
@@ -749,6 +1031,11 @@ class ObjectDetailIpState extends State<ObjectDetailIp> {
                       SizedBox(height: 20),
                       DropdownButtonFormField(
                         focusNode: focusNode7,
+                        onChanged: (String value) {
+                          setState(() {});
+                          focusNode7.requestFocus();
+                          object.diameter = value;
+                        },
                         decoration: InputDecoration(
                           focusColor: Theme.of(context).primaryColor,
                           labelText: 'Диаметр газопровода',
@@ -764,8 +1051,8 @@ class ObjectDetailIpState extends State<ObjectDetailIp> {
                           ),
                           prefixIcon: Icon(
                             Icons.not_interested_sharp,
-                            color: focusNode7.hasFocus ||
-                                    diameterController.text.isNotEmpty
+                            color: (focusNode7.hasFocus ||
+                                    diameterController.text.isNotEmpty)
                                 ? Theme.of(context).primaryColor
                                 : Colors.grey,
                             size: 32,
@@ -791,11 +1078,6 @@ class ObjectDetailIpState extends State<ObjectDetailIp> {
                         }).toList(),
                         style: textStyle,
                         value: object.diameter,
-                        onChanged: (String value) {
-                          setState(() {});
-                          focusNode7.requestFocus();
-                          object.diameter = value;
-                        },
                       ),
                       SizedBox(height: 20),
                       TextFormField(
@@ -827,8 +1109,8 @@ class ObjectDetailIpState extends State<ObjectDetailIp> {
                           helperText: 'мм',
                           prefixIcon: Icon(
                             Icons.vertical_align_center_sharp,
-                            color: focusNode8.hasFocus ||
-                                    thickpipeController.text.isNotEmpty
+                            color: (focusNode8.hasFocus ||
+                                    thickpipeController.text.isNotEmpty)
                                 ? Theme.of(context).primaryColor
                                 : Colors.grey,
                             size: 32,
@@ -996,7 +1278,7 @@ class ObjectDetailIpState extends State<ObjectDetailIp> {
                             prefixIcon: Icon(
                               Icons.ssid_chart_sharp,
                               color: focusNode11.hasFocus ||
-                                      charmetdamageController.text.isNotEmpty
+                                      charmetdamageController1.text.isNotEmpty
                                   ? Theme.of(context).primaryColor
                                   : Colors.grey,
                               size: 32,
@@ -1035,18 +1317,18 @@ class ObjectDetailIpState extends State<ObjectDetailIp> {
                                 },
                                 child: Icon(Icons.camera_alt_sharp,
                                     color: Color.fromRGBO(97, 153, 59, 1.0)))),
-                        items: _charmetdamage.map((String value) {
+                        items: _charmetdamage1.map((String value) {
                           return DropdownMenuItem(
                             value: value,
                             child: Text(value),
                           );
                         }).toList(),
                         style: textStyle,
-                        value: object.charmetdamage,
+                        value: object.charmetdamage1,
                         onChanged: (String value) {
                           setState(() {});
                           focusNode11.requestFocus();
-                          object.charmetdamage = value;
+                          object.charmetdamage1 = value;
                         },
                       ),
                       SizedBox(height: 10),
@@ -1089,9 +1371,9 @@ class ObjectDetailIpState extends State<ObjectDetailIp> {
                         focusNode: focusNode12,
                         maxLength: 20,
                         onSaved: (value) {
-                          object.locmetdamage = value;
+                          object.locmetdamage1 = value;
                         },
-                        controller: locmetdamageController,
+                        controller: locmetdamageController1,
                         style: textStyle,
                         decoration: InputDecoration(
                           focusColor: Theme.of(context).primaryColor,
@@ -1111,14 +1393,14 @@ class ObjectDetailIpState extends State<ObjectDetailIp> {
                           prefixIcon: Icon(
                             Icons.location_searching_sharp,
                             color: focusNode12.hasFocus ||
-                                    locmetdamageController.text.isNotEmpty
+                                    locmetdamageController1.text.isNotEmpty
                                 ? Theme.of(context).primaryColor
                                 : Colors.grey,
                             size: 32,
                           ),
                           suffixIcon: GestureDetector(
                             onTap: () {
-                              locmetdamageController.clear();
+                              locmetdamageController1.clear();
                             },
                             child: Icon(
                               Icons.delete_outline,
@@ -1148,9 +1430,9 @@ class ObjectDetailIpState extends State<ObjectDetailIp> {
                         focusNode: focusNode13,
                         maxLength: 20,
                         onSaved: (value) {
-                          object.sizemetdamage = value;
+                          object.sizemetdamage1 = value;
                         },
-                        controller: sizemetdamageController,
+                        controller: sizemetdamageController1,
                         style: textStyle,
                         decoration: InputDecoration(
                           focusColor: Theme.of(context).primaryColor,
@@ -1170,14 +1452,482 @@ class ObjectDetailIpState extends State<ObjectDetailIp> {
                           prefixIcon: Icon(
                             Icons.location_searching_sharp,
                             color: focusNode13.hasFocus ||
-                                    sizemetdamageController.text.isNotEmpty
+                                    sizemetdamageController1.text.isNotEmpty
                                 ? Theme.of(context).primaryColor
                                 : Colors.grey,
                             size: 32,
                           ),
                           suffixIcon: GestureDetector(
                             onTap: () {
-                              sizemetdamageController.clear();
+                              sizemetdamageController1.clear();
+                            },
+                            child: Icon(
+                              Icons.delete_outline,
+                              color: Color.fromRGBO(187, 30, 16, 1.0),
+                            ),
+                          ),
+                          enabledBorder: OutlineInputBorder(
+                            borderRadius: BorderRadius.all(Radius.circular(10)),
+                            borderSide:
+                                BorderSide(color: Colors.grey, width: 2),
+                          ),
+                          focusedBorder: OutlineInputBorder(
+                            borderRadius: BorderRadius.all(Radius.circular(20)),
+                            borderSide: BorderSide(
+                                color: Theme.of(context).primaryColor,
+                                width: 2),
+                          ),
+                        ),
+                        keyboardType: TextInputType.number,
+                      ),
+                      SizedBox(height: 30),
+                      DropdownButtonFormField(
+                        focusNode: focusNode49,
+                        decoration: InputDecoration(
+                            focusColor: Theme.of(context).primaryColor,
+                            labelStyle: TextStyle(
+                              fontSize: 22,
+                              fontWeight: FontWeight.w300,
+                              color: Theme.of(context).primaryColor,
+                            ),
+                            hintStyle: TextStyle(
+                              fontSize: 16,
+                              fontWeight: FontWeight.w300,
+                              color: Theme.of(context).primaryColor,
+                            ),
+                            border: OutlineInputBorder(),
+                            enabledBorder: OutlineInputBorder(
+                              borderRadius:
+                                  BorderRadius.all(Radius.circular(10)),
+                              borderSide:
+                                  BorderSide(color: Colors.grey, width: 2),
+                            ),
+                            focusedBorder: OutlineInputBorder(
+                              borderRadius:
+                                  BorderRadius.all(Radius.circular(20)),
+                              borderSide: BorderSide(
+                                  color: Theme.of(context).primaryColor,
+                                  width: 2),
+                            ),
+                            prefixIcon: Icon(
+                              Icons.ssid_chart_sharp,
+                              color: focusNode49.hasFocus ||
+                                      charmetdamageController2.text.isNotEmpty
+                                  ? Theme.of(context).primaryColor
+                                  : Colors.grey,
+                              size: 32,
+                            ),
+                            labelText: 'Характер дефекта',
+                            suffixIcon: GestureDetector(
+                                onTap: () async {
+                                  Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                        builder: (context) => CameraPageIp()),
+                                  ).then((value) {
+                                    setState(() async {
+                                      if (value != null) {
+                                        _imageDefmet2 = value;
+                                        if (_2formKey.currentState.validate()) {
+                                          _2formKey.currentState.save();
+                                          if (_imageDefmet2 != null) {
+                                            final Directory extDir =
+                                                await getApplicationDocumentsDirectory();
+                                            final String dirPath =
+                                                '${extDir.path}/Pictures/flutter';
+                                            await Directory(dirPath)
+                                                .create(recursive: true);
+                                            final String filePath =
+                                                '$dirPath/${DateTime.now().millisecondsSinceEpoch.toString()}.jpg';
+                                            await _imageDefmet2.copy(filePath);
+                                            object.photometdef2 = filePath;
+                                            print(
+                                                'сделали: ${object.photometdef2.toString()}');
+                                          }
+                                        }
+                                      }
+                                    });
+                                  });
+                                },
+                                child: Icon(Icons.camera_alt_sharp,
+                                    color: Color.fromRGBO(97, 153, 59, 1.0)))),
+                        items: _charmetdamage2.map((String value) {
+                          return DropdownMenuItem(
+                            value: value,
+                            child: Text(value),
+                          );
+                        }).toList(),
+                        style: textStyle,
+                        value: object.charmetdamage2,
+                        onChanged: (String value) {
+                          setState(() {});
+                          focusNode49.requestFocus();
+                          object.charmetdamage2 = value;
+                        },
+                      ),
+                      SizedBox(height: 10),
+                      Container(
+                        height: 100,
+                        child: Column(
+                          children: [
+                            Expanded(
+                              child: GestureDetector(
+                                onTap: () {
+                                  Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                        builder: (context) => ImageScreen(
+                                            imagePath: object.photometdef2)),
+                                  );
+                                },
+                                child: Center(
+                                  child: object.photometdef2 != null
+                                      ? Image.file(
+                                          File(object.photometdef2),
+                                          fit: BoxFit.cover,
+                                          alignment: Alignment.center,
+                                          width: 100,
+                                          height: 100,
+                                        )
+                                      : Text('Изображение отсутствует'),
+                                ),
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                      SizedBox(height: 10),
+                      TextFormField(
+                        onChanged: (String value) {
+                          setState(() {});
+                          focusNode48.requestFocus();
+                        },
+                        focusNode: focusNode48,
+                        maxLength: 20,
+                        onSaved: (value) {
+                          object.locmetdamage2 = value;
+                        },
+                        controller: locmetdamageController2,
+                        style: textStyle,
+                        decoration: InputDecoration(
+                          focusColor: Theme.of(context).primaryColor,
+                          labelStyle: TextStyle(
+                            fontSize: 22,
+                            fontWeight: FontWeight.w300,
+                            color: Theme.of(context).primaryColor,
+                          ),
+                          hintStyle: TextStyle(
+                            fontSize: 16,
+                            fontWeight: FontWeight.w300,
+                            color: Theme.of(context).primaryColor,
+                          ),
+                          labelText: 'Расположение дефекта',
+                          hintText: 'Введите час и расстояние от шва по ХГ',
+                          helperText: 'ЧАС-расстояние от шва по ХГ',
+                          prefixIcon: Icon(
+                            Icons.location_searching_sharp,
+                            color: focusNode48.hasFocus ||
+                                    locmetdamageController2.text.isNotEmpty
+                                ? Theme.of(context).primaryColor
+                                : Colors.grey,
+                            size: 32,
+                          ),
+                          suffixIcon: GestureDetector(
+                            onTap: () {
+                              locmetdamageController2.clear();
+                            },
+                            child: Icon(
+                              Icons.delete_outline,
+                              color: Color.fromRGBO(187, 30, 16, 1.0),
+                            ),
+                          ),
+                          enabledBorder: OutlineInputBorder(
+                            borderRadius: BorderRadius.all(Radius.circular(10)),
+                            borderSide:
+                                BorderSide(color: Colors.grey, width: 2),
+                          ),
+                          focusedBorder: OutlineInputBorder(
+                            borderRadius: BorderRadius.all(Radius.circular(20)),
+                            borderSide: BorderSide(
+                                color: Theme.of(context).primaryColor,
+                                width: 2),
+                          ),
+                        ),
+                        keyboardType: TextInputType.number,
+                      ),
+                      SizedBox(height: 10),
+                      TextFormField(
+                        onChanged: (String value) {
+                          setState(() {});
+                          focusNode47.requestFocus();
+                        },
+                        focusNode: focusNode47,
+                        maxLength: 20,
+                        onSaved: (value) {
+                          object.sizemetdamage2 = value;
+                        },
+                        controller: sizemetdamageController2,
+                        style: textStyle,
+                        decoration: InputDecoration(
+                          focusColor: Theme.of(context).primaryColor,
+                          labelStyle: TextStyle(
+                            fontSize: 22,
+                            fontWeight: FontWeight.w300,
+                            color: Theme.of(context).primaryColor,
+                          ),
+                          hintStyle: TextStyle(
+                            fontSize: 16,
+                            fontWeight: FontWeight.w300,
+                            color: Theme.of(context).primaryColor,
+                          ),
+                          labelText: 'Размеры дефекта металла',
+                          hintText: 'Введите размеры',
+                          helperText: 'Длина х ширина х глубина',
+                          prefixIcon: Icon(
+                            Icons.location_searching_sharp,
+                            color: focusNode47.hasFocus ||
+                                    sizemetdamageController2.text.isNotEmpty
+                                ? Theme.of(context).primaryColor
+                                : Colors.grey,
+                            size: 32,
+                          ),
+                          suffixIcon: GestureDetector(
+                            onTap: () {
+                              sizemetdamageController2.clear();
+                            },
+                            child: Icon(
+                              Icons.delete_outline,
+                              color: Color.fromRGBO(187, 30, 16, 1.0),
+                            ),
+                          ),
+                          enabledBorder: OutlineInputBorder(
+                            borderRadius: BorderRadius.all(Radius.circular(10)),
+                            borderSide:
+                                BorderSide(color: Colors.grey, width: 2),
+                          ),
+                          focusedBorder: OutlineInputBorder(
+                            borderRadius: BorderRadius.all(Radius.circular(20)),
+                            borderSide: BorderSide(
+                                color: Theme.of(context).primaryColor,
+                                width: 2),
+                          ),
+                        ),
+                        keyboardType: TextInputType.number,
+                      ),
+                      SizedBox(height: 30),
+                      DropdownButtonFormField(
+                        focusNode: focusNode46,
+                        decoration: InputDecoration(
+                            focusColor: Theme.of(context).primaryColor,
+                            labelStyle: TextStyle(
+                              fontSize: 22,
+                              fontWeight: FontWeight.w300,
+                              color: Theme.of(context).primaryColor,
+                            ),
+                            hintStyle: TextStyle(
+                              fontSize: 16,
+                              fontWeight: FontWeight.w300,
+                              color: Theme.of(context).primaryColor,
+                            ),
+                            border: OutlineInputBorder(),
+                            enabledBorder: OutlineInputBorder(
+                              borderRadius:
+                                  BorderRadius.all(Radius.circular(10)),
+                              borderSide:
+                                  BorderSide(color: Colors.grey, width: 2),
+                            ),
+                            focusedBorder: OutlineInputBorder(
+                              borderRadius:
+                                  BorderRadius.all(Radius.circular(20)),
+                              borderSide: BorderSide(
+                                  color: Theme.of(context).primaryColor,
+                                  width: 2),
+                            ),
+                            prefixIcon: Icon(
+                              Icons.ssid_chart_sharp,
+                              color: focusNode46.hasFocus ||
+                                      charmetdamageController3.text.isNotEmpty
+                                  ? Theme.of(context).primaryColor
+                                  : Colors.grey,
+                              size: 32,
+                            ),
+                            labelText: 'Характер дефекта',
+                            suffixIcon: GestureDetector(
+                                onTap: () async {
+                                  Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                        builder: (context) => CameraPageIp()),
+                                  ).then((value) {
+                                    setState(() async {
+                                      if (value != null) {
+                                        _imageDefmet3 = value;
+                                        if (_2formKey.currentState.validate()) {
+                                          _2formKey.currentState.save();
+                                          if (_imageDefmet3 != null) {
+                                            final Directory extDir =
+                                                await getApplicationDocumentsDirectory();
+                                            final String dirPath =
+                                                '${extDir.path}/Pictures/flutter';
+                                            await Directory(dirPath)
+                                                .create(recursive: true);
+                                            final String filePath =
+                                                '$dirPath/${DateTime.now().millisecondsSinceEpoch.toString()}.jpg';
+                                            await _imageDefmet3.copy(filePath);
+                                            object.photometdef3 = filePath;
+                                            print(
+                                                'сделали: ${object.photometdef3.toString()}');
+                                          }
+                                        }
+                                      }
+                                    });
+                                  });
+                                },
+                                child: Icon(Icons.camera_alt_sharp,
+                                    color: Color.fromRGBO(97, 153, 59, 1.0)))),
+                        items: _charmetdamage3.map((String value) {
+                          return DropdownMenuItem(
+                            value: value,
+                            child: Text(value),
+                          );
+                        }).toList(),
+                        style: textStyle,
+                        value: object.charmetdamage3,
+                        onChanged: (String value) {
+                          setState(() {});
+                          focusNode46.requestFocus();
+                          object.charmetdamage3 = value;
+                        },
+                      ),
+                      SizedBox(height: 10),
+                      Container(
+                        height: 100,
+                        child: Column(
+                          children: [
+                            Expanded(
+                              child: GestureDetector(
+                                onTap: () {
+                                  Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                        builder: (context) => ImageScreen(
+                                            imagePath: object.photometdef3)),
+                                  );
+                                },
+                                child: Center(
+                                  child: object.photometdef3 != null
+                                      ? Image.file(
+                                          File(object.photometdef3),
+                                          fit: BoxFit.cover,
+                                          alignment: Alignment.center,
+                                          width: 100,
+                                          height: 100,
+                                        )
+                                      : Text('Изображение отсутствует'),
+                                ),
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                      SizedBox(height: 10),
+                      TextFormField(
+                        onChanged: (String value) {
+                          setState(() {});
+                          focusNode45.requestFocus();
+                        },
+                        focusNode: focusNode45,
+                        maxLength: 20,
+                        onSaved: (value) {
+                          object.locmetdamage3 = value;
+                        },
+                        controller: locmetdamageController3,
+                        style: textStyle,
+                        decoration: InputDecoration(
+                          focusColor: Theme.of(context).primaryColor,
+                          labelStyle: TextStyle(
+                            fontSize: 22,
+                            fontWeight: FontWeight.w300,
+                            color: Theme.of(context).primaryColor,
+                          ),
+                          hintStyle: TextStyle(
+                            fontSize: 16,
+                            fontWeight: FontWeight.w300,
+                            color: Theme.of(context).primaryColor,
+                          ),
+                          labelText: 'Расположение дефекта',
+                          hintText: 'Введите час и расстояние от шва по ХГ',
+                          helperText: 'ЧАС-расстояние от шва по ХГ',
+                          prefixIcon: Icon(
+                            Icons.location_searching_sharp,
+                            color: focusNode45.hasFocus ||
+                                    locmetdamageController3.text.isNotEmpty
+                                ? Theme.of(context).primaryColor
+                                : Colors.grey,
+                            size: 32,
+                          ),
+                          suffixIcon: GestureDetector(
+                            onTap: () {
+                              locmetdamageController3.clear();
+                            },
+                            child: Icon(
+                              Icons.delete_outline,
+                              color: Color.fromRGBO(187, 30, 16, 1.0),
+                            ),
+                          ),
+                          enabledBorder: OutlineInputBorder(
+                            borderRadius: BorderRadius.all(Radius.circular(10)),
+                            borderSide:
+                                BorderSide(color: Colors.grey, width: 2),
+                          ),
+                          focusedBorder: OutlineInputBorder(
+                            borderRadius: BorderRadius.all(Radius.circular(20)),
+                            borderSide: BorderSide(
+                                color: Theme.of(context).primaryColor,
+                                width: 2),
+                          ),
+                        ),
+                        keyboardType: TextInputType.number,
+                      ),
+                      SizedBox(height: 10),
+                      TextFormField(
+                        onChanged: (String value) {
+                          setState(() {});
+                          focusNode44.requestFocus();
+                        },
+                        focusNode: focusNode44,
+                        maxLength: 20,
+                        onSaved: (value) {
+                          object.sizemetdamage3 = value;
+                        },
+                        controller: sizemetdamageController3,
+                        style: textStyle,
+                        decoration: InputDecoration(
+                          focusColor: Theme.of(context).primaryColor,
+                          labelStyle: TextStyle(
+                            fontSize: 22,
+                            fontWeight: FontWeight.w300,
+                            color: Theme.of(context).primaryColor,
+                          ),
+                          hintStyle: TextStyle(
+                            fontSize: 16,
+                            fontWeight: FontWeight.w300,
+                            color: Theme.of(context).primaryColor,
+                          ),
+                          labelText: 'Размеры дефекта металла',
+                          hintText: 'Введите размеры',
+                          helperText: 'Длина х ширина х глубина',
+                          prefixIcon: Icon(
+                            Icons.location_searching_sharp,
+                            color: focusNode13.hasFocus ||
+                                    sizemetdamageController3.text.isNotEmpty
+                                ? Theme.of(context).primaryColor
+                                : Colors.grey,
+                            size: 32,
+                          ),
+                          suffixIcon: GestureDetector(
+                            onTap: () {
+                              sizemetdamageController3.clear();
                             },
                             child: Icon(
                               Icons.delete_outline,
@@ -1567,6 +2317,242 @@ class ObjectDetailIpState extends State<ObjectDetailIp> {
                       ),
                       SizedBox(height: 20),
                       DropdownButtonFormField(
+                        focusNode: focusNode43,
+                        decoration: InputDecoration(
+                            focusColor: Theme.of(context).primaryColor,
+                            labelStyle: TextStyle(
+                              fontSize: 22,
+                              fontWeight: FontWeight.w300,
+                              color: Theme.of(context).primaryColor,
+                            ),
+                            hintStyle: TextStyle(
+                              fontSize: 16,
+                              fontWeight: FontWeight.w300,
+                              color: Theme.of(context).primaryColor,
+                            ),
+                            border: OutlineInputBorder(),
+                            enabledBorder: OutlineInputBorder(
+                              borderRadius:
+                                  BorderRadius.all(Radius.circular(10)),
+                              borderSide:
+                                  BorderSide(color: Colors.grey, width: 2),
+                            ),
+                            focusedBorder: OutlineInputBorder(
+                              borderRadius:
+                                  BorderRadius.all(Radius.circular(20)),
+                              borderSide: BorderSide(
+                                  color: Theme.of(context).primaryColor,
+                                  width: 2),
+                            ),
+                            prefixIcon: Icon(
+                              Icons.filter_tilt_shift_sharp,
+                              color: focusNode43.hasFocus ||
+                                      charinsuldamageController1.text.isNotEmpty
+                                  ? Theme.of(context).primaryColor
+                                  : Colors.grey,
+                              size: 32,
+                            ),
+                            labelText: 'Характер повреждения',
+                            suffixIcon: GestureDetector(
+                                onTap: () {
+                                  Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                        builder: (context) => CameraPageIp()),
+                                  ).then((value) {
+                                    setState(() async {
+                                      if (value != null) {
+                                        _imageDefInsul1 = value;
+
+                                        print(
+                                            'сделали: ${object.photoinsuldef1.toString()}');
+
+                                        if (_3formKey.currentState.validate()) {
+                                          _3formKey.currentState.save();
+                                          if (_imageDefInsul1 != null) {
+                                            final Directory extDir =
+                                                await getApplicationDocumentsDirectory();
+                                            final String dirPath =
+                                                '${extDir.path}/Pictures/flutter_test';
+                                            await Directory(dirPath)
+                                                .create(recursive: true);
+                                            final String filePath =
+                                                '$dirPath/${DateTime.now().millisecondsSinceEpoch.toString()}.jpg';
+                                            await _imageDefInsul1
+                                                .copy(filePath);
+                                            object.photoinsuldef1 = filePath;
+                                          }
+                                        }
+                                      }
+                                    });
+                                  });
+                                },
+                                child: Icon(Icons.camera_alt_sharp,
+                                    color: Color.fromRGBO(97, 153, 59, 1.0)))),
+                        items: _charinsuldamage1.map((String value) {
+                          return DropdownMenuItem(
+                            value: value,
+                            child: Text(value),
+                          );
+                        }).toList(),
+                        style: textStyle,
+                        value: object.charinsuldamage1,
+                        onChanged: (String value) {
+                          setState(() {});
+                          focusNode20.requestFocus();
+                          object.charinsuldamage1 = value;
+                        },
+                      ),
+                      SizedBox(height: 10),
+                      Container(
+                        height: 100,
+                        child: Column(
+                          children: [
+                            Expanded(
+                              child: GestureDetector(
+                                onTap: () {
+                                  Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                        builder: (context) => ImageScreen(
+                                            imagePath: object.photoinsuldef1)),
+                                  );
+                                },
+                                child: Center(
+                                  child: object.photoinsuldef1 != null
+                                      ? Image.file(
+                                          File(object.photoinsuldef1),
+                                          fit: BoxFit.cover,
+                                          alignment: Alignment.center,
+                                          width: 100,
+                                          height: 100,
+                                        )
+                                      : Text('Изображение отсутствует'),
+                                ),
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                      SizedBox(height: 10),
+                      TextFormField(
+                        focusNode: focusNode42,
+                        onChanged: (String value) {
+                          setState(() {});
+                          focusNode42.requestFocus();
+                        },
+                        onSaved: (value) {
+                          object.locinsuldamage1 = value;
+                        },
+                        controller: locinsuldamageController1,
+                        style: textStyle,
+                        decoration: InputDecoration(
+                          focusColor: Theme.of(context).primaryColor,
+                          labelStyle: TextStyle(
+                            fontSize: 22,
+                            fontWeight: FontWeight.w300,
+                            color: Theme.of(context).primaryColor,
+                          ),
+                          hintStyle: TextStyle(
+                            fontSize: 16,
+                            fontWeight: FontWeight.w300,
+                            color: Theme.of(context).primaryColor,
+                          ),
+                          labelText: 'Расположение дефекта',
+                          hintText: 'Введите час и расстояние от шва по ХГ',
+                          helperText: 'ЧАС-расстояние от шва по ХГ',
+                          prefixIcon: Icon(
+                            Icons.location_searching_sharp,
+                            color: focusNode42.hasFocus ||
+                                    locinsuldamageController1.text.isNotEmpty
+                                ? Theme.of(context).primaryColor
+                                : Colors.grey,
+                            size: 32,
+                          ),
+                          suffixIcon: GestureDetector(
+                            onTap: () {
+                              locinsuldamageController1.clear();
+                            },
+                            child: Icon(
+                              Icons.delete_outline,
+                              color: Color.fromRGBO(187, 30, 16, 1.0),
+                            ),
+                          ),
+                          enabledBorder: OutlineInputBorder(
+                            borderRadius: BorderRadius.all(Radius.circular(10)),
+                            borderSide:
+                                BorderSide(color: Colors.grey, width: 2),
+                          ),
+                          focusedBorder: OutlineInputBorder(
+                            borderRadius: BorderRadius.all(Radius.circular(20)),
+                            borderSide: BorderSide(
+                                color: Theme.of(context).primaryColor,
+                                width: 2),
+                          ),
+                        ),
+                        keyboardType: TextInputType.number,
+                      ),
+                      SizedBox(height: 10),
+                      TextFormField(
+                        focusNode: focusNode22,
+                        onChanged: (String value) {
+                          setState(() {});
+                          focusNode22.requestFocus();
+                        },
+                        maxLength: 20,
+                        onSaved: (value) {
+                          object.sizeinsuldamage1 = value;
+                        },
+                        controller: sizeinsuldamageController1,
+                        style: textStyle,
+                        decoration: InputDecoration(
+                          focusColor: Theme.of(context).primaryColor,
+                          labelStyle: TextStyle(
+                            fontSize: 22,
+                            fontWeight: FontWeight.w300,
+                            color: Theme.of(context).primaryColor,
+                          ),
+                          hintStyle: TextStyle(
+                            fontSize: 16,
+                            fontWeight: FontWeight.w300,
+                            color: Theme.of(context).primaryColor,
+                          ),
+                          labelText: 'Размеры дефекта покрытия',
+                          hintText: 'Введите размеры',
+                          helperText: 'Длина х ширина х глубина',
+                          prefixIcon: Icon(
+                            Icons.location_searching_sharp,
+                            color: focusNode22.hasFocus ||
+                                    sizeinsuldamageController1.text.isNotEmpty
+                                ? Theme.of(context).primaryColor
+                                : Colors.grey,
+                            size: 32,
+                          ),
+                          suffixIcon: GestureDetector(
+                            onTap: () {
+                              sizeinsuldamageController1.clear();
+                            },
+                            child: Icon(
+                              Icons.delete_outline,
+                              color: Color.fromRGBO(187, 30, 16, 1.0),
+                            ),
+                          ),
+                          enabledBorder: OutlineInputBorder(
+                            borderRadius: BorderRadius.all(Radius.circular(10)),
+                            borderSide:
+                                BorderSide(color: Colors.grey, width: 2),
+                          ),
+                          focusedBorder: OutlineInputBorder(
+                            borderRadius: BorderRadius.all(Radius.circular(20)),
+                            borderSide: BorderSide(
+                                color: Theme.of(context).primaryColor,
+                                width: 2),
+                          ),
+                        ),
+                        keyboardType: TextInputType.number,
+                      ),
+                      SizedBox(height: 10),
+                      DropdownButtonFormField(
                         focusNode: focusNode20,
                         decoration: InputDecoration(
                             focusColor: Theme.of(context).primaryColor,
@@ -1597,7 +2583,7 @@ class ObjectDetailIpState extends State<ObjectDetailIp> {
                             prefixIcon: Icon(
                               Icons.filter_tilt_shift_sharp,
                               color: focusNode20.hasFocus ||
-                                      charinsuldamageController.text.isNotEmpty
+                                      charinsuldamageController2.text.isNotEmpty
                                   ? Theme.of(context).primaryColor
                                   : Colors.grey,
                               size: 32,
@@ -1612,14 +2598,14 @@ class ObjectDetailIpState extends State<ObjectDetailIp> {
                                   ).then((value) {
                                     setState(() async {
                                       if (value != null) {
-                                        _image = value;
+                                        _imageDefInsul2 = value;
 
                                         print(
-                                            'сделали: ${object.photo.toString()}');
+                                            'сделали: ${object.photoinsuldef2.toString()}');
 
-                                        if (_1formKey.currentState.validate()) {
-                                          _1formKey.currentState.save();
-                                          if (_image != null) {
+                                        if (_3formKey.currentState.validate()) {
+                                          _3formKey.currentState.save();
+                                          if (_imageDefInsul2 != null) {
                                             final Directory extDir =
                                                 await getApplicationDocumentsDirectory();
                                             final String dirPath =
@@ -1628,8 +2614,9 @@ class ObjectDetailIpState extends State<ObjectDetailIp> {
                                                 .create(recursive: true);
                                             final String filePath =
                                                 '$dirPath/${DateTime.now().millisecondsSinceEpoch.toString()}.jpg';
-                                            await _image.copy(filePath);
-                                            object.photo = filePath;
+                                            await _imageDefInsul2
+                                                .copy(filePath);
+                                            object.photoinsuldef2 = filePath;
                                           }
                                         }
                                       }
@@ -1638,18 +2625,18 @@ class ObjectDetailIpState extends State<ObjectDetailIp> {
                                 },
                                 child: Icon(Icons.camera_alt_sharp,
                                     color: Color.fromRGBO(97, 153, 59, 1.0)))),
-                        items: _charinsuldamage.map((String value) {
+                        items: _charinsuldamage2.map((String value) {
                           return DropdownMenuItem(
                             value: value,
                             child: Text(value),
                           );
                         }).toList(),
                         style: textStyle,
-                        value: object.charinsuldamage,
+                        value: object.charinsuldamage2,
                         onChanged: (String value) {
                           setState(() {});
                           focusNode20.requestFocus();
-                          object.charinsuldamage = value;
+                          object.charinsuldamage2 = value;
                         },
                       ),
                       SizedBox(height: 10),
@@ -1664,13 +2651,13 @@ class ObjectDetailIpState extends State<ObjectDetailIp> {
                                     context,
                                     MaterialPageRoute(
                                         builder: (context) => ImageScreen(
-                                            imagePath: object.photo)),
+                                            imagePath: object.photoinsuldef2)),
                                   );
                                 },
                                 child: Center(
-                                  child: object.photo != null
+                                  child: object.photoinsuldef2 != null
                                       ? Image.file(
-                                          File(object.photo),
+                                          File(object.photoinsuldef2),
                                           fit: BoxFit.cover,
                                           alignment: Alignment.center,
                                           width: 100,
@@ -1691,9 +2678,9 @@ class ObjectDetailIpState extends State<ObjectDetailIp> {
                           focusNode21.requestFocus();
                         },
                         onSaved: (value) {
-                          object.locinsuldamage = value;
+                          object.locinsuldamage2 = value;
                         },
-                        controller: locinsuldamageController,
+                        controller: locinsuldamageController2,
                         style: textStyle,
                         decoration: InputDecoration(
                           focusColor: Theme.of(context).primaryColor,
@@ -1713,14 +2700,14 @@ class ObjectDetailIpState extends State<ObjectDetailIp> {
                           prefixIcon: Icon(
                             Icons.location_searching_sharp,
                             color: focusNode21.hasFocus ||
-                                    locinsuldamageController.text.isNotEmpty
+                                    locinsuldamageController2.text.isNotEmpty
                                 ? Theme.of(context).primaryColor
                                 : Colors.grey,
                             size: 32,
                           ),
                           suffixIcon: GestureDetector(
                             onTap: () {
-                              locinsuldamageController.clear();
+                              locinsuldamageController2.clear();
                             },
                             child: Icon(
                               Icons.delete_outline,
@@ -1750,9 +2737,9 @@ class ObjectDetailIpState extends State<ObjectDetailIp> {
                         },
                         maxLength: 20,
                         onSaved: (value) {
-                          object.sizeinsuldamage = value;
+                          object.sizeinsuldamage2 = value;
                         },
-                        controller: sizeinsuldamageController,
+                        controller: sizeinsuldamageController2,
                         style: textStyle,
                         decoration: InputDecoration(
                           focusColor: Theme.of(context).primaryColor,
@@ -1772,14 +2759,250 @@ class ObjectDetailIpState extends State<ObjectDetailIp> {
                           prefixIcon: Icon(
                             Icons.location_searching_sharp,
                             color: focusNode22.hasFocus ||
-                                    sizeinsuldamageController.text.isNotEmpty
+                                    sizeinsuldamageController2.text.isNotEmpty
                                 ? Theme.of(context).primaryColor
                                 : Colors.grey,
                             size: 32,
                           ),
                           suffixIcon: GestureDetector(
                             onTap: () {
-                              sizeinsuldamageController.clear();
+                              sizeinsuldamageController2.clear();
+                            },
+                            child: Icon(
+                              Icons.delete_outline,
+                              color: Color.fromRGBO(187, 30, 16, 1.0),
+                            ),
+                          ),
+                          enabledBorder: OutlineInputBorder(
+                            borderRadius: BorderRadius.all(Radius.circular(10)),
+                            borderSide:
+                                BorderSide(color: Colors.grey, width: 2),
+                          ),
+                          focusedBorder: OutlineInputBorder(
+                            borderRadius: BorderRadius.all(Radius.circular(20)),
+                            borderSide: BorderSide(
+                                color: Theme.of(context).primaryColor,
+                                width: 2),
+                          ),
+                        ),
+                        keyboardType: TextInputType.number,
+                      ),
+                      SizedBox(height: 10),
+                      DropdownButtonFormField(
+                        focusNode: focusNode20,
+                        decoration: InputDecoration(
+                            focusColor: Theme.of(context).primaryColor,
+                            labelStyle: TextStyle(
+                              fontSize: 22,
+                              fontWeight: FontWeight.w300,
+                              color: Theme.of(context).primaryColor,
+                            ),
+                            hintStyle: TextStyle(
+                              fontSize: 16,
+                              fontWeight: FontWeight.w300,
+                              color: Theme.of(context).primaryColor,
+                            ),
+                            border: OutlineInputBorder(),
+                            enabledBorder: OutlineInputBorder(
+                              borderRadius:
+                                  BorderRadius.all(Radius.circular(10)),
+                              borderSide:
+                                  BorderSide(color: Colors.grey, width: 2),
+                            ),
+                            focusedBorder: OutlineInputBorder(
+                              borderRadius:
+                                  BorderRadius.all(Radius.circular(20)),
+                              borderSide: BorderSide(
+                                  color: Theme.of(context).primaryColor,
+                                  width: 2),
+                            ),
+                            prefixIcon: Icon(
+                              Icons.filter_tilt_shift_sharp,
+                              color: focusNode20.hasFocus ||
+                                      charinsuldamageController3.text.isNotEmpty
+                                  ? Theme.of(context).primaryColor
+                                  : Colors.grey,
+                              size: 32,
+                            ),
+                            labelText: 'Характер повреждения',
+                            suffixIcon: GestureDetector(
+                                onTap: () {
+                                  Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                        builder: (context) => CameraPageIp()),
+                                  ).then((value) {
+                                    setState(() async {
+                                      if (value != null) {
+                                        _imageDefInsul3 = value;
+
+                                        print(
+                                            'сделали: ${object.photoinsuldef3.toString()}');
+
+                                        if (_3formKey.currentState.validate()) {
+                                          _3formKey.currentState.save();
+                                          if (_imageDefInsul3 != null) {
+                                            final Directory extDir =
+                                                await getApplicationDocumentsDirectory();
+                                            final String dirPath =
+                                                '${extDir.path}/Pictures/flutter_test';
+                                            await Directory(dirPath)
+                                                .create(recursive: true);
+                                            final String filePath =
+                                                '$dirPath/${DateTime.now().millisecondsSinceEpoch.toString()}.jpg';
+                                            await _imageDefInsul3
+                                                .copy(filePath);
+                                            object.photoinsuldef3 = filePath;
+                                          }
+                                        }
+                                      }
+                                    });
+                                  });
+                                },
+                                child: Icon(Icons.camera_alt_sharp,
+                                    color: Color.fromRGBO(97, 153, 59, 1.0)))),
+                        items: _charinsuldamage3.map((String value) {
+                          return DropdownMenuItem(
+                            value: value,
+                            child: Text(value),
+                          );
+                        }).toList(),
+                        style: textStyle,
+                        value: object.charinsuldamage3,
+                        onChanged: (String value) {
+                          setState(() {});
+                          focusNode20.requestFocus();
+                          object.charinsuldamage3 = value;
+                        },
+                      ),
+                      SizedBox(height: 10),
+                      Container(
+                        height: 100,
+                        child: Column(
+                          children: [
+                            Expanded(
+                              child: GestureDetector(
+                                onTap: () {
+                                  Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                        builder: (context) => ImageScreen(
+                                            imagePath: object.photoinsuldef3)),
+                                  );
+                                },
+                                child: Center(
+                                  child: object.photoinsuldef3 != null
+                                      ? Image.file(
+                                          File(object.photoinsuldef3),
+                                          fit: BoxFit.cover,
+                                          alignment: Alignment.center,
+                                          width: 100,
+                                          height: 100,
+                                        )
+                                      : Text('Изображение отсутствует'),
+                                ),
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                      SizedBox(height: 10),
+                      TextFormField(
+                        focusNode: focusNode21,
+                        onChanged: (String value) {
+                          setState(() {});
+                          focusNode21.requestFocus();
+                        },
+                        onSaved: (value) {
+                          object.locinsuldamage3 = value;
+                        },
+                        controller: locinsuldamageController3,
+                        style: textStyle,
+                        decoration: InputDecoration(
+                          focusColor: Theme.of(context).primaryColor,
+                          labelStyle: TextStyle(
+                            fontSize: 22,
+                            fontWeight: FontWeight.w300,
+                            color: Theme.of(context).primaryColor,
+                          ),
+                          hintStyle: TextStyle(
+                            fontSize: 16,
+                            fontWeight: FontWeight.w300,
+                            color: Theme.of(context).primaryColor,
+                          ),
+                          labelText: 'Расположение дефекта',
+                          hintText: 'Введите час и расстояние от шва по ХГ',
+                          helperText: 'ЧАС-расстояние от шва по ХГ',
+                          prefixIcon: Icon(
+                            Icons.location_searching_sharp,
+                            color: focusNode21.hasFocus ||
+                                    locinsuldamageController3.text.isNotEmpty
+                                ? Theme.of(context).primaryColor
+                                : Colors.grey,
+                            size: 32,
+                          ),
+                          suffixIcon: GestureDetector(
+                            onTap: () {
+                              locinsuldamageController3.clear();
+                            },
+                            child: Icon(
+                              Icons.delete_outline,
+                              color: Color.fromRGBO(187, 30, 16, 1.0),
+                            ),
+                          ),
+                          enabledBorder: OutlineInputBorder(
+                            borderRadius: BorderRadius.all(Radius.circular(10)),
+                            borderSide:
+                                BorderSide(color: Colors.grey, width: 2),
+                          ),
+                          focusedBorder: OutlineInputBorder(
+                            borderRadius: BorderRadius.all(Radius.circular(20)),
+                            borderSide: BorderSide(
+                                color: Theme.of(context).primaryColor,
+                                width: 2),
+                          ),
+                        ),
+                        keyboardType: TextInputType.number,
+                      ),
+                      SizedBox(height: 10),
+                      TextFormField(
+                        focusNode: focusNode22,
+                        onChanged: (String value) {
+                          setState(() {});
+                          focusNode22.requestFocus();
+                        },
+                        maxLength: 20,
+                        onSaved: (value) {
+                          object.sizeinsuldamage3 = value;
+                        },
+                        controller: sizeinsuldamageController3,
+                        style: textStyle,
+                        decoration: InputDecoration(
+                          focusColor: Theme.of(context).primaryColor,
+                          labelStyle: TextStyle(
+                            fontSize: 22,
+                            fontWeight: FontWeight.w300,
+                            color: Theme.of(context).primaryColor,
+                          ),
+                          hintStyle: TextStyle(
+                            fontSize: 16,
+                            fontWeight: FontWeight.w300,
+                            color: Theme.of(context).primaryColor,
+                          ),
+                          labelText: 'Размеры дефекта покрытия',
+                          hintText: 'Введите размеры',
+                          helperText: 'Длина х ширина х глубина',
+                          prefixIcon: Icon(
+                            Icons.location_searching_sharp,
+                            color: focusNode22.hasFocus ||
+                                    sizeinsuldamageController3.text.isNotEmpty
+                                ? Theme.of(context).primaryColor
+                                : Colors.grey,
+                            size: 32,
+                          ),
+                          suffixIcon: GestureDetector(
+                            onTap: () {
+                              sizeinsuldamageController3.clear();
                             },
                             child: Icon(
                               Icons.delete_outline,
@@ -2480,8 +3703,8 @@ class ObjectDetailIpState extends State<ObjectDetailIp> {
                                       print(
                                           'сделали: ${object.photo.toString()}');
 
-                                      if (_1formKey.currentState.validate()) {
-                                        _1formKey.currentState.save();
+                                      if (_6formKey.currentState.validate()) {
+                                        _6formKey.currentState.save();
                                         if (_image != null) {
                                           final Directory extDir =
                                               await getApplicationDocumentsDirectory();
@@ -2576,26 +3799,668 @@ class ObjectDetailIpState extends State<ObjectDetailIp> {
                 ),
               ),
             ),
+            Center(
+              child: Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Form(
+                  key: _7formKey,
+                  child: ListView(
+                    children: <Widget>[
+                      SizedBox(height: 20),
+                      Container(
+                          alignment: Alignment.center,
+                          child: Text(
+                            'ИСПОЛНИТЕЛИ И КОМИССИЯ',
+                            style: TextStyle(
+                                fontSize: 24,
+                                color: Theme.of(context).primaryColor,
+                                fontWeight: FontWeight.w300),
+                          )),
+                      SizedBox(height: 20),
+                      DropdownButtonFormField(
+                        focusNode: focusNode41,
+                        decoration: InputDecoration(
+                          border: OutlineInputBorder(),
+                          enabledBorder: OutlineInputBorder(
+                            borderRadius: BorderRadius.all(Radius.circular(10)),
+                            borderSide:
+                                BorderSide(color: Colors.grey, width: 2),
+                          ),
+                          focusedBorder: OutlineInputBorder(
+                            borderRadius: BorderRadius.all(Radius.circular(20)),
+                            borderSide: BorderSide(
+                                color: Theme.of(context).primaryColor,
+                                width: 2),
+                          ),
+                          labelStyle: TextStyle(
+                            fontSize: 22,
+                            fontWeight: FontWeight.w300,
+                            color: Theme.of(context).primaryColor,
+                          ),
+                          prefixIcon: Icon(
+                            Icons.wysiwyg_rounded,
+                            color: focusNode41.hasFocus ||
+                                    filialController.text.isNotEmpty
+                                ? Theme.of(context).primaryColor
+                                : Colors.grey,
+                            size: 32,
+                          ),
+                          labelText: 'Филиал',
+                        ),
+                        items: _filial.map((String value) {
+                          return DropdownMenuItem(
+                              value: value, child: Text(value));
+                        }).toList(),
+                        style: textStyle,
+                        value: object.filial,
+                        onChanged: (String value) {
+                          setState(() {});
+                          focusNode41.requestFocus();
+                          object.filial = value;
+                        },
+                      ),
+                      SizedBox(height: 10),
+                      DropdownButtonFormField(
+                        focusNode: focusNode42,
+                        decoration: InputDecoration(
+                          border: OutlineInputBorder(),
+                          enabledBorder: OutlineInputBorder(
+                            borderRadius: BorderRadius.all(Radius.circular(10)),
+                            borderSide:
+                                BorderSide(color: Colors.grey, width: 2),
+                          ),
+                          focusedBorder: OutlineInputBorder(
+                            borderRadius: BorderRadius.all(Radius.circular(20)),
+                            borderSide: BorderSide(
+                                color: Theme.of(context).primaryColor,
+                                width: 2),
+                          ),
+                          labelStyle: TextStyle(
+                            fontSize: 16,
+                            fontWeight: FontWeight.w300,
+                            color: Theme.of(context).primaryColor,
+                          ),
+                          prefixIcon: Icon(
+                            Icons.wysiwyg_rounded,
+                            color: focusNode42.hasFocus ||
+                                    predskomController.text.isNotEmpty
+                                ? Theme.of(context).primaryColor
+                                : Colors.grey,
+                            size: 32,
+                          ),
+                          labelText: 'Должность председателя',
+                        ),
+                        items: _predskom.map((String value) {
+                          return DropdownMenuItem(
+                              value: value, child: Text(value));
+                        }).toList(),
+                        style: textStyle,
+                        value: object.dolzhnpredskom,
+                        onChanged: (String value) {
+                          setState(() {});
+                          focusNode42.requestFocus();
+                          object.dolzhnpredskom = value;
+                        },
+                      ),
+                      SizedBox(height: 10),
+                      TextFormField(
+                        focusNode: focusNode43,
+                        onChanged: (String value) {
+                          setState(() {});
+                          focusNode43.requestFocus();
+                        },
+                        // maxLength: 20,
+                        onSaved: (value) {
+                          object.fiopredskom = value;
+                        },
+                        controller: fiopredskomController,
+                        style: textStyle,
+                        decoration: InputDecoration(
+                          labelText: 'ФИО председателя комиссии',
+                          hintText: 'Введите ФИО председателя комиссии',
+                          helperText: 'Фамилия И.О.',
+                          prefixIcon: Icon(
+                            Icons.account_balance_outlined,
+                            color: focusNode43.hasFocus ||
+                                    fiopredskomController.text.isNotEmpty
+                                ? Theme.of(context).primaryColor
+                                : Colors.grey,
+                            size: 32,
+                          ),
+                          suffixIcon: GestureDetector(
+                            onTap: () {
+                              fiopredskomController.clear();
+                            },
+                            child: Icon(
+                              Icons.delete_outline,
+                              color: Colors.red,
+                            ),
+                          ),
+                          enabledBorder: OutlineInputBorder(
+                            borderRadius: BorderRadius.all(Radius.circular(10)),
+                            borderSide:
+                                BorderSide(color: Colors.grey, width: 2),
+                          ),
+                          focusedBorder: OutlineInputBorder(
+                            borderRadius: BorderRadius.all(Radius.circular(20)),
+                            borderSide: BorderSide(
+                                color: Theme.of(context).primaryColor,
+                                width: 2),
+                          ),
+                          labelStyle: TextStyle(
+                            fontSize: 22,
+                            fontWeight: FontWeight.w300,
+                            color: Theme.of(context).primaryColor,
+                          ),
+                        ),
+                        keyboardType: TextInputType.text,
+                      ),
+                      SizedBox(height: 10),
+                      SizedBox(height: 10),
+                      SizedBox(height: 10),
+                      ElevatedButton(
+                        style: ElevatedButton.styleFrom(
+                            primary: Colors.amber,
+                            onPrimary: Colors.white,
+                            elevation: 2,
+                            padding: const EdgeInsets.all(13.0),
+                            shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(10.0))),
+                        onPressed: () {
+                          editExcelFile('AO');
+                        },
+                        child: const Text(
+                          'Сформировать Акт обследования трубопровода в шурфе',
+                          style: TextStyle(
+                            fontSize: 18.0,
+                            fontWeight: FontWeight.w300,
+                          ),
+                        ),
+                      ),
+                      SizedBox(height: 10),
+                      ElevatedButton(
+                        style: ElevatedButton.styleFrom(
+                            primary: Colors.amber,
+                            onPrimary: Colors.white,
+                            elevation: 2,
+                            padding: const EdgeInsets.all(13.0),
+                            shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(10.0))),
+                        onPressed: () {
+                          editExcelFile('APUZT');
+                        },
+                        child: const Text(
+                          'Сформировать Акт на приемку уложенного и забалластированного трубопровода',
+                          style: TextStyle(
+                            fontSize: 18.0,
+                            fontWeight: FontWeight.w300,
+                          ),
+                        ),
+                      ),
+                      SizedBox(height: 10),
+                      ElevatedButton(
+                        style: ElevatedButton.styleFrom(
+                            primary: Colors.amber,
+                            onPrimary: Colors.white,
+                            elevation: 2,
+                            padding: const EdgeInsets.all(13.0),
+                            shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(10.0))),
+                        onPressed: () {
+                          editExcelFile('RAZR');
+                        },
+                        child: const Text(
+                          'Сформировать Разрешение на право производства изоляции трубопровода',
+                          style: TextStyle(
+                            fontSize: 18.0,
+                            fontWeight: FontWeight.w300,
+                          ),
+                        ),
+                      ),
+                      SizedBox(height: 10),
+                      ElevatedButton(
+                        style: ElevatedButton.styleFrom(
+                            primary: Colors.amber,
+                            onPrimary: Colors.white,
+                            elevation: 2,
+                            padding: const EdgeInsets.all(13.0),
+                            shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(10.0))),
+                        onPressed: () {
+                          editExcelFile('AKSZT');
+                        },
+                        child: const Text(
+                          'Сформировать Акт о контроле сплошности изоляционного покрытия засыпанного трубопровода',
+                          style: TextStyle(
+                            fontSize: 18.0,
+                            fontWeight: FontWeight.w300,
+                          ),
+                        ),
+                      ),
+                      SizedBox(height: 10),
+                      ElevatedButton(
+                        style: ElevatedButton.styleFrom(
+                            primary: Colors.amber,
+                            onPrimary: Colors.white,
+                            elevation: 2,
+                            padding: const EdgeInsets.all(13.0),
+                            shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(10.0))),
+                        onPressed: () {
+                          editExcelFile('ZHIUR');
+                        },
+                        child: const Text(
+                          'Сформировать Журнал изоляционно-укладочных работ и ремонта изоляции',
+                          style: TextStyle(
+                            fontSize: 18.0,
+                            fontWeight: FontWeight.w300,
+                          ),
+                        ),
+                      ),
+                      SizedBox(height: 10),
+                      ElevatedButton(
+                        style: ElevatedButton.styleFrom(
+                            primary: Colors.amber,
+                            onPrimary: Colors.white,
+                            elevation: 2,
+                            padding: const EdgeInsets.all(13.0),
+                            shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(10.0))),
+                        onPressed: () => saveForm7(),
+                        child: Text(
+                          isEdit ? 'Редактировать' : 'Добавить',
+                          style: const TextStyle(
+                              fontSize: 18.0, fontWeight: FontWeight.w300),
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+            ),
           ],
         ),
-        floatingActionButton: isEdit
-            ? FloatingActionButton(
-                onPressed: () {
-                  debugPrint('Click Floated Back.');
-                  confirmDelete();
-                },
-                elevation: 5.0,
-                backgroundColor: Color.fromRGBO(187, 30, 16, 1.0),
-                tooltip: 'Удалить запись',
-                child: Icon(
-                  Icons.clear,
-                  size: 35.0,
-                  color: Colors.white,
-                ))
-            : null,
-        floatingActionButtonLocation: FloatingActionButtonLocation.miniEndFloat,
+        // floatingActionButton: isEdit
+        //     ? FloatingActionButton(
+        //         onPressed: () {
+        //           debugPrint('Click Floated Back.');
+        //           confirmDelete();
+        //         },
+        //         elevation: 5.0,
+        //         backgroundColor: Color.fromRGBO(187, 30, 16, 1.0),
+        //         tooltip: 'Удалить запись',
+        //         child: Icon(
+        //           Icons.clear,
+        //           size: 35.0,
+        //           color: Colors.white,
+        //         ))
+        //     : null,
+        // floatingActionButtonLocation: FloatingActionButtonLocation.miniEndFloat,
       ),
     );
+  }
+
+  void editExcelFile(String buttonName) async {
+    try {
+      if (buttonName == 'AO') {
+        // Получаем путь к файлу Excel в папке assets
+        ByteData data = await rootBundle.load('assets/form/IP/AO.xlsx');
+        List<int> bytes = data.buffer.asUint8List();
+
+        // Открываем файл Excel
+        var excel = Excel.decodeBytes(bytes);
+
+        // Получаем страницу, на которой нужно вставить данные
+        var sheet = excel['AO'];
+        var filial = 'Филиал';
+
+        // Вставляем данные в определенные ячейки
+        if (object.filial == 'Арзамасское ЛПУМГ') {
+          filial = 'Арзамасского ЛПУМГ-филиала';
+        } else if (object.filial == 'Владимирское ЛПУМГ') {
+          filial = 'Владимирского ЛПУМГ-филиала';
+        } else if (object.filial == 'Волжское ЛПУМГ') {
+          filial = 'Волжского ЛПУМГ-филиала';
+        } else if (object.filial == 'Вятское ЛПУМГ') {
+          filial = 'Вятского ЛПУМГ-филиала';
+        } else if (object.filial == 'Заволжское ЛПУМГ') {
+          filial = 'Заволжского ЛПУМГ-филиала';
+        } else if (object.filial == 'Ивановское ЛПУМГ') {
+          filial = 'Ивановского ЛПУМГ-филиала';
+        } else if (object.filial == 'Кировское ЛПУМГ') {
+          filial = 'Кировского ЛПУМГ-филиала';
+        } else if (object.filial == 'Моркинское ЛПУМГ') {
+          filial = 'Моркинского ЛПУМГ-филиала';
+        } else if (object.filial == 'Пензенское ЛПУМГ') {
+          filial = 'Пензенского ЛПУМГ-филиала';
+        } else if (object.filial == 'Пильнинское ЛПУМГ') {
+          filial = 'Пильнинского ЛПУМГ-филиала';
+        } else if (object.filial == 'Починковское ЛПУМГ') {
+          filial = 'Починковского ЛПУМГ-филиала';
+        } else if (object.filial == 'Приокское ЛПУМГ') {
+          filial = 'Приокского ЛПУМГ-филиала';
+        } else if (object.filial == 'Семеновское ЛПУМГ') {
+          filial = 'Семеновского ЛПУМГ-филиала';
+        } else if (object.filial == 'Сеченовское ЛПУМГ') {
+          filial = 'Сеченовского ЛПУМГ-филиала';
+        } else if (object.filial == 'Торбеевское ЛПУМГ') {
+          filial = 'Торбеевского ЛПУМГ-филиала';
+        } else if (object.filial == 'Чебоксарское ЛПУМГ') {
+          filial = 'Чебоксарского ЛПУМГ-филиала';
+        } else if (object.filial == 'ИТЦ ЛПУМГ') {
+          filial = 'ИТЦ-филиала';
+        } else if (object.filial == 'УАВР') {
+          filial = 'УАВР-филиала';
+        }
+        sheet.cell(CellIndex.indexByString("E5")).value = filial;
+        print(object.filial);
+        sheet.cell(CellIndex.indexByString("E4")).value = object.dolzhnpredskom;
+        print(object.dolzhnpredskom);
+        sheet.cell(CellIndex.indexByString("J7")).value = object.fiopredskom;
+        print(object.fiopredskom);
+
+        // Получаем путь к папке "Downloads" на внешнем хранилище
+        Directory externalStorageDirectory =
+            await getExternalStorageDirectory();
+        String downloadsFolderPath = '${externalStorageDirectory.path}';
+
+        // Получаем путь к сохраненному файлу
+        var newFile = '${object.title}.xlsx';
+        var file = File('$downloadsFolderPath/$newFile');
+        var excelBytes = excel.encode();
+        await file.writeAsBytes(excelBytes);
+        String filePath = '$downloadsFolderPath/$newFile';
+
+        // Открываем новый файл
+        await OpenFile.open(filePath);
+      } else if (buttonName == 'APUZT') {
+        // Получаем путь к файлу Excel в папке assets
+        ByteData data = await rootBundle.load('assets/form/IP/APUZT.xlsx');
+        List<int> bytes = data.buffer.asUint8List();
+
+        // Открываем файл Excel
+        var excel = Excel.decodeBytes(bytes);
+
+        // Получаем страницу, на которой нужно вставить данные
+        var sheet = excel['APUZT'];
+        var filial = 'Филиал';
+
+        // Вставляем данные в определенные ячейки
+        if (object.filial == 'Арзамасское ЛПУМГ') {
+          filial = 'Арзамасского ЛПУМГ-филиала';
+        } else if (object.filial == 'Владимирское ЛПУМГ') {
+          filial = 'Владимирского ЛПУМГ-филиала';
+        } else if (object.filial == 'Волжское ЛПУМГ') {
+          filial = 'Волжского ЛПУМГ-филиала';
+        } else if (object.filial == 'Вятское ЛПУМГ') {
+          filial = 'Вятского ЛПУМГ-филиала';
+        } else if (object.filial == 'Заволжское ЛПУМГ') {
+          filial = 'Заволжского ЛПУМГ-филиала';
+        } else if (object.filial == 'Ивановское ЛПУМГ') {
+          filial = 'Ивановского ЛПУМГ-филиала';
+        } else if (object.filial == 'Кировское ЛПУМГ') {
+          filial = 'Кировского ЛПУМГ-филиала';
+        } else if (object.filial == 'Моркинское ЛПУМГ') {
+          filial = 'Моркинского ЛПУМГ-филиала';
+        } else if (object.filial == 'Пензенское ЛПУМГ') {
+          filial = 'Пензенского ЛПУМГ-филиала';
+        } else if (object.filial == 'Пильнинское ЛПУМГ') {
+          filial = 'Пильнинского ЛПУМГ-филиала';
+        } else if (object.filial == 'Починковское ЛПУМГ') {
+          filial = 'Починковского ЛПУМГ-филиала';
+        } else if (object.filial == 'Приокское ЛПУМГ') {
+          filial = 'Приокского ЛПУМГ-филиала';
+        } else if (object.filial == 'Семеновское ЛПУМГ') {
+          filial = 'Семеновского ЛПУМГ-филиала';
+        } else if (object.filial == 'Сеченовское ЛПУМГ') {
+          filial = 'Сеченовского ЛПУМГ-филиала';
+        } else if (object.filial == 'Торбеевское ЛПУМГ') {
+          filial = 'Торбеевского ЛПУМГ-филиала';
+        } else if (object.filial == 'Чебоксарское ЛПУМГ') {
+          filial = 'Чебоксарского ЛПУМГ-филиала';
+        } else if (object.filial == 'ИТЦ ЛПУМГ') {
+          filial = 'ИТЦ-филиала';
+        } else if (object.filial == 'УАВР') {
+          filial = 'УАВР-филиала';
+        }
+        sheet.cell(CellIndex.indexByString("E5")).value = filial;
+        print(object.filial);
+        sheet.cell(CellIndex.indexByString("E4")).value = object.dolzhnpredskom;
+        print(object.dolzhnpredskom);
+        sheet.cell(CellIndex.indexByString("J7")).value = object.fiopredskom;
+        print(object.fiopredskom);
+
+        // Получаем путь к папке "Downloads" на внешнем хранилище
+        Directory externalStorageDirectory =
+            await getExternalStorageDirectory();
+        String downloadsFolderPath = '${externalStorageDirectory.path}';
+
+        // Получаем путь к сохраненному файлу
+        var newFile = '${object.title}.xlsx';
+        var file = File('$downloadsFolderPath/$newFile');
+        var excelBytes = excel.encode();
+        await file.writeAsBytes(excelBytes);
+        String filePath = '$downloadsFolderPath/$newFile';
+
+        // Открываем новый файл
+        await OpenFile.open(filePath);
+      } else if (buttonName == 'RAZR') {
+        // Получаем путь к файлу Excel в папке assets
+        ByteData data = await rootBundle.load('assets/form/IP/RAZR.xlsx');
+        List<int> bytes = data.buffer.asUint8List();
+
+        // Открываем файл Excel
+        var excel = Excel.decodeBytes(bytes);
+
+        // Получаем страницу, на которой нужно вставить данные
+        var sheet = excel['RAZR'];
+        var filial = 'Филиал';
+
+        // Вставляем данные в определенные ячейки
+        if (object.filial == 'Арзамасское ЛПУМГ') {
+          filial = 'Арзамасского ЛПУМГ-филиала';
+        } else if (object.filial == 'Владимирское ЛПУМГ') {
+          filial = 'Владимирского ЛПУМГ-филиала';
+        } else if (object.filial == 'Волжское ЛПУМГ') {
+          filial = 'Волжского ЛПУМГ-филиала';
+        } else if (object.filial == 'Вятское ЛПУМГ') {
+          filial = 'Вятского ЛПУМГ-филиала';
+        } else if (object.filial == 'Заволжское ЛПУМГ') {
+          filial = 'Заволжского ЛПУМГ-филиала';
+        } else if (object.filial == 'Ивановское ЛПУМГ') {
+          filial = 'Ивановского ЛПУМГ-филиала';
+        } else if (object.filial == 'Кировское ЛПУМГ') {
+          filial = 'Кировского ЛПУМГ-филиала';
+        } else if (object.filial == 'Моркинское ЛПУМГ') {
+          filial = 'Моркинского ЛПУМГ-филиала';
+        } else if (object.filial == 'Пензенское ЛПУМГ') {
+          filial = 'Пензенского ЛПУМГ-филиала';
+        } else if (object.filial == 'Пильнинское ЛПУМГ') {
+          filial = 'Пильнинского ЛПУМГ-филиала';
+        } else if (object.filial == 'Починковское ЛПУМГ') {
+          filial = 'Починковского ЛПУМГ-филиала';
+        } else if (object.filial == 'Приокское ЛПУМГ') {
+          filial = 'Приокского ЛПУМГ-филиала';
+        } else if (object.filial == 'Семеновское ЛПУМГ') {
+          filial = 'Семеновского ЛПУМГ-филиала';
+        } else if (object.filial == 'Сеченовское ЛПУМГ') {
+          filial = 'Сеченовского ЛПУМГ-филиала';
+        } else if (object.filial == 'Торбеевское ЛПУМГ') {
+          filial = 'Торбеевского ЛПУМГ-филиала';
+        } else if (object.filial == 'Чебоксарское ЛПУМГ') {
+          filial = 'Чебоксарского ЛПУМГ-филиала';
+        } else if (object.filial == 'ИТЦ ЛПУМГ') {
+          filial = 'ИТЦ-филиала';
+        } else if (object.filial == 'УАВР') {
+          filial = 'УАВР-филиала';
+        }
+        sheet.cell(CellIndex.indexByString("E5")).value = filial;
+        print(object.filial);
+        sheet.cell(CellIndex.indexByString("E4")).value = object.dolzhnpredskom;
+        print(object.dolzhnpredskom);
+        sheet.cell(CellIndex.indexByString("J7")).value = object.fiopredskom;
+        print(object.fiopredskom);
+
+        // Получаем путь к папке "Downloads" на внешнем хранилище
+        Directory externalStorageDirectory =
+            await getExternalStorageDirectory();
+        String downloadsFolderPath = '${externalStorageDirectory.path}';
+
+        // Получаем путь к сохраненному файлу
+        var newFile = '${object.title}.xlsx';
+        var file = File('$downloadsFolderPath/$newFile');
+        var excelBytes = excel.encode();
+        await file.writeAsBytes(excelBytes);
+        String filePath = '$downloadsFolderPath/$newFile';
+
+        // Открываем новый файл
+        await OpenFile.open(filePath);
+      } else if (buttonName == 'AKSZT') {
+        // Получаем путь к файлу Excel в папке assets
+        ByteData data = await rootBundle.load('assets/form/IP/AKSZT.xlsx');
+        List<int> bytes = data.buffer.asUint8List();
+
+        // Открываем файл Excel
+        var excel = Excel.decodeBytes(bytes);
+
+        // Получаем страницу, на которой нужно вставить данные
+        var sheet = excel['AKSZT'];
+        var filial = 'Филиал';
+
+        // Вставляем данные в определенные ячейки
+        if (object.filial == 'Арзамасское ЛПУМГ') {
+          filial = 'Арзамасского ЛПУМГ-филиала';
+        } else if (object.filial == 'Владимирское ЛПУМГ') {
+          filial = 'Владимирского ЛПУМГ-филиала';
+        } else if (object.filial == 'Волжское ЛПУМГ') {
+          filial = 'Волжского ЛПУМГ-филиала';
+        } else if (object.filial == 'Вятское ЛПУМГ') {
+          filial = 'Вятского ЛПУМГ-филиала';
+        } else if (object.filial == 'Заволжское ЛПУМГ') {
+          filial = 'Заволжского ЛПУМГ-филиала';
+        } else if (object.filial == 'Ивановское ЛПУМГ') {
+          filial = 'Ивановского ЛПУМГ-филиала';
+        } else if (object.filial == 'Кировское ЛПУМГ') {
+          filial = 'Кировского ЛПУМГ-филиала';
+        } else if (object.filial == 'Моркинское ЛПУМГ') {
+          filial = 'Моркинского ЛПУМГ-филиала';
+        } else if (object.filial == 'Пензенское ЛПУМГ') {
+          filial = 'Пензенского ЛПУМГ-филиала';
+        } else if (object.filial == 'Пильнинское ЛПУМГ') {
+          filial = 'Пильнинского ЛПУМГ-филиала';
+        } else if (object.filial == 'Починковское ЛПУМГ') {
+          filial = 'Починковского ЛПУМГ-филиала';
+        } else if (object.filial == 'Приокское ЛПУМГ') {
+          filial = 'Приокского ЛПУМГ-филиала';
+        } else if (object.filial == 'Семеновское ЛПУМГ') {
+          filial = 'Семеновского ЛПУМГ-филиала';
+        } else if (object.filial == 'Сеченовское ЛПУМГ') {
+          filial = 'Сеченовского ЛПУМГ-филиала';
+        } else if (object.filial == 'Торбеевское ЛПУМГ') {
+          filial = 'Торбеевского ЛПУМГ-филиала';
+        } else if (object.filial == 'Чебоксарское ЛПУМГ') {
+          filial = 'Чебоксарского ЛПУМГ-филиала';
+        } else if (object.filial == 'ИТЦ ЛПУМГ') {
+          filial = 'ИТЦ-филиала';
+        } else if (object.filial == 'УАВР') {
+          filial = 'УАВР-филиала';
+        }
+        sheet.cell(CellIndex.indexByString("E5")).value = filial;
+        print(object.filial);
+        sheet.cell(CellIndex.indexByString("E4")).value = object.dolzhnpredskom;
+        print(object.dolzhnpredskom);
+        sheet.cell(CellIndex.indexByString("J7")).value = object.fiopredskom;
+        print(object.fiopredskom);
+
+        // Получаем путь к папке "Downloads" на внешнем хранилище
+        Directory externalStorageDirectory =
+            await getExternalStorageDirectory();
+        String downloadsFolderPath = '${externalStorageDirectory.path}';
+
+        // Получаем путь к сохраненному файлу
+        var newFile = '${object.title}.xlsx';
+        var file = File('$downloadsFolderPath/$newFile');
+        var excelBytes = excel.encode();
+        await file.writeAsBytes(excelBytes);
+        String filePath = '$downloadsFolderPath/$newFile';
+
+        // Открываем новый файл
+        await OpenFile.open(filePath);
+      } else if (buttonName == 'ZHIUR') {
+        // Получаем путь к файлу Excel в папке assets
+        ByteData data = await rootBundle.load('assets/form/IP/ZHIUR.xlsx');
+        List<int> bytes = data.buffer.asUint8List();
+
+        // Открываем файл Excel
+        var excel = Excel.decodeBytes(bytes);
+
+        // Получаем страницу, на которой нужно вставить данные
+        var sheet = excel['ZHIUR'];
+        var filial = 'Филиал';
+
+        // Вставляем данные в определенные ячейки
+        if (object.filial == 'Арзамасское ЛПУМГ') {
+          filial = 'Арзамасского ЛПУМГ-филиала';
+        } else if (object.filial == 'Владимирское ЛПУМГ') {
+          filial = 'Владимирского ЛПУМГ-филиала';
+        } else if (object.filial == 'Волжское ЛПУМГ') {
+          filial = 'Волжского ЛПУМГ-филиала';
+        } else if (object.filial == 'Вятское ЛПУМГ') {
+          filial = 'Вятского ЛПУМГ-филиала';
+        } else if (object.filial == 'Заволжское ЛПУМГ') {
+          filial = 'Заволжского ЛПУМГ-филиала';
+        } else if (object.filial == 'Ивановское ЛПУМГ') {
+          filial = 'Ивановского ЛПУМГ-филиала';
+        } else if (object.filial == 'Кировское ЛПУМГ') {
+          filial = 'Кировского ЛПУМГ-филиала';
+        } else if (object.filial == 'Моркинское ЛПУМГ') {
+          filial = 'Моркинского ЛПУМГ-филиала';
+        } else if (object.filial == 'Пензенское ЛПУМГ') {
+          filial = 'Пензенского ЛПУМГ-филиала';
+        } else if (object.filial == 'Пильнинское ЛПУМГ') {
+          filial = 'Пильнинского ЛПУМГ-филиала';
+        } else if (object.filial == 'Починковское ЛПУМГ') {
+          filial = 'Починковского ЛПУМГ-филиала';
+        } else if (object.filial == 'Приокское ЛПУМГ') {
+          filial = 'Приокского ЛПУМГ-филиала';
+        } else if (object.filial == 'Семеновское ЛПУМГ') {
+          filial = 'Семеновского ЛПУМГ-филиала';
+        } else if (object.filial == 'Сеченовское ЛПУМГ') {
+          filial = 'Сеченовского ЛПУМГ-филиала';
+        } else if (object.filial == 'Торбеевское ЛПУМГ') {
+          filial = 'Торбеевского ЛПУМГ-филиала';
+        } else if (object.filial == 'Чебоксарское ЛПУМГ') {
+          filial = 'Чебоксарского ЛПУМГ-филиала';
+        } else if (object.filial == 'ИТЦ ЛПУМГ') {
+          filial = 'ИТЦ-филиала';
+        } else if (object.filial == 'УАВР') {
+          filial = 'УАВР-филиала';
+        }
+        sheet.cell(CellIndex.indexByString("E5")).value = filial;
+        print(object.filial);
+        sheet.cell(CellIndex.indexByString("E4")).value = object.dolzhnpredskom;
+        print(object.dolzhnpredskom);
+        sheet.cell(CellIndex.indexByString("J7")).value = object.fiopredskom;
+        print(object.fiopredskom);
+
+        // Получаем путь к папке "Downloads" на внешнем хранилище
+        Directory externalStorageDirectory =
+            await getExternalStorageDirectory();
+        String downloadsFolderPath = '${externalStorageDirectory.path}';
+
+        // Получаем путь к сохраненному файлу
+        var newFile = '${object.title}.xlsx';
+        var file = File('$downloadsFolderPath/$newFile');
+        var excelBytes = excel.encode();
+        await file.writeAsBytes(excelBytes);
+        String filePath = '$downloadsFolderPath/$newFile';
+
+        // Открываем новый файл
+        await OpenFile.open(filePath);
+      }
+    } catch (e) {
+      print('Ошибка при открытии файла: $e');
+    }
   }
 
   void confirmDelete() {
@@ -2623,6 +4488,18 @@ class ObjectDetailIpState extends State<ObjectDetailIp> {
         ],
       ),
     );
+  }
+
+  void getLocation() async {
+    Position position = await Geolocator.getCurrentPosition(
+      desiredAccuracy: LocationAccuracy.high,
+    );
+
+    setState(() {
+      locationData = '${position.latitude} / ${position.longitude}';
+      locationController.text = locationData;
+      object.location = locationData;
+    });
   }
 
   void saveForm1() {
@@ -2709,6 +4586,20 @@ class ObjectDetailIpState extends State<ObjectDetailIp> {
     }
   }
 
+  void saveForm7() {
+    final form = _7formKey.currentState;
+    if (form.validate()) {
+      form.save();
+      object.todoDate = DateFormat.yMMMMd().format(DateTime.now());
+      if (object.id != null) {
+        helper.updateTodo(object);
+      } else {
+        helper.insertTodo(object);
+      }
+      Navigator.pop(context, true);
+    }
+  }
+
   void updateTitle() {
     setState(() {
       object.title == titleController.text;
@@ -2775,21 +4666,21 @@ class ObjectDetailIpState extends State<ObjectDetailIp> {
     });
   }
 
-  void updateCharmetdamage() {
+  void updateCharmetdamage1() {
     setState(() {
-      object.charmetdamage = charmetdamageController.text;
+      object.charmetdamage1 = charmetdamageController1.text;
     });
   }
 
-  void updateLocmetdamage() {
+  void updateLocmetdamage1() {
     setState(() {
-      object.locmetdamage = locmetdamageController.text;
+      object.locmetdamage1 = locmetdamageController1.text;
     });
   }
 
-  void updateSizemetdamage() {
+  void updateSizemetdamage1() {
     setState(() {
-      object.sizemetdamage = sizemetdamageController.text;
+      object.sizemetdamage1 = sizemetdamageController1.text;
     });
   }
 
@@ -2829,21 +4720,21 @@ class ObjectDetailIpState extends State<ObjectDetailIp> {
     });
   }
 
-  void updateCharinsuldamage() {
+  void updateCharinsuldamage1() {
     setState(() {
-      object.charinsuldamage = charinsuldamageController.text;
+      object.charinsuldamage1 = charinsuldamageController1.text;
     });
   }
 
-  void updateLocinsuldamage() {
+  void updateLocinsuldamage1() {
     setState(() {
-      object.locinsuldamage = locinsuldamageController.text;
+      object.locinsuldamage1 = locinsuldamageController1.text;
     });
   }
 
-  void updateSizeinsuldamage() {
+  void updateSizeinsuldamage1() {
     setState(() {
-      object.sizeinsuldamage = sizeinsuldamageController.text;
+      object.sizeinsuldamage1 = sizeinsuldamageController1.text;
     });
   }
 
@@ -2898,6 +4789,12 @@ class ObjectDetailIpState extends State<ObjectDetailIp> {
   void updateSetvik() {
     setState(() {
       object.setvik = setvikController.text;
+    });
+  }
+
+  void updatedateObsl() {
+    setState(() {
+      object.dateObsl = dateObslController.text;
     });
   }
 }

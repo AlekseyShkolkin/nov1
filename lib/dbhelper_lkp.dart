@@ -7,8 +7,8 @@ import './object_detail_lkp.dart';
 
 import 'model_lkp.dart';
 
-class DbHelper {
-  static final DbHelper _dbHelper = DbHelper._internal();
+class DbHelperLkp {
+  static final DbHelperLkp _dbHelperLkp = DbHelperLkp._internal();
   String tblTodo = 'todo';
   String colId = 'id';
   String coldate = 'date';
@@ -62,10 +62,28 @@ class DbHelper {
   String colphotoDust = 'photoDust';
   String colphotoRoughness = 'photoRoughness';
 
-  DbHelper._internal();
+  String colfilial = 'filial';
+  String coldolzhnpredskom = 'dolzhnpredskom';
+  String colfiopredskom = 'fiopredskom';
+  String coldolzhnproizvrab = 'dolzhnproizvrab';
+  String colfioproizvrab = 'fioproizvrab';
+  String coldolzhnnachuchastka = 'dolzhnnachuchastka';
+  String colfionachuchastka = 'fionachuchastka';
+  String coldolzhnpredstzakazch = 'dolzhnpredstzakazch';
+  String colfiopredstzakazch = 'fiopredstzakazch';
+  String coldolzhnpredstzakazchSK = 'dolzhnpredstzakazchSK';
+  String colfiopredstzakazchSK = 'fiopredstzakazchSK';
+  String coldolzhnpredststroitSK = 'dolzhnpredststroitSK';
+  String colfiopredststroitSK = 'fiopredststroitSK';
+  String coldolzhnpredststroit = 'dolzhnpredststroit';
+  String colfiopredststroit = 'fiopredststroit';
+  String coldolzhndruglic = 'dolzhndruglic';
+  String colfiodruglic = 'fiodruglic';
 
-  factory DbHelper() {
-    return _dbHelper;
+  DbHelperLkp._internal();
+
+  factory DbHelperLkp() {
+    return _dbHelperLkp;
   }
 
   static Database _db;
@@ -86,7 +104,7 @@ class DbHelper {
   Future<void> _createDb(Database db, int newVersion) async {
     await db.execute(
         'CREATE TABLE $tblTodo($colId INTEGER PRIMARY KEY, $colTitle TEXT, ' +
-            '$coldate TEXT, $colphotoRoughness TEXT,$colphotoDust TEXT,$colphotoISO TEXT, $colphoto TEXT,$colsquareclear TEXT,$colconstroldcoat TEXT,$colinst TEXT,$coliso8501 TEXT,$colprepmethod TEXT,$coldegrofdegr TEXT,$coldegrofoxid TEXT,$coldegrofdedust1 TEXT,$coldegrofdedust2 TEXT,$colroughness TEXT,$colsurfsalts TEXT,$coltempair TEXT,$coltempsurf TEXT,$colrelathumid TEXT,$coldewpoint TEXT,$coldifftemp TEXT,$coltechcondmat TEXT,$colnumdoflay TEXT,$colsquarenew TEXT,$colthickofwellay TEXT,$colthickofdrylay TEXT,$colcontin TEXT,$coltimedry TEXT,$coldegrdry TEXT,$coldefdur TEXT,$colapperance TEXT,$colbgcolor TEXT,$coladhesion  TEXT,$coldielcont  TEXT,$colthickinsulmeter TEXT,$coladhesmeter TEXT,$colcontinmeter TEXT,$colsetvik TEXT,$colchangecolor TEXT,$colchangegloss TEXT,$colmudretant TEXT,$colchalking TEXT,$coldescription TEXT)');
+            '$coldate TEXT,$colfiodruglic TEXT,$coldolzhndruglic TEXT,$colfiopredststroit TEXT,$coldolzhnpredststroit TEXT,$colfiopredststroitSK TEXT,$coldolzhnpredststroitSK TEXT,$colfiopredstzakazch TEXT,$colfiopredstzakazchSK TEXT,$coldolzhnpredstzakazchSK TEXT,$coldolzhnpredstzakazch TEXT,$colfionachuchastka TEXT,$coldolzhnnachuchastka TEXT,$colfioproizvrab TEXT,$coldolzhnproizvrab TEXT,$colfiopredskom TEXT,$coldolzhnpredskom TEXT,$colfilial TEXT,$colphotoRoughness TEXT,$colphotoDust TEXT,$colphotoISO TEXT, $colphoto TEXT,$colsquareclear TEXT,$colconstroldcoat TEXT,$colinst TEXT,$coliso8501 TEXT,$colprepmethod TEXT,$coldegrofdegr TEXT,$coldegrofoxid TEXT,$coldegrofdedust1 TEXT,$coldegrofdedust2 TEXT,$colroughness TEXT,$colsurfsalts TEXT,$coltempair TEXT,$coltempsurf TEXT,$colrelathumid TEXT,$coldewpoint TEXT,$coldifftemp TEXT,$coltechcondmat TEXT,$colnumdoflay TEXT,$colsquarenew TEXT,$colthickofwellay TEXT,$colthickofdrylay TEXT,$colcontin TEXT,$coltimedry TEXT,$coldegrdry TEXT,$coldefdur TEXT,$colapperance TEXT,$colbgcolor TEXT,$coladhesion  TEXT,$coldielcont  TEXT,$colthickinsulmeter TEXT,$coladhesmeter TEXT,$colcontinmeter TEXT,$colsetvik TEXT,$colchangecolor TEXT,$colchangegloss TEXT,$colmudretant TEXT,$colchalking TEXT,$coldescription TEXT)');
   }
 
   Future<int> insertTodo(Todo todo) async {
@@ -107,6 +125,14 @@ class DbHelper {
     final int result = Sqflite.firstIntValue(
         await db.rawQuery('SELECT COUNT (*) FROM $tblTodo'));
     return result;
+  }
+
+  Future<int> getTodoCountLkp() async {
+    final Database db = await this.db;
+    final List<Map<String, dynamic>> result =
+        await db.rawQuery('SELECT COUNT(*) FROM $tblTodo');
+    final int countLkp = Sqflite.firstIntValue(result);
+    return countLkp;
   }
 
   Future<int> updateTodo(Todo todo) async {

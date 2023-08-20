@@ -14,7 +14,6 @@ class LoadProg extends StatefulWidget {
 class _LoadProgState extends State<LoadProg> {
   @override
   void initState() {
-    // TODO: implement initState
     super.initState();
     startTime();
   }

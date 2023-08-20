@@ -6,7 +6,7 @@ import 'package:sqflite/sqflite.dart';
 import './model_lkp.dart';
 import './dbhelper_lkp.dart';
 
-DbHelper helper = DbHelper();
+DbHelperLkp helper = DbHelperLkp();
 
 class ObjectList extends StatefulWidget {
   @override
@@ -14,7 +14,7 @@ class ObjectList extends StatefulWidget {
 }
 
 class _ObjectListState extends State<ObjectList> {
-  DbHelper helper = DbHelper();
+  DbHelperLkp helper = DbHelperLkp();
   List<Todo> todos;
 
   @override

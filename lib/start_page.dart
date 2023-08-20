@@ -1,14 +1,47 @@
 import 'package:flutter/material.dart';
 import 'package:badges/badges.dart';
-import 'package:provider/provider.dart';
-import 'package:qualcontr/object_list_vhc.dart';
-import 'package:qualcontr/teor.dart';
+import './dbhelper_vh_contr.dart';
+import './object_list_vhc.dart';
+import './teor.dart';
 import './object_list_ip.dart';
-import 'objects_list_lkp.dart';
+import './objects_list_lkp.dart';
+import './dbhelper_ip.dart';
+import './dbhelper_lkp.dart';
 
-class StartPage extends StatelessWidget {
-  // final int todosLengthIp;
-  // final int todosLengthLKP;
+class StartPage extends StatefulWidget {
+  final int countIp;
+  final int countLkp;
+  // final int countVhk;
+
+  StartPage({
+    @required this.countIp,
+    this.countLkp,
+    // this.countVhk,
+  });
+
+  @override
+  State<StartPage> createState() => _StartPageState();
+}
+
+class _StartPageState extends State<StartPage> {
+  int countIp;
+  int countLkp;
+  // int countVhk;
+
+  @override
+  void didChangeDependencies() {
+    super.didChangeDependencies();
+    countIp = widget.countIp;
+    countLkp = widget.countLkp;
+    // countVhk = widget.countVhk;
+    DbHelperLkp dbHelperLkp = DbHelperLkp();
+    DbHelperIp dbHelperIp = DbHelperIp();
+    // DbHelperVhk dbHelperVhk = DbHelperVhk();
+    dbHelperIp.getTodoCountIp();
+    dbHelperLkp.getTodoCountLkp();
+    // dbHelperVhk.getTodoCountVhk();
+    setState(() {});
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -29,8 +62,7 @@ class StartPage extends StatelessWidget {
   }
 
   ListView start_page_list(context) {
-    // print('ДлинаИП: $todosLengthIp');
-    // print('ДлинаЛКП: $todosLengthLKP');
+    print('Количество записей: ${widget.countIp}');
     return ListView(
       children: [
         Divider(),
@@ -51,9 +83,9 @@ class StartPage extends StatelessWidget {
             ),
           ),
           trailing: Badge(
-            // badgeContent: todosLengthIp != null
-            //     ? Text(todosLengthIp.toString())
-            //     : Text('нет'),
+            badgeContent: widget.countIp == null || widget.countIp == 0
+                ? Text('нет')
+                : Text(widget.countIp.toString()),
             child: Icon(
               Icons.all_out_rounded,
               size: 52,
@@ -79,9 +111,9 @@ class StartPage extends StatelessWidget {
             ),
           ),
           trailing: Badge(
-            // badgeContent: todosLengthLKP != null
-            //     ? Text(todosLengthLKP.toString())
-            //     : Text('нет'),
+            badgeContent: widget.countLkp == null || widget.countLkp == 0
+                ? Text('нет')
+                : Text(widget.countLkp.toString()),
             child: Icon(
               Icons.imagesearch_roller_rounded,
               size: 52,
@@ -107,9 +139,9 @@ class StartPage extends StatelessWidget {
             ),
           ),
           trailing: Badge(
-            // badgeContent: todosLengthLKP != null
-            //     ? Text(todosLengthLKP.toString())
-            //     : Text('нет'),
+            //  badgeContent: widget.countVhk == null || widget.countVhk == 0
+            //         ? Text('нет')
+            //         : Text(widget.countVhk.toString()),
             child: Icon(
               Icons.playlist_add_check,
               size: 52,

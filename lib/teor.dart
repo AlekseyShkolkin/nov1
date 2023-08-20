@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import 'teor/ob_pol.dart';
+
 class Teor extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
@@ -16,6 +18,29 @@ class Teor extends StatelessWidget {
       ),
       body: ListView(
         children: [
+          Divider(),
+          ListTile(
+            onTap: () {
+              Navigator.of(context).push(
+                MaterialPageRoute(
+                  builder: (context) => ObshiePolozhenie(),
+                ),
+              );
+            },
+            title: Text(
+              'Общие положения',
+              style: TextStyle(
+                fontSize: 18,
+                fontWeight: FontWeight.w400,
+                color: Theme.of(context).primaryColor,
+              ),
+            ),
+            trailing: Icon(
+              Icons.menu_book_outlined,
+              size: 52,
+              color: Theme.of(context).accentColor,
+            ),
+          ),
           Divider(),
           ListTile(
             onTap: () {
