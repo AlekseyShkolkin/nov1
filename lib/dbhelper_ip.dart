@@ -57,6 +57,12 @@ class DbHelperIp {
   String collocinsuldamage3 = 'locinsuldamage3';
   String colsizeinsuldamage3 = 'sizeinsuldamage3';
 
+  String coltempair = 'tempair';
+  String coltempsurf = 'tempsurf';
+  String colrelathumid = 'relathumid';
+  String coldewpoint = 'dewpoint';
+  String coldifftemp = 'difftemp';
+
   String coltypeinsulrest = 'typeinsulrest';
   String colinsuladhesrest = 'insuladhesrest';
   String colthickinsulrest = 'thickinsulrest';
@@ -91,6 +97,8 @@ class DbHelperIp {
   String colphotorest = 'photorest';
   String colphotodesc = 'photodesc';
   String collocation = 'location';
+  String colpotencial = 'potencial';
+  String colsoprgrunt = 'soprgrunt';
 
   String colfilial = 'filial';
   String coldolzhnpredskom = 'dolzhnpredskom';
@@ -134,7 +142,7 @@ class DbHelperIp {
   Future<void> _createDb(Database db, int newVersion) async {
     await db.execute(
         'CREATE TABLE $tblTodo($colId INTEGER PRIMARY KEY, $colTitle TEXT, ' +
-            '$colDescription TEXT,$collocation TEXT,$colfiodruglic TEXT,$coldolzhndruglic TEXT,$colfiopredststroit TEXT,$coldolzhnpredststroit TEXT,$colfiopredststroitSK TEXT,$coldolzhnpredststroitSK TEXT,$colfiopredstzakazch TEXT,$colfiopredstzakazchSK TEXT,$coldolzhnpredstzakazchSK TEXT,$coldolzhnpredstzakazch TEXT,$colfionachuchastka TEXT,$coldolzhnnachuchastka TEXT,$colfioproizvrab TEXT,$coldolzhnproizvrab TEXT,$colfiopredskom TEXT,$coldolzhnpredskom TEXT,$colfilial TEXT, $colphotodesc TEXT, $colphotorest TEXT, $colphotoinsuldef10 TEXT,$colphotoinsuldef9 TEXT,$colphotoinsuldef8 TEXT,$colphotoinsuldef7 TEXT,$colphotoinsuldef6 TEXT,$colphotoinsuldef5 TEXT,$colphotoinsuldef4 TEXT,$colphotoinsuldef3 TEXT,$colphotoinsuldef2 TEXT,$colphotoinsuldef1 TEXT, $colphotometdef10 TEXT,$colphotometdef9 TEXT,$colphotometdef8 TEXT,$colphotometdef7 TEXT,$colphotometdef6 TEXT,$colphotometdef5 TEXT,$colphotometdef4 TEXT,$colphotometdef3 TEXT,$colphotometdef2 TEXT,$colphotometdef1 TEXT, $colphoto TEXT,$colOsnovanie TEXT,$colPiketkm TEXT,$colCoordinate TEXT,$colLengthpit TEXT,$colDepthpit TEXT,$colDate TEXT,$colDateObsl TEXT,$coldiameter TEXT,$colthickpipe TEXT,$colgradesteel TEXT,$colmetalldamage TEXT,$colcharmetdamage1 TEXT,$collocmetdamage1 TEXT,$colsizemetdamage1 TEXT,$colcharmetdamage2 TEXT,$collocmetdamage2 TEXT,$colsizemetdamage2 TEXT,$colcharmetdamage3 TEXT,$collocmetdamage3 TEXT,$colsizemetdamage3 TEXT,$coltypeinsul TEXT,$colinsuladhes TEXT,$colinsulcharadhes TEXT,$colinsulcondit TEXT,$colthickinsul TEXT,$colinsuldamage TEXT,$colcharinsuldamage1 TEXT,$collocinsuldamage1 TEXT,$colsizeinsuldamage1 TEXT,$colcharinsuldamage2 TEXT,$collocinsuldamage2 TEXT,$colsizeinsuldamage2 TEXT,$colcharinsuldamage3 TEXT,$collocinsuldamage3 TEXT,$colsizeinsuldamage3 TEXT,$coltypeinsulrest TEXT,$colinsuladhesrest TEXT,$colthickinsulrest TEXT,$colcontininsulrest TEXT,$coltickinsulmeter TEXT,$coltickmetallmeter TEXT,$coladhesmeter TEXT,$colcontinmeter TEXT,$colsetvik TEXT)');
+            '$colDescription TEXT,$coltempair TEXT,$coltempsurf TEXT,$colrelathumid TEXT,$coldewpoint TEXT,$coldifftemp TEXT,$colsoprgrunt TEXT,$colpotencial TEXT,$collocation TEXT,$colfiodruglic TEXT,$coldolzhndruglic TEXT,$colfiopredststroit TEXT,$coldolzhnpredststroit TEXT,$colfiopredststroitSK TEXT,$coldolzhnpredststroitSK TEXT,$colfiopredstzakazch TEXT,$colfiopredstzakazchSK TEXT,$coldolzhnpredstzakazchSK TEXT,$coldolzhnpredstzakazch TEXT,$colfionachuchastka TEXT,$coldolzhnnachuchastka TEXT,$colfioproizvrab TEXT,$coldolzhnproizvrab TEXT,$colfiopredskom TEXT,$coldolzhnpredskom TEXT,$colfilial TEXT, $colphotodesc TEXT, $colphotorest TEXT, $colphotoinsuldef10 TEXT,$colphotoinsuldef9 TEXT,$colphotoinsuldef8 TEXT,$colphotoinsuldef7 TEXT,$colphotoinsuldef6 TEXT,$colphotoinsuldef5 TEXT,$colphotoinsuldef4 TEXT,$colphotoinsuldef3 TEXT,$colphotoinsuldef2 TEXT,$colphotoinsuldef1 TEXT, $colphotometdef10 TEXT,$colphotometdef9 TEXT,$colphotometdef8 TEXT,$colphotometdef7 TEXT,$colphotometdef6 TEXT,$colphotometdef5 TEXT,$colphotometdef4 TEXT,$colphotometdef3 TEXT,$colphotometdef2 TEXT,$colphotometdef1 TEXT, $colphoto TEXT,$colOsnovanie TEXT,$colPiketkm TEXT,$colCoordinate TEXT,$colLengthpit TEXT,$colDepthpit TEXT,$colDate TEXT,$colDateObsl TEXT,$coldiameter TEXT,$colthickpipe TEXT,$colgradesteel TEXT,$colmetalldamage TEXT,$colcharmetdamage1 TEXT,$collocmetdamage1 TEXT,$colsizemetdamage1 TEXT,$colcharmetdamage2 TEXT,$collocmetdamage2 TEXT,$colsizemetdamage2 TEXT,$colcharmetdamage3 TEXT,$collocmetdamage3 TEXT,$colsizemetdamage3 TEXT,$coltypeinsul TEXT,$colinsuladhes TEXT,$colinsulcharadhes TEXT,$colinsulcondit TEXT,$colthickinsul TEXT,$colinsuldamage TEXT,$colcharinsuldamage1 TEXT,$collocinsuldamage1 TEXT,$colsizeinsuldamage1 TEXT,$colcharinsuldamage2 TEXT,$collocinsuldamage2 TEXT,$colsizeinsuldamage2 TEXT,$colcharinsuldamage3 TEXT,$collocinsuldamage3 TEXT,$colsizeinsuldamage3 TEXT,$coltypeinsulrest TEXT,$colinsuladhesrest TEXT,$colthickinsulrest TEXT,$colcontininsulrest TEXT,$coltickinsulmeter TEXT,$coltickmetallmeter TEXT,$coladhesmeter TEXT,$colcontinmeter TEXT,$colsetvik TEXT)');
   }
 
   Future<int> insertTodo(Todo todo) async {

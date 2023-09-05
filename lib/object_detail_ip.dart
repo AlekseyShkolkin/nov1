@@ -1,4 +1,5 @@
 import 'dart:io';
+import 'dart:math';
 
 import 'package:excel/excel.dart';
 import 'package:flutter/material.dart';
@@ -138,6 +139,11 @@ class ObjectDetailIpState extends State<ObjectDetailIp> {
     'Коррозионное обследование',
     'Данные электрометрии',
     'Обследование тройников',
+    'Оценка коррозионного соотояние',
+    'Плановые работы',
+    'Огневые работы',
+    'Замена тройника',
+    'Замена крана',
   ];
   final List<String> _diameter = [
     '59',
@@ -154,7 +160,8 @@ class ObjectDetailIpState extends State<ObjectDetailIp> {
     '820',
     '1020',
     '1220',
-    '1420'
+    '1420',
+    'нет данных'
   ];
   final List<String> _gradesteel = [
     'Ст20',
@@ -167,57 +174,98 @@ class ObjectDetailIpState extends State<ObjectDetailIp> {
     'К52',
     '13ХФА',
     '09ГСФ',
-    '17Г1С'
+    '17Г1С',
+    'нет данных'
   ];
-  final List<String> _metalldamage = [
-    'Да',
-    'Нет',
-  ];
-  final List<String> _insuldamage = [
-    'Да',
-    'Нет',
-  ];
+  final List<String> _metalldamage = ['Да', 'Нет', 'нет данных'];
+  final List<String> _insuldamage = ['Да', 'Нет', 'нет данных'];
   final List<String> _charmetdamage1 = [
     'Сплошная коррозия',
     'Местная коррозия',
     'КРН',
     'Механическое повреждение',
+    'нет данных'
   ];
   final List<String> _charmetdamage2 = [
     'Сплошная коррозия',
     'Местная коррозия',
     'КРН',
     'Механическое повреждение',
+    'нет данных'
   ];
   final List<String> _charmetdamage3 = [
     'Сплошная коррозия',
     'Местная коррозия',
     'КРН',
     'Механическое повреждение',
+    'нет данных'
   ];
   final List<String> _charinsuldamage1 = [
-    'Отслоение',
-    'Сдир',
-    'Царапина',
-    'Пропуск',
+    'Отсутствуют',
+    'Включения',
     'Вмятина',
+    'Гофры',
+    'Дефект ремонта',
+    'Задир',
+    'Несплошности',
+    'Отрыв',
+    'Отслоение',
+    'Охрупчивание',
+    'Порез',
+    'Прокол',
+    'Пропуск',
+    'Расслоения',
+    'Сдир',
+    'Складки',
+    'Трещины',
+    'Утонение',
+    'Царапина',
   ];
   final List<String> _charinsuldamage2 = [
-    'Отслоение',
-    'Сдир',
-    'Царапина',
-    'Пропуск',
+    'Отсутствуют',
+    'Включения',
     'Вмятина',
+    'Гофры',
+    'Дефект ремонта',
+    'Задир',
+    'Несплошности',
+    'Отрыв',
+    'Отслоение',
+    'Охрупчивание',
+    'Порез',
+    'Прокол',
+    'Пропуск',
+    'Расслоения',
+    'Сдир',
+    'Складки',
+    'Трещины',
+    'Утонение',
+    'Царапина',
   ];
   final List<String> _charinsuldamage3 = [
-    'Отслоение',
-    'Сдир',
-    'Царапина',
-    'Пропуск',
+    'Отсутствуют',
+    'Включения',
     'Вмятина',
+    'Гофры',
+    'Дефект ремонта',
+    'Задир',
+    'Несплошности',
+    'Отрыв',
+    'Отслоение',
+    'Охрупчивание',
+    'Порез',
+    'Прокол',
+    'Пропуск',
+    'Расслоения',
+    'Сдир',
+    'Складки',
+    'Трещины',
+    'Утонение',
+    'Царапина',
   ];
 
   final List<String> _typeinsul = [
+    'Заводское',
     'РАМ',
     'Мастичное',
     'Полиэтиленовое',
@@ -247,6 +295,8 @@ class ObjectDetailIpState extends State<ObjectDetailIp> {
   TextEditingController coordinateController = TextEditingController();
   TextEditingController lengthpitController = TextEditingController();
   TextEditingController depthpitController = TextEditingController();
+  TextEditingController potencialController = TextEditingController();
+  TextEditingController soprgruntController = TextEditingController();
 
   TextEditingController diameterController = TextEditingController();
   TextEditingController thickpipeController = TextEditingController();
@@ -285,6 +335,12 @@ class ObjectDetailIpState extends State<ObjectDetailIp> {
   TextEditingController locinsuldamageController3 = TextEditingController();
   TextEditingController sizeinsuldamageController3 = TextEditingController();
 
+  TextEditingController tempairController = TextEditingController();
+  TextEditingController tempsurfController = TextEditingController();
+  TextEditingController relathumidController = TextEditingController();
+  TextEditingController dewpointController = TextEditingController();
+  TextEditingController difftempController = TextEditingController();
+
   TextEditingController typeinsulrestController = TextEditingController();
   TextEditingController insuladhesrestController = TextEditingController();
   TextEditingController thickinsulrestController = TextEditingController();
@@ -314,6 +370,7 @@ class ObjectDetailIpState extends State<ObjectDetailIp> {
   final GlobalKey<FormState> _5formKey = GlobalKey<FormState>();
   final GlobalKey<FormState> _6formKey = GlobalKey<FormState>();
   final GlobalKey<FormState> _7formKey = GlobalKey<FormState>();
+  final GlobalKey<FormState> _8formKey = GlobalKey<FormState>();
 
   @override
   void initState() {
@@ -330,6 +387,8 @@ class ObjectDetailIpState extends State<ObjectDetailIp> {
     coordinateController.text = object.coordinate ?? '';
     lengthpitController.text = object.lengthpit ?? '';
     depthpitController.text = object.depthpit ?? '';
+    potencialController.text = object.potencial ?? '';
+    soprgruntController.text = object.soprgrunt ?? '';
 
     diameterController.text = object.diameter ?? '';
     thickpipeController.text = object.thickpipe ?? '';
@@ -369,6 +428,12 @@ class ObjectDetailIpState extends State<ObjectDetailIp> {
     locinsuldamageController3.text = object.locinsuldamage3 ?? '';
     sizeinsuldamageController3.text = object.sizeinsuldamage3 ?? '';
 
+    tempairController.text = object.tempair ?? '';
+    tempsurfController.text = object.tempsurf ?? '';
+    relathumidController.text = object.relathumid ?? '';
+    dewpointController.text = object.dewpoint ?? '';
+    difftempController.text = object.difftemp ?? '';
+
     typeinsulrestController.text = object.typeinsulrest ?? '';
     insuladhesrestController.text = object.insuladhesrest ?? '';
     thickinsulrestController.text = object.thickinsulrest ?? '';
@@ -399,7 +464,7 @@ class ObjectDetailIpState extends State<ObjectDetailIp> {
     );
 
     return DefaultTabController(
-      length: 7,
+      length: 8,
       child: Scaffold(
         resizeToAvoidBottomInset: true,
         backgroundColor: _cardColor,
@@ -447,6 +512,9 @@ class ObjectDetailIpState extends State<ObjectDetailIp> {
                           } else if (_7formKey.currentState != null) {
                             _7formKey.currentState.validate();
                             saveForm7();
+                          } else if (_8formKey.currentState != null) {
+                            _8formKey.currentState.validate();
+                            saveForm8();
                           }
                         },
                       ),
@@ -486,6 +554,9 @@ class ObjectDetailIpState extends State<ObjectDetailIp> {
                           } else if (_7formKey.currentState != null) {
                             _7formKey.currentState.validate();
                             saveForm7();
+                          } else if (_8formKey.currentState != null) {
+                            _8formKey.currentState.validate();
+                            saveForm8();
                           }
                         },
                       ),
@@ -525,9 +596,14 @@ class ObjectDetailIpState extends State<ObjectDetailIp> {
                   size: 32,
                   // color: Colors.white,
                 )),
-                Tab(
+                const Tab(
                     icon: Icon(
                   Icons.build_circle_sharp,
+                  size: 32,
+                )),
+                Tab(
+                    icon: Icon(
+                  Icons.align_vertical_bottom_rounded,
                   size: 32,
                   // color: Colors.white,
                 )),
@@ -839,6 +915,7 @@ class ObjectDetailIpState extends State<ObjectDetailIp> {
                             child: Icon(
                               Icons.location_on_outlined,
                               color: Colors.green,
+                              size: 32,
                             ),
                           ),
                           enabledBorder: OutlineInputBorder(
@@ -984,6 +1061,132 @@ class ObjectDetailIpState extends State<ObjectDetailIp> {
                           FilteringTextInputFormatter(RegExp(r'^\d+\,?\d{0,3}'),
                               allow: true)
                         ],
+                      ),
+                      SizedBox(height: 10),
+                      TextFormField(
+                        focusNode: focusNode50,
+                        onChanged: (String value) {
+                          setState(() {});
+                          focusNode50.requestFocus();
+                        },
+                        maxLength: 4,
+                        onSaved: (value) {
+                          object.potencial = value;
+                        },
+                        controller: potencialController,
+                        style: textStyle,
+                        decoration: InputDecoration(
+                          focusColor: Theme.of(context).primaryColor,
+                          labelStyle: TextStyle(
+                            fontSize: 22,
+                            fontWeight: FontWeight.w300,
+                            color: Theme.of(context).primaryColor,
+                          ),
+                          hintStyle: TextStyle(
+                            fontSize: 16,
+                            fontWeight: FontWeight.w300,
+                            color: Theme.of(context).primaryColor,
+                          ),
+                          labelText: 'Потенциал "труба-земля"',
+                          hintText: 'Введите значение',
+                          helperText: 'В',
+                          prefixIcon: Icon(
+                            Icons.bolt_rounded,
+                            color: focusNode50.hasFocus ||
+                                    potencialController.text.isNotEmpty
+                                ? Theme.of(context).primaryColor
+                                : Colors.grey,
+                            size: 32,
+                          ),
+                          suffixIcon: GestureDetector(
+                            onTap: () {
+                              potencialController.clear();
+                            },
+                            child: Icon(
+                              Icons.delete_outline,
+                              color: Color.fromRGBO(187, 30, 16, 1.0),
+                            ),
+                          ),
+                          enabledBorder: OutlineInputBorder(
+                            borderRadius: BorderRadius.all(Radius.circular(10)),
+                            borderSide:
+                                BorderSide(color: Colors.grey, width: 2),
+                          ),
+                          focusedBorder: OutlineInputBorder(
+                            borderRadius: BorderRadius.all(Radius.circular(20)),
+                            borderSide: BorderSide(
+                                color: Theme.of(context).primaryColor,
+                                width: 2),
+                          ),
+                        ),
+                        keyboardType: TextInputType.number,
+                        // inputFormatters: [
+                        //   FilteringTextInputFormatter(RegExp(r'^\d+\,?\d{0,3}'),
+                        //       allow: true)
+                        // ],
+                      ),
+                      SizedBox(height: 10),
+                      TextFormField(
+                        focusNode: focusNode51,
+                        onChanged: (String value) {
+                          setState(() {});
+                          focusNode51.requestFocus();
+                        },
+                        maxLength: 4,
+                        onSaved: (value) {
+                          object.soprgrunt = value;
+                        },
+                        controller: soprgruntController,
+                        style: textStyle,
+                        decoration: InputDecoration(
+                          focusColor: Theme.of(context).primaryColor,
+                          labelStyle: TextStyle(
+                            fontSize: 22,
+                            fontWeight: FontWeight.w300,
+                            color: Theme.of(context).primaryColor,
+                          ),
+                          hintStyle: TextStyle(
+                            fontSize: 16,
+                            fontWeight: FontWeight.w300,
+                            color: Theme.of(context).primaryColor,
+                          ),
+                          labelText: 'Удельное сопротивление грунта',
+                          hintText: 'Введите значение',
+                          helperText: 'Ом*м',
+                          prefixIcon: Icon(
+                            Icons.bolt_rounded,
+                            color: focusNode51.hasFocus ||
+                                    soprgruntController.text.isNotEmpty
+                                ? Theme.of(context).primaryColor
+                                : Colors.grey,
+                            size: 32,
+                          ),
+                          suffixIcon: GestureDetector(
+                            onTap: () {
+                              soprgruntController.clear();
+                            },
+                            child: Icon(
+                              Icons.delete_outline,
+                              color: Color.fromRGBO(187, 30, 16, 1.0),
+                            ),
+                          ),
+                          enabledBorder: OutlineInputBorder(
+                            borderRadius: BorderRadius.all(Radius.circular(10)),
+                            borderSide:
+                                BorderSide(color: Colors.grey, width: 2),
+                          ),
+                          focusedBorder: OutlineInputBorder(
+                            borderRadius: BorderRadius.all(Radius.circular(20)),
+                            borderSide: BorderSide(
+                                color: Theme.of(context).primaryColor,
+                                width: 2),
+                          ),
+                        ),
+                        keyboardType: TextInputType.number,
+                        // inputFormatters: [
+                        //   FilteringTextInputFormatter(RegExp(r'^\d+\,?\d{0,3}'),
+                        //       allow: true)
+                        // ],
                       ),
                       SizedBox(height: 10),
                       ElevatedButton(
@@ -1191,7 +1394,6 @@ class ObjectDetailIpState extends State<ObjectDetailIp> {
                         onChanged: (String value) {
                           setState(() {});
                           focusNode9.requestFocus();
-
                           object.gradesteel = value;
                         },
                       ),
@@ -3320,6 +3522,323 @@ class ObjectDetailIpState extends State<ObjectDetailIp> {
               child: Padding(
                 padding: const EdgeInsets.all(8.0),
                 child: Form(
+                  key: _2formKey,
+                  child: ListView(
+                    children: <Widget>[
+                      const SizedBox(height: 20),
+                      Container(
+                          alignment: Alignment.center,
+                          child: Text(
+                            'ПАРАМЕТРЫ ОКРАШИВАЕМОЙ СРЕДЫ',
+                            style: TextStyle(
+                                fontSize: 24,
+                                color: Theme.of(context).primaryColor,
+                                fontWeight: FontWeight.w300),
+                          )),
+                      const SizedBox(height: 20),
+                      TextFormField(
+                        focusNode: focusNode10,
+                        onChanged: (String value) {
+                          setState(() {});
+                          focusNode10.requestFocus();
+                        },
+                        maxLength: 3,
+                        onSaved: (value) {
+                          object.tempair = value;
+                        },
+                        controller: tempairController,
+                        style: textStyle,
+                        decoration: InputDecoration(
+                          labelText: 'Температура воздуха',
+                          hintText: 'Введите температуру окружающего воздуха',
+                          helperText: 'С°',
+                          prefixIcon: Icon(
+                            Icons.account_balance_outlined,
+                            color: focusNode10.hasFocus ||
+                                    tempairController.text.isNotEmpty
+                                ? Theme.of(context).primaryColor
+                                : Colors.grey,
+                            size: 32,
+                          ),
+                          suffixIcon: GestureDetector(
+                            onTap: () {
+                              tempairController.clear();
+                            },
+                            child: const Icon(
+                              Icons.delete_outline,
+                              color: Colors.red,
+                            ),
+                          ),
+                          enabledBorder: const OutlineInputBorder(
+                            borderRadius: BorderRadius.all(Radius.circular(10)),
+                            borderSide:
+                                BorderSide(color: Colors.grey, width: 2),
+                          ),
+                          focusedBorder: OutlineInputBorder(
+                            borderRadius:
+                                const BorderRadius.all(Radius.circular(20)),
+                            borderSide: BorderSide(
+                                color: Theme.of(context).primaryColor,
+                                width: 2),
+                          ),
+                          labelStyle: TextStyle(
+                            fontSize: 22,
+                            fontWeight: FontWeight.w300,
+                            color: Theme.of(context).primaryColor,
+                          ),
+                        ),
+                        keyboardType: TextInputType.number,
+                      ),
+                      const SizedBox(height: 10),
+                      TextFormField(
+                        focusNode: focusNode11,
+                        onChanged: (String value) {
+                          setState(() {});
+                          focusNode11.requestFocus();
+                        },
+                        maxLength: 3,
+                        onSaved: (value) {
+                          object.tempsurf = value;
+                        },
+                        controller: tempsurfController,
+                        style: textStyle,
+                        decoration: InputDecoration(
+                          labelText: 'Температура поверхности',
+                          hintText:
+                              'Введите температуру окрашиваемой поверхности',
+                          helperText: 'С°',
+                          prefixIcon: Icon(
+                            Icons.account_balance_outlined,
+                            color: focusNode11.hasFocus ||
+                                    tempsurfController.text.isNotEmpty
+                                ? Theme.of(context).primaryColor
+                                : Colors.grey,
+                            size: 32,
+                          ),
+                          suffixIcon: GestureDetector(
+                            onTap: () {
+                              tempsurfController.clear();
+                            },
+                            child: const Icon(
+                              Icons.delete_outline,
+                              color: Colors.red,
+                            ),
+                          ),
+                          enabledBorder: const OutlineInputBorder(
+                            borderRadius: BorderRadius.all(Radius.circular(10)),
+                            borderSide:
+                                BorderSide(color: Colors.grey, width: 2),
+                          ),
+                          focusedBorder: OutlineInputBorder(
+                            borderRadius:
+                                const BorderRadius.all(Radius.circular(20)),
+                            borderSide: BorderSide(
+                                color: Theme.of(context).primaryColor,
+                                width: 2),
+                          ),
+                          labelStyle: TextStyle(
+                            fontSize: 22,
+                            fontWeight: FontWeight.w300,
+                            color: Theme.of(context).primaryColor,
+                          ),
+                        ),
+                        keyboardType: TextInputType.number,
+                      ),
+                      const SizedBox(height: 10),
+                      TextFormField(
+                        focusNode: focusNode12,
+                        onChanged: (String value) {
+                          setState(() {});
+                          focusNode12.requestFocus();
+                        },
+                        maxLength: 2,
+                        onSaved: (value) {
+                          object.relathumid = value;
+                        },
+                        controller: relathumidController,
+                        style: textStyle,
+                        decoration: InputDecoration(
+                          labelText: 'Относительная влажность',
+                          hintText: 'Введите относительную влажность воздуха',
+                          helperText: '%',
+                          prefixIcon: Icon(
+                            Icons.account_balance_outlined,
+                            color: focusNode12.hasFocus ||
+                                    relathumidController.text.isNotEmpty
+                                ? Theme.of(context).primaryColor
+                                : Colors.grey,
+                            size: 32,
+                          ),
+                          suffixIcon: GestureDetector(
+                            onTap: () {
+                              relathumidController.clear();
+                            },
+                            child: const Icon(
+                              Icons.delete_outline,
+                              color: Colors.red,
+                            ),
+                          ),
+                          enabledBorder: const OutlineInputBorder(
+                            borderRadius: BorderRadius.all(Radius.circular(10)),
+                            borderSide:
+                                BorderSide(color: Colors.grey, width: 2),
+                          ),
+                          focusedBorder: OutlineInputBorder(
+                            borderRadius:
+                                const BorderRadius.all(Radius.circular(20)),
+                            borderSide: BorderSide(
+                                color: Theme.of(context).primaryColor,
+                                width: 2),
+                          ),
+                          labelStyle: TextStyle(
+                            fontSize: 22,
+                            fontWeight: FontWeight.w300,
+                            color: Theme.of(context).primaryColor,
+                          ),
+                        ),
+                        keyboardType: TextInputType.number,
+                      ),
+                      const SizedBox(height: 10),
+                      TextFormField(
+                        focusNode: focusNode13,
+                        onChanged: (String value) {
+                          setState(() {});
+                          focusNode13.requestFocus();
+                        },
+                        maxLength: 6,
+                        onSaved: (value) {
+                          object.dewpoint = value;
+                        },
+                        controller: dewpointController,
+                        style: textStyle,
+                        decoration: InputDecoration(
+                          labelText: 'Точка росы',
+                          hintText: 'Введите или расчитайте температуру->',
+                          helperText: 'С°',
+                          prefixIcon: Icon(
+                            Icons.account_balance_outlined,
+                            color: focusNode13.hasFocus ||
+                                    dewpointController.text.isNotEmpty
+                                ? Theme.of(context).primaryColor
+                                : Colors.grey,
+                            size: 32,
+                          ),
+                          suffixIcon: GestureDetector(
+                            onTap: () {
+                              calcdewpoint();
+                            },
+                            child: const Icon(
+                              Icons.calculate_sharp,
+                              color: Colors.green,
+                              size: 44,
+                            ),
+                          ),
+                          enabledBorder: const OutlineInputBorder(
+                            borderRadius: BorderRadius.all(Radius.circular(10)),
+                            borderSide:
+                                BorderSide(color: Colors.grey, width: 2),
+                          ),
+                          focusedBorder: OutlineInputBorder(
+                            borderRadius:
+                                const BorderRadius.all(Radius.circular(20)),
+                            borderSide: BorderSide(
+                                color: Theme.of(context).primaryColor,
+                                width: 2),
+                          ),
+                          labelStyle: TextStyle(
+                            fontSize: 22,
+                            fontWeight: FontWeight.w300,
+                            color: Theme.of(context).primaryColor,
+                          ),
+                        ),
+                        keyboardType: TextInputType.number,
+                      ),
+                      const SizedBox(height: 10),
+                      TextFormField(
+                        focusNode: focusNode14,
+                        onChanged: (String value) {
+                          setState(() {});
+                          focusNode14.requestFocus();
+                        },
+                        maxLength: 6,
+                        onSaved: (value) {
+                          object.difftemp = value;
+                        },
+                        controller: difftempController,
+                        style: textStyle,
+                        decoration: InputDecoration(
+                          labelText: 'Разница температур',
+                          hintText: 'Введите или расчитайте->',
+                          helperText: 'С°',
+                          prefixIcon: Icon(
+                            Icons.account_balance_outlined,
+                            color: focusNode14.hasFocus ||
+                                    difftempController.text.isNotEmpty
+                                ? Theme.of(context).primaryColor
+                                : Colors.grey,
+                            size: 32,
+                          ),
+                          suffixIcon: GestureDetector(
+                            onTap: () {
+                              double dewpoint =
+                                  double.parse(dewpointController.text);
+                              double temperature2 =
+                                  double.parse(tempsurfController.text);
+                              double difftemp = temperature2 - dewpoint;
+                              object.difftemp = difftemp.toStringAsFixed(2);
+                              difftempController.text = object.difftemp;
+                            },
+                            child: const Icon(
+                              Icons.calculate_sharp,
+                              color: Colors.green,
+                              size: 44,
+                            ),
+                          ),
+                          enabledBorder: const OutlineInputBorder(
+                            borderRadius: BorderRadius.all(Radius.circular(10)),
+                            borderSide:
+                                BorderSide(color: Colors.grey, width: 2),
+                          ),
+                          focusedBorder: OutlineInputBorder(
+                            borderRadius:
+                                const BorderRadius.all(Radius.circular(20)),
+                            borderSide: BorderSide(
+                                color: Theme.of(context).primaryColor,
+                                width: 2),
+                          ),
+                          labelStyle: TextStyle(
+                            fontSize: 22,
+                            fontWeight: FontWeight.w300,
+                            color: Theme.of(context).primaryColor,
+                          ),
+                        ),
+                        keyboardType: TextInputType.number,
+                      ),
+                      const SizedBox(height: 10),
+                      ElevatedButton(
+                        style: ElevatedButton.styleFrom(
+                            primary: Colors.amber,
+                            onPrimary: Colors.white,
+                            elevation: 2,
+                            padding: const EdgeInsets.all(13.0),
+                            shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(10.0))),
+                        onPressed: () => saveForm2(),
+                        child: Text(
+                          isEdit ? 'Редактировать' : 'Добавить',
+                          style: const TextStyle(
+                              fontSize: 18.0, fontWeight: FontWeight.w300),
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+            ),
+            Center(
+              child: Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Form(
                   key: _5formKey,
                   child: ListView(
                     children: <Widget>[
@@ -4463,6 +4982,30 @@ class ObjectDetailIpState extends State<ObjectDetailIp> {
     }
   }
 
+  void calcdewpoint() {
+    double a = 17.27;
+    double b = 237.7;
+    double temperature = double.parse(tempairController.text);
+    double relativeHumidity = 1.0;
+    if (relathumidController.text != null) {
+      double parsedValue = double.tryParse(relathumidController.text);
+      if (parsedValue != null) {
+        relativeHumidity = parsedValue;
+      }
+    }
+    double dewpoint = (b *
+            (((a * temperature) / (b + temperature)) +
+                log(relativeHumidity / 100))) /
+        (a -
+            (((a * temperature) / (b + temperature)) +
+                log(relativeHumidity / 100)));
+    object.dewpoint = dewpoint.toStringAsFixed(2);
+    dewpointController.text = object.dewpoint;
+    print('Темп: $temperature');
+    print('влажность: $relativeHumidity');
+    print('ТОЧКА РОСЫ: $dewpoint');
+  }
+
   void confirmDelete() {
     showDialog(
       context: context,
@@ -4588,6 +5131,20 @@ class ObjectDetailIpState extends State<ObjectDetailIp> {
 
   void saveForm7() {
     final form = _7formKey.currentState;
+    if (form.validate()) {
+      form.save();
+      object.todoDate = DateFormat.yMMMMd().format(DateTime.now());
+      if (object.id != null) {
+        helper.updateTodo(object);
+      } else {
+        helper.insertTodo(object);
+      }
+      Navigator.pop(context, true);
+    }
+  }
+
+  void saveForm8() {
+    final form = _8formKey.currentState;
     if (form.validate()) {
       form.save();
       object.todoDate = DateFormat.yMMMMd().format(DateTime.now());

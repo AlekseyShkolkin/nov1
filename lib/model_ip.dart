@@ -12,6 +12,8 @@ class Todo {
   String _lengthpit;
   String _depthpit;
   String _photo;
+  String _potencial;
+  String _soprgrunt;
 
   String _photometdef1;
   String _photometdef2;
@@ -74,6 +76,12 @@ class Todo {
   String _locinsuldamage3;
   String _sizeinsuldamage3;
 
+  String _tempair; //температура воздуха
+  String _tempsurf; //температура поверхности
+  String _relathumid; //относительная влажность
+  String _dewpoint; //точка росы
+  String _difftemp; //разница температур
+
   String _typeinsulrest;
   String _insuladhesrest;
   String _thickinsulrest;
@@ -111,6 +119,8 @@ class Todo {
   Todo(
     this._title,
     this._date, [
+    this._soprgrunt,
+    this._potencial,
     this._location,
     this._dateObsl,
     this._photometdef1,
@@ -170,6 +180,11 @@ class Todo {
     this._charinsuldamage3,
     this._locinsuldamage3,
     this._sizeinsuldamage3,
+    this._tempair,
+    this._tempsurf,
+    this._relathumid,
+    this._dewpoint,
+    this._difftemp,
     this._typeinsulrest,
     this._insuladhesrest,
     this._thickinsulrest,
@@ -202,6 +217,8 @@ class Todo {
     this._id,
     this._title,
     this._date, [
+    this._soprgrunt,
+    this._potencial,
     this._location,
     this._dateObsl,
     this._photometdef1,
@@ -261,6 +278,11 @@ class Todo {
     this._charinsuldamage3,
     this._locinsuldamage3,
     this._sizeinsuldamage3,
+    this._tempair,
+    this._tempsurf,
+    this._relathumid,
+    this._dewpoint,
+    this._difftemp,
     this._typeinsulrest,
     this._insuladhesrest,
     this._thickinsulrest,
@@ -290,6 +312,10 @@ class Todo {
   ]);
 
   int get id => _id;
+
+  String get potencial => _potencial;
+  String get soprgrunt => _soprgrunt;
+
   String get photometdef1 => _photometdef1;
   String get photometdef2 => _photometdef2;
   String get photometdef3 => _photometdef3;
@@ -360,6 +386,12 @@ class Todo {
   String get locinsuldamage3 => _locinsuldamage3;
   String get sizeinsuldamage3 => _sizeinsuldamage3;
 
+  String get tempair => _tempair;
+  String get tempsurf => _tempsurf;
+  String get relathumid => _relathumid;
+  String get dewpoint => _dewpoint;
+  String get difftemp => _difftemp;
+
   String get typeinsulrest => _typeinsulrest;
   String get insuladhesrest => _insuladhesrest;
   String get thickinsulrest => _thickinsulrest;
@@ -397,6 +429,18 @@ class Todo {
   set location(String newlocation) {
     if ((newlocation?.length ?? 0) <= 255) {
       _location = newlocation;
+    }
+  }
+
+  set potencial(String newpotencial) {
+    if ((newpotencial?.length ?? 0) <= 255) {
+      _potencial = newpotencial;
+    }
+  }
+
+  set soprgrunt(String newsoprgrunt) {
+    if ((newsoprgrunt?.length ?? 0) <= 255) {
+      _soprgrunt = newsoprgrunt;
     }
   }
 
@@ -756,6 +800,36 @@ class Todo {
     }
   }
 
+  set tempair(String newtempair) {
+    if ((newtempair?.length ?? 0) <= 255) {
+      _tempair = newtempair;
+    }
+  }
+
+  set tempsurf(String newtempsurf) {
+    if ((newtempsurf?.length ?? 0) <= 255) {
+      _tempsurf = newtempsurf;
+    }
+  }
+
+  set relathumid(String newrelathumid) {
+    if ((newrelathumid?.length ?? 0) <= 255) {
+      _relathumid = newrelathumid;
+    }
+  }
+
+  set dewpoint(String newdewpoint) {
+    if ((newdewpoint?.length ?? 0) <= 255) {
+      _dewpoint = newdewpoint;
+    }
+  }
+
+  set difftemp(String newdifftemp) {
+    if ((newdifftemp?.length ?? 0) <= 255) {
+      _difftemp = newdifftemp;
+    }
+  }
+
   set typeinsulrest(String newtypeinsulrest) {
     if ((newtypeinsulrest?.length ?? 0) <= 255) {
       _typeinsulrest = newtypeinsulrest;
@@ -916,6 +990,8 @@ class Todo {
     final Map<String, dynamic> map = <String, dynamic>{};
     map['title'] = _title;
     map['location'] = _location;
+    map['potencial'] = _potencial;
+    map['soprgrunt'] = _soprgrunt;
     map['piketkm'] = _piketkm;
     map['coordinate'] = _coordinate;
     map['lengthpit'] = _lengthpit;
@@ -958,6 +1034,12 @@ class Todo {
     map['charinsuldamage3'] = _charinsuldamage3;
     map['locinsuldamage3'] = _locinsuldamage3;
     map['sizeinsuldamage3'] = _sizeinsuldamage3;
+
+    map['tempair'] = _tempair;
+    map['tempsurf'] = _tempsurf;
+    map['relathumid'] = _relathumid;
+    map['dewpoint'] = _dewpoint;
+    map['difftemp'] = _difftemp;
 
     map['typeinsulrest'] = _typeinsulrest;
     map['insuladhesrest'] = _insuladhesrest;
@@ -1022,6 +1104,8 @@ class Todo {
     _id = o['id'];
     _title = o['title'];
     _location = o['location'];
+    _potencial = o['potencial'];
+    _soprgrunt = o['soprgrunt'];
     _piketkm = o['piketkm'];
     _coordinate = o['coordinate'];
     _lengthpit = o['lengthpit'];
@@ -1065,6 +1149,13 @@ class Todo {
     _charinsuldamage3 = o['charinsuldamage3'];
     _locinsuldamage3 = o['locinsuldamage3'];
     _sizeinsuldamage3 = o['sizeinsuldamage3'];
+
+    _tempair = o['tempair'];
+    _tempsurf = o['tempsurf'];
+    _relathumid = o['relathumid'];
+    _dewpoint = o['dewpoint'];
+    _difftemp = o['difftemp'];
+
     _typeinsulrest = o['typeinsulrest'];
     _insuladhesrest = o['insuladhesrest'];
     _thickinsulrest = o['thickinsulrest'];

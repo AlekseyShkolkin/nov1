@@ -475,7 +475,7 @@ class ObjectDetailState extends State<ObjectDetail> {
                 )),
                 const Tab(
                     icon: Icon(
-                  Icons.radio_button_unchecked_sharp,
+                  Icons.align_vertical_bottom_rounded,
                   size: 32,
                 )),
                 const Tab(
