@@ -31,6 +31,7 @@ class _StartPageState extends State<StartPage> {
   @override
   void didChangeDependencies() {
     super.didChangeDependencies();
+    setState(() {});
     countIp = widget.countIp;
     countLkp = widget.countLkp;
     // countVhk = widget.countVhk;
@@ -40,7 +41,6 @@ class _StartPageState extends State<StartPage> {
     dbHelperIp.getTodoCountIp();
     dbHelperLkp.getTodoCountLkp();
     // dbHelperVhk.getTodoCountVhk();
-    setState(() {});
   }
 
   @override

@@ -27,35 +27,62 @@ class DbHelperIp {
   String colmetalldamage = 'metalldamage';
 
   String colcharmetdamage1 = 'charmetdamage1';
-  String collocmetdamage1 = 'locmetdamage1';
-  String colsizemetdamage1 = 'sizemetdamage1';
+  String collochourmetdamage1 = 'lochourmetdamage1';
+  String collocrasstmetdamage1 = 'locrasstmetdamage1';
+  String colsizelengthmetdamage1 = 'sizelengthmetdamage1';
+  String colsizewidthmetdamage1 = 'sizewidthmetdamage1';
+  String colsizedepthmetdamage1 = 'sizedepthmetdamage1';
 
   String colcharmetdamage2 = 'charmetdamage2';
-  String collocmetdamage2 = 'locmetdamage2';
-  String colsizemetdamage2 = 'sizemetdamage2';
+  String collochourmetdamage2 = 'lochourmetdamage2';
+  String collocrasstmetdamage2 = 'locrasstmetdamage2';
+  String colsizelengthmetdamage2 = 'sizelengthmetdamage2';
+  String colsizewidthmetdamage2 = 'sizewidthmetdamage2';
+  String colsizedepthmetdamage2 = 'sizedepthmetdamage2';
 
   String colcharmetdamage3 = 'charmetdamage3';
-  String collocmetdamage3 = 'locmetdamage3';
-  String colsizemetdamage3 = 'sizemetdamage3';
+  String collochourmetdamage3 = 'lochourmetdamage3';
+  String collocrasstmetdamage3 = 'locrasstmetdamage3';
+  String colsizelengthmetdamage3 = 'sizelengthmetdamage3';
+  String colsizewidthmetdamage3 = 'sizewidthmetdamage3';
+  String colsizedepthmetdamage3 = 'sizedepthmetdamage3';
 
   String coltypeinsul = 'typeinsul';
-  String colinsuladhes = 'insuladhes';
-  String colinsulcharadhes = 'insulcharadhes';
-  String colinsulcondit = 'insulcondit';
-  String colthickinsul = 'thickinsul';
+  String colinsuladhes1 = 'insuladhes1';
+  String colinsulcharadhes1 = 'insulcharadhes1';
+  String colthickinsul1 = 'thickinsul1';
+
+  String colinsuladhes2 = 'insuladhes2';
+  String colinsulcharadhes2 = 'insulcharadhes2';
+  String colthickinsul2 = 'thickinsul2';
+
+  String colinsuladhes3 = 'insuladhes3';
+  String colinsulcharadhes3 = 'insulcharadhes3';
+  String colthickinsul3 = 'thickinsul3';
+
   String colinsuldamage = 'insuldamage';
+  String colinsulcondit = 'insulcondit';
 
   String colcharinsuldamage1 = 'charinsuldamage1';
-  String collocinsuldamage1 = 'locinsuldamage1';
-  String colsizeinsuldamage1 = 'sizeinsuldamage1';
+  String collochourinsuldamage1 = 'lochourinsuldamage1';
+  String collocrasstinsuldamage1 = 'locrasstinsuldamage1';
+  String colsizelengthinsuldamage1 = 'sizelengthinsuldamage1';
+  String colsizewidthinsuldamage1 = 'sizewidthinsuldamage1';
+  String colsizedepthinsuldamage1 = 'sizedepthinsuldamage1';
 
   String colcharinsuldamage2 = 'charinsuldamage2';
-  String collocinsuldamage2 = 'locinsuldamage2';
-  String colsizeinsuldamage2 = 'sizeinsuldamage2';
+  String collochourinsuldamage2 = 'lochourinsuldamage2';
+  String collocrasstinsuldamage2 = 'locrasstinsuldamage2';
+  String colsizelengthinsuldamage2 = 'sizelengthinsuldamage2';
+  String colsizewidthinsuldamage2 = 'sizewidthinsuldamage2';
+  String colsizedepthinsuldamage2 = 'sizedepthinsuldamage2';
 
   String colcharinsuldamage3 = 'charinsuldamage3';
-  String collocinsuldamage3 = 'locinsuldamage3';
-  String colsizeinsuldamage3 = 'sizeinsuldamage3';
+  String collochourinsuldamage3 = 'lochourinsuldamage3';
+  String collocrasstinsuldamage3 = 'locrasstinsuldamage3';
+  String colsizelengthinsuldamage3 = 'sizelengthinsuldamage3';
+  String colsizewidthinsuldamage3 = 'sizewidthinsuldamage3';
+  String colsizedepthinsuldamage3 = 'sizedepthinsuldamage3';
 
   String coltempair = 'tempair';
   String coltempsurf = 'tempsurf';
@@ -67,11 +94,22 @@ class DbHelperIp {
   String colinsuladhesrest = 'insuladhesrest';
   String colthickinsulrest = 'thickinsulrest';
   String colcontininsulrest = 'contininsulrest';
+
   String coltickinsulmeter = 'tickinsulmeter';
+  String coltickinsulmeternumb = 'tickinsulmeternumb';
+  String coltickinsulmeterdate = 'tickinsulmeterdate';
   String coltickmetallmeter = 'tickmetallmeter';
+  String coltickmetallmeternumb = 'tickmetallmeternumb';
+  String coltickmetallmeterdate = 'tickmetallmeterdate';
   String coladhesmeter = 'adhesmeter';
+  String coladhesmeternumb = 'adhesmeternumb';
+  String coladhesmeterdate = 'adhesmeterdate';
   String colcontinmeter = 'continmeter';
+  String colcontinmeternumb = 'continmeternumb';
+  String colcontinmeterdate = 'continmeterdate';
   String colsetvik = 'setvik';
+  String colsetviknumb = 'setviknumb';
+  String colsetvikdate = 'setvikdate';
   String colphoto = 'photo';
 
   String colphotometdef1 = 'photometdef1';
@@ -99,6 +137,17 @@ class DbHelperIp {
   String collocation = 'location';
   String colpotencial = 'potencial';
   String colsoprgrunt = 'soprgrunt';
+
+  String colmesto = 'mesto';
+  String coltipgrunta = 'tipgrunta';
+  String colvlaggrunt = 'vlaggrunt';
+  String coldistvtd = 'distvtd';
+  String colprivmest = 'privmest';
+
+  String colph = 'ph';
+  String coldavl = 'davl';
+  String colvlaga = 'vlaga';
+  String colzakl = 'zakl';
 
   String colfilial = 'filial';
   String coldolzhnpredskom = 'dolzhnpredskom';
@@ -142,7 +191,7 @@ class DbHelperIp {
   Future<void> _createDb(Database db, int newVersion) async {
     await db.execute(
         'CREATE TABLE $tblTodo($colId INTEGER PRIMARY KEY, $colTitle TEXT, ' +
-            '$colDescription TEXT,$coltempair TEXT,$coltempsurf TEXT,$colrelathumid TEXT,$coldewpoint TEXT,$coldifftemp TEXT,$colsoprgrunt TEXT,$colpotencial TEXT,$collocation TEXT,$colfiodruglic TEXT,$coldolzhndruglic TEXT,$colfiopredststroit TEXT,$coldolzhnpredststroit TEXT,$colfiopredststroitSK TEXT,$coldolzhnpredststroitSK TEXT,$colfiopredstzakazch TEXT,$colfiopredstzakazchSK TEXT,$coldolzhnpredstzakazchSK TEXT,$coldolzhnpredstzakazch TEXT,$colfionachuchastka TEXT,$coldolzhnnachuchastka TEXT,$colfioproizvrab TEXT,$coldolzhnproizvrab TEXT,$colfiopredskom TEXT,$coldolzhnpredskom TEXT,$colfilial TEXT, $colphotodesc TEXT, $colphotorest TEXT, $colphotoinsuldef10 TEXT,$colphotoinsuldef9 TEXT,$colphotoinsuldef8 TEXT,$colphotoinsuldef7 TEXT,$colphotoinsuldef6 TEXT,$colphotoinsuldef5 TEXT,$colphotoinsuldef4 TEXT,$colphotoinsuldef3 TEXT,$colphotoinsuldef2 TEXT,$colphotoinsuldef1 TEXT, $colphotometdef10 TEXT,$colphotometdef9 TEXT,$colphotometdef8 TEXT,$colphotometdef7 TEXT,$colphotometdef6 TEXT,$colphotometdef5 TEXT,$colphotometdef4 TEXT,$colphotometdef3 TEXT,$colphotometdef2 TEXT,$colphotometdef1 TEXT, $colphoto TEXT,$colOsnovanie TEXT,$colPiketkm TEXT,$colCoordinate TEXT,$colLengthpit TEXT,$colDepthpit TEXT,$colDate TEXT,$colDateObsl TEXT,$coldiameter TEXT,$colthickpipe TEXT,$colgradesteel TEXT,$colmetalldamage TEXT,$colcharmetdamage1 TEXT,$collocmetdamage1 TEXT,$colsizemetdamage1 TEXT,$colcharmetdamage2 TEXT,$collocmetdamage2 TEXT,$colsizemetdamage2 TEXT,$colcharmetdamage3 TEXT,$collocmetdamage3 TEXT,$colsizemetdamage3 TEXT,$coltypeinsul TEXT,$colinsuladhes TEXT,$colinsulcharadhes TEXT,$colinsulcondit TEXT,$colthickinsul TEXT,$colinsuldamage TEXT,$colcharinsuldamage1 TEXT,$collocinsuldamage1 TEXT,$colsizeinsuldamage1 TEXT,$colcharinsuldamage2 TEXT,$collocinsuldamage2 TEXT,$colsizeinsuldamage2 TEXT,$colcharinsuldamage3 TEXT,$collocinsuldamage3 TEXT,$colsizeinsuldamage3 TEXT,$coltypeinsulrest TEXT,$colinsuladhesrest TEXT,$colthickinsulrest TEXT,$colcontininsulrest TEXT,$coltickinsulmeter TEXT,$coltickmetallmeter TEXT,$coladhesmeter TEXT,$colcontinmeter TEXT,$colsetvik TEXT)');
+            '$colDescription TEXT,$coltempair TEXT,$coltempsurf TEXT,$colrelathumid TEXT,$coldewpoint TEXT,$coldifftemp TEXT,$coldistvtd TEXT,$colprivmest TEXT,$coltipgrunta TEXT,$colvlaggrunt TEXT,$colmesto TEXT,$colsoprgrunt TEXT,$colzakl TEXT,$colpotencial TEXT,$colph TEXT,$coldavl TEXT,$colvlaga TEXT,$collocation TEXT,$colfiodruglic TEXT,$coldolzhndruglic TEXT,$colfiopredststroit TEXT,$coldolzhnpredststroit TEXT,$colfiopredststroitSK TEXT,$coldolzhnpredststroitSK TEXT,$colfiopredstzakazch TEXT,$colfiopredstzakazchSK TEXT,$coldolzhnpredstzakazchSK TEXT,$coldolzhnpredstzakazch TEXT,$colfionachuchastka TEXT,$coldolzhnnachuchastka TEXT,$colfioproizvrab TEXT,$coldolzhnproizvrab TEXT,$colfiopredskom TEXT,$coldolzhnpredskom TEXT,$colfilial TEXT, $colphotodesc TEXT, $colphotorest TEXT, $colphotoinsuldef10 TEXT,$colphotoinsuldef9 TEXT,$colphotoinsuldef8 TEXT,$colphotoinsuldef7 TEXT,$colphotoinsuldef6 TEXT,$colphotoinsuldef5 TEXT,$colphotoinsuldef4 TEXT,$colphotoinsuldef3 TEXT,$colphotoinsuldef2 TEXT,$colphotoinsuldef1 TEXT, $colphotometdef10 TEXT,$colphotometdef9 TEXT,$colphotometdef8 TEXT,$colphotometdef7 TEXT,$colphotometdef6 TEXT,$colphotometdef5 TEXT,$colphotometdef4 TEXT,$colphotometdef3 TEXT,$colphotometdef2 TEXT,$colphotometdef1 TEXT, $colphoto TEXT,$colOsnovanie TEXT,$colPiketkm TEXT,$colCoordinate TEXT,$colLengthpit TEXT,$colDepthpit TEXT,$colDate TEXT,$colDateObsl TEXT,$coldiameter TEXT,$colthickpipe TEXT,$colgradesteel TEXT,$colmetalldamage TEXT,$colcharmetdamage1 TEXT,$collochourmetdamage1 TEXT,$collocrasstmetdamage1 TEXT,$colsizelengthmetdamage1 TEXT,$colsizewidthmetdamage1 TEXT,$colsizedepthmetdamage1 TEXT,$colcharmetdamage2 TEXT,$collochourmetdamage2 TEXT,$collocrasstmetdamage2 TEXT,$colsizelengthmetdamage2 TEXT,$colsizewidthmetdamage2 TEXT,$colsizedepthmetdamage2 TEXT,$colcharmetdamage3 TEXT,$collochourmetdamage3 TEXT,$collocrasstmetdamage3 TEXT,$colsizelengthmetdamage3 TEXT,$colsizewidthmetdamage3 TEXT,$colsizedepthmetdamage3 TEXT,$coltypeinsul TEXT,$colinsuladhes1 TEXT,$colinsulcharadhes1 TEXT,$colinsuladhes2 TEXT,$colinsulcharadhes2 TEXT,$colinsuladhes3 TEXT,$colinsulcharadhes3 TEXT,$colinsulcondit TEXT,$colthickinsul1 TEXT,$colthickinsul2 TEXT,$colthickinsul3 TEXT,$colinsuldamage TEXT,$colcharinsuldamage1 TEXT,$collochourinsuldamage1 TEXT,$collocrasstinsuldamage1 TEXT,$colsizelengthinsuldamage1 TEXT,$colsizewidthinsuldamage1 TEXT,$colsizedepthinsuldamage1 TEXT,$colcharinsuldamage2 TEXT,$collochourinsuldamage2 TEXT,$collocrasstinsuldamage2 TEXT,$colsizelengthinsuldamage2 TEXT,$colsizewidthinsuldamage2 TEXT,$colsizedepthinsuldamage2 TEXT,$colcharinsuldamage3 TEXT,$collochourinsuldamage3 TEXT,$collocrasstinsuldamage3 TEXT,$colsizelengthinsuldamage3 TEXT,$colsizewidthinsuldamage3 TEXT,$colsizedepthinsuldamage3 TEXT,$coltypeinsulrest TEXT,$colinsuladhesrest TEXT,$colthickinsulrest TEXT,$colcontininsulrest TEXT,$coltickinsulmeter TEXT,$coltickinsulmeternumb TEXT,$coltickinsulmeterdate TEXT,$coltickmetallmeter TEXT,$coltickmetallmeternumb TEXT,$coltickmetallmeterdate TEXT,$coladhesmeter TEXT,$coladhesmeternumb TEXT,$coladhesmeterdate TEXT,$colcontinmeter TEXT,$colcontinmeternumb TEXT,$colcontinmeterdate TEXT,$colsetvik TEXT,$colsetviknumb TEXT,$colsetvikdate TEXT)');
   }
 
   Future<int> insertTodo(Todo todo) async {

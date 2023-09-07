@@ -70,13 +70,13 @@ class ObjectDetailState extends State<ObjectDetail> {
   FocusNode focusNode41 = FocusNode();
   FocusNode focusNode42 = FocusNode();
   FocusNode focusNode43 = FocusNode();
-  FocusNode focusNode44 = FocusNode();
-  FocusNode focusNode45 = FocusNode();
-  FocusNode focusNode46 = FocusNode();
-  FocusNode focusNode47 = FocusNode();
-  FocusNode focusNode48 = FocusNode();
-  FocusNode focusNode49 = FocusNode();
-  FocusNode focusNode50 = FocusNode();
+  FocusNode focusNode44 = FocusNode(); //free
+  FocusNode focusNode45 = FocusNode(); //free
+  FocusNode focusNode46 = FocusNode(); //free
+  FocusNode focusNode47 = FocusNode(); //free
+  FocusNode focusNode48 = FocusNode(); //free
+  FocusNode focusNode49 = FocusNode(); //free
+  FocusNode focusNode50 = FocusNode(); //free
 
   List<File> images = [];
   final List<String> _inSt = ['A', 'B', 'C', 'D', 'нет данных'];
