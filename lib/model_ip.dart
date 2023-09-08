@@ -121,6 +121,7 @@ class Todo {
   String _insuladhesrest;
   String _thickinsulrest;
   String _contininsulrest;
+  String _metrrest;
 
   String _tickinsulmeter;
   String _tickinsulmeternumb;
@@ -171,6 +172,7 @@ class Todo {
   Todo(
     this._title,
     this._date, [
+    this._metrrest,
     this._ph,
     this._davl,
     this._vlaga,
@@ -312,7 +314,7 @@ class Todo {
     this._id,
     this._title,
     this._date, [
-    this._ph,
+        this._ph,
     this._davl,
     this._vlaga,
     this._mesto,
@@ -415,6 +417,7 @@ class Todo {
     this._insuladhesrest,
     this._thickinsulrest,
     this._contininsulrest,
+    this._metrrest,
     this._tickinsulmeter,
     this._tickinsulmeternumb,
     this._tickinsulmeterdate,
@@ -573,6 +576,8 @@ class Todo {
   String get insuladhesrest => _insuladhesrest;
   String get thickinsulrest => _thickinsulrest;
   String get contininsulrest => _contininsulrest;
+  String get metrrest => _metrrest;
+
   String get tickinsulmeter => _tickinsulmeter;
   String get tickinsulmeternumb => _tickinsulmeternumb;
   String get tickinsulmeterdate => _tickinsulmeterdate;
@@ -1239,6 +1244,14 @@ class Todo {
     }
   }
 
+set metrrest(String newmetrrest) {
+    if ((newmetrrest?.length ?? 0) <= 255) {
+      _metrrest = newmetrrest;
+    }
+  }
+
+  
+
   set tickinsulmeter(String newtickinsulmeter) {
     if ((newtickinsulmeter?.length ?? 0) <= 255) {
       _tickinsulmeter = newtickinsulmeter;
@@ -1531,6 +1544,7 @@ class Todo {
     map['insuladhesrest'] = _insuladhesrest;
     map['thickinsulrest'] = _thickinsulrest;
     map['contininsulrest'] = _contininsulrest;
+    map['metrrest'] = _metrrest;
 
     map['tickinsulmeter'] = _tickinsulmeter;
     map['tickinsulmeternumb'] = _tickinsulmeternumb;
@@ -1701,6 +1715,7 @@ class Todo {
     _insuladhesrest = o['insuladhesrest'];
     _thickinsulrest = o['thickinsulrest'];
     _contininsulrest = o['contininsulrest'];
+     _metrrest = o['metrrest'];
 
     _tickinsulmeter = o['tickinsulmeter'];
     _tickinsulmeternumb = o['tickinsulmeternumb'];

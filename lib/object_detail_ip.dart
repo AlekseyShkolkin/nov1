@@ -12,6 +12,7 @@ import './img_screen_ip.dart';
 import './model_ip.dart';
 import './object_list_ip.dart';
 import 'package:geolocator/geolocator.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
 
 class ObjectDetailIp extends StatefulWidget {
   const ObjectDetailIp({Key key, @required this.object});
@@ -135,6 +136,11 @@ class ObjectDetailIpState extends State<ObjectDetailIp> {
   FocusNode focusNode109 = FocusNode(); //free
   FocusNode focusNode110 = FocusNode(); //free
   FocusNode focusNode111 = FocusNode(); //free
+  FocusNode focusNode112 = FocusNode(); //free
+  FocusNode focusNode113 = FocusNode(); //free
+  FocusNode focusNode114 = FocusNode(); //free
+  FocusNode focusNode115 = FocusNode(); //free
+  FocusNode focusNode116 = FocusNode(); //free
 
   File _image;
 
@@ -197,6 +203,8 @@ class ObjectDetailIpState extends State<ObjectDetailIp> {
     'Обходчик',
     'Машинист',
     'Электромонтёр по РиМКЛ',
+    'Инженер по диагностике',
+    'Инженер-диагност',
   ];
 
   final List<String> _dolzhnnachuchastka = [
@@ -215,6 +223,11 @@ class ObjectDetailIpState extends State<ObjectDetailIp> {
     'Специалист по НК изоляции',
     'Специалист ИТЦ',
     'Инженер по ЭХЗ',
+    'Старший мастер',
+    'Мастер',
+    'Инженер по диагностике',
+    'Инженер-диагност',
+    'Дефктоскопист',
   ];
 
   final List<String> _mesto = [
@@ -538,6 +551,7 @@ class ObjectDetailIpState extends State<ObjectDetailIp> {
   TextEditingController insuladhesrestController = TextEditingController();
   TextEditingController thickinsulrestController = TextEditingController();
   TextEditingController contininsulrestController = TextEditingController();
+  TextEditingController metrrestController = TextEditingController();
 
   TextEditingController tickinsulmeterController = TextEditingController();
   TextEditingController tickinsulmeternumbController = TextEditingController();
@@ -571,6 +585,8 @@ class ObjectDetailIpState extends State<ObjectDetailIp> {
 
   TextEditingController dateObslController = TextEditingController();
   TextEditingController locationController = TextEditingController();
+  TextEditingController dolzhnpredstzakazchSKController =
+      TextEditingController();
   TextEditingController fiopredstzakazchSKController = TextEditingController();
 
   TextEditingController dolzhnpredststroitSKController =
@@ -686,6 +702,7 @@ class ObjectDetailIpState extends State<ObjectDetailIp> {
     insuladhesrestController.text = object.insuladhesrest ?? '';
     thickinsulrestController.text = object.thickinsulrest ?? '';
     contininsulrestController.text = object.contininsulrest ?? '';
+    metrrestController.text = object.metrrest ?? '';
 
     tickinsulmeterController.text = object.tickinsulmeter ?? '';
     tickinsulmeternumbController.text = object.tickinsulmeternumb ?? '';
@@ -717,6 +734,7 @@ class ObjectDetailIpState extends State<ObjectDetailIp> {
     fiopredstzakazchController.text = object.fiopredstzakazch ?? '';
     fiodruglicController.text = object.fiodruglic ?? '';
     fiopredstzakazchSKController.text = object.fiopredstzakazchSK ?? '';
+    dolzhnpredstzakazchSKController.text = object.dolzhnpredstzakazchSK ?? '';
 
     dolzhnpredststroitSKController.text = object.dolzhnpredststroitSK ?? '';
     fiopredststroitSKController.text = object.fiopredststroitSK ?? '';
@@ -1002,20 +1020,17 @@ class ObjectDetailIpState extends State<ObjectDetailIp> {
                                 initialDate: DateTime.now(),
                                 firstDate: DateTime(2015),
                                 lastDate: DateTime(2030),
+                                locale: const Locale("ru",
+                                    "RU"), // Установите локаль на русский язык
                               );
 
                               if (selectedDate != null) {
                                 setState(() {
                                   dateObslController.text =
-                                      DateFormat.yMMMd().format(selectedDate);
+                                      DateFormat('dd.MM.yyyy')
+                                          .format(selectedDate);
                                   object.dateObsl = dateObslController.text;
                                 });
-                                // ScaffoldMessenger.of(context).showSnackBar(
-                                //   SnackBar(
-                                //     content: Text(
-                                //         'Дата обследования: ${dateObslController.text}'),
-                                //   ),
-                                // );
                               }
                             },
                             icon: Icon(
@@ -6051,6 +6066,65 @@ class ObjectDetailIpState extends State<ObjectDetailIp> {
                           object.typeinsulrest = value;
                         },
                       ),
+                      SizedBox(height: 20),
+                      TextFormField(
+                        focusNode: focusNode112,
+                        onChanged: (String value) {
+                          setState(() {});
+                          focusNode112.requestFocus();
+                        },
+                        maxLength: 3,
+                        onSaved: (value) {
+                          object.metrrest = value;
+                        },
+                        controller: metrrestController,
+                        style: textStyle,
+                        decoration: InputDecoration(
+                          focusColor: Theme.of(context).primaryColor,
+                          labelStyle: TextStyle(
+                            fontSize: 22,
+                            fontWeight: FontWeight.w300,
+                            color: Theme.of(context).primaryColor,
+                          ),
+                          hintStyle: TextStyle(
+                            fontSize: 16,
+                            fontWeight: FontWeight.w300,
+                            color: Theme.of(context).primaryColor,
+                          ),
+                          labelText: 'Протяженность ремонта ИП',
+                          hintText: 'Введите значение',
+                          helperText: 'М',
+                          prefixIcon: Icon(
+                            Icons.straighten_rounded,
+                            color: focusNode112.hasFocus ||
+                                    metrrestController.text.isNotEmpty
+                                ? Theme.of(context).primaryColor
+                                : Colors.grey,
+                            size: 32,
+                          ),
+                          suffixIcon: GestureDetector(
+                            onTap: () {
+                              metrrestController.clear();
+                            },
+                            child: Icon(
+                              Icons.delete_outline,
+                              color: Color.fromRGBO(187, 30, 16, 1.0),
+                            ),
+                          ),
+                          enabledBorder: OutlineInputBorder(
+                            borderRadius: BorderRadius.all(Radius.circular(10)),
+                            borderSide:
+                                BorderSide(color: Colors.grey, width: 2),
+                          ),
+                          focusedBorder: OutlineInputBorder(
+                            borderRadius: BorderRadius.all(Radius.circular(20)),
+                            borderSide: BorderSide(
+                                color: Theme.of(context).primaryColor,
+                                width: 2),
+                          ),
+                        ),
+                        keyboardType: TextInputType.number,
+                      ),
                       SizedBox(height: 10),
                       TextFormField(
                         focusNode: focusNode24,
@@ -6565,32 +6639,62 @@ class ObjectDetailIpState extends State<ObjectDetailIp> {
                             keyboardType: TextInputType.number,
                           ),
                           Container(
-                            alignment: Alignment.center,
                             child: difftempController.text != null &&
+                                    tempairController.text != null &&
+                                    relathumidController.text != null &&
                                     double.tryParse(difftempController.text
                                             .replaceAll(',', '.')) !=
                                         null
-                                ? double.tryParse(difftempController.text
-                                            .replaceAll(',', '.')) >=
-                                        3.0
-                                    ? Text(
-                                        'ИЗОЛЯЦИЯ РАЗРЕШЕНА',
-                                        style: TextStyle(
-                                          fontSize: 24,
-                                          color: Theme.of(context).primaryColor,
-                                          fontWeight: FontWeight.bold,
-                                        ),
-                                      )
-                                    : Text(
-                                        'ИЗОЛЯЦИЯ ЗАПРЕЩЕНА',
+                                ? (() {
+                                    double difftemp = double.tryParse(
+                                        difftempController.text
+                                            .replaceAll(',', '.'));
+                                    double tempair = double.tryParse(
+                                        tempairController.text
+                                            .replaceAll(',', '.'));
+                                    double relathumid = double.tryParse(
+                                        relathumidController.text
+                                            .replaceAll(',', '.'));
+
+                                    if (difftemp != null &&
+                                        tempair != null &&
+                                        relathumid != null) {
+                                      if (difftemp >= 3.0 &&
+                                          tempair >= 5.0 &&
+                                          tempair <= 45.0 &&
+                                          relathumid <= 85.0) {
+                                        return Text(
+                                          'ИЗОЛЯЦИЯ РАЗРЕШЕНА',
+                                          style: TextStyle(
+                                            fontSize: 24,
+                                            color:
+                                                Theme.of(context).primaryColor,
+                                            fontWeight: FontWeight.bold,
+                                          ),
+                                        );
+                                      } else {
+                                        return Text(
+                                          'ИЗОЛЯЦИЯ ЗАПРЕЩЕНА',
+                                          style: TextStyle(
+                                            fontSize: 24,
+                                            color: Colors.red,
+                                            fontWeight: FontWeight.bold,
+                                          ),
+                                        );
+                                      }
+                                    } else {
+                                      return Text(
+                                        'Некорректные значения',
                                         style: TextStyle(
                                           fontSize: 24,
                                           color: Colors.red,
                                           fontWeight: FontWeight.bold,
                                         ),
-                                      )
+                                      );
+                                    }
+                                  })()
                                 : Text(
-                                    difftempController.text ?? '',
+                                    'ИЗОЛЯЦИЯ ЗАПРЕЩЕНА',
                                     style: TextStyle(
                                       fontSize: 24,
                                       fontWeight: FontWeight.bold,
@@ -8329,6 +8433,51 @@ class ObjectDetailIpState extends State<ObjectDetailIp> {
                                 fontWeight: FontWeight.w300),
                           )),
                       SizedBox(height: 20),
+                      DropdownButtonFormField(
+                        isExpanded: true,
+                        focusNode: focusNode111,
+                        decoration: InputDecoration(
+                          border: OutlineInputBorder(),
+                          enabledBorder: OutlineInputBorder(
+                            borderRadius: BorderRadius.all(Radius.circular(10)),
+                            borderSide:
+                                BorderSide(color: Colors.grey, width: 2),
+                          ),
+                          focusedBorder: OutlineInputBorder(
+                            borderRadius: BorderRadius.all(Radius.circular(20)),
+                            borderSide: BorderSide(
+                                color: Theme.of(context).primaryColor,
+                                width: 2),
+                          ),
+                          labelStyle: TextStyle(
+                            fontSize: 22,
+                            fontWeight: FontWeight.w300,
+                            color: Theme.of(context).primaryColor,
+                          ),
+                          prefixIcon: Icon(
+                            Icons.person,
+                            color: focusNode111.hasFocus ||
+                                    dolzhnpredstzakazchController
+                                        .text.isNotEmpty
+                                ? Theme.of(context).primaryColor
+                                : Colors.grey,
+                            size: 32,
+                          ),
+                          labelText: 'Должность специалиста',
+                        ),
+                        items: _dolzhnpredstzakazch.map((String value) {
+                          return DropdownMenuItem(
+                              value: value, child: Text(value));
+                        }).toList(),
+                        style: textStyle,
+                        value: object.dolzhnpredstzakazch,
+                        onChanged: (String value) {
+                          setState(() {});
+                          focusNode111.requestFocus();
+                          object.dolzhnpredstzakazch = value;
+                        },
+                      ),
+                      SizedBox(height: 10),
                       TextFormField(
                         focusNode: focusNode80,
                         onChanged: (String value) {
@@ -8446,6 +8595,51 @@ class ObjectDetailIpState extends State<ObjectDetailIp> {
                                 fontWeight: FontWeight.w300),
                           )),
                       SizedBox(height: 20),
+                      DropdownButtonFormField(
+                        isExpanded: true,
+                        focusNode: focusNode113,
+                        decoration: InputDecoration(
+                          border: OutlineInputBorder(),
+                          enabledBorder: OutlineInputBorder(
+                            borderRadius: BorderRadius.all(Radius.circular(10)),
+                            borderSide:
+                                BorderSide(color: Colors.grey, width: 2),
+                          ),
+                          focusedBorder: OutlineInputBorder(
+                            borderRadius: BorderRadius.all(Radius.circular(20)),
+                            borderSide: BorderSide(
+                                color: Theme.of(context).primaryColor,
+                                width: 2),
+                          ),
+                          labelStyle: TextStyle(
+                            fontSize: 22,
+                            fontWeight: FontWeight.w300,
+                            color: Theme.of(context).primaryColor,
+                          ),
+                          prefixIcon: Icon(
+                            Icons.person,
+                            color: focusNode113.hasFocus ||
+                                    dolzhnpredstzakazchSKController
+                                        .text.isNotEmpty
+                                ? Theme.of(context).primaryColor
+                                : Colors.grey,
+                            size: 32,
+                          ),
+                          labelText: 'Должность специалиста',
+                        ),
+                        items: _dolzhnpredstzakazch.map((String value) {
+                          return DropdownMenuItem(
+                              value: value, child: Text(value));
+                        }).toList(),
+                        style: textStyle,
+                        value: object.dolzhnpredstzakazchSK,
+                        onChanged: (String value) {
+                          setState(() {});
+                          focusNode113.requestFocus();
+                          object.dolzhnpredstzakazchSK = value;
+                        },
+                      ),
+                      SizedBox(height: 10),
                       TextFormField(
                         focusNode: focusNode87,
                         onChanged: (String value) {
@@ -8697,8 +8891,299 @@ class ObjectDetailIpState extends State<ObjectDetailIp> {
         print(object.dolzhnpredskom);
         sheet.cell(CellIndex.indexByString("E5")).value = filial;
         print(object.filial);
-        sheet.cell(CellIndex.indexByString("J7")).value = object.fiopredskom;
+        sheet.cell(CellIndex.indexByString("I7")).value = object.fiopredskom;
         print(object.fiopredskom);
+        sheet.cell(CellIndex.indexByString("I8")).value = object.dateObsl;
+        print(object.dateObsl);
+        sheet.cell(CellIndex.indexByString("F11")).value = object.dateObsl;
+        sheet.cell(CellIndex.indexByString("G14")).value = object.title;
+        sheet.cell(CellIndex.indexByString("G15")).value = object.davl;
+        sheet.cell(CellIndex.indexByString("G16")).value =
+            object.diameter.toString() + "x" + object.thickpipe.toString();
+        sheet.cell(CellIndex.indexByString("G17")).value = object.gradesteel;
+        sheet.cell(CellIndex.indexByString("G18")).value = object.typeinsul;
+        sheet.cell(CellIndex.indexByString("F19")).value = object.osnovanie;
+        sheet.cell(CellIndex.indexByString("A25")).value = object.piketkm;
+        sheet.cell(CellIndex.indexByString("C25")).value = object.distvtd;
+        sheet.cell(CellIndex.indexByString("E25")).value = object.location;
+        sheet.cell(CellIndex.indexByString("H25")).value = object.privmest;
+        sheet.cell(CellIndex.indexByString("J25")).value = object.depthpit;
+        sheet.cell(CellIndex.indexByString("A34")).value = object.mesto;
+        sheet.cell(CellIndex.indexByString("C34")).value = object.tipgrunta;
+        sheet.cell(CellIndex.indexByString("E34")).value = object.vlaggrunt;
+        sheet.cell(CellIndex.indexByString("G34")).value = object.lengthpit;
+        sheet.cell(CellIndex.indexByString("H34")).value = object.soprgrunt;
+        sheet.cell(CellIndex.indexByString("I34")).value = object.ph;
+        sheet.cell(CellIndex.indexByString("J34")).value = object.potencial;
+        sheet.cell(CellIndex.indexByString("K34")).value = object.tempsurf;
+        sheet.cell(CellIndex.indexByString("G38")).value = object.vlaga;
+
+        sheet.cell(CellIndex.indexByString("D49")).value = object.thickinsul1;
+        sheet.cell(CellIndex.indexByString("F49")).value = object.thickinsul2;
+        sheet.cell(CellIndex.indexByString("H49")).value = object.thickinsul3;
+        sheet.cell(CellIndex.indexByString("J49")).value = object.thickinsul2;
+
+        sheet.cell(CellIndex.indexByString("A63")).value =
+            object.charmetdamage1;
+        sheet.cell(CellIndex.indexByString("C63")).value =
+            object.lochourmetdamage1;
+        sheet.cell(CellIndex.indexByString("G63")).value =
+            object.sizedepthmetdamage1;
+        sheet.cell(CellIndex.indexByString("I63")).value = object.thickpipe;
+
+        sheet.cell(CellIndex.indexByString("D68")).value = object.thickpipe;
+        sheet.cell(CellIndex.indexByString("F68")).value = object.thickpipe;
+        sheet.cell(CellIndex.indexByString("H68")).value = object.thickpipe;
+        sheet.cell(CellIndex.indexByString("J68")).value = object.thickpipe;
+
+        sheet.cell(CellIndex.indexByString("H68")).value = object.thickpipe;
+
+        sheet.cell(CellIndex.indexByString("E63")).value =
+            object.sizelengthmetdamage1.toString() +
+                    "x" +
+                    object.sizewidthmetdamage1.toString() ??
+                '';
+
+        sheet.cell(CellIndex.indexByString("A64")).value =
+            object.charmetdamage2;
+        sheet.cell(CellIndex.indexByString("C64")).value =
+            object.lochourmetdamage2;
+        sheet.cell(CellIndex.indexByString("G64")).value =
+            object.sizedepthmetdamage1;
+        sheet.cell(CellIndex.indexByString("I64")).value = object.thickpipe;
+
+        sheet.cell(CellIndex.indexByString("E64")).value =
+            object.sizelengthmetdamage2.toString() +
+                    "x" +
+                    object.sizewidthmetdamage2.toString() ??
+                '';
+
+        sheet.cell(CellIndex.indexByString("A65")).value =
+            object.charmetdamage3;
+        sheet.cell(CellIndex.indexByString("C65")).value =
+            object.lochourmetdamage3;
+        sheet.cell(CellIndex.indexByString("G65")).value =
+            object.sizedepthmetdamage1;
+        sheet.cell(CellIndex.indexByString("I65")).value = object.thickpipe;
+
+        sheet.cell(CellIndex.indexByString("E65")).value =
+            object.sizelengthmetdamage3.toString() +
+                    "x" +
+                    object.sizewidthmetdamage3.toString() ??
+                '';
+
+        sheet.cell(CellIndex.indexByString("F57")).value = object.insulcondit;
+        // sheet.cell(CellIndex.indexByString("F57")).value =
+        //     (sheet.cell(CellIndex.indexByString("J54")).value ==
+        //                 'Соответствует' &&
+        //             sheet.cell(CellIndex.indexByString("J55")).value ==
+        //                 'Соответствует' &&
+        //             sheet.cell(CellIndex.indexByString("J56")).value ==
+        //                 'Соответствует')
+        //         ? 'Удовлетворительное'
+        //         : 'Неудовлетворительное';
+        // sheet.cell(CellIndex.indexByString("F69")).value = object.metallcondit;
+        sheet.cell(CellIndex.indexByString("F69")).value =
+            object.metalldamage == 'Да'
+                ? 'Неудовлетворительное'
+                : 'Удовлетворительное';
+        // sheet.cell(CellIndex.indexByString("F69")).value =
+        //     (sheet.cell(CellIndex.indexByString("A63")).value != null ||
+        //             sheet.cell(CellIndex.indexByString("A64")).value != null ||
+        //             sheet.cell(CellIndex.indexByString("A65")).value != null)
+        //         ? 'Неудовлетворительное'
+        //         : 'Удовлетворительное';
+        sheet.cell(CellIndex.indexByString("B73")).value =
+            object.tickinsulmeter;
+        sheet.cell(CellIndex.indexByString("F73")).value =
+            object.tickinsulmeternumb;
+        sheet.cell(CellIndex.indexByString("I73")).value =
+            object.tickinsulmeterdate;
+
+        sheet.cell(CellIndex.indexByString("B74")).value =
+            object.tickmetallmeter;
+        sheet.cell(CellIndex.indexByString("F74")).value =
+            object.tickmetallmeternumb;
+        sheet.cell(CellIndex.indexByString("I74")).value =
+            object.tickmetallmeterdate;
+
+        sheet.cell(CellIndex.indexByString("B75")).value = object.adhesmeter;
+        sheet.cell(CellIndex.indexByString("F75")).value =
+            object.adhesmeternumb;
+        sheet.cell(CellIndex.indexByString("I75")).value =
+            object.adhesmeterdate;
+
+        sheet.cell(CellIndex.indexByString("B76")).value = object.continmeter;
+        sheet.cell(CellIndex.indexByString("F76")).value =
+            object.continmeternumb;
+        sheet.cell(CellIndex.indexByString("I76")).value =
+            object.continmeterdate;
+
+        sheet.cell(CellIndex.indexByString("B77")).value = object.setvik;
+        sheet.cell(CellIndex.indexByString("F77")).value = object.setviknumb;
+        sheet.cell(CellIndex.indexByString("I77")).value = object.setvikdate;
+
+        sheet.cell(CellIndex.indexByString("E78")).value = object.zakl;
+
+        // sheet.cell(CellIndex.indexByString("A80")).value = object.dolzhnpredstzakazch;
+        sheet.cell(CellIndex.indexByString("E80")).value =
+            object.fiopredstzakazch;
+        sheet.cell(CellIndex.indexByString("J80")).value = object.dateObsl;
+
+        sheet.cell(CellIndex.indexByString("A82")).value =
+            object.dolzhnproizvrab;
+        sheet.cell(CellIndex.indexByString("E82")).value = object.fioproizvrab;
+        sheet.cell(CellIndex.indexByString("J82")).value = object.dateObsl;
+
+        sheet.cell(CellIndex.indexByString("A84")).value =
+            object.dolzhnnachuchastka;
+        sheet.cell(CellIndex.indexByString("E84")).value =
+            object.fionachuchastka;
+        sheet.cell(CellIndex.indexByString("J84")).value = object.dateObsl;
+
+        sheet.cell(CellIndex.indexByString("A86")).value =
+            object.dolzhnpredstzakazchSK;
+        sheet.cell(CellIndex.indexByString("E86")).value =
+            object.fiopredstzakazchSK;
+        sheet.cell(CellIndex.indexByString("J86")).value = object.dateObsl;
+
+        sheet.cell(CellIndex.indexByString("F54")).value = object.insuladhes1;
+        sheet.cell(CellIndex.indexByString("H54")).value =
+            object.insulcharadhes1;
+        sheet.cell(CellIndex.indexByString("J54")).value = (double.tryParse(
+                        object.insuladhes1.replaceAll(',', '.')) >=
+                    20 &&
+                object.insulcharadhes1 == 'Когезионный')
+            ? 'Соответствует'
+            : (double.tryParse(object.insuladhes1.replaceAll(',', '.')) <= 20 &&
+                    object.insulcharadhes1 == 'Адгезионный')
+                ? 'Не соответствует'
+                : (double.tryParse(object.insuladhes1.replaceAll(',', '.')) >=
+                            20 &&
+                        object.insulcharadhes1 == 'Адгезионный')
+                    ? 'Соответствует'
+                    : (double.tryParse(
+                                    object.insuladhes1.replaceAll(',', '.')) <=
+                                20 &&
+                            object.insulcharadhes1 == 'Когезионный')
+                        ? 'Не соответствует'
+                        : (double.tryParse(object.insuladhes1
+                                        .replaceAll(',', '.')) ==
+                                    null ||
+                                object.insulcharadhes1 == null)
+                            ? ""
+                            : "-";
+
+        sheet.cell(CellIndex.indexByString("H55")).value =
+            object.insulcharadhes2;
+        sheet.cell(CellIndex.indexByString("F55")).value = object.insuladhes2;
+        sheet.cell(CellIndex.indexByString("J55")).value = (double.tryParse(
+                        object.insuladhes2.replaceAll(',', '.')) >=
+                    20 &&
+                object.insulcharadhes2 == 'Когезионный')
+            ? 'Соответствует'
+            : (double.tryParse(object.insuladhes2.replaceAll(',', '.')) <= 20 &&
+                    object.insulcharadhes2 == 'Адгезионный')
+                ? 'Не соответствует'
+                : (double.tryParse(object.insuladhes2.replaceAll(',', '.')) >=
+                            20 &&
+                        object.insulcharadhes2 == 'Адгезионный')
+                    ? 'Соответствует'
+                    : (double.tryParse(
+                                    object.insuladhes2.replaceAll(',', '.')) <=
+                                20 &&
+                            object.insulcharadhes2 == 'Когезионный')
+                        ? 'Не соответствует'
+                        : (double.tryParse(object.insuladhes2
+                                        .replaceAll(',', '.')) ==
+                                    null ||
+                                object.insulcharadhes2 == null)
+                            ? ""
+                            : "-";
+
+        sheet.cell(CellIndex.indexByString("H56")).value =
+            object.insulcharadhes3;
+        sheet.cell(CellIndex.indexByString("F56")).value = object.insuladhes3;
+        sheet.cell(CellIndex.indexByString("J56")).value = (double.tryParse(
+                        object.insuladhes3.replaceAll(',', '.')) >=
+                    20 &&
+                object.insulcharadhes3 == 'Когезионный')
+            ? 'Соответствует'
+            : (double.tryParse(object.insuladhes3.replaceAll(',', '.')) <= 20 &&
+                    object.insulcharadhes3 == 'Адгезионный')
+                ? 'Не соответствует'
+                : (double.tryParse(object.insuladhes3.replaceAll(',', '.')) >=
+                            20 &&
+                        object.insulcharadhes3 == 'Адгезионный')
+                    ? 'Соответствует'
+                    : (double.tryParse(
+                                    object.insuladhes3.replaceAll(',', '.')) <=
+                                20 &&
+                            object.insulcharadhes3 == 'Когезионный')
+                        ? 'Не соответствует'
+                        : (double.tryParse(object.insuladhes3
+                                        .replaceAll(',', '.')) ==
+                                    null ||
+                                object.insulcharadhes3 == null)
+                            ? ""
+                            : "-";
+
+        sheet.cell(CellIndex.indexByString("A44")).value =
+            object.charinsuldamage1;
+        sheet.cell(CellIndex.indexByString("C44")).value =
+            object.lochourinsuldamage1;
+
+        sheet.cell(CellIndex.indexByString("E44")).value =
+            object.sizelengthinsuldamage1.toString() +
+                    "x" +
+                    object.sizewidthinsuldamage1.toString() ??
+                '';
+
+        sheet.cell(CellIndex.indexByString("H44")).value = (double.tryParse(
+                        sizelengthinsuldamageController1.text
+                            ?.replaceAll(',', '.')) *
+                    double.tryParse(sizewidthinsuldamageController1.text
+                        ?.replaceAll(',', '.'))) /
+                100 ??
+            '';
+
+        sheet.cell(CellIndex.indexByString("A45")).value =
+            object.charinsuldamage2;
+        sheet.cell(CellIndex.indexByString("C45")).value =
+            object.lochourinsuldamage2;
+
+        sheet.cell(CellIndex.indexByString("E45")).value =
+            object.sizelengthinsuldamage2.toString() +
+                    "x" +
+                    object.sizewidthinsuldamage2.toString() ??
+                '';
+
+        sheet.cell(CellIndex.indexByString("H45")).value = (double.tryParse(
+                        sizelengthinsuldamageController2.text
+                            .replaceAll(',', '.')) *
+                    double.tryParse(sizewidthinsuldamageController2.text
+                        .replaceAll(',', '.'))) /
+                100 ??
+            '';
+
+        sheet.cell(CellIndex.indexByString("A46")).value =
+            object.charinsuldamage3;
+        sheet.cell(CellIndex.indexByString("C46")).value =
+            object.lochourinsuldamage3;
+
+        sheet.cell(CellIndex.indexByString("E46")).value =
+            object.sizelengthinsuldamage3.toString() +
+                    "x" +
+                    object.sizewidthinsuldamage3.toString() ??
+                '';
+
+        sheet.cell(CellIndex.indexByString("H46")).value = (double.tryParse(
+                        sizelengthinsuldamageController3.text
+                            .replaceAll(',', '.')) *
+                    double.tryParse(sizewidthinsuldamageController3.text
+                        .replaceAll(',', '.'))) /
+                100 ??
+            '';
 
         // Получаем путь к папке "Downloads" на внешнем хранилище
         Directory externalStorageDirectory =
@@ -8764,12 +9249,177 @@ class ObjectDetailIpState extends State<ObjectDetailIp> {
         } else if (object.filial == 'УАВР') {
           filial = 'УАВР-филиала';
         }
-        sheet.cell(CellIndex.indexByString("E5")).value = filial;
-        print(object.filial);
-        sheet.cell(CellIndex.indexByString("E4")).value = object.dolzhnpredskom;
-        print(object.dolzhnpredskom);
-        sheet.cell(CellIndex.indexByString("J7")).value = object.fiopredskom;
-        print(object.fiopredskom);
+        sheet.cell(CellIndex.indexByString("E5")).value = object.dolzhnpredskom;
+        sheet.cell(CellIndex.indexByString("E6")).value = filial;
+        sheet.cell(CellIndex.indexByString("I8")).value = object.fiopredskom;
+        sheet.cell(CellIndex.indexByString("I9")).value = object.dateObsl;
+        sheet.cell(CellIndex.indexByString("F13")).value = object.dateObsl;
+        sheet.cell(CellIndex.indexByString("F16")).value =
+            object.dolzhnpredstzakazch.toString() +
+                " " +
+                object.fiopredstzakazch.toString() +
+                " " +
+                object.fiodruglic.toString();
+
+        sheet.cell(CellIndex.indexByString("F18")).value =
+            object.dolzhnproizvrab.toString() +
+                " " +
+                object.fioproizvrab.toString();
+        sheet.cell(CellIndex.indexByString("F20")).value =
+            object.dolzhnnachuchastka.toString() +
+                " " +
+                object.fionachuchastka.toString();
+
+        sheet.cell(CellIndex.indexByString("F24")).value = object.title;
+        sheet.cell(CellIndex.indexByString("C27")).value = object.piketkm;
+
+        sheet.cell(CellIndex.indexByString("G27")).value =
+            double.tryParse(object.piketkm.replaceAll(',', '.')) +
+                double.tryParse(object.lengthpit.replaceAll(',', '.')) / 1000;
+        sheet.cell(CellIndex.indexByString("D29")).value = object.metrrest;
+        sheet.cell(CellIndex.indexByString("H36")).value =
+            object.typeinsulrest == 'Грунтовка + РАМ 2 слоя + Литкор НК Газ' ||
+                    double.tryParse(object.diameter.replaceAll(',', '.')) >= 820
+                ? 'Усиленного'
+                : 'Нормального';
+        sheet.cell(CellIndex.indexByString("F37")).value = object.typeinsulrest;
+        sheet.cell(CellIndex.indexByString("D39")).value =
+            object.thickinsulrest;
+
+        sheet.cell(CellIndex.indexByString("D42")).value =
+            object.typeinsulrest == 'Грунтовка + РАМ 2 слоя + Литкор НК Газ' ||
+                    object.typeinsulrest ==
+                        'Грунтовка + РАМ 1 слой + Литкор НК Газ'
+                ? 'СТО Газпром 9.1-016-2012'
+                : 'СТО Газпром 9.1-017-2012';
+
+        sheet.cell(CellIndex.indexByString("F52")).value =
+            object.tickinsulmeter + ' №' + object.tickinsulmeternumb;
+        sheet.cell(CellIndex.indexByString("F56")).value =
+            object.adhesmeter + ' №' + object.adhesmeternumb;
+        sheet.cell(CellIndex.indexByString("H59")).value =
+            object.continmeter + ' №' + object.continmeternumb;
+        sheet.cell(CellIndex.indexByString("C61")).value =
+            object.contininsulrest;
+
+        sheet.cell(CellIndex.indexByString("D64")).value = object
+                    .typeinsulrest ==
+                'Грунтовка + РАМ 2 слоя + Литкор НК Газ'
+            ? '4.6'
+            : object.typeinsulrest == 'Грунтовка + РАМ 1 слой + Литкор НК Газ'
+                ? '3.1'
+                : object.typeinsulrest == 'БИУРС'
+                    ? '0.7'
+                    : object.typeinsulrest == 'Термоусаживающаяся манжета'
+                        ? '1.5'
+                        : '';
+        sheet.cell(CellIndex.indexByString("G64")).value =
+            object.thickinsulrest;
+
+        sheet.cell(CellIndex.indexByString("J64")).value = double.tryParse(
+                        object.thickinsulrest.replaceAll(',', '.')) !=
+                    null &&
+                double.tryParse(sheet
+                        .cell(CellIndex.indexByString("D64"))
+                        .value
+                        .toString()
+                        .replaceAll(',', '.')) !=
+                    null &&
+                double.tryParse(object.thickinsulrest.replaceAll(',', '.')) >=
+                    double.tryParse(sheet
+                        .cell(CellIndex.indexByString("D64"))
+                        .value
+                        .toString()
+                        .replaceAll(',', '.'))
+            ? 'Соответствует'
+            : 'Не соответствует';
+
+        sheet.cell(CellIndex.indexByString("D65")).value = object
+                    .typeinsulrest ==
+                'Грунтовка + РАМ 2 слоя + Литкор НК Газ'
+            ? '0,2'
+            : object.typeinsulrest == 'Грунтовка + РАМ 1 слой + Литкор НК Газ'
+                ? '0,2'
+                : object.typeinsulrest == 'БИУРС'
+                    ? '5,0'
+                    : object.typeinsulrest == 'Термоусаживающаяся манжета'
+                        ? '0,2'
+                        : '';
+        sheet.cell(CellIndex.indexByString("G65")).value =
+            object.insuladhesrest;
+
+        sheet.cell(CellIndex.indexByString("J65")).value = double.tryParse(
+                        object.insuladhesrest.replaceAll(',', '.')) !=
+                    null &&
+                double.tryParse(sheet
+                        .cell(CellIndex.indexByString("D65"))
+                        .value
+                        .toString()
+                        .replaceAll(',', '.')) !=
+                    null &&
+                double.tryParse(object.thickinsulrest.replaceAll(',', '.')) >=
+                    double.tryParse(sheet
+                        .cell(CellIndex.indexByString("D65"))
+                        .value
+                        .toString()
+                        .replaceAll(',', '.'))
+            ? 'Соответствует'
+            : 'Не соответствует';
+
+        sheet.cell(CellIndex.indexByString("D66")).value = object
+                    .typeinsulrest ==
+                'Грунтовка + РАМ 2 слоя + Литкор НК Газ'
+            ? '5кВ на 1мм толщины'
+            : object.typeinsulrest == 'Грунтовка + РАМ 1 слой + Литкор НК Газ'
+                ? '5кВ на 1мм толщины'
+                : object.typeinsulrest == 'БИУРС'
+                    ? '3кВ на 1мм толщины'
+                    : object.typeinsulrest == 'Термоусаживающаяся манжета'
+                        ? '5кВ на 1мм толщины + 5кВ'
+                        : '-';
+        sheet.cell(CellIndex.indexByString("G66")).value =
+            'отсутствие пробоя при ' + object.contininsulrest + 'кВ';
+
+        sheet.cell(CellIndex.indexByString("E86")).value =
+            object.fiopredstzakazch;
+        sheet.cell(CellIndex.indexByString("J86")).value = object.dateObsl;
+        sheet.cell(CellIndex.indexByString("E88")).value = object.fioproizvrab;
+        sheet.cell(CellIndex.indexByString("J88")).value = object.dateObsl;
+        sheet.cell(CellIndex.indexByString("E90")).value =
+            object.fionachuchastka;
+        sheet.cell(CellIndex.indexByString("J90")).value = object.dateObsl;
+        sheet.cell(CellIndex.indexByString("A92")).value =
+            object.dolzhnpredstzakazchSK;
+        sheet.cell(CellIndex.indexByString("E92")).value =
+            object.fiopredstzakazchSK;
+        sheet.cell(CellIndex.indexByString("J92")).value = object.dateObsl;
+
+        // sheet.cell(CellIndex.indexByString("J66")).value = double.tryParse(
+        //                 object.contininsulrest.replaceAll(',', '.')) !=
+        //             null &&
+        //         double.tryParse(object.typeinsulrest.replaceAll(',', '.')) !=
+        //             null &&
+        //         double.tryParse(object.contininsulrest.replaceAll(',', '.')) >=
+        //             double.tryParse(object.typeinsulrest.replaceAll(',', '.'))
+        //     ? (object.typeinsulrest == 'Грунтовка + РАМ 2 слоя + Литкор НК Газ'
+        //         ? 5.0 *
+        //             double.tryParse(object.thickinsulrest.replaceAll(',', '.'))
+        //         : object.typeinsulrest ==
+        //                 'Грунтовка + РАМ 1 слой + Литкор НК Газ'
+        //             ? 5.0 *
+        //                 double.tryParse(
+        //                     object.thickinsulrest.replaceAll(',', '.'))
+        //             : object.typeinsulrest == 'БИУРС'
+        //                 ? 3.0 *
+        //                     double.tryParse(
+        //                         object.thickinsulrest.replaceAll(',', '.'))
+        //                 : object.typeinsulrest == 'Термоусаживающаяся манжета'
+        //                     ? 5.0 *
+        //                             double.tryParse(object.thickinsulrest
+        //                                 .replaceAll(',', '.')) +
+        //                         5
+        //                     : 'Соответствует')
+        //     : 'Не соответствует';
 
         // Получаем путь к папке "Downloads" на внешнем хранилище
         Directory externalStorageDirectory =
@@ -8835,12 +9485,38 @@ class ObjectDetailIpState extends State<ObjectDetailIp> {
         } else if (object.filial == 'УАВР') {
           filial = 'УАВР-филиала';
         }
-        sheet.cell(CellIndex.indexByString("E5")).value = filial;
-        print(object.filial);
-        sheet.cell(CellIndex.indexByString("E4")).value = object.dolzhnpredskom;
-        print(object.dolzhnpredskom);
-        sheet.cell(CellIndex.indexByString("J7")).value = object.fiopredskom;
-        print(object.fiopredskom);
+
+        sheet.cell(CellIndex.indexByString("E5")).value = object.dolzhnpredskom;
+        sheet.cell(CellIndex.indexByString("E6")).value = filial;
+        sheet.cell(CellIndex.indexByString("I8")).value = object.fiopredskom;
+        sheet.cell(CellIndex.indexByString("I9")).value = object.dateObsl;
+        sheet.cell(CellIndex.indexByString("E16")).value = object.dateObsl;
+
+        sheet.cell(CellIndex.indexByString("F18")).value =
+            object.dolzhnpredstzakazch + ' ' + object.fiopredstzakazch;
+        sheet.cell(CellIndex.indexByString("F20")).value =
+            object.dolzhnnachuchastka + ' ' + object.fionachuchastka;
+        sheet.cell(CellIndex.indexByString("F22")).value =
+            object.dolzhnpredstzakazchSK + ' ' + object.fiopredstzakazchSK;
+
+        sheet.cell(CellIndex.indexByString("F25")).value = object.title;
+        sheet.cell(CellIndex.indexByString("B11")).value = object.title;
+
+        sheet.cell(CellIndex.indexByString("B28")).value = object.piketkm;
+        sheet.cell(CellIndex.indexByString("F28")).value =
+            double.tryParse(object.piketkm.replaceAll(',', '.')) +
+                double.tryParse(object.lengthpit.replaceAll(',', '.')) / 1000;
+        sheet.cell(CellIndex.indexByString("D31")).value = object.metrrest;
+
+        sheet.cell(CellIndex.indexByString("E41")).value =
+            object.fiopredstzakazch;
+        sheet.cell(CellIndex.indexByString("J41")).value = object.dateObsl;
+        sheet.cell(CellIndex.indexByString("E43")).value =
+            object.fionachuchastka;
+        sheet.cell(CellIndex.indexByString("J43")).value = object.dateObsl;
+        sheet.cell(CellIndex.indexByString("E45")).value =
+            object.fiopredstzakazchSK;
+        sheet.cell(CellIndex.indexByString("J45")).value = object.dateObsl;
 
         // Получаем путь к папке "Downloads" на внешнем хранилище
         Directory externalStorageDirectory =
@@ -8906,12 +9582,70 @@ class ObjectDetailIpState extends State<ObjectDetailIp> {
         } else if (object.filial == 'УАВР') {
           filial = 'УАВР-филиала';
         }
-        sheet.cell(CellIndex.indexByString("E5")).value = filial;
-        print(object.filial);
-        sheet.cell(CellIndex.indexByString("E4")).value = object.dolzhnpredskom;
-        print(object.dolzhnpredskom);
-        sheet.cell(CellIndex.indexByString("J7")).value = object.fiopredskom;
-        print(object.fiopredskom);
+        sheet.cell(CellIndex.indexByString("E6")).value = filial;
+        sheet.cell(CellIndex.indexByString("E5")).value = object.dolzhnpredskom;
+        sheet.cell(CellIndex.indexByString("I8")).value = object.fiopredskom;
+        sheet.cell(CellIndex.indexByString("I9")).value = object.dateObsl;
+        sheet.cell(CellIndex.indexByString("B10")).value = object.title;
+        sheet.cell(CellIndex.indexByString("E13")).value = object.dateObsl;
+
+        sheet.cell(CellIndex.indexByString("E15")).value =
+            object.dolzhnpredstzakazch.toString() +
+                " " +
+                object.fiopredstzakazch.toString() +
+                " " +
+                object.fiodruglic.toString();
+        sheet.cell(CellIndex.indexByString("E17")).value =
+            object.dolzhnproizvrab.toString() +
+                " " +
+                object.fioproizvrab.toString();
+        sheet.cell(CellIndex.indexByString("E19")).value =
+            object.dolzhnpredststroit.toString() +
+                " " +
+                object.fiopredststroit.toString();
+
+        sheet.cell(CellIndex.indexByString("J21")).value = object.lengthpit;
+        sheet.cell(CellIndex.indexByString("B22")).value = object.piketkm;
+        sheet.cell(CellIndex.indexByString("F22")).value =
+            double.tryParse(object.piketkm.replaceAll(',', '.')) +
+                double.tryParse(object.lengthpit.replaceAll(',', '.')) / 1000;
+
+        sheet.cell(CellIndex.indexByString("I26")).value =
+            object.typeinsulrest == 'Грунтовка + РАМ 2 слоя + Литкор НК Газ' ||
+                    double.tryParse(object.diameter.replaceAll(',', '.')) >= 820
+                ? 'Усиленного'
+                : 'Нормального';
+        sheet.cell(CellIndex.indexByString("A26")).value = object
+                    .typeinsulrest ==
+                'Грунтовка + РАМ 2 слоя + Литкор НК Газ'
+            ? 'Грунтовка + РАМ 2 слоя'
+            : object.typeinsulrest == 'Грунтовка + РАМ 1 слой + Литкор НК Газ'
+                ? 'Грунтовка + РАМ 1 слой'
+                : object.typeinsulrest;
+
+        sheet.cell(CellIndex.indexByString("C28")).value =
+            object.thickinsulrest;
+        sheet.cell(CellIndex.indexByString("F28")).value =
+            object.typeinsulrest == 'Грунтовка + РАМ 2 слоя + Литкор НК Газ' ||
+                    object.typeinsulrest ==
+                        'Грунтовка + РАМ 1 слой + Литкор НК Газ'
+                ? 'Литкор НК Газ'
+                : '-';
+        sheet.cell(CellIndex.indexByString("J28")).value =
+            object.typeinsulrest == 'Грунтовка + РАМ 2 слоя + Литкор НК Газ' ||
+                    object.typeinsulrest ==
+                        'Грунтовка + РАМ 1 слой + Литкор НК Газ'
+                ? '1'
+                : '-';
+
+        sheet.cell(CellIndex.indexByString("E40")).value =
+            object.fiopredstzakazch;
+        sheet.cell(CellIndex.indexByString("J40")).value = object.dateObsl;
+        sheet.cell(CellIndex.indexByString("E42")).value = object.fioproizvrab;
+        sheet.cell(CellIndex.indexByString("J42")).value = object.dateObsl;
+        sheet.cell(CellIndex.indexByString("E44")).value =
+            object.fiopredststroit;
+        sheet.cell(CellIndex.indexByString("J44")).value = object.dateObsl;
 
         // Получаем путь к папке "Downloads" на внешнем хранилище
         Directory externalStorageDirectory =
@@ -8977,12 +9711,51 @@ class ObjectDetailIpState extends State<ObjectDetailIp> {
         } else if (object.filial == 'УАВР') {
           filial = 'УАВР-филиала';
         }
-        sheet.cell(CellIndex.indexByString("E5")).value = filial;
-        print(object.filial);
-        sheet.cell(CellIndex.indexByString("E4")).value = object.dolzhnpredskom;
-        print(object.dolzhnpredskom);
-        sheet.cell(CellIndex.indexByString("J7")).value = object.fiopredskom;
-        print(object.fiopredskom);
+        sheet.cell(CellIndex.indexByString("U5")).value = object.title;
+        sheet.cell(CellIndex.indexByString("J7")).value = object.piketkm;
+        sheet.cell(CellIndex.indexByString("J8")).value =
+            double.tryParse(object.piketkm.replaceAll(',', '.')) +
+                double.tryParse(object.lengthpit.replaceAll(',', '.')) / 1000;
+        sheet.cell(CellIndex.indexByString("V11")).value = object.dateObsl;
+        sheet.cell(CellIndex.indexByString("V12")).value = object.dateObsl;
+
+        sheet.cell(CellIndex.indexByString("A18")).value = object.dateObsl;
+        sheet.cell(CellIndex.indexByString("B18")).value = object.piketkm +
+            '-' +
+            (double.tryParse(object.piketkm.replaceAll(',', '.')) +
+                    double.tryParse(object.lengthpit.replaceAll(',', '.')) /
+                        1000)
+                .toString();
+        sheet.cell(CellIndex.indexByString("C18")).value = object.tempair;
+        sheet.cell(CellIndex.indexByString("D18")).value =
+            object.typeinsulrest == 'Грунтовка + РАМ 2 слоя + Литкор НК Газ' ||
+                    double.tryParse(object.diameter.replaceAll(',', '.')) >= 820
+                ? 'Усиленный, ' + 'РАМ 2 слоя + Литкор НК Газ'
+                : 'Нормальный, ' + object.typeinsulrest ==
+                        'Грунтовка + РАМ 1 слой + Литкор НК Газ'
+                    ? 'РАМ 1 слой + Литкор НК Газ'
+                    : 'Нормальный, ' + object.typeinsulrest;
+
+        sheet.cell(CellIndex.indexByString("E18")).value =
+            object.typeinsulrest == 'Грунтовка + РАМ 2 слоя + Литкор НК Газ' ||
+                    object.typeinsulrest ==
+                        'Грунтовка + РАМ 1 слой + Литкор НК Газ'
+                ? 'Грунтовка Транскор-Газ'
+                : 'Праймер-клей';
+
+        sheet.cell(CellIndex.indexByString("F18")).value =
+            object.typeinsulrest == 'Грунтовка + РАМ 2 слоя + Литкор НК Газ' ||
+                    object.typeinsulrest ==
+                        'Грунтовка + РАМ 1 слой + Литкор НК Газ'
+                ? 'Литкор НК Газ'
+                : '-';
+
+        sheet.cell(CellIndex.indexByString("H18")).value =
+            object.fiopredstzakazch;
+        sheet.cell(CellIndex.indexByString("J18")).value =
+            object.fiopredstzakazch;
+        sheet.cell(CellIndex.indexByString("I18")).value =
+            object.fiopredststroit;
 
         // Получаем путь к папке "Downloads" на внешнем хранилище
         Directory externalStorageDirectory =
