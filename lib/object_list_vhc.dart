@@ -1,12 +1,12 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
-import 'package:qualcontr/dbhelper_ip.dart';
-import 'package:qualcontr/model_ip.dart';
-import 'package:qualcontr/object_detail_ip.dart';
+import './dbhelper_vh_contr.dart';
+import './model_vh_contr.dart';
+import './object_detail_vhc.dart';
 import 'package:sqflite/sqflite.dart';
 
-DbHelperIp helper = DbHelperIp();
+DbHelperVhk helper = DbHelperVhk();
 
 class ObjectListVhC extends StatefulWidget {
   @override
@@ -14,7 +14,7 @@ class ObjectListVhC extends StatefulWidget {
 }
 
 class ObjectListVhCState extends State {
-  DbHelperIp helper = DbHelperIp();
+  DbHelperVhk helper = DbHelperVhk();
   List<Todo> todos;
 
   @override
@@ -29,7 +29,7 @@ class ObjectListVhCState extends State {
         backgroundColor: Theme.of(context).primaryColor,
         title: Center(
             child: Text(
-          'ПРОВЕРКА КАЧЕСТВА ИП',
+          'ВХОДНОЙ КОНТРОЛЬ',
           style: TextStyle(
             fontSize: 22,
             fontWeight: FontWeight.w400,
@@ -138,7 +138,8 @@ class ObjectListVhCState extends State {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: <Widget>[
                         Text(
-                          descriptionParser(todos[position].osnovanie ?? ''),
+                          descriptionParser(
+                              todos[position].zaklkachestvo ?? ''),
                           style: const TextStyle(
                               fontSize: 13.0,
                               fontWeight: FontWeight.w600,
@@ -199,7 +200,7 @@ class ObjectListVhCState extends State {
     final bool result = await Navigator.push(
       context,
       MaterialPageRoute(
-          builder: (BuildContext context) => ObjectDetailIp(object: object)),
+          builder: (BuildContext context) => ObjectDetailVhC(object: object)),
     );
 
     if (result == true) {

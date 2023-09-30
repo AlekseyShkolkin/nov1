@@ -7,8 +7,11 @@ class Todo {
   int _id;
 
   String _date;
+  String _dateObsl1;
+  String _dateObsl2;
   String _title; //наименование
   String _squareclear; //площадь очистки
+  String _squarerest;
   String _constroldcoat; //конструкция старого покрытия
   String _photo;
   String _photoISO;
@@ -31,10 +34,16 @@ class Todo {
   String _difftemp; //разница температур
 
   String _techcondmat; //технические условия на материал
+  String _techcondmat1; //технические условия на материал
   String _numdoflay; //количество слоев
   String _squarenew; //площадь очистки
   String _thickofwellay; // толщина мокрого слоя.
   String _thickofdrylay; //толщина сухого слоя
+  String _thickofdrylay1; //толщина сухого слоя
+  String _thickofdrylay2; //толщина сухого слоя
+  String _thickofdrylay3; //толщина сухого слоя
+  String _thickofdrylay4; //толщина сухого слоя
+  String _thickofdrylay5; //толщина сухого слоя
   String _contin; //сплошность.
   String _timedry; //время сушки.
   String _degrdry; //степень сушки.
@@ -42,18 +51,35 @@ class Todo {
 
   String _apperance; //внешний вид
   String _bgcolor; // цвет
+  String _adhesionmethod; //метод адгезии
+  String _photoAdhesion; //фото адгезии
   String _adhesion; //адгезия
   String _dielcont; //диэлектрическая сплошность
 
   String _thickinsulmeter; //толщиномер
+  String _tickinsulmeternumb;
+  String _tickinsulmeterdate;
   String _adhesmeter; //адгезиметр
+  String _adhesmeternumb;
+  String _adhesmeterdate;
   String _continmeter; //искровой дефектоскоп
+  String _continmeternumb;
+  String _continmeterdate;
   String _setvik; //комплект ВИК
+  String _setviknumb;
+  String _setvikdate;
 
   String _changecolor; //изменение цвета.
   String _changegloss; // изменение блеска.
   String _mudretant; //грязеудержание.
   String _chalking; //меление
+  String _highestDegreeD;
+  String _rastresk; //растрескивание
+  String _otslaivan; // отслаивание
+  String _vyvetriv; //выветривание
+  String _puzyr; //пузыри
+  String _korroziya; //коррозия
+  String _highestDegreeZ;
   String _description;
 
   String _filial; //филиал
@@ -78,12 +104,15 @@ class Todo {
     this._title,
     this._date, [
     this._photo,
+    this._dateObsl1,
+    this._dateObsl2,
     this._photoISO,
     this._photoDust,
     this._photoRoughness,
     this._inst,
     this._iso8501,
     this._squareclear,
+    this._squarerest,
     this._constroldcoat,
     this._prepmethod,
     this._degrofdegr,
@@ -98,10 +127,16 @@ class Todo {
     this._dewpoint,
     this._difftemp,
     this._techcondmat,
+    this._techcondmat1,
     this._numdoflay,
     this._squarenew,
     this._thickofwellay,
     this._thickofdrylay,
+    this._thickofdrylay1,
+    this._thickofdrylay2,
+    this._thickofdrylay3,
+    this._thickofdrylay4,
+    this._thickofdrylay5,
     this._contin,
     this._timedry,
     this._degrdry,
@@ -109,15 +144,32 @@ class Todo {
     this._apperance,
     this._bgcolor,
     this._adhesion,
+    this._adhesionmethod,
+    this._photoAdhesion,
     this._dielcont,
     this._thickinsulmeter,
+    this._tickinsulmeternumb,
+    this._tickinsulmeterdate,
     this._adhesmeter,
+    this._adhesmeternumb,
+    this._adhesmeterdate,
     this._continmeter,
+    this._continmeternumb,
+    this._continmeterdate,
     this._setvik,
+    this._setviknumb,
+    this._setvikdate,
     this._changecolor,
     this._changegloss,
     this._mudretant,
     this._chalking,
+    this._highestDegreeD,
+    this._rastresk, //растрескивание
+    this._otslaivan, // отслаивание
+    this._vyvetriv, //выветривание
+    this._puzyr, //пузыри
+    this._korroziya, //коррозия
+    this._highestDegreeZ,
     this._description,
     this._filial,
     this._dolzhnpredskom,
@@ -142,6 +194,8 @@ class Todo {
     this._id,
     this._title,
     this._date, [
+    this._dateObsl1,
+    this._dateObsl2,
     this._photo,
     this._photoISO,
     this._photoDust,
@@ -149,6 +203,7 @@ class Todo {
     this._inst,
     this._iso8501,
     this._squareclear,
+    this._squarerest,
     this._constroldcoat,
     this._prepmethod,
     this._degrofdegr,
@@ -163,10 +218,16 @@ class Todo {
     this._dewpoint,
     this._difftemp,
     this._techcondmat,
+    this._techcondmat1,
     this._numdoflay,
     this._squarenew,
     this._thickofwellay,
     this._thickofdrylay,
+    this._thickofdrylay1,
+    this._thickofdrylay2,
+    this._thickofdrylay3,
+    this._thickofdrylay4,
+    this._thickofdrylay5,
     this._contin,
     this._timedry,
     this._degrdry,
@@ -174,15 +235,32 @@ class Todo {
     this._apperance,
     this._bgcolor,
     this._adhesion,
+    this._adhesionmethod,
+    this._photoAdhesion,
     this._dielcont,
     this._thickinsulmeter,
+    this._tickinsulmeternumb,
+    this._tickinsulmeterdate,
     this._adhesmeter,
+    this._adhesmeternumb,
+    this._adhesmeterdate,
     this._continmeter,
+    this._continmeternumb,
+    this._continmeterdate,
     this._setvik,
+    this._setviknumb,
+    this._setvikdate,
     this._changecolor,
     this._changegloss,
     this._mudretant,
     this._chalking,
+    this._highestDegreeD,
+    this._rastresk, //растрескивание
+    this._otslaivan, // отслаивание
+    this._vyvetriv, //выветривание
+    this._puzyr, //пузыри
+    this._korroziya, //коррозия
+    this._highestDegreeZ,
     this._description,
     this._filial,
     this._dolzhnpredskom,
@@ -210,7 +288,11 @@ class Todo {
   String get photoDust => _photoDust;
   String get photoRoughness => _photoRoughness;
   String get title => _title;
+  String get dateObsl1 => _dateObsl1;
+  String get dateObsl2 => _dateObsl2;
+
   String get squareclear => _squareclear;
+  String get squarerest => _squarerest;
   String get constroldcoat => _constroldcoat;
   String get inst => _inst;
   String get iso8501 => _iso8501;
@@ -229,10 +311,16 @@ class Todo {
   String get difftemp => _difftemp;
 
   String get techcondmat => _techcondmat;
+  String get techcondmat1 => _techcondmat1;
   String get numdoflay => _numdoflay;
   String get squarenew => _squarenew;
   String get thickofwellay => _thickofwellay;
   String get thickofdrylay => _thickofdrylay;
+  String get thickofdrylay1 => _thickofdrylay1;
+  String get thickofdrylay2 => _thickofdrylay2;
+  String get thickofdrylay3 => _thickofdrylay3;
+  String get thickofdrylay4 => _thickofdrylay4;
+  String get thickofdrylay5 => _thickofdrylay5;
   String get contin => _contin;
   String get timedry => _timedry;
   String get degrdry => _degrdry;
@@ -241,17 +329,36 @@ class Todo {
   String get apperance => _apperance;
   String get bgcolor => _bgcolor;
   String get adhesion => _adhesion;
+  String get adhesionmethod => _adhesionmethod;
+  String get photoAdhesion => _photoAdhesion;
   String get dielcont => _dielcont;
 
   String get thickinsulmeter => _thickinsulmeter;
+  String get tickinsulmeternumb => _tickinsulmeternumb;
+  String get tickinsulmeterdate => _tickinsulmeterdate;
   String get adhesmeter => _adhesmeter;
+  String get adhesmeternumb => _adhesmeternumb;
+  String get adhesmeterdate => _adhesmeterdate;
   String get continmeter => _continmeter;
+  String get continmeternumb => _continmeternumb;
+  String get continmeterdate => _continmeterdate;
   String get setvik => _setvik;
+  String get setviknumb => _setviknumb;
+  String get setvikdate => _setvikdate;
 
   String get changecolor => _changecolor;
   String get changegloss => _changegloss;
   String get mudretant => _mudretant;
   String get chalking => _chalking;
+  String get highestDegreeD => _highestDegreeD;
+
+  String get rastresk => _rastresk;
+  String get otslaivan => _otslaivan;
+  String get vyvetriv => _vyvetriv;
+  String get puzyr => _puzyr;
+  String get korroziya => _korroziya;
+  String get highestDegreeZ => _highestDegreeZ;
+
   String get description => _description;
 
   String get filial => _filial;
@@ -302,9 +409,27 @@ class Todo {
     }
   }
 
+  set dateObsl1(String newdateObsl1) {
+    if ((newdateObsl1?.length ?? 0) <= 255) {
+      _dateObsl1 = newdateObsl1;
+    }
+  }
+
+  set dateObsl2(String newdateObsl2) {
+    if ((newdateObsl2?.length ?? 0) <= 255) {
+      _dateObsl2 = newdateObsl2;
+    }
+  }
+
   set squareclear(String newsquareclear) {
     if ((newsquareclear?.length ?? 0) <= 255) {
       _squareclear = newsquareclear;
+    }
+  }
+
+  set squarerest(String newssquarerest) {
+    if ((newssquarerest?.length ?? 0) <= 255) {
+      _squarerest = newssquarerest;
     }
   }
 
@@ -404,6 +529,12 @@ class Todo {
     }
   }
 
+  set techcondmat1(String newtechcondmat1) {
+    if ((newtechcondmat1?.length ?? 0) <= 255) {
+      _techcondmat1 = newtechcondmat1;
+    }
+  }
+
   set numdoflay(String newnumdoflay) {
     if ((newnumdoflay?.length ?? 0) <= 255) {
       _numdoflay = newnumdoflay;
@@ -425,6 +556,36 @@ class Todo {
   set thickofdrylay(String newthickofdrylay) {
     if ((newthickofdrylay?.length ?? 0) <= 255) {
       _thickofdrylay = newthickofdrylay;
+    }
+  }
+
+  set thickofdrylay1(String newthickofdrylay1) {
+    if ((newthickofdrylay1?.length ?? 0) <= 255) {
+      _thickofdrylay1 = newthickofdrylay1;
+    }
+  }
+
+  set thickofdrylay2(String newthickofdrylay2) {
+    if ((newthickofdrylay2?.length ?? 0) <= 255) {
+      _thickofdrylay2 = newthickofdrylay2;
+    }
+  }
+
+  set thickofdrylay3(String newthickofdrylay3) {
+    if ((newthickofdrylay3?.length ?? 0) <= 255) {
+      _thickofdrylay3 = newthickofdrylay3;
+    }
+  }
+
+  set thickofdrylay4(String newthickofdrylay4) {
+    if ((newthickofdrylay4?.length ?? 0) <= 255) {
+      _thickofdrylay4 = newthickofdrylay4;
+    }
+  }
+
+  set thickofdrylay5(String newthickofdrylay5) {
+    if ((newthickofdrylay5?.length ?? 0) <= 255) {
+      _thickofdrylay5 = newthickofdrylay5;
     }
   }
 
@@ -470,6 +631,18 @@ class Todo {
     }
   }
 
+  set photoAdhesion(String newphotoAdhesion) {
+    if ((newphotoAdhesion?.length ?? 0) <= 255) {
+      _photoAdhesion = newphotoAdhesion;
+    }
+  }
+
+  set adhesionmethod(String newadhesionmethod) {
+    if ((newadhesionmethod?.length ?? 0) <= 255) {
+      _adhesionmethod = newadhesionmethod;
+    }
+  }
+
   set dielcont(String newdielcont) {
     if ((newdielcont?.length ?? 0) <= 255) {
       _dielcont = newdielcont;
@@ -482,9 +655,33 @@ class Todo {
     }
   }
 
+  set tickinsulmeternumb(String newtickinsulmeternumb) {
+    if ((newtickinsulmeternumb?.length ?? 0) <= 255) {
+      _tickinsulmeternumb = newtickinsulmeternumb;
+    }
+  }
+
+  set tickinsulmeterdate(String newtickinsulmeterdate) {
+    if ((newtickinsulmeterdate?.length ?? 0) <= 255) {
+      _tickinsulmeterdate = newtickinsulmeterdate;
+    }
+  }
+
   set adhesmeter(String newadhesmeter) {
     if ((newadhesmeter?.length ?? 0) <= 255) {
       _adhesmeter = newadhesmeter;
+    }
+  }
+
+  set adhesmeternumb(String newadhesmeternumb) {
+    if ((newadhesmeternumb?.length ?? 0) <= 255) {
+      _adhesmeternumb = newadhesmeternumb;
+    }
+  }
+
+  set adhesmeterdate(String newadhesmeterdate) {
+    if ((newadhesmeterdate?.length ?? 0) <= 255) {
+      _adhesmeterdate = newadhesmeterdate;
     }
   }
 
@@ -494,9 +691,33 @@ class Todo {
     }
   }
 
+  set continmeternumb(String newcontinmeternumb) {
+    if ((newcontinmeternumb?.length ?? 0) <= 255) {
+      _continmeternumb = newcontinmeternumb;
+    }
+  }
+
+  set continmeterdate(String newcontinmeterdate) {
+    if ((newcontinmeterdate?.length ?? 0) <= 255) {
+      _continmeterdate = newcontinmeterdate;
+    }
+  }
+
   set setvik(String newsetvik) {
     if ((newsetvik?.length ?? 0) <= 255) {
       _setvik = newsetvik;
+    }
+  }
+
+  set setviknumb(String newsetviknumb) {
+    if ((newsetviknumb?.length ?? 0) <= 255) {
+      _setviknumb = newsetviknumb;
+    }
+  }
+
+  set setvikdate(String newsetvikdate) {
+    if ((newsetvikdate?.length ?? 0) <= 255) {
+      _setvikdate = newsetvikdate;
     }
   }
 
@@ -521,6 +742,48 @@ class Todo {
   set chalking(String newchalking) {
     if ((newchalking?.length ?? 0) <= 255) {
       _chalking = newchalking;
+    }
+  }
+
+  set highestDegreeD(String newhighestDegreeD) {
+    if ((newhighestDegreeD?.length ?? 0) <= 255) {
+      _highestDegreeD = newhighestDegreeD;
+    }
+  }
+
+  set korroziya(String newkorroziya) {
+    if ((newkorroziya?.length ?? 0) <= 255) {
+      _korroziya = newkorroziya;
+    }
+  }
+
+  set puzyr(String newpuzyr) {
+    if ((newpuzyr?.length ?? 0) <= 255) {
+      _puzyr = newpuzyr;
+    }
+  }
+
+  set vyvetriv(String newvyvetriv) {
+    if ((newvyvetriv?.length ?? 0) <= 255) {
+      _vyvetriv = newvyvetriv;
+    }
+  }
+
+  set otslaivan(String newotslaivan) {
+    if ((newotslaivan?.length ?? 0) <= 255) {
+      _otslaivan = newotslaivan;
+    }
+  }
+
+  set rastresk(String newrastresk) {
+    if ((newrastresk?.length ?? 0) <= 255) {
+      _rastresk = newrastresk;
+    }
+  }
+
+  set highestDegreeZ(String newhighestDegreeZ) {
+    if ((newhighestDegreeZ?.length ?? 0) <= 255) {
+      _highestDegreeZ = newhighestDegreeZ;
     }
   }
 
@@ -639,9 +902,12 @@ class Todo {
   Map<String, dynamic> toMap() {
     final Map<String, dynamic> map = <String, dynamic>{};
     map['title'] = _title;
+    map['dateObsl1'] = _dateObsl1;
+    map['dateObsl2'] = _dateObsl2;
 
     map['date'] = _date;
     map['squareclear'] = _squareclear;
+    map['squarerest'] = _squarerest;
     map['constroldcoat'] = _constroldcoat;
     map['inst'] = _inst;
     map['iso8501'] = _iso8501;
@@ -660,10 +926,16 @@ class Todo {
     map['difftemp'] = _difftemp;
 
     map['techcondmat'] = _techcondmat;
+    map['techcondmat1'] = _techcondmat1;
     map['numdoflay'] = _numdoflay;
     map['squarenew'] = _squarenew;
     map['thickofwellay'] = _thickofwellay;
     map['thickofdrylay'] = _thickofdrylay;
+    map['thickofdrylay1'] = _thickofdrylay1;
+    map['thickofdrylay2'] = _thickofdrylay2;
+    map['thickofdrylay3'] = _thickofdrylay3;
+    map['thickofdrylay4'] = _thickofdrylay4;
+    map['thickofdrylay5'] = _thickofdrylay5;
     map['contin'] = _contin;
     map['timedry'] = _timedry;
     map['degrdry'] = _degrdry;
@@ -672,17 +944,36 @@ class Todo {
     map['apperance'] = _apperance;
     map['bgcolor'] = _bgcolor;
     map['adhesion'] = _adhesion;
+    map['photoAdhesion'] = _photoAdhesion;
+    map['adhesionmethod'] = _adhesionmethod;
     map['dielcont'] = _dielcont;
 
     map['thickinsulmeter'] = _thickinsulmeter;
+    map['tickinsulmeternumb'] = _tickinsulmeternumb;
+    map['tickinsulmeterdate'] = _tickinsulmeterdate;
     map['adhesmeter'] = _adhesmeter;
+    map['adhesmeternumb'] = _adhesmeternumb;
+    map['adhesmeterdate'] = _adhesmeterdate;
+
     map['continmeter'] = _continmeter;
+    map['continmeternumb'] = _continmeternumb;
+    map['continmeterdate'] = _continmeterdate;
+
     map['setvik'] = _setvik;
+    map['setviknumb'] = _setviknumb;
+    map['setvikdate'] = _setvikdate;
 
     map['changecolor'] = _changecolor;
     map['changegloss'] = _changegloss;
     map['mudretant'] = _mudretant;
     map['chalking'] = _chalking;
+    map['highestDegreeD'] = _highestDegreeD;
+    map['rastresk'] = _rastresk;
+    map['otslaivan'] = _otslaivan;
+    map['vyvetriv'] = _vyvetriv;
+    map['puzyr'] = _puzyr;
+    map['korroziya'] = _korroziya;
+    map['highestDegreeZ'] = _highestDegreeZ;
     map['description'] = _description;
     map['photo'] = _photo;
     map['photoISO'] = _photoISO;
@@ -716,9 +1007,12 @@ class Todo {
   Todo.fromObject(dynamic o) {
     _id = o['id'];
     _title = o['title'];
+    _dateObsl1 = o['dateObsl1'];
+    _dateObsl2 = o['dateObsl2'];
 
     _date = o['date'];
     _squareclear = o['squareclear'];
+    _squarerest = o['squarerest'];
     _constroldcoat = o['constroldcoat'];
     _inst = o['inst'];
     _iso8501 = o['iso8501'];
@@ -735,10 +1029,16 @@ class Todo {
     _dewpoint = o['dewpoint'];
     _difftemp = o['difftemp'];
     _techcondmat = o['techcondmat'];
+    _techcondmat1 = o['techcondmat1'];
     _numdoflay = o['numdoflay'];
     _squarenew = o['squarenew'];
     _thickofwellay = o['thickofwellay'];
     _thickofdrylay = o['thickofdrylay'];
+    _thickofdrylay1 = o['thickofdrylay1'];
+    _thickofdrylay2 = o['thickofdrylay2'];
+    _thickofdrylay3 = o['thickofdrylay3'];
+    _thickofdrylay4 = o['thickofdrylay4'];
+    _thickofdrylay5 = o['thickofdrylay5'];
     _contin = o['contin'];
     _timedry = o['timedry'];
     _degrdry = o['degrdry'];
@@ -746,15 +1046,34 @@ class Todo {
     _apperance = o['apperance'];
     _bgcolor = o['bgcolor'];
     _adhesion = o['adhesion'];
+    _photoAdhesion = o['photoAdhesion'];
+    _adhesionmethod = o['adhesionmethod'];
     _dielcont = o['dielcont'];
     _thickinsulmeter = o['thickinsulmeter'];
+    _tickinsulmeternumb = o['tickinsulmeternumb'];
+    _tickinsulmeterdate = o['tickinsulmeterdate'];
     _adhesmeter = o['adhesmeter'];
+    _adhesmeternumb = o['adhesmeternumb'];
+    _adhesmeterdate = o['adhesmeterdate'];
+
     _continmeter = o['continmeter'];
+    _continmeternumb = o['continmeternumb'];
+    _continmeterdate = o['continmeterdate'];
+
     _setvik = o['setvik'];
+    _setviknumb = o['setviknumb'];
+    _setvikdate = o['setvikdate'];
     _changecolor = o['changecolor'];
     _changegloss = o['changegloss'];
     _mudretant = o['mudretant'];
     _chalking = o['chalking'];
+    _highestDegreeD = o['highestDegreeD'];
+    _rastresk = o['rastresk'];
+    _otslaivan = o['otslaivan'];
+    _vyvetriv = o['vyvetriv'];
+    _puzyr = o['puzyr'];
+    _korroziya = o['korroziya'];
+    _highestDegreeZ = o['highestDegreeZ'];
     _description = o['description'];
     _photo = o['photo'];
     _photoISO = o['photoISO'];

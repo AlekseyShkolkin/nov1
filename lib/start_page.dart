@@ -11,12 +11,12 @@ import './dbhelper_lkp.dart';
 class StartPage extends StatefulWidget {
   final int countIp;
   final int countLkp;
-  // final int countVhk;
+  final int countVhk;
 
   StartPage({
-    @required this.countIp,
+    this.countIp,
     this.countLkp,
-    // this.countVhk,
+    this.countVhk,
   });
 
   @override
@@ -26,21 +26,22 @@ class StartPage extends StatefulWidget {
 class _StartPageState extends State<StartPage> {
   int countIp;
   int countLkp;
-  // int countVhk;
+  int countVhk;
 
   @override
   void didChangeDependencies() {
     super.didChangeDependencies();
-    setState(() {});
-    countIp = widget.countIp;
-    countLkp = widget.countLkp;
-    // countVhk = widget.countVhk;
-    DbHelperLkp dbHelperLkp = DbHelperLkp();
-    DbHelperIp dbHelperIp = DbHelperIp();
-    // DbHelperVhk dbHelperVhk = DbHelperVhk();
-    dbHelperIp.getTodoCountIp();
-    dbHelperLkp.getTodoCountLkp();
-    // dbHelperVhk.getTodoCountVhk();
+    setState(() {
+      countIp = widget.countIp;
+      countLkp = widget.countLkp;
+      countVhk = widget.countVhk;
+      DbHelperLkp dbHelperLkp = DbHelperLkp();
+      DbHelperIp dbHelperIp = DbHelperIp();
+      DbHelperVhk dbHelperVhk = DbHelperVhk();
+      dbHelperIp.getTodoCountIp();
+      dbHelperLkp.getTodoCountLkp();
+      dbHelperVhk.getTodoCountVhk();
+    });
   }
 
   @override
@@ -63,6 +64,7 @@ class _StartPageState extends State<StartPage> {
 
   ListView start_page_list(context) {
     print('Количество записей: ${widget.countIp}');
+    print('Количество записейвх: ${widget.countVhk}');
     return ListView(
       children: [
         Divider(),
@@ -139,9 +141,9 @@ class _StartPageState extends State<StartPage> {
             ),
           ),
           trailing: Badge(
-            //  badgeContent: widget.countVhk == null || widget.countVhk == 0
-            //         ? Text('нет')
-            //         : Text(widget.countVhk.toString()),
+            badgeContent: widget.countVhk == null || widget.countVhk == 0
+                ? Text('нет')
+                : Text(widget.countVhk.toString()),
             child: Icon(
               Icons.playlist_add_check,
               size: 52,

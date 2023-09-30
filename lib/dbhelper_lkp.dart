@@ -13,7 +13,10 @@ class DbHelperLkp {
   String colId = 'id';
   String coldate = 'date';
   String colTitle = 'title';
+  String colDateObsl1 = 'dateObsl1';
+  String colDateObsl2 = 'dateObsl2';
   String colsquareclear = 'squareclear';
+  String colsquarerest = 'squarerest';
   String colconstroldcoat = 'constroldcoat';
   String colinst = 'inst';
   String coliso8501 = 'iso8501';
@@ -32,10 +35,16 @@ class DbHelperLkp {
   String coldifftemp = 'difftemp';
 
   String coltechcondmat = 'techcondmat';
+  String coltechcondmat1 = 'techcondmat1';
   String colnumdoflay = 'numdoflay';
   String colsquarenew = 'squarenew';
   String colthickofwellay = 'thickofwellay';
   String colthickofdrylay = 'thickofdrylay';
+  String colthickofdrylay1 = 'thickofdrylay1';
+  String colthickofdrylay2 = 'thickofdrylay2';
+  String colthickofdrylay3 = 'thickofdrylay3';
+  String colthickofdrylay4 = 'thickofdrylay4';
+  String colthickofdrylay5 = 'thickofdrylay5';
   String colcontin = 'contin';
   String coltimedry = 'timedry';
   String coldegrdry = 'degrdry';
@@ -44,17 +53,35 @@ class DbHelperLkp {
   String colapperance = 'apperance';
   String colbgcolor = 'bgcolor';
   String coladhesion = 'adhesion';
+  String colphotoAdhesion = 'photoAdhesion';
+  String coladhesionmethod = 'adhesionmethod';
   String coldielcont = 'dielcont';
 
   String colthickinsulmeter = 'thickinsulmeter';
+  String coltickinsulmeternumb = 'tickinsulmeternumb';
+  String coltickinsulmeterdate = 'tickinsulmeterdate';
   String coladhesmeter = 'adhesmeter';
+  String coladhesmeternumb = 'adhesmeternumb';
+  String coladhesmeterdate = 'adhesmeterdate';
   String colcontinmeter = 'continmeter';
+  String colcontinmeternumb = 'continmeternumb';
+  String colcontinmeterdate = 'continmeterdate';
   String colsetvik = 'setvik';
-
+  String colsetviknumb = 'setviknumb';
+  String colsetvikdate = 'setvikdate';
   String colchangecolor = 'changecolor';
   String colchangegloss = 'changegloss';
   String colmudretant = 'mudretant';
   String colchalking = 'chalking';
+
+  String colhighestDegreeD = 'highestDegreeD';
+  String colrastresk = 'rastresk';
+  String colotslaivan = 'otslaivan';
+  String colvyvetriv = 'vyvetriv';
+  String colpuzyr = 'puzyr';
+  String colkorroziya = 'korroziya';
+  String colhighestDegreeZ = 'highestDegreeZ';
+
   String coldescription = 'description';
 
   String colphoto = 'photo';
@@ -104,7 +131,7 @@ class DbHelperLkp {
   Future<void> _createDb(Database db, int newVersion) async {
     await db.execute(
         'CREATE TABLE $tblTodo($colId INTEGER PRIMARY KEY, $colTitle TEXT, ' +
-            '$coldate TEXT,$colfiodruglic TEXT,$coldolzhndruglic TEXT,$colfiopredststroit TEXT,$coldolzhnpredststroit TEXT,$colfiopredststroitSK TEXT,$coldolzhnpredststroitSK TEXT,$colfiopredstzakazch TEXT,$colfiopredstzakazchSK TEXT,$coldolzhnpredstzakazchSK TEXT,$coldolzhnpredstzakazch TEXT,$colfionachuchastka TEXT,$coldolzhnnachuchastka TEXT,$colfioproizvrab TEXT,$coldolzhnproizvrab TEXT,$colfiopredskom TEXT,$coldolzhnpredskom TEXT,$colfilial TEXT,$colphotoRoughness TEXT,$colphotoDust TEXT,$colphotoISO TEXT, $colphoto TEXT,$colsquareclear TEXT,$colconstroldcoat TEXT,$colinst TEXT,$coliso8501 TEXT,$colprepmethod TEXT,$coldegrofdegr TEXT,$coldegrofoxid TEXT,$coldegrofdedust1 TEXT,$coldegrofdedust2 TEXT,$colroughness TEXT,$colsurfsalts TEXT,$coltempair TEXT,$coltempsurf TEXT,$colrelathumid TEXT,$coldewpoint TEXT,$coldifftemp TEXT,$coltechcondmat TEXT,$colnumdoflay TEXT,$colsquarenew TEXT,$colthickofwellay TEXT,$colthickofdrylay TEXT,$colcontin TEXT,$coltimedry TEXT,$coldegrdry TEXT,$coldefdur TEXT,$colapperance TEXT,$colbgcolor TEXT,$coladhesion  TEXT,$coldielcont  TEXT,$colthickinsulmeter TEXT,$coladhesmeter TEXT,$colcontinmeter TEXT,$colsetvik TEXT,$colchangecolor TEXT,$colchangegloss TEXT,$colmudretant TEXT,$colchalking TEXT,$coldescription TEXT)');
+            '$coldate TEXT,$colDateObsl1 TEXT,$colDateObsl2 TEXT,$colfiodruglic TEXT,$coldolzhndruglic TEXT,$colfiopredststroit TEXT,$coldolzhnpredststroit TEXT,$colfiopredststroitSK TEXT,$coldolzhnpredststroitSK TEXT,$colfiopredstzakazch TEXT,$colfiopredstzakazchSK TEXT,$coldolzhnpredstzakazchSK TEXT,$coldolzhnpredstzakazch TEXT,$colfionachuchastka TEXT,$coldolzhnnachuchastka TEXT,$colfioproizvrab TEXT,$coldolzhnproizvrab TEXT,$colfiopredskom TEXT,$coldolzhnpredskom TEXT,$colfilial TEXT,$colphotoRoughness TEXT,$colphotoDust TEXT,$colphotoISO TEXT, $colphoto TEXT,$colsquareclear TEXT,$colsquarerest TEXT,$colconstroldcoat TEXT,$colinst TEXT,$coliso8501 TEXT,$colprepmethod TEXT,$coldegrofdegr TEXT,$coldegrofoxid TEXT,$coldegrofdedust1 TEXT,$coldegrofdedust2 TEXT,$colroughness TEXT,$colsurfsalts TEXT,$coltempair TEXT,$coltempsurf TEXT,$colrelathumid TEXT,$coldewpoint TEXT,$coldifftemp TEXT,$coltechcondmat TEXT,$coltechcondmat1 TEXT,$colnumdoflay TEXT,$colsquarenew TEXT,$colthickofwellay TEXT,$colthickofdrylay TEXT,$colthickofdrylay1 TEXT,$colthickofdrylay2 TEXT,$colthickofdrylay3 TEXT,$colthickofdrylay4 TEXT,$colthickofdrylay5 TEXT,$colcontin TEXT,$coltimedry TEXT,$coldegrdry TEXT,$coldefdur TEXT,$colapperance TEXT,$colbgcolor TEXT,$coladhesion  TEXT,$coladhesionmethod  TEXT,$colphotoAdhesion  TEXT,$coldielcont  TEXT,$colthickinsulmeter TEXT,$coltickinsulmeternumb TEXT,$coltickinsulmeterdate TEXT,$coladhesmeter TEXT,$coladhesmeternumb TEXT,$coladhesmeterdate TEXT,$colcontinmeter TEXT,$colcontinmeternumb TEXT,$colcontinmeterdate TEXT,$colsetvik TEXT,$colsetviknumb TEXT,$colsetvikdate TEXT,$colchangecolor TEXT,$colchangegloss TEXT,$colmudretant TEXT,$colhighestDegreeD TEXT,$colrastresk TEXT,$colotslaivan TEXT,$colvyvetriv TEXT,$colpuzyr TEXT,$colkorroziya TEXT,$colhighestDegreeZ TEXT,$colchalking TEXT,$coldescription TEXT)');
   }
 
   Future<int> insertTodo(Todo todo) async {

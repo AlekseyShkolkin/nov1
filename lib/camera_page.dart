@@ -62,6 +62,42 @@ class _CameraPageIpState extends State<CameraPage> {
   File dust4 = File('assets/images/dust4.jpg');
   File dust5 = File('assets/images/dust5.jpg');
 
+  File p1Ma1 = File('assets/images/p1Ma1.jpg');
+  File p1Ma2 = File('assets/images/p1Ma2.jpg');
+  File p2Ma1 = File('assets/images/p2Ma1.jpg');
+  File p2Ma2 = File('assets/images/p2Ma2.jpg');
+  File p3Ma1 = File('assets/images/p3Ma1.jpg');
+  File p3Ma2 = File('assets/images/p3Ma2.jpg');
+  File p1Sa251 = File('assets/images/p1Sa251.jpg');
+  File p1Sa252 = File('assets/images/p1Sa252.jpg');
+  File p2Sa251 = File('assets/images/p2Sa251.jpg');
+  File p2Sa252 = File('assets/images/p2Sa252.jpg');
+  File p3Sa251 = File('assets/images/p3Sa251.jpg');
+  File p3Sa252 = File('assets/images/p3Sa252.jpg');
+  File p4Sa251 = File('assets/images/p4Sa251.jpg');
+  File p4Sa252 = File('assets/images/p4Sa252.jpg');
+
+  File grit1 = File('assets/images/grit1.jpg');
+  File grit2 = File('assets/images/grit2.jpg');
+  File grit3 = File('assets/images/grit3.jpg');
+  File grit4 = File('assets/images/grit4.jpg');
+  File shot1 = File('assets/images/shot1.jpg');
+  File shot2 = File('assets/images/shot2.jpg');
+  File shot3 = File('assets/images/shot3.jpg');
+  File shot4 = File('assets/images/shot4.jpg');
+
+  File x_0 = File('assets/images/x_0.jpg');
+  File x_1 = File('assets/images/x_1.jpg');
+  File x_2 = File('assets/images/x_2.jpg');
+  File x_3 = File('assets/images/x_3.jpg');
+  File x_4 = File('assets/images/x_4.jpg');
+  File x_5 = File('assets/images/x_5.jpg');
+  File r_0 = File('assets/images/r_0.jpg');
+  File r_1 = File('assets/images/r_1.jpg');
+  File r_2 = File('assets/images/r_2.jpg');
+  File r_3 = File('assets/images/r_3.jpg');
+  File r_4 = File('assets/images/r_4.jpg');
+
   File imagenull = File('assets/images/imagenull.jpg');
   File roughness = File('assets/images/roughness.jpg');
 
@@ -109,6 +145,105 @@ class _CameraPageIpState extends State<CameraPage> {
   Widget build(BuildContext context) {
     File image;
     switch (widget.imageName) {
+      case 'x_0':
+        image = x_0;
+        break;
+      case 'x_1':
+        image = x_1;
+        break;
+      case 'x_2':
+        image = x_2;
+        break;
+      case 'x_3':
+        image = x_3;
+        break;
+      case 'x_40':
+        image = x_4;
+        break;
+      case 'x_5':
+        image = x_5;
+        break;
+      case 'r_0':
+        image = r_0;
+        break;
+      case 'r_1':
+        image = r_1;
+        break;
+      case 'r_2':
+        image = r_2;
+        break;
+      case 'r_3':
+        image = r_3;
+        break;
+      case 'r_4':
+        image = r_4;
+        break;
+      case 'grit1':
+        image = grit1;
+        break;
+      case 'grit2':
+        image = grit2;
+        break;
+      case 'grit3':
+        image = grit3;
+        break;
+      case 'grit4':
+        image = grit4;
+        break;
+      case 'shot1':
+        image = shot1;
+        break;
+      case 'shot2':
+        image = shot2;
+        break;
+      case 'shot3':
+        image = shot3;
+        break;
+      case 'shot4':
+        image = shot4;
+        break;
+      case 'p1Ma1':
+        image = p1Ma1;
+        break;
+      case 'p1Ma2':
+        image = p1Ma2;
+        break;
+      case 'p2Ma1':
+        image = p2Ma1;
+        break;
+      case 'p2Ma2':
+        image = p2Ma2;
+        break;
+      case 'p3Ma1':
+        image = p3Ma1;
+        break;
+      case 'p3Ma2':
+        image = p3Ma2;
+        break;
+      case 'p1Sa251':
+        image = p1Sa251;
+        break;
+      case 'p1Sa252':
+        image = p1Sa252;
+        break;
+      case 'p2Sa251':
+        image = p2Sa251;
+        break;
+      case 'p2Sa252':
+        image = p2Sa252;
+        break;
+      case 'p3Sa251':
+        image = p3Sa251;
+        break;
+      case 'p3Sa252':
+        image = p3Sa252;
+        break;
+      case 'p4Sa251':
+        image = p4Sa251;
+        break;
+      case 'p4Sa252':
+        image = p4Sa252;
+        break;
       case 'grade_A':
         image = gradeA;
         break;
@@ -259,13 +394,13 @@ class _CameraPageIpState extends State<CameraPage> {
             right: 0,
             child: AnimatedOpacity(
               opacity: opacity,
-              duration: Duration(milliseconds: 500),
+              duration: Duration(milliseconds: 200),
               child: Container(
-                height: 350,
+                height: 320,
                 decoration: BoxDecoration(
                   image: DecorationImage(
                     image: AssetImage('assets/images/${widget.imageName}.jpg'),
-                    fit: BoxFit.cover,
+                    fit: BoxFit.fitWidth,
                   ),
                 ),
                 child: Column(

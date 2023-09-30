@@ -93,10 +93,10 @@ class _PasswordScreenState extends State<PasswordScreen> {
   void _onSubmit() async {
     DbHelperIp dbHelperIp = DbHelperIp();
     DbHelperLkp dbHelperLkp = DbHelperLkp();
-    // DbHelperVhk dbHelperVhk = DbHelperVhk();
+    DbHelperVhk dbHelperVhk = DbHelperVhk();
     int countIp = await dbHelperIp.getTodoCountIp();
     int countLkp = await dbHelperLkp.getTodoCountLkp();
-    // int countVhk = await dbHelperVhk.getTodoCountVhk();
+    int countVhk = await dbHelperVhk.getTodoCountVhk();
     final password = _passwordController.text.trim();
     if (password.isEmpty) {
       setState(() {
@@ -118,7 +118,7 @@ class _PasswordScreenState extends State<PasswordScreen> {
                 builder: (_) => StartPage(
                       countIp: countIp,
                       countLkp: countLkp,
-                      // countVhk: countVhk,
+                      countVhk: countVhk,
                     )),
           );
         } else {
@@ -142,7 +142,7 @@ class _PasswordScreenState extends State<PasswordScreen> {
                 builder: (_) => StartPage(
                       countIp: countIp,
                       countLkp: countLkp,
-                      // countVhk: countVhk,
+                      countVhk: countVhk,
                     )),
           );
         }

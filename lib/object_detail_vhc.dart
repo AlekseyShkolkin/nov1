@@ -1,2903 +1,4086 @@
-// import 'dart:io';
-
-// import 'package:flutter/material.dart';
-// import 'package:flutter/services.dart';
-// import 'package:intl/intl.dart';
-// import 'package:path_provider/path_provider.dart';
-// import './camera_page_ip.dart';
-// import './img_screen_ip.dart';
-// import './model_ip.dart';
-// import './object_list_ip.dart';
-
-// class ObjectDetailVhC extends StatefulWidget {
-//   const ObjectDetailVhC({Key key, @required this.object});
-//   final Object object;
-//   @override
-//   State<StatefulWidget> createState() => ObjectDetailVhCState(object);
-// }
-
-// class ObjectDetailVhCState extends State<ObjectDetailVhC> {
-//   Todo object;
-
-//   FocusNode focusNode1 = FocusNode();
-//   FocusNode focusNode2 = FocusNode();
-//   FocusNode focusNode3 = FocusNode();
-//   FocusNode focusNode4 = FocusNode();
-//   FocusNode focusNode5 = FocusNode();
-//   FocusNode focusNode6 = FocusNode();
-//   FocusNode focusNode7 = FocusNode();
-//   FocusNode focusNode8 = FocusNode();
-//   FocusNode focusNode9 = FocusNode();
-//   FocusNode focusNode10 = FocusNode();
-//   FocusNode focusNode11 = FocusNode();
-//   FocusNode focusNode12 = FocusNode();
-//   FocusNode focusNode13 = FocusNode();
-//   FocusNode focusNode14 = FocusNode();
-//   FocusNode focusNode15 = FocusNode();
-//   FocusNode focusNode16 = FocusNode();
-//   FocusNode focusNode17 = FocusNode();
-//   FocusNode focusNode18 = FocusNode();
-//   FocusNode focusNode19 = FocusNode();
-//   FocusNode focusNode20 = FocusNode();
-//   FocusNode focusNode21 = FocusNode();
-//   FocusNode focusNode22 = FocusNode();
-//   FocusNode focusNode23 = FocusNode();
-//   FocusNode focusNode24 = FocusNode();
-//   FocusNode focusNode25 = FocusNode();
-//   FocusNode focusNode26 = FocusNode();
-//   FocusNode focusNode27 = FocusNode();
-//   FocusNode focusNode28 = FocusNode();
-//   FocusNode focusNode29 = FocusNode();
-//   FocusNode focusNode30 = FocusNode();
-//   FocusNode focusNode31 = FocusNode();
-//   FocusNode focusNode32 = FocusNode();
-//   FocusNode focusNode33 = FocusNode();
-//   FocusNode focusNode34 = FocusNode();
-//   FocusNode focusNode35 = FocusNode();
-//   FocusNode focusNode36 = FocusNode();
-//   FocusNode focusNode37 = FocusNode();
-//   FocusNode focusNode38 = FocusNode();
-//   FocusNode focusNode39 = FocusNode();
-//   FocusNode focusNode40 = FocusNode();
-
-//   File _image;
-//   File _imageDefmet1;
-
-//   Color _cardColor = Colors.white;
-//   final List<String> _osnovanie = [
-//     'ВТД',
-//     'Коррозионное обследование',
-//     'Данные электрометрии',
-//     'Обследование тройников',
-//   ];
-//   final List<String> _diameter = [
-//     '59',
-//     '89',
-//     '108',
-//     '159',
-//     '219',
-//     '273',
-//     '325',
-//     '377',
-//     '426',
-//     '530',
-//     '720',
-//     '820',
-//     '1020',
-//     '1220',
-//     '1420'
-//   ];
-//   final List<String> _gradesteel = [
-//     'Ст20',
-//     '09Г2С',
-//     '10Г2ФБЮ',
-//     'К60',
-//     'К56',
-//     'К55',
-//     'К54',
-//     'К52',
-//     '13ХФА',
-//     '09ГСФ',
-//     '17Г1С'
-//   ];
-//   final List<String> _metalldamage = [
-//     'Да',
-//     'Нет',
-//   ];
-//   final List<String> _insuldamage = [
-//     'Да',
-//     'Нет',
-//   ];
-//   final List<String> _charmetdamage = [
-//     'Сплошная коррозия',
-//     'Местная коррозия',
-//     'КРН',
-//     'Механическое повреждение',
-//   ];
-//   final List<String> _charinsuldamage = [
-//     'Отслоение',
-//     'Сдир',
-//     'Царапина',
-//     'Пропуск',
-//     'Вмятина',
-//   ];
-
-//   final List<String> _typeinsul = [
-//     'РАМ',
-//     'Мастичное',
-//     'Полиэтиленовое',
-//     'Ленточное',
-//     'Лакокрасочное',
-//     'Полиуретановое',
-//     'Покрытие отсутствует'
-//   ];
-//   final List<String> _insulcharadhes = [
-//     'Адгезионный',
-//     'Когезионный',
-//     'Смешанный'
-//   ];
-//   final List<String> _insulcondit = [
-//     'Неудовлетворительное',
-//     'Удовлетворительное',
-//   ];
-//   final List<String> _typeinsulrest = [
-//     'Грунтовка + РАМ 1 слой + Литкор НК Газ',
-//     'Грунтовка + РАМ 2 слоя + Литкор НК Газ',
-//     'БИУРС',
-//     'Термоусаживающаяся манжета',
-//   ];
-
-//   TextEditingController titleController = TextEditingController();
-//   TextEditingController piketkmController = TextEditingController();
-//   TextEditingController coordinateController = TextEditingController();
-//   TextEditingController lengthpitController = TextEditingController();
-//   TextEditingController depthpitController = TextEditingController();
-
-//   TextEditingController diameterController = TextEditingController();
-//   TextEditingController thickpipeController = TextEditingController();
-//   TextEditingController gradesteelController = TextEditingController();
-//   TextEditingController metalldamageController = TextEditingController();
-//   TextEditingController charmetdamageController = TextEditingController();
-//   TextEditingController locmetdamageController = TextEditingController();
-//   TextEditingController sizemetdamageController = TextEditingController();
-
-//   TextEditingController typeinsulController = TextEditingController();
-//   TextEditingController insuladhesController = TextEditingController();
-//   TextEditingController insulcharadhesController = TextEditingController();
-//   TextEditingController insulconditController = TextEditingController();
-//   TextEditingController thickinsulController = TextEditingController();
-//   TextEditingController insuldamageController = TextEditingController();
-//   TextEditingController charinsuldamageController = TextEditingController();
-//   TextEditingController locinsuldamageController = TextEditingController();
-//   TextEditingController sizeinsuldamageController = TextEditingController();
-
-//   TextEditingController typeinsulrestController = TextEditingController();
-//   TextEditingController insuladhesrestController = TextEditingController();
-//   TextEditingController thickinsulrestController = TextEditingController();
-//   TextEditingController contininsulrestController = TextEditingController();
-//   TextEditingController tickinsulmeterController = TextEditingController();
-
-//   TextEditingController tickmetallmeterController = TextEditingController();
-//   TextEditingController adhesmeterController = TextEditingController();
-//   TextEditingController continmeterController = TextEditingController();
-//   TextEditingController setvikController = TextEditingController();
-
-//   TextEditingController osnovanieController = TextEditingController();
-//   TextEditingController descriptionController = TextEditingController();
-//   bool isEdit;
-//   final GlobalKey<FormState> _1formKey = GlobalKey<FormState>();
-//   final GlobalKey<FormState> _2formKey = GlobalKey<FormState>();
-//   final GlobalKey<FormState> _3formKey = GlobalKey<FormState>();
-//   final GlobalKey<FormState> _4formKey = GlobalKey<FormState>();
-//   final GlobalKey<FormState> _5formKey = GlobalKey<FormState>();
-//   final GlobalKey<FormState> _6formKey = GlobalKey<FormState>();
-
-//   @override
-//   void initState() {
-//     super.initState();
-//     print('открыли: ${object.photometdef1.toString()}');
-//     isEdit = object.title == '' ? false : true;
-//     object.photo == '' ? false : true;
-//     object.photometdef1 == '' ? false : true;
-//     titleController.text = object.title ?? '';
-//     piketkmController.text = object.piketkm ?? '';
-//     coordinateController.text = object.coordinate ?? '';
-//     lengthpitController.text = object.lengthpit ?? '';
-//     depthpitController.text = object.depthpit ?? '';
-
-//     diameterController.text = object.diameter ?? '';
-//     thickpipeController.text = object.thickpipe ?? '';
-//     gradesteelController.text = object.gradesteel ?? '';
-//     metalldamageController.text = object.metalldamage ?? '';
-//     // charmetdamageController.text = object.charmetdamage ?? '';
-//     // locmetdamageController.text = object.locmetdamage ?? '';
-//     // sizemetdamageController.text = object.sizemetdamage ?? '';
-
-//     typeinsulController.text = object.typeinsul ?? '';
-//     insuladhesController.text = object.insuladhes ?? '';
-//     insulcharadhesController.text = object.insulcharadhes ?? '';
-//     insulconditController.text = object.insulcondit ?? '';
-//     thickinsulController.text = object.thickinsul ?? '';
-//     insuldamageController.text = object.insuldamage ?? '';
-//     // charinsuldamageController.text = object.charinsuldamage ?? '';
-//     // locinsuldamageController.text = object.locinsuldamage ?? '';
-//     // sizeinsuldamageController.text = object.sizeinsuldamage ?? '';
-
-//     typeinsulrestController.text = object.typeinsulrest ?? '';
-//     insuladhesrestController.text = object.insuladhesrest ?? '';
-//     thickinsulrestController.text = object.thickinsulrest ?? '';
-//     contininsulrestController.text = object.contininsulrest ?? '';
-
-//     tickinsulmeterController.text = object.tickinsulmeter ?? '';
-//     tickmetallmeterController.text = object.tickmetallmeter ?? '';
-//     adhesmeterController.text = object.adhesmeter ?? '';
-//     continmeterController.text = object.continmeter ?? '';
-//     setvikController.text = object.setvik ?? '';
-
-//     osnovanieController.text = object.osnovanie ?? '';
-//     descriptionController.text = object.description ?? '';
-//   }
-
-//   ObjectDetailVhCState(this.object);
-
-//   @override
-//   Widget build(BuildContext context) {
-//     const TextStyle textStyle = TextStyle(
-//       fontSize: 16.0,
-//       color: Colors.black54,
-//       fontWeight: FontWeight.w600,
-//     );
-
-//     return DefaultTabController(
-//       length: 6,
-//       child: Scaffold(
-//         resizeToAvoidBottomInset: true,
-//         backgroundColor: _cardColor,
-//         appBar: AppBar(
-//             backgroundColor: Theme.of(context).primaryColor,
-//             title: Center(
-//               child: Text(
-//                 isEdit ? 'ИЗМЕНИТЬ ЗАПИСЬ' : 'ДОБАВИТЬ ЗАПИСЬ',
-//                 style: TextStyle(
-//                   fontSize: 22,
-//                   fontWeight: FontWeight.w400,
-//                 ),
-//               ),
-//             ),
-//             bottom: TabBar(
-//               indicator: UnderlineTabIndicator(
-//                 borderSide: BorderSide(
-//                   width: 4,
-//                   color: Theme.of(context).accentColor,
-//                 ),
-//               ),
-//               labelStyle: TextStyle(
-//                 fontSize: 44,
-//                 color: Theme.of(context).accentColor, // цвет выбранной иконки
-//               ),
-//               unselectedLabelStyle: TextStyle(
-//                 // fontSize: 32,
-//                 color: Colors.white, // цвет невыбранных иконок
-//               ),
-//               tabs: [
-//                 Tab(
-//                     icon: Icon(
-//                   Icons.notes_rounded,
-//                   size: 32,
-//                   // color: Colors.white,
-//                 )),
-//                 Tab(
-//                     icon: Icon(
-//                   Icons.radio_button_unchecked_sharp,
-//                   size: 32,
-//                   // color: Colors.white,
-//                 )),
-//                 Tab(
-//                     icon: Icon(
-//                   Icons.radio_button_on_sharp,
-//                   size: 32,
-//                   // color: Colors.white,
-//                 )),
-//                 Tab(
-//                     icon: Icon(
-//                   Icons.build_circle_sharp,
-//                   size: 32,
-//                   // color: Colors.white,
-//                 )),
-//                 Tab(
-//                     icon: Icon(
-//                   Icons.design_services_sharp,
-//                   size: 32,
-//                   // color: Colors.white,
-//                 )),
-//                 Tab(
-//                     icon: Icon(
-//                   Icons.playlist_add_circle_sharp,
-//                   size: 32,
-//                   // color: Colors.white,
-//                 )),
-//               ],
-//             )),
-//         body: TabBarView(
-//           children: [
-//             Center(
-//               child: Padding(
-//                 padding: const EdgeInsets.all(8.0),
-//                 child: Form(
-//                   key: _1formKey,
-//                   child: ListView(
-//                     children: <Widget>[
-//                       SizedBox(height: 20),
-//                       Container(
-//                           alignment: Alignment.center,
-//                           child: Text(
-//                             'ОБЩИЕ ДАННЫЕ',
-//                             style: TextStyle(
-//                                 fontSize: 24,
-//                                 color: Theme.of(context).primaryColor,
-//                                 fontWeight: FontWeight.w300),
-//                           )),
-//                       SizedBox(height: 20),
-//                       TextFormField(
-//                         maxLength: 50,
-//                         onFieldSubmitted: (String value) {
-//                           object.title = value;
-//                         },
-//                         validator: (String value) {
-//                           if (value.isEmpty) {
-//                             return 'Наименование не введено';
-//                           } else if (value.length > 50) {
-//                             return 'Максимальная длина 50';
-//                           } else {
-//                             return null;
-//                           }
-//                         },
-//                         keyboardType: TextInputType.text,
-//                         controller: titleController,
-//                         focusNode: focusNode1,
-//                         style: textStyle,
-//                         decoration: InputDecoration(
-//                           focusColor: Theme.of(context).primaryColor,
-//                           labelStyle: TextStyle(
-//                             fontSize: 22,
-//                             fontWeight: FontWeight.w300,
-//                             color: Theme.of(context).primaryColor,
-//                           ),
-//                           hintStyle: TextStyle(
-//                             fontSize: 16,
-//                             fontWeight: FontWeight.w300,
-//                             color: Theme.of(context).primaryColor,
-//                           ),
-//                           labelText: 'Наименование объекта *',
-//                           hintText: 'Как называется объект контроля',
-//                           prefixIcon: Icon(
-//                             Icons.account_balance_outlined,
-//                             color: focusNode1.hasFocus ||
-//                                     titleController.text.isNotEmpty
-//                                 ? Theme.of(context).primaryColor
-//                                 : Colors.grey,
-//                             size: 32,
-//                           ),
-//                           suffixIcon: GestureDetector(
-//                             onTap: () {
-//                               titleController.clear();
-//                             },
-//                             child: Icon(
-//                               Icons.delete_outline,
-//                               color: Color.fromRGBO(187, 30, 16, 1.0),
-//                             ),
-//                           ),
-//                           enabledBorder: OutlineInputBorder(
-//                             borderRadius: BorderRadius.all(Radius.circular(10)),
-//                             borderSide:
-//                                 BorderSide(color: Colors.grey, width: 2),
-//                           ),
-//                           focusedBorder: OutlineInputBorder(
-//                             borderRadius: BorderRadius.all(Radius.circular(20)),
-//                             borderSide: BorderSide(
-//                                 color: Theme.of(context).primaryColor,
-//                                 width: 2),
-//                           ),
-//                         ),
-//                         onChanged: (String value) {
-//                           focusNode1.requestFocus();
-//                           setState(() {});
-//                         },
-//                       ),
-//                       SizedBox(height: 10),
-//                       DropdownButtonFormField(
-//                         focusNode: focusNode2,
-//                         decoration: InputDecoration(
-//                           focusColor: Theme.of(context).primaryColor,
-//                           labelText: 'Основание для проведения шурфовки',
-//                           labelStyle: TextStyle(
-//                             fontSize: 22,
-//                             fontWeight: FontWeight.w300,
-//                             color: Theme.of(context).primaryColor,
-//                           ),
-//                           hintStyle: TextStyle(
-//                             fontSize: 16,
-//                             fontWeight: FontWeight.w300,
-//                             color: Theme.of(context).primaryColor,
-//                           ),
-//                           prefixIcon: Icon(
-//                             Icons.wysiwyg_rounded,
-//                             color: focusNode2.hasFocus ||
-//                                     osnovanieController.text.isNotEmpty
-//                                 ? Theme.of(context).primaryColor
-//                                 : Colors.grey,
-//                             size: 32,
-//                           ),
-//                           border: OutlineInputBorder(),
-//                           enabledBorder: OutlineInputBorder(
-//                             borderRadius: BorderRadius.all(Radius.circular(10)),
-//                             borderSide:
-//                                 BorderSide(color: Colors.grey, width: 2),
-//                           ),
-//                           focusedBorder: OutlineInputBorder(
-//                             borderRadius: BorderRadius.all(Radius.circular(20)),
-//                             borderSide: BorderSide(
-//                                 color: Theme.of(context).primaryColor,
-//                                 width: 2),
-//                           ),
-//                         ),
-//                         items: _osnovanie.map((String value) {
-//                           return DropdownMenuItem(
-//                             value: value,
-//                             child: Text(value),
-//                           );
-//                         }).toList(),
-//                         style: textStyle,
-//                         value: object.osnovanie,
-//                         onChanged: (String value) {
-//                           focusNode2.requestFocus();
-//                           setState(() {});
-//                           object.osnovanie = value;
-//                         },
-//                       ),
-//                       SizedBox(height: 20),
-//                       TextFormField(
-//                         focusNode: focusNode3,
-//                         maxLength: 10,
-//                         onFieldSubmitted: (value) {
-//                           object.piketkm = value;
-//                         },
-//                         controller: piketkmController,
-//                         style: textStyle,
-//                         decoration: InputDecoration(
-//                           focusColor: Theme.of(context).primaryColor,
-//                           labelStyle: TextStyle(
-//                             fontSize: 22,
-//                             fontWeight: FontWeight.w300,
-//                             color: Theme.of(context).primaryColor,
-//                           ),
-//                           hintStyle: TextStyle(
-//                             fontSize: 16,
-//                             fontWeight: FontWeight.w300,
-//                             color: Theme.of(context).primaryColor,
-//                           ),
-//                           labelText: 'Километр газопровода',
-//                           hintText: 'Километр проведения',
-//                           helperText: 'км',
-//                           prefixIcon: Icon(
-//                             Icons.add_location_outlined,
-//                             color: focusNode3.hasFocus ||
-//                                     piketkmController.text.isNotEmpty
-//                                 ? Theme.of(context).primaryColor
-//                                 : Colors.grey,
-//                             size: 32,
-//                           ),
-//                           suffixIcon: GestureDetector(
-//                             onTap: () {
-//                               piketkmController.clear();
-//                             },
-//                             child: Icon(
-//                               Icons.delete_outline,
-//                               color: Color.fromRGBO(187, 30, 16, 1.0),
-//                             ),
-//                           ),
-//                           enabledBorder: OutlineInputBorder(
-//                             borderRadius: BorderRadius.all(Radius.circular(10)),
-//                             borderSide:
-//                                 BorderSide(color: Colors.grey, width: 2),
-//                           ),
-//                           focusedBorder: OutlineInputBorder(
-//                             borderRadius: BorderRadius.all(Radius.circular(20)),
-//                             borderSide: BorderSide(
-//                                 color: Theme.of(context).primaryColor,
-//                                 width: 2),
-//                           ),
-//                         ),
-//                         keyboardType: TextInputType.number,
-//                         inputFormatters: [
-//                           FilteringTextInputFormatter(RegExp(r'^\d+\,?\d{0,3}'),
-//                               allow: true)
-//                         ],
-//                         onChanged: (String value) {
-//                           setState(() {});
-//                           focusNode3.requestFocus();
-//                         },
-//                       ),
-//                       SizedBox(height: 10),
-//                       TextFormField(
-//                         focusNode: focusNode4,
-//                         maxLength: 20,
-//                         onSaved: (value) {
-//                           object.coordinate = value;
-//                         },
-//                         controller: coordinateController,
-//                         style: textStyle,
-//                         decoration: InputDecoration(
-//                           focusColor: Theme.of(context).primaryColor,
-//                           labelStyle: TextStyle(
-//                             fontSize: 22,
-//                             fontWeight: FontWeight.w300,
-//                             color: Theme.of(context).primaryColor,
-//                           ),
-//                           hintStyle: TextStyle(
-//                             fontSize: 16,
-//                             fontWeight: FontWeight.w300,
-//                             color: Theme.of(context).primaryColor,
-//                           ),
-//                           labelText: 'Координаты места шурфовки',
-//                           hintText: 'Координаты места шурфовки',
-//                           helperText: 'NN.NNNNNN/EE.EEEEEE',
-//                           prefixIcon: Icon(
-//                             Icons.map_sharp,
-//                             color: focusNode4.hasFocus ||
-//                                     coordinateController.text.isNotEmpty
-//                                 ? Theme.of(context).primaryColor
-//                                 : Colors.grey,
-//                             size: 32,
-//                           ),
-//                           suffixIcon: GestureDetector(
-//                             onTap: () {
-//                               coordinateController.clear();
-//                             },
-//                             child: Icon(
-//                               Icons.delete_outline,
-//                               color: Color.fromRGBO(187, 30, 16, 1.0),
-//                             ),
-//                           ),
-//                           enabledBorder: OutlineInputBorder(
-//                             borderRadius: BorderRadius.all(Radius.circular(10)),
-//                             borderSide:
-//                                 BorderSide(color: Colors.grey, width: 2),
-//                           ),
-//                           focusedBorder: OutlineInputBorder(
-//                             borderRadius: BorderRadius.all(Radius.circular(20)),
-//                             borderSide: BorderSide(
-//                                 color: Theme.of(context).primaryColor,
-//                                 width: 2),
-//                           ),
-//                         ),
-//                         keyboardType: TextInputType.number,
-//                         onChanged: (String value) {
-//                           setState(() {});
-//                           focusNode4.requestFocus();
-//                         },
-//                       ),
-//                       SizedBox(height: 10),
-//                       TextFormField(
-//                         focusNode: focusNode5,
-//                         onChanged: (String value) {
-//                           setState(() {});
-//                           focusNode5.requestFocus();
-//                         },
-//                         maxLength: 6,
-//                         onSaved: (value) {
-//                           object.lengthpit = value;
-//                         },
-//                         controller: lengthpitController,
-//                         style: textStyle,
-//                         decoration: InputDecoration(
-//                           focusColor: Theme.of(context).primaryColor,
-//                           labelStyle: TextStyle(
-//                             fontSize: 22,
-//                             fontWeight: FontWeight.w300,
-//                             color: Theme.of(context).primaryColor,
-//                           ),
-//                           hintStyle: TextStyle(
-//                             fontSize: 16,
-//                             fontWeight: FontWeight.w300,
-//                             color: Theme.of(context).primaryColor,
-//                           ),
-//                           labelText: 'Длина шурфа',
-//                           hintText: 'Введите длину шурфа',
-//                           helperText: 'м',
-//                           prefixIcon: Icon(
-//                             Icons.arrow_forward_rounded,
-//                             color: focusNode5.hasFocus ||
-//                                     lengthpitController.text.isNotEmpty
-//                                 ? Theme.of(context).primaryColor
-//                                 : Colors.grey,
-//                             size: 32,
-//                           ),
-//                           suffixIcon: GestureDetector(
-//                             onTap: () {
-//                               lengthpitController.clear();
-//                             },
-//                             child: Icon(
-//                               Icons.delete_outline,
-//                               color: Color.fromRGBO(187, 30, 16, 1.0),
-//                             ),
-//                           ),
-//                           enabledBorder: OutlineInputBorder(
-//                             borderRadius: BorderRadius.all(Radius.circular(10)),
-//                             borderSide:
-//                                 BorderSide(color: Colors.grey, width: 2),
-//                           ),
-//                           focusedBorder: OutlineInputBorder(
-//                             borderRadius: BorderRadius.all(Radius.circular(20)),
-//                             borderSide: BorderSide(
-//                                 color: Theme.of(context).primaryColor,
-//                                 width: 2),
-//                           ),
-//                         ),
-//                         keyboardType: TextInputType.number,
-//                         inputFormatters: [
-//                           FilteringTextInputFormatter(RegExp(r'^\d+\,?\d{0,3}'),
-//                               allow: true)
-//                         ],
-//                       ),
-//                       SizedBox(height: 10),
-//                       TextFormField(
-//                         focusNode: focusNode6,
-//                         onChanged: (String value) {
-//                           setState(() {});
-//                           focusNode6.requestFocus();
-//                         },
-//                         maxLength: 6,
-//                         onSaved: (value) {
-//                           object.depthpit = value;
-//                         },
-//                         controller: depthpitController,
-//                         style: textStyle,
-//                         decoration: InputDecoration(
-//                           focusColor: Theme.of(context).primaryColor,
-//                           labelStyle: TextStyle(
-//                             fontSize: 22,
-//                             fontWeight: FontWeight.w300,
-//                             color: Theme.of(context).primaryColor,
-//                           ),
-//                           hintStyle: TextStyle(
-//                             fontSize: 16,
-//                             fontWeight: FontWeight.w300,
-//                             color: Theme.of(context).primaryColor,
-//                           ),
-//                           labelText: 'Глубина шурфа',
-//                           hintText: 'Введите глубину шурфа',
-//                           helperText: 'м',
-//                           prefixIcon: Icon(
-//                             Icons.arrow_downward_sharp,
-//                             color: focusNode6.hasFocus ||
-//                                     depthpitController.text.isNotEmpty
-//                                 ? Theme.of(context).primaryColor
-//                                 : Colors.grey,
-//                             size: 32,
-//                           ),
-//                           suffixIcon: GestureDetector(
-//                             onTap: () {
-//                               depthpitController.clear();
-//                             },
-//                             child: Icon(
-//                               Icons.delete_outline,
-//                               color: Color.fromRGBO(187, 30, 16, 1.0),
-//                             ),
-//                           ),
-//                           enabledBorder: OutlineInputBorder(
-//                             borderRadius: BorderRadius.all(Radius.circular(10)),
-//                             borderSide:
-//                                 BorderSide(color: Colors.grey, width: 2),
-//                           ),
-//                           focusedBorder: OutlineInputBorder(
-//                             borderRadius: BorderRadius.all(Radius.circular(20)),
-//                             borderSide: BorderSide(
-//                                 color: Theme.of(context).primaryColor,
-//                                 width: 2),
-//                           ),
-//                         ),
-//                         keyboardType: TextInputType.number,
-//                         inputFormatters: [
-//                           FilteringTextInputFormatter(RegExp(r'^\d+\,?\d{0,3}'),
-//                               allow: true)
-//                         ],
-//                       ),
-//                       SizedBox(height: 10),
-//                       ElevatedButton(
-//                         style: ElevatedButton.styleFrom(
-//                             primary:
-//                                 Theme.of(context).accentColor, // background
-//                             onPrimary: Colors.white,
-//                             elevation: 2,
-//                             padding: const EdgeInsets.all(13.0),
-//                             shape: RoundedRectangleBorder(
-//                                 borderRadius:
-//                                     BorderRadius.circular(10.0)) // foreground
-//                             ),
-//                         onPressed: () => saveForm1(),
-//                         child: Text(
-//                           isEdit ? 'Редактировать' : 'Добавить',
-//                           style: const TextStyle(
-//                             fontSize: 18.0,
-//                             fontWeight: FontWeight.w300,
-//                           ),
-//                         ),
-//                       ),
-//                     ],
-//                   ),
-//                 ),
-//               ),
-//             ),
-//             Center(
-//               child: Padding(
-//                 padding: const EdgeInsets.all(8.0),
-//                 child: Form(
-//                   key: _2formKey,
-//                   child: ListView(
-//                     children: <Widget>[
-//                       SizedBox(height: 20),
-//                       Container(
-//                           alignment: Alignment.center,
-//                           child: Text(
-//                             'ДАННЫЕ О ТРУБЕ',
-//                             style: TextStyle(
-//                                 fontSize: 24,
-//                                 color: Theme.of(context).primaryColor,
-//                                 fontWeight: FontWeight.w300),
-//                           )),
-//                       SizedBox(height: 20),
-//                       DropdownButtonFormField(
-//                         focusNode: focusNode7,
-//                         decoration: InputDecoration(
-//                           focusColor: Theme.of(context).primaryColor,
-//                           labelText: 'Диаметр газопровода',
-//                           labelStyle: TextStyle(
-//                             fontSize: 22,
-//                             fontWeight: FontWeight.w300,
-//                             color: Theme.of(context).primaryColor,
-//                           ),
-//                           hintStyle: TextStyle(
-//                             fontSize: 16,
-//                             fontWeight: FontWeight.w300,
-//                             color: Theme.of(context).primaryColor,
-//                           ),
-//                           prefixIcon: Icon(
-//                             Icons.not_interested_sharp,
-//                             color: focusNode7.hasFocus ||
-//                                     diameterController.text.isNotEmpty
-//                                 ? Theme.of(context).primaryColor
-//                                 : Colors.grey,
-//                             size: 32,
-//                           ),
-//                           border: OutlineInputBorder(),
-//                           enabledBorder: OutlineInputBorder(
-//                             borderRadius: BorderRadius.all(Radius.circular(10)),
-//                             borderSide:
-//                                 BorderSide(color: Colors.grey, width: 2),
-//                           ),
-//                           focusedBorder: OutlineInputBorder(
-//                             borderRadius: BorderRadius.all(Radius.circular(20)),
-//                             borderSide: BorderSide(
-//                                 color: Theme.of(context).primaryColor,
-//                                 width: 2),
-//                           ),
-//                         ),
-//                         items: _diameter.map((String value) {
-//                           return DropdownMenuItem(
-//                             value: value,
-//                             child: Text(value),
-//                           );
-//                         }).toList(),
-//                         style: textStyle,
-//                         value: object.diameter,
-//                         onChanged: (String value) {
-//                           setState(() {});
-//                           focusNode7.requestFocus();
-//                           object.diameter = value;
-//                         },
-//                       ),
-//                       SizedBox(height: 20),
-//                       TextFormField(
-//                         onChanged: (String value) {
-//                           setState(() {});
-//                           focusNode8.requestFocus();
-//                         },
-//                         focusNode: focusNode8,
-//                         maxLength: 6,
-//                         onSaved: (value) {
-//                           object.thickpipe = value;
-//                         },
-//                         controller: thickpipeController,
-//                         style: textStyle,
-//                         decoration: InputDecoration(
-//                           focusColor: Theme.of(context).primaryColor,
-//                           labelStyle: TextStyle(
-//                             fontSize: 22,
-//                             fontWeight: FontWeight.w300,
-//                             color: Theme.of(context).primaryColor,
-//                           ),
-//                           hintStyle: TextStyle(
-//                             fontSize: 16,
-//                             fontWeight: FontWeight.w300,
-//                             color: Theme.of(context).primaryColor,
-//                           ),
-//                           labelText: 'Толщина стенки',
-//                           hintText: 'Введите толщину стенки',
-//                           helperText: 'мм',
-//                           prefixIcon: Icon(
-//                             Icons.vertical_align_center_sharp,
-//                             color: focusNode8.hasFocus ||
-//                                     thickpipeController.text.isNotEmpty
-//                                 ? Theme.of(context).primaryColor
-//                                 : Colors.grey,
-//                             size: 32,
-//                           ),
-//                           suffixIcon: GestureDetector(
-//                             onTap: () {
-//                               thickpipeController.clear();
-//                             },
-//                             child: Icon(
-//                               Icons.delete_outline,
-//                               color: Color.fromRGBO(187, 30, 16, 1.0),
-//                             ),
-//                           ),
-//                           enabledBorder: OutlineInputBorder(
-//                             borderRadius: BorderRadius.all(Radius.circular(10)),
-//                             borderSide:
-//                                 BorderSide(color: Colors.grey, width: 2),
-//                           ),
-//                           focusedBorder: OutlineInputBorder(
-//                             borderRadius: BorderRadius.all(Radius.circular(20)),
-//                             borderSide: BorderSide(
-//                                 color: Theme.of(context).primaryColor,
-//                                 width: 2),
-//                           ),
-//                         ),
-//                         keyboardType: TextInputType.number,
-//                         inputFormatters: [
-//                           // FilteringTextInputFormatter.digitsOnly,
-//                           FilteringTextInputFormatter(RegExp(r'^\d+\,?\d{0,3}'),
-//                               allow: true),
-//                         ],
-//                       ),
-//                       SizedBox(height: 10),
-//                       DropdownButtonFormField(
-//                         focusNode: focusNode9,
-//                         decoration: InputDecoration(
-//                           focusColor: Theme.of(context).primaryColor,
-//                           labelStyle: TextStyle(
-//                             fontSize: 22,
-//                             fontWeight: FontWeight.w300,
-//                             color: Theme.of(context).primaryColor,
-//                           ),
-//                           hintStyle: TextStyle(
-//                             fontSize: 16,
-//                             fontWeight: FontWeight.w300,
-//                             color: Theme.of(context).primaryColor,
-//                           ),
-//                           border: OutlineInputBorder(),
-//                           enabledBorder: OutlineInputBorder(
-//                             borderRadius: BorderRadius.all(Radius.circular(10)),
-//                             borderSide:
-//                                 BorderSide(color: Colors.grey, width: 2),
-//                           ),
-//                           focusedBorder: OutlineInputBorder(
-//                             borderRadius: BorderRadius.all(Radius.circular(20)),
-//                             borderSide: BorderSide(
-//                                 color: Theme.of(context).primaryColor,
-//                                 width: 2),
-//                           ),
-//                           prefixIcon: Icon(
-//                             Icons.star_border_sharp,
-//                             color: focusNode9.hasFocus ||
-//                                     gradesteelController.text.isNotEmpty
-//                                 ? Theme.of(context).primaryColor
-//                                 : Colors.grey,
-//                             size: 32,
-//                           ),
-//                           labelText: 'Марка стали',
-//                         ),
-//                         items: _gradesteel.map((String value) {
-//                           return DropdownMenuItem(
-//                             value: value,
-//                             child: Text(value),
-//                           );
-//                         }).toList(),
-//                         style: textStyle,
-//                         value: object.gradesteel,
-//                         onChanged: (String value) {
-//                           setState(() {});
-//                           focusNode9.requestFocus();
-
-//                           object.gradesteel = value;
-//                         },
-//                       ),
-//                       SizedBox(height: 10),
-//                       DropdownButtonFormField(
-//                         focusNode: focusNode10,
-//                         decoration: InputDecoration(
-//                           focusColor: Theme.of(context).primaryColor,
-//                           labelStyle: TextStyle(
-//                             fontSize: 22,
-//                             fontWeight: FontWeight.w300,
-//                             color: Theme.of(context).primaryColor,
-//                           ),
-//                           hintStyle: TextStyle(
-//                             fontSize: 16,
-//                             fontWeight: FontWeight.w300,
-//                             color: Theme.of(context).primaryColor,
-//                           ),
-//                           border: OutlineInputBorder(),
-//                           enabledBorder: OutlineInputBorder(
-//                             borderRadius: BorderRadius.all(Radius.circular(10)),
-//                             borderSide:
-//                                 BorderSide(color: Colors.grey, width: 2),
-//                           ),
-//                           focusedBorder: OutlineInputBorder(
-//                             borderRadius: BorderRadius.all(Radius.circular(20)),
-//                             borderSide: BorderSide(
-//                                 color: Theme.of(context).primaryColor,
-//                                 width: 2),
-//                           ),
-//                           prefixIcon: Icon(
-//                             Icons.ssid_chart_sharp,
-//                             color: focusNode10.hasFocus ||
-//                                     metalldamageController.text.isNotEmpty
-//                                 ? Theme.of(context).primaryColor
-//                                 : Colors.grey,
-//                             size: 32,
-//                           ),
-//                           labelText: 'Повреждения металла',
-//                         ),
-//                         items: _metalldamage.map((String value) {
-//                           return DropdownMenuItem(
-//                             value: value,
-//                             child: Text(value),
-//                           );
-//                         }).toList(),
-//                         style: textStyle,
-//                         value: object.metalldamage,
-//                         onChanged: (String value) {
-//                           object.metalldamage = value;
-//                           setState(() {});
-//                           focusNode10.requestFocus();
-//                         },
-//                       ),
-//                       SizedBox(height: 10),
-//                       DropdownButtonFormField(
-//                         focusNode: focusNode11,
-//                         decoration: InputDecoration(
-//                             focusColor: Theme.of(context).primaryColor,
-//                             labelStyle: TextStyle(
-//                               fontSize: 22,
-//                               fontWeight: FontWeight.w300,
-//                               color: Theme.of(context).primaryColor,
-//                             ),
-//                             hintStyle: TextStyle(
-//                               fontSize: 16,
-//                               fontWeight: FontWeight.w300,
-//                               color: Theme.of(context).primaryColor,
-//                             ),
-//                             border: OutlineInputBorder(),
-//                             enabledBorder: OutlineInputBorder(
-//                               borderRadius:
-//                                   BorderRadius.all(Radius.circular(10)),
-//                               borderSide:
-//                                   BorderSide(color: Colors.grey, width: 2),
-//                             ),
-//                             focusedBorder: OutlineInputBorder(
-//                               borderRadius:
-//                                   BorderRadius.all(Radius.circular(20)),
-//                               borderSide: BorderSide(
-//                                   color: Theme.of(context).primaryColor,
-//                                   width: 2),
-//                             ),
-//                             prefixIcon: Icon(
-//                               Icons.ssid_chart_sharp,
-//                               color: focusNode11.hasFocus ||
-//                                       charmetdamageController.text.isNotEmpty
-//                                   ? Theme.of(context).primaryColor
-//                                   : Colors.grey,
-//                               size: 32,
-//                             ),
-//                             labelText: 'Характер дефекта',
-//                             suffixIcon: GestureDetector(
-//                                 onTap: () async {
-//                                   Navigator.push(
-//                                     context,
-//                                     MaterialPageRoute(
-//                                         builder: (context) => CameraPageIp()),
-//                                   ).then((value) {
-//                                     setState(() async {
-//                                       if (value != null) {
-//                                         _imageDefmet1 = value;
-//                                         if (_2formKey.currentState.validate()) {
-//                                           _2formKey.currentState.save();
-//                                           if (_imageDefmet1 != null) {
-//                                             final Directory extDir =
-//                                                 await getApplicationDocumentsDirectory();
-//                                             final String dirPath =
-//                                                 '${extDir.path}/Pictures/flutter';
-//                                             await Directory(dirPath)
-//                                                 .create(recursive: true);
-//                                             final String filePath =
-//                                                 '$dirPath/${DateTime.now().millisecondsSinceEpoch.toString()}.jpg';
-//                                             await _imageDefmet1.copy(filePath);
-//                                             object.photometdef1 = filePath;
-//                                             print(
-//                                                 'сделали: ${object.photometdef1.toString()}');
-//                                           }
-//                                         }
-//                                       }
-//                                     });
-//                                   });
-//                                 },
-//                                 child: Icon(Icons.camera_alt_sharp,
-//                                     color: Color.fromRGBO(97, 153, 59, 1.0)))),
-//                         items: _charmetdamage.map((String value) {
-//                           return DropdownMenuItem(
-//                             value: value,
-//                             child: Text(value),
-//                           );
-//                         }).toList(),
-//                         style: textStyle,
-//                         value: object.charmetdamage,
-//                         onChanged: (String value) {
-//                           setState(() {});
-//                           focusNode11.requestFocus();
-//                           object.charmetdamage = value;
-//                         },
-//                       ),
-//                       SizedBox(height: 10),
-//                       Container(
-//                         height: 100,
-//                         child: Column(
-//                           children: [
-//                             Expanded(
-//                               child: GestureDetector(
-//                                 onTap: () {
-//                                   Navigator.push(
-//                                     context,
-//                                     MaterialPageRoute(
-//                                         builder: (context) => ImageScreen(
-//                                             imagePath: object.photometdef1)),
-//                                   );
-//                                 },
-//                                 child: Center(
-//                                   child: object.photometdef1 != null
-//                                       ? Image.file(
-//                                           File(object.photometdef1),
-//                                           fit: BoxFit.cover,
-//                                           alignment: Alignment.center,
-//                                           width: 100,
-//                                           height: 100,
-//                                         )
-//                                       : Text('Изображение отсутствует'),
-//                                 ),
-//                               ),
-//                             ),
-//                           ],
-//                         ),
-//                       ),
-//                       SizedBox(height: 10),
-//                       TextFormField(
-//                         onChanged: (String value) {
-//                           setState(() {});
-//                           focusNode12.requestFocus();
-//                         },
-//                         focusNode: focusNode12,
-//                         maxLength: 20,
-//                         onSaved: (value) {
-//                           object.locmetdamage = value;
-//                         },
-//                         controller: locmetdamageController,
-//                         style: textStyle,
-//                         decoration: InputDecoration(
-//                           focusColor: Theme.of(context).primaryColor,
-//                           labelStyle: TextStyle(
-//                             fontSize: 22,
-//                             fontWeight: FontWeight.w300,
-//                             color: Theme.of(context).primaryColor,
-//                           ),
-//                           hintStyle: TextStyle(
-//                             fontSize: 16,
-//                             fontWeight: FontWeight.w300,
-//                             color: Theme.of(context).primaryColor,
-//                           ),
-//                           labelText: 'Расположение дефекта',
-//                           hintText: 'Введите час и расстояние от шва по ХГ',
-//                           helperText: 'ЧАС-расстояние от шва по ХГ',
-//                           prefixIcon: Icon(
-//                             Icons.location_searching_sharp,
-//                             color: focusNode12.hasFocus ||
-//                                     locmetdamageController.text.isNotEmpty
-//                                 ? Theme.of(context).primaryColor
-//                                 : Colors.grey,
-//                             size: 32,
-//                           ),
-//                           suffixIcon: GestureDetector(
-//                             onTap: () {
-//                               locmetdamageController.clear();
-//                             },
-//                             child: Icon(
-//                               Icons.delete_outline,
-//                               color: Color.fromRGBO(187, 30, 16, 1.0),
-//                             ),
-//                           ),
-//                           enabledBorder: OutlineInputBorder(
-//                             borderRadius: BorderRadius.all(Radius.circular(10)),
-//                             borderSide:
-//                                 BorderSide(color: Colors.grey, width: 2),
-//                           ),
-//                           focusedBorder: OutlineInputBorder(
-//                             borderRadius: BorderRadius.all(Radius.circular(20)),
-//                             borderSide: BorderSide(
-//                                 color: Theme.of(context).primaryColor,
-//                                 width: 2),
-//                           ),
-//                         ),
-//                         keyboardType: TextInputType.number,
-//                       ),
-//                       SizedBox(height: 10),
-//                       TextFormField(
-//                         onChanged: (String value) {
-//                           setState(() {});
-//                           focusNode13.requestFocus();
-//                         },
-//                         focusNode: focusNode13,
-//                         maxLength: 20,
-//                         onSaved: (value) {
-//                           object.sizemetdamage = value;
-//                         },
-//                         controller: sizemetdamageController,
-//                         style: textStyle,
-//                         decoration: InputDecoration(
-//                           focusColor: Theme.of(context).primaryColor,
-//                           labelStyle: TextStyle(
-//                             fontSize: 22,
-//                             fontWeight: FontWeight.w300,
-//                             color: Theme.of(context).primaryColor,
-//                           ),
-//                           hintStyle: TextStyle(
-//                             fontSize: 16,
-//                             fontWeight: FontWeight.w300,
-//                             color: Theme.of(context).primaryColor,
-//                           ),
-//                           labelText: 'Размеры дефекта металла',
-//                           hintText: 'Введите размеры',
-//                           helperText: 'Длина х ширина х глубина',
-//                           prefixIcon: Icon(
-//                             Icons.location_searching_sharp,
-//                             color: focusNode13.hasFocus ||
-//                                     sizemetdamageController.text.isNotEmpty
-//                                 ? Theme.of(context).primaryColor
-//                                 : Colors.grey,
-//                             size: 32,
-//                           ),
-//                           suffixIcon: GestureDetector(
-//                             onTap: () {
-//                               sizemetdamageController.clear();
-//                             },
-//                             child: Icon(
-//                               Icons.delete_outline,
-//                               color: Color.fromRGBO(187, 30, 16, 1.0),
-//                             ),
-//                           ),
-//                           enabledBorder: OutlineInputBorder(
-//                             borderRadius: BorderRadius.all(Radius.circular(10)),
-//                             borderSide:
-//                                 BorderSide(color: Colors.grey, width: 2),
-//                           ),
-//                           focusedBorder: OutlineInputBorder(
-//                             borderRadius: BorderRadius.all(Radius.circular(20)),
-//                             borderSide: BorderSide(
-//                                 color: Theme.of(context).primaryColor,
-//                                 width: 2),
-//                           ),
-//                         ),
-//                         keyboardType: TextInputType.number,
-//                       ),
-//                       SizedBox(height: 20),
-//                       ElevatedButton(
-//                         style: ElevatedButton.styleFrom(
-//                             primary:
-//                                 Theme.of(context).accentColor, // background
-//                             onPrimary: Colors.white,
-//                             elevation: 2,
-//                             padding: const EdgeInsets.all(13.0),
-//                             shape: RoundedRectangleBorder(
-//                                 borderRadius:
-//                                     BorderRadius.circular(10.0)) // foreground
-//                             ),
-//                         onPressed: () => saveForm2(),
-//                         child: Text(
-//                           isEdit ? 'Редактировать' : 'Добавить',
-//                           style: const TextStyle(
-//                               fontSize: 18.0, fontWeight: FontWeight.w300),
-//                         ),
-//                       ),
-//                     ],
-//                   ),
-//                 ),
-//               ),
-//             ),
-//             Center(
-//               child: Padding(
-//                 padding: const EdgeInsets.all(8.0),
-//                 child: Form(
-//                   key: _3formKey,
-//                   child: ListView(
-//                     children: <Widget>[
-//                       SizedBox(height: 20),
-//                       Container(
-//                           alignment: Alignment.center,
-//                           child: Text(
-//                             'ИЗОЛЯЦИОННОЕ ПОКРЫТИЕ',
-//                             style: TextStyle(
-//                                 fontSize: 24,
-//                                 color: Theme.of(context).primaryColor,
-//                                 fontWeight: FontWeight.w300),
-//                           )),
-//                       SizedBox(height: 20),
-//                       DropdownButtonFormField(
-//                         focusNode: focusNode14,
-//                         decoration: InputDecoration(
-//                           focusColor: Theme.of(context).primaryColor,
-//                           labelStyle: TextStyle(
-//                             fontSize: 22,
-//                             fontWeight: FontWeight.w300,
-//                             color: Theme.of(context).primaryColor,
-//                           ),
-//                           hintStyle: TextStyle(
-//                             fontSize: 16,
-//                             fontWeight: FontWeight.w300,
-//                             color: Theme.of(context).primaryColor,
-//                           ),
-//                           border: OutlineInputBorder(),
-//                           enabledBorder: OutlineInputBorder(
-//                             borderRadius: BorderRadius.all(Radius.circular(10)),
-//                             borderSide: BorderSide(
-//                               color: Colors.grey,
-//                               width: 2,
-//                             ),
-//                           ),
-//                           focusedBorder: OutlineInputBorder(
-//                             borderRadius: BorderRadius.all(Radius.circular(20)),
-//                             borderSide: BorderSide(
-//                                 color: Theme.of(context).primaryColor,
-//                                 width: 2),
-//                           ),
-//                           prefixIcon: Icon(
-//                             Icons.star_rate_sharp,
-//                             color: focusNode14.hasFocus ||
-//                                     typeinsulController.text.isNotEmpty
-//                                 ? Theme.of(context).primaryColor
-//                                 : Colors.grey,
-//                             size: 32,
-//                           ),
-//                           labelText: 'Тип покрытия',
-//                         ),
-//                         items: _typeinsul.map((String value) {
-//                           return DropdownMenuItem(
-//                             value: value,
-//                             child: Text(value),
-//                           );
-//                         }).toList(),
-//                         style: textStyle,
-//                         value: object.typeinsul,
-//                         onChanged: (String value) {
-//                           setState(() {});
-//                           focusNode14.requestFocus();
-//                           object.typeinsul = value;
-//                         },
-//                       ),
-//                       SizedBox(height: 10),
-//                       TextFormField(
-//                         focusNode: focusNode15,
-//                         onChanged: (String value) {
-//                           setState(() {});
-//                           focusNode15.requestFocus();
-//                         },
-//                         maxLength: 3,
-//                         onSaved: (value) {
-//                           object.thickinsul = value;
-//                         },
-//                         controller: thickinsulController,
-//                         style: textStyle,
-//                         decoration: InputDecoration(
-//                           focusColor: Theme.of(context).primaryColor,
-//                           labelStyle: TextStyle(
-//                             fontSize: 22,
-//                             fontWeight: FontWeight.w300,
-//                             color: Theme.of(context).primaryColor,
-//                           ),
-//                           hintStyle: TextStyle(
-//                             fontSize: 16,
-//                             fontWeight: FontWeight.w300,
-//                             color: Theme.of(context).primaryColor,
-//                           ),
-//                           labelText: 'Толщина ИП',
-//                           hintText: 'Введите толщину покрытия',
-//                           helperText: 'мм',
-//                           prefixIcon: Icon(
-//                             Icons.vertical_align_center_sharp,
-//                             color: focusNode15.hasFocus ||
-//                                     thickinsulController.text.isNotEmpty
-//                                 ? Theme.of(context).primaryColor
-//                                 : Colors.grey,
-//                             size: 32,
-//                           ),
-//                           suffixIcon: GestureDetector(
-//                             onTap: () {
-//                               thickinsulController.clear();
-//                             },
-//                             child: Icon(
-//                               Icons.delete_outline,
-//                               color: Color.fromRGBO(187, 30, 16, 1.0),
-//                             ),
-//                           ),
-//                           enabledBorder: OutlineInputBorder(
-//                             borderRadius: BorderRadius.all(Radius.circular(10)),
-//                             borderSide:
-//                                 BorderSide(color: Colors.grey, width: 2),
-//                           ),
-//                           focusedBorder: OutlineInputBorder(
-//                             borderRadius: BorderRadius.all(Radius.circular(20)),
-//                             borderSide: BorderSide(
-//                                 color: Theme.of(context).primaryColor,
-//                                 width: 2),
-//                           ),
-//                         ),
-//                         keyboardType: TextInputType.number,
-//                       ),
-//                       SizedBox(height: 10),
-//                       TextFormField(
-//                         onChanged: (String value) {
-//                           setState(() {});
-//                           focusNode16.requestFocus();
-//                         },
-//                         focusNode: focusNode16,
-//                         maxLength: 3,
-//                         onSaved: (value) {
-//                           object.insuladhes = value;
-//                         },
-//                         controller: insuladhesController,
-//                         style: textStyle,
-//                         decoration: InputDecoration(
-//                           focusColor: Theme.of(context).primaryColor,
-//                           labelStyle: TextStyle(
-//                             fontSize: 22,
-//                             fontWeight: FontWeight.w300,
-//                             color: Theme.of(context).primaryColor,
-//                           ),
-//                           hintStyle: TextStyle(
-//                             fontSize: 16,
-//                             fontWeight: FontWeight.w300,
-//                             color: Theme.of(context).primaryColor,
-//                           ),
-//                           labelText: 'Адгезия ИП к стали',
-//                           hintText: 'Введите значение адгезии',
-//                           helperText: 'Н/см',
-//                           prefixIcon: Icon(
-//                             Icons.compress_sharp,
-//                             color: focusNode16.hasFocus ||
-//                                     insuladhesController.text.isNotEmpty
-//                                 ? Theme.of(context).primaryColor
-//                                 : Colors.grey,
-//                             size: 32,
-//                           ),
-//                           suffixIcon: GestureDetector(
-//                             onTap: () {
-//                               insuladhesController.clear();
-//                             },
-//                             child: Icon(
-//                               Icons.delete_outline,
-//                               color: Color.fromRGBO(187, 30, 16, 1.0),
-//                             ),
-//                           ),
-//                           enabledBorder: OutlineInputBorder(
-//                             borderRadius: BorderRadius.all(Radius.circular(10)),
-//                             borderSide:
-//                                 BorderSide(color: Colors.grey, width: 2),
-//                           ),
-//                           focusedBorder: OutlineInputBorder(
-//                             borderRadius: BorderRadius.all(Radius.circular(20)),
-//                             borderSide: BorderSide(
-//                                 color: Theme.of(context).primaryColor,
-//                                 width: 2),
-//                           ),
-//                         ),
-//                         keyboardType: TextInputType.number,
-//                       ),
-//                       SizedBox(height: 10),
-//                       DropdownButtonFormField(
-//                         focusNode: focusNode17,
-//                         decoration: InputDecoration(
-//                           focusColor: Theme.of(context).primaryColor,
-//                           labelStyle: TextStyle(
-//                             fontSize: 22,
-//                             fontWeight: FontWeight.w300,
-//                             color: Theme.of(context).primaryColor,
-//                           ),
-//                           hintStyle: TextStyle(
-//                             fontSize: 16,
-//                             fontWeight: FontWeight.w300,
-//                             color: Theme.of(context).primaryColor,
-//                           ),
-//                           border: OutlineInputBorder(),
-//                           enabledBorder: OutlineInputBorder(
-//                             borderRadius: BorderRadius.all(Radius.circular(10)),
-//                             borderSide:
-//                                 BorderSide(color: Colors.grey, width: 2),
-//                           ),
-//                           focusedBorder: OutlineInputBorder(
-//                             borderRadius: BorderRadius.all(Radius.circular(20)),
-//                             borderSide: BorderSide(
-//                                 color: Theme.of(context).primaryColor,
-//                                 width: 2),
-//                           ),
-//                           prefixIcon: Icon(
-//                             Icons.ssid_chart_sharp,
-//                             color: focusNode17.hasFocus ||
-//                                     insulcharadhesController.text.isNotEmpty
-//                                 ? Theme.of(context).primaryColor
-//                                 : Colors.grey,
-//                             size: 32,
-//                           ),
-//                           labelText: 'Характер разрушения',
-//                         ),
-//                         items: _insulcharadhes.map((String value) {
-//                           return DropdownMenuItem(
-//                             value: value,
-//                             child: Text(value),
-//                           );
-//                         }).toList(),
-//                         style: textStyle,
-//                         value: object.insulcharadhes,
-//                         onChanged: (String value) {
-//                           setState(() {});
-//                           focusNode17.requestFocus();
-
-//                           object.insulcharadhes = value;
-//                         },
-//                       ),
-//                       SizedBox(height: 20),
-//                       DropdownButtonFormField(
-//                         focusNode: focusNode18,
-//                         decoration: InputDecoration(
-//                           focusColor: Theme.of(context).primaryColor,
-//                           labelStyle: TextStyle(
-//                             fontSize: 22,
-//                             fontWeight: FontWeight.w300,
-//                             color: Theme.of(context).primaryColor,
-//                           ),
-//                           hintStyle: TextStyle(
-//                             fontSize: 16,
-//                             fontWeight: FontWeight.w300,
-//                             color: Theme.of(context).primaryColor,
-//                           ),
-//                           border: OutlineInputBorder(),
-//                           enabledBorder: OutlineInputBorder(
-//                             borderRadius: BorderRadius.all(Radius.circular(10)),
-//                             borderSide:
-//                                 BorderSide(color: Colors.grey, width: 2),
-//                           ),
-//                           focusedBorder: OutlineInputBorder(
-//                             borderRadius: BorderRadius.all(Radius.circular(20)),
-//                             borderSide: BorderSide(
-//                                 color: Theme.of(context).primaryColor,
-//                                 width: 2),
-//                           ),
-//                           prefixIcon: Icon(
-//                             Icons.thumbs_up_down_outlined,
-//                             color: focusNode18.hasFocus ||
-//                                     insulconditController.text.isNotEmpty
-//                                 ? Theme.of(context).primaryColor
-//                                 : Colors.grey,
-//                             size: 32,
-//                           ),
-//                           labelText: 'Состояние покрытия',
-//                         ),
-//                         items: _insulcondit.map((String value) {
-//                           return DropdownMenuItem(
-//                             value: value,
-//                             child: Text(value),
-//                           );
-//                         }).toList(),
-//                         style: textStyle,
-//                         value: object.insulcondit,
-//                         onChanged: (String value) {
-//                           setState(() {});
-//                           focusNode18.requestFocus();
-
-//                           object.insulcondit = value;
-//                         },
-//                       ),
-//                       SizedBox(height: 20),
-//                       DropdownButtonFormField(
-//                         focusNode: focusNode19,
-//                         decoration: InputDecoration(
-//                           focusColor: Theme.of(context).primaryColor,
-//                           labelStyle: TextStyle(
-//                             fontSize: 22,
-//                             fontWeight: FontWeight.w300,
-//                             color: Theme.of(context).primaryColor,
-//                           ),
-//                           hintStyle: TextStyle(
-//                             fontSize: 16,
-//                             fontWeight: FontWeight.w300,
-//                             color: Theme.of(context).primaryColor,
-//                           ),
-//                           border: OutlineInputBorder(),
-//                           enabledBorder: OutlineInputBorder(
-//                             borderRadius: BorderRadius.all(Radius.circular(10)),
-//                             borderSide:
-//                                 BorderSide(color: Colors.grey, width: 2),
-//                           ),
-//                           focusedBorder: OutlineInputBorder(
-//                             borderRadius: BorderRadius.all(Radius.circular(20)),
-//                             borderSide: BorderSide(
-//                                 color: Theme.of(context).primaryColor,
-//                                 width: 2),
-//                           ),
-//                           prefixIcon: Icon(
-//                             Icons.filter_tilt_shift_sharp,
-//                             color: focusNode19.hasFocus ||
-//                                     insuldamageController.text.isNotEmpty
-//                                 ? Theme.of(context).primaryColor
-//                                 : Colors.grey,
-//                             size: 32,
-//                           ),
-//                           labelText: 'Повреждения ИП',
-//                         ),
-//                         items: _insuldamage.map((String value) {
-//                           return DropdownMenuItem(
-//                             value: value,
-//                             child: Text(value),
-//                           );
-//                         }).toList(),
-//                         style: textStyle,
-//                         value: object.insuldamage,
-//                         onChanged: (String value) {
-//                           setState(() {});
-//                           focusNode19.requestFocus();
-//                           object.insuldamage = value;
-//                         },
-//                       ),
-//                       SizedBox(height: 20),
-//                       DropdownButtonFormField(
-//                         focusNode: focusNode20,
-//                         decoration: InputDecoration(
-//                             focusColor: Theme.of(context).primaryColor,
-//                             labelStyle: TextStyle(
-//                               fontSize: 22,
-//                               fontWeight: FontWeight.w300,
-//                               color: Theme.of(context).primaryColor,
-//                             ),
-//                             hintStyle: TextStyle(
-//                               fontSize: 16,
-//                               fontWeight: FontWeight.w300,
-//                               color: Theme.of(context).primaryColor,
-//                             ),
-//                             border: OutlineInputBorder(),
-//                             enabledBorder: OutlineInputBorder(
-//                               borderRadius:
-//                                   BorderRadius.all(Radius.circular(10)),
-//                               borderSide:
-//                                   BorderSide(color: Colors.grey, width: 2),
-//                             ),
-//                             focusedBorder: OutlineInputBorder(
-//                               borderRadius:
-//                                   BorderRadius.all(Radius.circular(20)),
-//                               borderSide: BorderSide(
-//                                   color: Theme.of(context).primaryColor,
-//                                   width: 2),
-//                             ),
-//                             prefixIcon: Icon(
-//                               Icons.filter_tilt_shift_sharp,
-//                               color: focusNode20.hasFocus ||
-//                                       charinsuldamageController.text.isNotEmpty
-//                                   ? Theme.of(context).primaryColor
-//                                   : Colors.grey,
-//                               size: 32,
-//                             ),
-//                             labelText: 'Характер повреждения',
-//                             suffixIcon: GestureDetector(
-//                                 onTap: () {
-//                                   Navigator.push(
-//                                     context,
-//                                     MaterialPageRoute(
-//                                         builder: (context) => CameraPageIp()),
-//                                   ).then((value) {
-//                                     setState(() async {
-//                                       if (value != null) {
-//                                         _image = value;
-
-//                                         print(
-//                                             'сделали: ${object.photo.toString()}');
-
-//                                         if (_1formKey.currentState.validate()) {
-//                                           _1formKey.currentState.save();
-//                                           if (_image != null) {
-//                                             final Directory extDir =
-//                                                 await getApplicationDocumentsDirectory();
-//                                             final String dirPath =
-//                                                 '${extDir.path}/Pictures/flutter_test';
-//                                             await Directory(dirPath)
-//                                                 .create(recursive: true);
-//                                             final String filePath =
-//                                                 '$dirPath/${DateTime.now().millisecondsSinceEpoch.toString()}.jpg';
-//                                             await _image.copy(filePath);
-//                                             object.photo = filePath;
-//                                           }
-//                                         }
-//                                       }
-//                                     });
-//                                   });
-//                                 },
-//                                 child: Icon(Icons.camera_alt_sharp,
-//                                     color: Color.fromRGBO(97, 153, 59, 1.0)))),
-//                         items: _charinsuldamage.map((String value) {
-//                           return DropdownMenuItem(
-//                             value: value,
-//                             child: Text(value),
-//                           );
-//                         }).toList(),
-//                         style: textStyle,
-//                         value: object.charinsuldamage,
-//                         onChanged: (String value) {
-//                           setState(() {});
-//                           focusNode20.requestFocus();
-//                           object.charinsuldamage = value;
-//                         },
-//                       ),
-//                       SizedBox(height: 10),
-//                       Container(
-//                         height: 100,
-//                         child: Column(
-//                           children: [
-//                             Expanded(
-//                               child: GestureDetector(
-//                                 onTap: () {
-//                                   Navigator.push(
-//                                     context,
-//                                     MaterialPageRoute(
-//                                         builder: (context) => ImageScreen(
-//                                             imagePath: object.photo)),
-//                                   );
-//                                 },
-//                                 child: Center(
-//                                   child: object.photo != null
-//                                       ? Image.file(
-//                                           File(object.photo),
-//                                           fit: BoxFit.cover,
-//                                           alignment: Alignment.center,
-//                                           width: 100,
-//                                           height: 100,
-//                                         )
-//                                       : Text('Изображение отсутствует'),
-//                                 ),
-//                               ),
-//                             ),
-//                           ],
-//                         ),
-//                       ),
-//                       SizedBox(height: 10),
-//                       TextFormField(
-//                         focusNode: focusNode21,
-//                         onChanged: (String value) {
-//                           setState(() {});
-//                           focusNode21.requestFocus();
-//                         },
-//                         onSaved: (value) {
-//                           object.locinsuldamage = value;
-//                         },
-//                         controller: locinsuldamageController,
-//                         style: textStyle,
-//                         decoration: InputDecoration(
-//                           focusColor: Theme.of(context).primaryColor,
-//                           labelStyle: TextStyle(
-//                             fontSize: 22,
-//                             fontWeight: FontWeight.w300,
-//                             color: Theme.of(context).primaryColor,
-//                           ),
-//                           hintStyle: TextStyle(
-//                             fontSize: 16,
-//                             fontWeight: FontWeight.w300,
-//                             color: Theme.of(context).primaryColor,
-//                           ),
-//                           labelText: 'Расположение дефекта',
-//                           hintText: 'Введите час и расстояние от шва по ХГ',
-//                           helperText: 'ЧАС-расстояние от шва по ХГ',
-//                           prefixIcon: Icon(
-//                             Icons.location_searching_sharp,
-//                             color: focusNode21.hasFocus ||
-//                                     locinsuldamageController.text.isNotEmpty
-//                                 ? Theme.of(context).primaryColor
-//                                 : Colors.grey,
-//                             size: 32,
-//                           ),
-//                           suffixIcon: GestureDetector(
-//                             onTap: () {
-//                               locinsuldamageController.clear();
-//                             },
-//                             child: Icon(
-//                               Icons.delete_outline,
-//                               color: Color.fromRGBO(187, 30, 16, 1.0),
-//                             ),
-//                           ),
-//                           enabledBorder: OutlineInputBorder(
-//                             borderRadius: BorderRadius.all(Radius.circular(10)),
-//                             borderSide:
-//                                 BorderSide(color: Colors.grey, width: 2),
-//                           ),
-//                           focusedBorder: OutlineInputBorder(
-//                             borderRadius: BorderRadius.all(Radius.circular(20)),
-//                             borderSide: BorderSide(
-//                                 color: Theme.of(context).primaryColor,
-//                                 width: 2),
-//                           ),
-//                         ),
-//                         keyboardType: TextInputType.number,
-//                       ),
-//                       SizedBox(height: 10),
-//                       TextFormField(
-//                         focusNode: focusNode22,
-//                         onChanged: (String value) {
-//                           setState(() {});
-//                           focusNode22.requestFocus();
-//                         },
-//                         maxLength: 20,
-//                         onSaved: (value) {
-//                           object.sizeinsuldamage = value;
-//                         },
-//                         controller: sizeinsuldamageController,
-//                         style: textStyle,
-//                         decoration: InputDecoration(
-//                           focusColor: Theme.of(context).primaryColor,
-//                           labelStyle: TextStyle(
-//                             fontSize: 22,
-//                             fontWeight: FontWeight.w300,
-//                             color: Theme.of(context).primaryColor,
-//                           ),
-//                           hintStyle: TextStyle(
-//                             fontSize: 16,
-//                             fontWeight: FontWeight.w300,
-//                             color: Theme.of(context).primaryColor,
-//                           ),
-//                           labelText: 'Размеры дефекта покрытия',
-//                           hintText: 'Введите размеры',
-//                           helperText: 'Длина х ширина х глубина',
-//                           prefixIcon: Icon(
-//                             Icons.location_searching_sharp,
-//                             color: focusNode22.hasFocus ||
-//                                     sizeinsuldamageController.text.isNotEmpty
-//                                 ? Theme.of(context).primaryColor
-//                                 : Colors.grey,
-//                             size: 32,
-//                           ),
-//                           suffixIcon: GestureDetector(
-//                             onTap: () {
-//                               sizeinsuldamageController.clear();
-//                             },
-//                             child: Icon(
-//                               Icons.delete_outline,
-//                               color: Color.fromRGBO(187, 30, 16, 1.0),
-//                             ),
-//                           ),
-//                           enabledBorder: OutlineInputBorder(
-//                             borderRadius: BorderRadius.all(Radius.circular(10)),
-//                             borderSide:
-//                                 BorderSide(color: Colors.grey, width: 2),
-//                           ),
-//                           focusedBorder: OutlineInputBorder(
-//                             borderRadius: BorderRadius.all(Radius.circular(20)),
-//                             borderSide: BorderSide(
-//                                 color: Theme.of(context).primaryColor,
-//                                 width: 2),
-//                           ),
-//                         ),
-//                         keyboardType: TextInputType.number,
-//                       ),
-//                       SizedBox(height: 10),
-//                       ElevatedButton(
-//                         style: ElevatedButton.styleFrom(
-//                             primary:
-//                                 Theme.of(context).accentColor, // background
-//                             onPrimary: Colors.white,
-//                             elevation: 2,
-//                             padding: const EdgeInsets.all(13.0),
-//                             shape: RoundedRectangleBorder(
-//                                 borderRadius:
-//                                     BorderRadius.circular(10.0)) // foreground
-//                             ),
-//                         onPressed: () => saveForm3(),
-//                         child: Text(
-//                           isEdit ? 'Редактировать' : 'Добавить',
-//                           style: const TextStyle(
-//                               fontSize: 18.0, fontWeight: FontWeight.w300),
-//                         ),
-//                       ),
-//                     ],
-//                   ),
-//                 ),
-//               ),
-//             ),
-//             Center(
-//               child: Padding(
-//                 padding: const EdgeInsets.all(8.0),
-//                 child: Form(
-//                   key: _4formKey,
-//                   child: ListView(
-//                     children: <Widget>[
-//                       SizedBox(height: 20),
-//                       Container(
-//                           alignment: Alignment.center,
-//                           child: Text(
-//                             'ДАННЫЕ О РЕМОНТЕ ИП',
-//                             style: TextStyle(
-//                                 fontSize: 24,
-//                                 color: Theme.of(context).primaryColor,
-//                                 fontWeight: FontWeight.w300),
-//                           )),
-//                       SizedBox(height: 20),
-//                       DropdownButtonFormField(
-//                         focusNode: focusNode23,
-//                         decoration: InputDecoration(
-//                           focusColor: Theme.of(context).primaryColor,
-//                           labelStyle: TextStyle(
-//                             fontSize: 22,
-//                             fontWeight: FontWeight.w300,
-//                             color: Theme.of(context).primaryColor,
-//                           ),
-//                           hintStyle: TextStyle(
-//                             fontSize: 16,
-//                             fontWeight: FontWeight.w300,
-//                             color: Theme.of(context).primaryColor,
-//                           ),
-//                           border: OutlineInputBorder(),
-//                           enabledBorder: OutlineInputBorder(
-//                             borderRadius: BorderRadius.all(Radius.circular(10)),
-//                             borderSide:
-//                                 BorderSide(color: Colors.grey, width: 2),
-//                           ),
-//                           focusedBorder: OutlineInputBorder(
-//                             borderRadius: BorderRadius.all(Radius.circular(20)),
-//                             borderSide: BorderSide(
-//                                 color: Theme.of(context).primaryColor,
-//                                 width: 2),
-//                           ),
-//                           prefixIcon: Icon(
-//                             Icons.map,
-//                             color: focusNode23.hasFocus ||
-//                                     typeinsulrestController.text.isNotEmpty
-//                                 ? Theme.of(context).primaryColor
-//                                 : Colors.grey,
-//                             size: 32,
-//                           ),
-//                           labelText: 'Конструкция отремонтированного покрытия',
-//                         ),
-//                         items: _typeinsulrest.map((String value) {
-//                           return DropdownMenuItem(
-//                             value: value,
-//                             child: Text(value),
-//                           );
-//                         }).toList(),
-//                         style: textStyle,
-//                         value: object.typeinsulrest,
-//                         onChanged: (String value) {
-//                           setState(() {});
-//                           focusNode23.requestFocus();
-//                           object.typeinsulrest = value;
-//                         },
-//                       ),
-//                       SizedBox(height: 10),
-//                       TextFormField(
-//                         focusNode: focusNode24,
-//                         onChanged: (String value) {
-//                           setState(() {});
-//                           focusNode24.requestFocus();
-//                         },
-//                         maxLength: 3,
-//                         onSaved: (value) {
-//                           object.insuladhesrest = value;
-//                         },
-//                         controller: insuladhesrestController,
-//                         style: textStyle,
-//                         decoration: InputDecoration(
-//                           focusColor: Theme.of(context).primaryColor,
-//                           labelStyle: TextStyle(
-//                             fontSize: 22,
-//                             fontWeight: FontWeight.w300,
-//                             color: Theme.of(context).primaryColor,
-//                           ),
-//                           hintStyle: TextStyle(
-//                             fontSize: 16,
-//                             fontWeight: FontWeight.w300,
-//                             color: Theme.of(context).primaryColor,
-//                           ),
-//                           labelText: 'Адгезия ИП к стали',
-//                           hintText: 'Введите значение адгезии',
-//                           helperText: 'Н/см',
-//                           prefixIcon: Icon(
-//                             Icons.map_sharp,
-//                             color: focusNode24.hasFocus ||
-//                                     insuladhesrestController.text.isNotEmpty
-//                                 ? Theme.of(context).primaryColor
-//                                 : Colors.grey,
-//                             size: 32,
-//                           ),
-//                           suffixIcon: GestureDetector(
-//                             onTap: () {
-//                               insuladhesrestController.clear();
-//                             },
-//                             child: Icon(
-//                               Icons.delete_outline,
-//                               color: Color.fromRGBO(187, 30, 16, 1.0),
-//                             ),
-//                           ),
-//                           enabledBorder: OutlineInputBorder(
-//                             borderRadius: BorderRadius.all(Radius.circular(10)),
-//                             borderSide:
-//                                 BorderSide(color: Colors.grey, width: 2),
-//                           ),
-//                           focusedBorder: OutlineInputBorder(
-//                             borderRadius: BorderRadius.all(Radius.circular(20)),
-//                             borderSide: BorderSide(
-//                                 color: Theme.of(context).primaryColor,
-//                                 width: 2),
-//                           ),
-//                         ),
-//                         keyboardType: TextInputType.number,
-//                       ),
-//                       SizedBox(height: 10),
-//                       TextFormField(
-//                         focusNode: focusNode25,
-//                         onChanged: (String value) {
-//                           setState(() {});
-//                           focusNode25.requestFocus();
-//                         },
-//                         maxLength: 3,
-//                         onSaved: (value) {
-//                           object.thickinsulrest = value;
-//                         },
-//                         controller: thickinsulrestController,
-//                         style: textStyle,
-//                         decoration: InputDecoration(
-//                           focusColor: Theme.of(context).primaryColor,
-//                           labelStyle: TextStyle(
-//                             fontSize: 22,
-//                             fontWeight: FontWeight.w300,
-//                             color: Theme.of(context).primaryColor,
-//                           ),
-//                           hintStyle: TextStyle(
-//                             fontSize: 16,
-//                             fontWeight: FontWeight.w300,
-//                             color: Theme.of(context).primaryColor,
-//                           ),
-//                           labelText: 'Толщина ИП',
-//                           hintText: 'Введите толщину покрытия',
-//                           helperText: 'мм',
-//                           prefixIcon: Icon(
-//                             Icons.map_sharp,
-//                             color: focusNode25.hasFocus ||
-//                                     thickinsulrestController.text.isNotEmpty
-//                                 ? Theme.of(context).primaryColor
-//                                 : Colors.grey,
-//                             size: 32,
-//                           ),
-//                           suffixIcon: GestureDetector(
-//                             onTap: () {
-//                               thickinsulrestController.clear();
-//                             },
-//                             child: Icon(
-//                               Icons.delete_outline,
-//                               color: Color.fromRGBO(187, 30, 16, 1.0),
-//                             ),
-//                           ),
-//                           enabledBorder: OutlineInputBorder(
-//                             borderRadius: BorderRadius.all(Radius.circular(10)),
-//                             borderSide:
-//                                 BorderSide(color: Colors.grey, width: 2),
-//                           ),
-//                           focusedBorder: OutlineInputBorder(
-//                             borderRadius: BorderRadius.all(Radius.circular(20)),
-//                             borderSide: BorderSide(
-//                                 color: Theme.of(context).primaryColor,
-//                                 width: 2),
-//                           ),
-//                         ),
-//                         keyboardType: TextInputType.number,
-//                       ),
-//                       SizedBox(height: 10),
-//                       TextFormField(
-//                         focusNode: focusNode26,
-//                         onChanged: (String value) {
-//                           setState(() {});
-//                           focusNode26.requestFocus();
-//                         },
-//                         maxLength: 3,
-//                         onSaved: (value) {
-//                           object.contininsulrest = value;
-//                         },
-//                         controller: contininsulrestController,
-//                         style: textStyle,
-//                         decoration: InputDecoration(
-//                           focusColor: Theme.of(context).primaryColor,
-//                           labelStyle: TextStyle(
-//                             fontSize: 22,
-//                             fontWeight: FontWeight.w300,
-//                             color: Theme.of(context).primaryColor,
-//                           ),
-//                           hintStyle: TextStyle(
-//                             fontSize: 16,
-//                             fontWeight: FontWeight.w300,
-//                             color: Theme.of(context).primaryColor,
-//                           ),
-//                           labelText: 'Отсутствие пробоя при напряжении',
-//                           hintText: 'Введите величину напряжения',
-//                           helperText: 'кВ',
-//                           prefixIcon: Icon(
-//                             Icons.map_sharp,
-//                             color: focusNode26.hasFocus ||
-//                                     contininsulrestController.text.isNotEmpty
-//                                 ? Theme.of(context).primaryColor
-//                                 : Colors.grey,
-//                             size: 32,
-//                           ),
-//                           suffixIcon: GestureDetector(
-//                             onTap: () {
-//                               contininsulrestController.clear();
-//                             },
-//                             child: Icon(
-//                               Icons.delete_outline,
-//                               color: Color.fromRGBO(187, 30, 16, 1.0),
-//                             ),
-//                           ),
-//                           enabledBorder: OutlineInputBorder(
-//                             borderRadius: BorderRadius.all(Radius.circular(10)),
-//                             borderSide:
-//                                 BorderSide(color: Colors.grey, width: 2),
-//                           ),
-//                           focusedBorder: OutlineInputBorder(
-//                             borderRadius: BorderRadius.all(Radius.circular(20)),
-//                             borderSide: BorderSide(
-//                                 color: Theme.of(context).primaryColor,
-//                                 width: 2),
-//                           ),
-//                         ),
-//                         keyboardType: TextInputType.number,
-//                       ),
-//                       SizedBox(height: 10),
-//                       ElevatedButton(
-//                         style: ElevatedButton.styleFrom(
-//                             primary:
-//                                 Theme.of(context).accentColor, // background
-//                             onPrimary: Colors.white,
-//                             elevation: 2,
-//                             padding: const EdgeInsets.all(13.0),
-//                             shape: RoundedRectangleBorder(
-//                                 borderRadius:
-//                                     BorderRadius.circular(10.0)) // foreground
-//                             ),
-//                         onPressed: () => saveForm4(),
-//                         child: Text(
-//                           isEdit ? 'Редактировать' : 'Добавить',
-//                           style: const TextStyle(
-//                               fontSize: 18.0, fontWeight: FontWeight.w300),
-//                         ),
-//                       ),
-//                     ],
-//                   ),
-//                 ),
-//               ),
-//             ),
-//             Center(
-//               child: Padding(
-//                 padding: const EdgeInsets.all(8.0),
-//                 child: Form(
-//                   key: _5formKey,
-//                   child: ListView(
-//                     children: <Widget>[
-//                       SizedBox(height: 10),
-//                       Container(
-//                           alignment: Alignment.center,
-//                           child: Text(
-//                             'ДАННЫЕ О ПРИБОРАХ',
-//                             style: TextStyle(
-//                                 fontSize: 24,
-//                                 color: Theme.of(context).primaryColor,
-//                                 fontWeight: FontWeight.w300),
-//                           )),
-//                       SizedBox(height: 20),
-//                       TextFormField(
-//                         focusNode: focusNode27,
-//                         onChanged: (String value) {
-//                           setState(() {});
-//                           focusNode27.requestFocus();
-//                         },
-//                         maxLength: 20,
-//                         onSaved: (value) {
-//                           object.tickinsulmeter = value;
-//                         },
-//                         controller: tickinsulmeterController,
-//                         style: textStyle,
-//                         decoration: InputDecoration(
-//                           focusColor: Theme.of(context).primaryColor,
-//                           labelStyle: TextStyle(
-//                             fontSize: 22,
-//                             fontWeight: FontWeight.w300,
-//                             color: Theme.of(context).primaryColor,
-//                           ),
-//                           hintStyle: TextStyle(
-//                             fontSize: 16,
-//                             fontWeight: FontWeight.w300,
-//                             color: Theme.of(context).primaryColor,
-//                           ),
-//                           labelText: 'Толщиномер покрытий',
-//                           hintText: 'Введите название и номер',
-//                           helperText: '... № ...',
-//                           prefixIcon: Icon(
-//                             Icons.map_sharp,
-//                             color: focusNode27.hasFocus ||
-//                                     tickinsulmeterController.text.isNotEmpty
-//                                 ? Theme.of(context).primaryColor
-//                                 : Colors.grey,
-//                             size: 32,
-//                           ),
-//                           suffixIcon: GestureDetector(
-//                             onTap: () {
-//                               tickinsulmeterController.clear();
-//                             },
-//                             child: Icon(
-//                               Icons.delete_outline,
-//                               color: Color.fromRGBO(187, 30, 16, 1.0),
-//                             ),
-//                           ),
-//                           enabledBorder: OutlineInputBorder(
-//                             borderRadius: BorderRadius.all(Radius.circular(10)),
-//                             borderSide:
-//                                 BorderSide(color: Colors.grey, width: 2),
-//                           ),
-//                           focusedBorder: OutlineInputBorder(
-//                             borderRadius: BorderRadius.all(Radius.circular(20)),
-//                             borderSide: BorderSide(
-//                                 color: Theme.of(context).primaryColor,
-//                                 width: 2),
-//                           ),
-//                         ),
-//                         keyboardType: TextInputType.number,
-//                       ),
-//                       SizedBox(height: 10),
-//                       TextFormField(
-//                         focusNode: focusNode28,
-//                         onChanged: (String value) {
-//                           setState(() {});
-//                           focusNode28.requestFocus();
-//                         },
-//                         maxLength: 20,
-//                         onSaved: (value) {
-//                           object.tickmetallmeter = value;
-//                         },
-//                         controller: tickmetallmeterController,
-//                         style: textStyle,
-//                         decoration: InputDecoration(
-//                           focusColor: Theme.of(context).primaryColor,
-//                           labelStyle: TextStyle(
-//                             fontSize: 22,
-//                             fontWeight: FontWeight.w300,
-//                             color: Theme.of(context).primaryColor,
-//                           ),
-//                           hintStyle: TextStyle(
-//                             fontSize: 16,
-//                             fontWeight: FontWeight.w300,
-//                             color: Theme.of(context).primaryColor,
-//                           ),
-//                           labelText: 'Толщиномер металла',
-//                           hintText: 'Введите название и номер',
-//                           helperText: '... № ...',
-//                           prefixIcon: Icon(
-//                             Icons.map_sharp,
-//                             color: focusNode28.hasFocus ||
-//                                     tickmetallmeterController.text.isNotEmpty
-//                                 ? Theme.of(context).primaryColor
-//                                 : Colors.grey,
-//                             size: 32,
-//                           ),
-//                           suffixIcon: GestureDetector(
-//                             onTap: () {
-//                               tickmetallmeterController.clear();
-//                             },
-//                             child: Icon(
-//                               Icons.delete_outline,
-//                               color: Color.fromRGBO(187, 30, 16, 1.0),
-//                             ),
-//                           ),
-//                           enabledBorder: OutlineInputBorder(
-//                             borderRadius: BorderRadius.all(Radius.circular(10)),
-//                             borderSide:
-//                                 BorderSide(color: Colors.grey, width: 2),
-//                           ),
-//                           focusedBorder: OutlineInputBorder(
-//                             borderRadius: BorderRadius.all(Radius.circular(20)),
-//                             borderSide: BorderSide(
-//                                 color: Theme.of(context).primaryColor,
-//                                 width: 2),
-//                           ),
-//                         ),
-//                         keyboardType: TextInputType.number,
-//                       ),
-//                       SizedBox(height: 10),
-//                       TextFormField(
-//                         focusNode: focusNode29,
-//                         onChanged: (String value) {
-//                           setState(() {});
-//                           focusNode29.requestFocus();
-//                         },
-//                         maxLength: 20,
-//                         onSaved: (value) {
-//                           object.adhesmeter = value;
-//                         },
-//                         controller: adhesmeterController,
-//                         style: textStyle,
-//                         decoration: InputDecoration(
-//                           focusColor: Theme.of(context).primaryColor,
-//                           labelStyle: TextStyle(
-//                             fontSize: 22,
-//                             fontWeight: FontWeight.w300,
-//                             color: Theme.of(context).primaryColor,
-//                           ),
-//                           hintStyle: TextStyle(
-//                             fontSize: 16,
-//                             fontWeight: FontWeight.w300,
-//                             color: Theme.of(context).primaryColor,
-//                           ),
-//                           labelText: 'Адгезиметр',
-//                           hintText: 'Введите название и номер',
-//                           helperText: '... № ...',
-//                           prefixIcon: Icon(
-//                             Icons.map_sharp,
-//                             color: focusNode29.hasFocus ||
-//                                     adhesmeterController.text.isNotEmpty
-//                                 ? Theme.of(context).primaryColor
-//                                 : Colors.grey,
-//                             size: 32,
-//                           ),
-//                           suffixIcon: GestureDetector(
-//                             onTap: () {
-//                               adhesmeterController.clear();
-//                             },
-//                             child: Icon(
-//                               Icons.delete_outline,
-//                               color: Color.fromRGBO(187, 30, 16, 1.0),
-//                             ),
-//                           ),
-//                           enabledBorder: OutlineInputBorder(
-//                             borderRadius: BorderRadius.all(Radius.circular(10)),
-//                             borderSide:
-//                                 BorderSide(color: Colors.grey, width: 2),
-//                           ),
-//                           focusedBorder: OutlineInputBorder(
-//                             borderRadius: BorderRadius.all(Radius.circular(20)),
-//                             borderSide: BorderSide(
-//                                 color: Theme.of(context).primaryColor,
-//                                 width: 2),
-//                           ),
-//                         ),
-//                         keyboardType: TextInputType.number,
-//                       ),
-//                       SizedBox(height: 10),
-//                       TextFormField(
-//                         focusNode: focusNode30,
-//                         onChanged: (String value) {
-//                           setState(() {});
-//                           focusNode30.requestFocus();
-//                         },
-//                         maxLength: 20,
-//                         onSaved: (value) {
-//                           object.continmeter = value;
-//                         },
-//                         controller: continmeterController,
-//                         style: textStyle,
-//                         decoration: InputDecoration(
-//                           focusColor: Theme.of(context).primaryColor,
-//                           labelStyle: TextStyle(
-//                             fontSize: 22,
-//                             fontWeight: FontWeight.w300,
-//                             color: Theme.of(context).primaryColor,
-//                           ),
-//                           hintStyle: TextStyle(
-//                             fontSize: 16,
-//                             fontWeight: FontWeight.w300,
-//                             color: Theme.of(context).primaryColor,
-//                           ),
-//                           labelText: 'Искровой дефектоскоп',
-//                           hintText: 'Введите название и номер',
-//                           helperText: '... № ...',
-//                           prefixIcon: Icon(
-//                             Icons.map_sharp,
-//                             color: focusNode30.hasFocus ||
-//                                     continmeterController.text.isNotEmpty
-//                                 ? Theme.of(context).primaryColor
-//                                 : Colors.grey,
-//                             size: 32,
-//                           ),
-//                           suffixIcon: GestureDetector(
-//                             onTap: () {
-//                               continmeterController.clear();
-//                             },
-//                             child: Icon(
-//                               Icons.delete_outline,
-//                               color: Color.fromRGBO(187, 30, 16, 1.0),
-//                             ),
-//                           ),
-//                           enabledBorder: OutlineInputBorder(
-//                             borderRadius: BorderRadius.all(Radius.circular(10)),
-//                             borderSide:
-//                                 BorderSide(color: Colors.grey, width: 2),
-//                           ),
-//                           focusedBorder: OutlineInputBorder(
-//                             borderRadius: BorderRadius.all(Radius.circular(20)),
-//                             borderSide: BorderSide(
-//                                 color: Theme.of(context).primaryColor,
-//                                 width: 2),
-//                           ),
-//                         ),
-//                         keyboardType: TextInputType.number,
-//                       ),
-//                       SizedBox(height: 10),
-//                       TextFormField(
-//                         focusNode: focusNode31,
-//                         onChanged: (String value) {
-//                           setState(() {});
-//                           focusNode31.requestFocus();
-//                         },
-//                         maxLength: 20,
-//                         onSaved: (value) {
-//                           object.setvik = value;
-//                         },
-//                         controller: setvikController,
-//                         style: textStyle,
-//                         decoration: InputDecoration(
-//                           focusColor: Theme.of(context).primaryColor,
-//                           labelStyle: TextStyle(
-//                             fontSize: 22,
-//                             fontWeight: FontWeight.w300,
-//                             color: Theme.of(context).primaryColor,
-//                           ),
-//                           hintStyle: TextStyle(
-//                             fontSize: 16,
-//                             fontWeight: FontWeight.w300,
-//                             color: Theme.of(context).primaryColor,
-//                           ),
-//                           labelText: 'Комплект ВИК',
-//                           hintText: 'Введите номер комплекта',
-//                           helperText: '№ ...',
-//                           prefixIcon: Icon(
-//                             Icons.map_sharp,
-//                             color: focusNode31.hasFocus ||
-//                                     setvikController.text.isNotEmpty
-//                                 ? Theme.of(context).primaryColor
-//                                 : Colors.grey,
-//                             size: 32,
-//                           ),
-//                           suffixIcon: GestureDetector(
-//                             onTap: () {
-//                               setvikController.clear();
-//                             },
-//                             child: Icon(
-//                               Icons.delete_outline,
-//                               color: Color.fromRGBO(187, 30, 16, 1.0),
-//                             ),
-//                           ),
-//                           enabledBorder: OutlineInputBorder(
-//                             borderRadius: BorderRadius.all(Radius.circular(10)),
-//                             borderSide:
-//                                 BorderSide(color: Colors.grey, width: 2),
-//                           ),
-//                           focusedBorder: OutlineInputBorder(
-//                             borderRadius: BorderRadius.all(Radius.circular(20)),
-//                             borderSide: BorderSide(
-//                                 color: Theme.of(context).primaryColor,
-//                                 width: 2),
-//                           ),
-//                         ),
-//                         keyboardType: TextInputType.number,
-//                       ),
-//                       SizedBox(height: 10),
-//                       ElevatedButton(
-//                         style: ElevatedButton.styleFrom(
-//                             primary:
-//                                 Theme.of(context).accentColor, // background
-//                             onPrimary: Colors.white,
-//                             elevation: 2,
-//                             padding: const EdgeInsets.all(13.0),
-//                             shape: RoundedRectangleBorder(
-//                                 borderRadius:
-//                                     BorderRadius.circular(10.0)) // foreground
-//                             ),
-//                         onPressed: () => saveForm5(),
-//                         child: Text(
-//                           isEdit ? 'Редактировать' : 'Добавить',
-//                           style: const TextStyle(
-//                               fontSize: 18.0, fontWeight: FontWeight.w300),
-//                         ),
-//                       ),
-//                     ],
-//                   ),
-//                 ),
-//               ),
-//             ),
-//             Center(
-//               child: Padding(
-//                 padding: const EdgeInsets.all(8.0),
-//                 child: Form(
-//                   key: _6formKey,
-//                   child: ListView(
-//                     children: <Widget>[
-//                       SizedBox(height: 20),
-//                       Container(
-//                           alignment: Alignment.center,
-//                           child: Text(
-//                             'ДОПОЛНИТЕЛЬНАЯ ИНОФРМАЦИЯ',
-//                             style: TextStyle(
-//                                 fontSize: 24,
-//                                 color: Theme.of(context).primaryColor,
-//                                 fontWeight: FontWeight.w300),
-//                           )),
-//                       SizedBox(height: 20),
-//                       TextFormField(
-//                         maxLength: 1000,
-//                         onSaved: (value) {
-//                           object.description = value;
-//                         },
-//                         controller: descriptionController,
-//                         decoration: InputDecoration(
-//                           focusColor: Theme.of(context).primaryColor,
-//                           labelStyle: TextStyle(
-//                             fontSize: 22,
-//                             fontWeight: FontWeight.w300,
-//                             color: Theme.of(context).primaryColor,
-//                           ),
-//                           hintStyle: TextStyle(
-//                             fontSize: 16,
-//                             fontWeight: FontWeight.w300,
-//                             color: Theme.of(context).primaryColor,
-//                           ),
-//                           labelText: 'Дополнительные сведения',
-//                           suffixIcon: GestureDetector(
-//                               onTap: () {
-//                                 Navigator.push(
-//                                   context,
-//                                   MaterialPageRoute(
-//                                       builder: (context) => CameraPageIp()),
-//                                 ).then((value) {
-//                                   setState(() async {
-//                                     if (value != null) {
-//                                       _image = value;
-
-//                                       print(
-//                                           'сделали: ${object.photo.toString()}');
-
-//                                       if (_1formKey.currentState.validate()) {
-//                                         _1formKey.currentState.save();
-//                                         if (_image != null) {
-//                                           final Directory extDir =
-//                                               await getApplicationDocumentsDirectory();
-//                                           final String dirPath =
-//                                               '${extDir.path}/Pictures/flutter_test';
-//                                           await Directory(dirPath)
-//                                               .create(recursive: true);
-//                                           final String filePath =
-//                                               '$dirPath/${DateTime.now().millisecondsSinceEpoch.toString()}.jpg';
-//                                           await _image.copy(filePath);
-//                                           object.photo = filePath;
-//                                         }
-//                                       }
-//                                     }
-//                                   });
-//                                 });
-//                               },
-//                               child: Icon(Icons.camera_alt_sharp,
-//                                   color: Color.fromRGBO(97, 153, 59, 1.0))),
-//                           hintText:
-//                               'Особенности, дефекты, условия, замечания...',
-//                           border: OutlineInputBorder(),
-//                           enabledBorder: OutlineInputBorder(
-//                             borderRadius: BorderRadius.all(Radius.circular(10)),
-//                             borderSide:
-//                                 BorderSide(color: Colors.grey, width: 2),
-//                           ),
-//                           focusedBorder: OutlineInputBorder(
-//                             borderRadius: BorderRadius.all(Radius.circular(20)),
-//                             borderSide: BorderSide(
-//                                 color: Theme.of(context).primaryColor,
-//                                 width: 2),
-//                           ),
-//                         ),
-//                         maxLines: 10,
-//                         inputFormatters: [
-//                           LengthLimitingTextInputFormatter(137),
-//                         ],
-//                       ),
-//                       SizedBox(height: 10),
-//                       Container(
-//                         height: 100,
-//                         child: Column(
-//                           children: [
-//                             Expanded(
-//                               child: GestureDetector(
-//                                 onTap: () {
-//                                   Navigator.push(
-//                                     context,
-//                                     MaterialPageRoute(
-//                                         builder: (context) => ImageScreen(
-//                                             imagePath: object.photo)),
-//                                   );
-//                                 },
-//                                 child: Center(
-//                                   child: object.photo != null
-//                                       ? Image.file(
-//                                           File(object.photo),
-//                                           fit: BoxFit.cover,
-//                                           alignment: Alignment.center,
-//                                           width: 100,
-//                                           height: 100,
-//                                         )
-//                                       : Text('Изображение отсутствует'),
-//                                 ),
-//                               ),
-//                             ),
-//                           ],
-//                         ),
-//                       ),
-//                       SizedBox(height: 10),
-//                       ElevatedButton(
-//                         style: ElevatedButton.styleFrom(
-//                             primary:
-//                                 Theme.of(context).accentColor, // background
-//                             onPrimary: Colors.white,
-//                             elevation: 2,
-//                             padding: const EdgeInsets.all(13.0),
-//                             shape: RoundedRectangleBorder(
-//                                 borderRadius:
-//                                     BorderRadius.circular(10.0)) // foreground
-//                             ),
-//                         onPressed: () => saveForm6(),
-//                         child: Text(
-//                           isEdit ? 'Редактировать' : 'Добавить',
-//                           style: const TextStyle(
-//                               fontSize: 18.0, fontWeight: FontWeight.w300),
-//                         ),
-//                       ),
-//                     ],
-//                   ),
-//                 ),
-//               ),
-//             ),
-//           ],
-//         ),
-//         floatingActionButton: isEdit
-//             ? FloatingActionButton(
-//                 onPressed: () {
-//                   debugPrint('Click Floated Back.');
-//                   confirmDelete();
-//                 },
-//                 elevation: 5.0,
-//                 backgroundColor: Color.fromRGBO(187, 30, 16, 1.0),
-//                 tooltip: 'Удалить запись',
-//                 child: Icon(
-//                   Icons.clear,
-//                   size: 35.0,
-//                   color: Colors.white,
-//                 ))
-//             : null,
-//         floatingActionButtonLocation: FloatingActionButtonLocation.miniEndFloat,
-//       ),
-//     );
-//   }
-
-//   void confirmDelete() {
-//     showDialog(
-//       context: context,
-//       builder: (BuildContext context) => AlertDialog(
-//         title: const Text('Вы действительно хотите удалить запись?',
-//             style: TextStyle(fontSize: 15.0)),
-//         actions: <Widget>[
-//           TextButton(
-//               child: const Text('Закрыть'),
-//               onPressed: () => Navigator.of(context).pop()),
-//           TextButton(
-//               child: const Text(
-//                 'Удалить',
-//                 style: TextStyle(
-//                     color: Color.fromRGBO(187, 30, 16, 1.0),
-//                     fontWeight: FontWeight.bold),
-//               ),
-//               onPressed: () {
-//                 helper.deleteTodo(object.id);
-//                 Navigator.of(context).pop();
-//                 Navigator.pop(context, true);
-//               })
-//         ],
-//       ),
-//     );
-//   }
-
-//   void saveForm1() {
-//     final form = _1formKey.currentState;
-//     if (form.validate()) {
-//       form.save();
-//       object.todoDate = DateFormat.yMMMMd().format(DateTime.now());
-//       if (object.id != null) {
-//         helper.updateTodo(object);
-//       } else {
-//         helper.insertTodo(object);
-//       }
-//       Navigator.pop(context, true);
-//     }
-//   }
-
-//   void saveForm2() {
-//     final form = _2formKey.currentState;
-//     if (form.validate()) {
-//       form.save();
-//       object.todoDate = DateFormat.yMMMMd().format(DateTime.now());
-//       if (object.id != null) {
-//         helper.updateTodo(object);
-//       } else {
-//         helper.insertTodo(object);
-//       }
-//       Navigator.pop(context, true);
-//     }
-//   }
-
-//   void saveForm3() {
-//     final form = _3formKey.currentState;
-//     if (form.validate()) {
-//       form.save();
-//       object.todoDate = DateFormat.yMMMMd().format(DateTime.now());
-//       if (object.id != null) {
-//         helper.updateTodo(object);
-//       } else {
-//         helper.insertTodo(object);
-//       }
-//       Navigator.pop(context, true);
-//     }
-//   }
-
-//   void saveForm4() {
-//     final form = _4formKey.currentState;
-//     if (form.validate()) {
-//       form.save();
-//       object.todoDate = DateFormat.yMMMMd().format(DateTime.now());
-//       if (object.id != null) {
-//         helper.updateTodo(object);
-//       } else {
-//         helper.insertTodo(object);
-//       }
-//       Navigator.pop(context, true);
-//     }
-//   }
-
-//   void saveForm5() {
-//     final form = _5formKey.currentState;
-//     if (form.validate()) {
-//       form.save();
-//       object.todoDate = DateFormat.yMMMMd().format(DateTime.now());
-//       if (object.id != null) {
-//         helper.updateTodo(object);
-//       } else {
-//         helper.insertTodo(object);
-//       }
-//       Navigator.pop(context, true);
-//     }
-//   }
-
-//   void saveForm6() {
-//     final form = _6formKey.currentState;
-//     if (form.validate()) {
-//       form.save();
-//       object.todoDate = DateFormat.yMMMMd().format(DateTime.now());
-//       if (object.id != null) {
-//         helper.updateTodo(object);
-//       } else {
-//         helper.insertTodo(object);
-//       }
-//       Navigator.pop(context, true);
-//     }
-//   }
-
-//   void updateTitle() {
-//     setState(() {
-//       object.title == titleController.text;
-//     });
-//   }
-
-//   void updatePiketkm() {
-//     setState(() {
-//       object.piketkm = piketkmController.text;
-//     });
-//   }
-
-//   void updateCoordinate() {
-//     setState(() {
-//       object.coordinate = coordinateController.text;
-//     });
-//   }
-
-//   void updateLengthpit() {
-//     setState(() {
-//       object.lengthpit = lengthpitController.text;
-//     });
-//   }
-
-//   void updateDepthpit() {
-//     setState(() {
-//       object.depthpit = depthpitController.text;
-//     });
-//   }
-
-//   void updateOsnovanie() {
-//     setState(() {
-//       object.osnovanie = osnovanieController.text;
-//     });
-//   }
-
-//   void updateDescription() {
-//     setState(() {
-//       object.description = descriptionController.text;
-//     });
-//   }
-
-//   void updateDiameter() {
-//     setState(() {
-//       object.diameter = diameterController.text;
-//     });
-//   }
-
-//   void updateThickpipe() {
-//     setState(() {
-//       object.thickpipe = thickpipeController.text;
-//     });
-//   }
-
-//   void updateGradesteele() {
-//     setState(() {
-//       object.gradesteel = gradesteelController.text;
-//     });
-//   }
-
-//   void updateMetalldamage() {
-//     setState(() {
-//       object.metalldamage = metalldamageController.text;
-//     });
-//   }
-
-//   void updateCharmetdamage() {
-//     setState(() {
-//       object.charmetdamage = charmetdamageController.text;
-//     });
-//   }
-
-//   void updateLocmetdamage() {
-//     setState(() {
-//       object.locmetdamage = locmetdamageController.text;
-//     });
-//   }
-
-//   void updateSizemetdamage() {
-//     setState(() {
-//       object.sizemetdamage = sizemetdamageController.text;
-//     });
-//   }
-
-//   void updateTypeinsul() {
-//     setState(() {
-//       object.typeinsul = typeinsulController.text;
-//     });
-//   }
-
-//   void updateInsuladhes() {
-//     setState(() {
-//       object.insuladhes = insuladhesController.text;
-//     });
-//   }
-
-//   void updateInsulcharadhes() {
-//     setState(() {
-//       object.insulcharadhes = insulcharadhesController.text;
-//     });
-//   }
-
-//   void updateInsulcondit() {
-//     setState(() {
-//       object.insulcondit = insulconditController.text;
-//     });
-//   }
-
-//   void updateThickinsul() {
-//     setState(() {
-//       object.thickinsul = thickinsulController.text;
-//     });
-//   }
-
-//   void updateInsuldamage() {
-//     setState(() {
-//       object.insuldamage = insuldamageController.text;
-//     });
-//   }
-
-//   void updateCharinsuldamage() {
-//     setState(() {
-//       object.charinsuldamage = charinsuldamageController.text;
-//     });
-//   }
-
-//   void updateLocinsuldamage() {
-//     setState(() {
-//       object.locinsuldamage = locinsuldamageController.text;
-//     });
-//   }
-
-//   void updateSizeinsuldamage() {
-//     setState(() {
-//       object.sizeinsuldamage = sizeinsuldamageController.text;
-//     });
-//   }
-
-//   void updateTypeinsulrest() {
-//     setState(() {
-//       object.typeinsulrest = typeinsulrestController.text;
-//     });
-//   }
-
-//   void updateInsuladhesrest() {
-//     setState(() {
-//       object.insuladhesrest = insuladhesrestController.text;
-//     });
-//   }
-
-//   void updateThickinsulrest() {
-//     setState(() {
-//       object.thickinsulrest = thickinsulrestController.text;
-//     });
-//   }
-
-//   void updateContininsulrest() {
-//     setState(() {
-//       object.contininsulrest = contininsulrestController.text;
-//     });
-//   }
-
-//   void updateTickinsulmeter() {
-//     setState(() {
-//       object.tickinsulmeter = tickinsulmeterController.text;
-//     });
-//   }
-
-//   void updateTickmetallmeter() {
-//     setState(() {
-//       object.tickmetallmeter = tickmetallmeterController.text;
-//     });
-//   }
-
-//   void updateAdhesmeter() {
-//     setState(() {
-//       object.adhesmeter = adhesmeterController.text;
-//     });
-//   }
-
-//   void updateContinmeter() {
-//     setState(() {
-//       object.continmeter = continmeterController.text;
-//     });
-//   }
-
-//   void updateSetvik() {
-//     setState(() {
-//       object.setvik = setvikController.text;
-//     });
-//   }
-// }
+import 'dart:io';
+
+import 'package:excel/excel.dart';
+import 'package:open_file/open_file.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
+import 'package:intl/intl.dart';
+import 'package:path_provider/path_provider.dart';
+import './camera_page_vhc.dart';
+import './img_screen_ip.dart';
+import './model_vh_contr.dart';
+import './object_list_vhc.dart';
+
+class ObjectDetailVhC extends StatefulWidget {
+  const ObjectDetailVhC({Key key, @required this.object});
+  final Object object;
+  @override
+  State<StatefulWidget> createState() => ObjectDetailVhCState(object);
+}
+
+class ObjectDetailVhCState extends State<ObjectDetailVhC> {
+  Todo object;
+
+  FocusNode focusNode1 = FocusNode();
+  FocusNode focusNode2 = FocusNode();
+  FocusNode focusNode3 = FocusNode();
+  FocusNode focusNode4 = FocusNode();
+  FocusNode focusNode5 = FocusNode();
+  FocusNode focusNode6 = FocusNode();
+  FocusNode focusNode7 = FocusNode();
+  FocusNode focusNode8 = FocusNode();
+  FocusNode focusNode9 = FocusNode();
+  FocusNode focusNode10 = FocusNode();
+  FocusNode focusNode11 = FocusNode();
+  FocusNode focusNode12 = FocusNode();
+  FocusNode focusNode13 = FocusNode();
+  FocusNode focusNode14 = FocusNode();
+  FocusNode focusNode15 = FocusNode();
+  FocusNode focusNode16 = FocusNode();
+  FocusNode focusNode17 = FocusNode();
+  FocusNode focusNode18 = FocusNode();
+  FocusNode focusNode19 = FocusNode();
+  FocusNode focusNode20 = FocusNode();
+  FocusNode focusNode21 = FocusNode();
+  FocusNode focusNode22 = FocusNode();
+  FocusNode focusNode23 = FocusNode();
+  FocusNode focusNode24 = FocusNode();
+  FocusNode focusNode25 = FocusNode();
+  FocusNode focusNode26 = FocusNode();
+  FocusNode focusNode27 = FocusNode();
+  FocusNode focusNode28 = FocusNode();
+  FocusNode focusNode29 = FocusNode();
+  FocusNode focusNode30 = FocusNode();
+  FocusNode focusNode31 = FocusNode();
+  FocusNode focusNode32 = FocusNode();
+  FocusNode focusNode33 = FocusNode();
+  FocusNode focusNode34 = FocusNode();
+  FocusNode focusNode35 = FocusNode();
+  FocusNode focusNode36 = FocusNode();
+  FocusNode focusNode37 = FocusNode();
+  FocusNode focusNode38 = FocusNode();
+  FocusNode focusNode39 = FocusNode();
+  FocusNode focusNode40 = FocusNode();
+  FocusNode focusNode41 = FocusNode();
+  FocusNode focusNode42 = FocusNode();
+  FocusNode focusNode43 = FocusNode();
+  FocusNode focusNode44 = FocusNode();
+  FocusNode focusNode45 = FocusNode();
+  FocusNode focusNode46 = FocusNode();
+  FocusNode focusNode47 = FocusNode();
+  FocusNode focusNode48 = FocusNode();
+  FocusNode focusNode49 = FocusNode();
+  FocusNode focusNode50 = FocusNode();
+  FocusNode focusNode51 = FocusNode();
+  FocusNode focusNode52 = FocusNode();
+  FocusNode focusNode53 = FocusNode();
+  FocusNode focusNode54 = FocusNode();
+  FocusNode focusNode55 = FocusNode();
+  FocusNode focusNode56 = FocusNode();
+  FocusNode focusNode57 = FocusNode();
+  FocusNode focusNode58 = FocusNode();
+  FocusNode focusNode59 = FocusNode();
+  FocusNode focusNode60 = FocusNode();
+  FocusNode focusNode61 = FocusNode();
+
+  final List<String> _filial = [
+    'Арзамасское ЛПУМГ',
+    'Владимирское ЛПУМГ',
+    'Волжское ЛПУМГ',
+    'Вятское ЛПУМГ',
+    'Заволжское ЛПУМГ',
+    'Ивановское ЛПУМГ',
+    'Кировское ЛПУМГ',
+    'Моркинское ЛПУМГ',
+    'Пензенское ЛПУМГ',
+    'Пильнинское ЛПУМГ',
+    'Починковское ЛПУМГ',
+    'Приокское ЛПУМГ',
+    'Семеновское ЛПУМГ',
+    'Сеченовское ЛПУМГ',
+    'Торбеевское ЛПУМГ',
+    'Чебоксарское ЛПУМГ',
+    'ИТЦ',
+    'УАВР',
+    'нет данных'
+  ];
+  final List<String> _dolzhnpredskom = [
+    'Начальник',
+    'Главный инженер-заместитель начальника',
+    'Заместитель начальника',
+    'Начальник службы ЗоК',
+    'ВрИО начальника службы ЗоК',
+    'ИО начальника службы ЗоК',
+    'Начальник участка',
+    'Инженер',
+    'Мастер',
+    'Специалист',
+    'Дефектоскопист',
+    'Инспектор',
+    'нет данных',
+  ];
+  final List<String> _dolzhnproizvrab = [
+    'Инженер',
+    'Мастер',
+    'Начальник участка',
+    'Начальник службы',
+    'Монтёр ЗПТК',
+    'Электромонтёр по РиОЭ',
+    'нет данных',
+  ];
+
+  final List<String> _zaklkachestvo = [
+    'Соответствует',
+    'Не соответствует',
+    'нет данных'
+  ];
+
+  File _image;
+
+  TextEditingController titleController = TextEditingController();
+  TextEditingController dateProizvController = TextEditingController();
+  TextEditingController dateObslController = TextEditingController();
+  TextEditingController tuController = TextEditingController();
+  TextEditingController partiyaController = TextEditingController();
+  TextEditingController proizvoditelController = TextEditingController();
+  TextEditingController sertifikatController = TextEditingController();
+
+  TextEditingController photo1Controller = TextEditingController();
+  TextEditingController photo2Controller = TextEditingController();
+  TextEditingController photo3Controller = TextEditingController();
+  TextEditingController photo4Controller = TextEditingController();
+  TextEditingController photo5Controller = TextEditingController();
+
+  TextEditingController pokazatelname1Controller = TextEditingController();
+  TextEditingController ntdpokazatel1Controller = TextEditingController();
+  TextEditingController normatupokazatel1Controller = TextEditingController();
+  TextEditingController sertpokazatel1Controller = TextEditingController();
+  TextEditingController itogpokazatel1Controller = TextEditingController();
+
+  TextEditingController pokazatelname2Controller = TextEditingController();
+  TextEditingController ntdpokazatel2Controller = TextEditingController();
+  TextEditingController normatupokazatel2Controller = TextEditingController();
+  TextEditingController sertpokazatel2Controller = TextEditingController();
+  TextEditingController itogpokazatel2Controller = TextEditingController();
+
+  TextEditingController pokazatelname3Controller = TextEditingController();
+  TextEditingController ntdpokazatel3Controller = TextEditingController();
+  TextEditingController normatupokazatel3Controller = TextEditingController();
+  TextEditingController sertpokazatel3Controller = TextEditingController();
+  TextEditingController itogpokazatel3Controller = TextEditingController();
+
+  TextEditingController pokazatelname4Controller = TextEditingController();
+  TextEditingController ntdpokazatel4Controller = TextEditingController();
+  TextEditingController normatupokazatel4Controller = TextEditingController();
+  TextEditingController sertpokazatel4Controller = TextEditingController();
+  TextEditingController itogpokazatel4Controller = TextEditingController();
+
+  TextEditingController pokazatelname5Controller = TextEditingController();
+  TextEditingController ntdpokazatel5Controller = TextEditingController();
+  TextEditingController normatupokazatel5Controller = TextEditingController();
+  TextEditingController sertpokazatel5Controller = TextEditingController();
+  TextEditingController itogpokazatel5Controller = TextEditingController();
+
+  TextEditingController zaklkachestvoController = TextEditingController();
+  TextEditingController filialController = TextEditingController();
+  TextEditingController dolzhnpredskomController = TextEditingController();
+  TextEditingController fiopredskomController = TextEditingController();
+  TextEditingController dolzhnproizvrabController = TextEditingController();
+  TextEditingController fioproizvrabController = TextEditingController();
+
+  TextEditingController zamechanieController = TextEditingController();
+  TextEditingController dopolnitelno1Controller = TextEditingController();
+  TextEditingController dopolnitelno2Controller = TextEditingController();
+  TextEditingController priborname1Controller = TextEditingController();
+  TextEditingController pribornumb1Controller = TextEditingController();
+  TextEditingController pribordate1Controller = TextEditingController();
+  TextEditingController priborname2Controller = TextEditingController();
+  TextEditingController pribornumb2Controller = TextEditingController();
+  TextEditingController pribordate2Controller = TextEditingController();
+  TextEditingController priborname3Controller = TextEditingController();
+  TextEditingController pribornumb3Controller = TextEditingController();
+  TextEditingController pribordate3Controller = TextEditingController();
+  TextEditingController priborname4Controller = TextEditingController();
+  TextEditingController pribornumb4Controller = TextEditingController();
+  TextEditingController pribordate4Controller = TextEditingController();
+  TextEditingController priborname5Controller = TextEditingController();
+  TextEditingController pribornumb5Controller = TextEditingController();
+  TextEditingController pribordate5Controller = TextEditingController();
+
+  bool isEdit;
+  final GlobalKey<FormState> _1formKey = GlobalKey<FormState>();
+  final GlobalKey<FormState> _2formKey = GlobalKey<FormState>();
+  final GlobalKey<FormState> _3formKey = GlobalKey<FormState>();
+  final GlobalKey<FormState> _4formKey = GlobalKey<FormState>();
+  final GlobalKey<FormState> _5formKey = GlobalKey<FormState>();
+
+  @override
+  void initState() {
+    super.initState();
+    isEdit = object.title == '' ? false : true;
+    titleController.text = object.title ?? '';
+    dateProizvController.text = object.dateProizv ?? '';
+    dateObslController.text = object.dateObsl ?? '';
+    tuController.text = object.tu ?? '';
+    partiyaController.text = object.partiya ?? '';
+
+    photo1Controller.text = object.photo1 ?? '';
+    photo2Controller.text = object.photo2 ?? '';
+    photo3Controller.text = object.photo3 ?? '';
+    photo4Controller.text = object.photo4 ?? '';
+    photo5Controller.text = object.photo5 ?? '';
+
+    pokazatelname1Controller.text = object.pokazatelname1 ?? '';
+    ntdpokazatel1Controller.text = object.ntdpokazatel1 ?? '';
+    normatupokazatel1Controller.text = object.normatupokazatel1 ?? '';
+    sertpokazatel1Controller.text = object.sertpokazatel1 ?? '';
+    itogpokazatel1Controller.text = object.itogpokazatel1 ?? '';
+
+    pokazatelname2Controller.text = object.pokazatelname2 ?? '';
+    ntdpokazatel2Controller.text = object.ntdpokazatel2 ?? '';
+    normatupokazatel2Controller.text = object.normatupokazatel2 ?? '';
+    sertpokazatel2Controller.text = object.sertpokazatel2 ?? '';
+    itogpokazatel2Controller.text = object.itogpokazatel2 ?? '';
+
+    pokazatelname3Controller.text = object.pokazatelname3 ?? '';
+    ntdpokazatel3Controller.text = object.ntdpokazatel3 ?? '';
+    normatupokazatel3Controller.text = object.normatupokazatel3 ?? '';
+    sertpokazatel3Controller.text = object.sertpokazatel3 ?? '';
+    itogpokazatel3Controller.text = object.itogpokazatel3 ?? '';
+
+    pokazatelname4Controller.text = object.pokazatelname4 ?? '';
+    ntdpokazatel4Controller.text = object.ntdpokazatel4 ?? '';
+    normatupokazatel4Controller.text = object.normatupokazatel4 ?? '';
+    sertpokazatel4Controller.text = object.sertpokazatel4 ?? '';
+    itogpokazatel4Controller.text = object.itogpokazatel4 ?? '';
+
+    pokazatelname5Controller.text = object.pokazatelname5 ?? '';
+    ntdpokazatel5Controller.text = object.ntdpokazatel5 ?? '';
+    normatupokazatel5Controller.text = object.normatupokazatel5 ?? '';
+    sertpokazatel5Controller.text = object.sertpokazatel5 ?? '';
+    itogpokazatel5Controller.text = object.itogpokazatel5 ?? '';
+
+    zaklkachestvoController.text = object.zaklkachestvo ?? '';
+    filialController.text = object.filial ?? '';
+    dolzhnpredskomController.text = object.dolzhnpredskom ?? '';
+    fiopredskomController.text = object.fiopredskom ?? '';
+    dolzhnproizvrabController.text = object.dolzhnproizvrab ?? '';
+    fioproizvrabController.text = object.fioproizvrab ?? '';
+
+    zamechanieController.text = object.zamechanie ?? '';
+    dopolnitelno1Controller.text = object.dopolnitelno1 ?? '';
+    dopolnitelno2Controller.text = object.dopolnitelno2 ?? '';
+    priborname1Controller.text = object.priborname1 ?? '';
+    pribornumb1Controller.text = object.pribornumb1 ?? '';
+    pribordate1Controller.text = object.pribordate1 ?? '';
+
+    priborname2Controller.text = object.priborname2 ?? '';
+    pribornumb2Controller.text = object.pribornumb2 ?? '';
+    pribordate2Controller.text = object.pribordate2 ?? '';
+    priborname3Controller.text = object.priborname3 ?? '';
+    pribornumb3Controller.text = object.pribornumb3 ?? '';
+    pribordate3Controller.text = object.pribordate3 ?? '';
+
+    priborname4Controller.text = object.priborname4 ?? '';
+    pribornumb4Controller.text = object.pribornumb4 ?? '';
+    pribordate4Controller.text = object.pribordate4 ?? '';
+    priborname5Controller.text = object.priborname5 ?? '';
+    pribornumb5Controller.text = object.pribornumb5 ?? '';
+    pribordate5Controller.text = object.pribordate5 ?? '';
+  }
+
+  ObjectDetailVhCState(this.object);
+
+  @override
+  Widget build(BuildContext context) {
+    const TextStyle textStyle = TextStyle(
+      fontSize: 16.0,
+      color: Colors.black54,
+      fontWeight: FontWeight.w600,
+    );
+
+    return DefaultTabController(
+      length: 5,
+      child: Scaffold(
+        resizeToAvoidBottomInset: true,
+        backgroundColor: Colors.white,
+        appBar: AppBar(
+            backgroundColor: Theme.of(context).primaryColor,
+            title: isEdit
+                ? Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      const Text(
+                        'ИЗМЕНИТЬ ЗАПИСЬ',
+                        style: TextStyle(
+                          fontSize: 22,
+                          fontWeight: FontWeight.w400,
+                        ),
+                      ),
+                      IconButton(
+                        icon: const Icon(Icons.delete),
+                        onPressed: () {
+                          debugPrint('Click Floated Back.');
+                          confirmDelete();
+                        },
+                      ),
+                      IconButton(
+                        icon: const Icon(Icons.save),
+                        onPressed: () {
+                          if (_1formKey.currentState != null) {
+                            _1formKey.currentState.validate();
+                            saveForm1();
+                          } else if (_2formKey.currentState != null) {
+                            _2formKey.currentState.validate();
+                            saveForm2();
+                          } else if (_3formKey.currentState != null) {
+                            _3formKey.currentState.validate();
+                            saveForm3();
+                          } else if (_4formKey.currentState != null) {
+                            _4formKey.currentState.validate();
+                            saveForm4();
+                          } else if (_5formKey.currentState != null) {
+                            _5formKey.currentState.validate();
+                            saveForm5();
+                          }
+                        },
+                      ),
+                    ],
+                  )
+                : Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      const Text(
+                        'ДОБАВИТЬ ЗАПИСЬ',
+                        style: TextStyle(
+                          fontSize: 22,
+                          fontWeight: FontWeight.w400,
+                        ),
+                      ),
+                      IconButton(
+                        icon: const Icon(Icons.save),
+                        onPressed: () {
+                          if (_1formKey.currentState != null) {
+                            _1formKey.currentState.validate();
+                            saveForm1();
+                          } else if (_2formKey.currentState != null) {
+                            _2formKey.currentState.validate();
+                            saveForm2();
+                          } else if (_3formKey.currentState != null) {
+                            _3formKey.currentState.validate();
+                            saveForm3();
+                          } else if (_4formKey.currentState != null) {
+                            _4formKey.currentState.validate();
+                            saveForm4();
+                          } else if (_5formKey.currentState != null) {
+                            _5formKey.currentState.validate();
+                            saveForm5();
+                          }
+                        },
+                      ),
+                    ],
+                  ),
+            bottom: TabBar(
+              indicator: UnderlineTabIndicator(
+                borderSide: BorderSide(
+                  width: 4,
+                  color: Theme.of(context).accentColor,
+                ),
+              ),
+              labelStyle: TextStyle(
+                fontSize: 44,
+                color: Theme.of(context).accentColor, // цвет выбранной иконки
+              ),
+              unselectedLabelStyle: TextStyle(
+                // fontSize: 32,
+                color: Colors.white, // цвет невыбранных иконок
+              ),
+              tabs: [
+                Tab(
+                    icon: Icon(
+                  Icons.notes_rounded,
+                  size: 32,
+                  // color: Colors.white,
+                )),
+                Tab(
+                    icon: Icon(
+                  Icons.radio_button_unchecked_sharp,
+                  size: 32,
+                  // color: Colors.white,
+                )),
+                Tab(
+                    icon: Icon(
+                  Icons.radio_button_on_sharp,
+                  size: 32,
+                  // color: Colors.white,
+                )),
+                Tab(
+                    icon: Icon(
+                  Icons.build_circle_sharp,
+                  size: 32,
+                  // color: Colors.white,
+                )),
+                Tab(
+                    icon: Icon(
+                  Icons.person_add_alt_rounded,
+                  size: 32,
+                  // color: Colors.white,
+                )),
+              ],
+            )),
+        body: TabBarView(
+          children: [
+            Center(
+              child: Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Form(
+                  key: _1formKey,
+                  child: ListView(
+                    children: <Widget>[
+                      SizedBox(height: 20),
+                      Container(
+                          alignment: Alignment.center,
+                          child: Text(
+                            'ОБЩИЕ ДАННЫЕ',
+                            style: TextStyle(
+                                fontSize: 24,
+                                color: Theme.of(context).primaryColor,
+                                fontWeight: FontWeight.w300),
+                          )),
+                      SizedBox(height: 20),
+                      TextFormField(
+                        maxLength: 50,
+                        onFieldSubmitted: (String value) {
+                          object.title = value;
+                        },
+                        validator: (String value) {
+                          if (value.isEmpty) {
+                            return 'Наименование не введено';
+                          } else if (value.length > 50) {
+                            return 'Максимальная длина 50';
+                          } else {
+                            return null;
+                          }
+                        },
+                        keyboardType: TextInputType.text,
+                        controller: titleController,
+                        focusNode: focusNode1,
+                        style: textStyle,
+                        decoration: InputDecoration(
+                          focusColor: Theme.of(context).primaryColor,
+                          labelStyle: TextStyle(
+                            fontSize: 22,
+                            fontWeight: FontWeight.w300,
+                            color: Theme.of(context).primaryColor,
+                          ),
+                          hintStyle: TextStyle(
+                            fontSize: 16,
+                            fontWeight: FontWeight.w300,
+                            color: Theme.of(context).primaryColor,
+                          ),
+                          labelText: 'Наименование материала',
+                          hintText: 'Введите название',
+                          prefixIcon: Icon(
+                            Icons.account_balance_outlined,
+                            color: focusNode1.hasFocus ||
+                                    titleController.text.isNotEmpty
+                                ? Theme.of(context).primaryColor
+                                : Colors.grey,
+                            size: 32,
+                          ),
+                          suffixIcon: GestureDetector(
+                            onTap: () {
+                              titleController.clear();
+                            },
+                            child: Icon(
+                              Icons.delete_outline,
+                              color: Color.fromRGBO(187, 30, 16, 1.0),
+                            ),
+                          ),
+                          enabledBorder: OutlineInputBorder(
+                            borderRadius: BorderRadius.all(Radius.circular(10)),
+                            borderSide:
+                                BorderSide(color: Colors.grey, width: 2),
+                          ),
+                          focusedBorder: OutlineInputBorder(
+                            borderRadius: BorderRadius.all(Radius.circular(20)),
+                            borderSide: BorderSide(
+                                color: Theme.of(context).primaryColor,
+                                width: 2),
+                          ),
+                        ),
+                        onChanged: (String value) {
+                          setState(() {
+                            focusNode1.requestFocus();
+                          });
+                        },
+                      ),
+                      SizedBox(height: 10),
+                      TextFormField(
+                        maxLength: 50,
+                        onFieldSubmitted: (String value) {
+                          object.tu = value;
+                        },
+                        keyboardType: TextInputType.text,
+                        controller: tuController,
+                        focusNode: focusNode2,
+                        style: textStyle,
+                        decoration: InputDecoration(
+                          focusColor: Theme.of(context).primaryColor,
+                          labelStyle: TextStyle(
+                            fontSize: 22,
+                            fontWeight: FontWeight.w300,
+                            color: Theme.of(context).primaryColor,
+                          ),
+                          hintStyle: TextStyle(
+                            fontSize: 16,
+                            fontWeight: FontWeight.w300,
+                            color: Theme.of(context).primaryColor,
+                          ),
+                          labelText: 'ТУ (ГОСТ) на лакокрасочный материал',
+                          hintText: 'Введите ТУ (ГОСТ)',
+                          prefixIcon: Icon(
+                            Icons.account_balance_outlined,
+                            color: focusNode2.hasFocus ||
+                                    tuController.text.isNotEmpty
+                                ? Theme.of(context).primaryColor
+                                : Colors.grey,
+                            size: 32,
+                          ),
+                          suffixIcon: GestureDetector(
+                            onTap: () {
+                              tuController.clear();
+                            },
+                            child: Icon(
+                              Icons.delete_outline,
+                              color: Color.fromRGBO(187, 30, 16, 1.0),
+                            ),
+                          ),
+                          enabledBorder: OutlineInputBorder(
+                            borderRadius: BorderRadius.all(Radius.circular(10)),
+                            borderSide:
+                                BorderSide(color: Colors.grey, width: 2),
+                          ),
+                          focusedBorder: OutlineInputBorder(
+                            borderRadius: BorderRadius.all(Radius.circular(20)),
+                            borderSide: BorderSide(
+                                color: Theme.of(context).primaryColor,
+                                width: 2),
+                          ),
+                        ),
+                        onChanged: (String value) {
+                          setState(() {
+                            focusNode2.requestFocus();
+                          });
+                        },
+                      ),
+                      SizedBox(height: 10),
+                      Divider(thickness: 4),
+                      Row(
+                        children: [
+                          Expanded(
+                            child: Container(
+                              alignment: Alignment.center,
+                              child: Text(
+                                'Дата производства:',
+                                style: TextStyle(
+                                  fontSize: 16,
+                                  color: Theme.of(context).primaryColor,
+                                  fontWeight: FontWeight.w300,
+                                ),
+                              ),
+                            ),
+                          ),
+                          Expanded(
+                            child: Container(
+                              alignment: Alignment.center,
+                              child: Text(
+                                'Дата проверки:',
+                                style: TextStyle(
+                                  fontSize: 16,
+                                  color: Theme.of(context).primaryColor,
+                                  fontWeight: FontWeight.w300,
+                                ),
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
+                      Row(
+                        children: [
+                          IconButton(
+                            focusNode: focusNode3,
+                            onPressed: () async {
+                              DateTime selectedDate = await showDatePicker(
+                                context: context,
+                                initialDate: DateTime.now(),
+                                firstDate: DateTime(2015),
+                                lastDate: DateTime(2030),
+                                locale: const Locale("ru",
+                                    "RU"), // Установите локаль на русский язык
+                              );
+
+                              if (selectedDate != null) {
+                                setState(() {
+                                  dateProizvController.text =
+                                      DateFormat('dd.MM.yyyy')
+                                          .format(selectedDate);
+                                  object.dateProizv = dateProizvController.text;
+                                });
+                              }
+                            },
+                            icon: Icon(
+                              Icons.calendar_month_outlined,
+                              color: focusNode3.hasFocus ||
+                                      dateProizvController.text.isNotEmpty
+                                  ? Theme.of(context).primaryColor
+                                  : Colors.grey,
+                              size: 32,
+                            ),
+                          ),
+                          SizedBox(width: 10),
+                          Container(
+                            alignment: Alignment.center,
+                            child: Text(
+                              dateProizvController.text,
+                              style: TextStyle(
+                                fontSize: 22,
+                                color: Theme.of(context).primaryColor,
+                                fontWeight: FontWeight.w300,
+                              ),
+                            ),
+                          ),
+                          SizedBox(width: 10),
+                          Expanded(
+                            child: IconButton(
+                              focusNode: focusNode4,
+                              onPressed: () async {
+                                DateTime selectedDate = await showDatePicker(
+                                  context: context,
+                                  initialDate: DateTime.now(),
+                                  firstDate: DateTime(2015),
+                                  lastDate: DateTime(2030),
+                                  locale: const Locale("ru",
+                                      "RU"), // Установите локаль на русский язык
+                                );
+
+                                if (selectedDate != null) {
+                                  setState(() {
+                                    dateObslController.text =
+                                        DateFormat('dd.MM.yyyy')
+                                            .format(selectedDate);
+                                    object.dateObsl = dateObslController.text;
+                                  });
+                                }
+                              },
+                              icon: Icon(
+                                Icons.calendar_month_outlined,
+                                color: focusNode4.hasFocus ||
+                                        dateObslController.text.isNotEmpty
+                                    ? Theme.of(context).primaryColor
+                                    : Colors.grey,
+                                size: 32,
+                              ),
+                            ),
+                          ),
+                          SizedBox(width: 10),
+                          Container(
+                            alignment: Alignment.center,
+                            child: Text(
+                              dateObslController.text,
+                              style: TextStyle(
+                                fontSize: 22,
+                                color: Theme.of(context).primaryColor,
+                                fontWeight: FontWeight.w300,
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
+                      Divider(thickness: 4),
+                      SizedBox(height: 10),
+                      TextFormField(
+                        maxLength: 50,
+                        onFieldSubmitted: (String value) {
+                          object.partiya = value;
+                        },
+                        keyboardType: TextInputType.text,
+                        controller: partiyaController,
+                        focusNode: focusNode5,
+                        style: textStyle,
+                        decoration: InputDecoration(
+                          focusColor: Theme.of(context).primaryColor,
+                          labelStyle: TextStyle(
+                            fontSize: 22,
+                            fontWeight: FontWeight.w300,
+                            color: Theme.of(context).primaryColor,
+                          ),
+                          hintStyle: TextStyle(
+                            fontSize: 16,
+                            fontWeight: FontWeight.w300,
+                            color: Theme.of(context).primaryColor,
+                          ),
+                          labelText: 'Партия',
+                          hintText: 'Введите номер партии',
+                          prefixIcon: Icon(
+                            Icons.account_balance_outlined,
+                            color: focusNode5.hasFocus ||
+                                    partiyaController.text.isNotEmpty
+                                ? Theme.of(context).primaryColor
+                                : Colors.grey,
+                            size: 32,
+                          ),
+                          suffixIcon: GestureDetector(
+                            onTap: () {
+                              tuController.clear();
+                            },
+                            child: Icon(
+                              Icons.delete_outline,
+                              color: Color.fromRGBO(187, 30, 16, 1.0),
+                            ),
+                          ),
+                          enabledBorder: OutlineInputBorder(
+                            borderRadius: BorderRadius.all(Radius.circular(10)),
+                            borderSide:
+                                BorderSide(color: Colors.grey, width: 2),
+                          ),
+                          focusedBorder: OutlineInputBorder(
+                            borderRadius: BorderRadius.all(Radius.circular(20)),
+                            borderSide: BorderSide(
+                                color: Theme.of(context).primaryColor,
+                                width: 2),
+                          ),
+                        ),
+                        onChanged: (String value) {
+                          setState(() {
+                            focusNode5.requestFocus();
+                          });
+                        },
+                      ),
+                      SizedBox(height: 10),
+                      TextFormField(
+                        maxLength: 50,
+                        onFieldSubmitted: (String value) {
+                          object.proizvoditel = value;
+                        },
+                        keyboardType: TextInputType.text,
+                        controller: proizvoditelController,
+                        focusNode: focusNode6,
+                        style: textStyle,
+                        decoration: InputDecoration(
+                          focusColor: Theme.of(context).primaryColor,
+                          labelStyle: TextStyle(
+                            fontSize: 22,
+                            fontWeight: FontWeight.w300,
+                            color: Theme.of(context).primaryColor,
+                          ),
+                          hintStyle: TextStyle(
+                            fontSize: 16,
+                            fontWeight: FontWeight.w300,
+                            color: Theme.of(context).primaryColor,
+                          ),
+                          labelText: 'Производитель материала',
+                          hintText: 'Введите название производителя',
+                          prefixIcon: Icon(
+                            Icons.account_balance_outlined,
+                            color: focusNode6.hasFocus ||
+                                    proizvoditelController.text.isNotEmpty
+                                ? Theme.of(context).primaryColor
+                                : Colors.grey,
+                            size: 32,
+                          ),
+                          suffixIcon: GestureDetector(
+                            onTap: () {
+                              proizvoditelController.clear();
+                            },
+                            child: Icon(
+                              Icons.delete_outline,
+                              color: Color.fromRGBO(187, 30, 16, 1.0),
+                            ),
+                          ),
+                          enabledBorder: OutlineInputBorder(
+                            borderRadius: BorderRadius.all(Radius.circular(10)),
+                            borderSide:
+                                BorderSide(color: Colors.grey, width: 2),
+                          ),
+                          focusedBorder: OutlineInputBorder(
+                            borderRadius: BorderRadius.all(Radius.circular(20)),
+                            borderSide: BorderSide(
+                                color: Theme.of(context).primaryColor,
+                                width: 2),
+                          ),
+                        ),
+                        onChanged: (String value) {
+                          setState(() {
+                            focusNode6.requestFocus();
+                          });
+                        },
+                      ),
+                      SizedBox(height: 10),
+                      TextFormField(
+                        maxLength: 50,
+                        onFieldSubmitted: (String value) {
+                          object.sertifikat = value;
+                        },
+                        keyboardType: TextInputType.text,
+                        controller: sertifikatController,
+                        focusNode: focusNode7,
+                        style: textStyle,
+                        decoration: InputDecoration(
+                          focusColor: Theme.of(context).primaryColor,
+                          labelStyle: TextStyle(
+                            fontSize: 22,
+                            fontWeight: FontWeight.w300,
+                            color: Theme.of(context).primaryColor,
+                          ),
+                          hintStyle: TextStyle(
+                            fontSize: 16,
+                            fontWeight: FontWeight.w300,
+                            color: Theme.of(context).primaryColor,
+                          ),
+                          labelText: 'Сертификат(паспорт) качества материала',
+                          hintText: 'Введите номер сертификата (паспорта)',
+                          prefixIcon: Icon(
+                            Icons.account_balance_outlined,
+                            color: focusNode7.hasFocus ||
+                                    sertifikatController.text.isNotEmpty
+                                ? Theme.of(context).primaryColor
+                                : Colors.grey,
+                            size: 32,
+                          ),
+                          suffixIcon: GestureDetector(
+                            onTap: () {
+                              sertifikatController.clear();
+                            },
+                            child: Icon(
+                              Icons.delete_outline,
+                              color: Color.fromRGBO(187, 30, 16, 1.0),
+                            ),
+                          ),
+                          enabledBorder: OutlineInputBorder(
+                            borderRadius: BorderRadius.all(Radius.circular(10)),
+                            borderSide:
+                                BorderSide(color: Colors.grey, width: 2),
+                          ),
+                          focusedBorder: OutlineInputBorder(
+                            borderRadius: BorderRadius.all(Radius.circular(20)),
+                            borderSide: BorderSide(
+                                color: Theme.of(context).primaryColor,
+                                width: 2),
+                          ),
+                        ),
+                        onChanged: (String value) {
+                          setState(() {
+                            focusNode7.requestFocus();
+                          });
+                        },
+                      ),
+                      SizedBox(height: 10),
+                      ElevatedButton(
+                        style: ElevatedButton.styleFrom(
+                            primary:
+                                Theme.of(context).accentColor, // background
+                            onPrimary: Colors.white,
+                            elevation: 2,
+                            padding: const EdgeInsets.all(13.0),
+                            shape: RoundedRectangleBorder(
+                                borderRadius:
+                                    BorderRadius.circular(10.0)) // foreground
+                            ),
+                        onPressed: () => saveForm1(),
+                        child: Text(
+                          isEdit ? 'Редактировать' : 'Добавить',
+                          style: const TextStyle(
+                            fontSize: 18.0,
+                            fontWeight: FontWeight.w300,
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+            ),
+            Center(
+              child: Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Form(
+                  key: _2formKey,
+                  child: ListView(
+                    children: <Widget>[
+                      SizedBox(height: 20),
+                      Container(
+                          alignment: Alignment.center,
+                          child: Text(
+                            'ДАННЫЕ ОБ ИСПЫТАНИЯХ',
+                            style: TextStyle(
+                                fontSize: 24,
+                                color: Theme.of(context).primaryColor,
+                                fontWeight: FontWeight.w300),
+                          )),
+                      SizedBox(height: 20),
+                      Divider(thickness: 4),
+                      Container(
+                          alignment: Alignment.center,
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              Text(
+                                'Показатель №1',
+                                style: TextStyle(
+                                    fontSize: 24,
+                                    color: Theme.of(context).primaryColor,
+                                    fontWeight: FontWeight.w300),
+                              ),
+                              GestureDetector(
+                                onTap: () {
+                                  pokazatelname1Controller.clear();
+                                  ntdpokazatel1Controller.clear();
+                                  normatupokazatel1Controller.clear();
+                                  sertpokazatel1Controller.clear();
+                                  itogpokazatel1Controller.clear();
+                                },
+                                child: Icon(
+                                  Icons.delete_outline,
+                                  color: Color.fromRGBO(187, 30, 16, 1.0),
+                                ),
+                              ),
+                            ],
+                          )),
+                      SizedBox(height: 10),
+                      TextFormField(
+                        focusNode: focusNode8,
+                        onChanged: (String value) {
+                          setState(() {
+                            focusNode8.requestFocus();
+                          });
+                        },
+                        maxLength: 20,
+                        onSaved: (value) {
+                          object.pokazatelname1 = value;
+                        },
+                        controller: pokazatelname1Controller,
+                        style: textStyle,
+                        decoration: InputDecoration(
+                          labelText: 'Наименование показателя',
+                          hintText: 'Введите Наименование',
+                          helperText: '...',
+                          prefixIcon: Icon(
+                            Icons.business_center,
+                            color: focusNode8.hasFocus ||
+                                    pokazatelname1Controller.text.isNotEmpty
+                                ? Theme.of(context).primaryColor
+                                : Colors.grey,
+                            size: 32,
+                          ),
+                          enabledBorder: const OutlineInputBorder(
+                            borderRadius: BorderRadius.all(Radius.circular(10)),
+                            borderSide:
+                                BorderSide(color: Colors.grey, width: 2),
+                          ),
+                          focusedBorder: OutlineInputBorder(
+                            borderRadius:
+                                const BorderRadius.all(Radius.circular(20)),
+                            borderSide: BorderSide(
+                                color: Theme.of(context).primaryColor,
+                                width: 2),
+                          ),
+                          labelStyle: TextStyle(
+                            fontSize: 22,
+                            fontWeight: FontWeight.w300,
+                            color: Theme.of(context).primaryColor,
+                          ),
+                        ),
+                        keyboardType: TextInputType.text,
+                      ),
+                      SizedBox(height: 10),
+                      TextFormField(
+                        focusNode: focusNode9,
+                        onChanged: (String value) {
+                          setState(() {
+                            focusNode9.requestFocus();
+                          });
+                        },
+                        maxLength: 30,
+                        onSaved: (value) {
+                          object.ntdpokazatel1 = value;
+                        },
+                        controller: ntdpokazatel1Controller,
+                        style: textStyle,
+                        decoration: InputDecoration(
+                          focusColor: Theme.of(context).primaryColor,
+                          labelStyle: TextStyle(
+                            fontSize: 22,
+                            fontWeight: FontWeight.w300,
+                            color: Theme.of(context).primaryColor,
+                          ),
+                          hintStyle: TextStyle(
+                            fontSize: 16,
+                            fontWeight: FontWeight.w300,
+                            color: Theme.of(context).primaryColor,
+                          ),
+                          labelText: 'НТД на метод испытания',
+                          hintText: 'Введите НТД',
+                          helperText: '...',
+                          prefixIcon: Icon(
+                            Icons.business_center,
+                            color: focusNode9.hasFocus ||
+                                    ntdpokazatel1Controller.text.isNotEmpty
+                                ? Theme.of(context).primaryColor
+                                : Colors.grey,
+                            size: 32,
+                          ),
+                          enabledBorder: OutlineInputBorder(
+                            borderRadius: BorderRadius.all(Radius.circular(10)),
+                            borderSide:
+                                BorderSide(color: Colors.grey, width: 2),
+                          ),
+                          focusedBorder: OutlineInputBorder(
+                            borderRadius: BorderRadius.all(Radius.circular(20)),
+                            borderSide: BorderSide(
+                                color: Theme.of(context).primaryColor,
+                                width: 2),
+                          ),
+                        ),
+                        keyboardType: TextInputType.text,
+                      ),
+                      SizedBox(height: 10),
+                      TextFormField(
+                        focusNode: focusNode10,
+                        onChanged: (String value) {
+                          setState(() {
+                            focusNode10.requestFocus();
+                          });
+                        },
+                        maxLength: 10,
+                        onSaved: (value) {
+                          object.normatupokazatel1 = value;
+                        },
+                        controller: normatupokazatel1Controller,
+                        style: textStyle,
+                        decoration: InputDecoration(
+                          focusColor: Theme.of(context).primaryColor,
+                          labelStyle: TextStyle(
+                            fontSize: 22,
+                            fontWeight: FontWeight.w300,
+                            color: Theme.of(context).primaryColor,
+                          ),
+                          hintStyle: TextStyle(
+                            fontSize: 16,
+                            fontWeight: FontWeight.w300,
+                            color: Theme.of(context).primaryColor,
+                          ),
+                          labelText: 'Норма по ТУ(ГОСТ) на материал',
+                          hintText: 'Введите значение',
+                          helperText: '...',
+                          prefixIcon: Icon(
+                            Icons.business_center,
+                            color: focusNode10.hasFocus ||
+                                    normatupokazatel1Controller.text.isNotEmpty
+                                ? Theme.of(context).primaryColor
+                                : Colors.grey,
+                            size: 32,
+                          ),
+                          enabledBorder: OutlineInputBorder(
+                            borderRadius: BorderRadius.all(Radius.circular(10)),
+                            borderSide:
+                                BorderSide(color: Colors.grey, width: 2),
+                          ),
+                          focusedBorder: OutlineInputBorder(
+                            borderRadius: BorderRadius.all(Radius.circular(20)),
+                            borderSide: BorderSide(
+                                color: Theme.of(context).primaryColor,
+                                width: 2),
+                          ),
+                        ),
+                        keyboardType: TextInputType.text,
+                      ),
+                      SizedBox(height: 10),
+                      TextFormField(
+                        focusNode: focusNode11,
+                        onChanged: (String value) {
+                          setState(() {
+                            focusNode11.requestFocus();
+                          });
+                        },
+                        maxLength: 30,
+                        onSaved: (value) {
+                          object.sertpokazatel1 = value;
+                        },
+                        controller: sertpokazatel1Controller,
+                        style: textStyle,
+                        decoration: InputDecoration(
+                          focusColor: Theme.of(context).primaryColor,
+                          labelStyle: TextStyle(
+                            fontSize: 22,
+                            fontWeight: FontWeight.w300,
+                            color: Theme.of(context).primaryColor,
+                          ),
+                          hintStyle: TextStyle(
+                            fontSize: 16,
+                            fontWeight: FontWeight.w300,
+                            color: Theme.of(context).primaryColor,
+                          ),
+                          labelText: 'Данные сертификата (паспорта)',
+                          hintText: 'Введите значение',
+                          helperText: '...',
+                          prefixIcon: Icon(
+                            Icons.business_center,
+                            color: focusNode11.hasFocus ||
+                                    sertpokazatel1Controller.text.isNotEmpty
+                                ? Theme.of(context).primaryColor
+                                : Colors.grey,
+                            size: 32,
+                          ),
+                          enabledBorder: OutlineInputBorder(
+                            borderRadius: BorderRadius.all(Radius.circular(10)),
+                            borderSide:
+                                BorderSide(color: Colors.grey, width: 2),
+                          ),
+                          focusedBorder: OutlineInputBorder(
+                            borderRadius: BorderRadius.all(Radius.circular(20)),
+                            borderSide: BorderSide(
+                                color: Theme.of(context).primaryColor,
+                                width: 2),
+                          ),
+                        ),
+                        keyboardType: TextInputType.text,
+                      ),
+                      SizedBox(height: 10),
+                      TextFormField(
+                        focusNode: focusNode12,
+                        onChanged: (String value) {
+                          setState(() {
+                            focusNode12.requestFocus();
+                          });
+                        },
+                        maxLength: 10,
+                        onSaved: (value) {
+                          object.itogpokazatel1 = value;
+                        },
+                        controller: itogpokazatel1Controller,
+                        style: textStyle,
+                        decoration: InputDecoration(
+                          focusColor: Theme.of(context).primaryColor,
+                          labelStyle: TextStyle(
+                            fontSize: 22,
+                            fontWeight: FontWeight.w300,
+                            color: Theme.of(context).primaryColor,
+                          ),
+                          hintStyle: TextStyle(
+                            fontSize: 16,
+                            fontWeight: FontWeight.w300,
+                            color: Theme.of(context).primaryColor,
+                          ),
+                          labelText: 'Данные входного контроля',
+                          hintText: 'Введите значение',
+                          helperText: '...',
+                          prefixIcon: Icon(
+                            Icons.business_center,
+                            color: focusNode12.hasFocus ||
+                                    itogpokazatel1Controller.text.isNotEmpty
+                                ? Theme.of(context).primaryColor
+                                : Colors.grey,
+                            size: 32,
+                          ),
+                          enabledBorder: OutlineInputBorder(
+                            borderRadius: BorderRadius.all(Radius.circular(10)),
+                            borderSide:
+                                BorderSide(color: Colors.grey, width: 2),
+                          ),
+                          focusedBorder: OutlineInputBorder(
+                            borderRadius: BorderRadius.all(Radius.circular(20)),
+                            borderSide: BorderSide(
+                                color: Theme.of(context).primaryColor,
+                                width: 2),
+                          ),
+                        ),
+                        keyboardType: TextInputType.text,
+                      ),
+                      Divider(thickness: 4),
+                      Container(
+                          alignment: Alignment.center,
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              Text(
+                                'Показатель №2',
+                                style: TextStyle(
+                                    fontSize: 24,
+                                    color: Theme.of(context).primaryColor,
+                                    fontWeight: FontWeight.w300),
+                              ),
+                              GestureDetector(
+                                onTap: () {
+                                  pokazatelname2Controller.clear();
+                                  ntdpokazatel2Controller.clear();
+                                  normatupokazatel2Controller.clear();
+                                  sertpokazatel2Controller.clear();
+                                  itogpokazatel2Controller.clear();
+                                },
+                                child: Icon(
+                                  Icons.delete_outline,
+                                  color: Color.fromRGBO(187, 30, 16, 1.0),
+                                ),
+                              ),
+                            ],
+                          )),
+                      SizedBox(height: 10),
+                      TextFormField(
+                        focusNode: focusNode13,
+                        onChanged: (String value) {
+                          setState(() {
+                            focusNode13.requestFocus();
+                          });
+                        },
+                        maxLength: 20,
+                        onSaved: (value) {
+                          object.pokazatelname2 = value;
+                        },
+                        controller: pokazatelname2Controller,
+                        style: textStyle,
+                        decoration: InputDecoration(
+                          labelText: 'Наименование показателя',
+                          hintText: 'Введите Наименование',
+                          helperText: '...',
+                          prefixIcon: Icon(
+                            Icons.business_center,
+                            color: focusNode13.hasFocus ||
+                                    pokazatelname2Controller.text.isNotEmpty
+                                ? Theme.of(context).primaryColor
+                                : Colors.grey,
+                            size: 32,
+                          ),
+                          enabledBorder: const OutlineInputBorder(
+                            borderRadius: BorderRadius.all(Radius.circular(10)),
+                            borderSide:
+                                BorderSide(color: Colors.grey, width: 2),
+                          ),
+                          focusedBorder: OutlineInputBorder(
+                            borderRadius:
+                                const BorderRadius.all(Radius.circular(20)),
+                            borderSide: BorderSide(
+                                color: Theme.of(context).primaryColor,
+                                width: 2),
+                          ),
+                          labelStyle: TextStyle(
+                            fontSize: 22,
+                            fontWeight: FontWeight.w300,
+                            color: Theme.of(context).primaryColor,
+                          ),
+                        ),
+                        keyboardType: TextInputType.text,
+                      ),
+                      SizedBox(height: 10),
+                      TextFormField(
+                        focusNode: focusNode14,
+                        onChanged: (String value) {
+                          setState(() {
+                            focusNode14.requestFocus();
+                          });
+                        },
+                        maxLength: 30,
+                        onSaved: (value) {
+                          object.ntdpokazatel2 = value;
+                        },
+                        controller: ntdpokazatel2Controller,
+                        style: textStyle,
+                        decoration: InputDecoration(
+                          focusColor: Theme.of(context).primaryColor,
+                          labelStyle: TextStyle(
+                            fontSize: 22,
+                            fontWeight: FontWeight.w300,
+                            color: Theme.of(context).primaryColor,
+                          ),
+                          hintStyle: TextStyle(
+                            fontSize: 16,
+                            fontWeight: FontWeight.w300,
+                            color: Theme.of(context).primaryColor,
+                          ),
+                          labelText: 'НТД на метод испытания',
+                          hintText: 'Введите НТД',
+                          helperText: '...',
+                          prefixIcon: Icon(
+                            Icons.business_center,
+                            color: focusNode14.hasFocus ||
+                                    ntdpokazatel2Controller.text.isNotEmpty
+                                ? Theme.of(context).primaryColor
+                                : Colors.grey,
+                            size: 32,
+                          ),
+                          enabledBorder: OutlineInputBorder(
+                            borderRadius: BorderRadius.all(Radius.circular(10)),
+                            borderSide:
+                                BorderSide(color: Colors.grey, width: 2),
+                          ),
+                          focusedBorder: OutlineInputBorder(
+                            borderRadius: BorderRadius.all(Radius.circular(20)),
+                            borderSide: BorderSide(
+                                color: Theme.of(context).primaryColor,
+                                width: 2),
+                          ),
+                        ),
+                        keyboardType: TextInputType.text,
+                      ),
+                      SizedBox(height: 10),
+                      TextFormField(
+                        focusNode: focusNode15,
+                        onChanged: (String value) {
+                          setState(() {
+                            focusNode15.requestFocus();
+                          });
+                        },
+                        maxLength: 10,
+                        onSaved: (value) {
+                          object.normatupokazatel2 = value;
+                        },
+                        controller: normatupokazatel2Controller,
+                        style: textStyle,
+                        decoration: InputDecoration(
+                          focusColor: Theme.of(context).primaryColor,
+                          labelStyle: TextStyle(
+                            fontSize: 22,
+                            fontWeight: FontWeight.w300,
+                            color: Theme.of(context).primaryColor,
+                          ),
+                          hintStyle: TextStyle(
+                            fontSize: 16,
+                            fontWeight: FontWeight.w300,
+                            color: Theme.of(context).primaryColor,
+                          ),
+                          labelText: 'Норма по ТУ(ГОСТ) на материал',
+                          hintText: 'Введите значение',
+                          helperText: '...',
+                          prefixIcon: Icon(
+                            Icons.business_center,
+                            color: focusNode15.hasFocus ||
+                                    normatupokazatel2Controller.text.isNotEmpty
+                                ? Theme.of(context).primaryColor
+                                : Colors.grey,
+                            size: 32,
+                          ),
+                          enabledBorder: OutlineInputBorder(
+                            borderRadius: BorderRadius.all(Radius.circular(10)),
+                            borderSide:
+                                BorderSide(color: Colors.grey, width: 2),
+                          ),
+                          focusedBorder: OutlineInputBorder(
+                            borderRadius: BorderRadius.all(Radius.circular(20)),
+                            borderSide: BorderSide(
+                                color: Theme.of(context).primaryColor,
+                                width: 2),
+                          ),
+                        ),
+                        keyboardType: TextInputType.text,
+                      ),
+                      SizedBox(height: 10),
+                      TextFormField(
+                        focusNode: focusNode16,
+                        onChanged: (String value) {
+                          setState(() {
+                            focusNode16.requestFocus();
+                          });
+                        },
+                        maxLength: 30,
+                        onSaved: (value) {
+                          object.sertpokazatel2 = value;
+                        },
+                        controller: sertpokazatel2Controller,
+                        style: textStyle,
+                        decoration: InputDecoration(
+                          focusColor: Theme.of(context).primaryColor,
+                          labelStyle: TextStyle(
+                            fontSize: 22,
+                            fontWeight: FontWeight.w300,
+                            color: Theme.of(context).primaryColor,
+                          ),
+                          hintStyle: TextStyle(
+                            fontSize: 16,
+                            fontWeight: FontWeight.w300,
+                            color: Theme.of(context).primaryColor,
+                          ),
+                          labelText: 'Данные сертификата (паспорта)',
+                          hintText: 'Введите значение',
+                          helperText: '...',
+                          prefixIcon: Icon(
+                            Icons.business_center,
+                            color: focusNode16.hasFocus ||
+                                    sertpokazatel2Controller.text.isNotEmpty
+                                ? Theme.of(context).primaryColor
+                                : Colors.grey,
+                            size: 32,
+                          ),
+                          enabledBorder: OutlineInputBorder(
+                            borderRadius: BorderRadius.all(Radius.circular(10)),
+                            borderSide:
+                                BorderSide(color: Colors.grey, width: 2),
+                          ),
+                          focusedBorder: OutlineInputBorder(
+                            borderRadius: BorderRadius.all(Radius.circular(20)),
+                            borderSide: BorderSide(
+                                color: Theme.of(context).primaryColor,
+                                width: 2),
+                          ),
+                        ),
+                        keyboardType: TextInputType.text,
+                      ),
+                      SizedBox(height: 10),
+                      TextFormField(
+                        focusNode: focusNode17,
+                        onChanged: (String value) {
+                          setState(() {
+                            focusNode17.requestFocus();
+                          });
+                        },
+                        maxLength: 10,
+                        onSaved: (value) {
+                          object.itogpokazatel2 = value;
+                        },
+                        controller: itogpokazatel2Controller,
+                        style: textStyle,
+                        decoration: InputDecoration(
+                          focusColor: Theme.of(context).primaryColor,
+                          labelStyle: TextStyle(
+                            fontSize: 22,
+                            fontWeight: FontWeight.w300,
+                            color: Theme.of(context).primaryColor,
+                          ),
+                          hintStyle: TextStyle(
+                            fontSize: 16,
+                            fontWeight: FontWeight.w300,
+                            color: Theme.of(context).primaryColor,
+                          ),
+                          labelText: 'Данные входного контроля',
+                          hintText: 'Введите значение',
+                          helperText: '...',
+                          prefixIcon: Icon(
+                            Icons.business_center,
+                            color: focusNode17.hasFocus ||
+                                    itogpokazatel2Controller.text.isNotEmpty
+                                ? Theme.of(context).primaryColor
+                                : Colors.grey,
+                            size: 32,
+                          ),
+                          enabledBorder: OutlineInputBorder(
+                            borderRadius: BorderRadius.all(Radius.circular(10)),
+                            borderSide:
+                                BorderSide(color: Colors.grey, width: 2),
+                          ),
+                          focusedBorder: OutlineInputBorder(
+                            borderRadius: BorderRadius.all(Radius.circular(20)),
+                            borderSide: BorderSide(
+                                color: Theme.of(context).primaryColor,
+                                width: 2),
+                          ),
+                        ),
+                        keyboardType: TextInputType.text,
+                      ),
+                      Divider(thickness: 4),
+                      Container(
+                          alignment: Alignment.center,
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              Text(
+                                'Показатель №3',
+                                style: TextStyle(
+                                    fontSize: 24,
+                                    color: Theme.of(context).primaryColor,
+                                    fontWeight: FontWeight.w300),
+                              ),
+                              GestureDetector(
+                                onTap: () {
+                                  pokazatelname3Controller.clear();
+                                  ntdpokazatel3Controller.clear();
+                                  normatupokazatel3Controller.clear();
+                                  sertpokazatel3Controller.clear();
+                                  itogpokazatel3Controller.clear();
+                                },
+                                child: Icon(
+                                  Icons.delete_outline,
+                                  color: Color.fromRGBO(187, 30, 16, 1.0),
+                                ),
+                              ),
+                            ],
+                          )),
+                      SizedBox(height: 10),
+                      TextFormField(
+                        focusNode: focusNode18,
+                        onChanged: (String value) {
+                          setState(() {
+                            focusNode18.requestFocus();
+                          });
+                        },
+                        maxLength: 20,
+                        onSaved: (value) {
+                          object.pokazatelname3 = value;
+                        },
+                        controller: pokazatelname3Controller,
+                        style: textStyle,
+                        decoration: InputDecoration(
+                          labelText: 'Наименование показателя',
+                          hintText: 'Введите Наименование',
+                          helperText: '...',
+                          prefixIcon: Icon(
+                            Icons.business_center,
+                            color: focusNode18.hasFocus ||
+                                    pokazatelname3Controller.text.isNotEmpty
+                                ? Theme.of(context).primaryColor
+                                : Colors.grey,
+                            size: 32,
+                          ),
+                          enabledBorder: const OutlineInputBorder(
+                            borderRadius: BorderRadius.all(Radius.circular(10)),
+                            borderSide:
+                                BorderSide(color: Colors.grey, width: 2),
+                          ),
+                          focusedBorder: OutlineInputBorder(
+                            borderRadius:
+                                const BorderRadius.all(Radius.circular(20)),
+                            borderSide: BorderSide(
+                                color: Theme.of(context).primaryColor,
+                                width: 2),
+                          ),
+                          labelStyle: TextStyle(
+                            fontSize: 22,
+                            fontWeight: FontWeight.w300,
+                            color: Theme.of(context).primaryColor,
+                          ),
+                        ),
+                        keyboardType: TextInputType.text,
+                      ),
+                      SizedBox(height: 10),
+                      TextFormField(
+                        focusNode: focusNode19,
+                        onChanged: (String value) {
+                          setState(() {
+                            focusNode19.requestFocus();
+                          });
+                        },
+                        maxLength: 30,
+                        onSaved: (value) {
+                          object.ntdpokazatel3 = value;
+                        },
+                        controller: ntdpokazatel3Controller,
+                        style: textStyle,
+                        decoration: InputDecoration(
+                          focusColor: Theme.of(context).primaryColor,
+                          labelStyle: TextStyle(
+                            fontSize: 22,
+                            fontWeight: FontWeight.w300,
+                            color: Theme.of(context).primaryColor,
+                          ),
+                          hintStyle: TextStyle(
+                            fontSize: 16,
+                            fontWeight: FontWeight.w300,
+                            color: Theme.of(context).primaryColor,
+                          ),
+                          labelText: 'НТД на метод испытания',
+                          hintText: 'Введите НТД',
+                          helperText: '...',
+                          prefixIcon: Icon(
+                            Icons.business_center,
+                            color: focusNode19.hasFocus ||
+                                    ntdpokazatel3Controller.text.isNotEmpty
+                                ? Theme.of(context).primaryColor
+                                : Colors.grey,
+                            size: 32,
+                          ),
+                          enabledBorder: OutlineInputBorder(
+                            borderRadius: BorderRadius.all(Radius.circular(10)),
+                            borderSide:
+                                BorderSide(color: Colors.grey, width: 2),
+                          ),
+                          focusedBorder: OutlineInputBorder(
+                            borderRadius: BorderRadius.all(Radius.circular(20)),
+                            borderSide: BorderSide(
+                                color: Theme.of(context).primaryColor,
+                                width: 2),
+                          ),
+                        ),
+                        keyboardType: TextInputType.text,
+                      ),
+                      SizedBox(height: 10),
+                      TextFormField(
+                        focusNode: focusNode20,
+                        onChanged: (String value) {
+                          setState(() {
+                            focusNode20.requestFocus();
+                          });
+                        },
+                        maxLength: 10,
+                        onSaved: (value) {
+                          object.normatupokazatel3 = value;
+                        },
+                        controller: normatupokazatel3Controller,
+                        style: textStyle,
+                        decoration: InputDecoration(
+                          focusColor: Theme.of(context).primaryColor,
+                          labelStyle: TextStyle(
+                            fontSize: 22,
+                            fontWeight: FontWeight.w300,
+                            color: Theme.of(context).primaryColor,
+                          ),
+                          hintStyle: TextStyle(
+                            fontSize: 16,
+                            fontWeight: FontWeight.w300,
+                            color: Theme.of(context).primaryColor,
+                          ),
+                          labelText: 'Норма по ТУ(ГОСТ) на материал',
+                          hintText: 'Введите значение',
+                          helperText: '...',
+                          prefixIcon: Icon(
+                            Icons.business_center,
+                            color: focusNode20.hasFocus ||
+                                    normatupokazatel3Controller.text.isNotEmpty
+                                ? Theme.of(context).primaryColor
+                                : Colors.grey,
+                            size: 32,
+                          ),
+                          enabledBorder: OutlineInputBorder(
+                            borderRadius: BorderRadius.all(Radius.circular(10)),
+                            borderSide:
+                                BorderSide(color: Colors.grey, width: 2),
+                          ),
+                          focusedBorder: OutlineInputBorder(
+                            borderRadius: BorderRadius.all(Radius.circular(20)),
+                            borderSide: BorderSide(
+                                color: Theme.of(context).primaryColor,
+                                width: 2),
+                          ),
+                        ),
+                        keyboardType: TextInputType.text,
+                      ),
+                      SizedBox(height: 10),
+                      TextFormField(
+                        focusNode: focusNode21,
+                        onChanged: (String value) {
+                          setState(() {
+                            focusNode21.requestFocus();
+                          });
+                        },
+                        maxLength: 30,
+                        onSaved: (value) {
+                          object.sertpokazatel3 = value;
+                        },
+                        controller: sertpokazatel3Controller,
+                        style: textStyle,
+                        decoration: InputDecoration(
+                          focusColor: Theme.of(context).primaryColor,
+                          labelStyle: TextStyle(
+                            fontSize: 22,
+                            fontWeight: FontWeight.w300,
+                            color: Theme.of(context).primaryColor,
+                          ),
+                          hintStyle: TextStyle(
+                            fontSize: 16,
+                            fontWeight: FontWeight.w300,
+                            color: Theme.of(context).primaryColor,
+                          ),
+                          labelText: 'Данные сертификата (паспорта)',
+                          hintText: 'Введите значение',
+                          helperText: '...',
+                          prefixIcon: Icon(
+                            Icons.business_center,
+                            color: focusNode21.hasFocus ||
+                                    sertpokazatel3Controller.text.isNotEmpty
+                                ? Theme.of(context).primaryColor
+                                : Colors.grey,
+                            size: 32,
+                          ),
+                          enabledBorder: OutlineInputBorder(
+                            borderRadius: BorderRadius.all(Radius.circular(10)),
+                            borderSide:
+                                BorderSide(color: Colors.grey, width: 2),
+                          ),
+                          focusedBorder: OutlineInputBorder(
+                            borderRadius: BorderRadius.all(Radius.circular(20)),
+                            borderSide: BorderSide(
+                                color: Theme.of(context).primaryColor,
+                                width: 2),
+                          ),
+                        ),
+                        keyboardType: TextInputType.text,
+                      ),
+                      SizedBox(height: 10),
+                      TextFormField(
+                        focusNode: focusNode22,
+                        onChanged: (String value) {
+                          setState(() {
+                            focusNode22.requestFocus();
+                          });
+                        },
+                        maxLength: 10,
+                        onSaved: (value) {
+                          object.itogpokazatel3 = value;
+                        },
+                        controller: itogpokazatel3Controller,
+                        style: textStyle,
+                        decoration: InputDecoration(
+                          focusColor: Theme.of(context).primaryColor,
+                          labelStyle: TextStyle(
+                            fontSize: 22,
+                            fontWeight: FontWeight.w300,
+                            color: Theme.of(context).primaryColor,
+                          ),
+                          hintStyle: TextStyle(
+                            fontSize: 16,
+                            fontWeight: FontWeight.w300,
+                            color: Theme.of(context).primaryColor,
+                          ),
+                          labelText: 'Данные входного контроля',
+                          hintText: 'Введите значение',
+                          helperText: '...',
+                          prefixIcon: Icon(
+                            Icons.business_center,
+                            color: focusNode22.hasFocus ||
+                                    itogpokazatel3Controller.text.isNotEmpty
+                                ? Theme.of(context).primaryColor
+                                : Colors.grey,
+                            size: 32,
+                          ),
+                          enabledBorder: OutlineInputBorder(
+                            borderRadius: BorderRadius.all(Radius.circular(10)),
+                            borderSide:
+                                BorderSide(color: Colors.grey, width: 2),
+                          ),
+                          focusedBorder: OutlineInputBorder(
+                            borderRadius: BorderRadius.all(Radius.circular(20)),
+                            borderSide: BorderSide(
+                                color: Theme.of(context).primaryColor,
+                                width: 2),
+                          ),
+                        ),
+                        keyboardType: TextInputType.text,
+                      ),
+                      Divider(thickness: 4),
+                      Container(
+                          alignment: Alignment.center,
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              Text(
+                                'Показатель №4',
+                                style: TextStyle(
+                                    fontSize: 24,
+                                    color: Theme.of(context).primaryColor,
+                                    fontWeight: FontWeight.w300),
+                              ),
+                              GestureDetector(
+                                onTap: () {
+                                  pokazatelname4Controller.clear();
+                                  ntdpokazatel4Controller.clear();
+                                  normatupokazatel4Controller.clear();
+                                  sertpokazatel4Controller.clear();
+                                  itogpokazatel4Controller.clear();
+                                },
+                                child: Icon(
+                                  Icons.delete_outline,
+                                  color: Color.fromRGBO(187, 30, 16, 1.0),
+                                ),
+                              ),
+                            ],
+                          )),
+                      SizedBox(height: 10),
+                      TextFormField(
+                        focusNode: focusNode23,
+                        onChanged: (String value) {
+                          setState(() {
+                            focusNode23.requestFocus();
+                          });
+                        },
+                        maxLength: 20,
+                        onSaved: (value) {
+                          object.pokazatelname4 = value;
+                        },
+                        controller: pokazatelname4Controller,
+                        style: textStyle,
+                        decoration: InputDecoration(
+                          labelText: 'Наименование показателя',
+                          hintText: 'Введите Наименование',
+                          helperText: '...',
+                          prefixIcon: Icon(
+                            Icons.business_center,
+                            color: focusNode24.hasFocus ||
+                                    pokazatelname4Controller.text.isNotEmpty
+                                ? Theme.of(context).primaryColor
+                                : Colors.grey,
+                            size: 32,
+                          ),
+                          enabledBorder: const OutlineInputBorder(
+                            borderRadius: BorderRadius.all(Radius.circular(10)),
+                            borderSide:
+                                BorderSide(color: Colors.grey, width: 2),
+                          ),
+                          focusedBorder: OutlineInputBorder(
+                            borderRadius:
+                                const BorderRadius.all(Radius.circular(20)),
+                            borderSide: BorderSide(
+                                color: Theme.of(context).primaryColor,
+                                width: 2),
+                          ),
+                          labelStyle: TextStyle(
+                            fontSize: 22,
+                            fontWeight: FontWeight.w300,
+                            color: Theme.of(context).primaryColor,
+                          ),
+                        ),
+                        keyboardType: TextInputType.text,
+                      ),
+                      SizedBox(height: 10),
+                      TextFormField(
+                        focusNode: focusNode25,
+                        onChanged: (String value) {
+                          setState(() {
+                            focusNode25.requestFocus();
+                          });
+                        },
+                        maxLength: 30,
+                        onSaved: (value) {
+                          object.ntdpokazatel4 = value;
+                        },
+                        controller: ntdpokazatel4Controller,
+                        style: textStyle,
+                        decoration: InputDecoration(
+                          focusColor: Theme.of(context).primaryColor,
+                          labelStyle: TextStyle(
+                            fontSize: 22,
+                            fontWeight: FontWeight.w300,
+                            color: Theme.of(context).primaryColor,
+                          ),
+                          hintStyle: TextStyle(
+                            fontSize: 16,
+                            fontWeight: FontWeight.w300,
+                            color: Theme.of(context).primaryColor,
+                          ),
+                          labelText: 'НТД на метод испытания',
+                          hintText: 'Введите НТД',
+                          helperText: '...',
+                          prefixIcon: Icon(
+                            Icons.business_center,
+                            color: focusNode25.hasFocus ||
+                                    ntdpokazatel4Controller.text.isNotEmpty
+                                ? Theme.of(context).primaryColor
+                                : Colors.grey,
+                            size: 32,
+                          ),
+                          enabledBorder: OutlineInputBorder(
+                            borderRadius: BorderRadius.all(Radius.circular(10)),
+                            borderSide:
+                                BorderSide(color: Colors.grey, width: 2),
+                          ),
+                          focusedBorder: OutlineInputBorder(
+                            borderRadius: BorderRadius.all(Radius.circular(20)),
+                            borderSide: BorderSide(
+                                color: Theme.of(context).primaryColor,
+                                width: 2),
+                          ),
+                        ),
+                        keyboardType: TextInputType.text,
+                      ),
+                      SizedBox(height: 10),
+                      TextFormField(
+                        focusNode: focusNode26,
+                        onChanged: (String value) {
+                          setState(() {
+                            focusNode26.requestFocus();
+                          });
+                        },
+                        maxLength: 10,
+                        onSaved: (value) {
+                          object.normatupokazatel4 = value;
+                        },
+                        controller: normatupokazatel4Controller,
+                        style: textStyle,
+                        decoration: InputDecoration(
+                          focusColor: Theme.of(context).primaryColor,
+                          labelStyle: TextStyle(
+                            fontSize: 22,
+                            fontWeight: FontWeight.w300,
+                            color: Theme.of(context).primaryColor,
+                          ),
+                          hintStyle: TextStyle(
+                            fontSize: 16,
+                            fontWeight: FontWeight.w300,
+                            color: Theme.of(context).primaryColor,
+                          ),
+                          labelText: 'Норма по ТУ(ГОСТ) на материал',
+                          hintText: 'Введите значение',
+                          helperText: '...',
+                          prefixIcon: Icon(
+                            Icons.business_center,
+                            color: focusNode26.hasFocus ||
+                                    normatupokazatel4Controller.text.isNotEmpty
+                                ? Theme.of(context).primaryColor
+                                : Colors.grey,
+                            size: 32,
+                          ),
+                          enabledBorder: OutlineInputBorder(
+                            borderRadius: BorderRadius.all(Radius.circular(10)),
+                            borderSide:
+                                BorderSide(color: Colors.grey, width: 2),
+                          ),
+                          focusedBorder: OutlineInputBorder(
+                            borderRadius: BorderRadius.all(Radius.circular(20)),
+                            borderSide: BorderSide(
+                                color: Theme.of(context).primaryColor,
+                                width: 2),
+                          ),
+                        ),
+                        keyboardType: TextInputType.text,
+                      ),
+                      SizedBox(height: 10),
+                      TextFormField(
+                        focusNode: focusNode27,
+                        onChanged: (String value) {
+                          setState(() {
+                            focusNode27.requestFocus();
+                          });
+                        },
+                        maxLength: 30,
+                        onSaved: (value) {
+                          object.sertpokazatel4 = value;
+                        },
+                        controller: sertpokazatel4Controller,
+                        style: textStyle,
+                        decoration: InputDecoration(
+                          focusColor: Theme.of(context).primaryColor,
+                          labelStyle: TextStyle(
+                            fontSize: 22,
+                            fontWeight: FontWeight.w300,
+                            color: Theme.of(context).primaryColor,
+                          ),
+                          hintStyle: TextStyle(
+                            fontSize: 16,
+                            fontWeight: FontWeight.w300,
+                            color: Theme.of(context).primaryColor,
+                          ),
+                          labelText: 'Данные сертификата (паспорта)',
+                          hintText: 'Введите значение',
+                          helperText: '...',
+                          prefixIcon: Icon(
+                            Icons.business_center,
+                            color: focusNode27.hasFocus ||
+                                    sertpokazatel4Controller.text.isNotEmpty
+                                ? Theme.of(context).primaryColor
+                                : Colors.grey,
+                            size: 32,
+                          ),
+                          enabledBorder: OutlineInputBorder(
+                            borderRadius: BorderRadius.all(Radius.circular(10)),
+                            borderSide:
+                                BorderSide(color: Colors.grey, width: 2),
+                          ),
+                          focusedBorder: OutlineInputBorder(
+                            borderRadius: BorderRadius.all(Radius.circular(20)),
+                            borderSide: BorderSide(
+                                color: Theme.of(context).primaryColor,
+                                width: 2),
+                          ),
+                        ),
+                        keyboardType: TextInputType.text,
+                      ),
+                      SizedBox(height: 10),
+                      TextFormField(
+                        focusNode: focusNode28,
+                        onChanged: (String value) {
+                          setState(() {
+                            focusNode28.requestFocus();
+                          });
+                        },
+                        maxLength: 10,
+                        onSaved: (value) {
+                          object.itogpokazatel4 = value;
+                        },
+                        controller: itogpokazatel4Controller,
+                        style: textStyle,
+                        decoration: InputDecoration(
+                          focusColor: Theme.of(context).primaryColor,
+                          labelStyle: TextStyle(
+                            fontSize: 22,
+                            fontWeight: FontWeight.w300,
+                            color: Theme.of(context).primaryColor,
+                          ),
+                          hintStyle: TextStyle(
+                            fontSize: 16,
+                            fontWeight: FontWeight.w300,
+                            color: Theme.of(context).primaryColor,
+                          ),
+                          labelText: 'Данные входного контроля',
+                          hintText: 'Введите значение',
+                          helperText: '...',
+                          prefixIcon: Icon(
+                            Icons.business_center,
+                            color: focusNode28.hasFocus ||
+                                    itogpokazatel4Controller.text.isNotEmpty
+                                ? Theme.of(context).primaryColor
+                                : Colors.grey,
+                            size: 32,
+                          ),
+                          enabledBorder: OutlineInputBorder(
+                            borderRadius: BorderRadius.all(Radius.circular(10)),
+                            borderSide:
+                                BorderSide(color: Colors.grey, width: 2),
+                          ),
+                          focusedBorder: OutlineInputBorder(
+                            borderRadius: BorderRadius.all(Radius.circular(20)),
+                            borderSide: BorderSide(
+                                color: Theme.of(context).primaryColor,
+                                width: 2),
+                          ),
+                        ),
+                        keyboardType: TextInputType.text,
+                      ),
+                      Divider(thickness: 4),
+                      Container(
+                          alignment: Alignment.center,
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              Text(
+                                'Показатель №5',
+                                style: TextStyle(
+                                    fontSize: 24,
+                                    color: Theme.of(context).primaryColor,
+                                    fontWeight: FontWeight.w300),
+                              ),
+                              GestureDetector(
+                                onTap: () {
+                                  pokazatelname5Controller.clear();
+                                  ntdpokazatel5Controller.clear();
+                                  normatupokazatel5Controller.clear();
+                                  sertpokazatel5Controller.clear();
+                                  itogpokazatel5Controller.clear();
+                                },
+                                child: Icon(
+                                  Icons.delete_outline,
+                                  color: Color.fromRGBO(187, 30, 16, 1.0),
+                                ),
+                              ),
+                            ],
+                          )),
+                      SizedBox(height: 10),
+                      TextFormField(
+                        focusNode: focusNode29,
+                        onChanged: (String value) {
+                          setState(() {
+                            focusNode29.requestFocus();
+                          });
+                        },
+                        maxLength: 20,
+                        onSaved: (value) {
+                          object.pokazatelname5 = value;
+                        },
+                        controller: pokazatelname5Controller,
+                        style: textStyle,
+                        decoration: InputDecoration(
+                          labelText: 'Наименование показателя',
+                          hintText: 'Введите Наименование',
+                          helperText: '...',
+                          prefixIcon: Icon(
+                            Icons.business_center,
+                            color: focusNode29.hasFocus ||
+                                    pokazatelname5Controller.text.isNotEmpty
+                                ? Theme.of(context).primaryColor
+                                : Colors.grey,
+                            size: 32,
+                          ),
+                          enabledBorder: const OutlineInputBorder(
+                            borderRadius: BorderRadius.all(Radius.circular(10)),
+                            borderSide:
+                                BorderSide(color: Colors.grey, width: 2),
+                          ),
+                          focusedBorder: OutlineInputBorder(
+                            borderRadius:
+                                const BorderRadius.all(Radius.circular(20)),
+                            borderSide: BorderSide(
+                                color: Theme.of(context).primaryColor,
+                                width: 2),
+                          ),
+                          labelStyle: TextStyle(
+                            fontSize: 22,
+                            fontWeight: FontWeight.w300,
+                            color: Theme.of(context).primaryColor,
+                          ),
+                        ),
+                        keyboardType: TextInputType.text,
+                      ),
+                      SizedBox(height: 10),
+                      TextFormField(
+                        focusNode: focusNode30,
+                        onChanged: (String value) {
+                          setState(() {
+                            focusNode30.requestFocus();
+                          });
+                        },
+                        maxLength: 30,
+                        onSaved: (value) {
+                          object.ntdpokazatel5 = value;
+                        },
+                        controller: ntdpokazatel5Controller,
+                        style: textStyle,
+                        decoration: InputDecoration(
+                          focusColor: Theme.of(context).primaryColor,
+                          labelStyle: TextStyle(
+                            fontSize: 22,
+                            fontWeight: FontWeight.w300,
+                            color: Theme.of(context).primaryColor,
+                          ),
+                          hintStyle: TextStyle(
+                            fontSize: 16,
+                            fontWeight: FontWeight.w300,
+                            color: Theme.of(context).primaryColor,
+                          ),
+                          labelText: 'НТД на метод испытания',
+                          hintText: 'Введите НТД',
+                          helperText: '...',
+                          prefixIcon: Icon(
+                            Icons.business_center,
+                            color: focusNode30.hasFocus ||
+                                    ntdpokazatel5Controller.text.isNotEmpty
+                                ? Theme.of(context).primaryColor
+                                : Colors.grey,
+                            size: 32,
+                          ),
+                          enabledBorder: OutlineInputBorder(
+                            borderRadius: BorderRadius.all(Radius.circular(10)),
+                            borderSide:
+                                BorderSide(color: Colors.grey, width: 2),
+                          ),
+                          focusedBorder: OutlineInputBorder(
+                            borderRadius: BorderRadius.all(Radius.circular(20)),
+                            borderSide: BorderSide(
+                                color: Theme.of(context).primaryColor,
+                                width: 2),
+                          ),
+                        ),
+                        keyboardType: TextInputType.text,
+                      ),
+                      SizedBox(height: 10),
+                      TextFormField(
+                        focusNode: focusNode31,
+                        onChanged: (String value) {
+                          setState(() {
+                            focusNode31.requestFocus();
+                          });
+                        },
+                        maxLength: 10,
+                        onSaved: (value) {
+                          object.normatupokazatel5 = value;
+                        },
+                        controller: normatupokazatel5Controller,
+                        style: textStyle,
+                        decoration: InputDecoration(
+                          focusColor: Theme.of(context).primaryColor,
+                          labelStyle: TextStyle(
+                            fontSize: 22,
+                            fontWeight: FontWeight.w300,
+                            color: Theme.of(context).primaryColor,
+                          ),
+                          hintStyle: TextStyle(
+                            fontSize: 16,
+                            fontWeight: FontWeight.w300,
+                            color: Theme.of(context).primaryColor,
+                          ),
+                          labelText: 'Норма по ТУ(ГОСТ) на материал',
+                          hintText: 'Введите значение',
+                          helperText: '...',
+                          prefixIcon: Icon(
+                            Icons.business_center,
+                            color: focusNode31.hasFocus ||
+                                    normatupokazatel5Controller.text.isNotEmpty
+                                ? Theme.of(context).primaryColor
+                                : Colors.grey,
+                            size: 32,
+                          ),
+                          enabledBorder: OutlineInputBorder(
+                            borderRadius: BorderRadius.all(Radius.circular(10)),
+                            borderSide:
+                                BorderSide(color: Colors.grey, width: 2),
+                          ),
+                          focusedBorder: OutlineInputBorder(
+                            borderRadius: BorderRadius.all(Radius.circular(20)),
+                            borderSide: BorderSide(
+                                color: Theme.of(context).primaryColor,
+                                width: 2),
+                          ),
+                        ),
+                        keyboardType: TextInputType.text,
+                      ),
+                      SizedBox(height: 10),
+                      TextFormField(
+                        focusNode: focusNode32,
+                        onChanged: (String value) {
+                          setState(() {
+                            focusNode32.requestFocus();
+                          });
+                        },
+                        maxLength: 30,
+                        onSaved: (value) {
+                          object.sertpokazatel5 = value;
+                        },
+                        controller: sertpokazatel5Controller,
+                        style: textStyle,
+                        decoration: InputDecoration(
+                          focusColor: Theme.of(context).primaryColor,
+                          labelStyle: TextStyle(
+                            fontSize: 22,
+                            fontWeight: FontWeight.w300,
+                            color: Theme.of(context).primaryColor,
+                          ),
+                          hintStyle: TextStyle(
+                            fontSize: 16,
+                            fontWeight: FontWeight.w300,
+                            color: Theme.of(context).primaryColor,
+                          ),
+                          labelText: 'Данные сертификата (паспорта)',
+                          hintText: 'Введите значение',
+                          helperText: '...',
+                          prefixIcon: Icon(
+                            Icons.business_center,
+                            color: focusNode32.hasFocus ||
+                                    sertpokazatel5Controller.text.isNotEmpty
+                                ? Theme.of(context).primaryColor
+                                : Colors.grey,
+                            size: 32,
+                          ),
+                          enabledBorder: OutlineInputBorder(
+                            borderRadius: BorderRadius.all(Radius.circular(10)),
+                            borderSide:
+                                BorderSide(color: Colors.grey, width: 2),
+                          ),
+                          focusedBorder: OutlineInputBorder(
+                            borderRadius: BorderRadius.all(Radius.circular(20)),
+                            borderSide: BorderSide(
+                                color: Theme.of(context).primaryColor,
+                                width: 2),
+                          ),
+                        ),
+                        keyboardType: TextInputType.text,
+                      ),
+                      SizedBox(height: 10),
+                      TextFormField(
+                        focusNode: focusNode33,
+                        onChanged: (String value) {
+                          setState(() {
+                            focusNode33.requestFocus();
+                          });
+                        },
+                        maxLength: 10,
+                        onSaved: (value) {
+                          object.itogpokazatel5 = value;
+                        },
+                        controller: itogpokazatel5Controller,
+                        style: textStyle,
+                        decoration: InputDecoration(
+                          focusColor: Theme.of(context).primaryColor,
+                          labelStyle: TextStyle(
+                            fontSize: 22,
+                            fontWeight: FontWeight.w300,
+                            color: Theme.of(context).primaryColor,
+                          ),
+                          hintStyle: TextStyle(
+                            fontSize: 16,
+                            fontWeight: FontWeight.w300,
+                            color: Theme.of(context).primaryColor,
+                          ),
+                          labelText: 'Данные входного контроля',
+                          hintText: 'Введите значение',
+                          helperText: '...',
+                          prefixIcon: Icon(
+                            Icons.business_center,
+                            color: focusNode33.hasFocus ||
+                                    itogpokazatel5Controller.text.isNotEmpty
+                                ? Theme.of(context).primaryColor
+                                : Colors.grey,
+                            size: 32,
+                          ),
+                          enabledBorder: OutlineInputBorder(
+                            borderRadius: BorderRadius.all(Radius.circular(10)),
+                            borderSide:
+                                BorderSide(color: Colors.grey, width: 2),
+                          ),
+                          focusedBorder: OutlineInputBorder(
+                            borderRadius: BorderRadius.all(Radius.circular(20)),
+                            borderSide: BorderSide(
+                                color: Theme.of(context).primaryColor,
+                                width: 2),
+                          ),
+                        ),
+                        keyboardType: TextInputType.text,
+                      ),
+                      Divider(thickness: 4),
+                      SizedBox(height: 20),
+                      ElevatedButton(
+                        style: ElevatedButton.styleFrom(
+                            primary:
+                                Theme.of(context).accentColor, // background
+                            onPrimary: Colors.white,
+                            elevation: 2,
+                            padding: const EdgeInsets.all(13.0),
+                            shape: RoundedRectangleBorder(
+                                borderRadius:
+                                    BorderRadius.circular(10.0)) // foreground
+                            ),
+                        onPressed: () => saveForm2(),
+                        child: Text(
+                          isEdit ? 'Редактировать' : 'Добавить',
+                          style: const TextStyle(
+                              fontSize: 18.0, fontWeight: FontWeight.w300),
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+            ),
+            Center(
+              child: Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Form(
+                  key: _3formKey,
+                  child: ListView(
+                    children: <Widget>[
+                      SizedBox(height: 20),
+                      Container(
+                          alignment: Alignment.center,
+                          child: Text(
+                            'ЗАКЛЮЧЕНИЕ',
+                            style: TextStyle(
+                                fontSize: 24,
+                                color: Theme.of(context).primaryColor,
+                                fontWeight: FontWeight.w300),
+                          )),
+                      SizedBox(height: 20),
+                      DropdownButtonFormField(
+                        isExpanded: true,
+                        focusNode: focusNode34,
+                        decoration: InputDecoration(
+                          border: OutlineInputBorder(),
+                          enabledBorder: OutlineInputBorder(
+                            borderRadius: BorderRadius.all(Radius.circular(10)),
+                            borderSide:
+                                BorderSide(color: Colors.grey, width: 2),
+                          ),
+                          focusedBorder: OutlineInputBorder(
+                            borderRadius: BorderRadius.all(Radius.circular(20)),
+                            borderSide: BorderSide(
+                                color: Theme.of(context).primaryColor,
+                                width: 2),
+                          ),
+                          labelStyle: TextStyle(
+                            fontSize: 22,
+                            fontWeight: FontWeight.w300,
+                            color: Theme.of(context).primaryColor,
+                          ),
+                          prefixIcon: Icon(
+                            Icons.business,
+                            color: focusNode34.hasFocus ||
+                                    zaklkachestvoController.text.isNotEmpty
+                                ? Theme.of(context).primaryColor
+                                : Colors.grey,
+                            size: 32,
+                          ),
+                          labelText: 'Заключение о соответствии нормам',
+                        ),
+                        items: _zaklkachestvo.map((String value) {
+                          return DropdownMenuItem(
+                              value: value, child: Text(value));
+                        }).toList(),
+                        style: textStyle,
+                        value: object.zaklkachestvo,
+                        onChanged: (String value) {
+                          setState(() {
+                            focusNode34.requestFocus();
+                            object.zaklkachestvo = value;
+                          });
+                        },
+                      ),
+                      SizedBox(height: 10),
+                      TextFormField(
+                        maxLength: 50,
+                        onFieldSubmitted: (String value) {
+                          object.zamechanie = value;
+                        },
+                        keyboardType: TextInputType.text,
+                        controller: zamechanieController,
+                        focusNode: focusNode35,
+                        style: textStyle,
+                        decoration: InputDecoration(
+                          focusColor: Theme.of(context).primaryColor,
+                          labelStyle: TextStyle(
+                            fontSize: 22,
+                            fontWeight: FontWeight.w300,
+                            color: Theme.of(context).primaryColor,
+                          ),
+                          hintStyle: TextStyle(
+                            fontSize: 16,
+                            fontWeight: FontWeight.w300,
+                            color: Theme.of(context).primaryColor,
+                          ),
+                          labelText: 'Замечания',
+                          hintText: 'Введите текст замечаний',
+                          prefixIcon: Icon(
+                            Icons.account_balance_outlined,
+                            color: focusNode35.hasFocus ||
+                                    zamechanieController.text.isNotEmpty
+                                ? Theme.of(context).primaryColor
+                                : Colors.grey,
+                            size: 32,
+                          ),
+                          suffixIcon: GestureDetector(
+                            onTap: () {
+                              sertifikatController.clear();
+                            },
+                            child: Icon(
+                              Icons.delete_outline,
+                              color: Color.fromRGBO(187, 30, 16, 1.0),
+                            ),
+                          ),
+                          enabledBorder: OutlineInputBorder(
+                            borderRadius: BorderRadius.all(Radius.circular(10)),
+                            borderSide:
+                                BorderSide(color: Colors.grey, width: 2),
+                          ),
+                          focusedBorder: OutlineInputBorder(
+                            borderRadius: BorderRadius.all(Radius.circular(20)),
+                            borderSide: BorderSide(
+                                color: Theme.of(context).primaryColor,
+                                width: 2),
+                          ),
+                        ),
+                        onChanged: (String value) {
+                          setState(() {
+                            focusNode35.requestFocus();
+                          });
+                        },
+                      ),
+                      SizedBox(height: 10),
+                      TextFormField(
+                        maxLength: 1000,
+                        onSaved: (value) {
+                          object.dopolnitelno1 = value;
+                        },
+                        controller: dopolnitelno1Controller,
+                        decoration: InputDecoration(
+                          focusColor: Theme.of(context).primaryColor,
+                          labelStyle: TextStyle(
+                            fontSize: 22,
+                            fontWeight: FontWeight.w300,
+                            color: Theme.of(context).primaryColor,
+                          ),
+                          hintStyle: TextStyle(
+                            fontSize: 16,
+                            fontWeight: FontWeight.w300,
+                            color: Theme.of(context).primaryColor,
+                          ),
+                          labelText: 'Дополнительные сведения',
+                          suffixIcon: GestureDetector(
+                              onTap: () {
+                                Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) => CameraPageVhc()),
+                                ).then((value) {
+                                  setState(() async {
+                                    if (value != null) {
+                                      _image = value;
+                                      if (_3formKey.currentState.validate()) {
+                                        _3formKey.currentState.save();
+                                        if (_image != null) {
+                                          final Directory extDir =
+                                              await getApplicationDocumentsDirectory();
+                                          final String dirPath =
+                                              '${extDir.path}/Pictures/flutter_test';
+                                          await Directory(dirPath)
+                                              .create(recursive: true);
+                                          final String filePath =
+                                              '$dirPath/${DateTime.now().millisecondsSinceEpoch.toString()}.jpg';
+                                          await _image.copy(filePath);
+                                          object.photo1 = filePath;
+                                        }
+                                      }
+                                    }
+                                  });
+                                });
+                              },
+                              child: Icon(Icons.camera_alt_sharp,
+                                  color: Color.fromRGBO(97, 153, 59, 1.0))),
+                          hintText:
+                              'Особенности, дефекты, условия, замечания...',
+                          border: OutlineInputBorder(),
+                          enabledBorder: OutlineInputBorder(
+                            borderRadius: BorderRadius.all(Radius.circular(10)),
+                            borderSide:
+                                BorderSide(color: Colors.grey, width: 2),
+                          ),
+                          focusedBorder: OutlineInputBorder(
+                            borderRadius: BorderRadius.all(Radius.circular(20)),
+                            borderSide: BorderSide(
+                                color: Theme.of(context).primaryColor,
+                                width: 2),
+                          ),
+                        ),
+                        maxLines: 10,
+                        inputFormatters: [
+                          LengthLimitingTextInputFormatter(137),
+                        ],
+                      ),
+                      SizedBox(height: 10),
+                      Container(
+                        height: 100,
+                        child: Column(
+                          children: [
+                            Expanded(
+                              child: GestureDetector(
+                                onTap: () {
+                                  Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                        builder: (context) => ImageScreen(
+                                            imagePath: object.photo1)),
+                                  );
+                                },
+                                child: Center(
+                                  child: object.photo1 != null
+                                      ? Image.file(
+                                          File(object.photo1),
+                                          fit: BoxFit.cover,
+                                          alignment: Alignment.center,
+                                          width: 100,
+                                          height: 100,
+                                        )
+                                      : Text('Изображение отсутствует'),
+                                ),
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                      SizedBox(height: 10),
+                      ElevatedButton(
+                        style: ElevatedButton.styleFrom(
+                            primary:
+                                Theme.of(context).accentColor, // background
+                            onPrimary: Colors.white,
+                            elevation: 2,
+                            padding: const EdgeInsets.all(13.0),
+                            shape: RoundedRectangleBorder(
+                                borderRadius:
+                                    BorderRadius.circular(10.0)) // foreground
+                            ),
+                        onPressed: () => saveForm3(),
+                        child: Text(
+                          isEdit ? 'Редактировать' : 'Добавить',
+                          style: const TextStyle(
+                              fontSize: 18.0, fontWeight: FontWeight.w300),
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+            ),
+            Center(
+              child: Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Form(
+                  key: _4formKey,
+                  child: ListView(
+                    children: <Widget>[
+                      SizedBox(height: 10),
+                      Container(
+                          alignment: Alignment.center,
+                          child: Text(
+                            'ДАННЫЕ О ПРИБОРАХ',
+                            style: TextStyle(
+                                fontSize: 24,
+                                color: Theme.of(context).primaryColor,
+                                fontWeight: FontWeight.w300),
+                          )),
+                      Divider(thickness: 4),
+                      Container(
+                          alignment: Alignment.center,
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              Text(
+                                'Прибор №1',
+                                style: TextStyle(
+                                    fontSize: 24,
+                                    color: Theme.of(context).primaryColor,
+                                    fontWeight: FontWeight.w300),
+                              ),
+                              GestureDetector(
+                                onTap: () {
+                                  priborname1Controller.clear();
+                                  pribornumb1Controller.clear();
+                                  pribordate1Controller.clear();
+                                },
+                                child: Icon(
+                                  Icons.delete_outline,
+                                  color: Color.fromRGBO(187, 30, 16, 1.0),
+                                ),
+                              ),
+                            ],
+                          )),
+                      SizedBox(height: 10),
+                      TextFormField(
+                        focusNode: focusNode36,
+                        onChanged: (String value) {
+                          setState(() {
+                            focusNode36.requestFocus();
+                          });
+                        },
+                        maxLength: 30,
+                        onSaved: (value) {
+                          object.priborname1 = value;
+                        },
+                        controller: priborname1Controller,
+                        style: textStyle,
+                        decoration: InputDecoration(
+                          focusColor: Theme.of(context).primaryColor,
+                          labelStyle: TextStyle(
+                            fontSize: 22,
+                            fontWeight: FontWeight.w300,
+                            color: Theme.of(context).primaryColor,
+                          ),
+                          hintStyle: TextStyle(
+                            fontSize: 16,
+                            fontWeight: FontWeight.w300,
+                            color: Theme.of(context).primaryColor,
+                          ),
+                          labelText: 'Наименование прибора №1',
+                          hintText: 'Введите название',
+                          // helperText: '...',
+                          prefixIcon: Icon(
+                            Icons.speaker_phone,
+                            color: focusNode36.hasFocus ||
+                                    priborname1Controller.text.isNotEmpty
+                                ? Theme.of(context).primaryColor
+                                : Colors.grey,
+                            size: 32,
+                          ),
+                          enabledBorder: OutlineInputBorder(
+                            borderRadius: BorderRadius.all(Radius.circular(10)),
+                            borderSide:
+                                BorderSide(color: Colors.grey, width: 2),
+                          ),
+                          focusedBorder: OutlineInputBorder(
+                            borderRadius: BorderRadius.all(Radius.circular(20)),
+                            borderSide: BorderSide(
+                                color: Theme.of(context).primaryColor,
+                                width: 2),
+                          ),
+                        ),
+                        keyboardType: TextInputType.text,
+                      ),
+                      SizedBox(height: 10),
+                      Row(
+                        children: [
+                          Expanded(
+                            child: TextFormField(
+                              focusNode: focusNode37,
+                              onChanged: (String value) {
+                                setState(() {
+                                  focusNode37.requestFocus();
+                                });
+                              },
+                              maxLength: 30,
+                              onSaved: (value) {
+                                object.pribornumb1 = value;
+                              },
+                              controller: pribornumb1Controller,
+                              style: textStyle,
+                              decoration: InputDecoration(
+                                focusColor: Theme.of(context).primaryColor,
+                                labelStyle: TextStyle(
+                                  fontSize: 22,
+                                  fontWeight: FontWeight.w300,
+                                  color: Theme.of(context).primaryColor,
+                                ),
+                                hintStyle: TextStyle(
+                                  fontSize: 16,
+                                  fontWeight: FontWeight.w300,
+                                  color: Theme.of(context).primaryColor,
+                                ),
+                                labelText: '№',
+                                hintText: '№',
+                                helperText: '№....',
+                                prefixIcon: Icon(
+                                  Icons.speaker_phone,
+                                  color: focusNode37.hasFocus ||
+                                          pribornumb1Controller.text.isNotEmpty
+                                      ? Theme.of(context).primaryColor
+                                      : Colors.grey,
+                                  size: 32,
+                                ),
+                                enabledBorder: OutlineInputBorder(
+                                  borderRadius:
+                                      BorderRadius.all(Radius.circular(10)),
+                                  borderSide:
+                                      BorderSide(color: Colors.grey, width: 2),
+                                ),
+                                focusedBorder: OutlineInputBorder(
+                                  borderRadius:
+                                      BorderRadius.all(Radius.circular(20)),
+                                  borderSide: BorderSide(
+                                      color: Theme.of(context).primaryColor,
+                                      width: 2),
+                                ),
+                              ),
+                              keyboardType: TextInputType.text,
+                            ),
+                          ),
+                          SizedBox(width: 5),
+                          Expanded(
+                            child: TextFormField(
+                              focusNode: focusNode38,
+                              onChanged: (String value) {
+                                setState(() {
+                                  focusNode38.requestFocus();
+                                });
+                              },
+                              maxLength: 10,
+                              onSaved: (value) {
+                                object.pribordate1 = value;
+                              },
+                              controller: pribordate1Controller,
+                              style: textStyle,
+                              decoration: InputDecoration(
+                                focusColor: Theme.of(context).primaryColor,
+                                labelStyle: TextStyle(
+                                  fontSize: 22,
+                                  fontWeight: FontWeight.w300,
+                                  color: Theme.of(context).primaryColor,
+                                ),
+                                hintStyle: TextStyle(
+                                  fontSize: 16,
+                                  fontWeight: FontWeight.w300,
+                                  color: Theme.of(context).primaryColor,
+                                ),
+                                labelText: 'Дата поверки',
+                                hintText: 'дата',
+                                helperText: 'д.м.г',
+                                prefixIcon: Icon(
+                                  Icons.speaker_phone,
+                                  color: focusNode38.hasFocus ||
+                                          pribordate1Controller.text.isNotEmpty
+                                      ? Theme.of(context).primaryColor
+                                      : Colors.grey,
+                                  size: 32,
+                                ),
+                                enabledBorder: OutlineInputBorder(
+                                  borderRadius:
+                                      BorderRadius.all(Radius.circular(10)),
+                                  borderSide:
+                                      BorderSide(color: Colors.grey, width: 2),
+                                ),
+                                focusedBorder: OutlineInputBorder(
+                                  borderRadius:
+                                      BorderRadius.all(Radius.circular(20)),
+                                  borderSide: BorderSide(
+                                      color: Theme.of(context).primaryColor,
+                                      width: 2),
+                                ),
+                              ),
+                              keyboardType: TextInputType.number,
+                            ),
+                          ),
+                        ],
+                      ),
+                      // SizedBox(height: 10),
+                      Divider(thickness: 4),
+                      Container(
+                          alignment: Alignment.center,
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              Text(
+                                'Прибор №2',
+                                style: TextStyle(
+                                    fontSize: 24,
+                                    color: Theme.of(context).primaryColor,
+                                    fontWeight: FontWeight.w300),
+                              ),
+                              GestureDetector(
+                                onTap: () {
+                                  priborname2Controller.clear();
+                                  pribornumb2Controller.clear();
+                                  pribordate2Controller.clear();
+                                },
+                                child: Icon(
+                                  Icons.delete_outline,
+                                  color: Color.fromRGBO(187, 30, 16, 1.0),
+                                ),
+                              ),
+                            ],
+                          )),
+                      SizedBox(height: 10),
+                      TextFormField(
+                        focusNode: focusNode39,
+                        onChanged: (String value) {
+                          setState(() {
+                            focusNode39.requestFocus();
+                          });
+                        },
+                        maxLength: 30,
+                        onSaved: (value) {
+                          object.priborname2 = value;
+                        },
+                        controller: priborname2Controller,
+                        style: textStyle,
+                        decoration: InputDecoration(
+                          focusColor: Theme.of(context).primaryColor,
+                          labelStyle: TextStyle(
+                            fontSize: 22,
+                            fontWeight: FontWeight.w300,
+                            color: Theme.of(context).primaryColor,
+                          ),
+                          hintStyle: TextStyle(
+                            fontSize: 16,
+                            fontWeight: FontWeight.w300,
+                            color: Theme.of(context).primaryColor,
+                          ),
+                          labelText: 'Наименование прибора №2',
+                          hintText: 'Введите название',
+                          // helperText: '...',
+                          prefixIcon: Icon(
+                            Icons.speaker_phone,
+                            color: focusNode39.hasFocus ||
+                                    priborname2Controller.text.isNotEmpty
+                                ? Theme.of(context).primaryColor
+                                : Colors.grey,
+                            size: 32,
+                          ),
+                          enabledBorder: OutlineInputBorder(
+                            borderRadius: BorderRadius.all(Radius.circular(10)),
+                            borderSide:
+                                BorderSide(color: Colors.grey, width: 2),
+                          ),
+                          focusedBorder: OutlineInputBorder(
+                            borderRadius: BorderRadius.all(Radius.circular(20)),
+                            borderSide: BorderSide(
+                                color: Theme.of(context).primaryColor,
+                                width: 2),
+                          ),
+                        ),
+                        keyboardType: TextInputType.text,
+                      ),
+                      SizedBox(height: 10),
+                      Row(
+                        children: [
+                          Expanded(
+                            child: TextFormField(
+                              focusNode: focusNode40,
+                              onChanged: (String value) {
+                                setState(() {
+                                  focusNode40.requestFocus();
+                                });
+                              },
+                              maxLength: 30,
+                              onSaved: (value) {
+                                object.pribornumb2 = value;
+                              },
+                              controller: pribornumb2Controller,
+                              style: textStyle,
+                              decoration: InputDecoration(
+                                focusColor: Theme.of(context).primaryColor,
+                                labelStyle: TextStyle(
+                                  fontSize: 22,
+                                  fontWeight: FontWeight.w300,
+                                  color: Theme.of(context).primaryColor,
+                                ),
+                                hintStyle: TextStyle(
+                                  fontSize: 16,
+                                  fontWeight: FontWeight.w300,
+                                  color: Theme.of(context).primaryColor,
+                                ),
+                                labelText: '№',
+                                hintText: '№',
+                                helperText: '№....',
+                                prefixIcon: Icon(
+                                  Icons.speaker_phone,
+                                  color: focusNode40.hasFocus ||
+                                          pribornumb2Controller.text.isNotEmpty
+                                      ? Theme.of(context).primaryColor
+                                      : Colors.grey,
+                                  size: 32,
+                                ),
+                                enabledBorder: OutlineInputBorder(
+                                  borderRadius:
+                                      BorderRadius.all(Radius.circular(10)),
+                                  borderSide:
+                                      BorderSide(color: Colors.grey, width: 2),
+                                ),
+                                focusedBorder: OutlineInputBorder(
+                                  borderRadius:
+                                      BorderRadius.all(Radius.circular(20)),
+                                  borderSide: BorderSide(
+                                      color: Theme.of(context).primaryColor,
+                                      width: 2),
+                                ),
+                              ),
+                              keyboardType: TextInputType.text,
+                            ),
+                          ),
+                          SizedBox(width: 5),
+                          Expanded(
+                            child: TextFormField(
+                              focusNode: focusNode41,
+                              onChanged: (String value) {
+                                setState(() {
+                                  focusNode41.requestFocus();
+                                });
+                              },
+                              maxLength: 10,
+                              onSaved: (value) {
+                                object.pribordate2 = value;
+                              },
+                              controller: pribordate2Controller,
+                              style: textStyle,
+                              decoration: InputDecoration(
+                                focusColor: Theme.of(context).primaryColor,
+                                labelStyle: TextStyle(
+                                  fontSize: 22,
+                                  fontWeight: FontWeight.w300,
+                                  color: Theme.of(context).primaryColor,
+                                ),
+                                hintStyle: TextStyle(
+                                  fontSize: 16,
+                                  fontWeight: FontWeight.w300,
+                                  color: Theme.of(context).primaryColor,
+                                ),
+                                labelText: 'Дата поверки',
+                                hintText: 'дата',
+                                helperText: 'д.м.г',
+                                prefixIcon: Icon(
+                                  Icons.speaker_phone,
+                                  color: focusNode41.hasFocus ||
+                                          pribordate2Controller.text.isNotEmpty
+                                      ? Theme.of(context).primaryColor
+                                      : Colors.grey,
+                                  size: 32,
+                                ),
+                                enabledBorder: OutlineInputBorder(
+                                  borderRadius:
+                                      BorderRadius.all(Radius.circular(10)),
+                                  borderSide:
+                                      BorderSide(color: Colors.grey, width: 2),
+                                ),
+                                focusedBorder: OutlineInputBorder(
+                                  borderRadius:
+                                      BorderRadius.all(Radius.circular(20)),
+                                  borderSide: BorderSide(
+                                      color: Theme.of(context).primaryColor,
+                                      width: 2),
+                                ),
+                              ),
+                              keyboardType: TextInputType.number,
+                            ),
+                          ),
+                        ],
+                      ),
+                      // SizedBox(height: 10),
+                      Divider(thickness: 4),
+                      Container(
+                          alignment: Alignment.center,
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              Text(
+                                'Прибор №3',
+                                style: TextStyle(
+                                    fontSize: 24,
+                                    color: Theme.of(context).primaryColor,
+                                    fontWeight: FontWeight.w300),
+                              ),
+                              GestureDetector(
+                                onTap: () {
+                                  priborname3Controller.clear();
+                                  pribornumb3Controller.clear();
+                                  pribordate3Controller.clear();
+                                },
+                                child: Icon(
+                                  Icons.delete_outline,
+                                  color: Color.fromRGBO(187, 30, 16, 1.0),
+                                ),
+                              ),
+                            ],
+                          )),
+                      SizedBox(height: 10),
+                      TextFormField(
+                        focusNode: focusNode42,
+                        onChanged: (String value) {
+                          setState(() {
+                            focusNode42.requestFocus();
+                          });
+                        },
+                        maxLength: 30,
+                        onSaved: (value) {
+                          object.priborname3 = value;
+                        },
+                        controller: priborname3Controller,
+                        style: textStyle,
+                        decoration: InputDecoration(
+                          focusColor: Theme.of(context).primaryColor,
+                          labelStyle: TextStyle(
+                            fontSize: 22,
+                            fontWeight: FontWeight.w300,
+                            color: Theme.of(context).primaryColor,
+                          ),
+                          hintStyle: TextStyle(
+                            fontSize: 16,
+                            fontWeight: FontWeight.w300,
+                            color: Theme.of(context).primaryColor,
+                          ),
+                          labelText: 'Наименование прибора №3',
+                          hintText: 'Введите название',
+                          // helperText: '...',
+                          prefixIcon: Icon(
+                            Icons.speaker_phone,
+                            color: focusNode42.hasFocus ||
+                                    priborname3Controller.text.isNotEmpty
+                                ? Theme.of(context).primaryColor
+                                : Colors.grey,
+                            size: 32,
+                          ),
+                          enabledBorder: OutlineInputBorder(
+                            borderRadius: BorderRadius.all(Radius.circular(10)),
+                            borderSide:
+                                BorderSide(color: Colors.grey, width: 2),
+                          ),
+                          focusedBorder: OutlineInputBorder(
+                            borderRadius: BorderRadius.all(Radius.circular(20)),
+                            borderSide: BorderSide(
+                                color: Theme.of(context).primaryColor,
+                                width: 2),
+                          ),
+                        ),
+                        keyboardType: TextInputType.text,
+                      ),
+                      SizedBox(height: 10),
+                      Row(
+                        children: [
+                          Expanded(
+                            child: TextFormField(
+                              focusNode: focusNode43,
+                              onChanged: (String value) {
+                                setState(() {
+                                  focusNode43.requestFocus();
+                                });
+                              },
+                              maxLength: 30,
+                              onSaved: (value) {
+                                object.pribornumb3 = value;
+                              },
+                              controller: pribornumb3Controller,
+                              style: textStyle,
+                              decoration: InputDecoration(
+                                focusColor: Theme.of(context).primaryColor,
+                                labelStyle: TextStyle(
+                                  fontSize: 22,
+                                  fontWeight: FontWeight.w300,
+                                  color: Theme.of(context).primaryColor,
+                                ),
+                                hintStyle: TextStyle(
+                                  fontSize: 16,
+                                  fontWeight: FontWeight.w300,
+                                  color: Theme.of(context).primaryColor,
+                                ),
+                                labelText: '№',
+                                hintText: '№',
+                                helperText: '№....',
+                                prefixIcon: Icon(
+                                  Icons.speaker_phone,
+                                  color: focusNode43.hasFocus ||
+                                          pribornumb3Controller.text.isNotEmpty
+                                      ? Theme.of(context).primaryColor
+                                      : Colors.grey,
+                                  size: 32,
+                                ),
+                                enabledBorder: OutlineInputBorder(
+                                  borderRadius:
+                                      BorderRadius.all(Radius.circular(10)),
+                                  borderSide:
+                                      BorderSide(color: Colors.grey, width: 2),
+                                ),
+                                focusedBorder: OutlineInputBorder(
+                                  borderRadius:
+                                      BorderRadius.all(Radius.circular(20)),
+                                  borderSide: BorderSide(
+                                      color: Theme.of(context).primaryColor,
+                                      width: 2),
+                                ),
+                              ),
+                              keyboardType: TextInputType.text,
+                            ),
+                          ),
+                          SizedBox(width: 5),
+                          Expanded(
+                            child: TextFormField(
+                              focusNode: focusNode44,
+                              onChanged: (String value) {
+                                setState(() {
+                                  focusNode44.requestFocus();
+                                });
+                              },
+                              maxLength: 10,
+                              onSaved: (value) {
+                                object.pribordate3 = value;
+                              },
+                              controller: pribordate3Controller,
+                              style: textStyle,
+                              decoration: InputDecoration(
+                                focusColor: Theme.of(context).primaryColor,
+                                labelStyle: TextStyle(
+                                  fontSize: 22,
+                                  fontWeight: FontWeight.w300,
+                                  color: Theme.of(context).primaryColor,
+                                ),
+                                hintStyle: TextStyle(
+                                  fontSize: 16,
+                                  fontWeight: FontWeight.w300,
+                                  color: Theme.of(context).primaryColor,
+                                ),
+                                labelText: 'Дата поверки',
+                                hintText: 'дата',
+                                helperText: 'д.м.г',
+                                prefixIcon: Icon(
+                                  Icons.speaker_phone,
+                                  color: focusNode44.hasFocus ||
+                                          pribordate3Controller.text.isNotEmpty
+                                      ? Theme.of(context).primaryColor
+                                      : Colors.grey,
+                                  size: 32,
+                                ),
+                                enabledBorder: OutlineInputBorder(
+                                  borderRadius:
+                                      BorderRadius.all(Radius.circular(10)),
+                                  borderSide:
+                                      BorderSide(color: Colors.grey, width: 2),
+                                ),
+                                focusedBorder: OutlineInputBorder(
+                                  borderRadius:
+                                      BorderRadius.all(Radius.circular(20)),
+                                  borderSide: BorderSide(
+                                      color: Theme.of(context).primaryColor,
+                                      width: 2),
+                                ),
+                              ),
+                              keyboardType: TextInputType.number,
+                            ),
+                          ),
+                        ],
+                      ),
+                      // SizedBox(height: 10),
+                      Divider(thickness: 4),
+                      Container(
+                          alignment: Alignment.center,
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              Text(
+                                'Прибор №4',
+                                style: TextStyle(
+                                    fontSize: 24,
+                                    color: Theme.of(context).primaryColor,
+                                    fontWeight: FontWeight.w300),
+                              ),
+                              GestureDetector(
+                                onTap: () {
+                                  priborname4Controller.clear();
+                                  pribornumb4Controller.clear();
+                                  pribordate4Controller.clear();
+                                },
+                                child: Icon(
+                                  Icons.delete_outline,
+                                  color: Color.fromRGBO(187, 30, 16, 1.0),
+                                ),
+                              ),
+                            ],
+                          )),
+                      SizedBox(height: 10),
+                      TextFormField(
+                        focusNode: focusNode45,
+                        onChanged: (String value) {
+                          setState(() {
+                            focusNode45.requestFocus();
+                          });
+                        },
+                        maxLength: 30,
+                        onSaved: (value) {
+                          object.priborname4 = value;
+                        },
+                        controller: priborname4Controller,
+                        style: textStyle,
+                        decoration: InputDecoration(
+                          focusColor: Theme.of(context).primaryColor,
+                          labelStyle: TextStyle(
+                            fontSize: 22,
+                            fontWeight: FontWeight.w300,
+                            color: Theme.of(context).primaryColor,
+                          ),
+                          hintStyle: TextStyle(
+                            fontSize: 16,
+                            fontWeight: FontWeight.w300,
+                            color: Theme.of(context).primaryColor,
+                          ),
+                          labelText: 'Наименование прибора №4',
+                          hintText: 'Введите название',
+                          // helperText: '...',
+                          prefixIcon: Icon(
+                            Icons.speaker_phone,
+                            color: focusNode45.hasFocus ||
+                                    priborname4Controller.text.isNotEmpty
+                                ? Theme.of(context).primaryColor
+                                : Colors.grey,
+                            size: 32,
+                          ),
+                          enabledBorder: OutlineInputBorder(
+                            borderRadius: BorderRadius.all(Radius.circular(10)),
+                            borderSide:
+                                BorderSide(color: Colors.grey, width: 2),
+                          ),
+                          focusedBorder: OutlineInputBorder(
+                            borderRadius: BorderRadius.all(Radius.circular(20)),
+                            borderSide: BorderSide(
+                                color: Theme.of(context).primaryColor,
+                                width: 2),
+                          ),
+                        ),
+                        keyboardType: TextInputType.text,
+                      ),
+                      SizedBox(height: 10),
+                      Row(
+                        children: [
+                          Expanded(
+                            child: TextFormField(
+                              focusNode: focusNode46,
+                              onChanged: (String value) {
+                                setState(() {
+                                  focusNode46.requestFocus();
+                                });
+                              },
+                              maxLength: 30,
+                              onSaved: (value) {
+                                object.pribornumb4 = value;
+                              },
+                              controller: pribornumb4Controller,
+                              style: textStyle,
+                              decoration: InputDecoration(
+                                focusColor: Theme.of(context).primaryColor,
+                                labelStyle: TextStyle(
+                                  fontSize: 22,
+                                  fontWeight: FontWeight.w300,
+                                  color: Theme.of(context).primaryColor,
+                                ),
+                                hintStyle: TextStyle(
+                                  fontSize: 16,
+                                  fontWeight: FontWeight.w300,
+                                  color: Theme.of(context).primaryColor,
+                                ),
+                                labelText: '№',
+                                hintText: '№',
+                                helperText: '№....',
+                                prefixIcon: Icon(
+                                  Icons.speaker_phone,
+                                  color: focusNode46.hasFocus ||
+                                          pribornumb4Controller.text.isNotEmpty
+                                      ? Theme.of(context).primaryColor
+                                      : Colors.grey,
+                                  size: 32,
+                                ),
+                                enabledBorder: OutlineInputBorder(
+                                  borderRadius:
+                                      BorderRadius.all(Radius.circular(10)),
+                                  borderSide:
+                                      BorderSide(color: Colors.grey, width: 2),
+                                ),
+                                focusedBorder: OutlineInputBorder(
+                                  borderRadius:
+                                      BorderRadius.all(Radius.circular(20)),
+                                  borderSide: BorderSide(
+                                      color: Theme.of(context).primaryColor,
+                                      width: 2),
+                                ),
+                              ),
+                              keyboardType: TextInputType.text,
+                            ),
+                          ),
+                          SizedBox(width: 5),
+                          Expanded(
+                            child: TextFormField(
+                              focusNode: focusNode47,
+                              onChanged: (String value) {
+                                setState(() {
+                                  focusNode47.requestFocus();
+                                });
+                              },
+                              maxLength: 10,
+                              onSaved: (value) {
+                                object.pribordate4 = value;
+                              },
+                              controller: pribordate4Controller,
+                              style: textStyle,
+                              decoration: InputDecoration(
+                                focusColor: Theme.of(context).primaryColor,
+                                labelStyle: TextStyle(
+                                  fontSize: 22,
+                                  fontWeight: FontWeight.w300,
+                                  color: Theme.of(context).primaryColor,
+                                ),
+                                hintStyle: TextStyle(
+                                  fontSize: 16,
+                                  fontWeight: FontWeight.w300,
+                                  color: Theme.of(context).primaryColor,
+                                ),
+                                labelText: 'Дата поверки',
+                                hintText: 'дата',
+                                helperText: 'д.м.г',
+                                prefixIcon: Icon(
+                                  Icons.speaker_phone,
+                                  color: focusNode47.hasFocus ||
+                                          pribordate4Controller.text.isNotEmpty
+                                      ? Theme.of(context).primaryColor
+                                      : Colors.grey,
+                                  size: 32,
+                                ),
+                                enabledBorder: OutlineInputBorder(
+                                  borderRadius:
+                                      BorderRadius.all(Radius.circular(10)),
+                                  borderSide:
+                                      BorderSide(color: Colors.grey, width: 2),
+                                ),
+                                focusedBorder: OutlineInputBorder(
+                                  borderRadius:
+                                      BorderRadius.all(Radius.circular(20)),
+                                  borderSide: BorderSide(
+                                      color: Theme.of(context).primaryColor,
+                                      width: 2),
+                                ),
+                              ),
+                              keyboardType: TextInputType.number,
+                            ),
+                          ),
+                        ],
+                      ),
+                      // SizedBox(height: 10),
+                      Divider(thickness: 4),
+                      Container(
+                          alignment: Alignment.center,
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              Text(
+                                'Прибор №5',
+                                style: TextStyle(
+                                    fontSize: 24,
+                                    color: Theme.of(context).primaryColor,
+                                    fontWeight: FontWeight.w300),
+                              ),
+                              GestureDetector(
+                                onTap: () {
+                                  priborname5Controller.clear();
+                                  pribornumb5Controller.clear();
+                                  pribordate5Controller.clear();
+                                },
+                                child: Icon(
+                                  Icons.delete_outline,
+                                  color: Color.fromRGBO(187, 30, 16, 1.0),
+                                ),
+                              ),
+                            ],
+                          )),
+                      SizedBox(height: 10),
+                      TextFormField(
+                        focusNode: focusNode48,
+                        onChanged: (String value) {
+                          setState(() {
+                            focusNode48.requestFocus();
+                          });
+                        },
+                        maxLength: 30,
+                        onSaved: (value) {
+                          object.priborname5 = value;
+                        },
+                        controller: priborname5Controller,
+                        style: textStyle,
+                        decoration: InputDecoration(
+                          focusColor: Theme.of(context).primaryColor,
+                          labelStyle: TextStyle(
+                            fontSize: 22,
+                            fontWeight: FontWeight.w300,
+                            color: Theme.of(context).primaryColor,
+                          ),
+                          hintStyle: TextStyle(
+                            fontSize: 16,
+                            fontWeight: FontWeight.w300,
+                            color: Theme.of(context).primaryColor,
+                          ),
+                          labelText: 'Наименование прибора №5',
+                          hintText: 'Введите название',
+                          // helperText: '...',
+                          prefixIcon: Icon(
+                            Icons.speaker_phone,
+                            color: focusNode48.hasFocus ||
+                                    priborname5Controller.text.isNotEmpty
+                                ? Theme.of(context).primaryColor
+                                : Colors.grey,
+                            size: 32,
+                          ),
+                          enabledBorder: OutlineInputBorder(
+                            borderRadius: BorderRadius.all(Radius.circular(10)),
+                            borderSide:
+                                BorderSide(color: Colors.grey, width: 2),
+                          ),
+                          focusedBorder: OutlineInputBorder(
+                            borderRadius: BorderRadius.all(Radius.circular(20)),
+                            borderSide: BorderSide(
+                                color: Theme.of(context).primaryColor,
+                                width: 2),
+                          ),
+                        ),
+                        keyboardType: TextInputType.text,
+                      ),
+                      SizedBox(height: 10),
+                      Row(
+                        children: [
+                          Expanded(
+                            child: TextFormField(
+                              focusNode: focusNode49,
+                              onChanged: (String value) {
+                                setState(() {
+                                  focusNode49.requestFocus();
+                                });
+                              },
+                              maxLength: 30,
+                              onSaved: (value) {
+                                object.pribornumb5 = value;
+                              },
+                              controller: pribornumb5Controller,
+                              style: textStyle,
+                              decoration: InputDecoration(
+                                focusColor: Theme.of(context).primaryColor,
+                                labelStyle: TextStyle(
+                                  fontSize: 22,
+                                  fontWeight: FontWeight.w300,
+                                  color: Theme.of(context).primaryColor,
+                                ),
+                                hintStyle: TextStyle(
+                                  fontSize: 16,
+                                  fontWeight: FontWeight.w300,
+                                  color: Theme.of(context).primaryColor,
+                                ),
+                                labelText: '№',
+                                hintText: '№',
+                                helperText: '№....',
+                                prefixIcon: Icon(
+                                  Icons.speaker_phone,
+                                  color: focusNode49.hasFocus ||
+                                          pribornumb5Controller.text.isNotEmpty
+                                      ? Theme.of(context).primaryColor
+                                      : Colors.grey,
+                                  size: 32,
+                                ),
+                                enabledBorder: OutlineInputBorder(
+                                  borderRadius:
+                                      BorderRadius.all(Radius.circular(10)),
+                                  borderSide:
+                                      BorderSide(color: Colors.grey, width: 2),
+                                ),
+                                focusedBorder: OutlineInputBorder(
+                                  borderRadius:
+                                      BorderRadius.all(Radius.circular(20)),
+                                  borderSide: BorderSide(
+                                      color: Theme.of(context).primaryColor,
+                                      width: 2),
+                                ),
+                              ),
+                              keyboardType: TextInputType.text,
+                            ),
+                          ),
+                          SizedBox(width: 5),
+                          Expanded(
+                            child: TextFormField(
+                              focusNode: focusNode50,
+                              onChanged: (String value) {
+                                setState(() {
+                                  focusNode50.requestFocus();
+                                });
+                              },
+                              maxLength: 10,
+                              onSaved: (value) {
+                                object.pribordate5 = value;
+                              },
+                              controller: pribordate5Controller,
+                              style: textStyle,
+                              decoration: InputDecoration(
+                                focusColor: Theme.of(context).primaryColor,
+                                labelStyle: TextStyle(
+                                  fontSize: 22,
+                                  fontWeight: FontWeight.w300,
+                                  color: Theme.of(context).primaryColor,
+                                ),
+                                hintStyle: TextStyle(
+                                  fontSize: 16,
+                                  fontWeight: FontWeight.w300,
+                                  color: Theme.of(context).primaryColor,
+                                ),
+                                labelText: 'Дата поверки',
+                                hintText: 'дата',
+                                helperText: 'д.м.г',
+                                prefixIcon: Icon(
+                                  Icons.speaker_phone,
+                                  color: focusNode50.hasFocus ||
+                                          pribordate5Controller.text.isNotEmpty
+                                      ? Theme.of(context).primaryColor
+                                      : Colors.grey,
+                                  size: 32,
+                                ),
+                                enabledBorder: OutlineInputBorder(
+                                  borderRadius:
+                                      BorderRadius.all(Radius.circular(10)),
+                                  borderSide:
+                                      BorderSide(color: Colors.grey, width: 2),
+                                ),
+                                focusedBorder: OutlineInputBorder(
+                                  borderRadius:
+                                      BorderRadius.all(Radius.circular(20)),
+                                  borderSide: BorderSide(
+                                      color: Theme.of(context).primaryColor,
+                                      width: 2),
+                                ),
+                              ),
+                              keyboardType: TextInputType.number,
+                            ),
+                          ),
+                        ],
+                      ),
+                      SizedBox(height: 10),
+                      ElevatedButton(
+                        style: ElevatedButton.styleFrom(
+                            primary:
+                                Theme.of(context).accentColor, // background
+                            onPrimary: Colors.white,
+                            elevation: 2,
+                            padding: const EdgeInsets.all(13.0),
+                            shape: RoundedRectangleBorder(
+                                borderRadius:
+                                    BorderRadius.circular(10.0)) // foreground
+                            ),
+                        onPressed: () => saveForm4(),
+                        child: Text(
+                          isEdit ? 'Редактировать' : 'Добавить',
+                          style: const TextStyle(
+                              fontSize: 18.0, fontWeight: FontWeight.w300),
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+            ),
+            Center(
+              child: Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Form(
+                  key: _5formKey,
+                  child: ListView(
+                    children: <Widget>[
+                      SizedBox(height: 20),
+                      Container(
+                          alignment: Alignment.center,
+                          child: Text(
+                            'ИСПОЛНИТЕЛИ И КОМИССИЯ',
+                            style: TextStyle(
+                                fontSize: 24,
+                                color: Theme.of(context).primaryColor,
+                                fontWeight: FontWeight.w300),
+                          )),
+                      SizedBox(height: 20),
+                      DropdownButtonFormField(
+                        isExpanded: true,
+                        focusNode: focusNode51,
+                        decoration: InputDecoration(
+                          border: OutlineInputBorder(),
+                          enabledBorder: OutlineInputBorder(
+                            borderRadius: BorderRadius.all(Radius.circular(10)),
+                            borderSide:
+                                BorderSide(color: Colors.grey, width: 2),
+                          ),
+                          focusedBorder: OutlineInputBorder(
+                            borderRadius: BorderRadius.all(Radius.circular(20)),
+                            borderSide: BorderSide(
+                                color: Theme.of(context).primaryColor,
+                                width: 2),
+                          ),
+                          labelStyle: TextStyle(
+                            fontSize: 22,
+                            fontWeight: FontWeight.w300,
+                            color: Theme.of(context).primaryColor,
+                          ),
+                          prefixIcon: Icon(
+                            Icons.business,
+                            color: focusNode51.hasFocus ||
+                                    filialController.text.isNotEmpty
+                                ? Theme.of(context).primaryColor
+                                : Colors.grey,
+                            size: 32,
+                          ),
+                          labelText: 'Филиал',
+                        ),
+                        items: _filial.map((String value) {
+                          return DropdownMenuItem(
+                              value: value, child: Text(value));
+                        }).toList(),
+                        style: textStyle,
+                        value: object.filial,
+                        onChanged: (String value) {
+                          setState(() {
+                            focusNode51.requestFocus();
+                            object.filial = value;
+                          });
+                        },
+                      ),
+                      SizedBox(height: 10),
+                      DropdownButtonFormField<String>(
+                        isExpanded: true,
+                        focusNode: focusNode52,
+                        onChanged: (String value) {
+                          setState(() {
+                            focusNode52.requestFocus();
+                            object.dolzhnpredskom = value;
+                          });
+                        },
+                        decoration: InputDecoration(
+                          border: OutlineInputBorder(),
+                          enabledBorder: OutlineInputBorder(
+                            borderRadius: BorderRadius.all(Radius.circular(10)),
+                            borderSide:
+                                BorderSide(color: Colors.grey, width: 2),
+                          ),
+                          focusedBorder: OutlineInputBorder(
+                            borderRadius: BorderRadius.all(Radius.circular(20)),
+                            borderSide: BorderSide(
+                                color: Theme.of(context).primaryColor,
+                                width: 2),
+                          ),
+                          labelStyle: TextStyle(
+                            fontSize: 22,
+                            fontWeight: FontWeight.w300,
+                            color: Theme.of(context).primaryColor,
+                          ),
+                          prefixIcon: Icon(
+                            Icons.person,
+                            color: focusNode52.hasFocus ||
+                                    dolzhnpredskomController.text.isNotEmpty
+                                ? Theme.of(context).primaryColor
+                                : Colors.grey,
+                            size: 32,
+                          ),
+                          labelText: 'Должность ответственного лица',
+                        ),
+                        items: _dolzhnpredskom
+                            .map((String value) {
+                              return DropdownMenuItem<String>(
+                                value: value,
+                                child: Text(value),
+                              );
+                            })
+                            .toSet()
+                            .toList(),
+                        style: textStyle,
+                        value: object.dolzhnpredskom,
+                      ),
+                      SizedBox(height: 10),
+                      TextFormField(
+                        focusNode: focusNode53,
+                        onChanged: (String value) {
+                          setState(() {
+                            focusNode53.requestFocus();
+                          });
+                        },
+                        // maxLength: 20,
+                        onSaved: (value) {
+                          object.fiopredskom = value;
+                        },
+                        controller: fiopredskomController,
+                        style: textStyle,
+                        decoration: InputDecoration(
+                          labelText: 'ФИО ответственного лица',
+                          hintText: 'Введите ФИО',
+                          helperText: 'Фамилия И.О.',
+                          prefixIcon: Icon(
+                            Icons.person_outline,
+                            color: focusNode53.hasFocus ||
+                                    fiopredskomController.text.isNotEmpty
+                                ? Theme.of(context).primaryColor
+                                : Colors.grey,
+                            size: 32,
+                          ),
+                          suffixIcon: GestureDetector(
+                            onTap: () {
+                              fiopredskomController.clear();
+                            },
+                            child: Icon(
+                              Icons.delete_outline,
+                              color: Colors.red,
+                            ),
+                          ),
+                          enabledBorder: OutlineInputBorder(
+                            borderRadius: BorderRadius.all(Radius.circular(10)),
+                            borderSide:
+                                BorderSide(color: Colors.grey, width: 2),
+                          ),
+                          focusedBorder: OutlineInputBorder(
+                            borderRadius: BorderRadius.all(Radius.circular(20)),
+                            borderSide: BorderSide(
+                                color: Theme.of(context).primaryColor,
+                                width: 2),
+                          ),
+                          labelStyle: TextStyle(
+                            fontSize: 22,
+                            fontWeight: FontWeight.w300,
+                            color: Theme.of(context).primaryColor,
+                          ),
+                        ),
+                        keyboardType: TextInputType.text,
+                      ),
+                      SizedBox(height: 10),
+                      DropdownButtonFormField(
+                        isExpanded: true,
+                        focusNode: focusNode54,
+                        decoration: InputDecoration(
+                          border: OutlineInputBorder(),
+                          enabledBorder: OutlineInputBorder(
+                            borderRadius: BorderRadius.all(Radius.circular(10)),
+                            borderSide:
+                                BorderSide(color: Colors.grey, width: 2),
+                          ),
+                          focusedBorder: OutlineInputBorder(
+                            borderRadius: BorderRadius.all(Radius.circular(20)),
+                            borderSide: BorderSide(
+                                color: Theme.of(context).primaryColor,
+                                width: 2),
+                          ),
+                          labelStyle: TextStyle(
+                            fontSize: 22,
+                            fontWeight: FontWeight.w300,
+                            color: Theme.of(context).primaryColor,
+                          ),
+                          prefixIcon: Icon(
+                            Icons.person,
+                            color: focusNode54.hasFocus ||
+                                    dolzhnproizvrabController.text.isNotEmpty
+                                ? Theme.of(context).primaryColor
+                                : Colors.grey,
+                            size: 32,
+                          ),
+                          labelText: 'Должность проводившего испытания',
+                        ),
+                        items: _dolzhnproizvrab.map((String value) {
+                          return DropdownMenuItem(
+                              value: value, child: Text(value));
+                        }).toList(),
+                        style: textStyle,
+                        value: object.dolzhnproizvrab,
+                        onChanged: (String value) {
+                          setState(() {
+                            focusNode54.requestFocus();
+                            object.dolzhnproizvrab = value;
+                          });
+                        },
+                      ),
+                      SizedBox(height: 10),
+                      TextFormField(
+                        focusNode: focusNode55,
+                        onChanged: (String value) {
+                          setState(() {
+                            focusNode55.requestFocus();
+                          });
+                        },
+                        // maxLength: 20,
+                        onSaved: (value) {
+                          object.fioproizvrab = value;
+                        },
+                        controller: fioproizvrabController,
+                        style: textStyle,
+                        decoration: InputDecoration(
+                          labelText: 'ФИО проводившего испытания',
+                          hintText: 'Введите ФИОК',
+                          helperText: 'Фамилия И.О.',
+                          prefixIcon: Icon(
+                            Icons.person_outline,
+                            color: focusNode55.hasFocus ||
+                                    fioproizvrabController.text.isNotEmpty
+                                ? Theme.of(context).primaryColor
+                                : Colors.grey,
+                            size: 32,
+                          ),
+                          suffixIcon: GestureDetector(
+                            onTap: () {
+                              fioproizvrabController.clear();
+                            },
+                            child: Icon(
+                              Icons.delete_outline,
+                              color: Colors.red,
+                            ),
+                          ),
+                          enabledBorder: OutlineInputBorder(
+                            borderRadius: BorderRadius.all(Radius.circular(10)),
+                            borderSide:
+                                BorderSide(color: Colors.grey, width: 2),
+                          ),
+                          focusedBorder: OutlineInputBorder(
+                            borderRadius: BorderRadius.all(Radius.circular(20)),
+                            borderSide: BorderSide(
+                                color: Theme.of(context).primaryColor,
+                                width: 2),
+                          ),
+                          labelStyle: TextStyle(
+                            fontSize: 22,
+                            fontWeight: FontWeight.w300,
+                            color: Theme.of(context).primaryColor,
+                          ),
+                        ),
+                        keyboardType: TextInputType.text,
+                      ),
+                      SizedBox(height: 10),
+                      ElevatedButton(
+                        style: ElevatedButton.styleFrom(
+                            primary: Colors.amber,
+                            onPrimary: Colors.white,
+                            elevation: 2,
+                            padding: const EdgeInsets.all(13.0),
+                            shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(10.0))),
+                        onPressed: () {
+                          editExcelFile('VHK');
+                        },
+                        child: const Text(
+                          'Сформировать Акт входного контроля (по форме СТО Газпром 9.1-035-2014)',
+                          style: TextStyle(
+                            fontSize: 18.0,
+                            fontWeight: FontWeight.w300,
+                          ),
+                        ),
+                      ),
+                      SizedBox(height: 10),
+                      ElevatedButton(
+                        style: ElevatedButton.styleFrom(
+                            primary:
+                                Theme.of(context).accentColor, // background
+                            onPrimary: Colors.white,
+                            elevation: 2,
+                            padding: const EdgeInsets.all(13.0),
+                            shape: RoundedRectangleBorder(
+                                borderRadius:
+                                    BorderRadius.circular(10.0)) // foreground
+                            ),
+                        onPressed: () => saveForm5(),
+                        child: Text(
+                          isEdit ? 'Редактировать' : 'Добавить',
+                          style: const TextStyle(
+                              fontSize: 18.0, fontWeight: FontWeight.w300),
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+            ),
+          ],
+        ),
+        // floatingActionButton: isEdit
+        //     ? FloatingActionButton(
+        //         onPressed: () {
+        //           debugPrint('Click Floated Back.');
+        //           confirmDelete();
+        //         },
+        //         elevation: 5.0,
+        //         backgroundColor: Color.fromRGBO(187, 30, 16, 1.0),
+        //         tooltip: 'Удалить запись',
+        //         child: Icon(
+        //           Icons.clear,
+        //           size: 35.0,
+        //           color: Colors.white,
+        //         ))
+        //     : null,
+        // floatingActionButtonLocation: FloatingActionButtonLocation.miniEndFloat,
+      ),
+    );
+  }
+
+  void editExcelFile(String buttonName) async {
+    try {
+      if (buttonName == 'VHK') {
+        // Получаем путь к файлу Excel в папке assets
+        ByteData data = await rootBundle.load('assets/form/VHK/VHK.xlsx');
+        List<int> bytes = data.buffer.asUint8List();
+
+        // Открываем файл Excel
+        var excel = Excel.decodeBytes(bytes);
+
+        // Получаем страницу, на которой нужно вставить данные
+        var sheet = excel['VHK'];
+        var filial = 'Филиал';
+
+        // Вставляем данные в определенные ячейки
+        if (object.filial == 'Арзамасское ЛПУМГ') {
+          filial = 'Арзамасского ЛПУМГ-филиала';
+        } else if (object.filial == 'Владимирское ЛПУМГ') {
+          filial = 'Владимирского ЛПУМГ-филиала';
+        } else if (object.filial == 'Волжское ЛПУМГ') {
+          filial = 'Волжского ЛПУМГ-филиала';
+        } else if (object.filial == 'Вятское ЛПУМГ') {
+          filial = 'Вятского ЛПУМГ-филиала';
+        } else if (object.filial == 'Заволжское ЛПУМГ') {
+          filial = 'Заволжского ЛПУМГ-филиала';
+        } else if (object.filial == 'Ивановское ЛПУМГ') {
+          filial = 'Ивановского ЛПУМГ-филиала';
+        } else if (object.filial == 'Кировское ЛПУМГ') {
+          filial = 'Кировского ЛПУМГ-филиала';
+        } else if (object.filial == 'Моркинское ЛПУМГ') {
+          filial = 'Моркинского ЛПУМГ-филиала';
+        } else if (object.filial == 'Пензенское ЛПУМГ') {
+          filial = 'Пензенского ЛПУМГ-филиала';
+        } else if (object.filial == 'Пильнинское ЛПУМГ') {
+          filial = 'Пильнинского ЛПУМГ-филиала';
+        } else if (object.filial == 'Починковское ЛПУМГ') {
+          filial = 'Починковского ЛПУМГ-филиала';
+        } else if (object.filial == 'Приокское ЛПУМГ') {
+          filial = 'Приокского ЛПУМГ-филиала';
+        } else if (object.filial == 'Семеновское ЛПУМГ') {
+          filial = 'Семеновского ЛПУМГ-филиала';
+        } else if (object.filial == 'Сеченовское ЛПУМГ') {
+          filial = 'Сеченовского ЛПУМГ-филиала';
+        } else if (object.filial == 'Торбеевское ЛПУМГ') {
+          filial = 'Торбеевского ЛПУМГ-филиала';
+        } else if (object.filial == 'Чебоксарское ЛПУМГ') {
+          filial = 'Чебоксарского ЛПУМГ-филиала';
+        } else if (object.filial == 'ИТЦ ЛПУМГ') {
+          filial = 'ИТЦ-филиала';
+        } else if (object.filial == 'УАВР') {
+          filial = 'УАВР-филиала';
+        }
+        sheet.cell(CellIndex.indexByString("E4")).value =
+            object.dolzhnpredskom ?? '-';
+
+        // Получаем путь к папке "Downloads" на внешнем хранилище
+        Directory externalStorageDirectory =
+            await getExternalStorageDirectory();
+        String downloadsFolderPath = '${externalStorageDirectory.path}';
+
+        // Получаем путь к сохраненному файлу
+        var newFile = '${object.title}.xlsx';
+        var file = File('$downloadsFolderPath/$newFile');
+        var excelBytes = excel.encode();
+        await file.writeAsBytes(excelBytes);
+        String filePath = '$downloadsFolderPath/$newFile';
+
+        // Открываем новый файл
+        await OpenFile.open(filePath);
+      }
+    } catch (e) {
+      print('Ошибка при открытии файла: $e');
+    }
+  }
+
+  void confirmDelete() {
+    showDialog(
+      context: context,
+      builder: (BuildContext context) => AlertDialog(
+        title: const Text('Вы действительно хотите удалить запись?',
+            style: TextStyle(fontSize: 15.0)),
+        actions: <Widget>[
+          TextButton(
+              child: const Text('Закрыть'),
+              onPressed: () => Navigator.of(context).pop()),
+          TextButton(
+              child: const Text(
+                'Удалить',
+                style: TextStyle(
+                    color: Color.fromRGBO(187, 30, 16, 1.0),
+                    fontWeight: FontWeight.bold),
+              ),
+              onPressed: () {
+                helper.deleteTodo(object.id);
+                Navigator.of(context).pop();
+                Navigator.pop(context, true);
+              })
+        ],
+      ),
+    );
+  }
+
+  void saveForm1() {
+    final form = _1formKey.currentState;
+    if (form.validate()) {
+      form.save();
+      object.todoDate = DateFormat.yMMMMd().format(DateTime.now());
+      if (object.id != null) {
+        helper.updateTodo(object);
+      } else {
+        helper.insertTodo(object);
+      }
+      Navigator.pop(context, true);
+    }
+  }
+
+  void saveForm2() {
+    final form = _2formKey.currentState;
+    if (form.validate()) {
+      form.save();
+      object.todoDate = DateFormat.yMMMMd().format(DateTime.now());
+      if (object.id != null) {
+        helper.updateTodo(object);
+      } else {
+        helper.insertTodo(object);
+      }
+      Navigator.pop(context, true);
+    }
+  }
+
+  void saveForm3() {
+    final form = _3formKey.currentState;
+    if (form.validate()) {
+      form.save();
+      object.todoDate = DateFormat.yMMMMd().format(DateTime.now());
+      if (object.id != null) {
+        helper.updateTodo(object);
+      } else {
+        helper.insertTodo(object);
+      }
+      Navigator.pop(context, true);
+    }
+  }
+
+  void saveForm4() {
+    final form = _4formKey.currentState;
+    if (form.validate()) {
+      form.save();
+      object.todoDate = DateFormat.yMMMMd().format(DateTime.now());
+      if (object.id != null) {
+        helper.updateTodo(object);
+      } else {
+        helper.insertTodo(object);
+      }
+      Navigator.pop(context, true);
+    }
+  }
+
+  void saveForm5() {
+    final form = _5formKey.currentState;
+    if (form.validate()) {
+      form.save();
+      object.todoDate = DateFormat.yMMMMd().format(DateTime.now());
+      if (object.id != null) {
+        helper.updateTodo(object);
+      } else {
+        helper.insertTodo(object);
+      }
+      Navigator.pop(context, true);
+    }
+  }
+}

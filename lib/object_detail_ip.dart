@@ -120,27 +120,61 @@ class ObjectDetailIpState extends State<ObjectDetailIp> {
   FocusNode focusNode93 = FocusNode();
   FocusNode focusNode94 = FocusNode();
   FocusNode focusNode95 = FocusNode();
-  FocusNode focusNode96 = FocusNode(); //free
-  FocusNode focusNode97 = FocusNode(); //free
-  FocusNode focusNode98 = FocusNode(); //free
-  FocusNode focusNode99 = FocusNode(); //free
-  FocusNode focusNode100 = FocusNode(); //free
-  FocusNode focusNode101 = FocusNode(); //free
-  FocusNode focusNode102 = FocusNode(); //free
-  FocusNode focusNode103 = FocusNode(); //free
-  FocusNode focusNode104 = FocusNode(); //free
-  FocusNode focusNode105 = FocusNode(); //free
-  FocusNode focusNode106 = FocusNode(); //free
-  FocusNode focusNode107 = FocusNode(); //free
-  FocusNode focusNode108 = FocusNode(); //free
-  FocusNode focusNode109 = FocusNode(); //free
-  FocusNode focusNode110 = FocusNode(); //free
-  FocusNode focusNode111 = FocusNode(); //free
-  FocusNode focusNode112 = FocusNode(); //free
-  FocusNode focusNode113 = FocusNode(); //free
-  FocusNode focusNode114 = FocusNode(); //free
-  FocusNode focusNode115 = FocusNode(); //free
-  FocusNode focusNode116 = FocusNode(); //free
+  FocusNode focusNode96 = FocusNode();
+  FocusNode focusNode97 = FocusNode();
+  FocusNode focusNode98 = FocusNode();
+  FocusNode focusNode99 = FocusNode();
+  FocusNode focusNode100 = FocusNode();
+  FocusNode focusNode101 = FocusNode();
+  FocusNode focusNode102 = FocusNode();
+  FocusNode focusNode103 = FocusNode();
+  FocusNode focusNode104 = FocusNode();
+  FocusNode focusNode105 = FocusNode();
+  FocusNode focusNode106 = FocusNode();
+  FocusNode focusNode107 = FocusNode();
+  FocusNode focusNode108 = FocusNode();
+  FocusNode focusNode109 = FocusNode();
+  FocusNode focusNode110 = FocusNode();
+  FocusNode focusNode111 = FocusNode();
+  FocusNode focusNode112 = FocusNode();
+  FocusNode focusNode113 = FocusNode();
+  FocusNode focusNode114 = FocusNode();
+  FocusNode focusNode115 = FocusNode();
+  FocusNode focusNode116 = FocusNode();
+  FocusNode focusNode117 = FocusNode();
+  FocusNode focusNode118 = FocusNode();
+  FocusNode focusNode119 = FocusNode(); //free
+  FocusNode focusNode120 = FocusNode(); //free
+  FocusNode focusNode121 = FocusNode(); //free
+  FocusNode focusNode122 = FocusNode(); //free
+  FocusNode focusNode123 = FocusNode(); //free
+  FocusNode focusNode124 = FocusNode(); //free
+  FocusNode focusNode125 = FocusNode(); //free
+  FocusNode focusNode126 = FocusNode(); //free
+  FocusNode focusNode127 = FocusNode(); //free
+  FocusNode focusNode128 = FocusNode(); //free
+  FocusNode focusNode129 = FocusNode(); //free
+  FocusNode focusNode130 = FocusNode(); //free
+  FocusNode focusNode131 = FocusNode(); //free
+  FocusNode focusNode132 = FocusNode(); //free
+  FocusNode focusNode133 = FocusNode(); //free
+  FocusNode focusNode134 = FocusNode(); //free
+  FocusNode focusNode135 = FocusNode(); //free
+  FocusNode focusNode136 = FocusNode(); //free
+  FocusNode focusNode137 = FocusNode(); //free
+  FocusNode focusNode138 = FocusNode(); //free
+  FocusNode focusNode139 = FocusNode(); //free
+  FocusNode focusNode140 = FocusNode(); //free
+  FocusNode focusNode141 = FocusNode(); //free
+  FocusNode focusNode142 = FocusNode(); //free
+  FocusNode focusNode143 = FocusNode(); //free
+  FocusNode focusNode144 = FocusNode(); //free
+  FocusNode focusNode145 = FocusNode(); //free
+  FocusNode focusNode146 = FocusNode(); //free
+  FocusNode focusNode147 = FocusNode(); //free
+  FocusNode focusNode148 = FocusNode(); //free
+  FocusNode focusNode149 = FocusNode(); //free
+  FocusNode focusNode150 = FocusNode(); //free
 
   File _image;
 
@@ -463,6 +497,10 @@ class ObjectDetailIpState extends State<ObjectDetailIp> {
 
   TextEditingController diameterController = TextEditingController();
   TextEditingController thickpipeController = TextEditingController();
+  TextEditingController thickpipeController1 = TextEditingController();
+  TextEditingController thickpipeController2 = TextEditingController();
+  TextEditingController thickpipeController3 = TextEditingController();
+  TextEditingController thickpipeController4 = TextEditingController();
   TextEditingController gradesteelController = TextEditingController();
 
   TextEditingController metalldamageController = TextEditingController();
@@ -494,8 +532,19 @@ class ObjectDetailIpState extends State<ObjectDetailIp> {
   TextEditingController typeinsulController = TextEditingController();
 
   TextEditingController insuladhesController1 = TextEditingController();
+  TextEditingController insuladhesController4 = TextEditingController();
   TextEditingController insulcharadhesController1 = TextEditingController();
   TextEditingController thickinsulController1 = TextEditingController();
+  TextEditingController thickinsulController4 = TextEditingController();
+  TextEditingController thickinsulController5 = TextEditingController();
+  TextEditingController thickinsulController = TextEditingController();
+  TextEditingController thickinsulController6 = TextEditingController();
+  TextEditingController thickinsulController7 = TextEditingController();
+  TextEditingController thickinsulController8 = TextEditingController();
+  TextEditingController thickinsulController9 = TextEditingController();
+  TextEditingController thickinsulController10 = TextEditingController();
+  TextEditingController thickinsulController11 = TextEditingController();
+  TextEditingController thickinsulController12 = TextEditingController();
 
   TextEditingController insuladhesController2 = TextEditingController();
   TextEditingController insulcharadhesController2 = TextEditingController();
@@ -549,7 +598,27 @@ class ObjectDetailIpState extends State<ObjectDetailIp> {
 
   TextEditingController typeinsulrestController = TextEditingController();
   TextEditingController insuladhesrestController = TextEditingController();
+  TextEditingController insuladhesrestController1 = TextEditingController();
+  TextEditingController insuladhesrestController2 = TextEditingController();
+  TextEditingController insuladhesrestController3 = TextEditingController();
+  TextEditingController insulcharadhesrestController1 = TextEditingController();
+  TextEditingController insulcharadhesrestController2 = TextEditingController();
+  TextEditingController insulcharadhesrestController3 = TextEditingController();
+  TextEditingController insulcharadhesrestController4 = TextEditingController();
+
   TextEditingController thickinsulrestController = TextEditingController();
+  TextEditingController thickinsulrestController1 = TextEditingController();
+  TextEditingController thickinsulrestController2 = TextEditingController();
+  TextEditingController thickinsulrestController3 = TextEditingController();
+  TextEditingController thickinsulrestController4 = TextEditingController();
+  TextEditingController thickinsulrestController5 = TextEditingController();
+  TextEditingController thickinsulrestController6 = TextEditingController();
+  TextEditingController thickinsulrestController7 = TextEditingController();
+  TextEditingController thickinsulrestController8 = TextEditingController();
+  TextEditingController thickinsulrestController9 = TextEditingController();
+  TextEditingController thickinsulrestController10 = TextEditingController();
+  TextEditingController thickinsulrestController11 = TextEditingController();
+  TextEditingController thickinsulrestController12 = TextEditingController();
   TextEditingController contininsulrestController = TextEditingController();
   TextEditingController metrrestController = TextEditingController();
 
@@ -584,6 +653,7 @@ class ObjectDetailIpState extends State<ObjectDetailIp> {
   TextEditingController fiodruglicController = TextEditingController();
 
   TextEditingController dateObslController = TextEditingController();
+  TextEditingController dateObsl2Controller = TextEditingController();
   TextEditingController locationController = TextEditingController();
   TextEditingController dolzhnpredstzakazchSKController =
       TextEditingController();
@@ -616,6 +686,7 @@ class ObjectDetailIpState extends State<ObjectDetailIp> {
     locationController.text = object.location ?? '';
     print('дата обследования: ${object.dateObsl}');
     dateObslController.text = object.dateObsl ?? '';
+    dateObsl2Controller.text = object.dateObsl2 ?? '';
     piketkmController.text = object.piketkm ?? '';
     coordinateController.text = object.coordinate ?? '';
     lengthpitController.text = object.lengthpit ?? '';
@@ -630,6 +701,10 @@ class ObjectDetailIpState extends State<ObjectDetailIp> {
 
     diameterController.text = object.diameter ?? '';
     thickpipeController.text = object.thickpipe ?? '';
+    thickpipeController1.text = object.thickpipe1 ?? '';
+    thickpipeController2.text = object.thickpipe2 ?? '';
+    thickpipeController3.text = object.thickpipe3 ?? '';
+    thickpipeController4.text = object.thickpipe4 ?? '';
     gradesteelController.text = object.gradesteel ?? '';
 
     metalldamageController.text = object.metalldamage ?? '';
@@ -657,8 +732,19 @@ class ObjectDetailIpState extends State<ObjectDetailIp> {
 
     typeinsulController.text = object.typeinsul ?? '';
     insuladhesController1.text = object.insuladhes1 ?? '';
+    insuladhesController4.text = object.insuladhes4 ?? '';
     insulcharadhesController1.text = object.insulcharadhes1 ?? '';
     thickinsulController1.text = object.thickinsul1 ?? '';
+    thickinsulController4.text = object.thickinsul4 ?? '';
+    thickinsulController5.text = object.thickinsul5 ?? '';
+    thickinsulController6.text = object.thickinsul6 ?? '';
+    thickinsulController7.text = object.thickinsul7 ?? '';
+    thickinsulController8.text = object.thickinsul8 ?? '';
+    thickinsulController9.text = object.thickinsul9 ?? '';
+    thickinsulController10.text = object.thickinsul10 ?? '';
+    thickinsulController11.text = object.thickinsul11 ?? '';
+    thickinsulController12.text = object.thickinsul12 ?? '';
+    thickinsulController.text = object.thickinsul ?? '';
 
     insuladhesController2.text = object.insuladhes2 ?? '';
     insulcharadhesController2.text = object.insulcharadhes2 ?? '';
@@ -700,7 +786,26 @@ class ObjectDetailIpState extends State<ObjectDetailIp> {
 
     typeinsulrestController.text = object.typeinsulrest ?? '';
     insuladhesrestController.text = object.insuladhesrest ?? '';
+    insuladhesrestController1.text = object.insuladhesrest1 ?? '';
+    insuladhesrestController2.text = object.insuladhesrest2 ?? '';
+    insuladhesrestController3.text = object.insuladhesrest3 ?? '';
+    insulcharadhesrestController1.text = object.insulcharadhesrest1 ?? '';
+    insulcharadhesrestController2.text = object.insulcharadhesrest2 ?? '';
+    insulcharadhesrestController3.text = object.insulcharadhesrest3 ?? '';
+    insulcharadhesrestController4.text = object.insulcharadhesrest4 ?? '';
     thickinsulrestController.text = object.thickinsulrest ?? '';
+    thickinsulrestController1.text = object.thickinsulrest1 ?? '';
+    thickinsulrestController2.text = object.thickinsulrest2 ?? '';
+    thickinsulrestController3.text = object.thickinsulrest3 ?? '';
+    thickinsulrestController4.text = object.thickinsulrest4 ?? '';
+    thickinsulrestController5.text = object.thickinsulrest5 ?? '';
+    thickinsulrestController6.text = object.thickinsulrest6 ?? '';
+    thickinsulrestController7.text = object.thickinsulrest7 ?? '';
+    thickinsulrestController8.text = object.thickinsulrest8 ?? '';
+    thickinsulrestController9.text = object.thickinsulrest9 ?? '';
+    thickinsulrestController10.text = object.thickinsulrest10 ?? '';
+    thickinsulrestController11.text = object.thickinsulrest11 ?? '';
+    thickinsulrestController12.text = object.thickinsulrest12 ?? '';
     contininsulrestController.text = object.contininsulrest ?? '';
     metrrestController.text = object.metrrest ?? '';
 
@@ -788,28 +893,28 @@ class ObjectDetailIpState extends State<ObjectDetailIp> {
                         onPressed: () {
                           if (_1formKey.currentState != null) {
                             _1formKey.currentState.validate();
-                            saveForm1();
+                            saveForm12();
                           } else if (_2formKey.currentState != null) {
                             _2formKey.currentState.validate();
-                            saveForm2();
+                            saveForm22();
                           } else if (_3formKey.currentState != null) {
                             _3formKey.currentState.validate();
-                            saveForm3();
+                            saveForm32();
                           } else if (_4formKey.currentState != null) {
                             _4formKey.currentState.validate();
-                            saveForm4();
+                            saveForm42();
                           } else if (_5formKey.currentState != null) {
                             _5formKey.currentState.validate();
-                            saveForm5();
+                            saveForm52();
                           } else if (_6formKey.currentState != null) {
                             _6formKey.currentState.validate();
-                            saveForm6();
+                            saveForm62();
                           } else if (_7formKey.currentState != null) {
                             _7formKey.currentState.validate();
-                            saveForm7();
+                            saveForm72();
                           } else if (_8formKey.currentState != null) {
                             _8formKey.currentState.validate();
-                            saveForm8();
+                            saveForm82();
                           }
                         },
                       ),
@@ -851,7 +956,7 @@ class ObjectDetailIpState extends State<ObjectDetailIp> {
                             saveForm7();
                           } else if (_8formKey.currentState != null) {
                             _8formKey.currentState.validate();
-                            saveForm8();
+                            saveForm82();
                           }
                         },
                       ),
@@ -1004,12 +1109,42 @@ class ObjectDetailIpState extends State<ObjectDetailIp> {
                           ),
                         ),
                         onChanged: (String value) {
-                          focusNode1.requestFocus();
                           setState(() {});
+                          focusNode1.requestFocus();
                         },
                       ),
                       SizedBox(height: 10),
                       Divider(thickness: 4),
+                      Row(
+                        children: [
+                          Expanded(
+                            child: Container(
+                              alignment: Alignment.center,
+                              child: Text(
+                                'Дата начала работ:',
+                                style: TextStyle(
+                                  fontSize: 16,
+                                  color: Theme.of(context).primaryColor,
+                                  fontWeight: FontWeight.w300,
+                                ),
+                              ),
+                            ),
+                          ),
+                          Expanded(
+                            child: Container(
+                              alignment: Alignment.center,
+                              child: Text(
+                                'Дата окончания работ:',
+                                style: TextStyle(
+                                  fontSize: 16,
+                                  color: Theme.of(context).primaryColor,
+                                  fontWeight: FontWeight.w300,
+                                ),
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
                       Row(
                         children: [
                           IconButton(
@@ -1048,7 +1183,52 @@ class ObjectDetailIpState extends State<ObjectDetailIp> {
                             child: Text(
                               dateObslController.text,
                               style: TextStyle(
-                                fontSize: 24,
+                                fontSize: 22,
+                                color: Theme.of(context).primaryColor,
+                                fontWeight: FontWeight.w300,
+                              ),
+                            ),
+                          ),
+                          SizedBox(width: 10),
+                          Expanded(
+                            child: IconButton(
+                              focusNode: focusNode10,
+                              onPressed: () async {
+                                DateTime selectedDate = await showDatePicker(
+                                  context: context,
+                                  initialDate: DateTime.now(),
+                                  firstDate: DateTime(2015),
+                                  lastDate: DateTime(2030),
+                                  locale: const Locale("ru",
+                                      "RU"), // Установите локаль на русский язык
+                                );
+
+                                if (selectedDate != null) {
+                                  setState(() {
+                                    dateObsl2Controller.text =
+                                        DateFormat('dd.MM.yyyy')
+                                            .format(selectedDate);
+                                    object.dateObsl2 = dateObsl2Controller.text;
+                                  });
+                                }
+                              },
+                              icon: Icon(
+                                Icons.calendar_month_outlined,
+                                color: focusNode10.hasFocus ||
+                                        dateObsl2Controller.text.isNotEmpty
+                                    ? Theme.of(context).primaryColor
+                                    : Colors.grey,
+                                size: 32,
+                              ),
+                            ),
+                          ),
+                          SizedBox(width: 10),
+                          Container(
+                            alignment: Alignment.center,
+                            child: Text(
+                              dateObsl2Controller.text,
+                              style: TextStyle(
+                                fontSize: 22,
                                 color: Theme.of(context).primaryColor,
                                 fontWeight: FontWeight.w300,
                               ),
@@ -1831,7 +2011,9 @@ class ObjectDetailIpState extends State<ObjectDetailIp> {
                             ),
                         onPressed: () => saveForm1(),
                         child: Text(
-                          isEdit ? 'Редактировать' : 'Добавить',
+                          isEdit
+                              ? 'Редактировать и закрыть'
+                              : 'Добавить и закрыть',
                           style: const TextStyle(
                             fontSize: 18.0,
                             fontWeight: FontWeight.w300,
@@ -1913,69 +2095,315 @@ class ObjectDetailIpState extends State<ObjectDetailIp> {
                         value: object.diameter,
                       ),
                       SizedBox(height: 10),
-                      TextFormField(
-                        onChanged: (String value) {
-                          setState(() {});
-                          focusNode8.requestFocus();
-                        },
-                        focusNode: focusNode8,
-                        maxLength: 6,
-                        onSaved: (value) {
-                          object.thickpipe = value;
-                        },
-                        controller: thickpipeController,
-                        style: textStyle,
-                        decoration: InputDecoration(
-                          focusColor: Theme.of(context).primaryColor,
-                          labelStyle: TextStyle(
-                            fontSize: 22,
-                            fontWeight: FontWeight.w300,
-                            color: Theme.of(context).primaryColor,
-                          ),
-                          hintStyle: TextStyle(
-                            fontSize: 16,
-                            fontWeight: FontWeight.w300,
-                            color: Theme.of(context).primaryColor,
-                          ),
-                          labelText: 'Толщина стенки',
-                          hintText: 'Введите толщину стенки',
-                          helperText: 'мм',
-                          prefixIcon: Icon(
-                            Icons.vertical_align_center_sharp,
-                            color: (focusNode8.hasFocus ||
-                                    thickpipeController.text.isNotEmpty)
-                                ? Theme.of(context).primaryColor
-                                : Colors.grey,
-                            size: 32,
-                          ),
-                          suffixIcon: GestureDetector(
-                            onTap: () {
-                              thickpipeController.clear();
-                            },
-                            child: Icon(
-                              Icons.delete_outline,
-                              color: Color.fromRGBO(187, 30, 16, 1.0),
+                      Divider(thickness: 4),
+                      SizedBox(height: 10),
+                      Container(
+                          alignment: Alignment.center,
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              Text(
+                                'Толщина стенки',
+                                style: TextStyle(
+                                    fontSize: 24,
+                                    color: Theme.of(context).primaryColor,
+                                    fontWeight: FontWeight.w300),
+                              ),
+                              GestureDetector(
+                                onTap: () {
+                                  thickpipeController1.clear();
+                                  thickpipeController2.clear();
+                                  thickpipeController3.clear();
+                                  thickpipeController4.clear();
+                                  thickpipeController.clear();
+                                },
+                                child: Icon(
+                                  Icons.delete_outline,
+                                  color: Color.fromRGBO(187, 30, 16, 1.0),
+                                ),
+                              ),
+                            ],
+                          )),
+                      SizedBox(height: 10),
+                      Column(
+                        children: [
+                          Center(
+                            child: TextFormField(
+                              onChanged: (String value) {
+                                setState(() {});
+                                focusNode115.requestFocus();
+                                minipipe();
+                              },
+                              focusNode: focusNode115,
+                              maxLength: 4,
+                              onSaved: (value) {
+                                object.thickpipe1 = value;
+                              },
+                              controller: thickpipeController1,
+                              style: textStyle,
+                              decoration: InputDecoration(
+                                focusColor: Theme.of(context).primaryColor,
+                                labelStyle: TextStyle(
+                                  fontSize: 22,
+                                  fontWeight: FontWeight.w300,
+                                  color: Theme.of(context).primaryColor,
+                                ),
+                                hintStyle: TextStyle(
+                                  fontSize: 16,
+                                  fontWeight: FontWeight.w300,
+                                  color: Theme.of(context).primaryColor,
+                                ),
+                                labelText: 'Толщина стенки 12ч',
+                                hintText: 'Введите толщину стенки',
+                                helperText: 'мм',
+                                prefixIcon: Icon(
+                                  Icons.vertical_align_center_sharp,
+                                  color: (focusNode115.hasFocus ||
+                                          thickpipeController1.text.isNotEmpty)
+                                      ? Theme.of(context).primaryColor
+                                      : Colors.grey,
+                                  size: 32,
+                                ),
+                                enabledBorder: OutlineInputBorder(
+                                  borderRadius:
+                                      BorderRadius.all(Radius.circular(10)),
+                                  borderSide:
+                                      BorderSide(color: Colors.grey, width: 2),
+                                ),
+                                focusedBorder: OutlineInputBorder(
+                                  borderRadius:
+                                      BorderRadius.all(Radius.circular(20)),
+                                  borderSide: BorderSide(
+                                      color: Theme.of(context).primaryColor,
+                                      width: 2),
+                                ),
+                              ),
+                              keyboardType: TextInputType.number,
                             ),
                           ),
-                          enabledBorder: OutlineInputBorder(
-                            borderRadius: BorderRadius.all(Radius.circular(10)),
-                            borderSide:
-                                BorderSide(color: Colors.grey, width: 2),
+                          Center(
+                            child: Icon(
+                              Icons.arrow_drop_down,
+                              color: Theme.of(context).primaryColor,
+                              size: 55,
+                            ),
                           ),
-                          focusedBorder: OutlineInputBorder(
-                            borderRadius: BorderRadius.all(Radius.circular(20)),
-                            borderSide: BorderSide(
-                                color: Theme.of(context).primaryColor,
-                                width: 2),
-                          ),
-                        ),
-                        keyboardType: TextInputType.number,
-                        inputFormatters: [
-                          // FilteringTextInputFormatter.digitsOnly,
-                          FilteringTextInputFormatter(RegExp(r'^\d+\,?\d{0,3}'),
-                              allow: true),
                         ],
                       ),
+                      Row(
+                        children: [
+                          Expanded(
+                            child: TextFormField(
+                              onChanged: (String value) {
+                                setState(() {});
+                                focusNode118.requestFocus();
+                                minipipe();
+                              },
+                              focusNode: focusNode118,
+                              maxLength: 4,
+                              onSaved: (value) {
+                                object.thickpipe4 = value;
+                              },
+                              controller: thickpipeController4,
+                              style: textStyle,
+                              decoration: InputDecoration(
+                                focusColor: Theme.of(context).primaryColor,
+                                labelStyle: TextStyle(
+                                  fontSize: 22,
+                                  fontWeight: FontWeight.w300,
+                                  color: Theme.of(context).primaryColor,
+                                ),
+                                hintStyle: TextStyle(
+                                  fontSize: 22,
+                                  fontWeight: FontWeight.w300,
+                                  color: Theme.of(context).primaryColor,
+                                ),
+                                labelText: '9ч',
+                                hintText: '9ч',
+                                helperText: 'мм',
+                                // prefixIcon: Icon(
+                                //   Icons.vertical_align_center_sharp,
+                                //   color: (focusNode118.hasFocus ||
+                                //           thickpipeController4.text.isNotEmpty)
+                                //       ? Theme.of(context).primaryColor
+                                //       : Colors.grey,
+                                //   size: 22,
+                                // ),
+                                enabledBorder: OutlineInputBorder(
+                                  borderRadius:
+                                      BorderRadius.all(Radius.circular(10)),
+                                  borderSide:
+                                      BorderSide(color: Colors.grey, width: 2),
+                                ),
+                                focusedBorder: OutlineInputBorder(
+                                  borderRadius:
+                                      BorderRadius.all(Radius.circular(20)),
+                                  borderSide: BorderSide(
+                                      color: Theme.of(context).primaryColor,
+                                      width: 2),
+                                ),
+                              ),
+                              keyboardType: TextInputType.number,
+                            ),
+                          ),
+                          Expanded(
+                            child: Icon(
+                              Icons.arrow_right,
+                              color: Theme.of(context).primaryColor,
+                              size: 55,
+                            ),
+                          ),
+                          Container(
+                            width: 100,
+                            height: 100,
+                            decoration: BoxDecoration(
+                              shape: BoxShape.circle,
+                              border: Border.all(
+                                color: Theme.of(context).primaryColor,
+                                width: 8,
+                              ),
+                            ),
+                            child: Center(
+                              child: Text(
+                                'мин: ${thickpipeController.text}',
+                                textAlign: TextAlign.center,
+                                style: TextStyle(
+                                    fontSize: 20,
+                                    color: Theme.of(context).primaryColor,
+                                    fontWeight: FontWeight.w600),
+                              ),
+                            ),
+                          ),
+                          Expanded(
+                            child: Icon(
+                              Icons.arrow_left,
+                              color: Theme.of(context).primaryColor,
+                              size: 55,
+                            ),
+                          ),
+                          Expanded(
+                            child: TextFormField(
+                              onChanged: (String value) {
+                                setState(() {});
+                                focusNode116.requestFocus();
+                                minipipe();
+                              },
+                              focusNode: focusNode116,
+                              maxLength: 4,
+                              onSaved: (value) {
+                                object.thickpipe2 = value;
+                              },
+                              controller: thickpipeController2,
+                              style: textStyle,
+                              decoration: InputDecoration(
+                                focusColor: Theme.of(context).primaryColor,
+                                labelStyle: TextStyle(
+                                  fontSize: 22,
+                                  fontWeight: FontWeight.w300,
+                                  color: Theme.of(context).primaryColor,
+                                ),
+                                hintStyle: TextStyle(
+                                  fontSize: 22,
+                                  fontWeight: FontWeight.w300,
+                                  color: Theme.of(context).primaryColor,
+                                ),
+                                labelText: '3ч',
+                                hintText: '3ч',
+                                helperText: 'мм',
+                                // prefixIcon: Icon(
+                                //   Icons.vertical_align_center_sharp,
+                                //   color: (focusNode116.hasFocus ||
+                                //           thickpipeController2.text.isNotEmpty)
+                                //       ? Theme.of(context).primaryColor
+                                //       : Colors.grey,
+                                //   size: 32,
+                                // ),
+                                enabledBorder: OutlineInputBorder(
+                                  borderRadius:
+                                      BorderRadius.all(Radius.circular(10)),
+                                  borderSide:
+                                      BorderSide(color: Colors.grey, width: 2),
+                                ),
+                                focusedBorder: OutlineInputBorder(
+                                  borderRadius:
+                                      BorderRadius.all(Radius.circular(20)),
+                                  borderSide: BorderSide(
+                                      color: Theme.of(context).primaryColor,
+                                      width: 2),
+                                ),
+                              ),
+                              keyboardType: TextInputType.number,
+                            ),
+                          ),
+                        ],
+                      ),
+                      Column(
+                        children: [
+                          Center(
+                            child: Icon(
+                              Icons.arrow_drop_up,
+                              color: Theme.of(context).primaryColor,
+                              size: 55,
+                            ),
+                          ),
+                          Center(
+                            child: TextFormField(
+                              onChanged: (String value) {
+                                setState(() {});
+                                focusNode117.requestFocus();
+                                minipipe();
+                              },
+                              focusNode: focusNode117,
+                              maxLength: 4,
+                              onSaved: (value) {
+                                object.thickpipe3 = value;
+                              },
+                              controller: thickpipeController3,
+                              style: textStyle,
+                              decoration: InputDecoration(
+                                focusColor: Theme.of(context).primaryColor,
+                                labelStyle: TextStyle(
+                                  fontSize: 22,
+                                  fontWeight: FontWeight.w300,
+                                  color: Theme.of(context).primaryColor,
+                                ),
+                                hintStyle: TextStyle(
+                                  fontSize: 16,
+                                  fontWeight: FontWeight.w300,
+                                  color: Theme.of(context).primaryColor,
+                                ),
+                                labelText: 'Толщина стенки 6ч',
+                                hintText: 'Введите толщину стенки',
+                                helperText: 'мм',
+                                prefixIcon: Icon(
+                                  Icons.vertical_align_center_sharp,
+                                  color: (focusNode117.hasFocus ||
+                                          thickpipeController3.text.isNotEmpty)
+                                      ? Theme.of(context).primaryColor
+                                      : Colors.grey,
+                                  size: 32,
+                                ),
+                                enabledBorder: OutlineInputBorder(
+                                  borderRadius:
+                                      BorderRadius.all(Radius.circular(10)),
+                                  borderSide:
+                                      BorderSide(color: Colors.grey, width: 2),
+                                ),
+                                focusedBorder: OutlineInputBorder(
+                                  borderRadius:
+                                      BorderRadius.all(Radius.circular(20)),
+                                  borderSide: BorderSide(
+                                      color: Theme.of(context).primaryColor,
+                                      width: 2),
+                                ),
+                              ),
+                              keyboardType: TextInputType.number,
+                            ),
+                          ),
+                        ],
+                      ),
+                      SizedBox(height: 10),
+                      Divider(thickness: 4),
                       SizedBox(height: 10),
                       DropdownButtonFormField(
                         isExpanded: true,
@@ -3617,7 +4045,9 @@ class ObjectDetailIpState extends State<ObjectDetailIp> {
                             ),
                         onPressed: () => saveForm2(),
                         child: Text(
-                          isEdit ? 'Редактировать' : 'Добавить',
+                          isEdit
+                              ? 'Редактировать и закрыть'
+                              : 'Добавить и закрыть',
                           style: const TextStyle(
                               fontSize: 18.0, fontWeight: FontWeight.w300),
                         ),
@@ -3700,42 +4130,47 @@ class ObjectDetailIpState extends State<ObjectDetailIp> {
                       ),
                       SizedBox(height: 10),
                       Divider(thickness: 4),
-                      Container(
-                          alignment: Alignment.center,
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              Text(
-                                'Толщина ИП',
-                                style: TextStyle(
-                                    fontSize: 24,
-                                    color: Theme.of(context).primaryColor,
-                                    fontWeight: FontWeight.w300),
-                              ),
-                              GestureDetector(
-                                onTap: () {
-                                  thickinsulController1.clear();
-                                  thickinsulController2.clear();
-                                  thickinsulController3.clear();
-                                },
-                                child: Icon(
-                                  Icons.delete_outline,
-                                  color: Color.fromRGBO(187, 30, 16, 1.0),
-                                ),
-                              ),
-                            ],
-                          )),
                       SizedBox(height: 10),
-                      Row(
+                      Container(
+                        alignment: Alignment.center,
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Text(
+                              'Толщина ИП (изм№1)',
+                              style: TextStyle(
+                                  fontSize: 24,
+                                  color: Theme.of(context).primaryColor,
+                                  fontWeight: FontWeight.w300),
+                            ),
+                            GestureDetector(
+                              onTap: () {
+                                thickinsulController1.clear();
+                                thickinsulController2.clear();
+                                thickinsulController3.clear();
+                                thickinsulController4.clear();
+                                thickinsulController.clear();
+                              },
+                              child: Icon(
+                                Icons.delete_outline,
+                                color: Color.fromRGBO(187, 30, 16, 1.0),
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                      SizedBox(height: 10),
+                      Column(
                         children: [
-                          Expanded(
+                          Center(
                             child: TextFormField(
-                              focusNode: focusNode15,
                               onChanged: (String value) {
                                 setState(() {});
-                                focusNode15.requestFocus();
+                                focusNode119.requestFocus();
+                                minithickinsul();
                               },
-                              maxLength: 3,
+                              focusNode: focusNode119,
+                              maxLength: 4,
                               onSaved: (value) {
                                 object.thickinsul1 = value;
                               },
@@ -3753,13 +4188,13 @@ class ObjectDetailIpState extends State<ObjectDetailIp> {
                                   fontWeight: FontWeight.w300,
                                   color: Theme.of(context).primaryColor,
                                 ),
-                                labelText: 'изм.№1',
-                                hintText: 'мм',
+                                labelText: 'Толщина ИП 12ч',
+                                hintText: 'Введите толщину покрытия',
                                 helperText: 'мм',
                                 prefixIcon: Icon(
                                   Icons.vertical_align_center_sharp,
-                                  color: focusNode15.hasFocus ||
-                                          thickinsulController1.text.isNotEmpty
+                                  color: (focusNode119.hasFocus ||
+                                          thickinsulController1.text.isNotEmpty)
                                       ? Theme.of(context).primaryColor
                                       : Colors.grey,
                                   size: 32,
@@ -3781,15 +4216,107 @@ class ObjectDetailIpState extends State<ObjectDetailIp> {
                               keyboardType: TextInputType.number,
                             ),
                           ),
-                          SizedBox(width: 5),
+                          Center(
+                            child: Icon(
+                              Icons.arrow_drop_down,
+                              color: Theme.of(context).primaryColor,
+                              size: 55,
+                            ),
+                          ),
+                        ],
+                      ),
+                      Row(
+                        children: [
                           Expanded(
                             child: TextFormField(
-                              focusNode: focusNode78,
                               onChanged: (String value) {
                                 setState(() {});
-                                focusNode78.requestFocus();
+                                focusNode120.requestFocus();
+                                minithickinsul();
                               },
-                              maxLength: 3,
+                              focusNode: focusNode120,
+                              maxLength: 4,
+                              onSaved: (value) {
+                                object.thickinsul4 = value;
+                              },
+                              controller: thickinsulController4,
+                              style: textStyle,
+                              decoration: InputDecoration(
+                                focusColor: Theme.of(context).primaryColor,
+                                labelStyle: TextStyle(
+                                  fontSize: 22,
+                                  fontWeight: FontWeight.w300,
+                                  color: Theme.of(context).primaryColor,
+                                ),
+                                hintStyle: TextStyle(
+                                  fontSize: 22,
+                                  fontWeight: FontWeight.w300,
+                                  color: Theme.of(context).primaryColor,
+                                ),
+                                labelText: '9ч',
+                                hintText: '9ч',
+                                helperText: 'мм',
+                                enabledBorder: OutlineInputBorder(
+                                  borderRadius:
+                                      BorderRadius.all(Radius.circular(10)),
+                                  borderSide:
+                                      BorderSide(color: Colors.grey, width: 2),
+                                ),
+                                focusedBorder: OutlineInputBorder(
+                                  borderRadius:
+                                      BorderRadius.all(Radius.circular(20)),
+                                  borderSide: BorderSide(
+                                      color: Theme.of(context).primaryColor,
+                                      width: 2),
+                                ),
+                              ),
+                              keyboardType: TextInputType.number,
+                            ),
+                          ),
+                          Expanded(
+                            child: Icon(
+                              Icons.arrow_right,
+                              color: Theme.of(context).primaryColor,
+                              size: 55,
+                            ),
+                          ),
+                          Container(
+                            width: 100,
+                            height: 100,
+                            decoration: BoxDecoration(
+                              shape: BoxShape.circle,
+                              border: Border.all(
+                                color: Theme.of(context).primaryColor,
+                                width: 8,
+                              ),
+                            ),
+                            child: Center(
+                              child: Text(
+                                'мин: ${thickinsulController.text}',
+                                textAlign: TextAlign.center,
+                                style: TextStyle(
+                                    fontSize: 20,
+                                    color: Theme.of(context).primaryColor,
+                                    fontWeight: FontWeight.w600),
+                              ),
+                            ),
+                          ),
+                          Expanded(
+                            child: Icon(
+                              Icons.arrow_left,
+                              color: Theme.of(context).primaryColor,
+                              size: 55,
+                            ),
+                          ),
+                          Expanded(
+                            child: TextFormField(
+                              onChanged: (String value) {
+                                setState(() {});
+                                focusNode121.requestFocus();
+                                minithickinsul();
+                              },
+                              focusNode: focusNode121,
+                              maxLength: 4,
                               onSaved: (value) {
                                 object.thickinsul2 = value;
                               },
@@ -3803,21 +4330,13 @@ class ObjectDetailIpState extends State<ObjectDetailIp> {
                                   color: Theme.of(context).primaryColor,
                                 ),
                                 hintStyle: TextStyle(
-                                  fontSize: 16,
+                                  fontSize: 22,
                                   fontWeight: FontWeight.w300,
                                   color: Theme.of(context).primaryColor,
                                 ),
-                                labelText: 'изм.№2',
-                                hintText: 'мм',
+                                labelText: '3ч',
+                                hintText: '3ч',
                                 helperText: 'мм',
-                                prefixIcon: Icon(
-                                  Icons.vertical_align_center_sharp,
-                                  color: focusNode78.hasFocus ||
-                                          thickinsulController2.text.isNotEmpty
-                                      ? Theme.of(context).primaryColor
-                                      : Colors.grey,
-                                  size: 32,
-                                ),
                                 enabledBorder: OutlineInputBorder(
                                   borderRadius:
                                       BorderRadius.all(Radius.circular(10)),
@@ -3835,15 +4354,26 @@ class ObjectDetailIpState extends State<ObjectDetailIp> {
                               keyboardType: TextInputType.number,
                             ),
                           ),
-                          SizedBox(width: 5),
-                          Expanded(
+                        ],
+                      ),
+                      Column(
+                        children: [
+                          Center(
+                            child: Icon(
+                              Icons.arrow_drop_up,
+                              color: Theme.of(context).primaryColor,
+                              size: 55,
+                            ),
+                          ),
+                          Center(
                             child: TextFormField(
-                              focusNode: focusNode77,
                               onChanged: (String value) {
                                 setState(() {});
-                                focusNode77.requestFocus();
+                                focusNode130.requestFocus();
+                                minithickinsul();
                               },
-                              maxLength: 3,
+                              focusNode: focusNode130,
+                              maxLength: 4,
                               onSaved: (value) {
                                 object.thickinsul3 = value;
                               },
@@ -3861,13 +4391,13 @@ class ObjectDetailIpState extends State<ObjectDetailIp> {
                                   fontWeight: FontWeight.w300,
                                   color: Theme.of(context).primaryColor,
                                 ),
-                                labelText: 'изм.№3',
-                                hintText: 'мм',
+                                labelText: 'Толщина ИП 6ч',
+                                hintText: 'Введите толщину покрытия',
                                 helperText: 'мм',
                                 prefixIcon: Icon(
                                   Icons.vertical_align_center_sharp,
-                                  color: focusNode77.hasFocus ||
-                                          thickinsulController3.text.isNotEmpty
+                                  color: (focusNode130.hasFocus ||
+                                          thickinsulController3.text.isNotEmpty)
                                       ? Theme.of(context).primaryColor
                                       : Colors.grey,
                                   size: 32,
@@ -3892,13 +4422,16 @@ class ObjectDetailIpState extends State<ObjectDetailIp> {
                         ],
                       ),
                       SizedBox(height: 10),
+                      Divider(thickness: 4),
+                      Divider(thickness: 4),
+                      SizedBox(height: 10),
                       Container(
                           alignment: Alignment.center,
                           child: Row(
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
                               Text(
-                                'Адгезия ИП',
+                                'Толщина ИП (изм№2)',
                                 style: TextStyle(
                                     fontSize: 24,
                                     color: Theme.of(context).primaryColor,
@@ -3906,9 +4439,11 @@ class ObjectDetailIpState extends State<ObjectDetailIp> {
                               ),
                               GestureDetector(
                                 onTap: () {
-                                  insuladhesController1.clear();
-                                  insuladhesController2.clear();
-                                  insuladhesController3.clear();
+                                  thickinsulController5.clear();
+                                  thickinsulController6.clear();
+                                  thickinsulController7.clear();
+                                  thickinsulController8.clear();
+                                  thickinsulController.clear();
                                 },
                                 child: Icon(
                                   Icons.delete_outline,
@@ -3918,6 +4453,609 @@ class ObjectDetailIpState extends State<ObjectDetailIp> {
                             ],
                           )),
                       SizedBox(height: 10),
+                      Column(
+                        children: [
+                          Center(
+                            child: TextFormField(
+                              onChanged: (String value) {
+                                setState(() {});
+                                focusNode122.requestFocus();
+                                minithickinsul();
+                              },
+                              focusNode: focusNode122,
+                              maxLength: 4,
+                              onSaved: (value) {
+                                object.thickinsul5 = value;
+                              },
+                              controller: thickinsulController5,
+                              style: textStyle,
+                              decoration: InputDecoration(
+                                focusColor: Theme.of(context).primaryColor,
+                                labelStyle: TextStyle(
+                                  fontSize: 22,
+                                  fontWeight: FontWeight.w300,
+                                  color: Theme.of(context).primaryColor,
+                                ),
+                                hintStyle: TextStyle(
+                                  fontSize: 16,
+                                  fontWeight: FontWeight.w300,
+                                  color: Theme.of(context).primaryColor,
+                                ),
+                                labelText: 'Толщина ИП 12ч',
+                                hintText: 'Введите толщину покрытия',
+                                helperText: 'мм',
+                                prefixIcon: Icon(
+                                  Icons.vertical_align_center_sharp,
+                                  color: (focusNode122.hasFocus ||
+                                          thickinsulController5.text.isNotEmpty)
+                                      ? Theme.of(context).primaryColor
+                                      : Colors.grey,
+                                  size: 32,
+                                ),
+                                enabledBorder: OutlineInputBorder(
+                                  borderRadius:
+                                      BorderRadius.all(Radius.circular(10)),
+                                  borderSide:
+                                      BorderSide(color: Colors.grey, width: 2),
+                                ),
+                                focusedBorder: OutlineInputBorder(
+                                  borderRadius:
+                                      BorderRadius.all(Radius.circular(20)),
+                                  borderSide: BorderSide(
+                                      color: Theme.of(context).primaryColor,
+                                      width: 2),
+                                ),
+                              ),
+                              keyboardType: TextInputType.number,
+                            ),
+                          ),
+                          Center(
+                            child: Icon(
+                              Icons.arrow_drop_down,
+                              color: Theme.of(context).primaryColor,
+                              size: 55,
+                            ),
+                          ),
+                        ],
+                      ),
+                      Row(
+                        children: [
+                          Expanded(
+                            child: TextFormField(
+                              onChanged: (String value) {
+                                setState(() {});
+                                focusNode123.requestFocus();
+                                minithickinsul();
+                              },
+                              focusNode: focusNode123,
+                              maxLength: 4,
+                              onSaved: (value) {
+                                object.thickinsul6 = value;
+                              },
+                              controller: thickinsulController6,
+                              style: textStyle,
+                              decoration: InputDecoration(
+                                focusColor: Theme.of(context).primaryColor,
+                                labelStyle: TextStyle(
+                                  fontSize: 22,
+                                  fontWeight: FontWeight.w300,
+                                  color: Theme.of(context).primaryColor,
+                                ),
+                                hintStyle: TextStyle(
+                                  fontSize: 22,
+                                  fontWeight: FontWeight.w300,
+                                  color: Theme.of(context).primaryColor,
+                                ),
+                                labelText: '9ч',
+                                hintText: '9ч',
+                                helperText: 'мм',
+                                enabledBorder: OutlineInputBorder(
+                                  borderRadius:
+                                      BorderRadius.all(Radius.circular(10)),
+                                  borderSide:
+                                      BorderSide(color: Colors.grey, width: 2),
+                                ),
+                                focusedBorder: OutlineInputBorder(
+                                  borderRadius:
+                                      BorderRadius.all(Radius.circular(20)),
+                                  borderSide: BorderSide(
+                                      color: Theme.of(context).primaryColor,
+                                      width: 2),
+                                ),
+                              ),
+                              keyboardType: TextInputType.number,
+                            ),
+                          ),
+                          Expanded(
+                            child: Icon(
+                              Icons.arrow_right,
+                              color: Theme.of(context).primaryColor,
+                              size: 55,
+                            ),
+                          ),
+                          Container(
+                            width: 100,
+                            height: 100,
+                            decoration: BoxDecoration(
+                              shape: BoxShape.circle,
+                              border: Border.all(
+                                color: Theme.of(context).primaryColor,
+                                width: 8,
+                              ),
+                            ),
+                            child: Center(
+                              child: Text(
+                                'мин: ${thickinsulController.text}',
+                                textAlign: TextAlign.center,
+                                style: TextStyle(
+                                    fontSize: 20,
+                                    color: Theme.of(context).primaryColor,
+                                    fontWeight: FontWeight.w600),
+                              ),
+                            ),
+                          ),
+                          Expanded(
+                            child: Icon(
+                              Icons.arrow_left,
+                              color: Theme.of(context).primaryColor,
+                              size: 55,
+                            ),
+                          ),
+                          Expanded(
+                            child: TextFormField(
+                              onChanged: (String value) {
+                                setState(() {});
+                                focusNode124.requestFocus();
+                                minithickinsul();
+                              },
+                              focusNode: focusNode124,
+                              maxLength: 4,
+                              onSaved: (value) {
+                                object.thickinsul7 = value;
+                              },
+                              controller: thickinsulController7,
+                              style: textStyle,
+                              decoration: InputDecoration(
+                                focusColor: Theme.of(context).primaryColor,
+                                labelStyle: TextStyle(
+                                  fontSize: 22,
+                                  fontWeight: FontWeight.w300,
+                                  color: Theme.of(context).primaryColor,
+                                ),
+                                hintStyle: TextStyle(
+                                  fontSize: 22,
+                                  fontWeight: FontWeight.w300,
+                                  color: Theme.of(context).primaryColor,
+                                ),
+                                labelText: '3ч',
+                                hintText: '3ч',
+                                helperText: 'мм',
+                                enabledBorder: OutlineInputBorder(
+                                  borderRadius:
+                                      BorderRadius.all(Radius.circular(10)),
+                                  borderSide:
+                                      BorderSide(color: Colors.grey, width: 2),
+                                ),
+                                focusedBorder: OutlineInputBorder(
+                                  borderRadius:
+                                      BorderRadius.all(Radius.circular(20)),
+                                  borderSide: BorderSide(
+                                      color: Theme.of(context).primaryColor,
+                                      width: 2),
+                                ),
+                              ),
+                              keyboardType: TextInputType.number,
+                            ),
+                          ),
+                        ],
+                      ),
+                      Column(
+                        children: [
+                          Center(
+                            child: Icon(
+                              Icons.arrow_drop_up,
+                              color: Theme.of(context).primaryColor,
+                              size: 55,
+                            ),
+                          ),
+                          Center(
+                            child: TextFormField(
+                              onChanged: (String value) {
+                                setState(() {});
+                                focusNode125.requestFocus();
+                                minithickinsul();
+                              },
+                              focusNode: focusNode125,
+                              maxLength: 4,
+                              onSaved: (value) {
+                                object.thickinsul8 = value;
+                              },
+                              controller: thickinsulController8,
+                              style: textStyle,
+                              decoration: InputDecoration(
+                                focusColor: Theme.of(context).primaryColor,
+                                labelStyle: TextStyle(
+                                  fontSize: 22,
+                                  fontWeight: FontWeight.w300,
+                                  color: Theme.of(context).primaryColor,
+                                ),
+                                hintStyle: TextStyle(
+                                  fontSize: 16,
+                                  fontWeight: FontWeight.w300,
+                                  color: Theme.of(context).primaryColor,
+                                ),
+                                labelText: 'Толщина ИП 6ч',
+                                hintText: 'Введите толщину покрытия',
+                                helperText: 'мм',
+                                prefixIcon: Icon(
+                                  Icons.vertical_align_center_sharp,
+                                  color: (focusNode125.hasFocus ||
+                                          thickinsulController8.text.isNotEmpty)
+                                      ? Theme.of(context).primaryColor
+                                      : Colors.grey,
+                                  size: 32,
+                                ),
+                                enabledBorder: OutlineInputBorder(
+                                  borderRadius:
+                                      BorderRadius.all(Radius.circular(10)),
+                                  borderSide:
+                                      BorderSide(color: Colors.grey, width: 2),
+                                ),
+                                focusedBorder: OutlineInputBorder(
+                                  borderRadius:
+                                      BorderRadius.all(Radius.circular(20)),
+                                  borderSide: BorderSide(
+                                      color: Theme.of(context).primaryColor,
+                                      width: 2),
+                                ),
+                              ),
+                              keyboardType: TextInputType.number,
+                            ),
+                          ),
+                        ],
+                      ),
+                      SizedBox(height: 10),
+                      Divider(thickness: 4),
+                      Divider(thickness: 4),
+                      SizedBox(height: 10),
+                      Container(
+                          alignment: Alignment.center,
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              Text(
+                                'Толщина ИП (изм№3)',
+                                style: TextStyle(
+                                    fontSize: 24,
+                                    color: Theme.of(context).primaryColor,
+                                    fontWeight: FontWeight.w300),
+                              ),
+                              GestureDetector(
+                                onTap: () {
+                                  thickinsulController9.clear();
+                                  thickinsulController10.clear();
+                                  thickinsulController11.clear();
+                                  thickinsulController12.clear();
+                                  thickinsulController.clear();
+                                },
+                                child: Icon(
+                                  Icons.delete_outline,
+                                  color: Color.fromRGBO(187, 30, 16, 1.0),
+                                ),
+                              ),
+                            ],
+                          )),
+                      SizedBox(height: 10),
+                      Column(
+                        children: [
+                          Center(
+                            child: TextFormField(
+                              onChanged: (String value) {
+                                setState(() {});
+                                focusNode126.requestFocus();
+                                minithickinsul();
+                              },
+                              focusNode: focusNode126,
+                              maxLength: 4,
+                              onSaved: (value) {
+                                object.thickinsul9 = value;
+                              },
+                              controller: thickinsulController9,
+                              style: textStyle,
+                              decoration: InputDecoration(
+                                focusColor: Theme.of(context).primaryColor,
+                                labelStyle: TextStyle(
+                                  fontSize: 22,
+                                  fontWeight: FontWeight.w300,
+                                  color: Theme.of(context).primaryColor,
+                                ),
+                                hintStyle: TextStyle(
+                                  fontSize: 16,
+                                  fontWeight: FontWeight.w300,
+                                  color: Theme.of(context).primaryColor,
+                                ),
+                                labelText: 'Толщина ИП 12ч',
+                                hintText: 'Введите толщину покрытия',
+                                helperText: 'мм',
+                                prefixIcon: Icon(
+                                  Icons.vertical_align_center_sharp,
+                                  color: (focusNode126.hasFocus ||
+                                          thickinsulController9.text.isNotEmpty)
+                                      ? Theme.of(context).primaryColor
+                                      : Colors.grey,
+                                  size: 32,
+                                ),
+                                enabledBorder: OutlineInputBorder(
+                                  borderRadius:
+                                      BorderRadius.all(Radius.circular(10)),
+                                  borderSide:
+                                      BorderSide(color: Colors.grey, width: 2),
+                                ),
+                                focusedBorder: OutlineInputBorder(
+                                  borderRadius:
+                                      BorderRadius.all(Radius.circular(20)),
+                                  borderSide: BorderSide(
+                                      color: Theme.of(context).primaryColor,
+                                      width: 2),
+                                ),
+                              ),
+                              keyboardType: TextInputType.number,
+                            ),
+                          ),
+                          Center(
+                            child: Icon(
+                              Icons.arrow_drop_down,
+                              color: Theme.of(context).primaryColor,
+                              size: 55,
+                            ),
+                          ),
+                        ],
+                      ),
+                      Row(
+                        children: [
+                          Expanded(
+                            child: TextFormField(
+                              onChanged: (String value) {
+                                setState(() {});
+                                focusNode127.requestFocus();
+                                minithickinsul();
+                              },
+                              focusNode: focusNode127,
+                              maxLength: 4,
+                              onSaved: (value) {
+                                object.thickinsul10 = value;
+                              },
+                              controller: thickinsulController10,
+                              style: textStyle,
+                              decoration: InputDecoration(
+                                focusColor: Theme.of(context).primaryColor,
+                                labelStyle: TextStyle(
+                                  fontSize: 22,
+                                  fontWeight: FontWeight.w300,
+                                  color: Theme.of(context).primaryColor,
+                                ),
+                                hintStyle: TextStyle(
+                                  fontSize: 22,
+                                  fontWeight: FontWeight.w300,
+                                  color: Theme.of(context).primaryColor,
+                                ),
+                                labelText: '9ч',
+                                hintText: '9ч',
+                                helperText: 'мм',
+                                enabledBorder: OutlineInputBorder(
+                                  borderRadius:
+                                      BorderRadius.all(Radius.circular(10)),
+                                  borderSide:
+                                      BorderSide(color: Colors.grey, width: 2),
+                                ),
+                                focusedBorder: OutlineInputBorder(
+                                  borderRadius:
+                                      BorderRadius.all(Radius.circular(20)),
+                                  borderSide: BorderSide(
+                                      color: Theme.of(context).primaryColor,
+                                      width: 2),
+                                ),
+                              ),
+                              keyboardType: TextInputType.number,
+                            ),
+                          ),
+                          Expanded(
+                            child: Icon(
+                              Icons.arrow_right,
+                              color: Theme.of(context).primaryColor,
+                              size: 55,
+                            ),
+                          ),
+                          Container(
+                            width: 100,
+                            height: 100,
+                            decoration: BoxDecoration(
+                              shape: BoxShape.circle,
+                              border: Border.all(
+                                color: Theme.of(context).primaryColor,
+                                width: 8,
+                              ),
+                            ),
+                            child: Center(
+                              child: Text(
+                                'мин: ${thickinsulController.text}',
+                                textAlign: TextAlign.center,
+                                style: TextStyle(
+                                    fontSize: 20,
+                                    color: Theme.of(context).primaryColor,
+                                    fontWeight: FontWeight.w600),
+                              ),
+                            ),
+                          ),
+                          Expanded(
+                            child: Icon(
+                              Icons.arrow_left,
+                              color: Theme.of(context).primaryColor,
+                              size: 55,
+                            ),
+                          ),
+                          Expanded(
+                            child: TextFormField(
+                              onChanged: (String value) {
+                                setState(() {});
+                                focusNode128.requestFocus();
+                                minithickinsul();
+                              },
+                              focusNode: focusNode128,
+                              maxLength: 4,
+                              onSaved: (value) {
+                                object.thickinsul11 = value;
+                              },
+                              controller: thickinsulController11,
+                              style: textStyle,
+                              decoration: InputDecoration(
+                                focusColor: Theme.of(context).primaryColor,
+                                labelStyle: TextStyle(
+                                  fontSize: 22,
+                                  fontWeight: FontWeight.w300,
+                                  color: Theme.of(context).primaryColor,
+                                ),
+                                hintStyle: TextStyle(
+                                  fontSize: 22,
+                                  fontWeight: FontWeight.w300,
+                                  color: Theme.of(context).primaryColor,
+                                ),
+                                labelText: '3ч',
+                                hintText: '3ч',
+                                helperText: 'мм',
+                                enabledBorder: OutlineInputBorder(
+                                  borderRadius:
+                                      BorderRadius.all(Radius.circular(10)),
+                                  borderSide:
+                                      BorderSide(color: Colors.grey, width: 2),
+                                ),
+                                focusedBorder: OutlineInputBorder(
+                                  borderRadius:
+                                      BorderRadius.all(Radius.circular(20)),
+                                  borderSide: BorderSide(
+                                      color: Theme.of(context).primaryColor,
+                                      width: 2),
+                                ),
+                              ),
+                              keyboardType: TextInputType.number,
+                            ),
+                          ),
+                        ],
+                      ),
+                      Column(
+                        children: [
+                          Center(
+                            child: Icon(
+                              Icons.arrow_drop_up,
+                              color: Theme.of(context).primaryColor,
+                              size: 55,
+                            ),
+                          ),
+                          Center(
+                            child: TextFormField(
+                              onChanged: (String value) {
+                                setState(() {});
+                                focusNode129.requestFocus();
+                                minithickinsul();
+                              },
+                              focusNode: focusNode129,
+                              maxLength: 4,
+                              onSaved: (value) {
+                                object.thickinsul12 = value;
+                              },
+                              controller: thickinsulController12,
+                              style: textStyle,
+                              decoration: InputDecoration(
+                                focusColor: Theme.of(context).primaryColor,
+                                labelStyle: TextStyle(
+                                  fontSize: 22,
+                                  fontWeight: FontWeight.w300,
+                                  color: Theme.of(context).primaryColor,
+                                ),
+                                hintStyle: TextStyle(
+                                  fontSize: 16,
+                                  fontWeight: FontWeight.w300,
+                                  color: Theme.of(context).primaryColor,
+                                ),
+                                labelText: 'Толщина ИП 6ч',
+                                hintText: 'Введите толщину покрытия',
+                                helperText: 'мм',
+                                prefixIcon: Icon(
+                                  Icons.vertical_align_center_sharp,
+                                  color: (focusNode129.hasFocus ||
+                                          thickinsulController12
+                                              .text.isNotEmpty)
+                                      ? Theme.of(context).primaryColor
+                                      : Colors.grey,
+                                  size: 32,
+                                ),
+                                enabledBorder: OutlineInputBorder(
+                                  borderRadius:
+                                      BorderRadius.all(Radius.circular(10)),
+                                  borderSide:
+                                      BorderSide(color: Colors.grey, width: 2),
+                                ),
+                                focusedBorder: OutlineInputBorder(
+                                  borderRadius:
+                                      BorderRadius.all(Radius.circular(20)),
+                                  borderSide: BorderSide(
+                                      color: Theme.of(context).primaryColor,
+                                      width: 2),
+                                ),
+                              ),
+                              keyboardType: TextInputType.number,
+                            ),
+                          ),
+                        ],
+                      ),
+                      SizedBox(height: 10),
+                      Divider(thickness: 4),
+                      SizedBox(height: 10),
+                      Container(
+                        alignment: Alignment.center,
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Text(
+                              'Адгезия ИП',
+                              style: TextStyle(
+                                  fontSize: 24,
+                                  color: Theme.of(context).primaryColor,
+                                  fontWeight: FontWeight.w300),
+                            ),
+                            GestureDetector(
+                              onTap: () {
+                                insuladhesController1.clear();
+                                insuladhesController2.clear();
+                                insuladhesController3.clear();
+                                insuladhesController4.clear();
+                              },
+                              child: Icon(
+                                Icons.delete_outline,
+                                color: Color.fromRGBO(187, 30, 16, 1.0),
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                      SizedBox(height: 10),
+                      Container(
+                        alignment: Alignment.center,
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Text(
+                              'Среднее значение: ${insuladhesController4.text}',
+                              textAlign: TextAlign.center,
+                              style: TextStyle(
+                                  fontSize: 20,
+                                  color: Theme.of(context).primaryColor,
+                                  fontWeight: FontWeight.w600),
+                            ),
+                          ],
+                        ),
+                      ),
+                      SizedBox(height: 10),
                       Row(
                         children: [
                           Expanded(
@@ -3925,14 +5063,13 @@ class ObjectDetailIpState extends State<ObjectDetailIp> {
                               onChanged: (String value) {
                                 setState(() {});
                                 focusNode16.requestFocus();
-                                // sostinsul();
+                                sredadg();
                                 insulconditController.text =
                                     object.insulcondit ?? '';
                               },
                               focusNode: focusNode16,
                               maxLength: 4,
                               onSaved: (value) {
-                                // sostinsul();
                                 object.insuladhes1 = value;
                                 insulconditController.text =
                                     object.insulcondit ?? '';
@@ -3985,6 +5122,7 @@ class ObjectDetailIpState extends State<ObjectDetailIp> {
                               onChanged: (String value) {
                                 setState(() {});
                                 focusNode75.requestFocus();
+                                sredadg();
                               },
                               focusNode: focusNode75,
                               maxLength: 4,
@@ -4039,6 +5177,7 @@ class ObjectDetailIpState extends State<ObjectDetailIp> {
                               onChanged: (String value) {
                                 setState(() {});
                                 focusNode76.requestFocus();
+                                sredadg();
                               },
                               focusNode: focusNode76,
                               maxLength: 4,
@@ -4096,7 +5235,7 @@ class ObjectDetailIpState extends State<ObjectDetailIp> {
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
                               Text(
-                                'Адгезия ИП',
+                                'Характер разрушения',
                                 style: TextStyle(
                                     fontSize: 24,
                                     color: Theme.of(context).primaryColor,
@@ -5935,7 +7074,9 @@ class ObjectDetailIpState extends State<ObjectDetailIp> {
                             ),
                         onPressed: () => saveForm3(),
                         child: Text(
-                          isEdit ? 'Редактировать' : 'Добавить',
+                          isEdit
+                              ? 'Редактировать и закрыть'
+                              : 'Добавить и закрыть',
                           style: const TextStyle(
                               fontSize: 18.0, fontWeight: FontWeight.w300),
                         ),
@@ -6061,9 +7202,12 @@ class ObjectDetailIpState extends State<ObjectDetailIp> {
                         style: textStyle,
                         value: object.typeinsulrest,
                         onChanged: (String value) {
-                          setState(() {});
-                          focusNode23.requestFocus();
-                          object.typeinsulrest = value;
+                          setState(() {
+                            focusNode23.requestFocus();
+                            object.typeinsulrest = value;
+                            typeinsulrestController.text =
+                                object.typeinsulrest ?? '';
+                          });
                         },
                       ),
                       SizedBox(height: 20),
@@ -6126,127 +7270,1312 @@ class ObjectDetailIpState extends State<ObjectDetailIp> {
                         keyboardType: TextInputType.number,
                       ),
                       SizedBox(height: 10),
-                      TextFormField(
-                        focusNode: focusNode24,
-                        onChanged: (String value) {
-                          setState(() {});
-                          focusNode24.requestFocus();
-                        },
-                        maxLength: 3,
-                        onSaved: (value) {
-                          object.insuladhesrest = value;
-                        },
-                        controller: insuladhesrestController,
-                        style: textStyle,
-                        decoration: InputDecoration(
-                          focusColor: Theme.of(context).primaryColor,
-                          labelStyle: TextStyle(
-                            fontSize: 22,
-                            fontWeight: FontWeight.w300,
-                            color: Theme.of(context).primaryColor,
-                          ),
-                          hintStyle: TextStyle(
-                            fontSize: 16,
-                            fontWeight: FontWeight.w300,
-                            color: Theme.of(context).primaryColor,
-                          ),
-                          labelText: 'Адгезия ИП к стали',
-                          hintText: 'Введите значение адгезии',
-                          helperText: 'Н/см',
-                          prefixIcon: Icon(
-                            Icons.compress_sharp,
-                            color: focusNode24.hasFocus ||
-                                    insuladhesrestController.text.isNotEmpty
-                                ? Theme.of(context).primaryColor
-                                : Colors.grey,
-                            size: 32,
-                          ),
-                          suffixIcon: GestureDetector(
-                            onTap: () {
-                              insuladhesrestController.clear();
-                            },
-                            child: Icon(
-                              Icons.delete_outline,
-                              color: Color.fromRGBO(187, 30, 16, 1.0),
+                      Divider(thickness: 4),
+                      SizedBox(height: 10),
+                      Container(
+                        alignment: Alignment.center,
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Text(
+                              'Адгезия ИП',
+                              style: TextStyle(
+                                  fontSize: 24,
+                                  color: Theme.of(context).primaryColor,
+                                  fontWeight: FontWeight.w300),
                             ),
-                          ),
-                          enabledBorder: OutlineInputBorder(
-                            borderRadius: BorderRadius.all(Radius.circular(10)),
-                            borderSide:
-                                BorderSide(color: Colors.grey, width: 2),
-                          ),
-                          focusedBorder: OutlineInputBorder(
-                            borderRadius: BorderRadius.all(Radius.circular(20)),
-                            borderSide: BorderSide(
-                                color: Theme.of(context).primaryColor,
-                                width: 2),
-                          ),
+                            GestureDetector(
+                              onTap: () {
+                                insuladhesrestController1.clear();
+                                insuladhesrestController2.clear();
+                                insuladhesrestController3.clear();
+                                insuladhesrestController.clear();
+                              },
+                              child: Icon(
+                                Icons.delete_outline,
+                                color: Color.fromRGBO(187, 30, 16, 1.0),
+                              ),
+                            ),
+                          ],
                         ),
-                        keyboardType: TextInputType.number,
                       ),
                       SizedBox(height: 10),
-                      TextFormField(
-                        focusNode: focusNode25,
-                        onChanged: (String value) {
-                          setState(() {});
-                          focusNode25.requestFocus();
-                          typeinsulrestController.text =
-                              object.typeinsulrest ?? '';
-                        },
-                        maxLength: 3,
-                        onSaved: (value) {
-                          object.thickinsulrest = value;
-                          typeinsulrestController.text =
-                              object.typeinsulrest ?? '';
-                        },
-                        controller: thickinsulrestController,
-                        style: textStyle,
-                        decoration: InputDecoration(
-                          focusColor: Theme.of(context).primaryColor,
-                          labelStyle: TextStyle(
-                            fontSize: 22,
-                            fontWeight: FontWeight.w300,
-                            color: Theme.of(context).primaryColor,
-                          ),
-                          hintStyle: TextStyle(
-                            fontSize: 16,
-                            fontWeight: FontWeight.w300,
-                            color: Theme.of(context).primaryColor,
-                          ),
-                          labelText: 'Толщина ИП',
-                          hintText: 'Введите толщину покрытия',
-                          helperText: 'мм',
-                          prefixIcon: Icon(
-                            Icons.vertical_align_center_sharp,
-                            color: focusNode25.hasFocus ||
-                                    thickinsulrestController.text.isNotEmpty
-                                ? Theme.of(context).primaryColor
-                                : Colors.grey,
-                            size: 32,
-                          ),
-                          suffixIcon: GestureDetector(
-                            onTap: () {
-                              thickinsulrestController.clear();
-                            },
-                            child: Icon(
-                              Icons.delete_outline,
-                              color: Color.fromRGBO(187, 30, 16, 1.0),
+                      Container(
+                        alignment: Alignment.center,
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Text(
+                              'Среднее значение: ${insuladhesrestController.text}',
+                              textAlign: TextAlign.center,
+                              style: TextStyle(
+                                  fontSize: 20,
+                                  color: Theme.of(context).primaryColor,
+                                  fontWeight: FontWeight.w600),
+                            ),
+                          ],
+                        ),
+                      ),
+                      SizedBox(height: 10),
+                      Row(
+                        children: [
+                          Expanded(
+                            child: TextFormField(
+                              onChanged: (String value) {
+                                setState(() {});
+                                focusNode143.requestFocus();
+                                sredadgrest();
+                              },
+                              focusNode: focusNode143,
+                              maxLength: 4,
+                              onSaved: (value) {
+                                object.insuladhesrest1 = value;
+                              },
+                              controller: insuladhesrestController1,
+                              style: textStyle,
+                              decoration: InputDecoration(
+                                focusColor: Theme.of(context).primaryColor,
+                                labelStyle: TextStyle(
+                                  fontSize: 22,
+                                  fontWeight: FontWeight.w300,
+                                  color: Theme.of(context).primaryColor,
+                                ),
+                                hintStyle: TextStyle(
+                                  fontSize: 16,
+                                  fontWeight: FontWeight.w300,
+                                  color: Theme.of(context).primaryColor,
+                                ),
+                                labelText: 'изм.№1',
+                                hintText: 'Н/см',
+                                helperText: 'Н/см',
+                                prefixIcon: Icon(
+                                  Icons.compress_sharp,
+                                  color: focusNode143.hasFocus ||
+                                          insuladhesrestController1
+                                              .text.isNotEmpty
+                                      ? Theme.of(context).primaryColor
+                                      : Colors.grey,
+                                  size: 32,
+                                ),
+                                enabledBorder: OutlineInputBorder(
+                                  borderRadius:
+                                      BorderRadius.all(Radius.circular(10)),
+                                  borderSide:
+                                      BorderSide(color: Colors.grey, width: 2),
+                                ),
+                                focusedBorder: OutlineInputBorder(
+                                  borderRadius:
+                                      BorderRadius.all(Radius.circular(20)),
+                                  borderSide: BorderSide(
+                                      color: Theme.of(context).primaryColor,
+                                      width: 2),
+                                ),
+                              ),
+                              keyboardType: TextInputType.number,
                             ),
                           ),
-                          enabledBorder: OutlineInputBorder(
-                            borderRadius: BorderRadius.all(Radius.circular(10)),
-                            borderSide:
-                                BorderSide(color: Colors.grey, width: 2),
+                          SizedBox(width: 5),
+                          Expanded(
+                            child: TextFormField(
+                              onChanged: (String value) {
+                                setState(() {});
+                                focusNode144.requestFocus();
+                                sredadgrest();
+                              },
+                              focusNode: focusNode144,
+                              maxLength: 4,
+                              onSaved: (value) {
+                                object.insuladhesrest2 = value;
+                              },
+                              controller: insuladhesrestController2,
+                              style: textStyle,
+                              decoration: InputDecoration(
+                                focusColor: Theme.of(context).primaryColor,
+                                labelStyle: TextStyle(
+                                  fontSize: 22,
+                                  fontWeight: FontWeight.w300,
+                                  color: Theme.of(context).primaryColor,
+                                ),
+                                hintStyle: TextStyle(
+                                  fontSize: 16,
+                                  fontWeight: FontWeight.w300,
+                                  color: Theme.of(context).primaryColor,
+                                ),
+                                labelText: 'изм.№2',
+                                hintText: 'Н/см',
+                                helperText: 'Н/см',
+                                prefixIcon: Icon(
+                                  Icons.compress_sharp,
+                                  color: focusNode144.hasFocus ||
+                                          insuladhesrestController2
+                                              .text.isNotEmpty
+                                      ? Theme.of(context).primaryColor
+                                      : Colors.grey,
+                                  size: 32,
+                                ),
+                                enabledBorder: OutlineInputBorder(
+                                  borderRadius:
+                                      BorderRadius.all(Radius.circular(10)),
+                                  borderSide:
+                                      BorderSide(color: Colors.grey, width: 2),
+                                ),
+                                focusedBorder: OutlineInputBorder(
+                                  borderRadius:
+                                      BorderRadius.all(Radius.circular(20)),
+                                  borderSide: BorderSide(
+                                      color: Theme.of(context).primaryColor,
+                                      width: 2),
+                                ),
+                              ),
+                              keyboardType: TextInputType.number,
+                            ),
                           ),
-                          focusedBorder: OutlineInputBorder(
-                            borderRadius: BorderRadius.all(Radius.circular(20)),
-                            borderSide: BorderSide(
-                                color: Theme.of(context).primaryColor,
-                                width: 2),
+                          SizedBox(width: 5),
+                          Expanded(
+                            child: TextFormField(
+                              onChanged: (String value) {
+                                setState(() {});
+                                focusNode145.requestFocus();
+                                sredadgrest();
+                              },
+                              focusNode: focusNode145,
+                              maxLength: 4,
+                              onSaved: (value) {
+                                object.insuladhesrest3 = value;
+                              },
+                              controller: insuladhesrestController3,
+                              style: textStyle,
+                              decoration: InputDecoration(
+                                focusColor: Theme.of(context).primaryColor,
+                                labelStyle: TextStyle(
+                                  fontSize: 22,
+                                  fontWeight: FontWeight.w300,
+                                  color: Theme.of(context).primaryColor,
+                                ),
+                                hintStyle: TextStyle(
+                                  fontSize: 16,
+                                  fontWeight: FontWeight.w300,
+                                  color: Theme.of(context).primaryColor,
+                                ),
+                                labelText: 'изм.№3',
+                                hintText: 'Н/см',
+                                helperText: 'Н/см',
+                                prefixIcon: Icon(
+                                  Icons.compress_sharp,
+                                  color: focusNode145.hasFocus ||
+                                          insuladhesrestController3
+                                              .text.isNotEmpty
+                                      ? Theme.of(context).primaryColor
+                                      : Colors.grey,
+                                  size: 32,
+                                ),
+                                enabledBorder: OutlineInputBorder(
+                                  borderRadius:
+                                      BorderRadius.all(Radius.circular(10)),
+                                  borderSide:
+                                      BorderSide(color: Colors.grey, width: 2),
+                                ),
+                                focusedBorder: OutlineInputBorder(
+                                  borderRadius:
+                                      BorderRadius.all(Radius.circular(20)),
+                                  borderSide: BorderSide(
+                                      color: Theme.of(context).primaryColor,
+                                      width: 2),
+                                ),
+                              ),
+                              keyboardType: TextInputType.number,
+                            ),
                           ),
-                        ),
-                        keyboardType: TextInputType.number,
+                        ],
                       ),
+                      SizedBox(height: 10),
+                      SizedBox(height: 10),
+                      Container(
+                          alignment: Alignment.center,
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              Text(
+                                'Характер разрушения',
+                                style: TextStyle(
+                                    fontSize: 24,
+                                    color: Theme.of(context).primaryColor,
+                                    fontWeight: FontWeight.w300),
+                              ),
+                              GestureDetector(
+                                onTap: () {
+                                  insulcharadhesrestController1.clear();
+                                  insulcharadhesrestController2.clear();
+                                  insulcharadhesrestController3.clear();
+                                },
+                                child: Icon(
+                                  Icons.delete_outline,
+                                  color: Color.fromRGBO(187, 30, 16, 1.0),
+                                ),
+                              ),
+                            ],
+                          )),
+                      SizedBox(height: 10),
+                      Row(
+                        children: [
+                          Expanded(
+                            child: DropdownButtonFormField(
+                              isExpanded: true,
+                              focusNode: focusNode146,
+                              decoration: InputDecoration(
+                                focusColor: Theme.of(context).primaryColor,
+                                labelStyle: TextStyle(
+                                  fontSize: 22,
+                                  fontWeight: FontWeight.w300,
+                                  color: Theme.of(context).primaryColor,
+                                ),
+                                hintStyle: TextStyle(
+                                  fontSize: 16,
+                                  fontWeight: FontWeight.w300,
+                                  color: Theme.of(context).primaryColor,
+                                ),
+                                border: OutlineInputBorder(),
+                                enabledBorder: OutlineInputBorder(
+                                  borderRadius:
+                                      BorderRadius.all(Radius.circular(10)),
+                                  borderSide:
+                                      BorderSide(color: Colors.grey, width: 2),
+                                ),
+                                focusedBorder: OutlineInputBorder(
+                                  borderRadius:
+                                      BorderRadius.all(Radius.circular(20)),
+                                  borderSide: BorderSide(
+                                      color: Theme.of(context).primaryColor,
+                                      width: 2),
+                                ),
+                                prefixIcon: Icon(
+                                  Icons.ssid_chart_sharp,
+                                  color: focusNode146.hasFocus ||
+                                          insulcharadhesrestController1
+                                              .text.isNotEmpty
+                                      ? Theme.of(context).primaryColor
+                                      : Colors.grey,
+                                  size: 32,
+                                ),
+                                labelText: 'изм.№1',
+                              ),
+                              items: _insulcharadhes.map((String value) {
+                                return DropdownMenuItem(
+                                  value: value,
+                                  child: Text(value),
+                                );
+                              }).toList(),
+                              style: textStyle,
+                              value: object.insulcharadhesrest1,
+                              onChanged: (String value) {
+                                setState(() {});
+                                focusNode146.requestFocus();
+                                object.insulcharadhesrest1 = value;
+                              },
+                            ),
+                          ),
+                          SizedBox(width: 5),
+                          Expanded(
+                            child: DropdownButtonFormField(
+                              isExpanded: true,
+                              focusNode: focusNode147,
+                              decoration: InputDecoration(
+                                focusColor: Theme.of(context).primaryColor,
+                                labelStyle: TextStyle(
+                                  fontSize: 22,
+                                  fontWeight: FontWeight.w300,
+                                  color: Theme.of(context).primaryColor,
+                                ),
+                                hintStyle: TextStyle(
+                                  fontSize: 16,
+                                  fontWeight: FontWeight.w300,
+                                  color: Theme.of(context).primaryColor,
+                                ),
+                                border: OutlineInputBorder(),
+                                enabledBorder: OutlineInputBorder(
+                                  borderRadius:
+                                      BorderRadius.all(Radius.circular(10)),
+                                  borderSide:
+                                      BorderSide(color: Colors.grey, width: 2),
+                                ),
+                                focusedBorder: OutlineInputBorder(
+                                  borderRadius:
+                                      BorderRadius.all(Radius.circular(20)),
+                                  borderSide: BorderSide(
+                                      color: Theme.of(context).primaryColor,
+                                      width: 2),
+                                ),
+                                prefixIcon: Icon(
+                                  Icons.ssid_chart_sharp,
+                                  color: focusNode147.hasFocus ||
+                                          insulcharadhesrestController2
+                                              .text.isNotEmpty
+                                      ? Theme.of(context).primaryColor
+                                      : Colors.grey,
+                                  size: 32,
+                                ),
+                                labelText: 'изм.№2',
+                              ),
+                              items: _insulcharadhes.map((String value) {
+                                return DropdownMenuItem(
+                                  value: value,
+                                  child: Text(value),
+                                );
+                              }).toList(),
+                              style: textStyle,
+                              value: object.insulcharadhesrest2,
+                              onChanged: (String value) {
+                                setState(() {});
+                                focusNode147.requestFocus();
+                                object.insulcharadhesrest2 = value;
+                              },
+                            ),
+                          ),
+                          SizedBox(width: 5),
+                          Expanded(
+                            child: DropdownButtonFormField(
+                              isExpanded: true,
+                              focusNode: focusNode148,
+                              decoration: InputDecoration(
+                                focusColor: Theme.of(context).primaryColor,
+                                labelStyle: TextStyle(
+                                  fontSize: 22,
+                                  fontWeight: FontWeight.w300,
+                                  color: Theme.of(context).primaryColor,
+                                ),
+                                hintStyle: TextStyle(
+                                  fontSize: 16,
+                                  fontWeight: FontWeight.w300,
+                                  color: Theme.of(context).primaryColor,
+                                ),
+                                border: OutlineInputBorder(),
+                                enabledBorder: OutlineInputBorder(
+                                  borderRadius:
+                                      BorderRadius.all(Radius.circular(10)),
+                                  borderSide:
+                                      BorderSide(color: Colors.grey, width: 2),
+                                ),
+                                focusedBorder: OutlineInputBorder(
+                                  borderRadius:
+                                      BorderRadius.all(Radius.circular(20)),
+                                  borderSide: BorderSide(
+                                      color: Theme.of(context).primaryColor,
+                                      width: 2),
+                                ),
+                                prefixIcon: Icon(
+                                  Icons.ssid_chart_sharp,
+                                  color: focusNode148.hasFocus ||
+                                          insulcharadhesrestController3
+                                              .text.isNotEmpty
+                                      ? Theme.of(context).primaryColor
+                                      : Colors.grey,
+                                  size: 32,
+                                ),
+                                labelText: 'изм.№3',
+                              ),
+                              items: _insulcharadhes.map((String value) {
+                                return DropdownMenuItem(
+                                  value: value,
+                                  child: Text(value),
+                                );
+                              }).toList(),
+                              style: textStyle,
+                              value: object.insulcharadhesrest3,
+                              onChanged: (String value) {
+                                setState(() {});
+                                focusNode148.requestFocus();
+                                object.insulcharadhesrest3 = value;
+                              },
+                            ),
+                          ),
+                        ],
+                      ),
+                      Divider(thickness: 4),
+                      SizedBox(height: 10),
+                      Container(
+                        alignment: Alignment.center,
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Text(
+                              'Толщина ИП (изм№1)',
+                              style: TextStyle(
+                                  fontSize: 24,
+                                  color: Theme.of(context).primaryColor,
+                                  fontWeight: FontWeight.w300),
+                            ),
+                            GestureDetector(
+                              onTap: () {
+                                thickinsulrestController1.clear();
+                                thickinsulrestController2.clear();
+                                thickinsulrestController3.clear();
+                                thickinsulrestController4.clear();
+                                thickinsulrestController.clear();
+                              },
+                              child: Icon(
+                                Icons.delete_outline,
+                                color: Color.fromRGBO(187, 30, 16, 1.0),
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                      SizedBox(height: 10),
+                      Column(
+                        children: [
+                          Center(
+                            child: TextFormField(
+                              onChanged: (String value) {
+                                setState(() {});
+                                focusNode131.requestFocus();
+                                minithickinsulrest();
+                              },
+                              focusNode: focusNode131,
+                              maxLength: 4,
+                              onSaved: (value) {
+                                object.thickinsulrest1 = value;
+                              },
+                              controller: thickinsulrestController1,
+                              style: textStyle,
+                              decoration: InputDecoration(
+                                focusColor: Theme.of(context).primaryColor,
+                                labelStyle: TextStyle(
+                                  fontSize: 22,
+                                  fontWeight: FontWeight.w300,
+                                  color: Theme.of(context).primaryColor,
+                                ),
+                                hintStyle: TextStyle(
+                                  fontSize: 16,
+                                  fontWeight: FontWeight.w300,
+                                  color: Theme.of(context).primaryColor,
+                                ),
+                                labelText: 'Толщина ИП 12ч',
+                                hintText: 'Введите толщину покрытия',
+                                helperText: 'мм',
+                                prefixIcon: Icon(
+                                  Icons.vertical_align_center_sharp,
+                                  color: (focusNode131.hasFocus ||
+                                          thickinsulrestController1
+                                              .text.isNotEmpty)
+                                      ? Theme.of(context).primaryColor
+                                      : Colors.grey,
+                                  size: 32,
+                                ),
+                                enabledBorder: OutlineInputBorder(
+                                  borderRadius:
+                                      BorderRadius.all(Radius.circular(10)),
+                                  borderSide:
+                                      BorderSide(color: Colors.grey, width: 2),
+                                ),
+                                focusedBorder: OutlineInputBorder(
+                                  borderRadius:
+                                      BorderRadius.all(Radius.circular(20)),
+                                  borderSide: BorderSide(
+                                      color: Theme.of(context).primaryColor,
+                                      width: 2),
+                                ),
+                              ),
+                              keyboardType: TextInputType.number,
+                            ),
+                          ),
+                          Center(
+                            child: Icon(
+                              Icons.arrow_drop_down,
+                              color: Theme.of(context).primaryColor,
+                              size: 55,
+                            ),
+                          ),
+                        ],
+                      ),
+                      Row(
+                        children: [
+                          Expanded(
+                            child: TextFormField(
+                              onChanged: (String value) {
+                                setState(() {});
+                                focusNode132.requestFocus();
+                                minithickinsulrest();
+                              },
+                              focusNode: focusNode132,
+                              maxLength: 4,
+                              onSaved: (value) {
+                                object.thickinsulrest4 = value;
+                              },
+                              controller: thickinsulrestController4,
+                              style: textStyle,
+                              decoration: InputDecoration(
+                                focusColor: Theme.of(context).primaryColor,
+                                labelStyle: TextStyle(
+                                  fontSize: 22,
+                                  fontWeight: FontWeight.w300,
+                                  color: Theme.of(context).primaryColor,
+                                ),
+                                hintStyle: TextStyle(
+                                  fontSize: 22,
+                                  fontWeight: FontWeight.w300,
+                                  color: Theme.of(context).primaryColor,
+                                ),
+                                labelText: '9ч',
+                                hintText: '9ч',
+                                helperText: 'мм',
+                                enabledBorder: OutlineInputBorder(
+                                  borderRadius:
+                                      BorderRadius.all(Radius.circular(10)),
+                                  borderSide:
+                                      BorderSide(color: Colors.grey, width: 2),
+                                ),
+                                focusedBorder: OutlineInputBorder(
+                                  borderRadius:
+                                      BorderRadius.all(Radius.circular(20)),
+                                  borderSide: BorderSide(
+                                      color: Theme.of(context).primaryColor,
+                                      width: 2),
+                                ),
+                              ),
+                              keyboardType: TextInputType.number,
+                            ),
+                          ),
+                          Expanded(
+                            child: Icon(
+                              Icons.arrow_right,
+                              color: Theme.of(context).primaryColor,
+                              size: 55,
+                            ),
+                          ),
+                          Container(
+                            width: 100,
+                            height: 100,
+                            decoration: BoxDecoration(
+                              shape: BoxShape.circle,
+                              border: Border.all(
+                                color: Theme.of(context).primaryColor,
+                                width: 8,
+                              ),
+                            ),
+                            child: Center(
+                              child: Text(
+                                'мин: ${thickinsulrestController.text}',
+                                textAlign: TextAlign.center,
+                                style: TextStyle(
+                                    fontSize: 20,
+                                    color: Theme.of(context).primaryColor,
+                                    fontWeight: FontWeight.w600),
+                              ),
+                            ),
+                          ),
+                          Expanded(
+                            child: Icon(
+                              Icons.arrow_left,
+                              color: Theme.of(context).primaryColor,
+                              size: 55,
+                            ),
+                          ),
+                          Expanded(
+                            child: TextFormField(
+                              onChanged: (String value) {
+                                setState(() {});
+                                focusNode133.requestFocus();
+                                minithickinsulrest();
+                              },
+                              focusNode: focusNode133,
+                              maxLength: 4,
+                              onSaved: (value) {
+                                object.thickinsulrest2 = value;
+                              },
+                              controller: thickinsulrestController2,
+                              style: textStyle,
+                              decoration: InputDecoration(
+                                focusColor: Theme.of(context).primaryColor,
+                                labelStyle: TextStyle(
+                                  fontSize: 22,
+                                  fontWeight: FontWeight.w300,
+                                  color: Theme.of(context).primaryColor,
+                                ),
+                                hintStyle: TextStyle(
+                                  fontSize: 22,
+                                  fontWeight: FontWeight.w300,
+                                  color: Theme.of(context).primaryColor,
+                                ),
+                                labelText: '3ч',
+                                hintText: '3ч',
+                                helperText: 'мм',
+                                enabledBorder: OutlineInputBorder(
+                                  borderRadius:
+                                      BorderRadius.all(Radius.circular(10)),
+                                  borderSide:
+                                      BorderSide(color: Colors.grey, width: 2),
+                                ),
+                                focusedBorder: OutlineInputBorder(
+                                  borderRadius:
+                                      BorderRadius.all(Radius.circular(20)),
+                                  borderSide: BorderSide(
+                                      color: Theme.of(context).primaryColor,
+                                      width: 2),
+                                ),
+                              ),
+                              keyboardType: TextInputType.number,
+                            ),
+                          ),
+                        ],
+                      ),
+                      Column(
+                        children: [
+                          Center(
+                            child: Icon(
+                              Icons.arrow_drop_up,
+                              color: Theme.of(context).primaryColor,
+                              size: 55,
+                            ),
+                          ),
+                          Center(
+                            child: TextFormField(
+                              onChanged: (String value) {
+                                setState(() {});
+                                focusNode134.requestFocus();
+                                minithickinsulrest();
+                              },
+                              focusNode: focusNode134,
+                              maxLength: 4,
+                              onSaved: (value) {
+                                object.thickinsulrest3 = value;
+                              },
+                              controller: thickinsulrestController3,
+                              style: textStyle,
+                              decoration: InputDecoration(
+                                focusColor: Theme.of(context).primaryColor,
+                                labelStyle: TextStyle(
+                                  fontSize: 22,
+                                  fontWeight: FontWeight.w300,
+                                  color: Theme.of(context).primaryColor,
+                                ),
+                                hintStyle: TextStyle(
+                                  fontSize: 16,
+                                  fontWeight: FontWeight.w300,
+                                  color: Theme.of(context).primaryColor,
+                                ),
+                                labelText: 'Толщина ИП 6ч',
+                                hintText: 'Введите толщину покрытия',
+                                helperText: 'мм',
+                                prefixIcon: Icon(
+                                  Icons.vertical_align_center_sharp,
+                                  color: (focusNode134.hasFocus ||
+                                          thickinsulrestController3
+                                              .text.isNotEmpty)
+                                      ? Theme.of(context).primaryColor
+                                      : Colors.grey,
+                                  size: 32,
+                                ),
+                                enabledBorder: OutlineInputBorder(
+                                  borderRadius:
+                                      BorderRadius.all(Radius.circular(10)),
+                                  borderSide:
+                                      BorderSide(color: Colors.grey, width: 2),
+                                ),
+                                focusedBorder: OutlineInputBorder(
+                                  borderRadius:
+                                      BorderRadius.all(Radius.circular(20)),
+                                  borderSide: BorderSide(
+                                      color: Theme.of(context).primaryColor,
+                                      width: 2),
+                                ),
+                              ),
+                              keyboardType: TextInputType.number,
+                            ),
+                          ),
+                        ],
+                      ),
+                      SizedBox(height: 10),
+                      Divider(thickness: 4),
+                      Divider(thickness: 4),
+                      SizedBox(height: 10),
+                      Container(
+                          alignment: Alignment.center,
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              Text(
+                                'Толщина ИП (изм№2)',
+                                style: TextStyle(
+                                    fontSize: 24,
+                                    color: Theme.of(context).primaryColor,
+                                    fontWeight: FontWeight.w300),
+                              ),
+                              GestureDetector(
+                                onTap: () {
+                                  thickinsulrestController5.clear();
+                                  thickinsulrestController6.clear();
+                                  thickinsulrestController7.clear();
+                                  thickinsulrestController8.clear();
+                                  thickinsulrestController.clear();
+                                },
+                                child: Icon(
+                                  Icons.delete_outline,
+                                  color: Color.fromRGBO(187, 30, 16, 1.0),
+                                ),
+                              ),
+                            ],
+                          )),
+                      SizedBox(height: 10),
+                      Column(
+                        children: [
+                          Center(
+                            child: TextFormField(
+                              onChanged: (String value) {
+                                setState(() {});
+                                focusNode135.requestFocus();
+                                minithickinsulrest();
+                              },
+                              focusNode: focusNode135,
+                              maxLength: 4,
+                              onSaved: (value) {
+                                object.thickinsulrest5 = value;
+                              },
+                              controller: thickinsulrestController5,
+                              style: textStyle,
+                              decoration: InputDecoration(
+                                focusColor: Theme.of(context).primaryColor,
+                                labelStyle: TextStyle(
+                                  fontSize: 22,
+                                  fontWeight: FontWeight.w300,
+                                  color: Theme.of(context).primaryColor,
+                                ),
+                                hintStyle: TextStyle(
+                                  fontSize: 16,
+                                  fontWeight: FontWeight.w300,
+                                  color: Theme.of(context).primaryColor,
+                                ),
+                                labelText: 'Толщина ИП 12ч',
+                                hintText: 'Введите толщину покрытия',
+                                helperText: 'мм',
+                                prefixIcon: Icon(
+                                  Icons.vertical_align_center_sharp,
+                                  color: (focusNode135.hasFocus ||
+                                          thickinsulrestController5
+                                              .text.isNotEmpty)
+                                      ? Theme.of(context).primaryColor
+                                      : Colors.grey,
+                                  size: 32,
+                                ),
+                                enabledBorder: OutlineInputBorder(
+                                  borderRadius:
+                                      BorderRadius.all(Radius.circular(10)),
+                                  borderSide:
+                                      BorderSide(color: Colors.grey, width: 2),
+                                ),
+                                focusedBorder: OutlineInputBorder(
+                                  borderRadius:
+                                      BorderRadius.all(Radius.circular(20)),
+                                  borderSide: BorderSide(
+                                      color: Theme.of(context).primaryColor,
+                                      width: 2),
+                                ),
+                              ),
+                              keyboardType: TextInputType.number,
+                            ),
+                          ),
+                          Center(
+                            child: Icon(
+                              Icons.arrow_drop_down,
+                              color: Theme.of(context).primaryColor,
+                              size: 55,
+                            ),
+                          ),
+                        ],
+                      ),
+                      Row(
+                        children: [
+                          Expanded(
+                            child: TextFormField(
+                              onChanged: (String value) {
+                                setState(() {});
+                                focusNode136.requestFocus();
+                                minithickinsulrest();
+                              },
+                              focusNode: focusNode136,
+                              maxLength: 4,
+                              onSaved: (value) {
+                                object.thickinsulrest6 = value;
+                              },
+                              controller: thickinsulrestController6,
+                              style: textStyle,
+                              decoration: InputDecoration(
+                                focusColor: Theme.of(context).primaryColor,
+                                labelStyle: TextStyle(
+                                  fontSize: 22,
+                                  fontWeight: FontWeight.w300,
+                                  color: Theme.of(context).primaryColor,
+                                ),
+                                hintStyle: TextStyle(
+                                  fontSize: 22,
+                                  fontWeight: FontWeight.w300,
+                                  color: Theme.of(context).primaryColor,
+                                ),
+                                labelText: '9ч',
+                                hintText: '9ч',
+                                helperText: 'мм',
+                                enabledBorder: OutlineInputBorder(
+                                  borderRadius:
+                                      BorderRadius.all(Radius.circular(10)),
+                                  borderSide:
+                                      BorderSide(color: Colors.grey, width: 2),
+                                ),
+                                focusedBorder: OutlineInputBorder(
+                                  borderRadius:
+                                      BorderRadius.all(Radius.circular(20)),
+                                  borderSide: BorderSide(
+                                      color: Theme.of(context).primaryColor,
+                                      width: 2),
+                                ),
+                              ),
+                              keyboardType: TextInputType.number,
+                            ),
+                          ),
+                          Expanded(
+                            child: Icon(
+                              Icons.arrow_right,
+                              color: Theme.of(context).primaryColor,
+                              size: 55,
+                            ),
+                          ),
+                          Container(
+                            width: 100,
+                            height: 100,
+                            decoration: BoxDecoration(
+                              shape: BoxShape.circle,
+                              border: Border.all(
+                                color: Theme.of(context).primaryColor,
+                                width: 8,
+                              ),
+                            ),
+                            child: Center(
+                              child: Text(
+                                'мин: ${thickinsulrestController.text}',
+                                textAlign: TextAlign.center,
+                                style: TextStyle(
+                                    fontSize: 20,
+                                    color: Theme.of(context).primaryColor,
+                                    fontWeight: FontWeight.w600),
+                              ),
+                            ),
+                          ),
+                          Expanded(
+                            child: Icon(
+                              Icons.arrow_left,
+                              color: Theme.of(context).primaryColor,
+                              size: 55,
+                            ),
+                          ),
+                          Expanded(
+                            child: TextFormField(
+                              onChanged: (String value) {
+                                setState(() {});
+                                focusNode137.requestFocus();
+                                minithickinsulrest();
+                              },
+                              focusNode: focusNode137,
+                              maxLength: 4,
+                              onSaved: (value) {
+                                object.thickinsulrest7 = value;
+                              },
+                              controller: thickinsulrestController7,
+                              style: textStyle,
+                              decoration: InputDecoration(
+                                focusColor: Theme.of(context).primaryColor,
+                                labelStyle: TextStyle(
+                                  fontSize: 22,
+                                  fontWeight: FontWeight.w300,
+                                  color: Theme.of(context).primaryColor,
+                                ),
+                                hintStyle: TextStyle(
+                                  fontSize: 22,
+                                  fontWeight: FontWeight.w300,
+                                  color: Theme.of(context).primaryColor,
+                                ),
+                                labelText: '3ч',
+                                hintText: '3ч',
+                                helperText: 'мм',
+                                enabledBorder: OutlineInputBorder(
+                                  borderRadius:
+                                      BorderRadius.all(Radius.circular(10)),
+                                  borderSide:
+                                      BorderSide(color: Colors.grey, width: 2),
+                                ),
+                                focusedBorder: OutlineInputBorder(
+                                  borderRadius:
+                                      BorderRadius.all(Radius.circular(20)),
+                                  borderSide: BorderSide(
+                                      color: Theme.of(context).primaryColor,
+                                      width: 2),
+                                ),
+                              ),
+                              keyboardType: TextInputType.number,
+                            ),
+                          ),
+                        ],
+                      ),
+                      Column(
+                        children: [
+                          Center(
+                            child: Icon(
+                              Icons.arrow_drop_up,
+                              color: Theme.of(context).primaryColor,
+                              size: 55,
+                            ),
+                          ),
+                          Center(
+                            child: TextFormField(
+                              onChanged: (String value) {
+                                setState(() {});
+                                focusNode138.requestFocus();
+                                minithickinsulrest();
+                              },
+                              focusNode: focusNode138,
+                              maxLength: 4,
+                              onSaved: (value) {
+                                object.thickinsulrest8 = value;
+                              },
+                              controller: thickinsulrestController8,
+                              style: textStyle,
+                              decoration: InputDecoration(
+                                focusColor: Theme.of(context).primaryColor,
+                                labelStyle: TextStyle(
+                                  fontSize: 22,
+                                  fontWeight: FontWeight.w300,
+                                  color: Theme.of(context).primaryColor,
+                                ),
+                                hintStyle: TextStyle(
+                                  fontSize: 16,
+                                  fontWeight: FontWeight.w300,
+                                  color: Theme.of(context).primaryColor,
+                                ),
+                                labelText: 'Толщина ИП 6ч',
+                                hintText: 'Введите толщину покрытия',
+                                helperText: 'мм',
+                                prefixIcon: Icon(
+                                  Icons.vertical_align_center_sharp,
+                                  color: (focusNode138.hasFocus ||
+                                          thickinsulrestController8
+                                              .text.isNotEmpty)
+                                      ? Theme.of(context).primaryColor
+                                      : Colors.grey,
+                                  size: 32,
+                                ),
+                                enabledBorder: OutlineInputBorder(
+                                  borderRadius:
+                                      BorderRadius.all(Radius.circular(10)),
+                                  borderSide:
+                                      BorderSide(color: Colors.grey, width: 2),
+                                ),
+                                focusedBorder: OutlineInputBorder(
+                                  borderRadius:
+                                      BorderRadius.all(Radius.circular(20)),
+                                  borderSide: BorderSide(
+                                      color: Theme.of(context).primaryColor,
+                                      width: 2),
+                                ),
+                              ),
+                              keyboardType: TextInputType.number,
+                            ),
+                          ),
+                        ],
+                      ),
+                      SizedBox(height: 10),
+                      Divider(thickness: 4),
+                      Divider(thickness: 4),
+                      SizedBox(height: 10),
+                      Container(
+                          alignment: Alignment.center,
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              Text(
+                                'Толщина ИП (изм№3)',
+                                style: TextStyle(
+                                    fontSize: 24,
+                                    color: Theme.of(context).primaryColor,
+                                    fontWeight: FontWeight.w300),
+                              ),
+                              GestureDetector(
+                                onTap: () {
+                                  thickinsulrestController9.clear();
+                                  thickinsulrestController10.clear();
+                                  thickinsulrestController11.clear();
+                                  thickinsulrestController12.clear();
+                                  thickinsulrestController.clear();
+                                },
+                                child: Icon(
+                                  Icons.delete_outline,
+                                  color: Color.fromRGBO(187, 30, 16, 1.0),
+                                ),
+                              ),
+                            ],
+                          )),
+                      SizedBox(height: 10),
+                      Column(
+                        children: [
+                          Center(
+                            child: TextFormField(
+                              onChanged: (String value) {
+                                setState(() {});
+                                focusNode139.requestFocus();
+                                minithickinsulrest();
+                              },
+                              focusNode: focusNode139,
+                              maxLength: 4,
+                              onSaved: (value) {
+                                object.thickinsulrest9 = value;
+                              },
+                              controller: thickinsulrestController9,
+                              style: textStyle,
+                              decoration: InputDecoration(
+                                focusColor: Theme.of(context).primaryColor,
+                                labelStyle: TextStyle(
+                                  fontSize: 22,
+                                  fontWeight: FontWeight.w300,
+                                  color: Theme.of(context).primaryColor,
+                                ),
+                                hintStyle: TextStyle(
+                                  fontSize: 16,
+                                  fontWeight: FontWeight.w300,
+                                  color: Theme.of(context).primaryColor,
+                                ),
+                                labelText: 'Толщина ИП 12ч',
+                                hintText: 'Введите толщину покрытия',
+                                helperText: 'мм',
+                                prefixIcon: Icon(
+                                  Icons.vertical_align_center_sharp,
+                                  color: (focusNode139.hasFocus ||
+                                          thickinsulrestController9
+                                              .text.isNotEmpty)
+                                      ? Theme.of(context).primaryColor
+                                      : Colors.grey,
+                                  size: 32,
+                                ),
+                                enabledBorder: OutlineInputBorder(
+                                  borderRadius:
+                                      BorderRadius.all(Radius.circular(10)),
+                                  borderSide:
+                                      BorderSide(color: Colors.grey, width: 2),
+                                ),
+                                focusedBorder: OutlineInputBorder(
+                                  borderRadius:
+                                      BorderRadius.all(Radius.circular(20)),
+                                  borderSide: BorderSide(
+                                      color: Theme.of(context).primaryColor,
+                                      width: 2),
+                                ),
+                              ),
+                              keyboardType: TextInputType.number,
+                            ),
+                          ),
+                          Center(
+                            child: Icon(
+                              Icons.arrow_drop_down,
+                              color: Theme.of(context).primaryColor,
+                              size: 55,
+                            ),
+                          ),
+                        ],
+                      ),
+                      Row(
+                        children: [
+                          Expanded(
+                            child: TextFormField(
+                              onChanged: (String value) {
+                                setState(() {});
+                                focusNode140.requestFocus();
+                                minithickinsulrest();
+                              },
+                              focusNode: focusNode140,
+                              maxLength: 4,
+                              onSaved: (value) {
+                                object.thickinsulrest10 = value;
+                              },
+                              controller: thickinsulrestController10,
+                              style: textStyle,
+                              decoration: InputDecoration(
+                                focusColor: Theme.of(context).primaryColor,
+                                labelStyle: TextStyle(
+                                  fontSize: 22,
+                                  fontWeight: FontWeight.w300,
+                                  color: Theme.of(context).primaryColor,
+                                ),
+                                hintStyle: TextStyle(
+                                  fontSize: 22,
+                                  fontWeight: FontWeight.w300,
+                                  color: Theme.of(context).primaryColor,
+                                ),
+                                labelText: '9ч',
+                                hintText: '9ч',
+                                helperText: 'мм',
+                                enabledBorder: OutlineInputBorder(
+                                  borderRadius:
+                                      BorderRadius.all(Radius.circular(10)),
+                                  borderSide:
+                                      BorderSide(color: Colors.grey, width: 2),
+                                ),
+                                focusedBorder: OutlineInputBorder(
+                                  borderRadius:
+                                      BorderRadius.all(Radius.circular(20)),
+                                  borderSide: BorderSide(
+                                      color: Theme.of(context).primaryColor,
+                                      width: 2),
+                                ),
+                              ),
+                              keyboardType: TextInputType.number,
+                            ),
+                          ),
+                          Expanded(
+                            child: Icon(
+                              Icons.arrow_right,
+                              color: Theme.of(context).primaryColor,
+                              size: 55,
+                            ),
+                          ),
+                          Container(
+                            width: 100,
+                            height: 100,
+                            decoration: BoxDecoration(
+                              shape: BoxShape.circle,
+                              border: Border.all(
+                                color: Theme.of(context).primaryColor,
+                                width: 8,
+                              ),
+                            ),
+                            child: Center(
+                              child: Text(
+                                'мин: ${thickinsulrestController.text}',
+                                textAlign: TextAlign.center,
+                                style: TextStyle(
+                                    fontSize: 20,
+                                    color: Theme.of(context).primaryColor,
+                                    fontWeight: FontWeight.w600),
+                              ),
+                            ),
+                          ),
+                          Expanded(
+                            child: Icon(
+                              Icons.arrow_left,
+                              color: Theme.of(context).primaryColor,
+                              size: 55,
+                            ),
+                          ),
+                          Expanded(
+                            child: TextFormField(
+                              onChanged: (String value) {
+                                setState(() {});
+                                focusNode141.requestFocus();
+                                minithickinsulrest();
+                              },
+                              focusNode: focusNode141,
+                              maxLength: 4,
+                              onSaved: (value) {
+                                object.thickinsulrest11 = value;
+                              },
+                              controller: thickinsulrestController11,
+                              style: textStyle,
+                              decoration: InputDecoration(
+                                focusColor: Theme.of(context).primaryColor,
+                                labelStyle: TextStyle(
+                                  fontSize: 22,
+                                  fontWeight: FontWeight.w300,
+                                  color: Theme.of(context).primaryColor,
+                                ),
+                                hintStyle: TextStyle(
+                                  fontSize: 22,
+                                  fontWeight: FontWeight.w300,
+                                  color: Theme.of(context).primaryColor,
+                                ),
+                                labelText: '3ч',
+                                hintText: '3ч',
+                                helperText: 'мм',
+                                enabledBorder: OutlineInputBorder(
+                                  borderRadius:
+                                      BorderRadius.all(Radius.circular(10)),
+                                  borderSide:
+                                      BorderSide(color: Colors.grey, width: 2),
+                                ),
+                                focusedBorder: OutlineInputBorder(
+                                  borderRadius:
+                                      BorderRadius.all(Radius.circular(20)),
+                                  borderSide: BorderSide(
+                                      color: Theme.of(context).primaryColor,
+                                      width: 2),
+                                ),
+                              ),
+                              keyboardType: TextInputType.number,
+                            ),
+                          ),
+                        ],
+                      ),
+                      Column(
+                        children: [
+                          Center(
+                            child: Icon(
+                              Icons.arrow_drop_up,
+                              color: Theme.of(context).primaryColor,
+                              size: 55,
+                            ),
+                          ),
+                          Center(
+                            child: TextFormField(
+                              onChanged: (String value) {
+                                setState(() {});
+                                focusNode142.requestFocus();
+                                minithickinsulrest();
+                              },
+                              focusNode: focusNode142,
+                              maxLength: 4,
+                              onSaved: (value) {
+                                object.thickinsulrest12 = value;
+                              },
+                              controller: thickinsulrestController12,
+                              style: textStyle,
+                              decoration: InputDecoration(
+                                focusColor: Theme.of(context).primaryColor,
+                                labelStyle: TextStyle(
+                                  fontSize: 22,
+                                  fontWeight: FontWeight.w300,
+                                  color: Theme.of(context).primaryColor,
+                                ),
+                                hintStyle: TextStyle(
+                                  fontSize: 16,
+                                  fontWeight: FontWeight.w300,
+                                  color: Theme.of(context).primaryColor,
+                                ),
+                                labelText: 'Толщина ИП 6ч',
+                                hintText: 'Введите толщину покрытия',
+                                helperText: 'мм',
+                                prefixIcon: Icon(
+                                  Icons.vertical_align_center_sharp,
+                                  color: (focusNode142.hasFocus ||
+                                          thickinsulrestController12
+                                              .text.isNotEmpty)
+                                      ? Theme.of(context).primaryColor
+                                      : Colors.grey,
+                                  size: 32,
+                                ),
+                                enabledBorder: OutlineInputBorder(
+                                  borderRadius:
+                                      BorderRadius.all(Radius.circular(10)),
+                                  borderSide:
+                                      BorderSide(color: Colors.grey, width: 2),
+                                ),
+                                focusedBorder: OutlineInputBorder(
+                                  borderRadius:
+                                      BorderRadius.all(Radius.circular(20)),
+                                  borderSide: BorderSide(
+                                      color: Theme.of(context).primaryColor,
+                                      width: 2),
+                                ),
+                              ),
+                              keyboardType: TextInputType.number,
+                            ),
+                          ),
+                        ],
+                      ),
+                      SizedBox(height: 10),
+                      Divider(thickness: 4),
                       SizedBox(height: 10),
                       TextFormField(
                         focusNode: focusNode26,
@@ -6321,7 +8650,9 @@ class ObjectDetailIpState extends State<ObjectDetailIp> {
                             ),
                         onPressed: () => saveForm4(),
                         child: Text(
-                          isEdit ? 'Редактировать' : 'Добавить',
+                          isEdit
+                              ? 'Редактировать и закрыть'
+                              : 'Добавить и закрыть',
                           style: const TextStyle(
                               fontSize: 18.0, fontWeight: FontWeight.w300),
                         ),
@@ -6335,7 +8666,7 @@ class ObjectDetailIpState extends State<ObjectDetailIp> {
               child: Padding(
                 padding: const EdgeInsets.all(8.0),
                 child: Form(
-                  key: _2formKey,
+                  key: _5formKey,
                   child: ListView(
                     children: <Widget>[
                       const SizedBox(height: 20),
@@ -6712,9 +9043,11 @@ class ObjectDetailIpState extends State<ObjectDetailIp> {
                             padding: const EdgeInsets.all(13.0),
                             shape: RoundedRectangleBorder(
                                 borderRadius: BorderRadius.circular(10.0))),
-                        onPressed: () => saveForm2(),
+                        onPressed: () => saveForm5(),
                         child: Text(
-                          isEdit ? 'Редактировать' : 'Добавить',
+                          isEdit
+                              ? 'Редактировать и закрыть'
+                              : 'Добавить и закрыть',
                           style: const TextStyle(
                               fontSize: 18.0, fontWeight: FontWeight.w300),
                         ),
@@ -6728,7 +9061,7 @@ class ObjectDetailIpState extends State<ObjectDetailIp> {
               child: Padding(
                 padding: const EdgeInsets.all(8.0),
                 child: Form(
-                  key: _5formKey,
+                  key: _6formKey,
                   child: ListView(
                     children: <Widget>[
                       SizedBox(height: 10),
@@ -6742,7 +9075,6 @@ class ObjectDetailIpState extends State<ObjectDetailIp> {
                                 fontWeight: FontWeight.w300),
                           )),
                       Divider(thickness: 4),
-                      // SizedBox(height: 20),
                       Container(
                           alignment: Alignment.center,
                           child: Row(
@@ -7517,9 +9849,9 @@ class ObjectDetailIpState extends State<ObjectDetailIp> {
                               ),
                               GestureDetector(
                                 onTap: () {
-                                  continmeterController.clear();
-                                  continmeternumbController.clear();
-                                  continmeterdateController.clear();
+                                  setvikController.clear();
+                                  setviknumbController.clear();
+                                  setvikdateController.clear();
                                 },
                                 child: Icon(
                                   Icons.delete_outline,
@@ -7700,9 +10032,11 @@ class ObjectDetailIpState extends State<ObjectDetailIp> {
                                 borderRadius:
                                     BorderRadius.circular(10.0)) // foreground
                             ),
-                        onPressed: () => saveForm5(),
+                        onPressed: () => saveForm6(),
                         child: Text(
-                          isEdit ? 'Редактировать' : 'Добавить',
+                          isEdit
+                              ? 'Редактировать и закрыть'
+                              : 'Добавить и закрыть',
                           style: const TextStyle(
                               fontSize: 18.0, fontWeight: FontWeight.w300),
                         ),
@@ -7716,7 +10050,7 @@ class ObjectDetailIpState extends State<ObjectDetailIp> {
               child: Padding(
                 padding: const EdgeInsets.all(8.0),
                 child: Form(
-                  key: _6formKey,
+                  key: _7formKey,
                   child: ListView(
                     children: <Widget>[
                       SizedBox(height: 20),
@@ -7763,8 +10097,8 @@ class ObjectDetailIpState extends State<ObjectDetailIp> {
                                       print(
                                           'сделали: ${object.photo.toString()}');
 
-                                      if (_6formKey.currentState.validate()) {
-                                        _6formKey.currentState.save();
+                                      if (_7formKey.currentState.validate()) {
+                                        _7formKey.currentState.save();
                                         if (_image != null) {
                                           final Directory extDir =
                                               await getApplicationDocumentsDirectory();
@@ -7847,9 +10181,11 @@ class ObjectDetailIpState extends State<ObjectDetailIp> {
                                 borderRadius:
                                     BorderRadius.circular(10.0)) // foreground
                             ),
-                        onPressed: () => saveForm6(),
+                        onPressed: () => saveForm7(),
                         child: Text(
-                          isEdit ? 'Редактировать' : 'Добавить',
+                          isEdit
+                              ? 'Редактировать и закрыть'
+                              : 'Добавить и закрыть',
                           style: const TextStyle(
                               fontSize: 18.0, fontWeight: FontWeight.w300),
                         ),
@@ -7863,7 +10199,7 @@ class ObjectDetailIpState extends State<ObjectDetailIp> {
               child: Padding(
                 padding: const EdgeInsets.all(8.0),
                 child: Form(
-                  key: _7formKey,
+                  key: _8formKey,
                   child: ListView(
                     children: <Widget>[
                       SizedBox(height: 20),
@@ -8801,9 +11137,11 @@ class ObjectDetailIpState extends State<ObjectDetailIp> {
                             padding: const EdgeInsets.all(13.0),
                             shape: RoundedRectangleBorder(
                                 borderRadius: BorderRadius.circular(10.0))),
-                        onPressed: () => saveForm7(),
+                        onPressed: () => saveForm8(),
                         child: Text(
-                          isEdit ? 'Редактировать' : 'Добавить',
+                          isEdit
+                              ? 'Редактировать и закрыть'
+                              : 'Добавить и закрыть',
                           style: const TextStyle(
                               fontSize: 18.0, fontWeight: FontWeight.w300),
                         ),
@@ -8887,303 +11225,324 @@ class ObjectDetailIpState extends State<ObjectDetailIp> {
         } else if (object.filial == 'УАВР') {
           filial = 'УАВР-филиала';
         }
-        sheet.cell(CellIndex.indexByString("E4")).value = object.dolzhnpredskom;
-        print(object.dolzhnpredskom);
-        sheet.cell(CellIndex.indexByString("E5")).value = filial;
-        print(object.filial);
-        sheet.cell(CellIndex.indexByString("I7")).value = object.fiopredskom;
-        print(object.fiopredskom);
-        sheet.cell(CellIndex.indexByString("I8")).value = object.dateObsl;
-        print(object.dateObsl);
-        sheet.cell(CellIndex.indexByString("F11")).value = object.dateObsl;
-        sheet.cell(CellIndex.indexByString("G14")).value = object.title;
-        sheet.cell(CellIndex.indexByString("G15")).value = object.davl;
+        sheet.cell(CellIndex.indexByString("E4")).value =
+            object.dolzhnpredskom ?? '-';
+        sheet.cell(CellIndex.indexByString("E5")).value = filial ?? '-';
+        sheet.cell(CellIndex.indexByString("I7")).value =
+            object.fiopredskom ?? '-';
+        sheet.cell(CellIndex.indexByString("I8")).value =
+            object.dateObsl ?? '-';
+        sheet.cell(CellIndex.indexByString("F11")).value =
+            object.dateObsl ?? '-';
+        sheet.cell(CellIndex.indexByString("G14")).value = object.title ?? '-';
+        sheet.cell(CellIndex.indexByString("G15")).value = object.davl ?? '-';
         sheet.cell(CellIndex.indexByString("G16")).value =
-            object.diameter.toString() + "x" + object.thickpipe.toString();
-        sheet.cell(CellIndex.indexByString("G17")).value = object.gradesteel;
-        sheet.cell(CellIndex.indexByString("G18")).value = object.typeinsul;
-        sheet.cell(CellIndex.indexByString("F19")).value = object.osnovanie;
-        sheet.cell(CellIndex.indexByString("A25")).value = object.piketkm;
-        sheet.cell(CellIndex.indexByString("C25")).value = object.distvtd;
-        sheet.cell(CellIndex.indexByString("E25")).value = object.location;
-        sheet.cell(CellIndex.indexByString("H25")).value = object.privmest;
-        sheet.cell(CellIndex.indexByString("J25")).value = object.depthpit;
-        sheet.cell(CellIndex.indexByString("A34")).value = object.mesto;
-        sheet.cell(CellIndex.indexByString("C34")).value = object.tipgrunta;
-        sheet.cell(CellIndex.indexByString("E34")).value = object.vlaggrunt;
-        sheet.cell(CellIndex.indexByString("G34")).value = object.lengthpit;
-        sheet.cell(CellIndex.indexByString("H34")).value = object.soprgrunt;
-        sheet.cell(CellIndex.indexByString("I34")).value = object.ph;
-        sheet.cell(CellIndex.indexByString("J34")).value = object.potencial;
-        sheet.cell(CellIndex.indexByString("K34")).value = object.tempsurf;
-        sheet.cell(CellIndex.indexByString("G38")).value = object.vlaga;
+            object.diameter.toString() ??
+                '-' + "x" + object.thickpipe.toString() ??
+                '-';
+        sheet.cell(CellIndex.indexByString("G17")).value =
+            object.gradesteel ?? '-';
+        sheet.cell(CellIndex.indexByString("G18")).value =
+            object.typeinsul ?? '-';
+        sheet.cell(CellIndex.indexByString("F19")).value =
+            object.osnovanie ?? '-';
+        sheet.cell(CellIndex.indexByString("A25")).value =
+            object.piketkm ?? '-';
+        sheet.cell(CellIndex.indexByString("C25")).value =
+            object.distvtd ?? '-';
+        sheet.cell(CellIndex.indexByString("E25")).value =
+            object.location ?? '-';
+        sheet.cell(CellIndex.indexByString("H25")).value =
+            object.privmest ?? '-';
+        sheet.cell(CellIndex.indexByString("J25")).value =
+            object.depthpit ?? '-';
+        sheet.cell(CellIndex.indexByString("A34")).value = object.mesto ?? '-';
+        sheet.cell(CellIndex.indexByString("C34")).value =
+            object.tipgrunta ?? '-';
+        sheet.cell(CellIndex.indexByString("E34")).value =
+            object.vlaggrunt ?? '-';
+        sheet.cell(CellIndex.indexByString("G34")).value =
+            object.lengthpit ?? '-';
+        sheet.cell(CellIndex.indexByString("H34")).value =
+            object.soprgrunt ?? '-';
+        sheet.cell(CellIndex.indexByString("I34")).value = object.ph ?? '-';
+        sheet.cell(CellIndex.indexByString("J34")).value =
+            object.potencial ?? '-';
+        sheet.cell(CellIndex.indexByString("K34")).value =
+            object.tempsurf ?? '-';
+        sheet.cell(CellIndex.indexByString("G38")).value = object.vlaga ?? '-';
 
-        sheet.cell(CellIndex.indexByString("D49")).value = object.thickinsul1;
-        sheet.cell(CellIndex.indexByString("F49")).value = object.thickinsul2;
-        sheet.cell(CellIndex.indexByString("H49")).value = object.thickinsul3;
-        sheet.cell(CellIndex.indexByString("J49")).value = object.thickinsul2;
+        sheet.cell(CellIndex.indexByString("D49")).value =
+            object.thickinsul1 ?? '-';
+        sheet.cell(CellIndex.indexByString("F49")).value =
+            object.thickinsul2 ?? '-';
+        sheet.cell(CellIndex.indexByString("H49")).value =
+            object.thickinsul3 ?? '-';
+        sheet.cell(CellIndex.indexByString("J49")).value =
+            object.thickinsul2 ?? '-';
 
         sheet.cell(CellIndex.indexByString("A63")).value =
-            object.charmetdamage1;
+            object.charmetdamage1 ?? '-';
         sheet.cell(CellIndex.indexByString("C63")).value =
-            object.lochourmetdamage1;
+            object.lochourmetdamage1 ?? '-';
         sheet.cell(CellIndex.indexByString("G63")).value =
-            object.sizedepthmetdamage1;
-        sheet.cell(CellIndex.indexByString("I63")).value = object.thickpipe;
+            object.sizedepthmetdamage1 ?? '-';
+        sheet.cell(CellIndex.indexByString("I63")).value =
+            object.thickpipe ?? '-';
 
-        sheet.cell(CellIndex.indexByString("D68")).value = object.thickpipe;
-        sheet.cell(CellIndex.indexByString("F68")).value = object.thickpipe;
-        sheet.cell(CellIndex.indexByString("H68")).value = object.thickpipe;
-        sheet.cell(CellIndex.indexByString("J68")).value = object.thickpipe;
+        sheet.cell(CellIndex.indexByString("D68")).value =
+            object.thickpipe ?? '-';
+        sheet.cell(CellIndex.indexByString("F68")).value =
+            object.thickpipe ?? '-';
+        sheet.cell(CellIndex.indexByString("H68")).value =
+            object.thickpipe ?? '-';
+        sheet.cell(CellIndex.indexByString("J68")).value =
+            object.thickpipe ?? '-';
 
-        sheet.cell(CellIndex.indexByString("H68")).value = object.thickpipe;
+        sheet.cell(CellIndex.indexByString("H68")).value =
+            object.thickpipe ?? '-';
 
         sheet.cell(CellIndex.indexByString("E63")).value =
-            object.sizelengthmetdamage1.toString() +
-                    "x" +
-                    object.sizewidthmetdamage1.toString() ??
-                '';
+            object.sizelengthmetdamage1.toString() ??
+                '-' + "x" + object.sizewidthmetdamage1.toString() ??
+                '-';
 
         sheet.cell(CellIndex.indexByString("A64")).value =
-            object.charmetdamage2;
+            object.charmetdamage2 ?? '-';
         sheet.cell(CellIndex.indexByString("C64")).value =
-            object.lochourmetdamage2;
+            object.lochourmetdamage2 ?? '-';
         sheet.cell(CellIndex.indexByString("G64")).value =
-            object.sizedepthmetdamage1;
-        sheet.cell(CellIndex.indexByString("I64")).value = object.thickpipe;
+            object.sizedepthmetdamage1 ?? '-';
+        sheet.cell(CellIndex.indexByString("I64")).value =
+            object.thickpipe ?? '-';
 
         sheet.cell(CellIndex.indexByString("E64")).value =
-            object.sizelengthmetdamage2.toString() +
-                    "x" +
-                    object.sizewidthmetdamage2.toString() ??
-                '';
+            object.sizelengthmetdamage2.toString() ??
+                '-' + "x" + object.sizewidthmetdamage2.toString() ??
+                '-';
 
         sheet.cell(CellIndex.indexByString("A65")).value =
-            object.charmetdamage3;
+            object.charmetdamage3 ?? '-';
         sheet.cell(CellIndex.indexByString("C65")).value =
-            object.lochourmetdamage3;
+            object.lochourmetdamage3 ?? '-';
         sheet.cell(CellIndex.indexByString("G65")).value =
-            object.sizedepthmetdamage1;
-        sheet.cell(CellIndex.indexByString("I65")).value = object.thickpipe;
+            object.sizedepthmetdamage1 ?? '-';
+        sheet.cell(CellIndex.indexByString("I65")).value =
+            object.thickpipe ?? '-';
 
         sheet.cell(CellIndex.indexByString("E65")).value =
-            object.sizelengthmetdamage3.toString() +
-                    "x" +
-                    object.sizewidthmetdamage3.toString() ??
-                '';
+            object.sizelengthmetdamage3.toString() ??
+                '-' + "x" + object.sizewidthmetdamage3.toString() ??
+                '-';
 
-        sheet.cell(CellIndex.indexByString("F57")).value = object.insulcondit;
-        // sheet.cell(CellIndex.indexByString("F57")).value =
-        //     (sheet.cell(CellIndex.indexByString("J54")).value ==
-        //                 'Соответствует' &&
-        //             sheet.cell(CellIndex.indexByString("J55")).value ==
-        //                 'Соответствует' &&
-        //             sheet.cell(CellIndex.indexByString("J56")).value ==
-        //                 'Соответствует')
-        //         ? 'Удовлетворительное'
-        //         : 'Неудовлетворительное';
-        // sheet.cell(CellIndex.indexByString("F69")).value = object.metallcondit;
-        sheet.cell(CellIndex.indexByString("F69")).value =
-            object.metalldamage == 'Да'
-                ? 'Неудовлетворительное'
-                : 'Удовлетворительное';
+        sheet.cell(CellIndex.indexByString("F57")).value =
+            object.insulcondit ?? '-';
+
         // sheet.cell(CellIndex.indexByString("F69")).value =
-        //     (sheet.cell(CellIndex.indexByString("A63")).value != null ||
-        //             sheet.cell(CellIndex.indexByString("A64")).value != null ||
-        //             sheet.cell(CellIndex.indexByString("A65")).value != null)
+        //     object.metalldamage ?? '-' == 'Да'
         //         ? 'Неудовлетворительное'
         //         : 'Удовлетворительное';
+
         sheet.cell(CellIndex.indexByString("B73")).value =
-            object.tickinsulmeter;
+            object.tickinsulmeter ?? '-';
         sheet.cell(CellIndex.indexByString("F73")).value =
-            object.tickinsulmeternumb;
+            object.tickinsulmeternumb ?? '-';
         sheet.cell(CellIndex.indexByString("I73")).value =
-            object.tickinsulmeterdate;
+            object.tickinsulmeterdate ?? '-';
 
         sheet.cell(CellIndex.indexByString("B74")).value =
-            object.tickmetallmeter;
+            object.tickmetallmeter ?? '-';
         sheet.cell(CellIndex.indexByString("F74")).value =
-            object.tickmetallmeternumb;
+            object.tickmetallmeternumb ?? '-';
         sheet.cell(CellIndex.indexByString("I74")).value =
-            object.tickmetallmeterdate;
+            object.tickmetallmeterdate ?? '-';
 
-        sheet.cell(CellIndex.indexByString("B75")).value = object.adhesmeter;
+        sheet.cell(CellIndex.indexByString("B75")).value =
+            object.adhesmeter ?? '-';
         sheet.cell(CellIndex.indexByString("F75")).value =
-            object.adhesmeternumb;
+            object.adhesmeternumb ?? '-';
         sheet.cell(CellIndex.indexByString("I75")).value =
-            object.adhesmeterdate;
+            object.adhesmeterdate ?? '-';
 
-        sheet.cell(CellIndex.indexByString("B76")).value = object.continmeter;
+        sheet.cell(CellIndex.indexByString("B76")).value =
+            object.continmeter ?? '-';
         sheet.cell(CellIndex.indexByString("F76")).value =
-            object.continmeternumb;
+            object.continmeternumb ?? '-';
         sheet.cell(CellIndex.indexByString("I76")).value =
-            object.continmeterdate;
+            object.continmeterdate ?? '-';
 
-        sheet.cell(CellIndex.indexByString("B77")).value = object.setvik;
-        sheet.cell(CellIndex.indexByString("F77")).value = object.setviknumb;
-        sheet.cell(CellIndex.indexByString("I77")).value = object.setvikdate;
+        sheet.cell(CellIndex.indexByString("B77")).value = object.setvik ?? '-';
+        sheet.cell(CellIndex.indexByString("F77")).value =
+            object.setviknumb ?? '-';
+        sheet.cell(CellIndex.indexByString("I77")).value =
+            object.setvikdate ?? '-';
 
-        sheet.cell(CellIndex.indexByString("E78")).value = object.zakl;
+        sheet.cell(CellIndex.indexByString("E78")).value = object.zakl ?? '-';
 
-        // sheet.cell(CellIndex.indexByString("A80")).value = object.dolzhnpredstzakazch;
         sheet.cell(CellIndex.indexByString("E80")).value =
-            object.fiopredstzakazch;
-        sheet.cell(CellIndex.indexByString("J80")).value = object.dateObsl;
+            object.fiopredstzakazch ?? '-';
+        sheet.cell(CellIndex.indexByString("J80")).value =
+            object.dateObsl ?? '-';
 
         sheet.cell(CellIndex.indexByString("A82")).value =
-            object.dolzhnproizvrab;
-        sheet.cell(CellIndex.indexByString("E82")).value = object.fioproizvrab;
-        sheet.cell(CellIndex.indexByString("J82")).value = object.dateObsl;
+            object.dolzhnproizvrab ?? '-';
+        sheet.cell(CellIndex.indexByString("E82")).value =
+            object.fioproizvrab ?? '-';
+        sheet.cell(CellIndex.indexByString("J82")).value =
+            object.dateObsl ?? '-';
 
         sheet.cell(CellIndex.indexByString("A84")).value =
-            object.dolzhnnachuchastka;
+            object.dolzhnnachuchastka ?? '-';
         sheet.cell(CellIndex.indexByString("E84")).value =
-            object.fionachuchastka;
-        sheet.cell(CellIndex.indexByString("J84")).value = object.dateObsl;
+            object.fionachuchastka ?? '-';
+        sheet.cell(CellIndex.indexByString("J84")).value =
+            object.dateObsl ?? '-';
 
         sheet.cell(CellIndex.indexByString("A86")).value =
-            object.dolzhnpredstzakazchSK;
+            object.dolzhnpredstzakazchSK ?? '-';
         sheet.cell(CellIndex.indexByString("E86")).value =
-            object.fiopredstzakazchSK;
-        sheet.cell(CellIndex.indexByString("J86")).value = object.dateObsl;
+            object.fiopredstzakazchSK ?? '-';
+        sheet.cell(CellIndex.indexByString("J86")).value =
+            object.dateObsl ?? '-';
 
-        sheet.cell(CellIndex.indexByString("F54")).value = object.insuladhes1;
+        sheet.cell(CellIndex.indexByString("F54")).value =
+            object.insuladhes1 ?? '-';
         sheet.cell(CellIndex.indexByString("H54")).value =
-            object.insulcharadhes1;
-        sheet.cell(CellIndex.indexByString("J54")).value = (double.tryParse(
-                        object.insuladhes1.replaceAll(',', '.')) >=
-                    20 &&
-                object.insulcharadhes1 == 'Когезионный')
-            ? 'Соответствует'
-            : (double.tryParse(object.insuladhes1.replaceAll(',', '.')) <= 20 &&
-                    object.insulcharadhes1 == 'Адгезионный')
-                ? 'Не соответствует'
-                : (double.tryParse(object.insuladhes1.replaceAll(',', '.')) >=
-                            20 &&
-                        object.insulcharadhes1 == 'Адгезионный')
-                    ? 'Соответствует'
-                    : (double.tryParse(
-                                    object.insuladhes1.replaceAll(',', '.')) <=
-                                20 &&
-                            object.insulcharadhes1 == 'Когезионный')
-                        ? 'Не соответствует'
-                        : (double.tryParse(object.insuladhes1
-                                        .replaceAll(',', '.')) ==
-                                    null ||
-                                object.insulcharadhes1 == null)
-                            ? ""
-                            : "-";
+            object.insulcharadhes1 ?? '-';
+
+        String result1 = "";
+
+        if (object.insuladhes1 != null && object.insulcharadhes1 != null) {
+          double insuladhes1Value =
+              double.tryParse(object.insuladhes1.replaceAll(',', '.'));
+
+          if (insuladhes1Value != null) {
+            if (insuladhes1Value >= 20) {
+              result1 = 'Соответствует';
+            } else {
+              result1 = 'Не соответствует';
+            }
+          } else {
+            result1 = '-';
+          }
+        } else {
+          result1 = '-';
+        }
+
+        sheet.cell(CellIndex.indexByString("J54")).value = result1;
 
         sheet.cell(CellIndex.indexByString("H55")).value =
-            object.insulcharadhes2;
-        sheet.cell(CellIndex.indexByString("F55")).value = object.insuladhes2;
-        sheet.cell(CellIndex.indexByString("J55")).value = (double.tryParse(
-                        object.insuladhes2.replaceAll(',', '.')) >=
-                    20 &&
-                object.insulcharadhes2 == 'Когезионный')
-            ? 'Соответствует'
-            : (double.tryParse(object.insuladhes2.replaceAll(',', '.')) <= 20 &&
-                    object.insulcharadhes2 == 'Адгезионный')
-                ? 'Не соответствует'
-                : (double.tryParse(object.insuladhes2.replaceAll(',', '.')) >=
-                            20 &&
-                        object.insulcharadhes2 == 'Адгезионный')
-                    ? 'Соответствует'
-                    : (double.tryParse(
-                                    object.insuladhes2.replaceAll(',', '.')) <=
-                                20 &&
-                            object.insulcharadhes2 == 'Когезионный')
-                        ? 'Не соответствует'
-                        : (double.tryParse(object.insuladhes2
-                                        .replaceAll(',', '.')) ==
-                                    null ||
-                                object.insulcharadhes2 == null)
-                            ? ""
-                            : "-";
+            object.insulcharadhes2 ?? '-';
+
+        sheet.cell(CellIndex.indexByString("F55")).value =
+            object.insuladhes2 ?? '-';
+
+        String result2 = "";
+
+        if (object.insuladhes2 != null && object.insulcharadhes2 != null) {
+          double insuladhes2Value =
+              double.tryParse(object.insuladhes2.replaceAll(',', '.'));
+
+          if (insuladhes2Value != null) {
+            if (insuladhes2Value >= 20) {
+              result2 = 'Соответствует';
+            } else {
+              result2 = 'Не соответствует';
+            }
+          } else {
+            result2 = '-';
+          }
+        } else {
+          result2 = '-';
+        }
+
+        sheet.cell(CellIndex.indexByString("J55")).value = result2;
 
         sheet.cell(CellIndex.indexByString("H56")).value =
-            object.insulcharadhes3;
-        sheet.cell(CellIndex.indexByString("F56")).value = object.insuladhes3;
-        sheet.cell(CellIndex.indexByString("J56")).value = (double.tryParse(
-                        object.insuladhes3.replaceAll(',', '.')) >=
-                    20 &&
-                object.insulcharadhes3 == 'Когезионный')
-            ? 'Соответствует'
-            : (double.tryParse(object.insuladhes3.replaceAll(',', '.')) <= 20 &&
-                    object.insulcharadhes3 == 'Адгезионный')
-                ? 'Не соответствует'
-                : (double.tryParse(object.insuladhes3.replaceAll(',', '.')) >=
-                            20 &&
-                        object.insulcharadhes3 == 'Адгезионный')
-                    ? 'Соответствует'
-                    : (double.tryParse(
-                                    object.insuladhes3.replaceAll(',', '.')) <=
-                                20 &&
-                            object.insulcharadhes3 == 'Когезионный')
-                        ? 'Не соответствует'
-                        : (double.tryParse(object.insuladhes3
-                                        .replaceAll(',', '.')) ==
-                                    null ||
-                                object.insulcharadhes3 == null)
-                            ? ""
-                            : "-";
+            object.insulcharadhes3 ?? '-';
+        sheet.cell(CellIndex.indexByString("F56")).value =
+            object.insuladhes3 ?? '-';
+        String result3 = "";
+
+        if (object.insuladhes3 != null && object.insulcharadhes3 != null) {
+          double insuladhes3Value =
+              double.tryParse(object.insuladhes3.replaceAll(',', '.'));
+
+          if (insuladhes3Value != null) {
+            if (insuladhes3Value >= 20) {
+              result3 = 'Соответствует';
+            } else {
+              result3 = 'Не соответствует';
+            }
+          } else {
+            result3 = '-';
+          }
+        } else {
+          result3 = '-';
+        }
+
+        sheet.cell(CellIndex.indexByString("J56")).value = result3;
 
         sheet.cell(CellIndex.indexByString("A44")).value =
-            object.charinsuldamage1;
+            object.charinsuldamage1 ?? '-';
+
         sheet.cell(CellIndex.indexByString("C44")).value =
-            object.lochourinsuldamage1;
+            object.lochourinsuldamage1 ?? '-';
 
         sheet.cell(CellIndex.indexByString("E44")).value =
-            object.sizelengthinsuldamage1.toString() +
-                    "x" +
-                    object.sizewidthinsuldamage1.toString() ??
-                '';
+            object.sizelengthinsuldamage1.toString() ??
+                '-' + "x" + object.sizewidthinsuldamage1.toString() ??
+                '-';
 
-        sheet.cell(CellIndex.indexByString("H44")).value = (double.tryParse(
-                        sizelengthinsuldamageController1.text
-                            ?.replaceAll(',', '.')) *
-                    double.tryParse(sizewidthinsuldamageController1.text
-                        ?.replaceAll(',', '.'))) /
-                100 ??
-            '';
+        double sizelength1 = double.tryParse(
+            sizelengthinsuldamageController1.text?.replaceAll(',', '.'));
+        double sizewidth1 = double.tryParse(
+            sizewidthinsuldamageController1.text?.replaceAll(',', '.'));
+
+        sheet.cell(CellIndex.indexByString("H44")).value =
+            (sizelength1 == null || sizewidth1 == null)
+                ? '-'
+                : sizelength1 * sizewidth1 / 100;
 
         sheet.cell(CellIndex.indexByString("A45")).value =
-            object.charinsuldamage2;
+            object.charinsuldamage2 ?? '-';
         sheet.cell(CellIndex.indexByString("C45")).value =
-            object.lochourinsuldamage2;
+            object.lochourinsuldamage2 ?? '-';
 
         sheet.cell(CellIndex.indexByString("E45")).value =
-            object.sizelengthinsuldamage2.toString() +
-                    "x" +
-                    object.sizewidthinsuldamage2.toString() ??
-                '';
+            object.sizelengthinsuldamage2.toString() ??
+                '-' + "x" + object.sizewidthinsuldamage2.toString() ??
+                '-';
 
-        sheet.cell(CellIndex.indexByString("H45")).value = (double.tryParse(
-                        sizelengthinsuldamageController2.text
-                            .replaceAll(',', '.')) *
-                    double.tryParse(sizewidthinsuldamageController2.text
-                        .replaceAll(',', '.'))) /
-                100 ??
-            '';
+        double sizelength2 = double.tryParse(
+            sizelengthinsuldamageController2.text?.replaceAll(',', '.'));
+        double sizewidth2 = double.tryParse(
+            sizewidthinsuldamageController2.text?.replaceAll(',', '.'));
+
+        sheet.cell(CellIndex.indexByString("H45")).value =
+            (sizelength2 == null || sizewidth2 == null)
+                ? '-'
+                : sizelength2 * sizewidth2 / 100;
 
         sheet.cell(CellIndex.indexByString("A46")).value =
-            object.charinsuldamage3;
+            object.charinsuldamage3 ?? '-';
         sheet.cell(CellIndex.indexByString("C46")).value =
-            object.lochourinsuldamage3;
+            object.lochourinsuldamage3 ?? '-';
 
         sheet.cell(CellIndex.indexByString("E46")).value =
-            object.sizelengthinsuldamage3.toString() +
-                    "x" +
-                    object.sizewidthinsuldamage3.toString() ??
-                '';
+            object.sizelengthinsuldamage3.toString() ??
+                '-' + "x" + object.sizewidthinsuldamage3.toString() ??
+                '-';
 
-        sheet.cell(CellIndex.indexByString("H46")).value = (double.tryParse(
-                        sizelengthinsuldamageController3.text
-                            .replaceAll(',', '.')) *
-                    double.tryParse(sizewidthinsuldamageController3.text
-                        .replaceAll(',', '.'))) /
-                100 ??
-            '';
+        double sizelength3 = double.tryParse(
+            sizelengthinsuldamageController3.text?.replaceAll(',', '.'));
+        double sizewidth3 = double.tryParse(
+            sizewidthinsuldamageController3.text?.replaceAll(',', '.'));
+
+        sheet.cell(CellIndex.indexByString("H46")).value =
+            (sizelength3 == null || sizewidth3 == null)
+                ? '-'
+                : sizelength3 * sizewidth3 / 100;
 
         // Получаем путь к папке "Downloads" на внешнем хранилище
         Directory externalStorageDirectory =
@@ -9249,58 +11608,85 @@ class ObjectDetailIpState extends State<ObjectDetailIp> {
         } else if (object.filial == 'УАВР') {
           filial = 'УАВР-филиала';
         }
-        sheet.cell(CellIndex.indexByString("E5")).value = object.dolzhnpredskom;
-        sheet.cell(CellIndex.indexByString("E6")).value = filial;
-        sheet.cell(CellIndex.indexByString("I8")).value = object.fiopredskom;
-        sheet.cell(CellIndex.indexByString("I9")).value = object.dateObsl;
-        sheet.cell(CellIndex.indexByString("F13")).value = object.dateObsl;
+        sheet.cell(CellIndex.indexByString("E5")).value =
+            object.dolzhnpredskom ?? '-';
+        sheet.cell(CellIndex.indexByString("E6")).value = filial ?? '-';
+        sheet.cell(CellIndex.indexByString("I8")).value =
+            object.fiopredskom ?? '-';
+        sheet.cell(CellIndex.indexByString("I9")).value =
+            object.dateObsl ?? '-';
+        sheet.cell(CellIndex.indexByString("F13")).value =
+            object.dateObsl ?? '-';
         sheet.cell(CellIndex.indexByString("F16")).value =
-            object.dolzhnpredstzakazch.toString() +
-                " " +
-                object.fiopredstzakazch.toString() +
-                " " +
-                object.fiodruglic.toString();
+            object.dolzhnpredstzakazch.toString() ??
+                '-' + " " + object.fiopredstzakazch.toString() ??
+                '-' + " " + object.fiodruglic.toString() ??
+                '-';
 
         sheet.cell(CellIndex.indexByString("F18")).value =
-            object.dolzhnproizvrab.toString() +
-                " " +
-                object.fioproizvrab.toString();
+            object.dolzhnproizvrab.toString() ??
+                '-' + " " + object.fioproizvrab.toString() ??
+                '-';
         sheet.cell(CellIndex.indexByString("F20")).value =
-            object.dolzhnnachuchastka.toString() +
-                " " +
-                object.fionachuchastka.toString();
+            object.dolzhnnachuchastka.toString() ??
+                '-' + " " + object.fionachuchastka.toString() ??
+                '-';
 
-        sheet.cell(CellIndex.indexByString("F24")).value = object.title;
-        sheet.cell(CellIndex.indexByString("C27")).value = object.piketkm;
+        sheet.cell(CellIndex.indexByString("F24")).value = object.title ?? '-';
+        sheet.cell(CellIndex.indexByString("C27")).value =
+            object.piketkm ?? '-';
 
-        sheet.cell(CellIndex.indexByString("G27")).value =
-            double.tryParse(object.piketkm.replaceAll(',', '.')) +
-                double.tryParse(object.lengthpit.replaceAll(',', '.')) / 1000;
-        sheet.cell(CellIndex.indexByString("D29")).value = object.metrrest;
+        sheet
+            .cell(CellIndex.indexByString("G27"))
+            .value = (double.tryParse(object.piketkm?.replaceAll(',', '.')) ==
+                    null ||
+                double.tryParse(object.lengthpit?.replaceAll(',', '.')) == null)
+            ? '-'
+            : double.tryParse(object.piketkm?.replaceAll(',', '.')) +
+                double.tryParse(object.lengthpit?.replaceAll(',', '.')) / 1000;
+        sheet.cell(CellIndex.indexByString("D29")).value =
+            object.metrrest ?? '-';
         sheet.cell(CellIndex.indexByString("H36")).value =
-            object.typeinsulrest == 'Грунтовка + РАМ 2 слоя + Литкор НК Газ' ||
-                    double.tryParse(object.diameter.replaceAll(',', '.')) >= 820
-                ? 'Усиленного'
-                : 'Нормального';
-        sheet.cell(CellIndex.indexByString("F37")).value = object.typeinsulrest;
+            (object.typeinsulrest == null || object.diameter == null)
+                ? '-'
+                : object.typeinsulrest ??
+                        '-' == 'Грунтовка + РАМ 2 слоя + Литкор НК Газ' ||
+                            (double.tryParse(
+                                        object.diameter.replaceAll(',', '.') ??
+                                            '-') ??
+                                    0) >=
+                                820
+                    ? 'Усиленного'
+                    : 'Нормального';
+        sheet.cell(CellIndex.indexByString("F37")).value =
+            object.typeinsulrest ?? '-';
         sheet.cell(CellIndex.indexByString("D39")).value =
-            object.thickinsulrest;
+            object.thickinsulrest ?? '-';
 
         sheet.cell(CellIndex.indexByString("D42")).value =
-            object.typeinsulrest == 'Грунтовка + РАМ 2 слоя + Литкор НК Газ' ||
-                    object.typeinsulrest ==
-                        'Грунтовка + РАМ 1 слой + Литкор НК Газ'
-                ? 'СТО Газпром 9.1-016-2012'
-                : 'СТО Газпром 9.1-017-2012';
+            object.typeinsulrest == null
+                ? '-'
+                : object.typeinsulrest ==
+                            'Грунтовка + РАМ 2 слоя + Литкор НК Газ' ||
+                        object.typeinsulrest ==
+                            'Грунтовка + РАМ 1 слой + Литкор НК Газ'
+                    ? 'СТО Газпром 9.1-016-2012'
+                    : 'СТО Газпром 9.1-017-2012';
 
         sheet.cell(CellIndex.indexByString("F52")).value =
-            object.tickinsulmeter + ' №' + object.tickinsulmeternumb;
+            (object.tickinsulmeter == null || object.tickinsulmeternumb == null)
+                ? '-'
+                : object.tickinsulmeter + ' №' + object.tickinsulmeternumb;
         sheet.cell(CellIndex.indexByString("F56")).value =
-            object.adhesmeter + ' №' + object.adhesmeternumb;
+            (object.adhesmeter == null || object.adhesmeternumb == null)
+                ? '-'
+                : object.adhesmeter + ' №' + object.adhesmeternumb;
         sheet.cell(CellIndex.indexByString("H59")).value =
-            object.continmeter + ' №' + object.continmeternumb;
+            (object.continmeter == null || object.continmeternumb == null)
+                ? '-'
+                : object.continmeter + ' №' + object.continmeternumb;
         sheet.cell(CellIndex.indexByString("C61")).value =
-            object.contininsulrest;
+            object.contininsulrest ?? '-';
 
         sheet.cell(CellIndex.indexByString("D64")).value = object
                     .typeinsulrest ==
@@ -9312,27 +11698,31 @@ class ObjectDetailIpState extends State<ObjectDetailIp> {
                     ? '0.7'
                     : object.typeinsulrest == 'Термоусаживающаяся манжета'
                         ? '1.5'
-                        : '';
+                        : '-';
         sheet.cell(CellIndex.indexByString("G64")).value =
-            object.thickinsulrest;
+            object.thickinsulrest ?? '-';
 
-        sheet.cell(CellIndex.indexByString("J64")).value = double.tryParse(
-                        object.thickinsulrest.replaceAll(',', '.')) !=
-                    null &&
-                double.tryParse(sheet
-                        .cell(CellIndex.indexByString("D64"))
-                        .value
-                        .toString()
-                        .replaceAll(',', '.')) !=
-                    null &&
-                double.tryParse(object.thickinsulrest.replaceAll(',', '.')) >=
-                    double.tryParse(sheet
-                        .cell(CellIndex.indexByString("D64"))
-                        .value
-                        .toString()
-                        .replaceAll(',', '.'))
-            ? 'Соответствует'
-            : 'Не соответствует';
+        sheet.cell(CellIndex.indexByString("J64")).value =
+            (object.thickinsulrest == null)
+                ? '-'
+                : double.tryParse(object.thickinsulrest.replaceAll(',', '.') ??
+                                '-') !=
+                            null &&
+                        double.tryParse(sheet
+                                .cell(CellIndex.indexByString("D64"))
+                                .value
+                                .toString()
+                                .replaceAll(',', '.')) !=
+                            null &&
+                        double.tryParse(
+                                object.thickinsulrest.replaceAll(',', '.')) >=
+                            double.tryParse(sheet
+                                .cell(CellIndex.indexByString("D64"))
+                                .value
+                                .toString()
+                                .replaceAll(',', '.'))
+                    ? 'Соответствует'
+                    : 'Не соответствует';
 
         sheet.cell(CellIndex.indexByString("D65")).value = object
                     .typeinsulrest ==
@@ -9341,85 +11731,99 @@ class ObjectDetailIpState extends State<ObjectDetailIp> {
             : object.typeinsulrest == 'Грунтовка + РАМ 1 слой + Литкор НК Газ'
                 ? '0,2'
                 : object.typeinsulrest == 'БИУРС'
-                    ? '5,0'
+                    ? '0,3'
                     : object.typeinsulrest == 'Термоусаживающаяся манжета'
-                        ? '0,2'
-                        : '';
+                        ? '0,3'
+                        : '-';
         sheet.cell(CellIndex.indexByString("G65")).value =
-            object.insuladhesrest;
+            object.insuladhesrest ?? '-';
 
-        sheet.cell(CellIndex.indexByString("J65")).value = double.tryParse(
-                        object.insuladhesrest.replaceAll(',', '.')) !=
-                    null &&
-                double.tryParse(sheet
-                        .cell(CellIndex.indexByString("D65"))
-                        .value
-                        .toString()
-                        .replaceAll(',', '.')) !=
-                    null &&
-                double.tryParse(object.thickinsulrest.replaceAll(',', '.')) >=
+        sheet.cell(CellIndex.indexByString("J65")).value = (object
+                    .insuladhesrest ==
+                null)
+            ? '-'
+            : double.tryParse(object.insuladhesrest.replaceAll(',', '.') ??
+                            '-') !=
+                        null &&
                     double.tryParse(sheet
-                        .cell(CellIndex.indexByString("D65"))
-                        .value
-                        .toString()
-                        .replaceAll(',', '.'))
-            ? 'Соответствует'
-            : 'Не соответствует';
+                            .cell(CellIndex.indexByString("D65"))
+                            .value
+                            .toString()
+                            .replaceAll(',', '.')) !=
+                        null &&
+                    double.tryParse(object.insuladhesrest.replaceAll(',', '.') ?? '-') >=
+                        double.tryParse(sheet
+                            .cell(CellIndex.indexByString("D65"))
+                            .value
+                            .toString()
+                            .replaceAll(',', '.'))
+                ? 'Соответствует'
+                : 'Не соответствует';
 
         sheet.cell(CellIndex.indexByString("D66")).value = object
                     .typeinsulrest ==
-                'Грунтовка + РАМ 2 слоя + Литкор НК Газ'
-            ? '5кВ на 1мм толщины'
-            : object.typeinsulrest == 'Грунтовка + РАМ 1 слой + Литкор НК Газ'
+                null
+            ? '-'
+            : object.typeinsulrest == 'Грунтовка + РАМ 2 слоя + Литкор НК Газ'
                 ? '5кВ на 1мм толщины'
-                : object.typeinsulrest == 'БИУРС'
-                    ? '3кВ на 1мм толщины'
-                    : object.typeinsulrest == 'Термоусаживающаяся манжета'
-                        ? '5кВ на 1мм толщины + 5кВ'
-                        : '-';
+                : object.typeinsulrest ==
+                        'Грунтовка + РАМ 1 слой + Литкор НК Газ'
+                    ? '5кВ на 1мм толщины'
+                    : object.typeinsulrest == 'БИУРС'
+                        ? '3кВ на 1мм толщины'
+                        : object.typeinsulrest == 'Термоусаживающаяся манжета'
+                            ? '5кВ на 1мм толщины + 5кВ'
+                            : '-';
         sheet.cell(CellIndex.indexByString("G66")).value =
-            'отсутствие пробоя при ' + object.contininsulrest + 'кВ';
+            object.contininsulrest == null
+                ? '-'
+                : 'отсутствие пробоя при ' + object.contininsulrest + 'кВ';
 
         sheet.cell(CellIndex.indexByString("E86")).value =
-            object.fiopredstzakazch;
-        sheet.cell(CellIndex.indexByString("J86")).value = object.dateObsl;
-        sheet.cell(CellIndex.indexByString("E88")).value = object.fioproizvrab;
-        sheet.cell(CellIndex.indexByString("J88")).value = object.dateObsl;
+            object.fiopredstzakazch ?? '-';
+        sheet.cell(CellIndex.indexByString("J86")).value =
+            object.dateObsl ?? '-';
+        sheet.cell(CellIndex.indexByString("E88")).value =
+            object.fioproizvrab ?? '-';
+        sheet.cell(CellIndex.indexByString("J88")).value =
+            object.dateObsl ?? '-';
         sheet.cell(CellIndex.indexByString("E90")).value =
-            object.fionachuchastka;
-        sheet.cell(CellIndex.indexByString("J90")).value = object.dateObsl;
+            object.fionachuchastka ?? '-';
+        sheet.cell(CellIndex.indexByString("J90")).value =
+            object.dateObsl ?? '-';
         sheet.cell(CellIndex.indexByString("A92")).value =
-            object.dolzhnpredstzakazchSK;
+            object.dolzhnpredstzakazchSK ?? '-';
         sheet.cell(CellIndex.indexByString("E92")).value =
-            object.fiopredstzakazchSK;
-        sheet.cell(CellIndex.indexByString("J92")).value = object.dateObsl;
+            object.fiopredstzakazchSK ?? '-';
+        sheet.cell(CellIndex.indexByString("J92")).value =
+            object.dateObsl ?? '-';
 
-        // sheet.cell(CellIndex.indexByString("J66")).value = double.tryParse(
-        //                 object.contininsulrest.replaceAll(',', '.')) !=
-        //             null &&
-        //         double.tryParse(object.typeinsulrest.replaceAll(',', '.')) !=
-        //             null &&
-        //         double.tryParse(object.contininsulrest.replaceAll(',', '.')) >=
-        //             double.tryParse(object.typeinsulrest.replaceAll(',', '.'))
-        //     ? (object.typeinsulrest == 'Грунтовка + РАМ 2 слоя + Литкор НК Газ'
-        //         ? 5.0 *
-        //             double.tryParse(object.thickinsulrest.replaceAll(',', '.'))
-        //         : object.typeinsulrest ==
-        //                 'Грунтовка + РАМ 1 слой + Литкор НК Газ'
-        //             ? 5.0 *
-        //                 double.tryParse(
-        //                     object.thickinsulrest.replaceAll(',', '.'))
-        //             : object.typeinsulrest == 'БИУРС'
-        //                 ? 3.0 *
-        //                     double.tryParse(
-        //                         object.thickinsulrest.replaceAll(',', '.'))
-        //                 : object.typeinsulrest == 'Термоусаживающаяся манжета'
-        //                     ? 5.0 *
-        //                             double.tryParse(object.thickinsulrest
-        //                                 .replaceAll(',', '.')) +
-        //                         5
-        //                     : 'Соответствует')
-        //     : 'Не соответствует';
+        sheet.cell(CellIndex.indexByString("J66")).value = double.tryParse(
+                        object.contininsulrest.replaceAll(',', '.')) !=
+                    null &&
+                double.tryParse(object.typeinsulrest.replaceAll(',', '.')) !=
+                    null &&
+                double.tryParse(object.contininsulrest.replaceAll(',', '.')) >=
+                    double.tryParse(object.typeinsulrest.replaceAll(',', '.'))
+            ? (object.typeinsulrest == 'Грунтовка + РАМ 2 слоя + Литкор НК Газ'
+                ? 5.0 *
+                    double.tryParse(object.thickinsulrest.replaceAll(',', '.'))
+                : object.typeinsulrest ==
+                        'Грунтовка + РАМ 1 слой + Литкор НК Газ'
+                    ? 5.0 *
+                        double.tryParse(
+                            object.thickinsulrest.replaceAll(',', '.'))
+                    : object.typeinsulrest == 'БИУРС'
+                        ? 3.0 *
+                            double.tryParse(
+                                object.thickinsulrest.replaceAll(',', '.'))
+                        : object.typeinsulrest == 'Термоусаживающаяся манжета'
+                            ? 5.0 *
+                                    double.tryParse(object.thickinsulrest
+                                        .replaceAll(',', '.')) +
+                                5
+                            : 'Соответствует')
+            : 'Не соответствует';
 
         // Получаем путь к папке "Downloads" на внешнем хранилище
         Directory externalStorageDirectory =
@@ -9486,37 +11890,59 @@ class ObjectDetailIpState extends State<ObjectDetailIp> {
           filial = 'УАВР-филиала';
         }
 
-        sheet.cell(CellIndex.indexByString("E5")).value = object.dolzhnpredskom;
-        sheet.cell(CellIndex.indexByString("E6")).value = filial;
-        sheet.cell(CellIndex.indexByString("I8")).value = object.fiopredskom;
-        sheet.cell(CellIndex.indexByString("I9")).value = object.dateObsl;
-        sheet.cell(CellIndex.indexByString("E16")).value = object.dateObsl;
+        sheet.cell(CellIndex.indexByString("E5")).value =
+            object.dolzhnpredskom ?? '-';
+        sheet.cell(CellIndex.indexByString("E6")).value = filial ?? '-';
+        sheet.cell(CellIndex.indexByString("I8")).value =
+            object.fiopredskom ?? '-';
+        sheet.cell(CellIndex.indexByString("I9")).value =
+            object.dateObsl ?? '-';
+        sheet.cell(CellIndex.indexByString("E16")).value =
+            object.dateObsl ?? '-';
 
         sheet.cell(CellIndex.indexByString("F18")).value =
-            object.dolzhnpredstzakazch + ' ' + object.fiopredstzakazch;
+            object.dolzhnpredstzakazch.toString() ??
+                '-' + ' ' + object.fiopredstzakazch.toString() ??
+                '-';
         sheet.cell(CellIndex.indexByString("F20")).value =
-            object.dolzhnnachuchastka + ' ' + object.fionachuchastka;
+            object.dolzhnnachuchastka.toString() ??
+                '-' + ' ' + object.fionachuchastka.toString() ??
+                '-';
         sheet.cell(CellIndex.indexByString("F22")).value =
-            object.dolzhnpredstzakazchSK + ' ' + object.fiopredstzakazchSK;
+            object.dolzhnpredstzakazchSK.toString() ??
+                '-' + ' ' + object.fiopredstzakazchSK.toString() ??
+                '-';
 
-        sheet.cell(CellIndex.indexByString("F25")).value = object.title;
-        sheet.cell(CellIndex.indexByString("B11")).value = object.title;
+        sheet.cell(CellIndex.indexByString("F25")).value = object.title ?? '-';
+        sheet.cell(CellIndex.indexByString("B11")).value = object.title ?? '-';
 
-        sheet.cell(CellIndex.indexByString("B28")).value = object.piketkm;
-        sheet.cell(CellIndex.indexByString("F28")).value =
-            double.tryParse(object.piketkm.replaceAll(',', '.')) +
-                double.tryParse(object.lengthpit.replaceAll(',', '.')) / 1000;
-        sheet.cell(CellIndex.indexByString("D31")).value = object.metrrest;
+        sheet.cell(CellIndex.indexByString("B28")).value =
+            object.piketkm ?? '-';
+
+        sheet
+            .cell(CellIndex.indexByString("F28"))
+            .value = (double.tryParse(object.piketkm?.replaceAll(',', '.')) ==
+                    null ||
+                double.tryParse(object.lengthpit?.replaceAll(',', '.')) == null)
+            ? '-'
+            : double.tryParse(object.piketkm?.replaceAll(',', '.')) +
+                double.tryParse(object.lengthpit?.replaceAll(',', '.')) / 1000;
+
+        sheet.cell(CellIndex.indexByString("D31")).value =
+            object.metrrest ?? '-';
 
         sheet.cell(CellIndex.indexByString("E41")).value =
-            object.fiopredstzakazch;
-        sheet.cell(CellIndex.indexByString("J41")).value = object.dateObsl;
+            object.fiopredstzakazch ?? '-';
+        sheet.cell(CellIndex.indexByString("J41")).value =
+            object.dateObsl ?? '-';
         sheet.cell(CellIndex.indexByString("E43")).value =
-            object.fionachuchastka;
-        sheet.cell(CellIndex.indexByString("J43")).value = object.dateObsl;
+            object.fionachuchastka ?? '-';
+        sheet.cell(CellIndex.indexByString("J43")).value =
+            object.dateObsl ?? '-';
         sheet.cell(CellIndex.indexByString("E45")).value =
-            object.fiopredstzakazchSK;
-        sheet.cell(CellIndex.indexByString("J45")).value = object.dateObsl;
+            object.fiopredstzakazchSK ?? '-';
+        sheet.cell(CellIndex.indexByString("J45")).value =
+            object.dateObsl ?? '-';
 
         // Получаем путь к папке "Downloads" на внешнем хранилище
         Directory externalStorageDirectory =
@@ -9582,49 +12008,66 @@ class ObjectDetailIpState extends State<ObjectDetailIp> {
         } else if (object.filial == 'УАВР') {
           filial = 'УАВР-филиала';
         }
-        sheet.cell(CellIndex.indexByString("E6")).value = filial;
-        sheet.cell(CellIndex.indexByString("E5")).value = object.dolzhnpredskom;
-        sheet.cell(CellIndex.indexByString("I8")).value = object.fiopredskom;
-        sheet.cell(CellIndex.indexByString("I9")).value = object.dateObsl;
-        sheet.cell(CellIndex.indexByString("B10")).value = object.title;
-        sheet.cell(CellIndex.indexByString("E13")).value = object.dateObsl;
+        sheet.cell(CellIndex.indexByString("E6")).value = filial ?? '-';
+        sheet.cell(CellIndex.indexByString("E5")).value =
+            object.dolzhnpredskom ?? '-';
+        sheet.cell(CellIndex.indexByString("I8")).value =
+            object.fiopredskom ?? '-';
+        sheet.cell(CellIndex.indexByString("I9")).value =
+            object.dateObsl ?? '-';
+        sheet.cell(CellIndex.indexByString("B10")).value = object.title ?? '-';
+        sheet.cell(CellIndex.indexByString("E13")).value =
+            object.dateObsl ?? '-';
 
         sheet.cell(CellIndex.indexByString("E15")).value =
-            object.dolzhnpredstzakazch.toString() +
-                " " +
-                object.fiopredstzakazch.toString() +
-                " " +
-                object.fiodruglic.toString();
+            object.dolzhnpredstzakazch.toString() ??
+                '-' + " " + object.fiopredstzakazch.toString() ??
+                '-' + " " + object.fiodruglic.toString() ??
+                '-';
         sheet.cell(CellIndex.indexByString("E17")).value =
-            object.dolzhnproizvrab.toString() +
-                " " +
-                object.fioproizvrab.toString();
+            object.dolzhnproizvrab.toString() ??
+                '-' + " " + object.fioproizvrab.toString() ??
+                '-';
         sheet.cell(CellIndex.indexByString("E19")).value =
-            object.dolzhnpredststroit.toString() +
-                " " +
-                object.fiopredststroit.toString();
+            object.dolzhnpredststroit.toString() ??
+                '-' + " " + object.fiopredststroit.toString() ??
+                '-';
 
-        sheet.cell(CellIndex.indexByString("J21")).value = object.lengthpit;
-        sheet.cell(CellIndex.indexByString("B22")).value = object.piketkm;
-        sheet.cell(CellIndex.indexByString("F22")).value =
-            double.tryParse(object.piketkm.replaceAll(',', '.')) +
-                double.tryParse(object.lengthpit.replaceAll(',', '.')) / 1000;
+        sheet.cell(CellIndex.indexByString("J21")).value =
+            object.lengthpit ?? '-';
+        sheet.cell(CellIndex.indexByString("B22")).value =
+            object.piketkm ?? '-';
+        sheet
+            .cell(CellIndex.indexByString("F22"))
+            .value = (double.tryParse(object.piketkm?.replaceAll(',', '.')) ==
+                    null ||
+                double.tryParse(object.lengthpit?.replaceAll(',', '.')) == null)
+            ? '-'
+            : double.tryParse(object.piketkm?.replaceAll(',', '.')) +
+                double.tryParse(object.lengthpit?.replaceAll(',', '.')) / 1000;
 
         sheet.cell(CellIndex.indexByString("I26")).value =
-            object.typeinsulrest == 'Грунтовка + РАМ 2 слоя + Литкор НК Газ' ||
-                    double.tryParse(object.diameter.replaceAll(',', '.')) >= 820
-                ? 'Усиленного'
-                : 'Нормального';
-        sheet.cell(CellIndex.indexByString("A26")).value = object
-                    .typeinsulrest ==
-                'Грунтовка + РАМ 2 слоя + Литкор НК Газ'
-            ? 'Грунтовка + РАМ 2 слоя'
-            : object.typeinsulrest == 'Грунтовка + РАМ 1 слой + Литкор НК Газ'
-                ? 'Грунтовка + РАМ 1 слой'
-                : object.typeinsulrest;
+            (object.typeinsulrest == null || object.diameter == null)
+                ? '-'
+                : object.typeinsulrest ==
+                            'Грунтовка + РАМ 2 слоя + Литкор НК Газ' ||
+                        double.tryParse(object.diameter.replaceAll(',', '.')) >=
+                            820
+                    ? 'Усиленного'
+                    : 'Нормального';
+        sheet.cell(CellIndex.indexByString("A26")).value =
+            object.typeinsulrest == null
+                ? '-'
+                : object.typeinsulrest ==
+                        'Грунтовка + РАМ 2 слоя + Литкор НК Газ'
+                    ? 'Грунтовка + РАМ 2 слоя'
+                    : object.typeinsulrest ==
+                            'Грунтовка + РАМ 1 слой + Литкор НК Газ'
+                        ? 'Грунтовка + РАМ 1 слой'
+                        : object.typeinsulrest;
 
         sheet.cell(CellIndex.indexByString("C28")).value =
-            object.thickinsulrest;
+            object.thickinsulrest ?? '-';
         sheet.cell(CellIndex.indexByString("F28")).value =
             object.typeinsulrest == 'Грунтовка + РАМ 2 слоя + Литкор НК Газ' ||
                     object.typeinsulrest ==
@@ -9632,20 +12075,27 @@ class ObjectDetailIpState extends State<ObjectDetailIp> {
                 ? 'Литкор НК Газ'
                 : '-';
         sheet.cell(CellIndex.indexByString("J28")).value =
-            object.typeinsulrest == 'Грунтовка + РАМ 2 слоя + Литкор НК Газ' ||
-                    object.typeinsulrest ==
-                        'Грунтовка + РАМ 1 слой + Литкор НК Газ'
-                ? '1'
-                : '-';
+            object.typeinsulrest == null
+                ? '-'
+                : object.typeinsulrest ==
+                            'Грунтовка + РАМ 2 слоя + Литкор НК Газ' ||
+                        object.typeinsulrest ==
+                            'Грунтовка + РАМ 1 слой + Литкор НК Газ'
+                    ? '1'
+                    : '-';
 
         sheet.cell(CellIndex.indexByString("E40")).value =
-            object.fiopredstzakazch;
-        sheet.cell(CellIndex.indexByString("J40")).value = object.dateObsl;
-        sheet.cell(CellIndex.indexByString("E42")).value = object.fioproizvrab;
-        sheet.cell(CellIndex.indexByString("J42")).value = object.dateObsl;
+            object.fiopredstzakazch ?? '-';
+        sheet.cell(CellIndex.indexByString("J40")).value =
+            object.dateObsl ?? '-';
+        sheet.cell(CellIndex.indexByString("E42")).value =
+            object.fioproizvrab ?? '-';
+        sheet.cell(CellIndex.indexByString("J42")).value =
+            object.dateObsl ?? '-';
         sheet.cell(CellIndex.indexByString("E44")).value =
-            object.fiopredststroit;
-        sheet.cell(CellIndex.indexByString("J44")).value = object.dateObsl;
+            object.fiopredststroit ?? '-';
+        sheet.cell(CellIndex.indexByString("J44")).value =
+            object.dateObsl ?? '-';
 
         // Получаем путь к папке "Downloads" на внешнем хранилище
         Directory externalStorageDirectory =
@@ -9711,51 +12161,72 @@ class ObjectDetailIpState extends State<ObjectDetailIp> {
         } else if (object.filial == 'УАВР') {
           filial = 'УАВР-филиала';
         }
-        sheet.cell(CellIndex.indexByString("U5")).value = object.title;
-        sheet.cell(CellIndex.indexByString("J7")).value = object.piketkm;
-        sheet.cell(CellIndex.indexByString("J8")).value =
-            double.tryParse(object.piketkm.replaceAll(',', '.')) +
-                double.tryParse(object.lengthpit.replaceAll(',', '.')) / 1000;
-        sheet.cell(CellIndex.indexByString("V11")).value = object.dateObsl;
-        sheet.cell(CellIndex.indexByString("V12")).value = object.dateObsl;
+        sheet.cell(CellIndex.indexByString("U5")).value = object.title ?? '-';
+        sheet.cell(CellIndex.indexByString("J7")).value = object.piketkm ?? '-';
+        sheet
+            .cell(CellIndex.indexByString("J8"))
+            .value = (double.tryParse(object.piketkm?.replaceAll(',', '.')) ==
+                    null ||
+                double.tryParse(object.lengthpit?.replaceAll(',', '.')) == null)
+            ? '-'
+            : double.tryParse(object.piketkm?.replaceAll(',', '.')) +
+                double.tryParse(object.lengthpit?.replaceAll(',', '.')) / 1000;
+        sheet.cell(CellIndex.indexByString("V11")).value =
+            object.dateObsl ?? '-';
+        sheet.cell(CellIndex.indexByString("V12")).value =
+            object.dateObsl ?? '-';
 
-        sheet.cell(CellIndex.indexByString("A18")).value = object.dateObsl;
-        sheet.cell(CellIndex.indexByString("B18")).value = object.piketkm +
-            '-' +
-            (double.tryParse(object.piketkm.replaceAll(',', '.')) +
-                    double.tryParse(object.lengthpit.replaceAll(',', '.')) /
-                        1000)
-                .toString();
-        sheet.cell(CellIndex.indexByString("C18")).value = object.tempair;
+        sheet.cell(CellIndex.indexByString("A18")).value =
+            object.dateObsl ?? '-';
+        sheet
+            .cell(CellIndex.indexByString("F28"))
+            .value = (double.tryParse(object.piketkm?.replaceAll(',', '.')) ==
+                    null ||
+                double.tryParse(object.lengthpit?.replaceAll(',', '.')) == null)
+            ? '-'
+            : double.tryParse(object.piketkm?.replaceAll(',', '.')) +
+                double.tryParse(object.lengthpit?.replaceAll(',', '.')) / 1000;
+        sheet.cell(CellIndex.indexByString("C18")).value =
+            object.tempair ?? '-';
         sheet.cell(CellIndex.indexByString("D18")).value =
-            object.typeinsulrest == 'Грунтовка + РАМ 2 слоя + Литкор НК Газ' ||
-                    double.tryParse(object.diameter.replaceAll(',', '.')) >= 820
-                ? 'Усиленный, ' + 'РАМ 2 слоя + Литкор НК Газ'
-                : 'Нормальный, ' + object.typeinsulrest ==
-                        'Грунтовка + РАМ 1 слой + Литкор НК Газ'
-                    ? 'РАМ 1 слой + Литкор НК Газ'
-                    : 'Нормальный, ' + object.typeinsulrest;
+            (object.typeinsulrest == null || object.diameter == null)
+                ? '-'
+                : object.typeinsulrest ==
+                            'Грунтовка + РАМ 2 слоя + Литкор НК Газ' ||
+                        double.tryParse(object.diameter.replaceAll(',', '.')) >=
+                            820
+                    ? 'Усиленный, ' + 'РАМ 2 слоя + Литкор НК Газ'
+                    : 'Нормальный, ' + object.typeinsulrest ==
+                            'Грунтовка + РАМ 1 слой + Литкор НК Газ'
+                        ? 'РАМ 1 слой + Литкор НК Газ'
+                        : 'Нормальный, ' + object.typeinsulrest;
 
         sheet.cell(CellIndex.indexByString("E18")).value =
-            object.typeinsulrest == 'Грунтовка + РАМ 2 слоя + Литкор НК Газ' ||
-                    object.typeinsulrest ==
-                        'Грунтовка + РАМ 1 слой + Литкор НК Газ'
-                ? 'Грунтовка Транскор-Газ'
-                : 'Праймер-клей';
+            object.typeinsulrest == null
+                ? '-'
+                : object.typeinsulrest ==
+                            'Грунтовка + РАМ 2 слоя + Литкор НК Газ' ||
+                        object.typeinsulrest ==
+                            'Грунтовка + РАМ 1 слой + Литкор НК Газ'
+                    ? 'Грунтовка Транскор-Газ'
+                    : 'Праймер-клей';
 
         sheet.cell(CellIndex.indexByString("F18")).value =
-            object.typeinsulrest == 'Грунтовка + РАМ 2 слоя + Литкор НК Газ' ||
-                    object.typeinsulrest ==
-                        'Грунтовка + РАМ 1 слой + Литкор НК Газ'
-                ? 'Литкор НК Газ'
-                : '-';
+            object.typeinsulrest == null
+                ? '-'
+                : object.typeinsulrest ==
+                            'Грунтовка + РАМ 2 слоя + Литкор НК Газ' ||
+                        object.typeinsulrest ==
+                            'Грунтовка + РАМ 1 слой + Литкор НК Газ'
+                    ? 'Литкор НК Газ'
+                    : '-';
 
         sheet.cell(CellIndex.indexByString("H18")).value =
-            object.fiopredstzakazch;
+            object.fiopredstzakazch ?? '-';
         sheet.cell(CellIndex.indexByString("J18")).value =
-            object.fiopredstzakazch;
+            object.fiopredstzakazch ?? '-';
         sheet.cell(CellIndex.indexByString("I18")).value =
-            object.fiopredststroit;
+            object.fiopredststroit ?? '-';
 
         // Получаем путь к папке "Downloads" на внешнем хранилище
         Directory externalStorageDirectory =
@@ -9788,6 +12259,193 @@ class ObjectDetailIpState extends State<ObjectDetailIp> {
   //     insulconditController.text = 'Неудовлетворительная';
   //   }
   // }
+
+  // Calculate the minimum value
+  void minipipe() {
+    double minValue = double.infinity;
+    if (double.tryParse(thickpipeController1.text) != null) {
+      double value1 = double.parse(thickpipeController1.text);
+      minValue = value1;
+    }
+
+    if (double.tryParse(thickpipeController2.text) != null) {
+      double value2 = double.parse(thickpipeController2.text);
+      minValue = value2 < minValue ? value2 : minValue;
+    }
+
+    if (double.tryParse(thickpipeController3.text) != null) {
+      double value3 = double.parse(thickpipeController3.text);
+      minValue = value3 < minValue ? value3 : minValue;
+    }
+
+    if (double.tryParse(thickpipeController4.text) != null) {
+      double value4 = double.parse(thickpipeController4.text);
+      minValue = value4 < minValue ? value4 : minValue;
+    }
+    setState(() {
+      thickpipeController.text = minValue.toString();
+      object.thickpipe = thickpipeController.text;
+    });
+  }
+
+  void sredadg() {
+    double a1 = insuladhesController1.text.isNotEmpty
+        ? double.parse(insuladhesController1.text)
+        : 0.0;
+    double a2 = insuladhesController2.text.isNotEmpty
+        ? double.parse(insuladhesController2.text)
+        : 0.0;
+    double a3 = insuladhesController3.text.isNotEmpty
+        ? double.parse(insuladhesController3.text)
+        : 0.0;
+    double a4 = insuladhesController4.text.isNotEmpty
+        ? double.parse(insuladhesController4.text)
+        : 0.0;
+
+    double average = (a3 + a2 + a1) / 3;
+
+    setState(() {
+      insuladhesController4.text = average.toStringAsFixed(1);
+      object.insuladhes4 = insuladhesController4.text;
+    });
+  }
+
+  void sredadgrest() {
+    double a1 = insuladhesrestController1.text.isNotEmpty
+        ? double.parse(insuladhesrestController1.text)
+        : 0.0;
+    double a2 = insuladhesrestController2.text.isNotEmpty
+        ? double.parse(insuladhesrestController2.text)
+        : 0.0;
+    double a3 = insuladhesrestController3.text.isNotEmpty
+        ? double.parse(insuladhesrestController3.text)
+        : 0.0;
+
+    double average = (a3 + a2 + a1) / 3;
+
+    setState(() {
+      insuladhesrestController.text = average.toStringAsFixed(1);
+      object.insuladhesrest = insuladhesrestController.text;
+    });
+  }
+
+  void minithickinsul() {
+    double minValue = double.infinity;
+    if (double.tryParse(thickinsulController1.text) != null) {
+      double value1 = double.parse(thickinsulController1.text);
+      minValue = value1;
+    }
+
+    if (double.tryParse(thickinsulController2.text) != null) {
+      double value2 = double.parse(thickinsulController2.text);
+      minValue = value2 < minValue ? value2 : minValue;
+    }
+
+    if (double.tryParse(thickinsulController3.text) != null) {
+      double value3 = double.parse(thickinsulController3.text);
+      minValue = value3 < minValue ? value3 : minValue;
+    }
+
+    if (double.tryParse(thickinsulController4.text) != null) {
+      double value4 = double.parse(thickinsulController4.text);
+      minValue = value4 < minValue ? value4 : minValue;
+    }
+    if (double.tryParse(thickinsulController5.text) != null) {
+      double value5 = double.parse(thickinsulController5.text);
+      minValue = value5 < minValue ? value5 : minValue;
+    }
+    if (double.tryParse(thickinsulController6.text) != null) {
+      double value6 = double.parse(thickinsulController6.text);
+      minValue = value6 < minValue ? value6 : minValue;
+    }
+    if (double.tryParse(thickinsulController7.text) != null) {
+      double value7 = double.parse(thickinsulController7.text);
+      minValue = value7 < minValue ? value7 : minValue;
+    }
+    if (double.tryParse(thickinsulController8.text) != null) {
+      double value8 = double.parse(thickinsulController8.text);
+      minValue = value8 < minValue ? value8 : minValue;
+    }
+    if (double.tryParse(thickinsulController9.text) != null) {
+      double value9 = double.parse(thickinsulController9.text);
+      minValue = value9 < minValue ? value9 : minValue;
+    }
+    if (double.tryParse(thickinsulController10.text) != null) {
+      double value10 = double.parse(thickinsulController10.text);
+      minValue = value10 < minValue ? value10 : minValue;
+    }
+    if (double.tryParse(thickinsulController11.text) != null) {
+      double value11 = double.parse(thickinsulController11.text);
+      minValue = value11 < minValue ? value11 : minValue;
+    }
+    if (double.tryParse(thickinsulController12.text) != null) {
+      double value12 = double.parse(thickinsulController12.text);
+      minValue = value12 < minValue ? value12 : minValue;
+    }
+    setState(() {
+      thickinsulController.text = minValue.toString();
+      object.thickinsul = thickinsulController.text;
+    });
+  }
+
+  void minithickinsulrest() {
+    double minValue = double.infinity;
+    if (double.tryParse(thickinsulrestController1.text) != null) {
+      double value1 = double.parse(thickinsulrestController1.text);
+      minValue = value1;
+    }
+
+    if (double.tryParse(thickinsulrestController2.text) != null) {
+      double value2 = double.parse(thickinsulrestController2.text);
+      minValue = value2 < minValue ? value2 : minValue;
+    }
+
+    if (double.tryParse(thickinsulrestController3.text) != null) {
+      double value3 = double.parse(thickinsulrestController3.text);
+      minValue = value3 < minValue ? value3 : minValue;
+    }
+
+    if (double.tryParse(thickinsulrestController4.text) != null) {
+      double value4 = double.parse(thickinsulrestController4.text);
+      minValue = value4 < minValue ? value4 : minValue;
+    }
+    if (double.tryParse(thickinsulrestController5.text) != null) {
+      double value5 = double.parse(thickinsulrestController5.text);
+      minValue = value5 < minValue ? value5 : minValue;
+    }
+    if (double.tryParse(thickinsulrestController6.text) != null) {
+      double value6 = double.parse(thickinsulrestController6.text);
+      minValue = value6 < minValue ? value6 : minValue;
+    }
+    if (double.tryParse(thickinsulrestController7.text) != null) {
+      double value7 = double.parse(thickinsulrestController7.text);
+      minValue = value7 < minValue ? value7 : minValue;
+    }
+    if (double.tryParse(thickinsulrestController8.text) != null) {
+      double value8 = double.parse(thickinsulrestController8.text);
+      minValue = value8 < minValue ? value8 : minValue;
+    }
+    if (double.tryParse(thickinsulrestController9.text) != null) {
+      double value9 = double.parse(thickinsulrestController9.text);
+      minValue = value9 < minValue ? value9 : minValue;
+    }
+    if (double.tryParse(thickinsulrestController10.text) != null) {
+      double value10 = double.parse(thickinsulrestController10.text);
+      minValue = value10 < minValue ? value10 : minValue;
+    }
+    if (double.tryParse(thickinsulrestController11.text) != null) {
+      double value11 = double.parse(thickinsulrestController11.text);
+      minValue = value11 < minValue ? value11 : minValue;
+    }
+    if (double.tryParse(thickinsulrestController12.text) != null) {
+      double value12 = double.parse(thickinsulrestController12.text);
+      minValue = value12 < minValue ? value12 : minValue;
+    }
+    setState(() {
+      thickinsulrestController.text = minValue.toString();
+      object.thickinsulrest = thickinsulrestController.text;
+    });
+  }
 
   void napr() {
     double napr = 0.0;
@@ -9927,6 +12585,20 @@ class ObjectDetailIpState extends State<ObjectDetailIp> {
     }
   }
 
+  void saveForm12() {
+    final form = _1formKey.currentState;
+    if (form.validate()) {
+      form.save();
+      object.todoDate = DateFormat.yMMMMd().format(DateTime.now());
+      if (object.id != null) {
+        helper.updateTodo(object);
+      } else {
+        helper.insertTodo(object);
+      }
+      // Navigator.pop(context, true);
+    }
+  }
+
   void saveForm2() {
     final form = _2formKey.currentState;
     if (form.validate()) {
@@ -9938,6 +12610,20 @@ class ObjectDetailIpState extends State<ObjectDetailIp> {
         helper.insertTodo(object);
       }
       Navigator.pop(context, true);
+    }
+  }
+
+  void saveForm22() {
+    final form = _2formKey.currentState;
+    if (form.validate()) {
+      form.save();
+      object.todoDate = DateFormat.yMMMMd().format(DateTime.now());
+      if (object.id != null) {
+        helper.updateTodo(object);
+      } else {
+        helper.insertTodo(object);
+      }
+      // Navigator.pop(context, true);
     }
   }
 
@@ -9955,6 +12641,20 @@ class ObjectDetailIpState extends State<ObjectDetailIp> {
     }
   }
 
+  void saveForm32() {
+    final form = _3formKey.currentState;
+    if (form.validate()) {
+      form.save();
+      object.todoDate = DateFormat.yMMMMd().format(DateTime.now());
+      if (object.id != null) {
+        helper.updateTodo(object);
+      } else {
+        helper.insertTodo(object);
+      }
+      // Navigator.pop(context, true);
+    }
+  }
+
   void saveForm4() {
     final form = _4formKey.currentState;
     if (form.validate()) {
@@ -9966,6 +12666,20 @@ class ObjectDetailIpState extends State<ObjectDetailIp> {
         helper.insertTodo(object);
       }
       Navigator.pop(context, true);
+    }
+  }
+
+  void saveForm42() {
+    final form = _4formKey.currentState;
+    if (form.validate()) {
+      form.save();
+      object.todoDate = DateFormat.yMMMMd().format(DateTime.now());
+      if (object.id != null) {
+        helper.updateTodo(object);
+      } else {
+        helper.insertTodo(object);
+      }
+      // Navigator.pop(context, true);
     }
   }
 
@@ -9983,6 +12697,20 @@ class ObjectDetailIpState extends State<ObjectDetailIp> {
     }
   }
 
+  void saveForm52() {
+    final form = _5formKey.currentState;
+    if (form.validate()) {
+      form.save();
+      object.todoDate = DateFormat.yMMMMd().format(DateTime.now());
+      if (object.id != null) {
+        helper.updateTodo(object);
+      } else {
+        helper.insertTodo(object);
+      }
+      // Navigator.pop(context, true);
+    }
+  }
+
   void saveForm6() {
     final form = _6formKey.currentState;
     if (form.validate()) {
@@ -9994,6 +12722,20 @@ class ObjectDetailIpState extends State<ObjectDetailIp> {
         helper.insertTodo(object);
       }
       Navigator.pop(context, true);
+    }
+  }
+
+  void saveForm62() {
+    final form = _6formKey.currentState;
+    if (form.validate()) {
+      form.save();
+      object.todoDate = DateFormat.yMMMMd().format(DateTime.now());
+      if (object.id != null) {
+        helper.updateTodo(object);
+      } else {
+        helper.insertTodo(object);
+      }
+      // Navigator.pop(context, true);
     }
   }
 
@@ -10011,6 +12753,20 @@ class ObjectDetailIpState extends State<ObjectDetailIp> {
     }
   }
 
+  void saveForm72() {
+    final form = _7formKey.currentState;
+    if (form.validate()) {
+      form.save();
+      object.todoDate = DateFormat.yMMMMd().format(DateTime.now());
+      if (object.id != null) {
+        helper.updateTodo(object);
+      } else {
+        helper.insertTodo(object);
+      }
+      // Navigator.pop(context, true);
+    }
+  }
+
   void saveForm8() {
     final form = _8formKey.currentState;
     if (form.validate()) {
@@ -10022,6 +12778,20 @@ class ObjectDetailIpState extends State<ObjectDetailIp> {
         helper.insertTodo(object);
       }
       Navigator.pop(context, true);
+    }
+  }
+
+  void saveForm82() {
+    final form = _8formKey.currentState;
+    if (form.validate()) {
+      form.save();
+      object.todoDate = DateFormat.yMMMMd().format(DateTime.now());
+      if (object.id != null) {
+        helper.updateTodo(object);
+      } else {
+        helper.insertTodo(object);
+      }
+      // Navigator.pop(context, true);
     }
   }
 

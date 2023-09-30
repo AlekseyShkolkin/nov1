@@ -51,6 +51,10 @@ class Todo {
 
   String _diameter;
   String _thickpipe;
+  String _thickpipe1;
+  String _thickpipe2;
+  String _thickpipe3;
+  String _thickpipe4;
   String _gradesteel;
 
   String _metalldamage;
@@ -80,13 +84,25 @@ class Todo {
   String _insuladhes1;
   String _insuladhes2;
   String _insuladhes3;
+  String _insuladhes4;
   String _insulcharadhes1;
   String _insulcharadhes2;
   String _insulcharadhes3;
+  String _insulcharadhes4;
   String _insulcondit;
+  String _thickinsul;
   String _thickinsul1;
   String _thickinsul2;
   String _thickinsul3;
+  String _thickinsul4;
+  String _thickinsul5;
+  String _thickinsul6;
+  String _thickinsul7;
+  String _thickinsul8;
+  String _thickinsul9;
+  String _thickinsul10;
+  String _thickinsul11;
+  String _thickinsul12;
 
   String _insuldamage;
 
@@ -119,7 +135,26 @@ class Todo {
 
   String _typeinsulrest;
   String _insuladhesrest;
+  String _insuladhesrest1;
+  String _insuladhesrest2;
+  String _insuladhesrest3;
+  String _insulcharadhesrest1;
+  String _insulcharadhesrest2;
+  String _insulcharadhesrest3;
+  String _insulcharadhesrest4;
   String _thickinsulrest;
+  String _thickinsulrest1;
+  String _thickinsulrest2;
+  String _thickinsulrest3;
+  String _thickinsulrest4;
+  String _thickinsulrest5;
+  String _thickinsulrest6;
+  String _thickinsulrest7;
+  String _thickinsulrest8;
+  String _thickinsulrest9;
+  String _thickinsulrest10;
+  String _thickinsulrest11;
+  String _thickinsulrest12;
   String _contininsulrest;
   String _metrrest;
 
@@ -142,6 +177,7 @@ class Todo {
   String _description;
   String _date;
   String _dateObsl;
+  String _dateObsl2;
   String _location;
 
   String _filial; //филиал
@@ -186,6 +222,7 @@ class Todo {
     this._zakl,
     this._location,
     this._dateObsl,
+    this._dateObsl2,
     this._photometdef1,
     this._photometdef2,
     this._photometdef3,
@@ -217,6 +254,10 @@ class Todo {
     this._description,
     this._diameter,
     this._thickpipe,
+    this._thickpipe1,
+    this._thickpipe2,
+    this._thickpipe3,
+    this._thickpipe4,
     this._gradesteel,
     this._metalldamage,
     this._charmetdamage1,
@@ -241,13 +282,25 @@ class Todo {
     this._insuladhes1,
     this._insuladhes2,
     this._insuladhes3,
+    this._insuladhes4,
     this._insulcharadhes1,
     this._insulcharadhes2,
     this._insulcharadhes3,
+    this._insulcharadhes4,
     this._insulcondit,
     this._thickinsul1,
     this._thickinsul2,
     this._thickinsul3,
+    this._thickinsul4,
+    this._thickinsul5,
+    this._thickinsul6,
+    this._thickinsul7,
+    this._thickinsul8,
+    this._thickinsul9,
+    this._thickinsul10,
+    this._thickinsul11,
+    this._thickinsul12,
+    this._thickinsul,
     this._insuldamage,
     this._charinsuldamage1,
     this._lochourinsuldamage1,
@@ -274,7 +327,26 @@ class Todo {
     this._difftemp,
     this._typeinsulrest,
     this._insuladhesrest,
+    this._insuladhesrest1,
+    this._insuladhesrest2,
+    this._insuladhesrest3,
+    this._insulcharadhesrest1,
+    this._insulcharadhesrest2,
+    this._insulcharadhesrest3,
+    this._insulcharadhesrest4,
     this._thickinsulrest,
+    this._thickinsulrest1,
+    this._thickinsulrest2,
+    this._thickinsulrest3,
+    this._thickinsulrest4,
+    this._thickinsulrest5,
+    this._thickinsulrest6,
+    this._thickinsulrest7,
+    this._thickinsulrest8,
+    this._thickinsulrest9,
+    this._thickinsulrest10,
+    this._thickinsulrest11,
+    this._thickinsulrest12,
     this._contininsulrest,
     this._tickinsulmeter,
     this._tickinsulmeternumb,
@@ -314,7 +386,7 @@ class Todo {
     this._id,
     this._title,
     this._date, [
-        this._ph,
+    this._ph,
     this._davl,
     this._vlaga,
     this._mesto,
@@ -327,6 +399,7 @@ class Todo {
     this._zakl,
     this._location,
     this._dateObsl,
+    this._dateObsl2,
     this._photometdef1,
     this._photometdef2,
     this._photometdef3,
@@ -358,6 +431,10 @@ class Todo {
     this._description,
     this._diameter,
     this._thickpipe,
+    this._thickpipe1,
+    this._thickpipe2,
+    this._thickpipe3,
+    this._thickpipe4,
     this._gradesteel,
     this._metalldamage,
     this._charmetdamage1,
@@ -382,13 +459,25 @@ class Todo {
     this._insuladhes1,
     this._insuladhes2,
     this._insuladhes3,
+    this._insuladhes4,
     this._insulcharadhes1,
     this._insulcharadhes2,
     this._insulcharadhes3,
+    this._insulcharadhes4,
     this._insulcondit,
     this._thickinsul1,
     this._thickinsul2,
     this._thickinsul3,
+    this._thickinsul4,
+    this._thickinsul5,
+    this._thickinsul6,
+    this._thickinsul7,
+    this._thickinsul8,
+    this._thickinsul9,
+    this._thickinsul10,
+    this._thickinsul11,
+    this._thickinsul12,
+    this._thickinsul,
     this._insuldamage,
     this._charinsuldamage1,
     this._lochourinsuldamage1,
@@ -415,7 +504,26 @@ class Todo {
     this._difftemp,
     this._typeinsulrest,
     this._insuladhesrest,
+    this._insuladhesrest1,
+    this._insuladhesrest2,
+    this._insuladhesrest3,
+    this._insulcharadhesrest1,
+    this._insulcharadhesrest2,
+    this._insulcharadhesrest3,
+    this._insulcharadhesrest4,
     this._thickinsulrest,
+    this._thickinsulrest1,
+    this._thickinsulrest2,
+    this._thickinsulrest3,
+    this._thickinsulrest4,
+    this._thickinsulrest5,
+    this._thickinsulrest6,
+    this._thickinsulrest7,
+    this._thickinsulrest8,
+    this._thickinsulrest9,
+    this._thickinsulrest10,
+    this._thickinsulrest11,
+    this._thickinsulrest12,
     this._contininsulrest,
     this._metrrest,
     this._tickinsulmeter,
@@ -499,11 +607,16 @@ class Todo {
   String get osnovanie => _osnovanie;
   String get todoDate => _date;
   String get dateObsl => _dateObsl;
+  String get dateObsl2 => _dateObsl2;
   String get location => _location;
   String get description => _description;
 
   String get diameter => _diameter;
   String get thickpipe => _thickpipe;
+  String get thickpipe1 => _thickpipe1;
+  String get thickpipe2 => _thickpipe2;
+  String get thickpipe3 => _thickpipe3;
+  String get thickpipe4 => _thickpipe4;
   String get gradesteel => _gradesteel;
   String get metalldamage => _metalldamage;
 
@@ -536,11 +649,23 @@ class Todo {
 
   String get insuladhes2 => _insuladhes2;
   String get insulcharadhes2 => _insulcharadhes2;
-  String get thickinsul2 => _thickinsul1;
+  String get thickinsul2 => _thickinsul2;
 
   String get insuladhes3 => _insuladhes3;
+  String get insuladhes4 => _insuladhes4;
   String get insulcharadhes3 => _insulcharadhes3;
+  String get insulcharadhes4 => _insulcharadhes4;
   String get thickinsul3 => _thickinsul3;
+  String get thickinsul4 => _thickinsul4;
+  String get thickinsul5 => _thickinsul5;
+  String get thickinsul6 => _thickinsul6;
+  String get thickinsul7 => _thickinsul7;
+  String get thickinsul8 => _thickinsul8;
+  String get thickinsul9 => _thickinsul9;
+  String get thickinsul10 => _thickinsul10;
+  String get thickinsul11 => _thickinsul11;
+  String get thickinsul12 => _thickinsul12;
+  String get thickinsul => _thickinsul;
 
   String get insuldamage => _insuldamage;
   String get insulcondit => _insulcondit;
@@ -574,7 +699,26 @@ class Todo {
 
   String get typeinsulrest => _typeinsulrest;
   String get insuladhesrest => _insuladhesrest;
+  String get insuladhesrest1 => _insuladhesrest1;
+  String get insuladhesrest2 => _insuladhesrest2;
+  String get insuladhesrest3 => _insuladhesrest3;
+  String get insulcharadhesrest1 => _insulcharadhesrest1;
+  String get insulcharadhesrest2 => _insulcharadhesrest2;
+  String get insulcharadhesrest3 => _insulcharadhesrest3;
+  String get insulcharadhesrest4 => _insulcharadhesrest4;
   String get thickinsulrest => _thickinsulrest;
+  String get thickinsulrest1 => _thickinsulrest1;
+  String get thickinsulrest2 => _thickinsulrest2;
+  String get thickinsulrest3 => _thickinsulrest3;
+  String get thickinsulrest4 => _thickinsulrest4;
+  String get thickinsulrest5 => _thickinsulrest5;
+  String get thickinsulrest6 => _thickinsulrest6;
+  String get thickinsulrest7 => _thickinsulrest7;
+  String get thickinsulrest8 => _thickinsulrest8;
+  String get thickinsulrest9 => _thickinsulrest9;
+  String get thickinsulrest10 => _thickinsulrest10;
+  String get thickinsulrest11 => _thickinsulrest11;
+  String get thickinsulrest12 => _thickinsulrest12;
   String get contininsulrest => _contininsulrest;
   String get metrrest => _metrrest;
 
@@ -862,13 +1006,15 @@ class Todo {
     _date = newDate;
   }
 
-  // set dateObsl(newDateObsl) {
-  //   _dateObsl = newDateObsl;
-  // }
-
   set dateObsl(String newdateObsl) {
     if ((newdateObsl?.length ?? 0) <= 255) {
       _dateObsl = newdateObsl;
+    }
+  }
+
+  set dateObsl2(String newdateObsl2) {
+    if ((newdateObsl2?.length ?? 0) <= 255) {
+      _dateObsl2 = newdateObsl2;
     }
   }
 
@@ -887,6 +1033,30 @@ class Todo {
   set thickpipe(String newthickpipe) {
     if ((newthickpipe?.length ?? 0) <= 255) {
       _thickpipe = newthickpipe;
+    }
+  }
+
+  set thickpipe1(String newthickpipe1) {
+    if ((newthickpipe1?.length ?? 0) <= 255) {
+      _thickpipe1 = newthickpipe1;
+    }
+  }
+
+  set thickpipe2(String newthickpipe2) {
+    if ((newthickpipe2?.length ?? 0) <= 255) {
+      _thickpipe2 = newthickpipe2;
+    }
+  }
+
+  set thickpipe3(String newthickpipe3) {
+    if ((newthickpipe3?.length ?? 0) <= 255) {
+      _thickpipe3 = newthickpipe3;
+    }
+  }
+
+  set thickpipe4(String newthickpipe4) {
+    if ((newthickpipe4?.length ?? 0) <= 255) {
+      _thickpipe4 = newthickpipe4;
     }
   }
 
@@ -1058,15 +1228,87 @@ class Todo {
     }
   }
 
+  set insuladhes4(String newinsuladhes4) {
+    if ((newinsuladhes4?.length ?? 0) <= 255) {
+      _insuladhes4 = newinsuladhes4;
+    }
+  }
+
   set insulcharadhes3(String newinsulcharadhes3) {
     if ((newinsulcharadhes3?.length ?? 0) <= 255) {
       _insulcharadhes3 = newinsulcharadhes3;
     }
   }
 
+  set insulcharadhes4(String newinsulcharadhes4) {
+    if ((newinsulcharadhes4?.length ?? 0) <= 255) {
+      _insulcharadhes4 = newinsulcharadhes4;
+    }
+  }
+
   set thickinsul3(String newthickinsul3) {
     if ((newthickinsul3?.length ?? 0) <= 255) {
       _thickinsul3 = newthickinsul3;
+    }
+  }
+
+  set thickinsul4(String newthickinsul4) {
+    if ((newthickinsul4?.length ?? 0) <= 255) {
+      _thickinsul4 = newthickinsul4;
+    }
+  }
+
+  set thickinsul5(String newthickinsul5) {
+    if ((newthickinsul5?.length ?? 0) <= 255) {
+      _thickinsul5 = newthickinsul5;
+    }
+  }
+
+  set thickinsul6(String newthickinsul6) {
+    if ((newthickinsul6?.length ?? 0) <= 255) {
+      _thickinsul6 = newthickinsul6;
+    }
+  }
+
+  set thickinsul7(String newthickinsul7) {
+    if ((newthickinsul7?.length ?? 0) <= 255) {
+      _thickinsul7 = newthickinsul7;
+    }
+  }
+
+  set thickinsul8(String newthickinsul8) {
+    if ((newthickinsul8?.length ?? 0) <= 255) {
+      _thickinsul8 = newthickinsul8;
+    }
+  }
+
+  set thickinsul9(String newthickinsul9) {
+    if ((newthickinsul9?.length ?? 0) <= 255) {
+      _thickinsul9 = newthickinsul9;
+    }
+  }
+
+  set thickinsul10(String newthickinsul10) {
+    if ((newthickinsul10?.length ?? 0) <= 255) {
+      _thickinsul10 = newthickinsul10;
+    }
+  }
+
+  set thickinsul11(String newthickinsul11) {
+    if ((newthickinsul11?.length ?? 0) <= 255) {
+      _thickinsul11 = newthickinsul11;
+    }
+  }
+
+  set thickinsul12(String newthickinsul12) {
+    if ((newthickinsul12?.length ?? 0) <= 255) {
+      _thickinsul12 = newthickinsul12;
+    }
+  }
+
+  set thickinsul(String newthickinsul) {
+    if ((newthickinsul?.length ?? 0) <= 255) {
+      _thickinsul = newthickinsul;
     }
   }
 
@@ -1232,9 +1474,123 @@ class Todo {
     }
   }
 
+  set insuladhesrest2(String newinsuladhesrest2) {
+    if ((newinsuladhesrest2?.length ?? 0) <= 255) {
+      _insuladhesrest2 = newinsuladhesrest2;
+    }
+  }
+
+  set insuladhesrest1(String newinsuladhesrest1) {
+    if ((newinsuladhesrest1?.length ?? 0) <= 255) {
+      _insuladhesrest1 = newinsuladhesrest1;
+    }
+  }
+
+  set insuladhesrest3(String newinsuladhesrest3) {
+    if ((newinsuladhesrest3?.length ?? 0) <= 255) {
+      _insuladhesrest3 = newinsuladhesrest3;
+    }
+  }
+
+  set insulcharadhesrest1(String newinsulcharadhesrest1) {
+    if ((newinsulcharadhesrest1?.length ?? 0) <= 255) {
+      _insulcharadhesrest1 = newinsulcharadhesrest1;
+    }
+  }
+
+  set insulcharadhesrest2(String newinsulcharadhesrest2) {
+    if ((newinsulcharadhesrest2?.length ?? 0) <= 255) {
+      _insulcharadhesrest2 = newinsulcharadhesrest2;
+    }
+  }
+
+  set insulcharadhesrest3(String newinsulcharadhesrest3) {
+    if ((newinsulcharadhesrest3?.length ?? 0) <= 255) {
+      _insulcharadhesrest3 = newinsulcharadhesrest3;
+    }
+  }
+
+  set insulcharadhesrest4(String newinsulcharadhesrest4) {
+    if ((newinsulcharadhesrest4?.length ?? 0) <= 255) {
+      _insulcharadhesrest4 = newinsulcharadhesrest4;
+    }
+  }
+
   set thickinsulrest(String newthickinsulrest) {
     if ((newthickinsulrest?.length ?? 0) <= 255) {
       _thickinsulrest = newthickinsulrest;
+    }
+  }
+
+  set thickinsulrest1(String newthickinsulrest1) {
+    if ((newthickinsulrest1?.length ?? 0) <= 255) {
+      _thickinsulrest1 = newthickinsulrest1;
+    }
+  }
+
+  set thickinsulrest2(String newthickinsulrest2) {
+    if ((newthickinsulrest2?.length ?? 0) <= 255) {
+      _thickinsulrest2 = newthickinsulrest2;
+    }
+  }
+
+  set thickinsulrest3(String newthickinsulrest3) {
+    if ((newthickinsulrest3?.length ?? 0) <= 255) {
+      _thickinsulrest3 = newthickinsulrest3;
+    }
+  }
+
+  set thickinsulrest4(String newthickinsulrest4) {
+    if ((newthickinsulrest4?.length ?? 0) <= 255) {
+      _thickinsulrest4 = newthickinsulrest4;
+    }
+  }
+
+  set thickinsulrest5(String newthickinsulrest5) {
+    if ((newthickinsulrest5?.length ?? 0) <= 255) {
+      _thickinsulrest5 = newthickinsulrest5;
+    }
+  }
+
+  set thickinsulrest6(String newthickinsulrest6) {
+    if ((newthickinsulrest6?.length ?? 0) <= 255) {
+      _thickinsulrest6 = newthickinsulrest6;
+    }
+  }
+
+  set thickinsulrest7(String newthickinsulrest7) {
+    if ((newthickinsulrest7?.length ?? 0) <= 255) {
+      _thickinsulrest7 = newthickinsulrest7;
+    }
+  }
+
+  set thickinsulrest8(String newthickinsulrest8) {
+    if ((newthickinsulrest8?.length ?? 0) <= 255) {
+      _thickinsulrest8 = newthickinsulrest8;
+    }
+  }
+
+  set thickinsulrest9(String newthickinsulrest9) {
+    if ((newthickinsulrest9?.length ?? 0) <= 255) {
+      _thickinsulrest9 = newthickinsulrest9;
+    }
+  }
+
+  set thickinsulrest10(String newthickinsulrest10) {
+    if ((newthickinsulrest10?.length ?? 0) <= 255) {
+      _thickinsulrest10 = newthickinsulrest10;
+    }
+  }
+
+  set thickinsulrest11(String newthickinsulrest11) {
+    if ((newthickinsulrest11?.length ?? 0) <= 255) {
+      _thickinsulrest11 = newthickinsulrest11;
+    }
+  }
+
+  set thickinsulrest12(String newthickinsulrest12) {
+    if ((newthickinsulrest12?.length ?? 0) <= 255) {
+      _thickinsulrest12 = newthickinsulrest12;
     }
   }
 
@@ -1244,13 +1600,11 @@ class Todo {
     }
   }
 
-set metrrest(String newmetrrest) {
+  set metrrest(String newmetrrest) {
     if ((newmetrrest?.length ?? 0) <= 255) {
       _metrrest = newmetrrest;
     }
   }
-
-  
 
   set tickinsulmeter(String newtickinsulmeter) {
     if ((newtickinsulmeter?.length ?? 0) <= 255) {
@@ -1469,10 +1823,15 @@ set metrrest(String newmetrrest) {
     map['osnovanie'] = _osnovanie;
     map['date'] = _date;
     map['dateObsl'] = _dateObsl;
+    map['dateObsl2'] = _dateObsl2;
     map['description'] = _description;
 
     map['diameter'] = _diameter;
     map['thickpipe'] = _thickpipe;
+    map['thickpipe1'] = _thickpipe1;
+    map['thickpipe2'] = _thickpipe2;
+    map['thickpipe3'] = _thickpipe3;
+    map['thickpipe4'] = _thickpipe4;
     map['gradesteel'] = _gradesteel;
     map['metalldamage'] = _metalldamage;
 
@@ -1508,7 +1867,19 @@ set metrrest(String newmetrrest) {
 
     map['insuladhes3'] = _insuladhes3;
     map['insulcharadhes3'] = _insulcharadhes3;
+    map['insuladhes4'] = _insuladhes4;
+    map['insulcharadhes4'] = _insulcharadhes4;
     map['thickinsul3'] = _thickinsul3;
+    map['thickinsul4'] = _thickinsul4;
+    map['thickinsul5'] = _thickinsul5;
+    map['thickinsul6'] = _thickinsul6;
+    map['thickinsul7'] = _thickinsul7;
+    map['thickinsul8'] = _thickinsul8;
+    map['thickinsul9'] = _thickinsul9;
+    map['thickinsul10'] = _thickinsul10;
+    map['thickinsul11'] = _thickinsul11;
+    map['thickinsul12'] = _thickinsul12;
+    map['thickinsul'] = _thickinsul;
 
     map['insulcondit'] = _insulcondit;
     map['insuldamage'] = _insuldamage;
@@ -1542,7 +1913,26 @@ set metrrest(String newmetrrest) {
 
     map['typeinsulrest'] = _typeinsulrest;
     map['insuladhesrest'] = _insuladhesrest;
+    map['insuladhesrest1'] = _insuladhesrest1;
+    map['insuladhesrest2'] = _insuladhesrest2;
+    map['insuladhesrest3'] = _insuladhesrest3;
+    map['insulcharadhesrest1'] = _insulcharadhesrest1;
+    map['insulcharadhesrest2'] = _insulcharadhesrest2;
+    map['insulcharadhesrest3'] = _insulcharadhesrest3;
+    map['insulcharadhesrest4'] = _insulcharadhesrest4;
     map['thickinsulrest'] = _thickinsulrest;
+    map['thickinsulrest1'] = _thickinsulrest1;
+    map['thickinsulrest2'] = _thickinsulrest2;
+    map['thickinsulrest3'] = _thickinsulrest3;
+    map['thickinsulrest4'] = _thickinsulrest4;
+    map['thickinsulrest5'] = _thickinsulrest5;
+    map['thickinsulrest6'] = _thickinsulrest6;
+    map['thickinsulrest7'] = _thickinsulrest7;
+    map['thickinsulrest8'] = _thickinsulrest8;
+    map['thickinsulrest9'] = _thickinsulrest9;
+    map['thickinsulrest10'] = _thickinsulrest10;
+    map['thickinsulrest11'] = _thickinsulrest11;
+    map['thickinsulrest12'] = _thickinsulrest12;
     map['contininsulrest'] = _contininsulrest;
     map['metrrest'] = _metrrest;
 
@@ -1640,10 +2030,15 @@ set metrrest(String newmetrrest) {
     _osnovanie = o['osnovanie'];
     _date = o['date'];
     _dateObsl = o['dateObsl'];
+    _dateObsl2 = o['dateObsl2'];
     _description = o['description'];
 
     _diameter = o['diameter'];
     _thickpipe = o['thickpipe'];
+    _thickpipe1 = o['thickpipe1'];
+    _thickpipe2 = o['thickpipe2'];
+    _thickpipe3 = o['thickpipe3'];
+    _thickpipe4 = o['thickpipe4'];
     _gradesteel = o['gradesteel'];
     _metalldamage = o['metalldamage'];
 
@@ -1680,6 +2075,18 @@ set metrrest(String newmetrrest) {
     _insuladhes3 = o['insuladhes3'];
     _insulcharadhes3 = o['insulcharadhes3'];
     _thickinsul3 = o['thickinsul3'];
+    _insuladhes4 = o['insuladhes4'];
+    _insulcharadhes4 = o['insulcharadhes4'];
+    _thickinsul4 = o['thickinsul4'];
+    _thickinsul5 = o['thickinsul5'];
+    _thickinsul6 = o['thickinsul6'];
+    _thickinsul7 = o['thickinsul7'];
+    _thickinsul8 = o['thickinsul8'];
+    _thickinsul9 = o['thickinsul9'];
+    _thickinsul10 = o['thickinsul10'];
+    _thickinsul11 = o['thickinsul11'];
+    _thickinsul12 = o['thickinsul12'];
+    _thickinsul = o['thickinsul'];
 
     _insulcondit = o['insulcondit'];
     _insuldamage = o['insuldamage'];
@@ -1713,9 +2120,28 @@ set metrrest(String newmetrrest) {
 
     _typeinsulrest = o['typeinsulrest'];
     _insuladhesrest = o['insuladhesrest'];
+    _insuladhesrest1 = o['insuladhesrest1'];
+    _insuladhesrest2 = o['insuladhesrest2'];
+    _insuladhesrest3 = o['insuladhesrest3'];
+    _insulcharadhesrest1 = o['insulcharadhesrest1'];
+    _insulcharadhesrest2 = o['insulcharadhesrest2'];
+    _insulcharadhesrest3 = o['insulcharadhesrest3'];
+    _insulcharadhesrest4 = o['insulcharadhesrest4'];
     _thickinsulrest = o['thickinsulrest'];
+    _thickinsulrest1 = o['thickinsulrest1'];
+    _thickinsulrest2 = o['thickinsulrest2'];
+    _thickinsulrest3 = o['thickinsulrest3'];
+    _thickinsulrest4 = o['thickinsulrest4'];
+    _thickinsulrest5 = o['thickinsulrest5'];
+    _thickinsulrest6 = o['thickinsulrest6'];
+    _thickinsulrest7 = o['thickinsulrest7'];
+    _thickinsulrest8 = o['thickinsulrest8'];
+    _thickinsulrest9 = o['thickinsulrest9'];
+    _thickinsulrest10 = o['thickinsulrest10'];
+    _thickinsulrest11 = o['thickinsulrest11'];
+    _thickinsulrest12 = o['thickinsulrest12'];
     _contininsulrest = o['contininsulrest'];
-     _metrrest = o['metrrest'];
+    _metrrest = o['metrrest'];
 
     _tickinsulmeter = o['tickinsulmeter'];
     _tickinsulmeternumb = o['tickinsulmeternumb'];
