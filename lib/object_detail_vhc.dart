@@ -223,6 +223,8 @@ class ObjectDetailVhCState extends State<ObjectDetailVhC> {
     dateObslController.text = object.dateObsl ?? '';
     tuController.text = object.tu ?? '';
     partiyaController.text = object.partiya ?? '';
+    proizvoditelController.text = object.proizvoditel ?? '';
+    sertifikatController.text = object.sertifikat ?? '';
 
     photo1Controller.text = object.photo1 ?? '';
     photo2Controller.text = object.photo2 ?? '';
@@ -329,19 +331,19 @@ class ObjectDetailVhCState extends State<ObjectDetailVhC> {
                         onPressed: () {
                           if (_1formKey.currentState != null) {
                             _1formKey.currentState.validate();
-                            saveForm1();
+                            saveForm12();
                           } else if (_2formKey.currentState != null) {
                             _2formKey.currentState.validate();
-                            saveForm2();
+                            saveForm22();
                           } else if (_3formKey.currentState != null) {
                             _3formKey.currentState.validate();
-                            saveForm3();
+                            saveForm32();
                           } else if (_4formKey.currentState != null) {
                             _4formKey.currentState.validate();
-                            saveForm4();
+                            saveForm42();
                           } else if (_5formKey.currentState != null) {
                             _5formKey.currentState.validate();
-                            saveForm5();
+                            saveForm52();
                           }
                         },
                       ),
@@ -540,7 +542,7 @@ class ObjectDetailVhCState extends State<ObjectDetailVhC> {
                           labelText: 'ТУ (ГОСТ) на лакокрасочный материал',
                           hintText: 'Введите ТУ (ГОСТ)',
                           prefixIcon: Icon(
-                            Icons.account_balance_outlined,
+                            Icons.import_contacts,
                             color: focusNode2.hasFocus ||
                                     tuController.text.isNotEmpty
                                 ? Theme.of(context).primaryColor
@@ -782,7 +784,7 @@ class ObjectDetailVhCState extends State<ObjectDetailVhC> {
                           labelText: 'Производитель материала',
                           hintText: 'Введите название производителя',
                           prefixIcon: Icon(
-                            Icons.account_balance_outlined,
+                            Icons.local_offer,
                             color: focusNode6.hasFocus ||
                                     proizvoditelController.text.isNotEmpty
                                 ? Theme.of(context).primaryColor
@@ -841,7 +843,7 @@ class ObjectDetailVhCState extends State<ObjectDetailVhC> {
                           labelText: 'Сертификат(паспорт) качества материала',
                           hintText: 'Введите номер сертификата (паспорта)',
                           prefixIcon: Icon(
-                            Icons.account_balance_outlined,
+                            Icons.assignment,
                             color: focusNode7.hasFocus ||
                                     sertifikatController.text.isNotEmpty
                                 ? Theme.of(context).primaryColor
@@ -889,7 +891,9 @@ class ObjectDetailVhCState extends State<ObjectDetailVhC> {
                             ),
                         onPressed: () => saveForm1(),
                         child: Text(
-                          isEdit ? 'Редактировать' : 'Добавить',
+                          isEdit
+                              ? 'Редактировать и закрыть'
+                              : 'Добавить и закрыть',
                           style: const TextStyle(
                             fontSize: 18.0,
                             fontWeight: FontWeight.w300,
@@ -918,1399 +922,1636 @@ class ObjectDetailVhCState extends State<ObjectDetailVhC> {
                                 color: Theme.of(context).primaryColor,
                                 fontWeight: FontWeight.w300),
                           )),
-                      SizedBox(height: 20),
+                      SizedBox(height: 10),
                       Divider(thickness: 4),
-                      Container(
-                          alignment: Alignment.center,
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              Text(
-                                'Показатель №1',
-                                style: TextStyle(
-                                    fontSize: 24,
-                                    color: Theme.of(context).primaryColor,
-                                    fontWeight: FontWeight.w300),
+                      SingleChildScrollView(
+                        scrollDirection: Axis.horizontal,
+                        child: Row(
+                          children: [
+                            Container(
+                              alignment: Alignment.center,
+                              width: MediaQuery.of(context).size.width,
+                              child: Column(
+                                children: [
+                                  Container(
+                                      alignment: Alignment.center,
+                                      child: Row(
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.center,
+                                        children: [
+                                          Text(
+                                            'Показатель №1',
+                                            style: TextStyle(
+                                                fontSize: 24,
+                                                color: Theme.of(context)
+                                                    .primaryColor,
+                                                fontWeight: FontWeight.w300),
+                                          ),
+                                          GestureDetector(
+                                            onTap: () {
+                                              pokazatelname1Controller.clear();
+                                              ntdpokazatel1Controller.clear();
+                                              normatupokazatel1Controller
+                                                  .clear();
+                                              sertpokazatel1Controller.clear();
+                                              itogpokazatel1Controller.clear();
+                                            },
+                                            child: Icon(
+                                              Icons.delete_outline,
+                                              color: Color.fromRGBO(
+                                                  187, 30, 16, 1.0),
+                                            ),
+                                          ),
+                                        ],
+                                      )),
+                                  Padding(
+                                    padding: const EdgeInsets.all(10.0),
+                                    child: TextFormField(
+                                      focusNode: focusNode8,
+                                      onChanged: (String value) {
+                                        setState(() {
+                                          focusNode8.requestFocus();
+                                        });
+                                      },
+                                      maxLength: 20,
+                                      onSaved: (value) {
+                                        object.pokazatelname1 = value;
+                                      },
+                                      controller: pokazatelname1Controller,
+                                      style: textStyle,
+                                      decoration: InputDecoration(
+                                        labelText: 'Наименование показателя',
+                                        hintText: 'Введите Наименование',
+                                        helperText: '...',
+                                        prefixIcon: Icon(
+                                          Icons.grade,
+                                          color: focusNode8.hasFocus ||
+                                                  pokazatelname1Controller
+                                                      .text.isNotEmpty
+                                              ? Theme.of(context).primaryColor
+                                              : Colors.grey,
+                                          size: 32,
+                                        ),
+                                        enabledBorder: const OutlineInputBorder(
+                                          borderRadius: BorderRadius.all(
+                                              Radius.circular(10)),
+                                          borderSide: BorderSide(
+                                              color: Colors.grey, width: 2),
+                                        ),
+                                        focusedBorder: OutlineInputBorder(
+                                          borderRadius: const BorderRadius.all(
+                                              Radius.circular(20)),
+                                          borderSide: BorderSide(
+                                              color: Theme.of(context)
+                                                  .primaryColor,
+                                              width: 2),
+                                        ),
+                                        labelStyle: TextStyle(
+                                          fontSize: 22,
+                                          fontWeight: FontWeight.w300,
+                                          color: Theme.of(context).primaryColor,
+                                        ),
+                                      ),
+                                      keyboardType: TextInputType.text,
+                                    ),
+                                  ),
+                                  Padding(
+                                    padding: const EdgeInsets.all(10.0),
+                                    child: TextFormField(
+                                      focusNode: focusNode9,
+                                      onChanged: (String value) {
+                                        setState(() {
+                                          focusNode9.requestFocus();
+                                        });
+                                      },
+                                      maxLength: 30,
+                                      onSaved: (value) {
+                                        object.ntdpokazatel1 = value;
+                                      },
+                                      controller: ntdpokazatel1Controller,
+                                      style: textStyle,
+                                      decoration: InputDecoration(
+                                        focusColor:
+                                            Theme.of(context).primaryColor,
+                                        labelStyle: TextStyle(
+                                          fontSize: 22,
+                                          fontWeight: FontWeight.w300,
+                                          color: Theme.of(context).primaryColor,
+                                        ),
+                                        hintStyle: TextStyle(
+                                          fontSize: 16,
+                                          fontWeight: FontWeight.w300,
+                                          color: Theme.of(context).primaryColor,
+                                        ),
+                                        labelText: 'НТД на метод испытания',
+                                        hintText: 'Введите НТД',
+                                        helperText: '...',
+                                        prefixIcon: Icon(
+                                          Icons.library_books,
+                                          color: focusNode9.hasFocus ||
+                                                  ntdpokazatel1Controller
+                                                      .text.isNotEmpty
+                                              ? Theme.of(context).primaryColor
+                                              : Colors.grey,
+                                          size: 32,
+                                        ),
+                                        enabledBorder: OutlineInputBorder(
+                                          borderRadius: BorderRadius.all(
+                                              Radius.circular(10)),
+                                          borderSide: BorderSide(
+                                              color: Colors.grey, width: 2),
+                                        ),
+                                        focusedBorder: OutlineInputBorder(
+                                          borderRadius: BorderRadius.all(
+                                              Radius.circular(20)),
+                                          borderSide: BorderSide(
+                                              color: Theme.of(context)
+                                                  .primaryColor,
+                                              width: 2),
+                                        ),
+                                      ),
+                                      keyboardType: TextInputType.text,
+                                    ),
+                                  ),
+                                  Padding(
+                                    padding: const EdgeInsets.all(10.0),
+                                    child: TextFormField(
+                                      focusNode: focusNode10,
+                                      onChanged: (String value) {
+                                        setState(() {
+                                          focusNode10.requestFocus();
+                                        });
+                                      },
+                                      maxLength: 10,
+                                      onSaved: (value) {
+                                        object.normatupokazatel1 = value;
+                                      },
+                                      controller: normatupokazatel1Controller,
+                                      style: textStyle,
+                                      decoration: InputDecoration(
+                                        focusColor:
+                                            Theme.of(context).primaryColor,
+                                        labelStyle: TextStyle(
+                                          fontSize: 22,
+                                          fontWeight: FontWeight.w300,
+                                          color: Theme.of(context).primaryColor,
+                                        ),
+                                        hintStyle: TextStyle(
+                                          fontSize: 16,
+                                          fontWeight: FontWeight.w300,
+                                          color: Theme.of(context).primaryColor,
+                                        ),
+                                        labelText:
+                                            'Норма по ТУ(ГОСТ) на материал',
+                                        hintText: 'Введите значение',
+                                        helperText: '...',
+                                        prefixIcon: Icon(
+                                          Icons.poll,
+                                          color: focusNode10.hasFocus ||
+                                                  normatupokazatel1Controller
+                                                      .text.isNotEmpty
+                                              ? Theme.of(context).primaryColor
+                                              : Colors.grey,
+                                          size: 32,
+                                        ),
+                                        enabledBorder: OutlineInputBorder(
+                                          borderRadius: BorderRadius.all(
+                                              Radius.circular(10)),
+                                          borderSide: BorderSide(
+                                              color: Colors.grey, width: 2),
+                                        ),
+                                        focusedBorder: OutlineInputBorder(
+                                          borderRadius: BorderRadius.all(
+                                              Radius.circular(20)),
+                                          borderSide: BorderSide(
+                                              color: Theme.of(context)
+                                                  .primaryColor,
+                                              width: 2),
+                                        ),
+                                      ),
+                                      keyboardType: TextInputType.text,
+                                    ),
+                                  ),
+                                  Padding(
+                                    padding: const EdgeInsets.all(10.0),
+                                    child: TextFormField(
+                                      focusNode: focusNode11,
+                                      onChanged: (String value) {
+                                        setState(() {
+                                          focusNode11.requestFocus();
+                                        });
+                                      },
+                                      maxLength: 30,
+                                      onSaved: (value) {
+                                        object.sertpokazatel1 = value;
+                                      },
+                                      controller: sertpokazatel1Controller,
+                                      style: textStyle,
+                                      decoration: InputDecoration(
+                                        focusColor:
+                                            Theme.of(context).primaryColor,
+                                        labelStyle: TextStyle(
+                                          fontSize: 22,
+                                          fontWeight: FontWeight.w300,
+                                          color: Theme.of(context).primaryColor,
+                                        ),
+                                        hintStyle: TextStyle(
+                                          fontSize: 16,
+                                          fontWeight: FontWeight.w300,
+                                          color: Theme.of(context).primaryColor,
+                                        ),
+                                        labelText:
+                                            'Данные сертификата (паспорта)',
+                                        hintText: 'Введите значение',
+                                        helperText: '...',
+                                        prefixIcon: Icon(
+                                          Icons.speaker_notes,
+                                          color: focusNode11.hasFocus ||
+                                                  sertpokazatel1Controller
+                                                      .text.isNotEmpty
+                                              ? Theme.of(context).primaryColor
+                                              : Colors.grey,
+                                          size: 32,
+                                        ),
+                                        enabledBorder: OutlineInputBorder(
+                                          borderRadius: BorderRadius.all(
+                                              Radius.circular(10)),
+                                          borderSide: BorderSide(
+                                              color: Colors.grey, width: 2),
+                                        ),
+                                        focusedBorder: OutlineInputBorder(
+                                          borderRadius: BorderRadius.all(
+                                              Radius.circular(20)),
+                                          borderSide: BorderSide(
+                                              color: Theme.of(context)
+                                                  .primaryColor,
+                                              width: 2),
+                                        ),
+                                      ),
+                                      keyboardType: TextInputType.text,
+                                    ),
+                                  ),
+                                  Padding(
+                                    padding: const EdgeInsets.all(10.0),
+                                    child: TextFormField(
+                                      focusNode: focusNode12,
+                                      onChanged: (String value) {
+                                        setState(() {
+                                          focusNode12.requestFocus();
+                                        });
+                                      },
+                                      maxLength: 10,
+                                      onSaved: (value) {
+                                        object.itogpokazatel1 = value;
+                                      },
+                                      controller: itogpokazatel1Controller,
+                                      style: textStyle,
+                                      decoration: InputDecoration(
+                                        focusColor:
+                                            Theme.of(context).primaryColor,
+                                        labelStyle: TextStyle(
+                                          fontSize: 22,
+                                          fontWeight: FontWeight.w300,
+                                          color: Theme.of(context).primaryColor,
+                                        ),
+                                        hintStyle: TextStyle(
+                                          fontSize: 16,
+                                          fontWeight: FontWeight.w300,
+                                          color: Theme.of(context).primaryColor,
+                                        ),
+                                        labelText: 'Данные входного контроля',
+                                        hintText: 'Введите значение',
+                                        helperText: '...',
+                                        prefixIcon: Icon(
+                                          Icons.sms,
+                                          color: focusNode12.hasFocus ||
+                                                  itogpokazatel1Controller
+                                                      .text.isNotEmpty
+                                              ? Theme.of(context).primaryColor
+                                              : Colors.grey,
+                                          size: 32,
+                                        ),
+                                        enabledBorder: OutlineInputBorder(
+                                          borderRadius: BorderRadius.all(
+                                              Radius.circular(10)),
+                                          borderSide: BorderSide(
+                                              color: Colors.grey, width: 2),
+                                        ),
+                                        focusedBorder: OutlineInputBorder(
+                                          borderRadius: BorderRadius.all(
+                                              Radius.circular(20)),
+                                          borderSide: BorderSide(
+                                              color: Theme.of(context)
+                                                  .primaryColor,
+                                              width: 2),
+                                        ),
+                                      ),
+                                      keyboardType: TextInputType.text,
+                                    ),
+                                  ),
+                                ],
                               ),
-                              GestureDetector(
-                                onTap: () {
-                                  pokazatelname1Controller.clear();
-                                  ntdpokazatel1Controller.clear();
-                                  normatupokazatel1Controller.clear();
-                                  sertpokazatel1Controller.clear();
-                                  itogpokazatel1Controller.clear();
-                                },
-                                child: Icon(
-                                  Icons.delete_outline,
-                                  color: Color.fromRGBO(187, 30, 16, 1.0),
-                                ),
+                            ),
+                            VerticalDivider(thickness: 4),
+                            Container(
+                              width: MediaQuery.of(context).size.width,
+                              child: Column(
+                                children: [
+                                  Container(
+                                      alignment: Alignment.center,
+                                      child: Row(
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.center,
+                                        children: [
+                                          Text(
+                                            'Показатель №2',
+                                            style: TextStyle(
+                                                fontSize: 24,
+                                                color: Theme.of(context)
+                                                    .primaryColor,
+                                                fontWeight: FontWeight.w300),
+                                          ),
+                                          GestureDetector(
+                                            onTap: () {
+                                              pokazatelname2Controller.clear();
+                                              ntdpokazatel2Controller.clear();
+                                              normatupokazatel2Controller
+                                                  .clear();
+                                              sertpokazatel2Controller.clear();
+                                              itogpokazatel2Controller.clear();
+                                            },
+                                            child: Icon(
+                                              Icons.delete_outline,
+                                              color: Color.fromRGBO(
+                                                  187, 30, 16, 1.0),
+                                            ),
+                                          ),
+                                        ],
+                                      )),
+                                  Padding(
+                                    padding: const EdgeInsets.all(10.0),
+                                    child: TextFormField(
+                                      focusNode: focusNode13,
+                                      onChanged: (String value) {
+                                        setState(() {
+                                          focusNode13.requestFocus();
+                                        });
+                                      },
+                                      maxLength: 20,
+                                      onSaved: (value) {
+                                        object.pokazatelname2 = value;
+                                      },
+                                      controller: pokazatelname2Controller,
+                                      style: textStyle,
+                                      decoration: InputDecoration(
+                                        labelText: 'Наименование показателя',
+                                        hintText: 'Введите Наименование',
+                                        helperText: '...',
+                                        prefixIcon: Icon(
+                                          Icons.grade,
+                                          color: focusNode13.hasFocus ||
+                                                  pokazatelname2Controller
+                                                      .text.isNotEmpty
+                                              ? Theme.of(context).primaryColor
+                                              : Colors.grey,
+                                          size: 32,
+                                        ),
+                                        enabledBorder: const OutlineInputBorder(
+                                          borderRadius: BorderRadius.all(
+                                              Radius.circular(10)),
+                                          borderSide: BorderSide(
+                                              color: Colors.grey, width: 2),
+                                        ),
+                                        focusedBorder: OutlineInputBorder(
+                                          borderRadius: const BorderRadius.all(
+                                              Radius.circular(20)),
+                                          borderSide: BorderSide(
+                                              color: Theme.of(context)
+                                                  .primaryColor,
+                                              width: 2),
+                                        ),
+                                        labelStyle: TextStyle(
+                                          fontSize: 22,
+                                          fontWeight: FontWeight.w300,
+                                          color: Theme.of(context).primaryColor,
+                                        ),
+                                      ),
+                                      keyboardType: TextInputType.text,
+                                    ),
+                                  ),
+                                  Padding(
+                                    padding: const EdgeInsets.all(10.0),
+                                    child: TextFormField(
+                                      focusNode: focusNode14,
+                                      onChanged: (String value) {
+                                        setState(() {
+                                          focusNode14.requestFocus();
+                                        });
+                                      },
+                                      maxLength: 30,
+                                      onSaved: (value) {
+                                        object.ntdpokazatel2 = value;
+                                      },
+                                      controller: ntdpokazatel2Controller,
+                                      style: textStyle,
+                                      decoration: InputDecoration(
+                                        focusColor:
+                                            Theme.of(context).primaryColor,
+                                        labelStyle: TextStyle(
+                                          fontSize: 22,
+                                          fontWeight: FontWeight.w300,
+                                          color: Theme.of(context).primaryColor,
+                                        ),
+                                        hintStyle: TextStyle(
+                                          fontSize: 16,
+                                          fontWeight: FontWeight.w300,
+                                          color: Theme.of(context).primaryColor,
+                                        ),
+                                        labelText: 'НТД на метод испытания',
+                                        hintText: 'Введите НТД',
+                                        helperText: '...',
+                                        prefixIcon: Icon(
+                                          Icons.library_books,
+                                          color: focusNode14.hasFocus ||
+                                                  ntdpokazatel2Controller
+                                                      .text.isNotEmpty
+                                              ? Theme.of(context).primaryColor
+                                              : Colors.grey,
+                                          size: 32,
+                                        ),
+                                        enabledBorder: OutlineInputBorder(
+                                          borderRadius: BorderRadius.all(
+                                              Radius.circular(10)),
+                                          borderSide: BorderSide(
+                                              color: Colors.grey, width: 2),
+                                        ),
+                                        focusedBorder: OutlineInputBorder(
+                                          borderRadius: BorderRadius.all(
+                                              Radius.circular(20)),
+                                          borderSide: BorderSide(
+                                              color: Theme.of(context)
+                                                  .primaryColor,
+                                              width: 2),
+                                        ),
+                                      ),
+                                      keyboardType: TextInputType.text,
+                                    ),
+                                  ),
+                                  Padding(
+                                    padding: const EdgeInsets.all(10.0),
+                                    child: TextFormField(
+                                      focusNode: focusNode15,
+                                      onChanged: (String value) {
+                                        setState(() {
+                                          focusNode15.requestFocus();
+                                        });
+                                      },
+                                      maxLength: 10,
+                                      onSaved: (value) {
+                                        object.normatupokazatel2 = value;
+                                      },
+                                      controller: normatupokazatel2Controller,
+                                      style: textStyle,
+                                      decoration: InputDecoration(
+                                        focusColor:
+                                            Theme.of(context).primaryColor,
+                                        labelStyle: TextStyle(
+                                          fontSize: 22,
+                                          fontWeight: FontWeight.w300,
+                                          color: Theme.of(context).primaryColor,
+                                        ),
+                                        hintStyle: TextStyle(
+                                          fontSize: 16,
+                                          fontWeight: FontWeight.w300,
+                                          color: Theme.of(context).primaryColor,
+                                        ),
+                                        labelText:
+                                            'Норма по ТУ(ГОСТ) на материал',
+                                        hintText: 'Введите значение',
+                                        helperText: '...',
+                                        prefixIcon: Icon(
+                                          Icons.poll,
+                                          color: focusNode15.hasFocus ||
+                                                  normatupokazatel2Controller
+                                                      .text.isNotEmpty
+                                              ? Theme.of(context).primaryColor
+                                              : Colors.grey,
+                                          size: 32,
+                                        ),
+                                        enabledBorder: OutlineInputBorder(
+                                          borderRadius: BorderRadius.all(
+                                              Radius.circular(10)),
+                                          borderSide: BorderSide(
+                                              color: Colors.grey, width: 2),
+                                        ),
+                                        focusedBorder: OutlineInputBorder(
+                                          borderRadius: BorderRadius.all(
+                                              Radius.circular(20)),
+                                          borderSide: BorderSide(
+                                              color: Theme.of(context)
+                                                  .primaryColor,
+                                              width: 2),
+                                        ),
+                                      ),
+                                      keyboardType: TextInputType.text,
+                                    ),
+                                  ),
+                                  Padding(
+                                    padding: const EdgeInsets.all(10.0),
+                                    child: TextFormField(
+                                      focusNode: focusNode16,
+                                      onChanged: (String value) {
+                                        setState(() {
+                                          focusNode16.requestFocus();
+                                        });
+                                      },
+                                      maxLength: 30,
+                                      onSaved: (value) {
+                                        object.sertpokazatel2 = value;
+                                      },
+                                      controller: sertpokazatel2Controller,
+                                      style: textStyle,
+                                      decoration: InputDecoration(
+                                        focusColor:
+                                            Theme.of(context).primaryColor,
+                                        labelStyle: TextStyle(
+                                          fontSize: 22,
+                                          fontWeight: FontWeight.w300,
+                                          color: Theme.of(context).primaryColor,
+                                        ),
+                                        hintStyle: TextStyle(
+                                          fontSize: 16,
+                                          fontWeight: FontWeight.w300,
+                                          color: Theme.of(context).primaryColor,
+                                        ),
+                                        labelText:
+                                            'Данные сертификата (паспорта)',
+                                        hintText: 'Введите значение',
+                                        helperText: '...',
+                                        prefixIcon: Icon(
+                                          Icons.speaker_notes,
+                                          color: focusNode16.hasFocus ||
+                                                  sertpokazatel2Controller
+                                                      .text.isNotEmpty
+                                              ? Theme.of(context).primaryColor
+                                              : Colors.grey,
+                                          size: 32,
+                                        ),
+                                        enabledBorder: OutlineInputBorder(
+                                          borderRadius: BorderRadius.all(
+                                              Radius.circular(10)),
+                                          borderSide: BorderSide(
+                                              color: Colors.grey, width: 2),
+                                        ),
+                                        focusedBorder: OutlineInputBorder(
+                                          borderRadius: BorderRadius.all(
+                                              Radius.circular(20)),
+                                          borderSide: BorderSide(
+                                              color: Theme.of(context)
+                                                  .primaryColor,
+                                              width: 2),
+                                        ),
+                                      ),
+                                      keyboardType: TextInputType.text,
+                                    ),
+                                  ),
+                                  Padding(
+                                    padding: const EdgeInsets.all(10.0),
+                                    child: TextFormField(
+                                      focusNode: focusNode17,
+                                      onChanged: (String value) {
+                                        setState(() {
+                                          focusNode17.requestFocus();
+                                        });
+                                      },
+                                      maxLength: 10,
+                                      onSaved: (value) {
+                                        object.itogpokazatel2 = value;
+                                      },
+                                      controller: itogpokazatel2Controller,
+                                      style: textStyle,
+                                      decoration: InputDecoration(
+                                        focusColor:
+                                            Theme.of(context).primaryColor,
+                                        labelStyle: TextStyle(
+                                          fontSize: 22,
+                                          fontWeight: FontWeight.w300,
+                                          color: Theme.of(context).primaryColor,
+                                        ),
+                                        hintStyle: TextStyle(
+                                          fontSize: 16,
+                                          fontWeight: FontWeight.w300,
+                                          color: Theme.of(context).primaryColor,
+                                        ),
+                                        labelText: 'Данные входного контроля',
+                                        hintText: 'Введите значение',
+                                        helperText: '...',
+                                        prefixIcon: Icon(
+                                          Icons.sms,
+                                          color: focusNode17.hasFocus ||
+                                                  itogpokazatel2Controller
+                                                      .text.isNotEmpty
+                                              ? Theme.of(context).primaryColor
+                                              : Colors.grey,
+                                          size: 32,
+                                        ),
+                                        enabledBorder: OutlineInputBorder(
+                                          borderRadius: BorderRadius.all(
+                                              Radius.circular(10)),
+                                          borderSide: BorderSide(
+                                              color: Colors.grey, width: 2),
+                                        ),
+                                        focusedBorder: OutlineInputBorder(
+                                          borderRadius: BorderRadius.all(
+                                              Radius.circular(20)),
+                                          borderSide: BorderSide(
+                                              color: Theme.of(context)
+                                                  .primaryColor,
+                                              width: 2),
+                                        ),
+                                      ),
+                                      keyboardType: TextInputType.text,
+                                    ),
+                                  ),
+                                ],
                               ),
-                            ],
-                          )),
-                      SizedBox(height: 10),
-                      TextFormField(
-                        focusNode: focusNode8,
-                        onChanged: (String value) {
-                          setState(() {
-                            focusNode8.requestFocus();
-                          });
-                        },
-                        maxLength: 20,
-                        onSaved: (value) {
-                          object.pokazatelname1 = value;
-                        },
-                        controller: pokazatelname1Controller,
-                        style: textStyle,
-                        decoration: InputDecoration(
-                          labelText: 'Наименование показателя',
-                          hintText: 'Введите Наименование',
-                          helperText: '...',
-                          prefixIcon: Icon(
-                            Icons.business_center,
-                            color: focusNode8.hasFocus ||
-                                    pokazatelname1Controller.text.isNotEmpty
-                                ? Theme.of(context).primaryColor
-                                : Colors.grey,
-                            size: 32,
-                          ),
-                          enabledBorder: const OutlineInputBorder(
-                            borderRadius: BorderRadius.all(Radius.circular(10)),
-                            borderSide:
-                                BorderSide(color: Colors.grey, width: 2),
-                          ),
-                          focusedBorder: OutlineInputBorder(
-                            borderRadius:
-                                const BorderRadius.all(Radius.circular(20)),
-                            borderSide: BorderSide(
-                                color: Theme.of(context).primaryColor,
-                                width: 2),
-                          ),
-                          labelStyle: TextStyle(
-                            fontSize: 22,
-                            fontWeight: FontWeight.w300,
-                            color: Theme.of(context).primaryColor,
-                          ),
+                            ),
+                            VerticalDivider(thickness: 4),
+                            Container(
+                              width: MediaQuery.of(context).size.width,
+                              child: Column(
+                                children: [
+                                  Container(
+                                      alignment: Alignment.center,
+                                      child: Row(
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.center,
+                                        children: [
+                                          Text(
+                                            'Показатель №3',
+                                            style: TextStyle(
+                                                fontSize: 24,
+                                                color: Theme.of(context)
+                                                    .primaryColor,
+                                                fontWeight: FontWeight.w300),
+                                          ),
+                                          GestureDetector(
+                                            onTap: () {
+                                              pokazatelname3Controller.clear();
+                                              ntdpokazatel3Controller.clear();
+                                              normatupokazatel3Controller
+                                                  .clear();
+                                              sertpokazatel3Controller.clear();
+                                              itogpokazatel3Controller.clear();
+                                            },
+                                            child: Icon(
+                                              Icons.delete_outline,
+                                              color: Color.fromRGBO(
+                                                  187, 30, 16, 1.0),
+                                            ),
+                                          ),
+                                        ],
+                                      )),
+                                  Padding(
+                                    padding: const EdgeInsets.all(10.0),
+                                    child: TextFormField(
+                                      focusNode: focusNode18,
+                                      onChanged: (String value) {
+                                        setState(() {
+                                          focusNode18.requestFocus();
+                                        });
+                                      },
+                                      maxLength: 20,
+                                      onSaved: (value) {
+                                        object.pokazatelname3 = value;
+                                      },
+                                      controller: pokazatelname3Controller,
+                                      style: textStyle,
+                                      decoration: InputDecoration(
+                                        labelText: 'Наименование показателя',
+                                        hintText: 'Введите Наименование',
+                                        helperText: '...',
+                                        prefixIcon: Icon(
+                                          Icons.grade,
+                                          color: focusNode18.hasFocus ||
+                                                  pokazatelname3Controller
+                                                      .text.isNotEmpty
+                                              ? Theme.of(context).primaryColor
+                                              : Colors.grey,
+                                          size: 32,
+                                        ),
+                                        enabledBorder: const OutlineInputBorder(
+                                          borderRadius: BorderRadius.all(
+                                              Radius.circular(10)),
+                                          borderSide: BorderSide(
+                                              color: Colors.grey, width: 2),
+                                        ),
+                                        focusedBorder: OutlineInputBorder(
+                                          borderRadius: const BorderRadius.all(
+                                              Radius.circular(20)),
+                                          borderSide: BorderSide(
+                                              color: Theme.of(context)
+                                                  .primaryColor,
+                                              width: 2),
+                                        ),
+                                        labelStyle: TextStyle(
+                                          fontSize: 22,
+                                          fontWeight: FontWeight.w300,
+                                          color: Theme.of(context).primaryColor,
+                                        ),
+                                      ),
+                                      keyboardType: TextInputType.text,
+                                    ),
+                                  ),
+                                  Padding(
+                                    padding: const EdgeInsets.all(10.0),
+                                    child: TextFormField(
+                                      focusNode: focusNode19,
+                                      onChanged: (String value) {
+                                        setState(() {
+                                          focusNode19.requestFocus();
+                                        });
+                                      },
+                                      maxLength: 30,
+                                      onSaved: (value) {
+                                        object.ntdpokazatel3 = value;
+                                      },
+                                      controller: ntdpokazatel3Controller,
+                                      style: textStyle,
+                                      decoration: InputDecoration(
+                                        focusColor:
+                                            Theme.of(context).primaryColor,
+                                        labelStyle: TextStyle(
+                                          fontSize: 22,
+                                          fontWeight: FontWeight.w300,
+                                          color: Theme.of(context).primaryColor,
+                                        ),
+                                        hintStyle: TextStyle(
+                                          fontSize: 16,
+                                          fontWeight: FontWeight.w300,
+                                          color: Theme.of(context).primaryColor,
+                                        ),
+                                        labelText: 'НТД на метод испытания',
+                                        hintText: 'Введите НТД',
+                                        helperText: '...',
+                                        prefixIcon: Icon(
+                                          Icons.library_books,
+                                          color: focusNode19.hasFocus ||
+                                                  ntdpokazatel3Controller
+                                                      .text.isNotEmpty
+                                              ? Theme.of(context).primaryColor
+                                              : Colors.grey,
+                                          size: 32,
+                                        ),
+                                        enabledBorder: OutlineInputBorder(
+                                          borderRadius: BorderRadius.all(
+                                              Radius.circular(10)),
+                                          borderSide: BorderSide(
+                                              color: Colors.grey, width: 2),
+                                        ),
+                                        focusedBorder: OutlineInputBorder(
+                                          borderRadius: BorderRadius.all(
+                                              Radius.circular(20)),
+                                          borderSide: BorderSide(
+                                              color: Theme.of(context)
+                                                  .primaryColor,
+                                              width: 2),
+                                        ),
+                                      ),
+                                      keyboardType: TextInputType.text,
+                                    ),
+                                  ),
+                                  Padding(
+                                    padding: const EdgeInsets.all(10.0),
+                                    child: TextFormField(
+                                      focusNode: focusNode20,
+                                      onChanged: (String value) {
+                                        setState(() {
+                                          focusNode20.requestFocus();
+                                        });
+                                      },
+                                      maxLength: 10,
+                                      onSaved: (value) {
+                                        object.normatupokazatel3 = value;
+                                      },
+                                      controller: normatupokazatel3Controller,
+                                      style: textStyle,
+                                      decoration: InputDecoration(
+                                        focusColor:
+                                            Theme.of(context).primaryColor,
+                                        labelStyle: TextStyle(
+                                          fontSize: 22,
+                                          fontWeight: FontWeight.w300,
+                                          color: Theme.of(context).primaryColor,
+                                        ),
+                                        hintStyle: TextStyle(
+                                          fontSize: 16,
+                                          fontWeight: FontWeight.w300,
+                                          color: Theme.of(context).primaryColor,
+                                        ),
+                                        labelText:
+                                            'Норма по ТУ(ГОСТ) на материал',
+                                        hintText: 'Введите значение',
+                                        helperText: '...',
+                                        prefixIcon: Icon(
+                                          Icons.poll,
+                                          color: focusNode20.hasFocus ||
+                                                  normatupokazatel3Controller
+                                                      .text.isNotEmpty
+                                              ? Theme.of(context).primaryColor
+                                              : Colors.grey,
+                                          size: 32,
+                                        ),
+                                        enabledBorder: OutlineInputBorder(
+                                          borderRadius: BorderRadius.all(
+                                              Radius.circular(10)),
+                                          borderSide: BorderSide(
+                                              color: Colors.grey, width: 2),
+                                        ),
+                                        focusedBorder: OutlineInputBorder(
+                                          borderRadius: BorderRadius.all(
+                                              Radius.circular(20)),
+                                          borderSide: BorderSide(
+                                              color: Theme.of(context)
+                                                  .primaryColor,
+                                              width: 2),
+                                        ),
+                                      ),
+                                      keyboardType: TextInputType.text,
+                                    ),
+                                  ),
+                                  Padding(
+                                    padding: const EdgeInsets.all(10.0),
+                                    child: TextFormField(
+                                      focusNode: focusNode21,
+                                      onChanged: (String value) {
+                                        setState(() {
+                                          focusNode21.requestFocus();
+                                        });
+                                      },
+                                      maxLength: 30,
+                                      onSaved: (value) {
+                                        object.sertpokazatel3 = value;
+                                      },
+                                      controller: sertpokazatel3Controller,
+                                      style: textStyle,
+                                      decoration: InputDecoration(
+                                        focusColor:
+                                            Theme.of(context).primaryColor,
+                                        labelStyle: TextStyle(
+                                          fontSize: 22,
+                                          fontWeight: FontWeight.w300,
+                                          color: Theme.of(context).primaryColor,
+                                        ),
+                                        hintStyle: TextStyle(
+                                          fontSize: 16,
+                                          fontWeight: FontWeight.w300,
+                                          color: Theme.of(context).primaryColor,
+                                        ),
+                                        labelText:
+                                            'Данные сертификата (паспорта)',
+                                        hintText: 'Введите значение',
+                                        helperText: '...',
+                                        prefixIcon: Icon(
+                                          Icons.speaker_notes,
+                                          color: focusNode21.hasFocus ||
+                                                  sertpokazatel3Controller
+                                                      .text.isNotEmpty
+                                              ? Theme.of(context).primaryColor
+                                              : Colors.grey,
+                                          size: 32,
+                                        ),
+                                        enabledBorder: OutlineInputBorder(
+                                          borderRadius: BorderRadius.all(
+                                              Radius.circular(10)),
+                                          borderSide: BorderSide(
+                                              color: Colors.grey, width: 2),
+                                        ),
+                                        focusedBorder: OutlineInputBorder(
+                                          borderRadius: BorderRadius.all(
+                                              Radius.circular(20)),
+                                          borderSide: BorderSide(
+                                              color: Theme.of(context)
+                                                  .primaryColor,
+                                              width: 2),
+                                        ),
+                                      ),
+                                      keyboardType: TextInputType.text,
+                                    ),
+                                  ),
+                                  Padding(
+                                    padding: const EdgeInsets.all(10.0),
+                                    child: TextFormField(
+                                      focusNode: focusNode22,
+                                      onChanged: (String value) {
+                                        setState(() {
+                                          focusNode22.requestFocus();
+                                        });
+                                      },
+                                      maxLength: 10,
+                                      onSaved: (value) {
+                                        object.itogpokazatel3 = value;
+                                      },
+                                      controller: itogpokazatel3Controller,
+                                      style: textStyle,
+                                      decoration: InputDecoration(
+                                        focusColor:
+                                            Theme.of(context).primaryColor,
+                                        labelStyle: TextStyle(
+                                          fontSize: 22,
+                                          fontWeight: FontWeight.w300,
+                                          color: Theme.of(context).primaryColor,
+                                        ),
+                                        hintStyle: TextStyle(
+                                          fontSize: 16,
+                                          fontWeight: FontWeight.w300,
+                                          color: Theme.of(context).primaryColor,
+                                        ),
+                                        labelText: 'Данные входного контроля',
+                                        hintText: 'Введите значение',
+                                        helperText: '...',
+                                        prefixIcon: Icon(
+                                          Icons.sms,
+                                          color: focusNode22.hasFocus ||
+                                                  itogpokazatel3Controller
+                                                      .text.isNotEmpty
+                                              ? Theme.of(context).primaryColor
+                                              : Colors.grey,
+                                          size: 32,
+                                        ),
+                                        enabledBorder: OutlineInputBorder(
+                                          borderRadius: BorderRadius.all(
+                                              Radius.circular(10)),
+                                          borderSide: BorderSide(
+                                              color: Colors.grey, width: 2),
+                                        ),
+                                        focusedBorder: OutlineInputBorder(
+                                          borderRadius: BorderRadius.all(
+                                              Radius.circular(20)),
+                                          borderSide: BorderSide(
+                                              color: Theme.of(context)
+                                                  .primaryColor,
+                                              width: 2),
+                                        ),
+                                      ),
+                                      keyboardType: TextInputType.text,
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            ),
+                            VerticalDivider(thickness: 4),
+                            Container(
+                              width: MediaQuery.of(context).size.width,
+                              child: Column(
+                                children: [
+                                  Container(
+                                      alignment: Alignment.center,
+                                      child: Row(
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.center,
+                                        children: [
+                                          Text(
+                                            'Показатель №4',
+                                            style: TextStyle(
+                                                fontSize: 24,
+                                                color: Theme.of(context)
+                                                    .primaryColor,
+                                                fontWeight: FontWeight.w300),
+                                          ),
+                                          GestureDetector(
+                                            onTap: () {
+                                              pokazatelname4Controller.clear();
+                                              ntdpokazatel4Controller.clear();
+                                              normatupokazatel4Controller
+                                                  .clear();
+                                              sertpokazatel4Controller.clear();
+                                              itogpokazatel4Controller.clear();
+                                            },
+                                            child: Icon(
+                                              Icons.delete_outline,
+                                              color: Color.fromRGBO(
+                                                  187, 30, 16, 1.0),
+                                            ),
+                                          ),
+                                        ],
+                                      )),
+                                  Padding(
+                                    padding: const EdgeInsets.all(10.0),
+                                    child: TextFormField(
+                                      focusNode: focusNode23,
+                                      onChanged: (String value) {
+                                        setState(() {
+                                          focusNode23.requestFocus();
+                                        });
+                                      },
+                                      maxLength: 20,
+                                      onSaved: (value) {
+                                        object.pokazatelname4 = value;
+                                      },
+                                      controller: pokazatelname4Controller,
+                                      style: textStyle,
+                                      decoration: InputDecoration(
+                                        labelText: 'Наименование показателя',
+                                        hintText: 'Введите Наименование',
+                                        helperText: '...',
+                                        prefixIcon: Icon(
+                                          Icons.grade,
+                                          color: focusNode24.hasFocus ||
+                                                  pokazatelname4Controller
+                                                      .text.isNotEmpty
+                                              ? Theme.of(context).primaryColor
+                                              : Colors.grey,
+                                          size: 32,
+                                        ),
+                                        enabledBorder: const OutlineInputBorder(
+                                          borderRadius: BorderRadius.all(
+                                              Radius.circular(10)),
+                                          borderSide: BorderSide(
+                                              color: Colors.grey, width: 2),
+                                        ),
+                                        focusedBorder: OutlineInputBorder(
+                                          borderRadius: const BorderRadius.all(
+                                              Radius.circular(20)),
+                                          borderSide: BorderSide(
+                                              color: Theme.of(context)
+                                                  .primaryColor,
+                                              width: 2),
+                                        ),
+                                        labelStyle: TextStyle(
+                                          fontSize: 22,
+                                          fontWeight: FontWeight.w300,
+                                          color: Theme.of(context).primaryColor,
+                                        ),
+                                      ),
+                                      keyboardType: TextInputType.text,
+                                    ),
+                                  ),
+                                  Padding(
+                                    padding: const EdgeInsets.all(10.0),
+                                    child: TextFormField(
+                                      focusNode: focusNode25,
+                                      onChanged: (String value) {
+                                        setState(() {
+                                          focusNode25.requestFocus();
+                                        });
+                                      },
+                                      maxLength: 30,
+                                      onSaved: (value) {
+                                        object.ntdpokazatel4 = value;
+                                      },
+                                      controller: ntdpokazatel4Controller,
+                                      style: textStyle,
+                                      decoration: InputDecoration(
+                                        focusColor:
+                                            Theme.of(context).primaryColor,
+                                        labelStyle: TextStyle(
+                                          fontSize: 22,
+                                          fontWeight: FontWeight.w300,
+                                          color: Theme.of(context).primaryColor,
+                                        ),
+                                        hintStyle: TextStyle(
+                                          fontSize: 16,
+                                          fontWeight: FontWeight.w300,
+                                          color: Theme.of(context).primaryColor,
+                                        ),
+                                        labelText: 'НТД на метод испытания',
+                                        hintText: 'Введите НТД',
+                                        helperText: '...',
+                                        prefixIcon: Icon(
+                                          Icons.library_books,
+                                          color: focusNode25.hasFocus ||
+                                                  ntdpokazatel4Controller
+                                                      .text.isNotEmpty
+                                              ? Theme.of(context).primaryColor
+                                              : Colors.grey,
+                                          size: 32,
+                                        ),
+                                        enabledBorder: OutlineInputBorder(
+                                          borderRadius: BorderRadius.all(
+                                              Radius.circular(10)),
+                                          borderSide: BorderSide(
+                                              color: Colors.grey, width: 2),
+                                        ),
+                                        focusedBorder: OutlineInputBorder(
+                                          borderRadius: BorderRadius.all(
+                                              Radius.circular(20)),
+                                          borderSide: BorderSide(
+                                              color: Theme.of(context)
+                                                  .primaryColor,
+                                              width: 2),
+                                        ),
+                                      ),
+                                      keyboardType: TextInputType.text,
+                                    ),
+                                  ),
+                                  Padding(
+                                    padding: const EdgeInsets.all(10.0),
+                                    child: TextFormField(
+                                      focusNode: focusNode26,
+                                      onChanged: (String value) {
+                                        setState(() {
+                                          focusNode26.requestFocus();
+                                        });
+                                      },
+                                      maxLength: 10,
+                                      onSaved: (value) {
+                                        object.normatupokazatel4 = value;
+                                      },
+                                      controller: normatupokazatel4Controller,
+                                      style: textStyle,
+                                      decoration: InputDecoration(
+                                        focusColor:
+                                            Theme.of(context).primaryColor,
+                                        labelStyle: TextStyle(
+                                          fontSize: 22,
+                                          fontWeight: FontWeight.w300,
+                                          color: Theme.of(context).primaryColor,
+                                        ),
+                                        hintStyle: TextStyle(
+                                          fontSize: 16,
+                                          fontWeight: FontWeight.w300,
+                                          color: Theme.of(context).primaryColor,
+                                        ),
+                                        labelText:
+                                            'Норма по ТУ(ГОСТ) на материал',
+                                        hintText: 'Введите значение',
+                                        helperText: '...',
+                                        prefixIcon: Icon(
+                                          Icons.poll,
+                                          color: focusNode26.hasFocus ||
+                                                  normatupokazatel4Controller
+                                                      .text.isNotEmpty
+                                              ? Theme.of(context).primaryColor
+                                              : Colors.grey,
+                                          size: 32,
+                                        ),
+                                        enabledBorder: OutlineInputBorder(
+                                          borderRadius: BorderRadius.all(
+                                              Radius.circular(10)),
+                                          borderSide: BorderSide(
+                                              color: Colors.grey, width: 2),
+                                        ),
+                                        focusedBorder: OutlineInputBorder(
+                                          borderRadius: BorderRadius.all(
+                                              Radius.circular(20)),
+                                          borderSide: BorderSide(
+                                              color: Theme.of(context)
+                                                  .primaryColor,
+                                              width: 2),
+                                        ),
+                                      ),
+                                      keyboardType: TextInputType.text,
+                                    ),
+                                  ),
+                                  Padding(
+                                    padding: const EdgeInsets.all(10.0),
+                                    child: TextFormField(
+                                      focusNode: focusNode27,
+                                      onChanged: (String value) {
+                                        setState(() {
+                                          focusNode27.requestFocus();
+                                        });
+                                      },
+                                      maxLength: 30,
+                                      onSaved: (value) {
+                                        object.sertpokazatel4 = value;
+                                      },
+                                      controller: sertpokazatel4Controller,
+                                      style: textStyle,
+                                      decoration: InputDecoration(
+                                        focusColor:
+                                            Theme.of(context).primaryColor,
+                                        labelStyle: TextStyle(
+                                          fontSize: 22,
+                                          fontWeight: FontWeight.w300,
+                                          color: Theme.of(context).primaryColor,
+                                        ),
+                                        hintStyle: TextStyle(
+                                          fontSize: 16,
+                                          fontWeight: FontWeight.w300,
+                                          color: Theme.of(context).primaryColor,
+                                        ),
+                                        labelText:
+                                            'Данные сертификата (паспорта)',
+                                        hintText: 'Введите значение',
+                                        helperText: '...',
+                                        prefixIcon: Icon(
+                                          Icons.speaker_notes,
+                                          color: focusNode27.hasFocus ||
+                                                  sertpokazatel4Controller
+                                                      .text.isNotEmpty
+                                              ? Theme.of(context).primaryColor
+                                              : Colors.grey,
+                                          size: 32,
+                                        ),
+                                        enabledBorder: OutlineInputBorder(
+                                          borderRadius: BorderRadius.all(
+                                              Radius.circular(10)),
+                                          borderSide: BorderSide(
+                                              color: Colors.grey, width: 2),
+                                        ),
+                                        focusedBorder: OutlineInputBorder(
+                                          borderRadius: BorderRadius.all(
+                                              Radius.circular(20)),
+                                          borderSide: BorderSide(
+                                              color: Theme.of(context)
+                                                  .primaryColor,
+                                              width: 2),
+                                        ),
+                                      ),
+                                      keyboardType: TextInputType.text,
+                                    ),
+                                  ),
+                                  Padding(
+                                    padding: const EdgeInsets.all(10.0),
+                                    child: TextFormField(
+                                      focusNode: focusNode28,
+                                      onChanged: (String value) {
+                                        setState(() {
+                                          focusNode28.requestFocus();
+                                        });
+                                      },
+                                      maxLength: 10,
+                                      onSaved: (value) {
+                                        object.itogpokazatel4 = value;
+                                      },
+                                      controller: itogpokazatel4Controller,
+                                      style: textStyle,
+                                      decoration: InputDecoration(
+                                        focusColor:
+                                            Theme.of(context).primaryColor,
+                                        labelStyle: TextStyle(
+                                          fontSize: 22,
+                                          fontWeight: FontWeight.w300,
+                                          color: Theme.of(context).primaryColor,
+                                        ),
+                                        hintStyle: TextStyle(
+                                          fontSize: 16,
+                                          fontWeight: FontWeight.w300,
+                                          color: Theme.of(context).primaryColor,
+                                        ),
+                                        labelText: 'Данные входного контроля',
+                                        hintText: 'Введите значение',
+                                        helperText: '...',
+                                        prefixIcon: Icon(
+                                          Icons.sms,
+                                          color: focusNode28.hasFocus ||
+                                                  itogpokazatel4Controller
+                                                      .text.isNotEmpty
+                                              ? Theme.of(context).primaryColor
+                                              : Colors.grey,
+                                          size: 32,
+                                        ),
+                                        enabledBorder: OutlineInputBorder(
+                                          borderRadius: BorderRadius.all(
+                                              Radius.circular(10)),
+                                          borderSide: BorderSide(
+                                              color: Colors.grey, width: 2),
+                                        ),
+                                        focusedBorder: OutlineInputBorder(
+                                          borderRadius: BorderRadius.all(
+                                              Radius.circular(20)),
+                                          borderSide: BorderSide(
+                                              color: Theme.of(context)
+                                                  .primaryColor,
+                                              width: 2),
+                                        ),
+                                      ),
+                                      keyboardType: TextInputType.text,
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            ),
+                            VerticalDivider(thickness: 4),
+                            Container(
+                              width: MediaQuery.of(context).size.width,
+                              child: Column(
+                                children: [
+                                  Container(
+                                      alignment: Alignment.center,
+                                      child: Row(
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.center,
+                                        children: [
+                                          Text(
+                                            'Показатель №5',
+                                            style: TextStyle(
+                                                fontSize: 24,
+                                                color: Theme.of(context)
+                                                    .primaryColor,
+                                                fontWeight: FontWeight.w300),
+                                          ),
+                                          GestureDetector(
+                                            onTap: () {
+                                              pokazatelname5Controller.clear();
+                                              ntdpokazatel5Controller.clear();
+                                              normatupokazatel5Controller
+                                                  .clear();
+                                              sertpokazatel5Controller.clear();
+                                              itogpokazatel5Controller.clear();
+                                            },
+                                            child: Icon(
+                                              Icons.delete_outline,
+                                              color: Color.fromRGBO(
+                                                  187, 30, 16, 1.0),
+                                            ),
+                                          ),
+                                        ],
+                                      )),
+                                  Padding(
+                                    padding: const EdgeInsets.all(10.0),
+                                    child: TextFormField(
+                                      focusNode: focusNode29,
+                                      onChanged: (String value) {
+                                        setState(() {
+                                          focusNode29.requestFocus();
+                                        });
+                                      },
+                                      maxLength: 20,
+                                      onSaved: (value) {
+                                        object.pokazatelname5 = value;
+                                      },
+                                      controller: pokazatelname5Controller,
+                                      style: textStyle,
+                                      decoration: InputDecoration(
+                                        labelText: 'Наименование показателя',
+                                        hintText: 'Введите Наименование',
+                                        helperText: '...',
+                                        prefixIcon: Icon(
+                                          Icons.grade,
+                                          color: focusNode29.hasFocus ||
+                                                  pokazatelname5Controller
+                                                      .text.isNotEmpty
+                                              ? Theme.of(context).primaryColor
+                                              : Colors.grey,
+                                          size: 32,
+                                        ),
+                                        enabledBorder: const OutlineInputBorder(
+                                          borderRadius: BorderRadius.all(
+                                              Radius.circular(10)),
+                                          borderSide: BorderSide(
+                                              color: Colors.grey, width: 2),
+                                        ),
+                                        focusedBorder: OutlineInputBorder(
+                                          borderRadius: const BorderRadius.all(
+                                              Radius.circular(20)),
+                                          borderSide: BorderSide(
+                                              color: Theme.of(context)
+                                                  .primaryColor,
+                                              width: 2),
+                                        ),
+                                        labelStyle: TextStyle(
+                                          fontSize: 22,
+                                          fontWeight: FontWeight.w300,
+                                          color: Theme.of(context).primaryColor,
+                                        ),
+                                      ),
+                                      keyboardType: TextInputType.text,
+                                    ),
+                                  ),
+                                  Padding(
+                                    padding: const EdgeInsets.all(10.0),
+                                    child: TextFormField(
+                                      focusNode: focusNode30,
+                                      onChanged: (String value) {
+                                        setState(() {
+                                          focusNode30.requestFocus();
+                                        });
+                                      },
+                                      maxLength: 30,
+                                      onSaved: (value) {
+                                        object.ntdpokazatel5 = value;
+                                      },
+                                      controller: ntdpokazatel5Controller,
+                                      style: textStyle,
+                                      decoration: InputDecoration(
+                                        focusColor:
+                                            Theme.of(context).primaryColor,
+                                        labelStyle: TextStyle(
+                                          fontSize: 22,
+                                          fontWeight: FontWeight.w300,
+                                          color: Theme.of(context).primaryColor,
+                                        ),
+                                        hintStyle: TextStyle(
+                                          fontSize: 16,
+                                          fontWeight: FontWeight.w300,
+                                          color: Theme.of(context).primaryColor,
+                                        ),
+                                        labelText: 'НТД на метод испытания',
+                                        hintText: 'Введите НТД',
+                                        helperText: '...',
+                                        prefixIcon: Icon(
+                                          Icons.library_books,
+                                          color: focusNode30.hasFocus ||
+                                                  ntdpokazatel5Controller
+                                                      .text.isNotEmpty
+                                              ? Theme.of(context).primaryColor
+                                              : Colors.grey,
+                                          size: 32,
+                                        ),
+                                        enabledBorder: OutlineInputBorder(
+                                          borderRadius: BorderRadius.all(
+                                              Radius.circular(10)),
+                                          borderSide: BorderSide(
+                                              color: Colors.grey, width: 2),
+                                        ),
+                                        focusedBorder: OutlineInputBorder(
+                                          borderRadius: BorderRadius.all(
+                                              Radius.circular(20)),
+                                          borderSide: BorderSide(
+                                              color: Theme.of(context)
+                                                  .primaryColor,
+                                              width: 2),
+                                        ),
+                                      ),
+                                      keyboardType: TextInputType.text,
+                                    ),
+                                  ),
+                                  Padding(
+                                    padding: const EdgeInsets.all(10.0),
+                                    child: TextFormField(
+                                      focusNode: focusNode31,
+                                      onChanged: (String value) {
+                                        setState(() {
+                                          focusNode31.requestFocus();
+                                        });
+                                      },
+                                      maxLength: 10,
+                                      onSaved: (value) {
+                                        object.normatupokazatel5 = value;
+                                      },
+                                      controller: normatupokazatel5Controller,
+                                      style: textStyle,
+                                      decoration: InputDecoration(
+                                        focusColor:
+                                            Theme.of(context).primaryColor,
+                                        labelStyle: TextStyle(
+                                          fontSize: 22,
+                                          fontWeight: FontWeight.w300,
+                                          color: Theme.of(context).primaryColor,
+                                        ),
+                                        hintStyle: TextStyle(
+                                          fontSize: 16,
+                                          fontWeight: FontWeight.w300,
+                                          color: Theme.of(context).primaryColor,
+                                        ),
+                                        labelText:
+                                            'Норма по ТУ(ГОСТ) на материал',
+                                        hintText: 'Введите значение',
+                                        helperText: '...',
+                                        prefixIcon: Icon(
+                                          Icons.poll,
+                                          color: focusNode31.hasFocus ||
+                                                  normatupokazatel5Controller
+                                                      .text.isNotEmpty
+                                              ? Theme.of(context).primaryColor
+                                              : Colors.grey,
+                                          size: 32,
+                                        ),
+                                        enabledBorder: OutlineInputBorder(
+                                          borderRadius: BorderRadius.all(
+                                              Radius.circular(10)),
+                                          borderSide: BorderSide(
+                                              color: Colors.grey, width: 2),
+                                        ),
+                                        focusedBorder: OutlineInputBorder(
+                                          borderRadius: BorderRadius.all(
+                                              Radius.circular(20)),
+                                          borderSide: BorderSide(
+                                              color: Theme.of(context)
+                                                  .primaryColor,
+                                              width: 2),
+                                        ),
+                                      ),
+                                      keyboardType: TextInputType.text,
+                                    ),
+                                  ),
+                                  Padding(
+                                    padding: const EdgeInsets.all(10.0),
+                                    child: TextFormField(
+                                      focusNode: focusNode32,
+                                      onChanged: (String value) {
+                                        setState(() {
+                                          focusNode32.requestFocus();
+                                        });
+                                      },
+                                      maxLength: 30,
+                                      onSaved: (value) {
+                                        object.sertpokazatel5 = value;
+                                      },
+                                      controller: sertpokazatel5Controller,
+                                      style: textStyle,
+                                      decoration: InputDecoration(
+                                        focusColor:
+                                            Theme.of(context).primaryColor,
+                                        labelStyle: TextStyle(
+                                          fontSize: 22,
+                                          fontWeight: FontWeight.w300,
+                                          color: Theme.of(context).primaryColor,
+                                        ),
+                                        hintStyle: TextStyle(
+                                          fontSize: 16,
+                                          fontWeight: FontWeight.w300,
+                                          color: Theme.of(context).primaryColor,
+                                        ),
+                                        labelText:
+                                            'Данные сертификата (паспорта)',
+                                        hintText: 'Введите значение',
+                                        helperText: '...',
+                                        prefixIcon: Icon(
+                                          Icons.speaker_notes,
+                                          color: focusNode32.hasFocus ||
+                                                  sertpokazatel5Controller
+                                                      .text.isNotEmpty
+                                              ? Theme.of(context).primaryColor
+                                              : Colors.grey,
+                                          size: 32,
+                                        ),
+                                        enabledBorder: OutlineInputBorder(
+                                          borderRadius: BorderRadius.all(
+                                              Radius.circular(10)),
+                                          borderSide: BorderSide(
+                                              color: Colors.grey, width: 2),
+                                        ),
+                                        focusedBorder: OutlineInputBorder(
+                                          borderRadius: BorderRadius.all(
+                                              Radius.circular(20)),
+                                          borderSide: BorderSide(
+                                              color: Theme.of(context)
+                                                  .primaryColor,
+                                              width: 2),
+                                        ),
+                                      ),
+                                      keyboardType: TextInputType.text,
+                                    ),
+                                  ),
+                                  Padding(
+                                    padding: const EdgeInsets.all(10.0),
+                                    child: TextFormField(
+                                      focusNode: focusNode33,
+                                      onChanged: (String value) {
+                                        setState(() {
+                                          focusNode33.requestFocus();
+                                        });
+                                      },
+                                      maxLength: 10,
+                                      onSaved: (value) {
+                                        object.itogpokazatel5 = value;
+                                      },
+                                      controller: itogpokazatel5Controller,
+                                      style: textStyle,
+                                      decoration: InputDecoration(
+                                        focusColor:
+                                            Theme.of(context).primaryColor,
+                                        labelStyle: TextStyle(
+                                          fontSize: 22,
+                                          fontWeight: FontWeight.w300,
+                                          color: Theme.of(context).primaryColor,
+                                        ),
+                                        hintStyle: TextStyle(
+                                          fontSize: 16,
+                                          fontWeight: FontWeight.w300,
+                                          color: Theme.of(context).primaryColor,
+                                        ),
+                                        labelText: 'Данные входного контроля',
+                                        hintText: 'Введите значение',
+                                        helperText: '...',
+                                        prefixIcon: Icon(
+                                          Icons.sms,
+                                          color: focusNode33.hasFocus ||
+                                                  itogpokazatel5Controller
+                                                      .text.isNotEmpty
+                                              ? Theme.of(context).primaryColor
+                                              : Colors.grey,
+                                          size: 32,
+                                        ),
+                                        enabledBorder: OutlineInputBorder(
+                                          borderRadius: BorderRadius.all(
+                                              Radius.circular(10)),
+                                          borderSide: BorderSide(
+                                              color: Colors.grey, width: 2),
+                                        ),
+                                        focusedBorder: OutlineInputBorder(
+                                          borderRadius: BorderRadius.all(
+                                              Radius.circular(20)),
+                                          borderSide: BorderSide(
+                                              color: Theme.of(context)
+                                                  .primaryColor,
+                                              width: 2),
+                                        ),
+                                      ),
+                                      keyboardType: TextInputType.text,
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            ),
+                          ],
                         ),
-                        keyboardType: TextInputType.text,
-                      ),
-                      SizedBox(height: 10),
-                      TextFormField(
-                        focusNode: focusNode9,
-                        onChanged: (String value) {
-                          setState(() {
-                            focusNode9.requestFocus();
-                          });
-                        },
-                        maxLength: 30,
-                        onSaved: (value) {
-                          object.ntdpokazatel1 = value;
-                        },
-                        controller: ntdpokazatel1Controller,
-                        style: textStyle,
-                        decoration: InputDecoration(
-                          focusColor: Theme.of(context).primaryColor,
-                          labelStyle: TextStyle(
-                            fontSize: 22,
-                            fontWeight: FontWeight.w300,
-                            color: Theme.of(context).primaryColor,
-                          ),
-                          hintStyle: TextStyle(
-                            fontSize: 16,
-                            fontWeight: FontWeight.w300,
-                            color: Theme.of(context).primaryColor,
-                          ),
-                          labelText: 'НТД на метод испытания',
-                          hintText: 'Введите НТД',
-                          helperText: '...',
-                          prefixIcon: Icon(
-                            Icons.business_center,
-                            color: focusNode9.hasFocus ||
-                                    ntdpokazatel1Controller.text.isNotEmpty
-                                ? Theme.of(context).primaryColor
-                                : Colors.grey,
-                            size: 32,
-                          ),
-                          enabledBorder: OutlineInputBorder(
-                            borderRadius: BorderRadius.all(Radius.circular(10)),
-                            borderSide:
-                                BorderSide(color: Colors.grey, width: 2),
-                          ),
-                          focusedBorder: OutlineInputBorder(
-                            borderRadius: BorderRadius.all(Radius.circular(20)),
-                            borderSide: BorderSide(
-                                color: Theme.of(context).primaryColor,
-                                width: 2),
-                          ),
-                        ),
-                        keyboardType: TextInputType.text,
-                      ),
-                      SizedBox(height: 10),
-                      TextFormField(
-                        focusNode: focusNode10,
-                        onChanged: (String value) {
-                          setState(() {
-                            focusNode10.requestFocus();
-                          });
-                        },
-                        maxLength: 10,
-                        onSaved: (value) {
-                          object.normatupokazatel1 = value;
-                        },
-                        controller: normatupokazatel1Controller,
-                        style: textStyle,
-                        decoration: InputDecoration(
-                          focusColor: Theme.of(context).primaryColor,
-                          labelStyle: TextStyle(
-                            fontSize: 22,
-                            fontWeight: FontWeight.w300,
-                            color: Theme.of(context).primaryColor,
-                          ),
-                          hintStyle: TextStyle(
-                            fontSize: 16,
-                            fontWeight: FontWeight.w300,
-                            color: Theme.of(context).primaryColor,
-                          ),
-                          labelText: 'Норма по ТУ(ГОСТ) на материал',
-                          hintText: 'Введите значение',
-                          helperText: '...',
-                          prefixIcon: Icon(
-                            Icons.business_center,
-                            color: focusNode10.hasFocus ||
-                                    normatupokazatel1Controller.text.isNotEmpty
-                                ? Theme.of(context).primaryColor
-                                : Colors.grey,
-                            size: 32,
-                          ),
-                          enabledBorder: OutlineInputBorder(
-                            borderRadius: BorderRadius.all(Radius.circular(10)),
-                            borderSide:
-                                BorderSide(color: Colors.grey, width: 2),
-                          ),
-                          focusedBorder: OutlineInputBorder(
-                            borderRadius: BorderRadius.all(Radius.circular(20)),
-                            borderSide: BorderSide(
-                                color: Theme.of(context).primaryColor,
-                                width: 2),
-                          ),
-                        ),
-                        keyboardType: TextInputType.text,
-                      ),
-                      SizedBox(height: 10),
-                      TextFormField(
-                        focusNode: focusNode11,
-                        onChanged: (String value) {
-                          setState(() {
-                            focusNode11.requestFocus();
-                          });
-                        },
-                        maxLength: 30,
-                        onSaved: (value) {
-                          object.sertpokazatel1 = value;
-                        },
-                        controller: sertpokazatel1Controller,
-                        style: textStyle,
-                        decoration: InputDecoration(
-                          focusColor: Theme.of(context).primaryColor,
-                          labelStyle: TextStyle(
-                            fontSize: 22,
-                            fontWeight: FontWeight.w300,
-                            color: Theme.of(context).primaryColor,
-                          ),
-                          hintStyle: TextStyle(
-                            fontSize: 16,
-                            fontWeight: FontWeight.w300,
-                            color: Theme.of(context).primaryColor,
-                          ),
-                          labelText: 'Данные сертификата (паспорта)',
-                          hintText: 'Введите значение',
-                          helperText: '...',
-                          prefixIcon: Icon(
-                            Icons.business_center,
-                            color: focusNode11.hasFocus ||
-                                    sertpokazatel1Controller.text.isNotEmpty
-                                ? Theme.of(context).primaryColor
-                                : Colors.grey,
-                            size: 32,
-                          ),
-                          enabledBorder: OutlineInputBorder(
-                            borderRadius: BorderRadius.all(Radius.circular(10)),
-                            borderSide:
-                                BorderSide(color: Colors.grey, width: 2),
-                          ),
-                          focusedBorder: OutlineInputBorder(
-                            borderRadius: BorderRadius.all(Radius.circular(20)),
-                            borderSide: BorderSide(
-                                color: Theme.of(context).primaryColor,
-                                width: 2),
-                          ),
-                        ),
-                        keyboardType: TextInputType.text,
-                      ),
-                      SizedBox(height: 10),
-                      TextFormField(
-                        focusNode: focusNode12,
-                        onChanged: (String value) {
-                          setState(() {
-                            focusNode12.requestFocus();
-                          });
-                        },
-                        maxLength: 10,
-                        onSaved: (value) {
-                          object.itogpokazatel1 = value;
-                        },
-                        controller: itogpokazatel1Controller,
-                        style: textStyle,
-                        decoration: InputDecoration(
-                          focusColor: Theme.of(context).primaryColor,
-                          labelStyle: TextStyle(
-                            fontSize: 22,
-                            fontWeight: FontWeight.w300,
-                            color: Theme.of(context).primaryColor,
-                          ),
-                          hintStyle: TextStyle(
-                            fontSize: 16,
-                            fontWeight: FontWeight.w300,
-                            color: Theme.of(context).primaryColor,
-                          ),
-                          labelText: 'Данные входного контроля',
-                          hintText: 'Введите значение',
-                          helperText: '...',
-                          prefixIcon: Icon(
-                            Icons.business_center,
-                            color: focusNode12.hasFocus ||
-                                    itogpokazatel1Controller.text.isNotEmpty
-                                ? Theme.of(context).primaryColor
-                                : Colors.grey,
-                            size: 32,
-                          ),
-                          enabledBorder: OutlineInputBorder(
-                            borderRadius: BorderRadius.all(Radius.circular(10)),
-                            borderSide:
-                                BorderSide(color: Colors.grey, width: 2),
-                          ),
-                          focusedBorder: OutlineInputBorder(
-                            borderRadius: BorderRadius.all(Radius.circular(20)),
-                            borderSide: BorderSide(
-                                color: Theme.of(context).primaryColor,
-                                width: 2),
-                          ),
-                        ),
-                        keyboardType: TextInputType.text,
                       ),
                       Divider(thickness: 4),
-                      Container(
-                          alignment: Alignment.center,
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              Text(
-                                'Показатель №2',
-                                style: TextStyle(
-                                    fontSize: 24,
-                                    color: Theme.of(context).primaryColor,
-                                    fontWeight: FontWeight.w300),
-                              ),
-                              GestureDetector(
-                                onTap: () {
-                                  pokazatelname2Controller.clear();
-                                  ntdpokazatel2Controller.clear();
-                                  normatupokazatel2Controller.clear();
-                                  sertpokazatel2Controller.clear();
-                                  itogpokazatel2Controller.clear();
-                                },
-                                child: Icon(
-                                  Icons.delete_outline,
-                                  color: Color.fromRGBO(187, 30, 16, 1.0),
-                                ),
-                              ),
-                            ],
-                          )),
-                      SizedBox(height: 10),
-                      TextFormField(
-                        focusNode: focusNode13,
-                        onChanged: (String value) {
-                          setState(() {
-                            focusNode13.requestFocus();
-                          });
-                        },
-                        maxLength: 20,
-                        onSaved: (value) {
-                          object.pokazatelname2 = value;
-                        },
-                        controller: pokazatelname2Controller,
-                        style: textStyle,
-                        decoration: InputDecoration(
-                          labelText: 'Наименование показателя',
-                          hintText: 'Введите Наименование',
-                          helperText: '...',
-                          prefixIcon: Icon(
-                            Icons.business_center,
-                            color: focusNode13.hasFocus ||
-                                    pokazatelname2Controller.text.isNotEmpty
-                                ? Theme.of(context).primaryColor
-                                : Colors.grey,
-                            size: 32,
-                          ),
-                          enabledBorder: const OutlineInputBorder(
-                            borderRadius: BorderRadius.all(Radius.circular(10)),
-                            borderSide:
-                                BorderSide(color: Colors.grey, width: 2),
-                          ),
-                          focusedBorder: OutlineInputBorder(
-                            borderRadius:
-                                const BorderRadius.all(Radius.circular(20)),
-                            borderSide: BorderSide(
-                                color: Theme.of(context).primaryColor,
-                                width: 2),
-                          ),
-                          labelStyle: TextStyle(
-                            fontSize: 22,
-                            fontWeight: FontWeight.w300,
-                            color: Theme.of(context).primaryColor,
-                          ),
-                        ),
-                        keyboardType: TextInputType.text,
-                      ),
-                      SizedBox(height: 10),
-                      TextFormField(
-                        focusNode: focusNode14,
-                        onChanged: (String value) {
-                          setState(() {
-                            focusNode14.requestFocus();
-                          });
-                        },
-                        maxLength: 30,
-                        onSaved: (value) {
-                          object.ntdpokazatel2 = value;
-                        },
-                        controller: ntdpokazatel2Controller,
-                        style: textStyle,
-                        decoration: InputDecoration(
-                          focusColor: Theme.of(context).primaryColor,
-                          labelStyle: TextStyle(
-                            fontSize: 22,
-                            fontWeight: FontWeight.w300,
-                            color: Theme.of(context).primaryColor,
-                          ),
-                          hintStyle: TextStyle(
-                            fontSize: 16,
-                            fontWeight: FontWeight.w300,
-                            color: Theme.of(context).primaryColor,
-                          ),
-                          labelText: 'НТД на метод испытания',
-                          hintText: 'Введите НТД',
-                          helperText: '...',
-                          prefixIcon: Icon(
-                            Icons.business_center,
-                            color: focusNode14.hasFocus ||
-                                    ntdpokazatel2Controller.text.isNotEmpty
-                                ? Theme.of(context).primaryColor
-                                : Colors.grey,
-                            size: 32,
-                          ),
-                          enabledBorder: OutlineInputBorder(
-                            borderRadius: BorderRadius.all(Radius.circular(10)),
-                            borderSide:
-                                BorderSide(color: Colors.grey, width: 2),
-                          ),
-                          focusedBorder: OutlineInputBorder(
-                            borderRadius: BorderRadius.all(Radius.circular(20)),
-                            borderSide: BorderSide(
-                                color: Theme.of(context).primaryColor,
-                                width: 2),
-                          ),
-                        ),
-                        keyboardType: TextInputType.text,
-                      ),
-                      SizedBox(height: 10),
-                      TextFormField(
-                        focusNode: focusNode15,
-                        onChanged: (String value) {
-                          setState(() {
-                            focusNode15.requestFocus();
-                          });
-                        },
-                        maxLength: 10,
-                        onSaved: (value) {
-                          object.normatupokazatel2 = value;
-                        },
-                        controller: normatupokazatel2Controller,
-                        style: textStyle,
-                        decoration: InputDecoration(
-                          focusColor: Theme.of(context).primaryColor,
-                          labelStyle: TextStyle(
-                            fontSize: 22,
-                            fontWeight: FontWeight.w300,
-                            color: Theme.of(context).primaryColor,
-                          ),
-                          hintStyle: TextStyle(
-                            fontSize: 16,
-                            fontWeight: FontWeight.w300,
-                            color: Theme.of(context).primaryColor,
-                          ),
-                          labelText: 'Норма по ТУ(ГОСТ) на материал',
-                          hintText: 'Введите значение',
-                          helperText: '...',
-                          prefixIcon: Icon(
-                            Icons.business_center,
-                            color: focusNode15.hasFocus ||
-                                    normatupokazatel2Controller.text.isNotEmpty
-                                ? Theme.of(context).primaryColor
-                                : Colors.grey,
-                            size: 32,
-                          ),
-                          enabledBorder: OutlineInputBorder(
-                            borderRadius: BorderRadius.all(Radius.circular(10)),
-                            borderSide:
-                                BorderSide(color: Colors.grey, width: 2),
-                          ),
-                          focusedBorder: OutlineInputBorder(
-                            borderRadius: BorderRadius.all(Radius.circular(20)),
-                            borderSide: BorderSide(
-                                color: Theme.of(context).primaryColor,
-                                width: 2),
-                          ),
-                        ),
-                        keyboardType: TextInputType.text,
-                      ),
-                      SizedBox(height: 10),
-                      TextFormField(
-                        focusNode: focusNode16,
-                        onChanged: (String value) {
-                          setState(() {
-                            focusNode16.requestFocus();
-                          });
-                        },
-                        maxLength: 30,
-                        onSaved: (value) {
-                          object.sertpokazatel2 = value;
-                        },
-                        controller: sertpokazatel2Controller,
-                        style: textStyle,
-                        decoration: InputDecoration(
-                          focusColor: Theme.of(context).primaryColor,
-                          labelStyle: TextStyle(
-                            fontSize: 22,
-                            fontWeight: FontWeight.w300,
-                            color: Theme.of(context).primaryColor,
-                          ),
-                          hintStyle: TextStyle(
-                            fontSize: 16,
-                            fontWeight: FontWeight.w300,
-                            color: Theme.of(context).primaryColor,
-                          ),
-                          labelText: 'Данные сертификата (паспорта)',
-                          hintText: 'Введите значение',
-                          helperText: '...',
-                          prefixIcon: Icon(
-                            Icons.business_center,
-                            color: focusNode16.hasFocus ||
-                                    sertpokazatel2Controller.text.isNotEmpty
-                                ? Theme.of(context).primaryColor
-                                : Colors.grey,
-                            size: 32,
-                          ),
-                          enabledBorder: OutlineInputBorder(
-                            borderRadius: BorderRadius.all(Radius.circular(10)),
-                            borderSide:
-                                BorderSide(color: Colors.grey, width: 2),
-                          ),
-                          focusedBorder: OutlineInputBorder(
-                            borderRadius: BorderRadius.all(Radius.circular(20)),
-                            borderSide: BorderSide(
-                                color: Theme.of(context).primaryColor,
-                                width: 2),
-                          ),
-                        ),
-                        keyboardType: TextInputType.text,
-                      ),
-                      SizedBox(height: 10),
-                      TextFormField(
-                        focusNode: focusNode17,
-                        onChanged: (String value) {
-                          setState(() {
-                            focusNode17.requestFocus();
-                          });
-                        },
-                        maxLength: 10,
-                        onSaved: (value) {
-                          object.itogpokazatel2 = value;
-                        },
-                        controller: itogpokazatel2Controller,
-                        style: textStyle,
-                        decoration: InputDecoration(
-                          focusColor: Theme.of(context).primaryColor,
-                          labelStyle: TextStyle(
-                            fontSize: 22,
-                            fontWeight: FontWeight.w300,
-                            color: Theme.of(context).primaryColor,
-                          ),
-                          hintStyle: TextStyle(
-                            fontSize: 16,
-                            fontWeight: FontWeight.w300,
-                            color: Theme.of(context).primaryColor,
-                          ),
-                          labelText: 'Данные входного контроля',
-                          hintText: 'Введите значение',
-                          helperText: '...',
-                          prefixIcon: Icon(
-                            Icons.business_center,
-                            color: focusNode17.hasFocus ||
-                                    itogpokazatel2Controller.text.isNotEmpty
-                                ? Theme.of(context).primaryColor
-                                : Colors.grey,
-                            size: 32,
-                          ),
-                          enabledBorder: OutlineInputBorder(
-                            borderRadius: BorderRadius.all(Radius.circular(10)),
-                            borderSide:
-                                BorderSide(color: Colors.grey, width: 2),
-                          ),
-                          focusedBorder: OutlineInputBorder(
-                            borderRadius: BorderRadius.all(Radius.circular(20)),
-                            borderSide: BorderSide(
-                                color: Theme.of(context).primaryColor,
-                                width: 2),
-                          ),
-                        ),
-                        keyboardType: TextInputType.text,
-                      ),
-                      Divider(thickness: 4),
-                      Container(
-                          alignment: Alignment.center,
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              Text(
-                                'Показатель №3',
-                                style: TextStyle(
-                                    fontSize: 24,
-                                    color: Theme.of(context).primaryColor,
-                                    fontWeight: FontWeight.w300),
-                              ),
-                              GestureDetector(
-                                onTap: () {
-                                  pokazatelname3Controller.clear();
-                                  ntdpokazatel3Controller.clear();
-                                  normatupokazatel3Controller.clear();
-                                  sertpokazatel3Controller.clear();
-                                  itogpokazatel3Controller.clear();
-                                },
-                                child: Icon(
-                                  Icons.delete_outline,
-                                  color: Color.fromRGBO(187, 30, 16, 1.0),
-                                ),
-                              ),
-                            ],
-                          )),
-                      SizedBox(height: 10),
-                      TextFormField(
-                        focusNode: focusNode18,
-                        onChanged: (String value) {
-                          setState(() {
-                            focusNode18.requestFocus();
-                          });
-                        },
-                        maxLength: 20,
-                        onSaved: (value) {
-                          object.pokazatelname3 = value;
-                        },
-                        controller: pokazatelname3Controller,
-                        style: textStyle,
-                        decoration: InputDecoration(
-                          labelText: 'Наименование показателя',
-                          hintText: 'Введите Наименование',
-                          helperText: '...',
-                          prefixIcon: Icon(
-                            Icons.business_center,
-                            color: focusNode18.hasFocus ||
-                                    pokazatelname3Controller.text.isNotEmpty
-                                ? Theme.of(context).primaryColor
-                                : Colors.grey,
-                            size: 32,
-                          ),
-                          enabledBorder: const OutlineInputBorder(
-                            borderRadius: BorderRadius.all(Radius.circular(10)),
-                            borderSide:
-                                BorderSide(color: Colors.grey, width: 2),
-                          ),
-                          focusedBorder: OutlineInputBorder(
-                            borderRadius:
-                                const BorderRadius.all(Radius.circular(20)),
-                            borderSide: BorderSide(
-                                color: Theme.of(context).primaryColor,
-                                width: 2),
-                          ),
-                          labelStyle: TextStyle(
-                            fontSize: 22,
-                            fontWeight: FontWeight.w300,
-                            color: Theme.of(context).primaryColor,
-                          ),
-                        ),
-                        keyboardType: TextInputType.text,
-                      ),
-                      SizedBox(height: 10),
-                      TextFormField(
-                        focusNode: focusNode19,
-                        onChanged: (String value) {
-                          setState(() {
-                            focusNode19.requestFocus();
-                          });
-                        },
-                        maxLength: 30,
-                        onSaved: (value) {
-                          object.ntdpokazatel3 = value;
-                        },
-                        controller: ntdpokazatel3Controller,
-                        style: textStyle,
-                        decoration: InputDecoration(
-                          focusColor: Theme.of(context).primaryColor,
-                          labelStyle: TextStyle(
-                            fontSize: 22,
-                            fontWeight: FontWeight.w300,
-                            color: Theme.of(context).primaryColor,
-                          ),
-                          hintStyle: TextStyle(
-                            fontSize: 16,
-                            fontWeight: FontWeight.w300,
-                            color: Theme.of(context).primaryColor,
-                          ),
-                          labelText: 'НТД на метод испытания',
-                          hintText: 'Введите НТД',
-                          helperText: '...',
-                          prefixIcon: Icon(
-                            Icons.business_center,
-                            color: focusNode19.hasFocus ||
-                                    ntdpokazatel3Controller.text.isNotEmpty
-                                ? Theme.of(context).primaryColor
-                                : Colors.grey,
-                            size: 32,
-                          ),
-                          enabledBorder: OutlineInputBorder(
-                            borderRadius: BorderRadius.all(Radius.circular(10)),
-                            borderSide:
-                                BorderSide(color: Colors.grey, width: 2),
-                          ),
-                          focusedBorder: OutlineInputBorder(
-                            borderRadius: BorderRadius.all(Radius.circular(20)),
-                            borderSide: BorderSide(
-                                color: Theme.of(context).primaryColor,
-                                width: 2),
-                          ),
-                        ),
-                        keyboardType: TextInputType.text,
-                      ),
-                      SizedBox(height: 10),
-                      TextFormField(
-                        focusNode: focusNode20,
-                        onChanged: (String value) {
-                          setState(() {
-                            focusNode20.requestFocus();
-                          });
-                        },
-                        maxLength: 10,
-                        onSaved: (value) {
-                          object.normatupokazatel3 = value;
-                        },
-                        controller: normatupokazatel3Controller,
-                        style: textStyle,
-                        decoration: InputDecoration(
-                          focusColor: Theme.of(context).primaryColor,
-                          labelStyle: TextStyle(
-                            fontSize: 22,
-                            fontWeight: FontWeight.w300,
-                            color: Theme.of(context).primaryColor,
-                          ),
-                          hintStyle: TextStyle(
-                            fontSize: 16,
-                            fontWeight: FontWeight.w300,
-                            color: Theme.of(context).primaryColor,
-                          ),
-                          labelText: 'Норма по ТУ(ГОСТ) на материал',
-                          hintText: 'Введите значение',
-                          helperText: '...',
-                          prefixIcon: Icon(
-                            Icons.business_center,
-                            color: focusNode20.hasFocus ||
-                                    normatupokazatel3Controller.text.isNotEmpty
-                                ? Theme.of(context).primaryColor
-                                : Colors.grey,
-                            size: 32,
-                          ),
-                          enabledBorder: OutlineInputBorder(
-                            borderRadius: BorderRadius.all(Radius.circular(10)),
-                            borderSide:
-                                BorderSide(color: Colors.grey, width: 2),
-                          ),
-                          focusedBorder: OutlineInputBorder(
-                            borderRadius: BorderRadius.all(Radius.circular(20)),
-                            borderSide: BorderSide(
-                                color: Theme.of(context).primaryColor,
-                                width: 2),
-                          ),
-                        ),
-                        keyboardType: TextInputType.text,
-                      ),
-                      SizedBox(height: 10),
-                      TextFormField(
-                        focusNode: focusNode21,
-                        onChanged: (String value) {
-                          setState(() {
-                            focusNode21.requestFocus();
-                          });
-                        },
-                        maxLength: 30,
-                        onSaved: (value) {
-                          object.sertpokazatel3 = value;
-                        },
-                        controller: sertpokazatel3Controller,
-                        style: textStyle,
-                        decoration: InputDecoration(
-                          focusColor: Theme.of(context).primaryColor,
-                          labelStyle: TextStyle(
-                            fontSize: 22,
-                            fontWeight: FontWeight.w300,
-                            color: Theme.of(context).primaryColor,
-                          ),
-                          hintStyle: TextStyle(
-                            fontSize: 16,
-                            fontWeight: FontWeight.w300,
-                            color: Theme.of(context).primaryColor,
-                          ),
-                          labelText: 'Данные сертификата (паспорта)',
-                          hintText: 'Введите значение',
-                          helperText: '...',
-                          prefixIcon: Icon(
-                            Icons.business_center,
-                            color: focusNode21.hasFocus ||
-                                    sertpokazatel3Controller.text.isNotEmpty
-                                ? Theme.of(context).primaryColor
-                                : Colors.grey,
-                            size: 32,
-                          ),
-                          enabledBorder: OutlineInputBorder(
-                            borderRadius: BorderRadius.all(Radius.circular(10)),
-                            borderSide:
-                                BorderSide(color: Colors.grey, width: 2),
-                          ),
-                          focusedBorder: OutlineInputBorder(
-                            borderRadius: BorderRadius.all(Radius.circular(20)),
-                            borderSide: BorderSide(
-                                color: Theme.of(context).primaryColor,
-                                width: 2),
-                          ),
-                        ),
-                        keyboardType: TextInputType.text,
-                      ),
-                      SizedBox(height: 10),
-                      TextFormField(
-                        focusNode: focusNode22,
-                        onChanged: (String value) {
-                          setState(() {
-                            focusNode22.requestFocus();
-                          });
-                        },
-                        maxLength: 10,
-                        onSaved: (value) {
-                          object.itogpokazatel3 = value;
-                        },
-                        controller: itogpokazatel3Controller,
-                        style: textStyle,
-                        decoration: InputDecoration(
-                          focusColor: Theme.of(context).primaryColor,
-                          labelStyle: TextStyle(
-                            fontSize: 22,
-                            fontWeight: FontWeight.w300,
-                            color: Theme.of(context).primaryColor,
-                          ),
-                          hintStyle: TextStyle(
-                            fontSize: 16,
-                            fontWeight: FontWeight.w300,
-                            color: Theme.of(context).primaryColor,
-                          ),
-                          labelText: 'Данные входного контроля',
-                          hintText: 'Введите значение',
-                          helperText: '...',
-                          prefixIcon: Icon(
-                            Icons.business_center,
-                            color: focusNode22.hasFocus ||
-                                    itogpokazatel3Controller.text.isNotEmpty
-                                ? Theme.of(context).primaryColor
-                                : Colors.grey,
-                            size: 32,
-                          ),
-                          enabledBorder: OutlineInputBorder(
-                            borderRadius: BorderRadius.all(Radius.circular(10)),
-                            borderSide:
-                                BorderSide(color: Colors.grey, width: 2),
-                          ),
-                          focusedBorder: OutlineInputBorder(
-                            borderRadius: BorderRadius.all(Radius.circular(20)),
-                            borderSide: BorderSide(
-                                color: Theme.of(context).primaryColor,
-                                width: 2),
-                          ),
-                        ),
-                        keyboardType: TextInputType.text,
-                      ),
-                      Divider(thickness: 4),
-                      Container(
-                          alignment: Alignment.center,
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              Text(
-                                'Показатель №4',
-                                style: TextStyle(
-                                    fontSize: 24,
-                                    color: Theme.of(context).primaryColor,
-                                    fontWeight: FontWeight.w300),
-                              ),
-                              GestureDetector(
-                                onTap: () {
-                                  pokazatelname4Controller.clear();
-                                  ntdpokazatel4Controller.clear();
-                                  normatupokazatel4Controller.clear();
-                                  sertpokazatel4Controller.clear();
-                                  itogpokazatel4Controller.clear();
-                                },
-                                child: Icon(
-                                  Icons.delete_outline,
-                                  color: Color.fromRGBO(187, 30, 16, 1.0),
-                                ),
-                              ),
-                            ],
-                          )),
-                      SizedBox(height: 10),
-                      TextFormField(
-                        focusNode: focusNode23,
-                        onChanged: (String value) {
-                          setState(() {
-                            focusNode23.requestFocus();
-                          });
-                        },
-                        maxLength: 20,
-                        onSaved: (value) {
-                          object.pokazatelname4 = value;
-                        },
-                        controller: pokazatelname4Controller,
-                        style: textStyle,
-                        decoration: InputDecoration(
-                          labelText: 'Наименование показателя',
-                          hintText: 'Введите Наименование',
-                          helperText: '...',
-                          prefixIcon: Icon(
-                            Icons.business_center,
-                            color: focusNode24.hasFocus ||
-                                    pokazatelname4Controller.text.isNotEmpty
-                                ? Theme.of(context).primaryColor
-                                : Colors.grey,
-                            size: 32,
-                          ),
-                          enabledBorder: const OutlineInputBorder(
-                            borderRadius: BorderRadius.all(Radius.circular(10)),
-                            borderSide:
-                                BorderSide(color: Colors.grey, width: 2),
-                          ),
-                          focusedBorder: OutlineInputBorder(
-                            borderRadius:
-                                const BorderRadius.all(Radius.circular(20)),
-                            borderSide: BorderSide(
-                                color: Theme.of(context).primaryColor,
-                                width: 2),
-                          ),
-                          labelStyle: TextStyle(
-                            fontSize: 22,
-                            fontWeight: FontWeight.w300,
-                            color: Theme.of(context).primaryColor,
-                          ),
-                        ),
-                        keyboardType: TextInputType.text,
-                      ),
-                      SizedBox(height: 10),
-                      TextFormField(
-                        focusNode: focusNode25,
-                        onChanged: (String value) {
-                          setState(() {
-                            focusNode25.requestFocus();
-                          });
-                        },
-                        maxLength: 30,
-                        onSaved: (value) {
-                          object.ntdpokazatel4 = value;
-                        },
-                        controller: ntdpokazatel4Controller,
-                        style: textStyle,
-                        decoration: InputDecoration(
-                          focusColor: Theme.of(context).primaryColor,
-                          labelStyle: TextStyle(
-                            fontSize: 22,
-                            fontWeight: FontWeight.w300,
-                            color: Theme.of(context).primaryColor,
-                          ),
-                          hintStyle: TextStyle(
-                            fontSize: 16,
-                            fontWeight: FontWeight.w300,
-                            color: Theme.of(context).primaryColor,
-                          ),
-                          labelText: 'НТД на метод испытания',
-                          hintText: 'Введите НТД',
-                          helperText: '...',
-                          prefixIcon: Icon(
-                            Icons.business_center,
-                            color: focusNode25.hasFocus ||
-                                    ntdpokazatel4Controller.text.isNotEmpty
-                                ? Theme.of(context).primaryColor
-                                : Colors.grey,
-                            size: 32,
-                          ),
-                          enabledBorder: OutlineInputBorder(
-                            borderRadius: BorderRadius.all(Radius.circular(10)),
-                            borderSide:
-                                BorderSide(color: Colors.grey, width: 2),
-                          ),
-                          focusedBorder: OutlineInputBorder(
-                            borderRadius: BorderRadius.all(Radius.circular(20)),
-                            borderSide: BorderSide(
-                                color: Theme.of(context).primaryColor,
-                                width: 2),
-                          ),
-                        ),
-                        keyboardType: TextInputType.text,
-                      ),
-                      SizedBox(height: 10),
-                      TextFormField(
-                        focusNode: focusNode26,
-                        onChanged: (String value) {
-                          setState(() {
-                            focusNode26.requestFocus();
-                          });
-                        },
-                        maxLength: 10,
-                        onSaved: (value) {
-                          object.normatupokazatel4 = value;
-                        },
-                        controller: normatupokazatel4Controller,
-                        style: textStyle,
-                        decoration: InputDecoration(
-                          focusColor: Theme.of(context).primaryColor,
-                          labelStyle: TextStyle(
-                            fontSize: 22,
-                            fontWeight: FontWeight.w300,
-                            color: Theme.of(context).primaryColor,
-                          ),
-                          hintStyle: TextStyle(
-                            fontSize: 16,
-                            fontWeight: FontWeight.w300,
-                            color: Theme.of(context).primaryColor,
-                          ),
-                          labelText: 'Норма по ТУ(ГОСТ) на материал',
-                          hintText: 'Введите значение',
-                          helperText: '...',
-                          prefixIcon: Icon(
-                            Icons.business_center,
-                            color: focusNode26.hasFocus ||
-                                    normatupokazatel4Controller.text.isNotEmpty
-                                ? Theme.of(context).primaryColor
-                                : Colors.grey,
-                            size: 32,
-                          ),
-                          enabledBorder: OutlineInputBorder(
-                            borderRadius: BorderRadius.all(Radius.circular(10)),
-                            borderSide:
-                                BorderSide(color: Colors.grey, width: 2),
-                          ),
-                          focusedBorder: OutlineInputBorder(
-                            borderRadius: BorderRadius.all(Radius.circular(20)),
-                            borderSide: BorderSide(
-                                color: Theme.of(context).primaryColor,
-                                width: 2),
-                          ),
-                        ),
-                        keyboardType: TextInputType.text,
-                      ),
-                      SizedBox(height: 10),
-                      TextFormField(
-                        focusNode: focusNode27,
-                        onChanged: (String value) {
-                          setState(() {
-                            focusNode27.requestFocus();
-                          });
-                        },
-                        maxLength: 30,
-                        onSaved: (value) {
-                          object.sertpokazatel4 = value;
-                        },
-                        controller: sertpokazatel4Controller,
-                        style: textStyle,
-                        decoration: InputDecoration(
-                          focusColor: Theme.of(context).primaryColor,
-                          labelStyle: TextStyle(
-                            fontSize: 22,
-                            fontWeight: FontWeight.w300,
-                            color: Theme.of(context).primaryColor,
-                          ),
-                          hintStyle: TextStyle(
-                            fontSize: 16,
-                            fontWeight: FontWeight.w300,
-                            color: Theme.of(context).primaryColor,
-                          ),
-                          labelText: 'Данные сертификата (паспорта)',
-                          hintText: 'Введите значение',
-                          helperText: '...',
-                          prefixIcon: Icon(
-                            Icons.business_center,
-                            color: focusNode27.hasFocus ||
-                                    sertpokazatel4Controller.text.isNotEmpty
-                                ? Theme.of(context).primaryColor
-                                : Colors.grey,
-                            size: 32,
-                          ),
-                          enabledBorder: OutlineInputBorder(
-                            borderRadius: BorderRadius.all(Radius.circular(10)),
-                            borderSide:
-                                BorderSide(color: Colors.grey, width: 2),
-                          ),
-                          focusedBorder: OutlineInputBorder(
-                            borderRadius: BorderRadius.all(Radius.circular(20)),
-                            borderSide: BorderSide(
-                                color: Theme.of(context).primaryColor,
-                                width: 2),
-                          ),
-                        ),
-                        keyboardType: TextInputType.text,
-                      ),
-                      SizedBox(height: 10),
-                      TextFormField(
-                        focusNode: focusNode28,
-                        onChanged: (String value) {
-                          setState(() {
-                            focusNode28.requestFocus();
-                          });
-                        },
-                        maxLength: 10,
-                        onSaved: (value) {
-                          object.itogpokazatel4 = value;
-                        },
-                        controller: itogpokazatel4Controller,
-                        style: textStyle,
-                        decoration: InputDecoration(
-                          focusColor: Theme.of(context).primaryColor,
-                          labelStyle: TextStyle(
-                            fontSize: 22,
-                            fontWeight: FontWeight.w300,
-                            color: Theme.of(context).primaryColor,
-                          ),
-                          hintStyle: TextStyle(
-                            fontSize: 16,
-                            fontWeight: FontWeight.w300,
-                            color: Theme.of(context).primaryColor,
-                          ),
-                          labelText: 'Данные входного контроля',
-                          hintText: 'Введите значение',
-                          helperText: '...',
-                          prefixIcon: Icon(
-                            Icons.business_center,
-                            color: focusNode28.hasFocus ||
-                                    itogpokazatel4Controller.text.isNotEmpty
-                                ? Theme.of(context).primaryColor
-                                : Colors.grey,
-                            size: 32,
-                          ),
-                          enabledBorder: OutlineInputBorder(
-                            borderRadius: BorderRadius.all(Radius.circular(10)),
-                            borderSide:
-                                BorderSide(color: Colors.grey, width: 2),
-                          ),
-                          focusedBorder: OutlineInputBorder(
-                            borderRadius: BorderRadius.all(Radius.circular(20)),
-                            borderSide: BorderSide(
-                                color: Theme.of(context).primaryColor,
-                                width: 2),
-                          ),
-                        ),
-                        keyboardType: TextInputType.text,
-                      ),
-                      Divider(thickness: 4),
-                      Container(
-                          alignment: Alignment.center,
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              Text(
-                                'Показатель №5',
-                                style: TextStyle(
-                                    fontSize: 24,
-                                    color: Theme.of(context).primaryColor,
-                                    fontWeight: FontWeight.w300),
-                              ),
-                              GestureDetector(
-                                onTap: () {
-                                  pokazatelname5Controller.clear();
-                                  ntdpokazatel5Controller.clear();
-                                  normatupokazatel5Controller.clear();
-                                  sertpokazatel5Controller.clear();
-                                  itogpokazatel5Controller.clear();
-                                },
-                                child: Icon(
-                                  Icons.delete_outline,
-                                  color: Color.fromRGBO(187, 30, 16, 1.0),
-                                ),
-                              ),
-                            ],
-                          )),
-                      SizedBox(height: 10),
-                      TextFormField(
-                        focusNode: focusNode29,
-                        onChanged: (String value) {
-                          setState(() {
-                            focusNode29.requestFocus();
-                          });
-                        },
-                        maxLength: 20,
-                        onSaved: (value) {
-                          object.pokazatelname5 = value;
-                        },
-                        controller: pokazatelname5Controller,
-                        style: textStyle,
-                        decoration: InputDecoration(
-                          labelText: 'Наименование показателя',
-                          hintText: 'Введите Наименование',
-                          helperText: '...',
-                          prefixIcon: Icon(
-                            Icons.business_center,
-                            color: focusNode29.hasFocus ||
-                                    pokazatelname5Controller.text.isNotEmpty
-                                ? Theme.of(context).primaryColor
-                                : Colors.grey,
-                            size: 32,
-                          ),
-                          enabledBorder: const OutlineInputBorder(
-                            borderRadius: BorderRadius.all(Radius.circular(10)),
-                            borderSide:
-                                BorderSide(color: Colors.grey, width: 2),
-                          ),
-                          focusedBorder: OutlineInputBorder(
-                            borderRadius:
-                                const BorderRadius.all(Radius.circular(20)),
-                            borderSide: BorderSide(
-                                color: Theme.of(context).primaryColor,
-                                width: 2),
-                          ),
-                          labelStyle: TextStyle(
-                            fontSize: 22,
-                            fontWeight: FontWeight.w300,
-                            color: Theme.of(context).primaryColor,
-                          ),
-                        ),
-                        keyboardType: TextInputType.text,
-                      ),
-                      SizedBox(height: 10),
-                      TextFormField(
-                        focusNode: focusNode30,
-                        onChanged: (String value) {
-                          setState(() {
-                            focusNode30.requestFocus();
-                          });
-                        },
-                        maxLength: 30,
-                        onSaved: (value) {
-                          object.ntdpokazatel5 = value;
-                        },
-                        controller: ntdpokazatel5Controller,
-                        style: textStyle,
-                        decoration: InputDecoration(
-                          focusColor: Theme.of(context).primaryColor,
-                          labelStyle: TextStyle(
-                            fontSize: 22,
-                            fontWeight: FontWeight.w300,
-                            color: Theme.of(context).primaryColor,
-                          ),
-                          hintStyle: TextStyle(
-                            fontSize: 16,
-                            fontWeight: FontWeight.w300,
-                            color: Theme.of(context).primaryColor,
-                          ),
-                          labelText: 'НТД на метод испытания',
-                          hintText: 'Введите НТД',
-                          helperText: '...',
-                          prefixIcon: Icon(
-                            Icons.business_center,
-                            color: focusNode30.hasFocus ||
-                                    ntdpokazatel5Controller.text.isNotEmpty
-                                ? Theme.of(context).primaryColor
-                                : Colors.grey,
-                            size: 32,
-                          ),
-                          enabledBorder: OutlineInputBorder(
-                            borderRadius: BorderRadius.all(Radius.circular(10)),
-                            borderSide:
-                                BorderSide(color: Colors.grey, width: 2),
-                          ),
-                          focusedBorder: OutlineInputBorder(
-                            borderRadius: BorderRadius.all(Radius.circular(20)),
-                            borderSide: BorderSide(
-                                color: Theme.of(context).primaryColor,
-                                width: 2),
-                          ),
-                        ),
-                        keyboardType: TextInputType.text,
-                      ),
-                      SizedBox(height: 10),
-                      TextFormField(
-                        focusNode: focusNode31,
-                        onChanged: (String value) {
-                          setState(() {
-                            focusNode31.requestFocus();
-                          });
-                        },
-                        maxLength: 10,
-                        onSaved: (value) {
-                          object.normatupokazatel5 = value;
-                        },
-                        controller: normatupokazatel5Controller,
-                        style: textStyle,
-                        decoration: InputDecoration(
-                          focusColor: Theme.of(context).primaryColor,
-                          labelStyle: TextStyle(
-                            fontSize: 22,
-                            fontWeight: FontWeight.w300,
-                            color: Theme.of(context).primaryColor,
-                          ),
-                          hintStyle: TextStyle(
-                            fontSize: 16,
-                            fontWeight: FontWeight.w300,
-                            color: Theme.of(context).primaryColor,
-                          ),
-                          labelText: 'Норма по ТУ(ГОСТ) на материал',
-                          hintText: 'Введите значение',
-                          helperText: '...',
-                          prefixIcon: Icon(
-                            Icons.business_center,
-                            color: focusNode31.hasFocus ||
-                                    normatupokazatel5Controller.text.isNotEmpty
-                                ? Theme.of(context).primaryColor
-                                : Colors.grey,
-                            size: 32,
-                          ),
-                          enabledBorder: OutlineInputBorder(
-                            borderRadius: BorderRadius.all(Radius.circular(10)),
-                            borderSide:
-                                BorderSide(color: Colors.grey, width: 2),
-                          ),
-                          focusedBorder: OutlineInputBorder(
-                            borderRadius: BorderRadius.all(Radius.circular(20)),
-                            borderSide: BorderSide(
-                                color: Theme.of(context).primaryColor,
-                                width: 2),
-                          ),
-                        ),
-                        keyboardType: TextInputType.text,
-                      ),
-                      SizedBox(height: 10),
-                      TextFormField(
-                        focusNode: focusNode32,
-                        onChanged: (String value) {
-                          setState(() {
-                            focusNode32.requestFocus();
-                          });
-                        },
-                        maxLength: 30,
-                        onSaved: (value) {
-                          object.sertpokazatel5 = value;
-                        },
-                        controller: sertpokazatel5Controller,
-                        style: textStyle,
-                        decoration: InputDecoration(
-                          focusColor: Theme.of(context).primaryColor,
-                          labelStyle: TextStyle(
-                            fontSize: 22,
-                            fontWeight: FontWeight.w300,
-                            color: Theme.of(context).primaryColor,
-                          ),
-                          hintStyle: TextStyle(
-                            fontSize: 16,
-                            fontWeight: FontWeight.w300,
-                            color: Theme.of(context).primaryColor,
-                          ),
-                          labelText: 'Данные сертификата (паспорта)',
-                          hintText: 'Введите значение',
-                          helperText: '...',
-                          prefixIcon: Icon(
-                            Icons.business_center,
-                            color: focusNode32.hasFocus ||
-                                    sertpokazatel5Controller.text.isNotEmpty
-                                ? Theme.of(context).primaryColor
-                                : Colors.grey,
-                            size: 32,
-                          ),
-                          enabledBorder: OutlineInputBorder(
-                            borderRadius: BorderRadius.all(Radius.circular(10)),
-                            borderSide:
-                                BorderSide(color: Colors.grey, width: 2),
-                          ),
-                          focusedBorder: OutlineInputBorder(
-                            borderRadius: BorderRadius.all(Radius.circular(20)),
-                            borderSide: BorderSide(
-                                color: Theme.of(context).primaryColor,
-                                width: 2),
-                          ),
-                        ),
-                        keyboardType: TextInputType.text,
-                      ),
-                      SizedBox(height: 10),
-                      TextFormField(
-                        focusNode: focusNode33,
-                        onChanged: (String value) {
-                          setState(() {
-                            focusNode33.requestFocus();
-                          });
-                        },
-                        maxLength: 10,
-                        onSaved: (value) {
-                          object.itogpokazatel5 = value;
-                        },
-                        controller: itogpokazatel5Controller,
-                        style: textStyle,
-                        decoration: InputDecoration(
-                          focusColor: Theme.of(context).primaryColor,
-                          labelStyle: TextStyle(
-                            fontSize: 22,
-                            fontWeight: FontWeight.w300,
-                            color: Theme.of(context).primaryColor,
-                          ),
-                          hintStyle: TextStyle(
-                            fontSize: 16,
-                            fontWeight: FontWeight.w300,
-                            color: Theme.of(context).primaryColor,
-                          ),
-                          labelText: 'Данные входного контроля',
-                          hintText: 'Введите значение',
-                          helperText: '...',
-                          prefixIcon: Icon(
-                            Icons.business_center,
-                            color: focusNode33.hasFocus ||
-                                    itogpokazatel5Controller.text.isNotEmpty
-                                ? Theme.of(context).primaryColor
-                                : Colors.grey,
-                            size: 32,
-                          ),
-                          enabledBorder: OutlineInputBorder(
-                            borderRadius: BorderRadius.all(Radius.circular(10)),
-                            borderSide:
-                                BorderSide(color: Colors.grey, width: 2),
-                          ),
-                          focusedBorder: OutlineInputBorder(
-                            borderRadius: BorderRadius.all(Radius.circular(20)),
-                            borderSide: BorderSide(
-                                color: Theme.of(context).primaryColor,
-                                width: 2),
-                          ),
-                        ),
-                        keyboardType: TextInputType.text,
-                      ),
-                      Divider(thickness: 4),
-                      SizedBox(height: 20),
                       ElevatedButton(
                         style: ElevatedButton.styleFrom(
                             primary:
@@ -2324,7 +2565,9 @@ class ObjectDetailVhCState extends State<ObjectDetailVhC> {
                             ),
                         onPressed: () => saveForm2(),
                         child: Text(
-                          isEdit ? 'Редактировать' : 'Добавить',
+                          isEdit
+                              ? 'Редактировать и закрыть'
+                              : 'Добавить и закрыть',
                           style: const TextStyle(
                               fontSize: 18.0, fontWeight: FontWeight.w300),
                         ),
@@ -2571,7 +2814,9 @@ class ObjectDetailVhCState extends State<ObjectDetailVhC> {
                             ),
                         onPressed: () => saveForm3(),
                         child: Text(
-                          isEdit ? 'Редактировать' : 'Добавить',
+                          isEdit
+                              ? 'Редактировать и закрыть'
+                              : 'Добавить и закрыть',
                           style: const TextStyle(
                               fontSize: 18.0, fontWeight: FontWeight.w300),
                         ),
@@ -2599,964 +2844,1146 @@ class ObjectDetailVhCState extends State<ObjectDetailVhC> {
                                 fontWeight: FontWeight.w300),
                           )),
                       Divider(thickness: 4),
-                      Container(
-                          alignment: Alignment.center,
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              Text(
-                                'Прибор №1',
-                                style: TextStyle(
-                                    fontSize: 24,
-                                    color: Theme.of(context).primaryColor,
-                                    fontWeight: FontWeight.w300),
+                      SingleChildScrollView(
+                        scrollDirection: Axis.horizontal,
+                        child: Row(
+                          children: [
+                            Container(
+                              width: MediaQuery.of(context).size.width,
+                              alignment: Alignment.center,
+                              child: Column(
+                                children: [
+                                  Row(
+                                    mainAxisAlignment: MainAxisAlignment.center,
+                                    children: [
+                                      Text(
+                                        'Прибор №1',
+                                        style: TextStyle(
+                                            fontSize: 24,
+                                            color:
+                                                Theme.of(context).primaryColor,
+                                            fontWeight: FontWeight.w300),
+                                      ),
+                                      GestureDetector(
+                                        onTap: () {
+                                          priborname1Controller.clear();
+                                          pribornumb1Controller.clear();
+                                          pribordate1Controller.clear();
+                                        },
+                                        child: Icon(
+                                          Icons.delete_outline,
+                                          color:
+                                              Color.fromRGBO(187, 30, 16, 1.0),
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                  Padding(
+                                    padding: const EdgeInsets.all(10.0),
+                                    child: TextFormField(
+                                      focusNode: focusNode36,
+                                      onChanged: (String value) {
+                                        setState(() {
+                                          focusNode36.requestFocus();
+                                        });
+                                      },
+                                      maxLength: 30,
+                                      onSaved: (value) {
+                                        object.priborname1 = value;
+                                      },
+                                      controller: priborname1Controller,
+                                      style: textStyle,
+                                      decoration: InputDecoration(
+                                        focusColor:
+                                            Theme.of(context).primaryColor,
+                                        labelStyle: TextStyle(
+                                          fontSize: 22,
+                                          fontWeight: FontWeight.w300,
+                                          color: Theme.of(context).primaryColor,
+                                        ),
+                                        hintStyle: TextStyle(
+                                          fontSize: 16,
+                                          fontWeight: FontWeight.w300,
+                                          color: Theme.of(context).primaryColor,
+                                        ),
+                                        labelText: 'Наименование прибора №1',
+                                        hintText: 'Введите название',
+                                        // helperText: '...',
+                                        prefixIcon: Icon(
+                                          Icons.power,
+                                          color: focusNode36.hasFocus ||
+                                                  priborname1Controller
+                                                      .text.isNotEmpty
+                                              ? Theme.of(context).primaryColor
+                                              : Colors.grey,
+                                          size: 32,
+                                        ),
+                                        enabledBorder: OutlineInputBorder(
+                                          borderRadius: BorderRadius.all(
+                                              Radius.circular(10)),
+                                          borderSide: BorderSide(
+                                              color: Colors.grey, width: 2),
+                                        ),
+                                        focusedBorder: OutlineInputBorder(
+                                          borderRadius: BorderRadius.all(
+                                              Radius.circular(20)),
+                                          borderSide: BorderSide(
+                                              color: Theme.of(context)
+                                                  .primaryColor,
+                                              width: 2),
+                                        ),
+                                      ),
+                                      keyboardType: TextInputType.text,
+                                    ),
+                                  ),
+                                  Row(
+                                    children: [
+                                      Expanded(
+                                        child: Padding(
+                                          padding: const EdgeInsets.all(10.0),
+                                          child: TextFormField(
+                                            focusNode: focusNode37,
+                                            onChanged: (String value) {
+                                              setState(() {
+                                                focusNode37.requestFocus();
+                                              });
+                                            },
+                                            maxLength: 30,
+                                            onSaved: (value) {
+                                              object.pribornumb1 = value;
+                                            },
+                                            controller: pribornumb1Controller,
+                                            style: textStyle,
+                                            decoration: InputDecoration(
+                                              focusColor: Theme.of(context)
+                                                  .primaryColor,
+                                              labelStyle: TextStyle(
+                                                fontSize: 22,
+                                                fontWeight: FontWeight.w300,
+                                                color: Theme.of(context)
+                                                    .primaryColor,
+                                              ),
+                                              hintStyle: TextStyle(
+                                                fontSize: 16,
+                                                fontWeight: FontWeight.w300,
+                                                color: Theme.of(context)
+                                                    .primaryColor,
+                                              ),
+                                              labelText: '№',
+                                              hintText: '№',
+                                              helperText: '№....',
+                                              prefixIcon: Icon(
+                                                Icons.power,
+                                                color: focusNode37.hasFocus ||
+                                                        pribornumb1Controller
+                                                            .text.isNotEmpty
+                                                    ? Theme.of(context)
+                                                        .primaryColor
+                                                    : Colors.grey,
+                                                size: 32,
+                                              ),
+                                              enabledBorder: OutlineInputBorder(
+                                                borderRadius: BorderRadius.all(
+                                                    Radius.circular(10)),
+                                                borderSide: BorderSide(
+                                                    color: Colors.grey,
+                                                    width: 2),
+                                              ),
+                                              focusedBorder: OutlineInputBorder(
+                                                borderRadius: BorderRadius.all(
+                                                    Radius.circular(20)),
+                                                borderSide: BorderSide(
+                                                    color: Theme.of(context)
+                                                        .primaryColor,
+                                                    width: 2),
+                                              ),
+                                            ),
+                                            keyboardType: TextInputType.text,
+                                          ),
+                                        ),
+                                      ),
+                                      Expanded(
+                                        child: Padding(
+                                          padding: const EdgeInsets.all(10.0),
+                                          child: TextFormField(
+                                            focusNode: focusNode38,
+                                            onChanged: (String value) {
+                                              setState(() {
+                                                focusNode38.requestFocus();
+                                              });
+                                            },
+                                            maxLength: 10,
+                                            onSaved: (value) {
+                                              object.pribordate1 = value;
+                                            },
+                                            controller: pribordate1Controller,
+                                            style: textStyle,
+                                            decoration: InputDecoration(
+                                              focusColor: Theme.of(context)
+                                                  .primaryColor,
+                                              labelStyle: TextStyle(
+                                                fontSize: 22,
+                                                fontWeight: FontWeight.w300,
+                                                color: Theme.of(context)
+                                                    .primaryColor,
+                                              ),
+                                              hintStyle: TextStyle(
+                                                fontSize: 16,
+                                                fontWeight: FontWeight.w300,
+                                                color: Theme.of(context)
+                                                    .primaryColor,
+                                              ),
+                                              labelText: 'Дата поверки',
+                                              hintText: 'дата',
+                                              helperText: 'д.м.г',
+                                              prefixIcon: Icon(
+                                                Icons.power,
+                                                color: focusNode38.hasFocus ||
+                                                        pribordate1Controller
+                                                            .text.isNotEmpty
+                                                    ? Theme.of(context)
+                                                        .primaryColor
+                                                    : Colors.grey,
+                                                size: 32,
+                                              ),
+                                              enabledBorder: OutlineInputBorder(
+                                                borderRadius: BorderRadius.all(
+                                                    Radius.circular(10)),
+                                                borderSide: BorderSide(
+                                                    color: Colors.grey,
+                                                    width: 2),
+                                              ),
+                                              focusedBorder: OutlineInputBorder(
+                                                borderRadius: BorderRadius.all(
+                                                    Radius.circular(20)),
+                                                borderSide: BorderSide(
+                                                    color: Theme.of(context)
+                                                        .primaryColor,
+                                                    width: 2),
+                                              ),
+                                            ),
+                                            keyboardType: TextInputType.number,
+                                          ),
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                ],
                               ),
-                              GestureDetector(
-                                onTap: () {
-                                  priborname1Controller.clear();
-                                  pribornumb1Controller.clear();
-                                  pribordate1Controller.clear();
-                                },
-                                child: Icon(
-                                  Icons.delete_outline,
-                                  color: Color.fromRGBO(187, 30, 16, 1.0),
-                                ),
+                            ),
+                            VerticalDivider(thickness: 4),
+                            Container(
+                              width: MediaQuery.of(context).size.width,
+                              child: Column(
+                                children: [
+                                  Container(
+                                      alignment: Alignment.center,
+                                      child: Row(
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.center,
+                                        children: [
+                                          Text(
+                                            'Прибор №2',
+                                            style: TextStyle(
+                                                fontSize: 24,
+                                                color: Theme.of(context)
+                                                    .primaryColor,
+                                                fontWeight: FontWeight.w300),
+                                          ),
+                                          GestureDetector(
+                                            onTap: () {
+                                              priborname2Controller.clear();
+                                              pribornumb2Controller.clear();
+                                              pribordate2Controller.clear();
+                                            },
+                                            child: Icon(
+                                              Icons.delete_outline,
+                                              color: Color.fromRGBO(
+                                                  187, 30, 16, 1.0),
+                                            ),
+                                          ),
+                                        ],
+                                      )),
+                                  Padding(
+                                    padding: const EdgeInsets.all(10.0),
+                                    child: TextFormField(
+                                      focusNode: focusNode39,
+                                      onChanged: (String value) {
+                                        setState(() {
+                                          focusNode39.requestFocus();
+                                        });
+                                      },
+                                      maxLength: 30,
+                                      onSaved: (value) {
+                                        object.priborname2 = value;
+                                      },
+                                      controller: priborname2Controller,
+                                      style: textStyle,
+                                      decoration: InputDecoration(
+                                        focusColor:
+                                            Theme.of(context).primaryColor,
+                                        labelStyle: TextStyle(
+                                          fontSize: 22,
+                                          fontWeight: FontWeight.w300,
+                                          color: Theme.of(context).primaryColor,
+                                        ),
+                                        hintStyle: TextStyle(
+                                          fontSize: 16,
+                                          fontWeight: FontWeight.w300,
+                                          color: Theme.of(context).primaryColor,
+                                        ),
+                                        labelText: 'Наименование прибора №2',
+                                        hintText: 'Введите название',
+                                        // helperText: '...',
+                                        prefixIcon: Icon(
+                                          Icons.speaker_phone,
+                                          color: focusNode39.hasFocus ||
+                                                  priborname2Controller
+                                                      .text.isNotEmpty
+                                              ? Theme.of(context).primaryColor
+                                              : Colors.grey,
+                                          size: 32,
+                                        ),
+                                        enabledBorder: OutlineInputBorder(
+                                          borderRadius: BorderRadius.all(
+                                              Radius.circular(10)),
+                                          borderSide: BorderSide(
+                                              color: Colors.grey, width: 2),
+                                        ),
+                                        focusedBorder: OutlineInputBorder(
+                                          borderRadius: BorderRadius.all(
+                                              Radius.circular(20)),
+                                          borderSide: BorderSide(
+                                              color: Theme.of(context)
+                                                  .primaryColor,
+                                              width: 2),
+                                        ),
+                                      ),
+                                      keyboardType: TextInputType.text,
+                                    ),
+                                  ),
+                                  Row(
+                                    children: [
+                                      Expanded(
+                                        child: Padding(
+                                          padding: const EdgeInsets.all(10.0),
+                                          child: TextFormField(
+                                            focusNode: focusNode40,
+                                            onChanged: (String value) {
+                                              setState(() {
+                                                focusNode40.requestFocus();
+                                              });
+                                            },
+                                            maxLength: 30,
+                                            onSaved: (value) {
+                                              object.pribornumb2 = value;
+                                            },
+                                            controller: pribornumb2Controller,
+                                            style: textStyle,
+                                            decoration: InputDecoration(
+                                              focusColor: Theme.of(context)
+                                                  .primaryColor,
+                                              labelStyle: TextStyle(
+                                                fontSize: 22,
+                                                fontWeight: FontWeight.w300,
+                                                color: Theme.of(context)
+                                                    .primaryColor,
+                                              ),
+                                              hintStyle: TextStyle(
+                                                fontSize: 16,
+                                                fontWeight: FontWeight.w300,
+                                                color: Theme.of(context)
+                                                    .primaryColor,
+                                              ),
+                                              labelText: '№',
+                                              hintText: '№',
+                                              helperText: '№....',
+                                              prefixIcon: Icon(
+                                                Icons.speaker_phone,
+                                                color: focusNode40.hasFocus ||
+                                                        pribornumb2Controller
+                                                            .text.isNotEmpty
+                                                    ? Theme.of(context)
+                                                        .primaryColor
+                                                    : Colors.grey,
+                                                size: 32,
+                                              ),
+                                              enabledBorder: OutlineInputBorder(
+                                                borderRadius: BorderRadius.all(
+                                                    Radius.circular(10)),
+                                                borderSide: BorderSide(
+                                                    color: Colors.grey,
+                                                    width: 2),
+                                              ),
+                                              focusedBorder: OutlineInputBorder(
+                                                borderRadius: BorderRadius.all(
+                                                    Radius.circular(20)),
+                                                borderSide: BorderSide(
+                                                    color: Theme.of(context)
+                                                        .primaryColor,
+                                                    width: 2),
+                                              ),
+                                            ),
+                                            keyboardType: TextInputType.text,
+                                          ),
+                                        ),
+                                      ),
+                                      Expanded(
+                                        child: Padding(
+                                          padding: const EdgeInsets.all(10.0),
+                                          child: TextFormField(
+                                            focusNode: focusNode41,
+                                            onChanged: (String value) {
+                                              setState(() {
+                                                focusNode41.requestFocus();
+                                              });
+                                            },
+                                            maxLength: 10,
+                                            onSaved: (value) {
+                                              object.pribordate2 = value;
+                                            },
+                                            controller: pribordate2Controller,
+                                            style: textStyle,
+                                            decoration: InputDecoration(
+                                              focusColor: Theme.of(context)
+                                                  .primaryColor,
+                                              labelStyle: TextStyle(
+                                                fontSize: 22,
+                                                fontWeight: FontWeight.w300,
+                                                color: Theme.of(context)
+                                                    .primaryColor,
+                                              ),
+                                              hintStyle: TextStyle(
+                                                fontSize: 16,
+                                                fontWeight: FontWeight.w300,
+                                                color: Theme.of(context)
+                                                    .primaryColor,
+                                              ),
+                                              labelText: 'Дата поверки',
+                                              hintText: 'дата',
+                                              helperText: 'д.м.г',
+                                              prefixIcon: Icon(
+                                                Icons.speaker_phone,
+                                                color: focusNode41.hasFocus ||
+                                                        pribordate2Controller
+                                                            .text.isNotEmpty
+                                                    ? Theme.of(context)
+                                                        .primaryColor
+                                                    : Colors.grey,
+                                                size: 32,
+                                              ),
+                                              enabledBorder: OutlineInputBorder(
+                                                borderRadius: BorderRadius.all(
+                                                    Radius.circular(10)),
+                                                borderSide: BorderSide(
+                                                    color: Colors.grey,
+                                                    width: 2),
+                                              ),
+                                              focusedBorder: OutlineInputBorder(
+                                                borderRadius: BorderRadius.all(
+                                                    Radius.circular(20)),
+                                                borderSide: BorderSide(
+                                                    color: Theme.of(context)
+                                                        .primaryColor,
+                                                    width: 2),
+                                              ),
+                                            ),
+                                            keyboardType: TextInputType.number,
+                                          ),
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                ],
                               ),
-                            ],
-                          )),
-                      SizedBox(height: 10),
-                      TextFormField(
-                        focusNode: focusNode36,
-                        onChanged: (String value) {
-                          setState(() {
-                            focusNode36.requestFocus();
-                          });
-                        },
-                        maxLength: 30,
-                        onSaved: (value) {
-                          object.priborname1 = value;
-                        },
-                        controller: priborname1Controller,
-                        style: textStyle,
-                        decoration: InputDecoration(
-                          focusColor: Theme.of(context).primaryColor,
-                          labelStyle: TextStyle(
-                            fontSize: 22,
-                            fontWeight: FontWeight.w300,
-                            color: Theme.of(context).primaryColor,
-                          ),
-                          hintStyle: TextStyle(
-                            fontSize: 16,
-                            fontWeight: FontWeight.w300,
-                            color: Theme.of(context).primaryColor,
-                          ),
-                          labelText: 'Наименование прибора №1',
-                          hintText: 'Введите название',
-                          // helperText: '...',
-                          prefixIcon: Icon(
-                            Icons.speaker_phone,
-                            color: focusNode36.hasFocus ||
-                                    priborname1Controller.text.isNotEmpty
-                                ? Theme.of(context).primaryColor
-                                : Colors.grey,
-                            size: 32,
-                          ),
-                          enabledBorder: OutlineInputBorder(
-                            borderRadius: BorderRadius.all(Radius.circular(10)),
-                            borderSide:
-                                BorderSide(color: Colors.grey, width: 2),
-                          ),
-                          focusedBorder: OutlineInputBorder(
-                            borderRadius: BorderRadius.all(Radius.circular(20)),
-                            borderSide: BorderSide(
-                                color: Theme.of(context).primaryColor,
-                                width: 2),
-                          ),
+                            ),
+                            VerticalDivider(thickness: 4),
+                            Container(
+                              width: MediaQuery.of(context).size.width,
+                              child: Column(
+                                children: [
+                                  Container(
+                                      alignment: Alignment.center,
+                                      child: Row(
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.center,
+                                        children: [
+                                          Text(
+                                            'Прибор №3',
+                                            style: TextStyle(
+                                                fontSize: 24,
+                                                color: Theme.of(context)
+                                                    .primaryColor,
+                                                fontWeight: FontWeight.w300),
+                                          ),
+                                          GestureDetector(
+                                            onTap: () {
+                                              priborname3Controller.clear();
+                                              pribornumb3Controller.clear();
+                                              pribordate3Controller.clear();
+                                            },
+                                            child: Icon(
+                                              Icons.delete_outline,
+                                              color: Color.fromRGBO(
+                                                  187, 30, 16, 1.0),
+                                            ),
+                                          ),
+                                        ],
+                                      )),
+                                  Padding(
+                                    padding: const EdgeInsets.all(10.0),
+                                    child: TextFormField(
+                                      focusNode: focusNode42,
+                                      onChanged: (String value) {
+                                        setState(() {
+                                          focusNode42.requestFocus();
+                                        });
+                                      },
+                                      maxLength: 30,
+                                      onSaved: (value) {
+                                        object.priborname3 = value;
+                                      },
+                                      controller: priborname3Controller,
+                                      style: textStyle,
+                                      decoration: InputDecoration(
+                                        focusColor:
+                                            Theme.of(context).primaryColor,
+                                        labelStyle: TextStyle(
+                                          fontSize: 22,
+                                          fontWeight: FontWeight.w300,
+                                          color: Theme.of(context).primaryColor,
+                                        ),
+                                        hintStyle: TextStyle(
+                                          fontSize: 16,
+                                          fontWeight: FontWeight.w300,
+                                          color: Theme.of(context).primaryColor,
+                                        ),
+                                        labelText: 'Наименование прибора №3',
+                                        hintText: 'Введите название',
+                                        // helperText: '...',
+                                        prefixIcon: Icon(
+                                          Icons.build,
+                                          color: focusNode42.hasFocus ||
+                                                  priborname3Controller
+                                                      .text.isNotEmpty
+                                              ? Theme.of(context).primaryColor
+                                              : Colors.grey,
+                                          size: 32,
+                                        ),
+                                        enabledBorder: OutlineInputBorder(
+                                          borderRadius: BorderRadius.all(
+                                              Radius.circular(10)),
+                                          borderSide: BorderSide(
+                                              color: Colors.grey, width: 2),
+                                        ),
+                                        focusedBorder: OutlineInputBorder(
+                                          borderRadius: BorderRadius.all(
+                                              Radius.circular(20)),
+                                          borderSide: BorderSide(
+                                              color: Theme.of(context)
+                                                  .primaryColor,
+                                              width: 2),
+                                        ),
+                                      ),
+                                      keyboardType: TextInputType.text,
+                                    ),
+                                  ),
+                                  Row(
+                                    children: [
+                                      Expanded(
+                                        child: Padding(
+                                          padding: const EdgeInsets.all(10.0),
+                                          child: TextFormField(
+                                            focusNode: focusNode43,
+                                            onChanged: (String value) {
+                                              setState(() {
+                                                focusNode43.requestFocus();
+                                              });
+                                            },
+                                            maxLength: 30,
+                                            onSaved: (value) {
+                                              object.pribornumb3 = value;
+                                            },
+                                            controller: pribornumb3Controller,
+                                            style: textStyle,
+                                            decoration: InputDecoration(
+                                              focusColor: Theme.of(context)
+                                                  .primaryColor,
+                                              labelStyle: TextStyle(
+                                                fontSize: 22,
+                                                fontWeight: FontWeight.w300,
+                                                color: Theme.of(context)
+                                                    .primaryColor,
+                                              ),
+                                              hintStyle: TextStyle(
+                                                fontSize: 16,
+                                                fontWeight: FontWeight.w300,
+                                                color: Theme.of(context)
+                                                    .primaryColor,
+                                              ),
+                                              labelText: '№',
+                                              hintText: '№',
+                                              helperText: '№....',
+                                              prefixIcon: Icon(
+                                                Icons.build,
+                                                color: focusNode43.hasFocus ||
+                                                        pribornumb3Controller
+                                                            .text.isNotEmpty
+                                                    ? Theme.of(context)
+                                                        .primaryColor
+                                                    : Colors.grey,
+                                                size: 32,
+                                              ),
+                                              enabledBorder: OutlineInputBorder(
+                                                borderRadius: BorderRadius.all(
+                                                    Radius.circular(10)),
+                                                borderSide: BorderSide(
+                                                    color: Colors.grey,
+                                                    width: 2),
+                                              ),
+                                              focusedBorder: OutlineInputBorder(
+                                                borderRadius: BorderRadius.all(
+                                                    Radius.circular(20)),
+                                                borderSide: BorderSide(
+                                                    color: Theme.of(context)
+                                                        .primaryColor,
+                                                    width: 2),
+                                              ),
+                                            ),
+                                            keyboardType: TextInputType.text,
+                                          ),
+                                        ),
+                                      ),
+                                      Expanded(
+                                        child: Padding(
+                                          padding: const EdgeInsets.all(10.0),
+                                          child: TextFormField(
+                                            focusNode: focusNode44,
+                                            onChanged: (String value) {
+                                              setState(() {
+                                                focusNode44.requestFocus();
+                                              });
+                                            },
+                                            maxLength: 10,
+                                            onSaved: (value) {
+                                              object.pribordate3 = value;
+                                            },
+                                            controller: pribordate3Controller,
+                                            style: textStyle,
+                                            decoration: InputDecoration(
+                                              focusColor: Theme.of(context)
+                                                  .primaryColor,
+                                              labelStyle: TextStyle(
+                                                fontSize: 22,
+                                                fontWeight: FontWeight.w300,
+                                                color: Theme.of(context)
+                                                    .primaryColor,
+                                              ),
+                                              hintStyle: TextStyle(
+                                                fontSize: 16,
+                                                fontWeight: FontWeight.w300,
+                                                color: Theme.of(context)
+                                                    .primaryColor,
+                                              ),
+                                              labelText: 'Дата поверки',
+                                              hintText: 'дата',
+                                              helperText: 'д.м.г',
+                                              prefixIcon: Icon(
+                                                Icons.build,
+                                                color: focusNode44.hasFocus ||
+                                                        pribordate3Controller
+                                                            .text.isNotEmpty
+                                                    ? Theme.of(context)
+                                                        .primaryColor
+                                                    : Colors.grey,
+                                                size: 32,
+                                              ),
+                                              enabledBorder: OutlineInputBorder(
+                                                borderRadius: BorderRadius.all(
+                                                    Radius.circular(10)),
+                                                borderSide: BorderSide(
+                                                    color: Colors.grey,
+                                                    width: 2),
+                                              ),
+                                              focusedBorder: OutlineInputBorder(
+                                                borderRadius: BorderRadius.all(
+                                                    Radius.circular(20)),
+                                                borderSide: BorderSide(
+                                                    color: Theme.of(context)
+                                                        .primaryColor,
+                                                    width: 2),
+                                              ),
+                                            ),
+                                            keyboardType: TextInputType.number,
+                                          ),
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                ],
+                              ),
+                            ),
+                            VerticalDivider(thickness: 4),
+                            Container(
+                              width: MediaQuery.of(context).size.width,
+                              child: Column(
+                                children: [
+                                  Container(
+                                      alignment: Alignment.center,
+                                      child: Row(
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.center,
+                                        children: [
+                                          Text(
+                                            'Прибор №4',
+                                            style: TextStyle(
+                                                fontSize: 24,
+                                                color: Theme.of(context)
+                                                    .primaryColor,
+                                                fontWeight: FontWeight.w300),
+                                          ),
+                                          GestureDetector(
+                                            onTap: () {
+                                              priborname4Controller.clear();
+                                              pribornumb4Controller.clear();
+                                              pribordate4Controller.clear();
+                                            },
+                                            child: Icon(
+                                              Icons.delete_outline,
+                                              color: Color.fromRGBO(
+                                                  187, 30, 16, 1.0),
+                                            ),
+                                          ),
+                                        ],
+                                      )),
+                                  Padding(
+                                    padding: const EdgeInsets.all(10.0),
+                                    child: TextFormField(
+                                      focusNode: focusNode45,
+                                      onChanged: (String value) {
+                                        setState(() {
+                                          focusNode45.requestFocus();
+                                        });
+                                      },
+                                      maxLength: 30,
+                                      onSaved: (value) {
+                                        object.priborname4 = value;
+                                      },
+                                      controller: priborname4Controller,
+                                      style: textStyle,
+                                      decoration: InputDecoration(
+                                        focusColor:
+                                            Theme.of(context).primaryColor,
+                                        labelStyle: TextStyle(
+                                          fontSize: 22,
+                                          fontWeight: FontWeight.w300,
+                                          color: Theme.of(context).primaryColor,
+                                        ),
+                                        hintStyle: TextStyle(
+                                          fontSize: 16,
+                                          fontWeight: FontWeight.w300,
+                                          color: Theme.of(context).primaryColor,
+                                        ),
+                                        labelText: 'Наименование прибора №4',
+                                        hintText: 'Введите название',
+                                        // helperText: '...',
+                                        prefixIcon: Icon(
+                                          Icons.mode_edit,
+                                          color: focusNode45.hasFocus ||
+                                                  priborname4Controller
+                                                      .text.isNotEmpty
+                                              ? Theme.of(context).primaryColor
+                                              : Colors.grey,
+                                          size: 32,
+                                        ),
+                                        enabledBorder: OutlineInputBorder(
+                                          borderRadius: BorderRadius.all(
+                                              Radius.circular(10)),
+                                          borderSide: BorderSide(
+                                              color: Colors.grey, width: 2),
+                                        ),
+                                        focusedBorder: OutlineInputBorder(
+                                          borderRadius: BorderRadius.all(
+                                              Radius.circular(20)),
+                                          borderSide: BorderSide(
+                                              color: Theme.of(context)
+                                                  .primaryColor,
+                                              width: 2),
+                                        ),
+                                      ),
+                                      keyboardType: TextInputType.text,
+                                    ),
+                                  ),
+                                  Row(
+                                    children: [
+                                      Expanded(
+                                        child: Padding(
+                                          padding: const EdgeInsets.all(10.0),
+                                          child: TextFormField(
+                                            focusNode: focusNode46,
+                                            onChanged: (String value) {
+                                              setState(() {
+                                                focusNode46.requestFocus();
+                                              });
+                                            },
+                                            maxLength: 30,
+                                            onSaved: (value) {
+                                              object.pribornumb4 = value;
+                                            },
+                                            controller: pribornumb4Controller,
+                                            style: textStyle,
+                                            decoration: InputDecoration(
+                                              focusColor: Theme.of(context)
+                                                  .primaryColor,
+                                              labelStyle: TextStyle(
+                                                fontSize: 22,
+                                                fontWeight: FontWeight.w300,
+                                                color: Theme.of(context)
+                                                    .primaryColor,
+                                              ),
+                                              hintStyle: TextStyle(
+                                                fontSize: 16,
+                                                fontWeight: FontWeight.w300,
+                                                color: Theme.of(context)
+                                                    .primaryColor,
+                                              ),
+                                              labelText: '№',
+                                              hintText: '№',
+                                              helperText: '№....',
+                                              prefixIcon: Icon(
+                                                Icons.mode_edit,
+                                                color: focusNode46.hasFocus ||
+                                                        pribornumb4Controller
+                                                            .text.isNotEmpty
+                                                    ? Theme.of(context)
+                                                        .primaryColor
+                                                    : Colors.grey,
+                                                size: 32,
+                                              ),
+                                              enabledBorder: OutlineInputBorder(
+                                                borderRadius: BorderRadius.all(
+                                                    Radius.circular(10)),
+                                                borderSide: BorderSide(
+                                                    color: Colors.grey,
+                                                    width: 2),
+                                              ),
+                                              focusedBorder: OutlineInputBorder(
+                                                borderRadius: BorderRadius.all(
+                                                    Radius.circular(20)),
+                                                borderSide: BorderSide(
+                                                    color: Theme.of(context)
+                                                        .primaryColor,
+                                                    width: 2),
+                                              ),
+                                            ),
+                                            keyboardType: TextInputType.text,
+                                          ),
+                                        ),
+                                      ),
+                                      Expanded(
+                                        child: Padding(
+                                          padding: const EdgeInsets.all(10.0),
+                                          child: TextFormField(
+                                            focusNode: focusNode47,
+                                            onChanged: (String value) {
+                                              setState(() {
+                                                focusNode47.requestFocus();
+                                              });
+                                            },
+                                            maxLength: 10,
+                                            onSaved: (value) {
+                                              object.pribordate4 = value;
+                                            },
+                                            controller: pribordate4Controller,
+                                            style: textStyle,
+                                            decoration: InputDecoration(
+                                              focusColor: Theme.of(context)
+                                                  .primaryColor,
+                                              labelStyle: TextStyle(
+                                                fontSize: 22,
+                                                fontWeight: FontWeight.w300,
+                                                color: Theme.of(context)
+                                                    .primaryColor,
+                                              ),
+                                              hintStyle: TextStyle(
+                                                fontSize: 16,
+                                                fontWeight: FontWeight.w300,
+                                                color: Theme.of(context)
+                                                    .primaryColor,
+                                              ),
+                                              labelText: 'Дата поверки',
+                                              hintText: 'дата',
+                                              helperText: 'д.м.г',
+                                              prefixIcon: Icon(
+                                                Icons.mode_edit,
+                                                color: focusNode47.hasFocus ||
+                                                        pribordate4Controller
+                                                            .text.isNotEmpty
+                                                    ? Theme.of(context)
+                                                        .primaryColor
+                                                    : Colors.grey,
+                                                size: 32,
+                                              ),
+                                              enabledBorder: OutlineInputBorder(
+                                                borderRadius: BorderRadius.all(
+                                                    Radius.circular(10)),
+                                                borderSide: BorderSide(
+                                                    color: Colors.grey,
+                                                    width: 2),
+                                              ),
+                                              focusedBorder: OutlineInputBorder(
+                                                borderRadius: BorderRadius.all(
+                                                    Radius.circular(20)),
+                                                borderSide: BorderSide(
+                                                    color: Theme.of(context)
+                                                        .primaryColor,
+                                                    width: 2),
+                                              ),
+                                            ),
+                                            keyboardType: TextInputType.number,
+                                          ),
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                ],
+                              ),
+                            ),
+                            VerticalDivider(thickness: 4),
+                            Container(
+                              width: MediaQuery.of(context).size.width,
+                              child: Column(
+                                children: [
+                                  Container(
+                                      alignment: Alignment.center,
+                                      child: Row(
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.center,
+                                        children: [
+                                          Text(
+                                            'Прибор №5',
+                                            style: TextStyle(
+                                                fontSize: 24,
+                                                color: Theme.of(context)
+                                                    .primaryColor,
+                                                fontWeight: FontWeight.w300),
+                                          ),
+                                          GestureDetector(
+                                            onTap: () {
+                                              priborname5Controller.clear();
+                                              pribornumb5Controller.clear();
+                                              pribordate5Controller.clear();
+                                            },
+                                            child: Icon(
+                                              Icons.delete_outline,
+                                              color: Color.fromRGBO(
+                                                  187, 30, 16, 1.0),
+                                            ),
+                                          ),
+                                        ],
+                                      )),
+                                  Padding(
+                                    padding: const EdgeInsets.all(10.0),
+                                    child: TextFormField(
+                                      focusNode: focusNode48,
+                                      onChanged: (String value) {
+                                        setState(() {
+                                          focusNode48.requestFocus();
+                                        });
+                                      },
+                                      maxLength: 30,
+                                      onSaved: (value) {
+                                        object.priborname5 = value;
+                                      },
+                                      controller: priborname5Controller,
+                                      style: textStyle,
+                                      decoration: InputDecoration(
+                                        focusColor:
+                                            Theme.of(context).primaryColor,
+                                        labelStyle: TextStyle(
+                                          fontSize: 22,
+                                          fontWeight: FontWeight.w300,
+                                          color: Theme.of(context).primaryColor,
+                                        ),
+                                        hintStyle: TextStyle(
+                                          fontSize: 16,
+                                          fontWeight: FontWeight.w300,
+                                          color: Theme.of(context).primaryColor,
+                                        ),
+                                        labelText: 'Наименование прибора №5',
+                                        hintText: 'Введите название',
+                                        // helperText: '...',
+                                        prefixIcon: Icon(
+                                          Icons.work,
+                                          color: focusNode48.hasFocus ||
+                                                  priborname5Controller
+                                                      .text.isNotEmpty
+                                              ? Theme.of(context).primaryColor
+                                              : Colors.grey,
+                                          size: 32,
+                                        ),
+                                        enabledBorder: OutlineInputBorder(
+                                          borderRadius: BorderRadius.all(
+                                              Radius.circular(10)),
+                                          borderSide: BorderSide(
+                                              color: Colors.grey, width: 2),
+                                        ),
+                                        focusedBorder: OutlineInputBorder(
+                                          borderRadius: BorderRadius.all(
+                                              Radius.circular(20)),
+                                          borderSide: BorderSide(
+                                              color: Theme.of(context)
+                                                  .primaryColor,
+                                              width: 2),
+                                        ),
+                                      ),
+                                      keyboardType: TextInputType.text,
+                                    ),
+                                  ),
+                                  Row(
+                                    children: [
+                                      Expanded(
+                                        child: Padding(
+                                          padding: const EdgeInsets.all(10.0),
+                                          child: TextFormField(
+                                            focusNode: focusNode49,
+                                            onChanged: (String value) {
+                                              setState(() {
+                                                focusNode49.requestFocus();
+                                              });
+                                            },
+                                            maxLength: 30,
+                                            onSaved: (value) {
+                                              object.pribornumb5 = value;
+                                            },
+                                            controller: pribornumb5Controller,
+                                            style: textStyle,
+                                            decoration: InputDecoration(
+                                              focusColor: Theme.of(context)
+                                                  .primaryColor,
+                                              labelStyle: TextStyle(
+                                                fontSize: 22,
+                                                fontWeight: FontWeight.w300,
+                                                color: Theme.of(context)
+                                                    .primaryColor,
+                                              ),
+                                              hintStyle: TextStyle(
+                                                fontSize: 16,
+                                                fontWeight: FontWeight.w300,
+                                                color: Theme.of(context)
+                                                    .primaryColor,
+                                              ),
+                                              labelText: '№',
+                                              hintText: '№',
+                                              helperText: '№....',
+                                              prefixIcon: Icon(
+                                                Icons.work,
+                                                color: focusNode49.hasFocus ||
+                                                        pribornumb5Controller
+                                                            .text.isNotEmpty
+                                                    ? Theme.of(context)
+                                                        .primaryColor
+                                                    : Colors.grey,
+                                                size: 32,
+                                              ),
+                                              enabledBorder: OutlineInputBorder(
+                                                borderRadius: BorderRadius.all(
+                                                    Radius.circular(10)),
+                                                borderSide: BorderSide(
+                                                    color: Colors.grey,
+                                                    width: 2),
+                                              ),
+                                              focusedBorder: OutlineInputBorder(
+                                                borderRadius: BorderRadius.all(
+                                                    Radius.circular(20)),
+                                                borderSide: BorderSide(
+                                                    color: Theme.of(context)
+                                                        .primaryColor,
+                                                    width: 2),
+                                              ),
+                                            ),
+                                            keyboardType: TextInputType.text,
+                                          ),
+                                        ),
+                                      ),
+                                      Expanded(
+                                        child: Padding(
+                                          padding: const EdgeInsets.all(10.0),
+                                          child: TextFormField(
+                                            focusNode: focusNode50,
+                                            onChanged: (String value) {
+                                              setState(() {
+                                                focusNode50.requestFocus();
+                                              });
+                                            },
+                                            maxLength: 10,
+                                            onSaved: (value) {
+                                              object.pribordate5 = value;
+                                            },
+                                            controller: pribordate5Controller,
+                                            style: textStyle,
+                                            decoration: InputDecoration(
+                                              focusColor: Theme.of(context)
+                                                  .primaryColor,
+                                              labelStyle: TextStyle(
+                                                fontSize: 22,
+                                                fontWeight: FontWeight.w300,
+                                                color: Theme.of(context)
+                                                    .primaryColor,
+                                              ),
+                                              hintStyle: TextStyle(
+                                                fontSize: 16,
+                                                fontWeight: FontWeight.w300,
+                                                color: Theme.of(context)
+                                                    .primaryColor,
+                                              ),
+                                              labelText: 'Дата поверки',
+                                              hintText: 'дата',
+                                              helperText: 'д.м.г',
+                                              prefixIcon: Icon(
+                                                Icons.work,
+                                                color: focusNode50.hasFocus ||
+                                                        pribordate5Controller
+                                                            .text.isNotEmpty
+                                                    ? Theme.of(context)
+                                                        .primaryColor
+                                                    : Colors.grey,
+                                                size: 32,
+                                              ),
+                                              enabledBorder: OutlineInputBorder(
+                                                borderRadius: BorderRadius.all(
+                                                    Radius.circular(10)),
+                                                borderSide: BorderSide(
+                                                    color: Colors.grey,
+                                                    width: 2),
+                                              ),
+                                              focusedBorder: OutlineInputBorder(
+                                                borderRadius: BorderRadius.all(
+                                                    Radius.circular(20)),
+                                                borderSide: BorderSide(
+                                                    color: Theme.of(context)
+                                                        .primaryColor,
+                                                    width: 2),
+                                              ),
+                                            ),
+                                            keyboardType: TextInputType.number,
+                                          ),
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                ],
+                              ),
+                            ),
+                            VerticalDivider(thickness: 4),
+                          ],
                         ),
-                        keyboardType: TextInputType.text,
                       ),
                       SizedBox(height: 10),
-                      Row(
-                        children: [
-                          Expanded(
-                            child: TextFormField(
-                              focusNode: focusNode37,
-                              onChanged: (String value) {
-                                setState(() {
-                                  focusNode37.requestFocus();
-                                });
-                              },
-                              maxLength: 30,
-                              onSaved: (value) {
-                                object.pribornumb1 = value;
-                              },
-                              controller: pribornumb1Controller,
-                              style: textStyle,
-                              decoration: InputDecoration(
-                                focusColor: Theme.of(context).primaryColor,
-                                labelStyle: TextStyle(
-                                  fontSize: 22,
-                                  fontWeight: FontWeight.w300,
-                                  color: Theme.of(context).primaryColor,
-                                ),
-                                hintStyle: TextStyle(
-                                  fontSize: 16,
-                                  fontWeight: FontWeight.w300,
-                                  color: Theme.of(context).primaryColor,
-                                ),
-                                labelText: '№',
-                                hintText: '№',
-                                helperText: '№....',
-                                prefixIcon: Icon(
-                                  Icons.speaker_phone,
-                                  color: focusNode37.hasFocus ||
-                                          pribornumb1Controller.text.isNotEmpty
-                                      ? Theme.of(context).primaryColor
-                                      : Colors.grey,
-                                  size: 32,
-                                ),
-                                enabledBorder: OutlineInputBorder(
-                                  borderRadius:
-                                      BorderRadius.all(Radius.circular(10)),
-                                  borderSide:
-                                      BorderSide(color: Colors.grey, width: 2),
-                                ),
-                                focusedBorder: OutlineInputBorder(
-                                  borderRadius:
-                                      BorderRadius.all(Radius.circular(20)),
-                                  borderSide: BorderSide(
-                                      color: Theme.of(context).primaryColor,
-                                      width: 2),
-                                ),
-                              ),
-                              keyboardType: TextInputType.text,
-                            ),
-                          ),
-                          SizedBox(width: 5),
-                          Expanded(
-                            child: TextFormField(
-                              focusNode: focusNode38,
-                              onChanged: (String value) {
-                                setState(() {
-                                  focusNode38.requestFocus();
-                                });
-                              },
-                              maxLength: 10,
-                              onSaved: (value) {
-                                object.pribordate1 = value;
-                              },
-                              controller: pribordate1Controller,
-                              style: textStyle,
-                              decoration: InputDecoration(
-                                focusColor: Theme.of(context).primaryColor,
-                                labelStyle: TextStyle(
-                                  fontSize: 22,
-                                  fontWeight: FontWeight.w300,
-                                  color: Theme.of(context).primaryColor,
-                                ),
-                                hintStyle: TextStyle(
-                                  fontSize: 16,
-                                  fontWeight: FontWeight.w300,
-                                  color: Theme.of(context).primaryColor,
-                                ),
-                                labelText: 'Дата поверки',
-                                hintText: 'дата',
-                                helperText: 'д.м.г',
-                                prefixIcon: Icon(
-                                  Icons.speaker_phone,
-                                  color: focusNode38.hasFocus ||
-                                          pribordate1Controller.text.isNotEmpty
-                                      ? Theme.of(context).primaryColor
-                                      : Colors.grey,
-                                  size: 32,
-                                ),
-                                enabledBorder: OutlineInputBorder(
-                                  borderRadius:
-                                      BorderRadius.all(Radius.circular(10)),
-                                  borderSide:
-                                      BorderSide(color: Colors.grey, width: 2),
-                                ),
-                                focusedBorder: OutlineInputBorder(
-                                  borderRadius:
-                                      BorderRadius.all(Radius.circular(20)),
-                                  borderSide: BorderSide(
-                                      color: Theme.of(context).primaryColor,
-                                      width: 2),
-                                ),
-                              ),
-                              keyboardType: TextInputType.number,
-                            ),
-                          ),
-                        ],
-                      ),
+
                       // SizedBox(height: 10),
                       Divider(thickness: 4),
-                      Container(
-                          alignment: Alignment.center,
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              Text(
-                                'Прибор №2',
-                                style: TextStyle(
-                                    fontSize: 24,
-                                    color: Theme.of(context).primaryColor,
-                                    fontWeight: FontWeight.w300),
-                              ),
-                              GestureDetector(
-                                onTap: () {
-                                  priborname2Controller.clear();
-                                  pribornumb2Controller.clear();
-                                  pribordate2Controller.clear();
-                                },
-                                child: Icon(
-                                  Icons.delete_outline,
-                                  color: Color.fromRGBO(187, 30, 16, 1.0),
-                                ),
-                              ),
-                            ],
-                          )),
-                      SizedBox(height: 10),
-                      TextFormField(
-                        focusNode: focusNode39,
-                        onChanged: (String value) {
-                          setState(() {
-                            focusNode39.requestFocus();
-                          });
-                        },
-                        maxLength: 30,
-                        onSaved: (value) {
-                          object.priborname2 = value;
-                        },
-                        controller: priborname2Controller,
-                        style: textStyle,
-                        decoration: InputDecoration(
-                          focusColor: Theme.of(context).primaryColor,
-                          labelStyle: TextStyle(
-                            fontSize: 22,
-                            fontWeight: FontWeight.w300,
-                            color: Theme.of(context).primaryColor,
-                          ),
-                          hintStyle: TextStyle(
-                            fontSize: 16,
-                            fontWeight: FontWeight.w300,
-                            color: Theme.of(context).primaryColor,
-                          ),
-                          labelText: 'Наименование прибора №2',
-                          hintText: 'Введите название',
-                          // helperText: '...',
-                          prefixIcon: Icon(
-                            Icons.speaker_phone,
-                            color: focusNode39.hasFocus ||
-                                    priborname2Controller.text.isNotEmpty
-                                ? Theme.of(context).primaryColor
-                                : Colors.grey,
-                            size: 32,
-                          ),
-                          enabledBorder: OutlineInputBorder(
-                            borderRadius: BorderRadius.all(Radius.circular(10)),
-                            borderSide:
-                                BorderSide(color: Colors.grey, width: 2),
-                          ),
-                          focusedBorder: OutlineInputBorder(
-                            borderRadius: BorderRadius.all(Radius.circular(20)),
-                            borderSide: BorderSide(
-                                color: Theme.of(context).primaryColor,
-                                width: 2),
-                          ),
-                        ),
-                        keyboardType: TextInputType.text,
-                      ),
-                      SizedBox(height: 10),
-                      Row(
-                        children: [
-                          Expanded(
-                            child: TextFormField(
-                              focusNode: focusNode40,
-                              onChanged: (String value) {
-                                setState(() {
-                                  focusNode40.requestFocus();
-                                });
-                              },
-                              maxLength: 30,
-                              onSaved: (value) {
-                                object.pribornumb2 = value;
-                              },
-                              controller: pribornumb2Controller,
-                              style: textStyle,
-                              decoration: InputDecoration(
-                                focusColor: Theme.of(context).primaryColor,
-                                labelStyle: TextStyle(
-                                  fontSize: 22,
-                                  fontWeight: FontWeight.w300,
-                                  color: Theme.of(context).primaryColor,
-                                ),
-                                hintStyle: TextStyle(
-                                  fontSize: 16,
-                                  fontWeight: FontWeight.w300,
-                                  color: Theme.of(context).primaryColor,
-                                ),
-                                labelText: '№',
-                                hintText: '№',
-                                helperText: '№....',
-                                prefixIcon: Icon(
-                                  Icons.speaker_phone,
-                                  color: focusNode40.hasFocus ||
-                                          pribornumb2Controller.text.isNotEmpty
-                                      ? Theme.of(context).primaryColor
-                                      : Colors.grey,
-                                  size: 32,
-                                ),
-                                enabledBorder: OutlineInputBorder(
-                                  borderRadius:
-                                      BorderRadius.all(Radius.circular(10)),
-                                  borderSide:
-                                      BorderSide(color: Colors.grey, width: 2),
-                                ),
-                                focusedBorder: OutlineInputBorder(
-                                  borderRadius:
-                                      BorderRadius.all(Radius.circular(20)),
-                                  borderSide: BorderSide(
-                                      color: Theme.of(context).primaryColor,
-                                      width: 2),
-                                ),
-                              ),
-                              keyboardType: TextInputType.text,
-                            ),
-                          ),
-                          SizedBox(width: 5),
-                          Expanded(
-                            child: TextFormField(
-                              focusNode: focusNode41,
-                              onChanged: (String value) {
-                                setState(() {
-                                  focusNode41.requestFocus();
-                                });
-                              },
-                              maxLength: 10,
-                              onSaved: (value) {
-                                object.pribordate2 = value;
-                              },
-                              controller: pribordate2Controller,
-                              style: textStyle,
-                              decoration: InputDecoration(
-                                focusColor: Theme.of(context).primaryColor,
-                                labelStyle: TextStyle(
-                                  fontSize: 22,
-                                  fontWeight: FontWeight.w300,
-                                  color: Theme.of(context).primaryColor,
-                                ),
-                                hintStyle: TextStyle(
-                                  fontSize: 16,
-                                  fontWeight: FontWeight.w300,
-                                  color: Theme.of(context).primaryColor,
-                                ),
-                                labelText: 'Дата поверки',
-                                hintText: 'дата',
-                                helperText: 'д.м.г',
-                                prefixIcon: Icon(
-                                  Icons.speaker_phone,
-                                  color: focusNode41.hasFocus ||
-                                          pribordate2Controller.text.isNotEmpty
-                                      ? Theme.of(context).primaryColor
-                                      : Colors.grey,
-                                  size: 32,
-                                ),
-                                enabledBorder: OutlineInputBorder(
-                                  borderRadius:
-                                      BorderRadius.all(Radius.circular(10)),
-                                  borderSide:
-                                      BorderSide(color: Colors.grey, width: 2),
-                                ),
-                                focusedBorder: OutlineInputBorder(
-                                  borderRadius:
-                                      BorderRadius.all(Radius.circular(20)),
-                                  borderSide: BorderSide(
-                                      color: Theme.of(context).primaryColor,
-                                      width: 2),
-                                ),
-                              ),
-                              keyboardType: TextInputType.number,
-                            ),
-                          ),
-                        ],
-                      ),
-                      // SizedBox(height: 10),
-                      Divider(thickness: 4),
-                      Container(
-                          alignment: Alignment.center,
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              Text(
-                                'Прибор №3',
-                                style: TextStyle(
-                                    fontSize: 24,
-                                    color: Theme.of(context).primaryColor,
-                                    fontWeight: FontWeight.w300),
-                              ),
-                              GestureDetector(
-                                onTap: () {
-                                  priborname3Controller.clear();
-                                  pribornumb3Controller.clear();
-                                  pribordate3Controller.clear();
-                                },
-                                child: Icon(
-                                  Icons.delete_outline,
-                                  color: Color.fromRGBO(187, 30, 16, 1.0),
-                                ),
-                              ),
-                            ],
-                          )),
-                      SizedBox(height: 10),
-                      TextFormField(
-                        focusNode: focusNode42,
-                        onChanged: (String value) {
-                          setState(() {
-                            focusNode42.requestFocus();
-                          });
-                        },
-                        maxLength: 30,
-                        onSaved: (value) {
-                          object.priborname3 = value;
-                        },
-                        controller: priborname3Controller,
-                        style: textStyle,
-                        decoration: InputDecoration(
-                          focusColor: Theme.of(context).primaryColor,
-                          labelStyle: TextStyle(
-                            fontSize: 22,
-                            fontWeight: FontWeight.w300,
-                            color: Theme.of(context).primaryColor,
-                          ),
-                          hintStyle: TextStyle(
-                            fontSize: 16,
-                            fontWeight: FontWeight.w300,
-                            color: Theme.of(context).primaryColor,
-                          ),
-                          labelText: 'Наименование прибора №3',
-                          hintText: 'Введите название',
-                          // helperText: '...',
-                          prefixIcon: Icon(
-                            Icons.speaker_phone,
-                            color: focusNode42.hasFocus ||
-                                    priborname3Controller.text.isNotEmpty
-                                ? Theme.of(context).primaryColor
-                                : Colors.grey,
-                            size: 32,
-                          ),
-                          enabledBorder: OutlineInputBorder(
-                            borderRadius: BorderRadius.all(Radius.circular(10)),
-                            borderSide:
-                                BorderSide(color: Colors.grey, width: 2),
-                          ),
-                          focusedBorder: OutlineInputBorder(
-                            borderRadius: BorderRadius.all(Radius.circular(20)),
-                            borderSide: BorderSide(
-                                color: Theme.of(context).primaryColor,
-                                width: 2),
-                          ),
-                        ),
-                        keyboardType: TextInputType.text,
-                      ),
-                      SizedBox(height: 10),
-                      Row(
-                        children: [
-                          Expanded(
-                            child: TextFormField(
-                              focusNode: focusNode43,
-                              onChanged: (String value) {
-                                setState(() {
-                                  focusNode43.requestFocus();
-                                });
-                              },
-                              maxLength: 30,
-                              onSaved: (value) {
-                                object.pribornumb3 = value;
-                              },
-                              controller: pribornumb3Controller,
-                              style: textStyle,
-                              decoration: InputDecoration(
-                                focusColor: Theme.of(context).primaryColor,
-                                labelStyle: TextStyle(
-                                  fontSize: 22,
-                                  fontWeight: FontWeight.w300,
-                                  color: Theme.of(context).primaryColor,
-                                ),
-                                hintStyle: TextStyle(
-                                  fontSize: 16,
-                                  fontWeight: FontWeight.w300,
-                                  color: Theme.of(context).primaryColor,
-                                ),
-                                labelText: '№',
-                                hintText: '№',
-                                helperText: '№....',
-                                prefixIcon: Icon(
-                                  Icons.speaker_phone,
-                                  color: focusNode43.hasFocus ||
-                                          pribornumb3Controller.text.isNotEmpty
-                                      ? Theme.of(context).primaryColor
-                                      : Colors.grey,
-                                  size: 32,
-                                ),
-                                enabledBorder: OutlineInputBorder(
-                                  borderRadius:
-                                      BorderRadius.all(Radius.circular(10)),
-                                  borderSide:
-                                      BorderSide(color: Colors.grey, width: 2),
-                                ),
-                                focusedBorder: OutlineInputBorder(
-                                  borderRadius:
-                                      BorderRadius.all(Radius.circular(20)),
-                                  borderSide: BorderSide(
-                                      color: Theme.of(context).primaryColor,
-                                      width: 2),
-                                ),
-                              ),
-                              keyboardType: TextInputType.text,
-                            ),
-                          ),
-                          SizedBox(width: 5),
-                          Expanded(
-                            child: TextFormField(
-                              focusNode: focusNode44,
-                              onChanged: (String value) {
-                                setState(() {
-                                  focusNode44.requestFocus();
-                                });
-                              },
-                              maxLength: 10,
-                              onSaved: (value) {
-                                object.pribordate3 = value;
-                              },
-                              controller: pribordate3Controller,
-                              style: textStyle,
-                              decoration: InputDecoration(
-                                focusColor: Theme.of(context).primaryColor,
-                                labelStyle: TextStyle(
-                                  fontSize: 22,
-                                  fontWeight: FontWeight.w300,
-                                  color: Theme.of(context).primaryColor,
-                                ),
-                                hintStyle: TextStyle(
-                                  fontSize: 16,
-                                  fontWeight: FontWeight.w300,
-                                  color: Theme.of(context).primaryColor,
-                                ),
-                                labelText: 'Дата поверки',
-                                hintText: 'дата',
-                                helperText: 'д.м.г',
-                                prefixIcon: Icon(
-                                  Icons.speaker_phone,
-                                  color: focusNode44.hasFocus ||
-                                          pribordate3Controller.text.isNotEmpty
-                                      ? Theme.of(context).primaryColor
-                                      : Colors.grey,
-                                  size: 32,
-                                ),
-                                enabledBorder: OutlineInputBorder(
-                                  borderRadius:
-                                      BorderRadius.all(Radius.circular(10)),
-                                  borderSide:
-                                      BorderSide(color: Colors.grey, width: 2),
-                                ),
-                                focusedBorder: OutlineInputBorder(
-                                  borderRadius:
-                                      BorderRadius.all(Radius.circular(20)),
-                                  borderSide: BorderSide(
-                                      color: Theme.of(context).primaryColor,
-                                      width: 2),
-                                ),
-                              ),
-                              keyboardType: TextInputType.number,
-                            ),
-                          ),
-                        ],
-                      ),
-                      // SizedBox(height: 10),
-                      Divider(thickness: 4),
-                      Container(
-                          alignment: Alignment.center,
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              Text(
-                                'Прибор №4',
-                                style: TextStyle(
-                                    fontSize: 24,
-                                    color: Theme.of(context).primaryColor,
-                                    fontWeight: FontWeight.w300),
-                              ),
-                              GestureDetector(
-                                onTap: () {
-                                  priborname4Controller.clear();
-                                  pribornumb4Controller.clear();
-                                  pribordate4Controller.clear();
-                                },
-                                child: Icon(
-                                  Icons.delete_outline,
-                                  color: Color.fromRGBO(187, 30, 16, 1.0),
-                                ),
-                              ),
-                            ],
-                          )),
-                      SizedBox(height: 10),
-                      TextFormField(
-                        focusNode: focusNode45,
-                        onChanged: (String value) {
-                          setState(() {
-                            focusNode45.requestFocus();
-                          });
-                        },
-                        maxLength: 30,
-                        onSaved: (value) {
-                          object.priborname4 = value;
-                        },
-                        controller: priborname4Controller,
-                        style: textStyle,
-                        decoration: InputDecoration(
-                          focusColor: Theme.of(context).primaryColor,
-                          labelStyle: TextStyle(
-                            fontSize: 22,
-                            fontWeight: FontWeight.w300,
-                            color: Theme.of(context).primaryColor,
-                          ),
-                          hintStyle: TextStyle(
-                            fontSize: 16,
-                            fontWeight: FontWeight.w300,
-                            color: Theme.of(context).primaryColor,
-                          ),
-                          labelText: 'Наименование прибора №4',
-                          hintText: 'Введите название',
-                          // helperText: '...',
-                          prefixIcon: Icon(
-                            Icons.speaker_phone,
-                            color: focusNode45.hasFocus ||
-                                    priborname4Controller.text.isNotEmpty
-                                ? Theme.of(context).primaryColor
-                                : Colors.grey,
-                            size: 32,
-                          ),
-                          enabledBorder: OutlineInputBorder(
-                            borderRadius: BorderRadius.all(Radius.circular(10)),
-                            borderSide:
-                                BorderSide(color: Colors.grey, width: 2),
-                          ),
-                          focusedBorder: OutlineInputBorder(
-                            borderRadius: BorderRadius.all(Radius.circular(20)),
-                            borderSide: BorderSide(
-                                color: Theme.of(context).primaryColor,
-                                width: 2),
-                          ),
-                        ),
-                        keyboardType: TextInputType.text,
-                      ),
-                      SizedBox(height: 10),
-                      Row(
-                        children: [
-                          Expanded(
-                            child: TextFormField(
-                              focusNode: focusNode46,
-                              onChanged: (String value) {
-                                setState(() {
-                                  focusNode46.requestFocus();
-                                });
-                              },
-                              maxLength: 30,
-                              onSaved: (value) {
-                                object.pribornumb4 = value;
-                              },
-                              controller: pribornumb4Controller,
-                              style: textStyle,
-                              decoration: InputDecoration(
-                                focusColor: Theme.of(context).primaryColor,
-                                labelStyle: TextStyle(
-                                  fontSize: 22,
-                                  fontWeight: FontWeight.w300,
-                                  color: Theme.of(context).primaryColor,
-                                ),
-                                hintStyle: TextStyle(
-                                  fontSize: 16,
-                                  fontWeight: FontWeight.w300,
-                                  color: Theme.of(context).primaryColor,
-                                ),
-                                labelText: '№',
-                                hintText: '№',
-                                helperText: '№....',
-                                prefixIcon: Icon(
-                                  Icons.speaker_phone,
-                                  color: focusNode46.hasFocus ||
-                                          pribornumb4Controller.text.isNotEmpty
-                                      ? Theme.of(context).primaryColor
-                                      : Colors.grey,
-                                  size: 32,
-                                ),
-                                enabledBorder: OutlineInputBorder(
-                                  borderRadius:
-                                      BorderRadius.all(Radius.circular(10)),
-                                  borderSide:
-                                      BorderSide(color: Colors.grey, width: 2),
-                                ),
-                                focusedBorder: OutlineInputBorder(
-                                  borderRadius:
-                                      BorderRadius.all(Radius.circular(20)),
-                                  borderSide: BorderSide(
-                                      color: Theme.of(context).primaryColor,
-                                      width: 2),
-                                ),
-                              ),
-                              keyboardType: TextInputType.text,
-                            ),
-                          ),
-                          SizedBox(width: 5),
-                          Expanded(
-                            child: TextFormField(
-                              focusNode: focusNode47,
-                              onChanged: (String value) {
-                                setState(() {
-                                  focusNode47.requestFocus();
-                                });
-                              },
-                              maxLength: 10,
-                              onSaved: (value) {
-                                object.pribordate4 = value;
-                              },
-                              controller: pribordate4Controller,
-                              style: textStyle,
-                              decoration: InputDecoration(
-                                focusColor: Theme.of(context).primaryColor,
-                                labelStyle: TextStyle(
-                                  fontSize: 22,
-                                  fontWeight: FontWeight.w300,
-                                  color: Theme.of(context).primaryColor,
-                                ),
-                                hintStyle: TextStyle(
-                                  fontSize: 16,
-                                  fontWeight: FontWeight.w300,
-                                  color: Theme.of(context).primaryColor,
-                                ),
-                                labelText: 'Дата поверки',
-                                hintText: 'дата',
-                                helperText: 'д.м.г',
-                                prefixIcon: Icon(
-                                  Icons.speaker_phone,
-                                  color: focusNode47.hasFocus ||
-                                          pribordate4Controller.text.isNotEmpty
-                                      ? Theme.of(context).primaryColor
-                                      : Colors.grey,
-                                  size: 32,
-                                ),
-                                enabledBorder: OutlineInputBorder(
-                                  borderRadius:
-                                      BorderRadius.all(Radius.circular(10)),
-                                  borderSide:
-                                      BorderSide(color: Colors.grey, width: 2),
-                                ),
-                                focusedBorder: OutlineInputBorder(
-                                  borderRadius:
-                                      BorderRadius.all(Radius.circular(20)),
-                                  borderSide: BorderSide(
-                                      color: Theme.of(context).primaryColor,
-                                      width: 2),
-                                ),
-                              ),
-                              keyboardType: TextInputType.number,
-                            ),
-                          ),
-                        ],
-                      ),
-                      // SizedBox(height: 10),
-                      Divider(thickness: 4),
-                      Container(
-                          alignment: Alignment.center,
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              Text(
-                                'Прибор №5',
-                                style: TextStyle(
-                                    fontSize: 24,
-                                    color: Theme.of(context).primaryColor,
-                                    fontWeight: FontWeight.w300),
-                              ),
-                              GestureDetector(
-                                onTap: () {
-                                  priborname5Controller.clear();
-                                  pribornumb5Controller.clear();
-                                  pribordate5Controller.clear();
-                                },
-                                child: Icon(
-                                  Icons.delete_outline,
-                                  color: Color.fromRGBO(187, 30, 16, 1.0),
-                                ),
-                              ),
-                            ],
-                          )),
-                      SizedBox(height: 10),
-                      TextFormField(
-                        focusNode: focusNode48,
-                        onChanged: (String value) {
-                          setState(() {
-                            focusNode48.requestFocus();
-                          });
-                        },
-                        maxLength: 30,
-                        onSaved: (value) {
-                          object.priborname5 = value;
-                        },
-                        controller: priborname5Controller,
-                        style: textStyle,
-                        decoration: InputDecoration(
-                          focusColor: Theme.of(context).primaryColor,
-                          labelStyle: TextStyle(
-                            fontSize: 22,
-                            fontWeight: FontWeight.w300,
-                            color: Theme.of(context).primaryColor,
-                          ),
-                          hintStyle: TextStyle(
-                            fontSize: 16,
-                            fontWeight: FontWeight.w300,
-                            color: Theme.of(context).primaryColor,
-                          ),
-                          labelText: 'Наименование прибора №5',
-                          hintText: 'Введите название',
-                          // helperText: '...',
-                          prefixIcon: Icon(
-                            Icons.speaker_phone,
-                            color: focusNode48.hasFocus ||
-                                    priborname5Controller.text.isNotEmpty
-                                ? Theme.of(context).primaryColor
-                                : Colors.grey,
-                            size: 32,
-                          ),
-                          enabledBorder: OutlineInputBorder(
-                            borderRadius: BorderRadius.all(Radius.circular(10)),
-                            borderSide:
-                                BorderSide(color: Colors.grey, width: 2),
-                          ),
-                          focusedBorder: OutlineInputBorder(
-                            borderRadius: BorderRadius.all(Radius.circular(20)),
-                            borderSide: BorderSide(
-                                color: Theme.of(context).primaryColor,
-                                width: 2),
-                          ),
-                        ),
-                        keyboardType: TextInputType.text,
-                      ),
-                      SizedBox(height: 10),
-                      Row(
-                        children: [
-                          Expanded(
-                            child: TextFormField(
-                              focusNode: focusNode49,
-                              onChanged: (String value) {
-                                setState(() {
-                                  focusNode49.requestFocus();
-                                });
-                              },
-                              maxLength: 30,
-                              onSaved: (value) {
-                                object.pribornumb5 = value;
-                              },
-                              controller: pribornumb5Controller,
-                              style: textStyle,
-                              decoration: InputDecoration(
-                                focusColor: Theme.of(context).primaryColor,
-                                labelStyle: TextStyle(
-                                  fontSize: 22,
-                                  fontWeight: FontWeight.w300,
-                                  color: Theme.of(context).primaryColor,
-                                ),
-                                hintStyle: TextStyle(
-                                  fontSize: 16,
-                                  fontWeight: FontWeight.w300,
-                                  color: Theme.of(context).primaryColor,
-                                ),
-                                labelText: '№',
-                                hintText: '№',
-                                helperText: '№....',
-                                prefixIcon: Icon(
-                                  Icons.speaker_phone,
-                                  color: focusNode49.hasFocus ||
-                                          pribornumb5Controller.text.isNotEmpty
-                                      ? Theme.of(context).primaryColor
-                                      : Colors.grey,
-                                  size: 32,
-                                ),
-                                enabledBorder: OutlineInputBorder(
-                                  borderRadius:
-                                      BorderRadius.all(Radius.circular(10)),
-                                  borderSide:
-                                      BorderSide(color: Colors.grey, width: 2),
-                                ),
-                                focusedBorder: OutlineInputBorder(
-                                  borderRadius:
-                                      BorderRadius.all(Radius.circular(20)),
-                                  borderSide: BorderSide(
-                                      color: Theme.of(context).primaryColor,
-                                      width: 2),
-                                ),
-                              ),
-                              keyboardType: TextInputType.text,
-                            ),
-                          ),
-                          SizedBox(width: 5),
-                          Expanded(
-                            child: TextFormField(
-                              focusNode: focusNode50,
-                              onChanged: (String value) {
-                                setState(() {
-                                  focusNode50.requestFocus();
-                                });
-                              },
-                              maxLength: 10,
-                              onSaved: (value) {
-                                object.pribordate5 = value;
-                              },
-                              controller: pribordate5Controller,
-                              style: textStyle,
-                              decoration: InputDecoration(
-                                focusColor: Theme.of(context).primaryColor,
-                                labelStyle: TextStyle(
-                                  fontSize: 22,
-                                  fontWeight: FontWeight.w300,
-                                  color: Theme.of(context).primaryColor,
-                                ),
-                                hintStyle: TextStyle(
-                                  fontSize: 16,
-                                  fontWeight: FontWeight.w300,
-                                  color: Theme.of(context).primaryColor,
-                                ),
-                                labelText: 'Дата поверки',
-                                hintText: 'дата',
-                                helperText: 'д.м.г',
-                                prefixIcon: Icon(
-                                  Icons.speaker_phone,
-                                  color: focusNode50.hasFocus ||
-                                          pribordate5Controller.text.isNotEmpty
-                                      ? Theme.of(context).primaryColor
-                                      : Colors.grey,
-                                  size: 32,
-                                ),
-                                enabledBorder: OutlineInputBorder(
-                                  borderRadius:
-                                      BorderRadius.all(Radius.circular(10)),
-                                  borderSide:
-                                      BorderSide(color: Colors.grey, width: 2),
-                                ),
-                                focusedBorder: OutlineInputBorder(
-                                  borderRadius:
-                                      BorderRadius.all(Radius.circular(20)),
-                                  borderSide: BorderSide(
-                                      color: Theme.of(context).primaryColor,
-                                      width: 2),
-                                ),
-                              ),
-                              keyboardType: TextInputType.number,
-                            ),
-                          ),
-                        ],
-                      ),
+
                       SizedBox(height: 10),
                       ElevatedButton(
                         style: ElevatedButton.styleFrom(
@@ -3571,7 +3998,9 @@ class ObjectDetailVhCState extends State<ObjectDetailVhC> {
                             ),
                         onPressed: () => saveForm4(),
                         child: Text(
-                          isEdit ? 'Редактировать' : 'Добавить',
+                          isEdit
+                              ? 'Редактировать и закрыть'
+                              : 'Добавить и закрыть',
                           style: const TextStyle(
                               fontSize: 18.0, fontWeight: FontWeight.w300),
                         ),
@@ -3808,7 +4237,7 @@ class ObjectDetailVhCState extends State<ObjectDetailVhC> {
                         style: textStyle,
                         decoration: InputDecoration(
                           labelText: 'ФИО проводившего испытания',
-                          hintText: 'Введите ФИОК',
+                          hintText: 'Введите ФИО',
                           helperText: 'Фамилия И.О.',
                           prefixIcon: Icon(
                             Icons.person_outline,
@@ -3880,7 +4309,9 @@ class ObjectDetailVhCState extends State<ObjectDetailVhC> {
                             ),
                         onPressed: () => saveForm5(),
                         child: Text(
-                          isEdit ? 'Редактировать' : 'Добавить',
+                          isEdit
+                              ? 'Редактировать и закрыть'
+                              : 'Добавить и закрыть',
                           style: const TextStyle(
                               fontSize: 18.0, fontWeight: FontWeight.w300),
                         ),
@@ -3964,8 +4395,99 @@ class ObjectDetailVhCState extends State<ObjectDetailVhC> {
         } else if (object.filial == 'УАВР') {
           filial = 'УАВР-филиала';
         }
-        sheet.cell(CellIndex.indexByString("E4")).value =
+
+        sheet.cell(CellIndex.indexByString("C8")).value =
+            object.dateObsl ?? '-';
+        sheet.cell(CellIndex.indexByString("D10")).value = object.title ?? '-';
+        sheet.cell(CellIndex.indexByString("D12")).value = object.tu ?? '-';
+        sheet.cell(CellIndex.indexByString("C14")).value =
+            object.dateProizv ?? '-';
+        sheet.cell(CellIndex.indexByString("B16")).value =
+            object.partiya ?? '-';
+        sheet.cell(CellIndex.indexByString("E18")).value =
+            object.proizvoditel ?? '-';
+        sheet.cell(CellIndex.indexByString("E20")).value =
+            object.sertifikat ?? '-';
+
+        sheet.cell(CellIndex.indexByString("A23")).value =
+            object.pokazatelname1 != null ? '1' : '';
+        sheet.cell(CellIndex.indexByString("B23")).value =
+            object.pokazatelname1 ?? '-';
+        sheet.cell(CellIndex.indexByString("C23")).value =
+            object.ntdpokazatel1 ?? '-';
+        sheet.cell(CellIndex.indexByString("D23")).value =
+            object.normatupokazatel1 ?? '-';
+        sheet.cell(CellIndex.indexByString("E23")).value =
+            object.sertpokazatel1 ?? '-';
+        sheet.cell(CellIndex.indexByString("F23")).value =
+            object.itogpokazatel1 ?? '-';
+
+        sheet.cell(CellIndex.indexByString("A24")).value =
+            object.pokazatelname2 != null ? '2' : '';
+        sheet.cell(CellIndex.indexByString("B24")).value =
+            object.pokazatelname2 ?? '-';
+        sheet.cell(CellIndex.indexByString("C24")).value =
+            object.ntdpokazatel2 ?? '-';
+        sheet.cell(CellIndex.indexByString("D24")).value =
+            object.normatupokazatel2 ?? '-';
+        sheet.cell(CellIndex.indexByString("E24")).value =
+            object.sertpokazatel2 ?? '-';
+        sheet.cell(CellIndex.indexByString("F24")).value =
+            object.itogpokazatel2 ?? '-';
+
+        sheet.cell(CellIndex.indexByString("A25")).value =
+            object.pokazatelname3 != null ? '3' : '';
+        sheet.cell(CellIndex.indexByString("B25")).value =
+            object.pokazatelname3 ?? '-';
+        sheet.cell(CellIndex.indexByString("C25")).value =
+            object.ntdpokazatel3 ?? '-';
+        sheet.cell(CellIndex.indexByString("D25")).value =
+            object.normatupokazatel3 ?? '-';
+        sheet.cell(CellIndex.indexByString("E25")).value =
+            object.sertpokazatel3 ?? '-';
+        sheet.cell(CellIndex.indexByString("F25")).value =
+            object.itogpokazatel3 ?? '-';
+
+        sheet.cell(CellIndex.indexByString("A26")).value =
+            object.pokazatelname4 != null ? '4' : '';
+        sheet.cell(CellIndex.indexByString("B26")).value =
+            object.pokazatelname4 ?? '-';
+        sheet.cell(CellIndex.indexByString("C26")).value =
+            object.ntdpokazatel4 ?? '-';
+        sheet.cell(CellIndex.indexByString("D26")).value =
+            object.normatupokazatel4 ?? '-';
+        sheet.cell(CellIndex.indexByString("E26")).value =
+            object.sertpokazatel4 ?? '-';
+        sheet.cell(CellIndex.indexByString("F26")).value =
+            object.itogpokazatel4 ?? '-';
+
+        sheet.cell(CellIndex.indexByString("A27")).value =
+            object.pokazatelname5 != null ? '5' : '';
+        sheet.cell(CellIndex.indexByString("B27")).value =
+            object.pokazatelname5 ?? '-';
+        sheet.cell(CellIndex.indexByString("C27")).value =
+            object.ntdpokazatel5 ?? '-';
+        sheet.cell(CellIndex.indexByString("D27")).value =
+            object.normatupokazatel5 ?? '-';
+        sheet.cell(CellIndex.indexByString("E27")).value =
+            object.sertpokazatel5 ?? '-';
+        sheet.cell(CellIndex.indexByString("F27")).value =
+            object.itogpokazatel5 ?? '-';
+
+        sheet.cell(CellIndex.indexByString("C29")).value =
+            object.zaklkachestvo ?? '-';
+        sheet.cell(CellIndex.indexByString("B31")).value =
+            object.sertifikat ?? '-';
+
+        sheet.cell(CellIndex.indexByString("A35")).value =
+            object.dolzhnproizvrab ?? '-';
+        sheet.cell(CellIndex.indexByString("E35")).value =
+            object.fioproizvrab ?? '-';
+
+        sheet.cell(CellIndex.indexByString("A37")).value =
             object.dolzhnpredskom ?? '-';
+        sheet.cell(CellIndex.indexByString("E37")).value =
+            object.fiopredskom ?? '-';
 
         // Получаем путь к папке "Downloads" на внешнем хранилище
         Directory externalStorageDirectory =
@@ -4028,6 +4550,20 @@ class ObjectDetailVhCState extends State<ObjectDetailVhC> {
     }
   }
 
+  void saveForm12() {
+    final form = _1formKey.currentState;
+    if (form.validate()) {
+      form.save();
+      object.todoDate = DateFormat.yMMMMd().format(DateTime.now());
+      if (object.id != null) {
+        helper.updateTodo(object);
+      } else {
+        helper.insertTodo(object);
+      }
+      // Navigator.pop(context, true);
+    }
+  }
+
   void saveForm2() {
     final form = _2formKey.currentState;
     if (form.validate()) {
@@ -4039,6 +4575,20 @@ class ObjectDetailVhCState extends State<ObjectDetailVhC> {
         helper.insertTodo(object);
       }
       Navigator.pop(context, true);
+    }
+  }
+
+  void saveForm22() {
+    final form = _2formKey.currentState;
+    if (form.validate()) {
+      form.save();
+      object.todoDate = DateFormat.yMMMMd().format(DateTime.now());
+      if (object.id != null) {
+        helper.updateTodo(object);
+      } else {
+        helper.insertTodo(object);
+      }
+      // Navigator.pop(context, true);
     }
   }
 
@@ -4056,6 +4606,20 @@ class ObjectDetailVhCState extends State<ObjectDetailVhC> {
     }
   }
 
+  void saveForm32() {
+    final form = _3formKey.currentState;
+    if (form.validate()) {
+      form.save();
+      object.todoDate = DateFormat.yMMMMd().format(DateTime.now());
+      if (object.id != null) {
+        helper.updateTodo(object);
+      } else {
+        helper.insertTodo(object);
+      }
+      // Navigator.pop(context, true);
+    }
+  }
+
   void saveForm4() {
     final form = _4formKey.currentState;
     if (form.validate()) {
@@ -4070,6 +4634,20 @@ class ObjectDetailVhCState extends State<ObjectDetailVhC> {
     }
   }
 
+  void saveForm42() {
+    final form = _4formKey.currentState;
+    if (form.validate()) {
+      form.save();
+      object.todoDate = DateFormat.yMMMMd().format(DateTime.now());
+      if (object.id != null) {
+        helper.updateTodo(object);
+      } else {
+        helper.insertTodo(object);
+      }
+      // Navigator.pop(context, true);
+    }
+  }
+
   void saveForm5() {
     final form = _5formKey.currentState;
     if (form.validate()) {
@@ -4081,6 +4659,20 @@ class ObjectDetailVhCState extends State<ObjectDetailVhC> {
         helper.insertTodo(object);
       }
       Navigator.pop(context, true);
+    }
+  }
+
+  void saveForm52() {
+    final form = _5formKey.currentState;
+    if (form.validate()) {
+      form.save();
+      object.todoDate = DateFormat.yMMMMd().format(DateTime.now());
+      if (object.id != null) {
+        helper.updateTodo(object);
+      } else {
+        helper.insertTodo(object);
+      }
+      // Navigator.pop(context, true);
     }
   }
 }

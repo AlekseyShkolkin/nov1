@@ -26,6 +26,7 @@ class ObjectDetailState extends State<ObjectDetail> {
   File _imageDust;
   File _imageRoughness;
   File _imageAdhesion;
+  File _imageColor;
   Todo object;
   int highestDegree;
 
@@ -118,7 +119,7 @@ class ObjectDetailState extends State<ObjectDetail> {
   FocusNode focusNode87 = FocusNode();
   FocusNode focusNode88 = FocusNode();
   FocusNode focusNode89 = FocusNode();
-  FocusNode focusNode90 = FocusNode();
+  FocusNode focusNode90 = FocusNode(); //free
   FocusNode focusNode91 = FocusNode();
   FocusNode focusNode92 = FocusNode();
   FocusNode focusNode93 = FocusNode();
@@ -151,13 +152,15 @@ class ObjectDetailState extends State<ObjectDetail> {
   final List<String> _dolzhnpredskom = [
     'Начальник',
     'Главный инженер-заместитель начальника',
-    'Заместитель начальника'
+    'Заместитель начальника',
+    'нет данных'
   ];
   final List<String> _dolzhnproizvrab = [
     'Начальник службы ЗоК',
     'ВрИО начальника службы ЗоК',
     'ИО начальника службы ЗоК',
     'Начальник участка',
+    'нет данных'
   ];
 
   final List<String> _dolzhnpredststroitSK = [
@@ -165,6 +168,483 @@ class ObjectDetailState extends State<ObjectDetail> {
     'Электромонтёр по РиОЭ',
     'Электромонтёр по РиМВЛ',
     'Электромонтёр по РиМКЛ',
+    'нет данных'
+  ];
+
+  final List<String> _colorRal = [
+    '1**** - жёлтые',
+    '2**** - оранжевые',
+    '3**** - красные',
+    '4**** - фиолетовые',
+    '5**** - синие',
+    '6**** - зелёные',
+    '7**** - серые',
+    '8**** - коричневые',
+    '9**** - светлые и тёмные',
+    'нет данных'
+  ];
+
+  Map<String, String> imagePaths = {
+    '1000': 'assets/images/1000.jpg',
+    '1001': 'assets/images/1001.jpg',
+    '1002': 'assets/images/1002.jpg',
+    '1003': 'assets/images/1003.jpg',
+    '1004': 'assets/images/1004.jpg',
+    '1005': 'assets/images/1005.jpg',
+    '1006': 'assets/images/1006.jpg',
+    '1007': 'assets/images/1007.jpg',
+    '1011': 'assets/images/1011.jpg',
+    '1012': 'assets/images/1012.jpg',
+    '1013': 'assets/images/1013.jpg',
+    '1014': 'assets/images/1014.jpg',
+    '1015': 'assets/images/1015.jpg',
+    '1016': 'assets/images/1016.jpg',
+    '1017': 'assets/images/1017.jpg',
+    '1018': 'assets/images/1018.jpg',
+    '1019': 'assets/images/1019.jpg',
+    '1020': 'assets/images/1020.jpg',
+    '1021': 'assets/images/1021.jpg',
+    '1023': 'assets/images/1023.jpg',
+    '1024': 'assets/images/1024.jpg',
+    '1026': 'assets/images/1026.jpg',
+    '1027': 'assets/images/1027.jpg',
+    '1028': 'assets/images/1028.jpg',
+    '1032': 'assets/images/1032.jpg',
+    '1033': 'assets/images/1033.jpg',
+    '1034': 'assets/images/1034.jpg',
+    '1035': 'assets/images/1035.jpg',
+    '1036': 'assets/images/1036.jpg',
+    '1037': 'assets/images/1037.jpg',
+    '2000': 'assets/images/2000.jpg',
+    '2001': 'assets/images/2001.jpg',
+    '2002': 'assets/images/2002.jpg',
+    '2003': 'assets/images/2003.jpg',
+    '2004': 'assets/images/2004.jpg',
+    '2005': 'assets/images/2005.jpg',
+    '2007': 'assets/images/2007.jpg',
+    '2008': 'assets/images/2008.jpg',
+    '2009': 'assets/images/2009.jpg',
+    '2010': 'assets/images/2010.jpg',
+    '2011': 'assets/images/2011.jpg',
+    '2012': 'assets/images/2012.jpg',
+    '2013': 'assets/images/2013.jpg',
+    '2017': 'assets/images/2017.jpg',
+    '3000': 'assets/images/3000.jpg',
+    '3001': 'assets/images/3001.jpg',
+    '3002': 'assets/images/3002.jpg',
+    '3003': 'assets/images/3003.jpg',
+    '3004': 'assets/images/3004.jpg',
+    '3005': 'assets/images/3005.jpg',
+    '3007': 'assets/images/3007.jpg',
+    '3009': 'assets/images/3009.jpg',
+    '3011': 'assets/images/3011.jpg',
+    '3012': 'assets/images/3012.jpg',
+    '3013': 'assets/images/3013.jpg',
+    '3014': 'assets/images/3014.jpg',
+    '3015': 'assets/images/3015.jpg',
+    '3016': 'assets/images/3016.jpg',
+    '3017': 'assets/images/3017.jpg',
+    '3018': 'assets/images/3018.jpg',
+    '3020': 'assets/images/3020.jpg',
+    '3022': 'assets/images/3022.jpg',
+    '3024': 'assets/images/3024.jpg',
+    '3026': 'assets/images/3026.jpg',
+    '3027': 'assets/images/3027.jpg',
+    '3028': 'assets/images/3028.jpg',
+    '3031': 'assets/images/3031.jpg',
+    '3032': 'assets/images/3032.jpg',
+    '3033': 'assets/images/3033.jpg',
+    '4001': 'assets/images/4001.jpg',
+    '4002': 'assets/images/4002.jpg',
+    '4003': 'assets/images/4003.jpg',
+    '4004': 'assets/images/4004.jpg',
+    '4005': 'assets/images/4005.jpg',
+    '4006': 'assets/images/4006.jpg',
+    '4007': 'assets/images/4007.jpg',
+    '4008': 'assets/images/4008.jpg',
+    '4009': 'assets/images/4009.jpg',
+    '4010': 'assets/images/4010.jpg',
+    '4011': 'assets/images/4011.jpg',
+    '4012': 'assets/images/4012.jpg',
+    '5000': 'assets/images/5000.jpg',
+    '5001': 'assets/images/5001.jpg',
+    '5002': 'assets/images/5002.jpg',
+    '5003': 'assets/images/5003.jpg',
+    '5004': 'assets/images/5004.jpg',
+    '5005': 'assets/images/5005.jpg',
+    '5007': 'assets/images/5007.jpg',
+    '5008': 'assets/images/5008.jpg',
+    '5009': 'assets/images/5009.jpg',
+    '5010': 'assets/images/5010.jpg',
+    '5011': 'assets/images/5011.jpg',
+    '5012': 'assets/images/5012.jpg',
+    '5013': 'assets/images/5013.jpg',
+    '5014': 'assets/images/5014.jpg',
+    '5015': 'assets/images/5015.jpg',
+    '5017': 'assets/images/5017.jpg',
+    '5018': 'assets/images/5018.jpg',
+    '5019': 'assets/images/5019.jpg',
+    '5020': 'assets/images/5020.jpg',
+    '5021': 'assets/images/5021.jpg',
+    '5022': 'assets/images/5022.jpg',
+    '5023': 'assets/images/5023.jpg',
+    '5024': 'assets/images/5024.jpg',
+    '5025': 'assets/images/5025.jpg',
+    '5026': 'assets/images/5026.jpg',
+    '6000': 'assets/images/6000.jpg',
+    '6001': 'assets/images/6001.jpg',
+    '6002': 'assets/images/6002.jpg',
+    '6003': 'assets/images/6003.jpg',
+    '6004': 'assets/images/6004.jpg',
+    '6005': 'assets/images/6005.jpg',
+    '6006': 'assets/images/6006.jpg',
+    '6007': 'assets/images/6007.jpg',
+    '6008': 'assets/images/6008.jpg',
+    '6009': 'assets/images/6009.jpg',
+    '6010': 'assets/images/6010.jpg',
+    '6011': 'assets/images/6011.jpg',
+    '6012': 'assets/images/6012.jpg',
+    '6013': 'assets/images/6013.jpg',
+    '6014': 'assets/images/6014.jpg',
+    '6015': 'assets/images/6015.jpg',
+    '6016': 'assets/images/6016.jpg',
+    '6017': 'assets/images/6017.jpg',
+    '6018': 'assets/images/6018.jpg',
+    '6019': 'assets/images/6019.jpg',
+    '6020': 'assets/images/6020.jpg',
+    '6021': 'assets/images/6021.jpg',
+    '6022': 'assets/images/6022.jpg',
+    '6024': 'assets/images/6024.jpg',
+    '6025': 'assets/images/6025.jpg',
+    '6026': 'assets/images/6026.jpg',
+    '6027': 'assets/images/6027.jpg',
+    '6028': 'assets/images/6028.jpg',
+    '6029': 'assets/images/6029.jpg',
+    '6032': 'assets/images/6032.jpg',
+    '6033': 'assets/images/6033.jpg',
+    '6034': 'assets/images/6034.jpg',
+    '6035': 'assets/images/6035.jpg',
+    '6036': 'assets/images/6036.jpg',
+    '6037': 'assets/images/6037.jpg',
+    '6038': 'assets/images/6038.jpg',
+    '6039': 'assets/images/6039.jpg',
+    '7000': 'assets/images/7000.jpg',
+    '7001': 'assets/images/7001.jpg',
+    '7002': 'assets/images/7002.jpg',
+    '7003': 'assets/images/7003.jpg',
+    '7004': 'assets/images/7004.jpg',
+    '7005': 'assets/images/7005.jpg',
+    '7006': 'assets/images/7006.jpg',
+    '7008': 'assets/images/7008.jpg',
+    '7009': 'assets/images/7009.jpg',
+    '7010': 'assets/images/7010.jpg',
+    '7011': 'assets/images/7011.jpg',
+    '7012': 'assets/images/7012.jpg',
+    '7013': 'assets/images/7013.jpg',
+    '7015': 'assets/images/7015.jpg',
+    '7016': 'assets/images/7016.jpg',
+    '7021': 'assets/images/7021.jpg',
+    '7022': 'assets/images/7022.jpg',
+    '7023': 'assets/images/7023.jpg',
+    '7024': 'assets/images/7024.jpg',
+    '7026': 'assets/images/7026.jpg',
+    '7030': 'assets/images/7030.jpg',
+    '7031': 'assets/images/7031.jpg',
+    '7032': 'assets/images/7032.jpg',
+    '7033': 'assets/images/7033.jpg',
+    '7034': 'assets/images/7034.jpg',
+    '7035': 'assets/images/7035.jpg',
+    '7036': 'assets/images/7036.jpg',
+    '7037': 'assets/images/7037.jpg',
+    '7038': 'assets/images/7038.jpg',
+    '7039': 'assets/images/7039.jpg',
+    '7040': 'assets/images/7040.jpg',
+    '7042': 'assets/images/7042.jpg',
+    '7043': 'assets/images/7043.jpg',
+    '7044': 'assets/images/7044.jpg',
+    '7045': 'assets/images/7045.jpg',
+    '7046': 'assets/images/7046.jpg',
+    '7047': 'assets/images/7047.jpg',
+    '7048': 'assets/images/7048.jpg',
+    '8000': 'assets/images/8000.jpg',
+    '8001': 'assets/images/8001.jpg',
+    '8002': 'assets/images/8002.jpg',
+    '8003': 'assets/images/8003.jpg',
+    '8004': 'assets/images/8004.jpg',
+    '8007': 'assets/images/8007.jpg',
+    '8008': 'assets/images/8008.jpg',
+    '8011': 'assets/images/8011.jpg',
+    '8012': 'assets/images/8012.jpg',
+    '8014': 'assets/images/8014.jpg',
+    '8015': 'assets/images/8015.jpg',
+    '8016': 'assets/images/8016.jpg',
+    '8017': 'assets/images/8017.jpg',
+    '8019': 'assets/images/8019.jpg',
+    '8022': 'assets/images/8022.jpg',
+    '8023': 'assets/images/8023.jpg',
+    '8024': 'assets/images/8024.jpg',
+    '8025': 'assets/images/8025.jpg',
+    '8028': 'assets/images/8028.jpg',
+    '8029': 'assets/images/8029.jpg',
+    '9001': 'assets/images/9001.jpg',
+    '9002': 'assets/images/9002.jpg',
+    '9003': 'assets/images/9003.jpg',
+    '9004': 'assets/images/9004.jpg',
+    '9005': 'assets/images/9005.jpg',
+    '9006': 'assets/images/9006.jpg',
+    '9007': 'assets/images/9007.jpg',
+    '9010': 'assets/images/9010.jpg',
+    '9011': 'assets/images/9011.jpg',
+    '9012': 'assets/images/9012.jpg',
+    '9016': 'assets/images/9016.jpg',
+    '9017': 'assets/images/9017.jpg',
+    '9018': 'assets/images/9018.jpg',
+    '9022': 'assets/images/9022.jpg',
+    '9023': 'assets/images/9023.jpg',
+  };
+
+  final List<String> _colorRal5 = [
+    '5000',
+    '5001',
+    '5002',
+    '5003',
+    '5004',
+    '5005',
+    '5007',
+    '5008',
+    '5009',
+    '5010',
+    '5011',
+    '5012',
+    '5013',
+    '5014',
+    '5015',
+    '5017',
+    '5018',
+    '5019',
+    '5020',
+    '5021',
+    '5022',
+    '5023',
+    '5024',
+    '5025',
+    '5026',
+    'нет данных'
+  ];
+  final List<String> _colorRal8 = [
+    '8000',
+    '8001',
+    '8002',
+    '8003',
+    '8004',
+    '8007',
+    '8008',
+    '8011',
+    '8012',
+    '8014',
+    '8015',
+    '8016',
+    '8017',
+    '8019',
+    '8022',
+    '8023',
+    '8024',
+    '8025',
+    '8028',
+    '8029',
+    'нет данных'
+  ];
+  final List<String> _colorRal6 = [
+    '6000',
+    '6001',
+    '6002',
+    '6003',
+    '6004',
+    '6005',
+    '6006',
+    '6007',
+    '6008',
+    '6009',
+    '6010',
+    '6011',
+    '6012',
+    '6013',
+    '6014',
+    '6015',
+    '6016',
+    '6017',
+    '6018',
+    '6019',
+    '6020',
+    '6021',
+    '6022',
+    '6024',
+    '6025',
+    '6026',
+    '6027',
+    '6028',
+    '6029',
+    '6032',
+    '6033',
+    '6034',
+    '6035',
+    '6036',
+    '6037',
+    '6038',
+    '6039',
+    'нет данных'
+  ];
+  final List<String> _colorRal7 = [
+    '7000',
+    '7001',
+    '7002',
+    '7003',
+    '7004',
+    '7005',
+    '7006',
+    '7008',
+    '7009',
+    '7010',
+    '7011',
+    '7012',
+    '7013',
+    '7015',
+    '7016',
+    '7021',
+    '7022',
+    '7023',
+    '7024',
+    '7026',
+    '7030',
+    '7031',
+    '7032',
+    '7033',
+    '7034',
+    '7035',
+    '7036',
+    '7037',
+    '7038',
+    '7039',
+    '7040',
+    '7042',
+    '7043',
+    '7044',
+    '7045',
+    '7046',
+    '7047',
+    '7048',
+    'нет данных'
+  ];
+  final List<String> _colorRal2 = [
+    '2000',
+    '2001',
+    '2002',
+    '2003',
+    '2004',
+    '2005',
+    '2007',
+    '2008',
+    '2009',
+    '2010',
+    '2011',
+    '2012',
+    '2013',
+    '2017',
+    'нет данных'
+  ];
+  final List<String> _colorRal4 = [
+    '4001',
+    '4002',
+    '4003',
+    '4004',
+    '4005',
+    '4006',
+    '4007',
+    '4008',
+    '4009',
+    '4010',
+    '4011',
+    '4012',
+    'нет данных'
+  ];
+  final List<String> _colorRal3 = [
+    '3000',
+    '3001',
+    '3002',
+    '3003',
+    '3004',
+    '3005',
+    '3007',
+    '3009',
+    '3011',
+    '3012',
+    '3013',
+    '3014',
+    '3015',
+    '3016',
+    '3017',
+    '3018',
+    '3020',
+    '3022',
+    '3024',
+    '3026',
+    '3027',
+    '3028',
+    '3031',
+    '3032',
+    '3033',
+    'нет данных'
+  ];
+  final List<String> _colorRal9 = [
+    '9001',
+    '9002',
+    '9003',
+    '9004',
+    '9005',
+    '9006',
+    '9007',
+    '9010',
+    '9011',
+    '9012',
+    '9016',
+    '9017',
+    '9018',
+    '9022',
+    '9023',
+    'нет данных'
+  ];
+  final List<String> _colorRal1 = [
+    '1000',
+    '1001',
+    '1002',
+    '1003',
+    '1004',
+    '1005',
+    '1006',
+    '1007',
+    '1011',
+    '1012',
+    '1013',
+    '1014',
+    '1015',
+    '1016',
+    '1017',
+    '1018',
+    '1019',
+    '1020',
+    '1021',
+    '1023',
+    '1024',
+    '1026',
+    '1027',
+    '1028',
+    '1032',
+    '1033',
+    '1034',
+    '1035',
+    '1036',
+    '1037',
+    'нет данных'
   ];
 
   final List<String> _dolzhnpredststroit = [
@@ -179,6 +659,7 @@ class ObjectDetailState extends State<ObjectDetail> {
     'Электромонтёр по РиМКЛ',
     'Инженер по диагностике',
     'Инженер-диагност',
+    'нет данных'
   ];
 
   final List<String> _dolzhnnachuchastka = [
@@ -191,6 +672,7 @@ class ObjectDetailState extends State<ObjectDetail> {
     'Начальник ГКС',
     'ВрИО начальника ГКС',
     'ИО начальника ГКС',
+    'нет данных'
   ];
 
   final List<String> _dolzhnpredstzakazch = [
@@ -202,6 +684,7 @@ class ObjectDetailState extends State<ObjectDetail> {
     'Инженер по диагностике',
     'Инженер-диагност',
     'Дефктоскопист',
+    'нет данных'
   ];
   final List<String> _inSt = [
     'A',
@@ -261,31 +744,8 @@ class ObjectDetailState extends State<ObjectDetail> {
     'нет данных',
   ];
 
-  final List<String> _iso8501A = [
-    'A Sa2,5',
-    'A Sa3',
-    'A Fl',
-    'B St2',
-    'B St3',
-    'B Sa1',
-    'B Sa2',
-    'B Sa2,5',
-    'B Sa3',
-    'B Fl',
-    'C St2',
-    'C St3',
-    'C Sa1',
-    'C Sa2',
-    'C Sa2,5',
-    'C Sa3',
-    'C Fl',
-    'D St2',
-    'D St3',
-    'D Sa1',
-    'D Sa2',
-    'D Sa2,5',
-    'D Sa3',
-    'D Fl',
+  final List<String> _iso8501A = ['A Sa2,5', 'A Sa3', 'A Fl', 'нет данных'];
+  final List<String> _iso8501P = [
     'P Ma №1',
     'P Ma №2',
     'P Ma №3',
@@ -295,15 +755,6 @@ class ObjectDetailState extends State<ObjectDetail> {
     'P Sa 2,5 №4',
     'нет данных'
   ];
-  final List<String> _iso8501P = [
-    'P Ma №1',
-    'P Ma №2',
-    'P Ma №3',
-    'P Sa 2,5 №1',
-    'P Sa 2,5 №2',
-    'P Sa 2,5 №3',
-    'P Sa 2,5 №4',
-  ];
   final List<String> _iso8501B = [
     'B St2',
     'B St3',
@@ -312,6 +763,7 @@ class ObjectDetailState extends State<ObjectDetail> {
     'B Sa2,5',
     'B Sa3',
     'B Fl',
+    'нет данных'
   ];
   final List<String> _iso8501C = [
     'C St2',
@@ -321,6 +773,7 @@ class ObjectDetailState extends State<ObjectDetail> {
     'C Sa2,5',
     'C Sa3',
     'C Fl',
+    'нет данных'
   ];
   final List<String> _iso8501D = [
     'D St2',
@@ -330,6 +783,7 @@ class ObjectDetailState extends State<ObjectDetail> {
     'D Sa2,5',
     'D Sa3',
     'D Fl',
+    'нет данных'
   ];
   final List<String> _surfsalts = [
     '1-не допускаются масляные загрязнения, степень очистки поверхности-2. Дальнейшую подготовку поверхности проводят как для вновь изготавливаемых изделий',
@@ -432,13 +886,19 @@ class ObjectDetailState extends State<ObjectDetail> {
     'нет данных'
   ];
 
-  final List<String> _adhesion = [
+  final List<String> _adhesionX = [
     'X-0',
     'X-1',
     'X-2',
     'X-3',
     'X-4',
     'X-5',
+    'нет данных'
+  ];
+
+  final List<String> _notdata = ['нет данных'];
+
+  final List<String> _adhesionR = [
     'P-0',
     'P-1',
     'P-2',
@@ -505,13 +965,15 @@ class ObjectDetailState extends State<ObjectDetail> {
     'Торбеевское ЛПУМГ',
     'Чебоксарское ЛПУМГ',
     'ИТЦ',
-    'УАВР'
+    'УАВР',
+    'нет данных'
   ];
   final List<String> _predskom = [
     'Начальник',
     'Главный инженер',
     'Заместитель начальника',
     'ВрИО начальника',
+    'нет данных'
     // '',
     // '',
   ];
@@ -551,6 +1013,11 @@ class ObjectDetailState extends State<ObjectDetail> {
   TextEditingController squarenewController = TextEditingController();
   TextEditingController thickofwellayController = TextEditingController();
   TextEditingController thickofdrylayController = TextEditingController();
+  TextEditingController thickofdrylayController1 = TextEditingController();
+  TextEditingController thickofdrylayController2 = TextEditingController();
+  TextEditingController thickofdrylayController3 = TextEditingController();
+  TextEditingController thickofdrylayController4 = TextEditingController();
+  TextEditingController thickofdrylayController5 = TextEditingController();
   TextEditingController continController = TextEditingController();
   TextEditingController timedryController = TextEditingController();
   TextEditingController degrdryController = TextEditingController();
@@ -558,7 +1025,15 @@ class ObjectDetailState extends State<ObjectDetail> {
 
   TextEditingController apperanceController = TextEditingController();
   TextEditingController bgcolorController = TextEditingController();
+  TextEditingController katRalController = TextEditingController();
+  TextEditingController colorRalController = TextEditingController();
+  // TextEditingController photoRalController = TextEditingController();
   TextEditingController adhesionController = TextEditingController();
+  TextEditingController adhesionController1 = TextEditingController();
+  TextEditingController adhesionController2 = TextEditingController();
+  TextEditingController adhesionController3 = TextEditingController();
+  TextEditingController adhesionController4 = TextEditingController();
+  TextEditingController adhesionController5 = TextEditingController();
   TextEditingController adhesionmethodController = TextEditingController();
   TextEditingController dielcontController = TextEditingController();
 
@@ -661,6 +1136,11 @@ class ObjectDetailState extends State<ObjectDetail> {
     squarenewController.text = object.squarenew ?? '';
     thickofwellayController.text = object.thickofwellay ?? '';
     thickofdrylayController.text = object.thickofdrylay ?? '';
+    thickofdrylayController1.text = object.thickofdrylay1 ?? '';
+    thickofdrylayController2.text = object.thickofdrylay2 ?? '';
+    thickofdrylayController3.text = object.thickofdrylay3 ?? '';
+    thickofdrylayController4.text = object.thickofdrylay4 ?? '';
+    thickofdrylayController5.text = object.thickofdrylay5 ?? '';
     continController.text = object.contin ?? '';
     timedryController.text = object.timedry ?? '';
     degrdryController.text = object.degrdry ?? '';
@@ -668,7 +1148,15 @@ class ObjectDetailState extends State<ObjectDetail> {
 
     apperanceController.text = object.apperance ?? '';
     bgcolorController.text = object.bgcolor ?? '';
+    katRalController.text = object.katRal ?? '';
+    colorRalController.text = object.colorRal ?? '';
+    // photoRalController.text = object.photoRal ?? '';
     adhesionController.text = object.adhesion ?? '';
+    adhesionController1.text = object.adhesion1 ?? '';
+    adhesionController2.text = object.adhesion2 ?? '';
+    adhesionController3.text = object.adhesion3 ?? '';
+    adhesionController4.text = object.adhesion4 ?? '';
+    adhesionController5.text = object.adhesion5 ?? '';
     adhesionmethodController.text = object.adhesionmethod ?? '';
     dielcontController.text = object.dielcont ?? '';
 
@@ -805,25 +1293,25 @@ class ObjectDetailState extends State<ObjectDetail> {
                         onPressed: () {
                           if (_1formKey.currentState != null) {
                             _1formKey.currentState.validate();
-                            saveForm1();
+                            saveForm12();
                           } else if (_2formKey.currentState != null) {
                             _2formKey.currentState.validate();
-                            saveForm2();
+                            saveForm22();
                           } else if (_3formKey.currentState != null) {
                             _3formKey.currentState.validate();
-                            saveForm3();
+                            saveForm32();
                           } else if (_4formKey.currentState != null) {
                             _4formKey.currentState.validate();
-                            saveForm4();
+                            saveForm42();
                           } else if (_5formKey.currentState != null) {
                             _5formKey.currentState.validate();
-                            saveForm5();
+                            saveForm52();
                           } else if (_6formKey.currentState != null) {
                             _6formKey.currentState.validate();
-                            saveForm6();
+                            saveForm62();
                           } else if (_7formKey.currentState != null) {
                             _7formKey.currentState.validate();
-                            saveForm7();
+                            saveForm72();
                           }
                         },
                       ),
@@ -943,8 +1431,9 @@ class ObjectDetailState extends State<ObjectDetail> {
                       TextFormField(
                         focusNode: focusNode1,
                         onChanged: (String value) {
-                          setState(() {});
-                          focusNode1.requestFocus();
+                          setState(() {
+                            focusNode1.requestFocus();
+                          });
                         },
                         maxLength: 50,
                         onFieldSubmitted: (value) {
@@ -1310,9 +1799,11 @@ class ObjectDetailState extends State<ObjectDetail> {
                         style: textStyle,
                         value: object.inst,
                         onChanged: (String value) {
-                          focusNode3.requestFocus();
-                          setState(() {});
-                          object.inst = value;
+                          setState(() {
+                            focusNode3.requestFocus();
+                            object.inst = value;
+                            object.iso8501 = 'нет данных';
+                          });
                         },
                       ),
                       const SizedBox(height: 10),
@@ -1975,10 +2466,44 @@ class ObjectDetailState extends State<ObjectDetail> {
                                   },
                                   child: const Icon(Icons.camera_alt_sharp,
                                       color: Colors.green))),
-                          items: _iso8501A.map((String value) {
-                            return DropdownMenuItem(
-                                value: value, child: Text(value));
-                          }).toList(),
+                          items: object.inst == 'A'
+                              ? _iso8501A.map((String value) {
+                                  return DropdownMenuItem(
+                                      value: value, child: Text(value));
+                                }).toList()
+                              : object.inst == 'B'
+                                  ? _iso8501B.map((String value) {
+                                      return DropdownMenuItem(
+                                          value: value, child: Text(value));
+                                    }).toList()
+                                  : object.inst == 'C'
+                                      ? _iso8501C.map((String value) {
+                                          return DropdownMenuItem(
+                                              value: value, child: Text(value));
+                                        }).toList()
+                                      : object.inst == 'D'
+                                          ? _iso8501D.map((String value) {
+                                              return DropdownMenuItem(
+                                                  value: value,
+                                                  child: Text(value));
+                                            }).toList()
+                                          : (object.inst == 'P Ma №1' ||
+                                                  object.inst == 'P Ma №2' ||
+                                                  object.inst == 'P Ma №3' ||
+                                                  object.inst == 'P Sa №1' ||
+                                                  object.inst == 'P Sa №2' ||
+                                                  object.inst == 'P Sa №3' ||
+                                                  object.inst == 'P Sa №4')
+                                              ? _iso8501P.map((String value) {
+                                                  return DropdownMenuItem(
+                                                      value: value,
+                                                      child: Text(value));
+                                                }).toList()
+                                              : _notdata.map((String value) {
+                                                  return DropdownMenuItem(
+                                                      value: value,
+                                                      child: Text(value));
+                                                }).toList(),
                           style: textStyle,
                           value: object.iso8501,
                           onChanged: (String value) {
@@ -2129,7 +2654,9 @@ class ObjectDetailState extends State<ObjectDetail> {
                                 borderRadius: BorderRadius.circular(10.0))),
                         onPressed: () => saveForm1(),
                         child: Text(
-                          isEdit ? 'Редактировать' : 'Добавить',
+                          isEdit
+                              ? 'Редактировать и закрыть'
+                              : 'Добавить и закрыть',
                           style: const TextStyle(
                             fontSize: 18.0,
                             fontWeight: FontWeight.w300,
@@ -2524,7 +3051,9 @@ class ObjectDetailState extends State<ObjectDetail> {
                                 borderRadius: BorderRadius.circular(10.0))),
                         onPressed: () => saveForm2(),
                         child: Text(
-                          isEdit ? 'Редактировать' : 'Добавить',
+                          isEdit
+                              ? 'Редактировать и закрыть'
+                              : 'Добавить и закрыть',
                           style: const TextStyle(
                               fontSize: 18.0, fontWeight: FontWeight.w300),
                         ),
@@ -3041,7 +3570,9 @@ class ObjectDetailState extends State<ObjectDetail> {
                                 borderRadius: BorderRadius.circular(10.0))),
                         onPressed: () => saveForm3(),
                         child: Text(
-                          isEdit ? 'Редактировать' : 'Добавить',
+                          isEdit
+                              ? 'Редактировать и закрыть'
+                              : 'Добавить и закрыть',
                           style: const TextStyle(
                               fontSize: 18.0, fontWeight: FontWeight.w300),
                         ),
@@ -3180,59 +3711,384 @@ class ObjectDetailState extends State<ObjectDetail> {
                         },
                       ),
                       SizedBox(height: 20),
-                      TextFormField(
-                        focusNode: focusNode23,
-                        onChanged: (String value) {
-                          setState(() {});
-                          focusNode23.requestFocus();
-                        },
-                        maxLength: 5,
-                        onSaved: (value) {
-                          object.thickofdrylay = value;
-                        },
-                        controller: thickofdrylayController,
-                        style: textStyle,
-                        decoration: InputDecoration(
-                          labelText: 'Толщина отверждённого покрытия',
-                          hintText: 'Введите значение',
-                          helperText: 'мкм',
-                          prefixIcon: Icon(
-                            Icons.vertical_align_center,
-                            color: focusNode23.hasFocus ||
-                                    thickofdrylayController.text.isNotEmpty
-                                ? Theme.of(context).primaryColor
-                                : Colors.grey,
-                            size: 32,
-                          ),
-                          suffixIcon: GestureDetector(
-                            onTap: () {
-                              thickofdrylayController.clear();
-                            },
-                            child: const Icon(
-                              Icons.delete_outline,
-                              color: Colors.red,
+                      Divider(thickness: 4),
+                      SizedBox(height: 10),
+                      Container(
+                        alignment: Alignment.center,
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Text(
+                              'Толщина покрытия',
+                              style: TextStyle(
+                                  fontSize: 24,
+                                  color: Theme.of(context).primaryColor,
+                                  fontWeight: FontWeight.w300),
                             ),
-                          ),
-                          enabledBorder: const OutlineInputBorder(
-                            borderRadius: BorderRadius.all(Radius.circular(10)),
-                            borderSide:
-                                BorderSide(color: Colors.grey, width: 2),
-                          ),
-                          focusedBorder: OutlineInputBorder(
-                            borderRadius:
-                                const BorderRadius.all(Radius.circular(20)),
-                            borderSide: BorderSide(
-                                color: Theme.of(context).primaryColor,
-                                width: 2),
-                          ),
-                          labelStyle: TextStyle(
-                            fontSize: 22,
-                            fontWeight: FontWeight.w300,
+                            GestureDetector(
+                              onTap: () {
+                                thickofdrylayController1.clear();
+                                thickofdrylayController2.clear();
+                                thickofdrylayController3.clear();
+                                thickofdrylayController4.clear();
+                                thickofdrylayController5.clear();
+                                thickofdrylayController.clear();
+                              },
+                              child: Icon(
+                                Icons.delete_outline,
+                                color: Color.fromRGBO(187, 30, 16, 1.0),
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                      SizedBox(height: 10),
+                      Center(
+                        child: Text(
+                          'Среднее значение: ${thickofdrylayController.text} мкм',
+                          textAlign: TextAlign.center,
+                          style: TextStyle(
+                              fontSize: 20,
+                              color: Theme.of(context).primaryColor,
+                              fontWeight: FontWeight.w600),
+                        ),
+                      ),
+                      SizedBox(height: 10),
+                      Container(
+                        child: Column(
+                          children: [
+                            SizedBox(height: 10),
+                            Row(
+                              children: [
+                                Expanded(
+                                  child: Padding(
+                                    padding: const EdgeInsets.all(8.0),
+                                    child: TextFormField(
+                                      onChanged: (String value) {
+                                        setState(() {});
+                                        focusNode90.requestFocus();
+                                        sredthick();
+                                      },
+                                      focusNode: focusNode90,
+                                      maxLength: 4,
+                                      onSaved: (value) {
+                                        object.thickofdrylay1 = value;
+                                      },
+                                      controller: thickofdrylayController1,
+                                      style: textStyle,
+                                      decoration: InputDecoration(
+                                        focusColor:
+                                            Theme.of(context).primaryColor,
+                                        labelStyle: TextStyle(
+                                          fontSize: 22,
+                                          fontWeight: FontWeight.w300,
+                                          color: Theme.of(context).primaryColor,
+                                        ),
+                                        hintStyle: TextStyle(
+                                          fontSize: 16,
+                                          fontWeight: FontWeight.w300,
+                                          color: Theme.of(context).primaryColor,
+                                        ),
+                                        labelText: '1 точка',
+                                        hintText: 'Введите толщину покрытия',
+                                        helperText: 'мкм',
+                                        prefixIcon: Icon(
+                                          Icons.vertical_align_center_sharp,
+                                          color: (focusNode90.hasFocus ||
+                                                  thickofdrylayController1
+                                                      .text.isNotEmpty)
+                                              ? Theme.of(context).primaryColor
+                                              : Colors.grey,
+                                          size: 32,
+                                        ),
+                                        enabledBorder: OutlineInputBorder(
+                                          borderRadius: BorderRadius.all(
+                                              Radius.circular(10)),
+                                          borderSide: BorderSide(
+                                              color: Colors.grey, width: 2),
+                                        ),
+                                        focusedBorder: OutlineInputBorder(
+                                          borderRadius: BorderRadius.all(
+                                              Radius.circular(20)),
+                                          borderSide: BorderSide(
+                                              color: Theme.of(context)
+                                                  .primaryColor,
+                                              width: 2),
+                                        ),
+                                      ),
+                                      keyboardType: TextInputType.number,
+                                    ),
+                                  ),
+                                ),
+                                SizedBox(width: 40),
+                                Expanded(
+                                  child: Padding(
+                                    padding: const EdgeInsets.all(8.0),
+                                    child: TextFormField(
+                                      onChanged: (String value) {
+                                        setState(() {});
+                                        focusNode91.requestFocus();
+                                        sredthick();
+                                      },
+                                      focusNode: focusNode91,
+                                      maxLength: 4,
+                                      onSaved: (value) {
+                                        object.thickofdrylay2 = value;
+                                      },
+                                      controller: thickofdrylayController2,
+                                      style: textStyle,
+                                      decoration: InputDecoration(
+                                        focusColor:
+                                            Theme.of(context).primaryColor,
+                                        labelStyle: TextStyle(
+                                          fontSize: 22,
+                                          fontWeight: FontWeight.w300,
+                                          color: Theme.of(context).primaryColor,
+                                        ),
+                                        hintStyle: TextStyle(
+                                          fontSize: 16,
+                                          fontWeight: FontWeight.w300,
+                                          color: Theme.of(context).primaryColor,
+                                        ),
+                                        labelText: '2 точка',
+                                        hintText: '2 точка',
+                                        helperText: 'мкм',
+                                        prefixIcon: Icon(
+                                          Icons.vertical_align_center_sharp,
+                                          color: (focusNode91.hasFocus ||
+                                                  thickofdrylayController2
+                                                      .text.isNotEmpty)
+                                              ? Theme.of(context).primaryColor
+                                              : Colors.grey,
+                                          size: 32,
+                                        ),
+                                        enabledBorder: OutlineInputBorder(
+                                          borderRadius: BorderRadius.all(
+                                              Radius.circular(10)),
+                                          borderSide: BorderSide(
+                                              color: Colors.grey, width: 2),
+                                        ),
+                                        focusedBorder: OutlineInputBorder(
+                                          borderRadius: BorderRadius.all(
+                                              Radius.circular(20)),
+                                          borderSide: BorderSide(
+                                              color: Theme.of(context)
+                                                  .primaryColor,
+                                              width: 2),
+                                        ),
+                                      ),
+                                      keyboardType: TextInputType.number,
+                                    ),
+                                  ),
+                                ),
+                              ],
+                            ),
+                            SizedBox(height: 20),
+                            Row(
+                              children: [
+                                SizedBox(width: 60),
+                                Expanded(
+                                  child: Padding(
+                                    padding: const EdgeInsets.all(8.0),
+                                    child: TextFormField(
+                                      onChanged: (String value) {
+                                        setState(() {});
+                                        focusNode94.requestFocus();
+                                        sredthick();
+                                      },
+                                      focusNode: focusNode94,
+                                      maxLength: 4,
+                                      onSaved: (value) {
+                                        object.thickofdrylay5 = value;
+                                      },
+                                      controller: thickofdrylayController5,
+                                      style: textStyle,
+                                      decoration: InputDecoration(
+                                        focusColor:
+                                            Theme.of(context).primaryColor,
+                                        labelStyle: TextStyle(
+                                          fontSize: 22,
+                                          fontWeight: FontWeight.w300,
+                                          color: Theme.of(context).primaryColor,
+                                        ),
+                                        hintStyle: TextStyle(
+                                          fontSize: 16,
+                                          fontWeight: FontWeight.w300,
+                                          color: Theme.of(context).primaryColor,
+                                        ),
+                                        labelText: '5 точка',
+                                        hintText: '5 точка',
+                                        helperText: 'мкм',
+                                        prefixIcon: Icon(
+                                          Icons.vertical_align_center_sharp,
+                                          color: (focusNode94.hasFocus ||
+                                                  thickofdrylayController5
+                                                      .text.isNotEmpty)
+                                              ? Theme.of(context).primaryColor
+                                              : Colors.grey,
+                                          size: 32,
+                                        ),
+                                        enabledBorder: OutlineInputBorder(
+                                          borderRadius: BorderRadius.all(
+                                              Radius.circular(10)),
+                                          borderSide: BorderSide(
+                                              color: Colors.grey, width: 2),
+                                        ),
+                                        focusedBorder: OutlineInputBorder(
+                                          borderRadius: BorderRadius.all(
+                                              Radius.circular(20)),
+                                          borderSide: BorderSide(
+                                              color: Theme.of(context)
+                                                  .primaryColor,
+                                              width: 2),
+                                        ),
+                                      ),
+                                      keyboardType: TextInputType.number,
+                                    ),
+                                  ),
+                                ),
+                                SizedBox(width: 60),
+                              ],
+                            ),
+                            SizedBox(height: 20),
+                            Row(
+                              children: [
+                                Expanded(
+                                  child: Padding(
+                                    padding: const EdgeInsets.all(8.0),
+                                    child: TextFormField(
+                                      onChanged: (String value) {
+                                        setState(() {});
+                                        focusNode92.requestFocus();
+                                        sredthick();
+                                      },
+                                      focusNode: focusNode92,
+                                      maxLength: 4,
+                                      onSaved: (value) {
+                                        object.thickofdrylay3 = value;
+                                      },
+                                      controller: thickofdrylayController3,
+                                      style: textStyle,
+                                      decoration: InputDecoration(
+                                        focusColor:
+                                            Theme.of(context).primaryColor,
+                                        labelStyle: TextStyle(
+                                          fontSize: 22,
+                                          fontWeight: FontWeight.w300,
+                                          color: Theme.of(context).primaryColor,
+                                        ),
+                                        hintStyle: TextStyle(
+                                          fontSize: 16,
+                                          fontWeight: FontWeight.w300,
+                                          color: Theme.of(context).primaryColor,
+                                        ),
+                                        labelText: '3 точка',
+                                        hintText: '3 точка',
+                                        helperText: 'мкм',
+                                        prefixIcon: Icon(
+                                          Icons.vertical_align_center_sharp,
+                                          color: (focusNode92.hasFocus ||
+                                                  thickofdrylayController3
+                                                      .text.isNotEmpty)
+                                              ? Theme.of(context).primaryColor
+                                              : Colors.grey,
+                                          size: 32,
+                                        ),
+                                        enabledBorder: OutlineInputBorder(
+                                          borderRadius: BorderRadius.all(
+                                              Radius.circular(10)),
+                                          borderSide: BorderSide(
+                                              color: Colors.grey, width: 2),
+                                        ),
+                                        focusedBorder: OutlineInputBorder(
+                                          borderRadius: BorderRadius.all(
+                                              Radius.circular(20)),
+                                          borderSide: BorderSide(
+                                              color: Theme.of(context)
+                                                  .primaryColor,
+                                              width: 2),
+                                        ),
+                                      ),
+                                      keyboardType: TextInputType.number,
+                                    ),
+                                  ),
+                                ),
+                                SizedBox(width: 40),
+                                Expanded(
+                                  child: Padding(
+                                    padding: const EdgeInsets.all(8.0),
+                                    child: TextFormField(
+                                      onChanged: (String value) {
+                                        setState(() {});
+                                        focusNode93.requestFocus();
+                                        sredthick();
+                                      },
+                                      focusNode: focusNode93,
+                                      maxLength: 4,
+                                      onSaved: (value) {
+                                        object.thickofdrylay4 = value;
+                                      },
+                                      controller: thickofdrylayController4,
+                                      style: textStyle,
+                                      decoration: InputDecoration(
+                                        focusColor:
+                                            Theme.of(context).primaryColor,
+                                        labelStyle: TextStyle(
+                                          fontSize: 22,
+                                          fontWeight: FontWeight.w300,
+                                          color: Theme.of(context).primaryColor,
+                                        ),
+                                        hintStyle: TextStyle(
+                                          fontSize: 16,
+                                          fontWeight: FontWeight.w300,
+                                          color: Theme.of(context).primaryColor,
+                                        ),
+                                        labelText: '4 точка',
+                                        hintText: '4 точка',
+                                        helperText: 'мкм',
+                                        prefixIcon: Icon(
+                                          Icons.vertical_align_center_sharp,
+                                          color: (focusNode93.hasFocus ||
+                                                  thickofdrylayController4
+                                                      .text.isNotEmpty)
+                                              ? Theme.of(context).primaryColor
+                                              : Colors.grey,
+                                          size: 32,
+                                        ),
+                                        enabledBorder: OutlineInputBorder(
+                                          borderRadius: BorderRadius.all(
+                                              Radius.circular(10)),
+                                          borderSide: BorderSide(
+                                              color: Colors.grey, width: 2),
+                                        ),
+                                        focusedBorder: OutlineInputBorder(
+                                          borderRadius: BorderRadius.all(
+                                              Radius.circular(20)),
+                                          borderSide: BorderSide(
+                                              color: Theme.of(context)
+                                                  .primaryColor,
+                                              width: 2),
+                                        ),
+                                      ),
+                                      keyboardType: TextInputType.number,
+                                    ),
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ],
+                        ),
+                        width: double.infinity,
+                        height: 350,
+                        decoration: BoxDecoration(
+                          border: Border.all(
                             color: Theme.of(context).primaryColor,
+                            width: 8,
                           ),
                         ),
-                        keyboardType: TextInputType.number,
                       ),
+                      SizedBox(height: 10),
+                      Divider(thickness: 4),
                       SizedBox(height: 10),
                       DropdownButtonFormField(
                         isExpanded: true,
@@ -3273,9 +4129,11 @@ class ObjectDetailState extends State<ObjectDetail> {
                         style: textStyle,
                         value: object.adhesionmethod,
                         onChanged: (String value) {
-                          setState(() {});
-                          focusNode45.requestFocus();
-                          object.adhesionmethod = value;
+                          setState(() {
+                            focusNode45.requestFocus();
+                            object.adhesionmethod = value;
+                            object.adhesion = 'нет данных';
+                          });
                         },
                       ),
                       SizedBox(height: 10),
@@ -3376,18 +4234,34 @@ class ObjectDetailState extends State<ObjectDetail> {
                                 },
                                 child: Icon(Icons.camera_alt_sharp,
                                     color: Colors.green))),
-                        items: _adhesion.map((String value) {
-                          return DropdownMenuItem<String>(
-                            value: value,
-                            child: Text(value),
-                          );
-                        }).toList(),
+                        items: object.adhesionmethod == 'X-образный метод'
+                            ? _adhesionX.map((String value) {
+                                return DropdownMenuItem<String>(
+                                  value: value,
+                                  child: Text(value),
+                                );
+                              }).toList()
+                            : object.adhesionmethod ==
+                                    'Метод решётчатых надрезов'
+                                ? _adhesionR.map((String value) {
+                                    return DropdownMenuItem<String>(
+                                      value: value,
+                                      child: Text(value),
+                                    );
+                                  }).toList()
+                                : _notdata.map((String value) {
+                                    return DropdownMenuItem<String>(
+                                      value: value,
+                                      child: Text(value),
+                                    );
+                                  }).toList(),
                         style: textStyle,
                         value: object.adhesion,
                         onChanged: (String value) {
-                          setState(() {});
-                          focusNode25.requestFocus();
-                          object.adhesion = value;
+                          setState(() {
+                            focusNode25.requestFocus();
+                            object.adhesion = value;
+                          });
                         },
                       ),
                       SizedBox(height: 10),
@@ -3466,7 +4340,1050 @@ class ObjectDetailState extends State<ObjectDetail> {
                           object.dielcont = value;
                         },
                       ),
-                      SizedBox(height: 20),
+                      SizedBox(height: 10),
+                      Column(
+                        children: [
+                          Row(
+                            children: [
+                              Container(
+                                child: const SizedBox(
+                                  width: 40,
+                                ),
+                              ),
+                              const Text(
+                                'Степень обеспыливания по ISO 8502-3',
+                                style: TextStyle(
+                                    fontSize: 16, color: Colors.black54),
+                              ),
+                            ],
+                          ),
+                          const SizedBox(height: 10),
+                          Row(
+                            children: [
+                              Expanded(
+                                child: DropdownButtonFormField(
+                                  isExpanded: true,
+                                  focusNode: focusNode96,
+                                  decoration: InputDecoration(
+                                    border: const OutlineInputBorder(),
+                                    enabledBorder: const OutlineInputBorder(
+                                      borderRadius:
+                                          BorderRadius.all(Radius.circular(10)),
+                                      borderSide: BorderSide(
+                                          color: Colors.grey, width: 2),
+                                    ),
+                                    focusedBorder: OutlineInputBorder(
+                                      borderRadius: const BorderRadius.all(
+                                          Radius.circular(20)),
+                                      borderSide: BorderSide(
+                                          color: Theme.of(context).primaryColor,
+                                          width: 2),
+                                    ),
+                                    labelStyle: TextStyle(
+                                      fontSize: 22,
+                                      fontWeight: FontWeight.w300,
+                                      color: Theme.of(context).primaryColor,
+                                    ),
+                                    prefixIcon: Icon(
+                                      Icons.color_lens,
+                                      color: focusNode96.hasFocus ||
+                                              katRalController
+                                                      .text.isNotEmpty &&
+                                                  colorRalController
+                                                      .text.isNotEmpty
+                                          ? Theme.of(context).primaryColor
+                                          : Colors.grey,
+                                      size: 32,
+                                    ),
+                                    labelText: 'Выберите категорию цвета',
+                                  ),
+                                  items: _colorRal.map((String value) {
+                                    return DropdownMenuItem(
+                                        value: value, child: Text(value));
+                                  }).toList(),
+                                  style: textStyle,
+                                  value: object.katRal,
+                                  onChanged: (String value) {
+                                    setState(() {
+                                      focusNode96.requestFocus();
+                                      object.katRal = value;
+                                      object.colorRal = 'нет данных';
+                                    });
+                                  },
+                                ),
+                              ),
+                              const SizedBox(width: 1),
+                              Expanded(
+                                child: DropdownButtonFormField(
+                                  isExpanded: true,
+                                  decoration: InputDecoration(
+                                      border: const OutlineInputBorder(),
+                                      enabledBorder: const OutlineInputBorder(
+                                        borderRadius: BorderRadius.all(
+                                            Radius.circular(10)),
+                                        borderSide: BorderSide(
+                                            color: Colors.grey, width: 2),
+                                      ),
+                                      focusedBorder: OutlineInputBorder(
+                                        borderRadius: const BorderRadius.all(
+                                            Radius.circular(20)),
+                                        borderSide: BorderSide(
+                                            color:
+                                                Theme.of(context).primaryColor,
+                                            width: 2),
+                                      ),
+                                      labelStyle: TextStyle(
+                                        fontSize: 22,
+                                        fontWeight: FontWeight.w300,
+                                        color: Theme.of(context).primaryColor,
+                                      ),
+                                      labelText: 'Выберите цвет',
+                                      suffixIcon: GestureDetector(
+                                          onTap: () async {
+                                            String imageName;
+                                            if (object.colorRal == '5000') {
+                                              imageName = '5000';
+                                            } else if (object.colorRal ==
+                                                '5001') {
+                                              imageName = '5001';
+                                            } else if (object.colorRal ==
+                                                '5002') {
+                                              imageName = '5002';
+                                            } else if (object.colorRal ==
+                                                '5003') {
+                                              imageName = '5003';
+                                            } else if (object.colorRal ==
+                                                '5004') {
+                                              imageName = '5004';
+                                            } else if (object.colorRal ==
+                                                '5005') {
+                                              imageName = '5005';
+                                            } else if (object.colorRal ==
+                                                '5007') {
+                                              imageName = '5007';
+                                            } else if (object.colorRal ==
+                                                '5008') {
+                                              imageName = '5008';
+                                            } else if (object.colorRal ==
+                                                '5009') {
+                                              imageName = '5009';
+                                            } else if (object.colorRal ==
+                                                '5010') {
+                                              imageName = '5010';
+                                            } else if (object.colorRal ==
+                                                '5011') {
+                                              imageName = '5011';
+                                            } else if (object.colorRal ==
+                                                '5012') {
+                                              imageName = '5012';
+                                            } else if (object.colorRal ==
+                                                '5013') {
+                                              imageName = '5013';
+                                            } else if (object.colorRal ==
+                                                '5014') {
+                                              imageName = '5014';
+                                            } else if (object.colorRal ==
+                                                '5015') {
+                                              imageName = '5015';
+                                            } else if (object.colorRal ==
+                                                '5017') {
+                                              imageName = '5017';
+                                            } else if (object.colorRal ==
+                                                '5018') {
+                                              imageName = '5018';
+                                            } else if (object.colorRal ==
+                                                '5019') {
+                                              imageName = '5019';
+                                            } else if (object.colorRal ==
+                                                '5020') {
+                                              imageName = '5020';
+                                            } else if (object.colorRal ==
+                                                '5021') {
+                                              imageName = '5021';
+                                            } else if (object.colorRal ==
+                                                '5022') {
+                                              imageName = '5022';
+                                            } else if (object.colorRal ==
+                                                '5023') {
+                                              imageName = '5023';
+                                            } else if (object.colorRal ==
+                                                '5024') {
+                                              imageName = '5024';
+                                            } else if (object.colorRal ==
+                                                '5025') {
+                                              imageName = '5025';
+                                            } else if (object.colorRal ==
+                                                '5026') {
+                                              imageName = '5026';
+                                            } else if (object.colorRal ==
+                                                '8000') {
+                                              imageName = '8000';
+                                            } else if (object.colorRal ==
+                                                '8001') {
+                                              imageName = '8001';
+                                            } else if (object.colorRal ==
+                                                '8002') {
+                                              imageName = '8002';
+                                            } else if (object.colorRal ==
+                                                '8003') {
+                                              imageName = '8003';
+                                            } else if (object.colorRal ==
+                                                '8004') {
+                                              imageName = '8004';
+                                            } else if (object.colorRal ==
+                                                '8007') {
+                                              imageName = '8007';
+                                            } else if (object.colorRal ==
+                                                '8008') {
+                                              imageName = '8008';
+                                            } else if (object.colorRal ==
+                                                '8011') {
+                                              imageName = '8011';
+                                            } else if (object.colorRal ==
+                                                '8012') {
+                                              imageName = '8012';
+                                            } else if (object.colorRal ==
+                                                '8014') {
+                                              imageName = '8014';
+                                            } else if (object.colorRal ==
+                                                '8015') {
+                                              imageName = '8015';
+                                            } else if (object.colorRal ==
+                                                '8016') {
+                                              imageName = '8016';
+                                            } else if (object.colorRal ==
+                                                '8017') {
+                                              imageName = '8017';
+                                            } else if (object.colorRal ==
+                                                '8019') {
+                                              imageName = '8019';
+                                            } else if (object.colorRal ==
+                                                '8022') {
+                                              imageName = '8022';
+                                            } else if (object.colorRal ==
+                                                '8023') {
+                                              imageName = '8023';
+                                            } else if (object.colorRal ==
+                                                '8024') {
+                                              imageName = '8024';
+                                            } else if (object.colorRal ==
+                                                '8025') {
+                                              imageName = '8025';
+                                            } else if (object.colorRal ==
+                                                '8028') {
+                                              imageName = '8028';
+                                            } else if (object.colorRal ==
+                                                '8029') {
+                                              imageName = '8029';
+                                            } else if (object.colorRal ==
+                                                '6000') {
+                                              imageName = '6000';
+                                            } else if (object.colorRal ==
+                                                '6001') {
+                                              imageName = '6001';
+                                            } else if (object.colorRal ==
+                                                '6002') {
+                                              imageName = '6002';
+                                            } else if (object.colorRal ==
+                                                '6003') {
+                                              imageName = '6003';
+                                            } else if (object.colorRal ==
+                                                '6004') {
+                                              imageName = '6004';
+                                            } else if (object.colorRal ==
+                                                '6005') {
+                                              imageName = '6005';
+                                            } else if (object.colorRal ==
+                                                '6006') {
+                                              imageName = '6006';
+                                            } else if (object.colorRal ==
+                                                '6007') {
+                                              imageName = '6007';
+                                            } else if (object.colorRal ==
+                                                '6008') {
+                                              imageName = '6008';
+                                            } else if (object.colorRal ==
+                                                '6009') {
+                                              imageName = '6009';
+                                            } else if (object.colorRal ==
+                                                '6010') {
+                                              imageName = '6010';
+                                            } else if (object.colorRal ==
+                                                '6011') {
+                                              imageName = '6011';
+                                            } else if (object.colorRal ==
+                                                '6012') {
+                                              imageName = '6012';
+                                            } else if (object.colorRal ==
+                                                '6013') {
+                                              imageName = '6013';
+                                            } else if (object.colorRal ==
+                                                '6014') {
+                                              imageName = '6014';
+                                            } else if (object.colorRal ==
+                                                '6015') {
+                                              imageName = '6015';
+                                            } else if (object.colorRal ==
+                                                '6016') {
+                                              imageName = '6016';
+                                            } else if (object.colorRal ==
+                                                '6017') {
+                                              imageName = '6017';
+                                            } else if (object.colorRal ==
+                                                '6018') {
+                                              imageName = '6018';
+                                            } else if (object.colorRal ==
+                                                '6019') {
+                                              imageName = '6019';
+                                            } else if (object.colorRal ==
+                                                '6020') {
+                                              imageName = '6020';
+                                            } else if (object.colorRal ==
+                                                '6021') {
+                                              imageName = '6021';
+                                            } else if (object.colorRal ==
+                                                '6022') {
+                                              imageName = '6022';
+                                            } else if (object.colorRal ==
+                                                '6024') {
+                                              imageName = '6024';
+                                            } else if (object.colorRal ==
+                                                '6025') {
+                                              imageName = '6025';
+                                            } else if (object.colorRal ==
+                                                '6026') {
+                                              imageName = '6026';
+                                            } else if (object.colorRal ==
+                                                '6027') {
+                                              imageName = '6027';
+                                            } else if (object.colorRal ==
+                                                '6028') {
+                                              imageName = '6028';
+                                            } else if (object.colorRal ==
+                                                '6029') {
+                                              imageName = '6029';
+                                            } else if (object.colorRal ==
+                                                '6032') {
+                                              imageName = '6032';
+                                            } else if (object.colorRal ==
+                                                '6033') {
+                                              imageName = '6033';
+                                            } else if (object.colorRal ==
+                                                '6034') {
+                                              imageName = '6034';
+                                            } else if (object.colorRal ==
+                                                '6035') {
+                                              imageName = '6035';
+                                            } else if (object.colorRal ==
+                                                '6036') {
+                                              imageName = '6036';
+                                            } else if (object.colorRal ==
+                                                '6037') {
+                                              imageName = '6037';
+                                            } else if (object.colorRal ==
+                                                '6038') {
+                                              imageName = '6038';
+                                            } else if (object.colorRal ==
+                                                '6039') {
+                                              imageName = '6039';
+                                            } else if (object.colorRal ==
+                                                '7000') {
+                                              imageName = '7000';
+                                            } else if (object.colorRal ==
+                                                '7001') {
+                                              imageName = '7001';
+                                            } else if (object.colorRal ==
+                                                '7002') {
+                                              imageName = '7002';
+                                            } else if (object.colorRal ==
+                                                '7003') {
+                                              imageName = '7003';
+                                            } else if (object.colorRal ==
+                                                '7004') {
+                                              imageName = '7004';
+                                            } else if (object.colorRal ==
+                                                '7005') {
+                                              imageName = '7005';
+                                            } else if (object.colorRal ==
+                                                '7006') {
+                                              imageName = '7006';
+                                            } else if (object.colorRal ==
+                                                '7008') {
+                                              imageName = '7008';
+                                            } else if (object.colorRal ==
+                                                '7009') {
+                                              imageName = '7009';
+                                            } else if (object.colorRal ==
+                                                '7010') {
+                                              imageName = '7010';
+                                            } else if (object.colorRal ==
+                                                '7011') {
+                                              imageName = '7011';
+                                            } else if (object.colorRal ==
+                                                '7012') {
+                                              imageName = '7012';
+                                            } else if (object.colorRal ==
+                                                '7013') {
+                                              imageName = '7013';
+                                            } else if (object.colorRal ==
+                                                '7015') {
+                                              imageName = '7015';
+                                            } else if (object.colorRal ==
+                                                '7016') {
+                                              imageName = '7016';
+                                            } else if (object.colorRal ==
+                                                '7021') {
+                                              imageName = '7021';
+                                            } else if (object.colorRal ==
+                                                '7022') {
+                                              imageName = '7022';
+                                            } else if (object.colorRal ==
+                                                '7023') {
+                                              imageName = '7023';
+                                            } else if (object.colorRal ==
+                                                '7024') {
+                                              imageName = '7024';
+                                            } else if (object.colorRal ==
+                                                '7026') {
+                                              imageName = '7026';
+                                            } else if (object.colorRal ==
+                                                '7030') {
+                                              imageName = '7030';
+                                            } else if (object.colorRal ==
+                                                '7031') {
+                                              imageName = '7031';
+                                            } else if (object.colorRal ==
+                                                '7032') {
+                                              imageName = '7032';
+                                            } else if (object.colorRal ==
+                                                '7033') {
+                                              imageName = '7033';
+                                            } else if (object.colorRal ==
+                                                '7034') {
+                                              imageName = '7034';
+                                            } else if (object.colorRal ==
+                                                '7035') {
+                                              imageName = '7035';
+                                            } else if (object.colorRal ==
+                                                '7036') {
+                                              imageName = '7036';
+                                            } else if (object.colorRal ==
+                                                '7037') {
+                                              imageName = '7037';
+                                            } else if (object.colorRal ==
+                                                '7038') {
+                                              imageName = '7038';
+                                            } else if (object.colorRal ==
+                                                '7039') {
+                                              imageName = '7039';
+                                            } else if (object.colorRal ==
+                                                '7040') {
+                                              imageName = '7040';
+                                            } else if (object.colorRal ==
+                                                '7042') {
+                                              imageName = '7042';
+                                            } else if (object.colorRal ==
+                                                '7043') {
+                                              imageName = '7043';
+                                            } else if (object.colorRal ==
+                                                '7044') {
+                                              imageName = '7044';
+                                            } else if (object.colorRal ==
+                                                '7045') {
+                                              imageName = '7045';
+                                            } else if (object.colorRal ==
+                                                '7046') {
+                                              imageName = '7046';
+                                            } else if (object.colorRal ==
+                                                '7047') {
+                                              imageName = '7047';
+                                            } else if (object.colorRal ==
+                                                '7048') {
+                                              imageName = '7048';
+                                            } else if (object.colorRal ==
+                                                '2000') {
+                                              imageName = '2000';
+                                            } else if (object.colorRal ==
+                                                '2001') {
+                                              imageName = '2001';
+                                            } else if (object.colorRal ==
+                                                '2002') {
+                                              imageName = '2002';
+                                            } else if (object.colorRal ==
+                                                '2003') {
+                                              imageName = '2003';
+                                            } else if (object.colorRal ==
+                                                '2004') {
+                                              imageName = '2004';
+                                            } else if (object.colorRal ==
+                                                '2005') {
+                                              imageName = '2005';
+                                            } else if (object.colorRal ==
+                                                '2007') {
+                                              imageName = '2007';
+                                            } else if (object.colorRal ==
+                                                '2008') {
+                                              imageName = '2008';
+                                            } else if (object.colorRal ==
+                                                '2009') {
+                                              imageName = '2009';
+                                            } else if (object.colorRal ==
+                                                '2010') {
+                                              imageName = '2010';
+                                            } else if (object.colorRal ==
+                                                '2011') {
+                                              imageName = '2011';
+                                            } else if (object.colorRal ==
+                                                '2012') {
+                                              imageName = '2012';
+                                            } else if (object.colorRal ==
+                                                '2013') {
+                                              imageName = '2013';
+                                            } else if (object.colorRal ==
+                                                '2017') {
+                                              imageName = '2017';
+                                            } else if (object.colorRal ==
+                                                '4001') {
+                                              imageName = '4001';
+                                            } else if (object.colorRal ==
+                                                '4002') {
+                                              imageName = '4002';
+                                            } else if (object.colorRal ==
+                                                '4003') {
+                                              imageName = '4003';
+                                            } else if (object.colorRal ==
+                                                '4004') {
+                                              imageName = '4004';
+                                            } else if (object.colorRal ==
+                                                '4005') {
+                                              imageName = '4005';
+                                            } else if (object.colorRal ==
+                                                '4006') {
+                                              imageName = '4006';
+                                            } else if (object.colorRal ==
+                                                '4007') {
+                                              imageName = '4007';
+                                            } else if (object.colorRal ==
+                                                '4008') {
+                                              imageName = '4008';
+                                            } else if (object.colorRal ==
+                                                '4009') {
+                                              imageName = '4009';
+                                            } else if (object.colorRal ==
+                                                '4010') {
+                                              imageName = '4010';
+                                            } else if (object.colorRal ==
+                                                '4011') {
+                                              imageName = '4011';
+                                            } else if (object.colorRal ==
+                                                '4012') {
+                                              imageName = '4012';
+                                            } else if (object.colorRal ==
+                                                '3000') {
+                                              imageName = '3000';
+                                            } else if (object.colorRal ==
+                                                '3001') {
+                                              imageName = '3001';
+                                            } else if (object.colorRal ==
+                                                '3002') {
+                                              imageName = '3002';
+                                            } else if (object.colorRal ==
+                                                '3003') {
+                                              imageName = '3003';
+                                            } else if (object.colorRal ==
+                                                '3004') {
+                                              imageName = '3004';
+                                            } else if (object.colorRal ==
+                                                '3005') {
+                                              imageName = '3005';
+                                            } else if (object.colorRal ==
+                                                '3007') {
+                                              imageName = '3007';
+                                            } else if (object.colorRal ==
+                                                '3009') {
+                                              imageName = '3009';
+                                            } else if (object.colorRal ==
+                                                '3011') {
+                                              imageName = '3011';
+                                            } else if (object.colorRal ==
+                                                '3012') {
+                                              imageName = '3012';
+                                            } else if (object.colorRal ==
+                                                '3013') {
+                                              imageName = '3013';
+                                            } else if (object.colorRal ==
+                                                '3014') {
+                                              imageName = '3014';
+                                            } else if (object.colorRal ==
+                                                '3015') {
+                                              imageName = '3015';
+                                            } else if (object.colorRal ==
+                                                '3016') {
+                                              imageName = '3016';
+                                            } else if (object.colorRal ==
+                                                '3017') {
+                                              imageName = '3017';
+                                            } else if (object.colorRal ==
+                                                '3018') {
+                                              imageName = '3018';
+                                            } else if (object.colorRal ==
+                                                '3020') {
+                                              imageName = '3020';
+                                            } else if (object.colorRal ==
+                                                '3022') {
+                                              imageName = '3022';
+                                            } else if (object.colorRal ==
+                                                '3024') {
+                                              imageName = '3024';
+                                            } else if (object.colorRal ==
+                                                '3026') {
+                                              imageName = '3026';
+                                            } else if (object.colorRal ==
+                                                '3027') {
+                                              imageName = '3027';
+                                            } else if (object.colorRal ==
+                                                '3028') {
+                                              imageName = '3028';
+                                            } else if (object.colorRal ==
+                                                '3031') {
+                                              imageName = '3031';
+                                            } else if (object.colorRal ==
+                                                '3032') {
+                                              imageName = '3032';
+                                            } else if (object.colorRal ==
+                                                '3033') {
+                                              imageName = '3033';
+                                            } else if (object.colorRal ==
+                                                '9001') {
+                                              imageName = '9001';
+                                            } else if (object.colorRal ==
+                                                '9002') {
+                                              imageName = '9002';
+                                            } else if (object.colorRal ==
+                                                '9003') {
+                                              imageName = '9003';
+                                            } else if (object.colorRal ==
+                                                '9004') {
+                                              imageName = '9004';
+                                            } else if (object.colorRal ==
+                                                '9005') {
+                                              imageName = '9005';
+                                            } else if (object.colorRal ==
+                                                '9006') {
+                                              imageName = '9006';
+                                            } else if (object.colorRal ==
+                                                '9007') {
+                                              imageName = '9007';
+                                            } else if (object.colorRal ==
+                                                '9010') {
+                                              imageName = '9010';
+                                            } else if (object.colorRal ==
+                                                '9011') {
+                                              imageName = '9011';
+                                            } else if (object.colorRal ==
+                                                '9012') {
+                                              imageName = '9012';
+                                            } else if (object.colorRal ==
+                                                '9016') {
+                                              imageName = '9016';
+                                            } else if (object.colorRal ==
+                                                '9017') {
+                                              imageName = '9017';
+                                            } else if (object.colorRal ==
+                                                '9018') {
+                                              imageName = '9018';
+                                            } else if (object.colorRal ==
+                                                '9022') {
+                                              imageName = '9022';
+                                            } else if (object.colorRal ==
+                                                '9023') {
+                                              imageName = '9023';
+                                            } else if (object.colorRal ==
+                                                '1000') {
+                                              imageName = '1000';
+                                            } else if (object.colorRal ==
+                                                '1001') {
+                                              imageName = '1001';
+                                            } else if (object.colorRal ==
+                                                '1002') {
+                                              imageName = '1002';
+                                            } else if (object.colorRal ==
+                                                '1003') {
+                                              imageName = '1003';
+                                            } else if (object.colorRal ==
+                                                '1004') {
+                                              imageName = '1004';
+                                            } else if (object.colorRal ==
+                                                '1005') {
+                                              imageName = '1005';
+                                            } else if (object.colorRal ==
+                                                '1006') {
+                                              imageName = '1006';
+                                            } else if (object.colorRal ==
+                                                '1007') {
+                                              imageName = '1007';
+                                            } else if (object.colorRal ==
+                                                '1011') {
+                                              imageName = '1011';
+                                            } else if (object.colorRal ==
+                                                '1012') {
+                                              imageName = '1012';
+                                            } else if (object.colorRal ==
+                                                '1013') {
+                                              imageName = '1013';
+                                            } else if (object.colorRal ==
+                                                '1014') {
+                                              imageName = '1014';
+                                            } else if (object.colorRal ==
+                                                '1015') {
+                                              imageName = '1015';
+                                            } else if (object.colorRal ==
+                                                '1016') {
+                                              imageName = '1016';
+                                            } else if (object.colorRal ==
+                                                '1017') {
+                                              imageName = '1017';
+                                            } else if (object.colorRal ==
+                                                '1018') {
+                                              imageName = '1018';
+                                            } else if (object.colorRal ==
+                                                '1019') {
+                                              imageName = '1019';
+                                            } else if (object.colorRal ==
+                                                '1020') {
+                                              imageName = '1020';
+                                            } else if (object.colorRal ==
+                                                '1021') {
+                                              imageName = '1021';
+                                            } else if (object.colorRal ==
+                                                '1023') {
+                                              imageName = '1023';
+                                            } else if (object.colorRal ==
+                                                '1024') {
+                                              imageName = '1024';
+                                            } else if (object.colorRal ==
+                                                '1026') {
+                                              imageName = '1026';
+                                            } else if (object.colorRal ==
+                                                '1027') {
+                                              imageName = '1027';
+                                            } else if (object.colorRal ==
+                                                '1028') {
+                                              imageName = '1028';
+                                            } else if (object.colorRal ==
+                                                '1032') {
+                                              imageName = '1032';
+                                            } else if (object.colorRal ==
+                                                '1033') {
+                                              imageName = '1033';
+                                            } else if (object.colorRal ==
+                                                '1034') {
+                                              imageName = '1034';
+                                            } else if (object.colorRal ==
+                                                '1035') {
+                                              imageName = '1035';
+                                            } else if (object.colorRal ==
+                                                '1036') {
+                                              imageName = '1036';
+                                            } else if (object.colorRal ==
+                                                '1037') {
+                                              imageName = '1037';
+                                            } else if (object.colorRal ==
+                                                    'нет данных' ||
+                                                object.colorRal == null) {
+                                              imageName = 'imagenull';
+                                            }
+                                            final value = await Navigator.push(
+                                              context,
+                                              MaterialPageRoute(
+                                                  builder: (context) =>
+                                                      CameraPage(imageName)),
+                                            ).then((value) {
+                                              setState(() async {
+                                                if (value != null) {
+                                                  _imageColor = value;
+
+                                                  if (_4formKey.currentState
+                                                      .validate()) {
+                                                    _4formKey.currentState
+                                                        .save();
+                                                    if (_imageColor != null) {
+                                                      final Directory extDir =
+                                                          await getApplicationDocumentsDirectory();
+                                                      final String dirPath =
+                                                          '${extDir.path}/Pictures/flutter_test';
+                                                      await Directory(dirPath)
+                                                          .create(
+                                                              recursive: true);
+                                                      final String filePath =
+                                                          '$dirPath/${DateTime.now().millisecondsSinceEpoch.toString()}.jpg';
+                                                      await _imageColor
+                                                          .copy(filePath);
+                                                      object.photoRal =
+                                                          filePath;
+                                                    }
+                                                  }
+                                                }
+                                              });
+                                            });
+                                          },
+                                          child: const Icon(
+                                              Icons.camera_alt_sharp,
+                                              color: Colors.green))),
+                                  items: object.katRal == '1**** - жёлтые'
+                                      ? _colorRal1.map((String value) {
+                                          return DropdownMenuItem(
+                                            value: value,
+                                            child: Row(
+                                              children: <Widget>[
+                                                imagePaths.containsKey(value)
+                                                    ? Image.asset(
+                                                        imagePaths[value],
+                                                        height: 10,
+                                                        width: 30,
+                                                      )
+                                                    : SizedBox(),
+                                                Text(value),
+                                              ],
+                                            ),
+                                          );
+                                        }).toList()
+                                      : object.katRal == '2**** - оранжевые'
+                                          ? _colorRal2.map((String value) {
+                                              return DropdownMenuItem(
+                                                value: value,
+                                                child: Row(
+                                                  children: <Widget>[
+                                                    imagePaths
+                                                            .containsKey(value)
+                                                        ? Image.asset(
+                                                            imagePaths[value],
+                                                            height: 10,
+                                                            width: 30,
+                                                          )
+                                                        : SizedBox(),
+                                                    Text(value),
+                                                  ],
+                                                ),
+                                              );
+                                            }).toList()
+                                          : object.katRal == '3**** - красные'
+                                              ? _colorRal3.map((String value) {
+                                                  return DropdownMenuItem(
+                                                    value: value,
+                                                    child: Row(
+                                                      children: <Widget>[
+                                                        imagePaths.containsKey(
+                                                                value)
+                                                            ? Image.asset(
+                                                                imagePaths[
+                                                                    value],
+                                                                height: 10,
+                                                                width: 30,
+                                                              )
+                                                            : SizedBox(),
+                                                        Text(value),
+                                                      ],
+                                                    ),
+                                                  );
+                                                }).toList()
+                                              : object.katRal ==
+                                                      '4**** - фиолетовые'
+                                                  ? _colorRal4
+                                                      .map((String value) {
+                                                      return DropdownMenuItem(
+                                                        value: value,
+                                                        child: Row(
+                                                          children: <Widget>[
+                                                            imagePaths
+                                                                    .containsKey(
+                                                                        value)
+                                                                ? Image.asset(
+                                                                    imagePaths[
+                                                                        value],
+                                                                    height: 10,
+                                                                    width: 30,
+                                                                  )
+                                                                : SizedBox(),
+                                                            Text(value),
+                                                          ],
+                                                        ),
+                                                      );
+                                                    }).toList()
+                                                  : object.katRal ==
+                                                          '5**** - синие'
+                                                      ? _colorRal5
+                                                          .map((String value) {
+                                                          return DropdownMenuItem(
+                                                            value: value,
+                                                            child: Row(
+                                                              children: <
+                                                                  Widget>[
+                                                                imagePaths.containsKey(
+                                                                        value)
+                                                                    ? Image
+                                                                        .asset(
+                                                                        imagePaths[
+                                                                            value],
+                                                                        height:
+                                                                            10,
+                                                                        width:
+                                                                            30,
+                                                                      )
+                                                                    : SizedBox(),
+                                                                Text(value),
+                                                              ],
+                                                            ),
+                                                          );
+                                                        }).toList()
+                                                      : object.katRal ==
+                                                              '6**** - зелёные'
+                                                          ? _colorRal6.map(
+                                                              (String value) {
+                                                              return DropdownMenuItem(
+                                                                value: value,
+                                                                child: Row(
+                                                                  children: <
+                                                                      Widget>[
+                                                                    imagePaths.containsKey(
+                                                                            value)
+                                                                        ? Image
+                                                                            .asset(
+                                                                            imagePaths[value],
+                                                                            height:
+                                                                                10,
+                                                                            width:
+                                                                                30,
+                                                                          )
+                                                                        : SizedBox(),
+                                                                    Text(value),
+                                                                  ],
+                                                                ),
+                                                              );
+                                                            }).toList()
+                                                          : object.katRal ==
+                                                                  '7**** - серые'
+                                                              ? _colorRal7.map(
+                                                                  (String
+                                                                      value) {
+                                                                  return DropdownMenuItem(
+                                                                    value:
+                                                                        value,
+                                                                    child: Row(
+                                                                      children: <
+                                                                          Widget>[
+                                                                        imagePaths.containsKey(value)
+                                                                            ? Image.asset(
+                                                                                imagePaths[value],
+                                                                                height: 10,
+                                                                                width: 30,
+                                                                              )
+                                                                            : SizedBox(),
+                                                                        Text(
+                                                                            value),
+                                                                      ],
+                                                                    ),
+                                                                  );
+                                                                }).toList()
+                                                              : object.katRal ==
+                                                                      '8**** - коричневые'
+                                                                  ? _colorRal8
+                                                                      .map((String
+                                                                          value) {
+                                                                      return DropdownMenuItem(
+                                                                        value:
+                                                                            value,
+                                                                        child:
+                                                                            Row(
+                                                                          children: <
+                                                                              Widget>[
+                                                                            imagePaths.containsKey(value)
+                                                                                ? Image.asset(
+                                                                                    imagePaths[value],
+                                                                                    height: 10,
+                                                                                    width: 30,
+                                                                                  )
+                                                                                : SizedBox(),
+                                                                            Text(value),
+                                                                          ],
+                                                                        ),
+                                                                      );
+                                                                    }).toList()
+                                                                  : object.katRal ==
+                                                                          '9**** - светлые и тёмные'
+                                                                      ? _colorRal9.map(
+                                                                          (String
+                                                                              value) {
+                                                                          return DropdownMenuItem(
+                                                                            value:
+                                                                                value,
+                                                                            child:
+                                                                                Row(
+                                                                              children: <Widget>[
+                                                                                imagePaths.containsKey(value)
+                                                                                    ? Image.asset(
+                                                                                        imagePaths[value],
+                                                                                        height: 10,
+                                                                                        width: 30,
+                                                                                      )
+                                                                                    : SizedBox(),
+                                                                                Text(value),
+                                                                              ],
+                                                                            ),
+                                                                          );
+                                                                        }).toList()
+                                                                      : _notdata.map(
+                                                                          (String
+                                                                              value) {
+                                                                          return DropdownMenuItem(
+                                                                              value: value,
+                                                                              child: Text(value));
+                                                                        }).toList(),
+                                  style: textStyle,
+                                  value: object.colorRal,
+                                  onChanged: (String value) {
+                                    setState(() {
+                                      object.colorRal = value;
+                                    });
+                                  },
+                                ),
+                              ),
+                            ],
+                          ),
+                        ],
+                      ),
+                      SizedBox(height: 10),
+                      Container(
+                        height: 100,
+                        child: Column(
+                          children: [
+                            Expanded(
+                              child: GestureDetector(
+                                onTap: () {
+                                  Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                        builder: (context) => ImageScreen(
+                                            imagePath: object.photoRal)),
+                                  );
+                                },
+                                child: Center(
+                                  child: object.photoRal != null
+                                      ? Image.file(
+                                          File(object.photoRal),
+                                          fit: BoxFit.cover,
+                                          alignment: Alignment.center,
+                                          width: 100,
+                                          height: 100,
+                                        )
+                                      : const Text('Изображение отсутствует'),
+                                ),
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                      SizedBox(height: 10),
 
                       TextFormField(
                         focusNode: focusNode44,
@@ -3488,7 +5405,7 @@ class ObjectDetailState extends State<ObjectDetail> {
                             Icons.color_lens,
                             color: object.bgcolor == null
                                 ? Colors.grey
-                                : Color(int.parse(object.bgcolor)),
+                                : Color(int.tryParse(object.bgcolor) ?? 0),
                             size: 32,
                           ),
                           suffixIcon: GestureDetector(
@@ -3505,7 +5422,7 @@ class ObjectDetailState extends State<ObjectDetail> {
                               Icons.colorize,
                               color: object.bgcolor == null
                                   ? Colors.grey
-                                  : Color(int.parse(object.bgcolor)),
+                                  : Color(int.tryParse(object.bgcolor) ?? 0),
                             ),
                           ),
                           enabledBorder: OutlineInputBorder(
@@ -3513,7 +5430,7 @@ class ObjectDetailState extends State<ObjectDetail> {
                             borderSide: BorderSide(
                                 color: object.bgcolor == null
                                     ? Colors.grey
-                                    : Color(int.parse(object.bgcolor)),
+                                    : Color(int.tryParse(object.bgcolor) ?? 0),
                                 width: 2),
                           ),
                           focusedBorder: OutlineInputBorder(
@@ -3521,7 +5438,7 @@ class ObjectDetailState extends State<ObjectDetail> {
                             borderSide: BorderSide(
                                 color: object.bgcolor == null
                                     ? Colors.grey
-                                    : Color(int.parse(object.bgcolor)),
+                                    : Color(int.tryParse(object.bgcolor) ?? 0),
                                 width: 2),
                           ),
                           labelStyle: TextStyle(
@@ -3529,7 +5446,7 @@ class ObjectDetailState extends State<ObjectDetail> {
                             fontWeight: FontWeight.w300,
                             color: object.bgcolor == null
                                 ? Colors.grey
-                                : Color(int.parse(object.bgcolor)),
+                                : Color(int.tryParse(object.bgcolor) ?? 0),
                           ),
                         ),
                         onSaved: (value) {
@@ -3574,7 +5491,9 @@ class ObjectDetailState extends State<ObjectDetail> {
                                 borderRadius: BorderRadius.circular(10.0))),
                         onPressed: () => saveForm4(),
                         child: Text(
-                          isEdit ? 'Редактировать' : 'Добавить',
+                          isEdit
+                              ? 'Редактировать и закрыть'
+                              : 'Добавить и закрыть',
                           style: const TextStyle(
                               fontSize: 18.0, fontWeight: FontWeight.w300),
                         ),
@@ -3602,744 +5521,893 @@ class ObjectDetailState extends State<ObjectDetail> {
                                 fontWeight: FontWeight.w300),
                           )),
                       Divider(thickness: 4),
-                      Container(
-                          alignment: Alignment.center,
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              Text(
-                                'Толщиномер покрытий',
-                                style: TextStyle(
-                                    fontSize: 24,
-                                    color: Theme.of(context).primaryColor,
-                                    fontWeight: FontWeight.w300),
+                      SingleChildScrollView(
+                        scrollDirection: Axis.horizontal,
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Container(
+                              width: MediaQuery.of(context).size.width,
+                              alignment: Alignment.center,
+                              child: Column(
+                                children: [
+                                  Container(
+                                      alignment: Alignment.center,
+                                      child: Row(
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.center,
+                                        children: [
+                                          Text(
+                                            'Толщиномер покрытий',
+                                            style: TextStyle(
+                                                fontSize: 24,
+                                                color: Theme.of(context)
+                                                    .primaryColor,
+                                                fontWeight: FontWeight.w300),
+                                          ),
+                                          GestureDetector(
+                                            onTap: () {
+                                              thickinsulmeterController.clear();
+                                              tickinsulmeternumbController
+                                                  .clear();
+                                              tickinsulmeterdateController
+                                                  .clear();
+                                            },
+                                            child: Icon(
+                                              Icons.delete_outline,
+                                              color: Color.fromRGBO(
+                                                  187, 30, 16, 1.0),
+                                            ),
+                                          ),
+                                        ],
+                                      )),
+                                  Padding(
+                                    padding: const EdgeInsets.all(10.0),
+                                    child: TextFormField(
+                                      focusNode: focusNode27,
+                                      onChanged: (String value) {
+                                        setState(() {});
+                                        focusNode27.requestFocus();
+                                      },
+                                      maxLength: 20,
+                                      onSaved: (value) {
+                                        object.thickinsulmeter = value;
+                                      },
+                                      controller: thickinsulmeterController,
+                                      style: textStyle,
+                                      decoration: InputDecoration(
+                                        labelText: 'Толщиномер покрытий',
+                                        hintText: 'Введите название и номер',
+                                        helperText: '... № ...',
+                                        prefixIcon: Icon(
+                                          Icons.speaker_phone,
+                                          color: focusNode27.hasFocus ||
+                                                  thickinsulmeterController
+                                                      .text.isNotEmpty
+                                              ? Theme.of(context).primaryColor
+                                              : Colors.grey,
+                                          size: 32,
+                                        ),
+                                        enabledBorder: const OutlineInputBorder(
+                                          borderRadius: BorderRadius.all(
+                                              Radius.circular(10)),
+                                          borderSide: BorderSide(
+                                              color: Colors.grey, width: 2),
+                                        ),
+                                        focusedBorder: OutlineInputBorder(
+                                          borderRadius: const BorderRadius.all(
+                                              Radius.circular(20)),
+                                          borderSide: BorderSide(
+                                              color: Theme.of(context)
+                                                  .primaryColor,
+                                              width: 2),
+                                        ),
+                                        labelStyle: TextStyle(
+                                          fontSize: 22,
+                                          fontWeight: FontWeight.w300,
+                                          color: Theme.of(context).primaryColor,
+                                        ),
+                                      ),
+                                      keyboardType: TextInputType.number,
+                                    ),
+                                  ),
+                                  Row(
+                                    children: [
+                                      Expanded(
+                                        child: Padding(
+                                          padding: const EdgeInsets.all(10.0),
+                                          child: TextFormField(
+                                            focusNode: focusNode12,
+                                            onChanged: (String value) {
+                                              setState(() {});
+                                              focusNode12.requestFocus();
+                                            },
+                                            maxLength: 30,
+                                            onSaved: (value) {
+                                              object.tickinsulmeternumb = value;
+                                            },
+                                            controller:
+                                                tickinsulmeternumbController,
+                                            style: textStyle,
+                                            decoration: InputDecoration(
+                                              focusColor: Theme.of(context)
+                                                  .primaryColor,
+                                              labelStyle: TextStyle(
+                                                fontSize: 22,
+                                                fontWeight: FontWeight.w300,
+                                                color: Theme.of(context)
+                                                    .primaryColor,
+                                              ),
+                                              hintStyle: TextStyle(
+                                                fontSize: 16,
+                                                fontWeight: FontWeight.w300,
+                                                color: Theme.of(context)
+                                                    .primaryColor,
+                                              ),
+                                              labelText: '№',
+                                              hintText: '№',
+                                              helperText: '№....',
+                                              prefixIcon: Icon(
+                                                Icons.speaker_phone,
+                                                color: focusNode12.hasFocus ||
+                                                        tickinsulmeternumbController
+                                                            .text.isNotEmpty
+                                                    ? Theme.of(context)
+                                                        .primaryColor
+                                                    : Colors.grey,
+                                                size: 32,
+                                              ),
+                                              enabledBorder: OutlineInputBorder(
+                                                borderRadius: BorderRadius.all(
+                                                    Radius.circular(10)),
+                                                borderSide: BorderSide(
+                                                    color: Colors.grey,
+                                                    width: 2),
+                                              ),
+                                              focusedBorder: OutlineInputBorder(
+                                                borderRadius: BorderRadius.all(
+                                                    Radius.circular(20)),
+                                                borderSide: BorderSide(
+                                                    color: Theme.of(context)
+                                                        .primaryColor,
+                                                    width: 2),
+                                              ),
+                                            ),
+                                            keyboardType: TextInputType.text,
+                                          ),
+                                        ),
+                                      ),
+                                      Expanded(
+                                        child: Padding(
+                                          padding: const EdgeInsets.all(10.0),
+                                          child: TextFormField(
+                                            focusNode: focusNode11,
+                                            onChanged: (String value) {
+                                              setState(() {});
+                                              focusNode11.requestFocus();
+                                            },
+                                            maxLength: 10,
+                                            onSaved: (value) {
+                                              object.tickinsulmeterdate = value;
+                                            },
+                                            controller:
+                                                tickinsulmeterdateController,
+                                            style: textStyle,
+                                            decoration: InputDecoration(
+                                              focusColor: Theme.of(context)
+                                                  .primaryColor,
+                                              labelStyle: TextStyle(
+                                                fontSize: 22,
+                                                fontWeight: FontWeight.w300,
+                                                color: Theme.of(context)
+                                                    .primaryColor,
+                                              ),
+                                              hintStyle: TextStyle(
+                                                fontSize: 16,
+                                                fontWeight: FontWeight.w300,
+                                                color: Theme.of(context)
+                                                    .primaryColor,
+                                              ),
+                                              labelText: 'Дата поверки',
+                                              hintText: 'дата',
+                                              helperText: 'д.м.г',
+                                              prefixIcon: Icon(
+                                                Icons.speaker_phone,
+                                                color: focusNode11.hasFocus ||
+                                                        tickinsulmeterdateController
+                                                            .text.isNotEmpty
+                                                    ? Theme.of(context)
+                                                        .primaryColor
+                                                    : Colors.grey,
+                                                size: 32,
+                                              ),
+                                              enabledBorder: OutlineInputBorder(
+                                                borderRadius: BorderRadius.all(
+                                                    Radius.circular(10)),
+                                                borderSide: BorderSide(
+                                                    color: Colors.grey,
+                                                    width: 2),
+                                              ),
+                                              focusedBorder: OutlineInputBorder(
+                                                borderRadius: BorderRadius.all(
+                                                    Radius.circular(20)),
+                                                borderSide: BorderSide(
+                                                    color: Theme.of(context)
+                                                        .primaryColor,
+                                                    width: 2),
+                                              ),
+                                            ),
+                                            keyboardType: TextInputType.number,
+                                          ),
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                ],
                               ),
-                              GestureDetector(
-                                onTap: () {
-                                  thickinsulmeterController.clear();
-                                  tickinsulmeternumbController.clear();
-                                  tickinsulmeterdateController.clear();
-                                },
-                                child: Icon(
-                                  Icons.delete_outline,
-                                  color: Color.fromRGBO(187, 30, 16, 1.0),
-                                ),
+                            ),
+                            VerticalDivider(thickness: 4),
+                            Container(
+                              width: MediaQuery.of(context).size.width,
+                              alignment: Alignment.center,
+                              child: Column(
+                                children: [
+                                  Container(
+                                      alignment: Alignment.center,
+                                      child: Row(
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.center,
+                                        children: [
+                                          Text(
+                                            'Адгезиметр',
+                                            style: TextStyle(
+                                                fontSize: 24,
+                                                color: Theme.of(context)
+                                                    .primaryColor,
+                                                fontWeight: FontWeight.w300),
+                                          ),
+                                          GestureDetector(
+                                            onTap: () {
+                                              adhesmeterController.clear();
+                                              adhesmeternumbController.clear();
+                                              adhesmeterdateController.clear();
+                                            },
+                                            child: Icon(
+                                              Icons.delete_outline,
+                                              color: Color.fromRGBO(
+                                                  187, 30, 16, 1.0),
+                                            ),
+                                          ),
+                                        ],
+                                      )),
+                                  Padding(
+                                    padding: const EdgeInsets.all(10.0),
+                                    child: TextFormField(
+                                      focusNode: focusNode28,
+                                      onChanged: (String value) {
+                                        setState(() {});
+                                        focusNode28.requestFocus();
+                                      },
+                                      maxLength: 20,
+                                      onSaved: (value) {
+                                        object.adhesmeter = value;
+                                      },
+                                      controller: adhesmeterController,
+                                      style: textStyle,
+                                      decoration: InputDecoration(
+                                        labelText: 'Адгезиметр',
+                                        hintText: 'Введите название и номер',
+                                        helperText: '... № ...',
+                                        prefixIcon: Icon(
+                                          Icons.account_balance_outlined,
+                                          color: focusNode28.hasFocus ||
+                                                  adhesmeterController
+                                                      .text.isNotEmpty
+                                              ? Theme.of(context).primaryColor
+                                              : Colors.grey,
+                                          size: 32,
+                                        ),
+                                        enabledBorder: const OutlineInputBorder(
+                                          borderRadius: BorderRadius.all(
+                                              Radius.circular(10)),
+                                          borderSide: BorderSide(
+                                              color: Colors.grey, width: 2),
+                                        ),
+                                        focusedBorder: OutlineInputBorder(
+                                          borderRadius: const BorderRadius.all(
+                                              Radius.circular(20)),
+                                          borderSide: BorderSide(
+                                              color: Theme.of(context)
+                                                  .primaryColor,
+                                              width: 2),
+                                        ),
+                                        labelStyle: TextStyle(
+                                          fontSize: 22,
+                                          fontWeight: FontWeight.w300,
+                                          color: Theme.of(context).primaryColor,
+                                        ),
+                                      ),
+                                      keyboardType: TextInputType.number,
+                                    ),
+                                  ),
+                                  Row(
+                                    children: [
+                                      Expanded(
+                                        child: Padding(
+                                          padding: const EdgeInsets.all(10.0),
+                                          child: TextFormField(
+                                            focusNode: focusNode13,
+                                            onChanged: (String value) {
+                                              setState(() {});
+                                              focusNode13.requestFocus();
+                                            },
+                                            maxLength: 30,
+                                            onSaved: (value) {
+                                              object.adhesmeternumb = value;
+                                            },
+                                            controller:
+                                                adhesmeternumbController,
+                                            style: textStyle,
+                                            decoration: InputDecoration(
+                                              focusColor: Theme.of(context)
+                                                  .primaryColor,
+                                              labelStyle: TextStyle(
+                                                fontSize: 22,
+                                                fontWeight: FontWeight.w300,
+                                                color: Theme.of(context)
+                                                    .primaryColor,
+                                              ),
+                                              hintStyle: TextStyle(
+                                                fontSize: 16,
+                                                fontWeight: FontWeight.w300,
+                                                color: Theme.of(context)
+                                                    .primaryColor,
+                                              ),
+                                              labelText: '№',
+                                              hintText: '№',
+                                              helperText: '№....',
+                                              prefixIcon: Icon(
+                                                Icons.broken_image,
+                                                color: focusNode13.hasFocus ||
+                                                        adhesmeternumbController
+                                                            .text.isNotEmpty
+                                                    ? Theme.of(context)
+                                                        .primaryColor
+                                                    : Colors.grey,
+                                                size: 32,
+                                              ),
+                                              enabledBorder: OutlineInputBorder(
+                                                borderRadius: BorderRadius.all(
+                                                    Radius.circular(10)),
+                                                borderSide: BorderSide(
+                                                    color: Colors.grey,
+                                                    width: 2),
+                                              ),
+                                              focusedBorder: OutlineInputBorder(
+                                                borderRadius: BorderRadius.all(
+                                                    Radius.circular(20)),
+                                                borderSide: BorderSide(
+                                                    color: Theme.of(context)
+                                                        .primaryColor,
+                                                    width: 2),
+                                              ),
+                                            ),
+                                            keyboardType: TextInputType.text,
+                                          ),
+                                        ),
+                                      ),
+                                      Expanded(
+                                        child: Padding(
+                                          padding: const EdgeInsets.all(10.0),
+                                          child: TextFormField(
+                                            focusNode: focusNode14,
+                                            onChanged: (String value) {
+                                              setState(() {});
+                                              focusNode14.requestFocus();
+                                            },
+                                            maxLength: 10,
+                                            onSaved: (value) {
+                                              object.adhesmeterdate = value;
+                                            },
+                                            controller:
+                                                adhesmeterdateController,
+                                            style: textStyle,
+                                            decoration: InputDecoration(
+                                              focusColor: Theme.of(context)
+                                                  .primaryColor,
+                                              labelStyle: TextStyle(
+                                                fontSize: 22,
+                                                fontWeight: FontWeight.w300,
+                                                color: Theme.of(context)
+                                                    .primaryColor,
+                                              ),
+                                              hintStyle: TextStyle(
+                                                fontSize: 16,
+                                                fontWeight: FontWeight.w300,
+                                                color: Theme.of(context)
+                                                    .primaryColor,
+                                              ),
+                                              labelText: 'Дата поверки',
+                                              hintText: 'дата',
+                                              helperText: 'д.м.г',
+                                              prefixIcon: Icon(
+                                                Icons.broken_image,
+                                                color: focusNode14.hasFocus ||
+                                                        adhesmeterdateController
+                                                            .text.isNotEmpty
+                                                    ? Theme.of(context)
+                                                        .primaryColor
+                                                    : Colors.grey,
+                                                size: 32,
+                                              ),
+                                              enabledBorder: OutlineInputBorder(
+                                                borderRadius: BorderRadius.all(
+                                                    Radius.circular(10)),
+                                                borderSide: BorderSide(
+                                                    color: Colors.grey,
+                                                    width: 2),
+                                              ),
+                                              focusedBorder: OutlineInputBorder(
+                                                borderRadius: BorderRadius.all(
+                                                    Radius.circular(20)),
+                                                borderSide: BorderSide(
+                                                    color: Theme.of(context)
+                                                        .primaryColor,
+                                                    width: 2),
+                                              ),
+                                            ),
+                                            keyboardType: TextInputType.number,
+                                          ),
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                ],
                               ),
-                            ],
-                          )),
-                      SizedBox(height: 10),
-                      TextFormField(
-                        focusNode: focusNode27,
-                        onChanged: (String value) {
-                          setState(() {});
-                          focusNode27.requestFocus();
-                        },
-                        maxLength: 20,
-                        onSaved: (value) {
-                          object.thickinsulmeter = value;
-                        },
-                        controller: thickinsulmeterController,
-                        style: textStyle,
-                        decoration: InputDecoration(
-                          labelText: 'Толщиномер покрытий',
-                          hintText: 'Введите название и номер',
-                          helperText: '... № ...',
-                          prefixIcon: Icon(
-                            Icons.speaker_phone,
-                            color: focusNode27.hasFocus ||
-                                    thickinsulmeterController.text.isNotEmpty
-                                ? Theme.of(context).primaryColor
-                                : Colors.grey,
-                            size: 32,
-                          ),
-                          enabledBorder: const OutlineInputBorder(
-                            borderRadius: BorderRadius.all(Radius.circular(10)),
-                            borderSide:
-                                BorderSide(color: Colors.grey, width: 2),
-                          ),
-                          focusedBorder: OutlineInputBorder(
-                            borderRadius:
-                                const BorderRadius.all(Radius.circular(20)),
-                            borderSide: BorderSide(
-                                color: Theme.of(context).primaryColor,
-                                width: 2),
-                          ),
-                          labelStyle: TextStyle(
-                            fontSize: 22,
-                            fontWeight: FontWeight.w300,
-                            color: Theme.of(context).primaryColor,
-                          ),
+                            ),
+                            VerticalDivider(thickness: 4),
+                            Container(
+                              width: MediaQuery.of(context).size.width,
+                              alignment: Alignment.center,
+                              child: Column(
+                                children: [
+                                  Container(
+                                      alignment: Alignment.center,
+                                      child: Row(
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.center,
+                                        children: [
+                                          Text(
+                                            'Искровой дефектоскоп',
+                                            style: TextStyle(
+                                                fontSize: 24,
+                                                color: Theme.of(context)
+                                                    .primaryColor,
+                                                fontWeight: FontWeight.w300),
+                                          ),
+                                          GestureDetector(
+                                            onTap: () {
+                                              continmeterController.clear();
+                                              continmeternumbController.clear();
+                                              continmeterdateController.clear();
+                                            },
+                                            child: Icon(
+                                              Icons.delete_outline,
+                                              color: Color.fromRGBO(
+                                                  187, 30, 16, 1.0),
+                                            ),
+                                          ),
+                                        ],
+                                      )),
+                                  Padding(
+                                    padding: const EdgeInsets.all(10.0),
+                                    child: TextFormField(
+                                      focusNode: focusNode29,
+                                      onChanged: (String value) {
+                                        setState(() {});
+                                        focusNode29.requestFocus();
+                                      },
+                                      maxLength: 20,
+                                      onSaved: (value) {
+                                        object.continmeter = value;
+                                      },
+                                      controller: continmeterController,
+                                      style: textStyle,
+                                      decoration: InputDecoration(
+                                        labelText: 'Искровой дефектоскоп',
+                                        hintText: 'Введите название и номер',
+                                        helperText: '... № ...',
+                                        prefixIcon: Icon(
+                                          Icons.bolt,
+                                          color: focusNode29.hasFocus ||
+                                                  continmeterController
+                                                      .text.isNotEmpty
+                                              ? Theme.of(context).primaryColor
+                                              : Colors.grey,
+                                          size: 32,
+                                        ),
+                                        enabledBorder: const OutlineInputBorder(
+                                          borderRadius: BorderRadius.all(
+                                              Radius.circular(10)),
+                                          borderSide: BorderSide(
+                                              color: Colors.grey, width: 2),
+                                        ),
+                                        focusedBorder: OutlineInputBorder(
+                                          borderRadius: const BorderRadius.all(
+                                              Radius.circular(20)),
+                                          borderSide: BorderSide(
+                                              color: Theme.of(context)
+                                                  .primaryColor,
+                                              width: 2),
+                                        ),
+                                        labelStyle: TextStyle(
+                                          fontSize: 22,
+                                          fontWeight: FontWeight.w300,
+                                          color: Theme.of(context).primaryColor,
+                                        ),
+                                      ),
+                                      keyboardType: TextInputType.number,
+                                    ),
+                                  ),
+                                  Row(
+                                    children: [
+                                      Expanded(
+                                        child: Padding(
+                                          padding: const EdgeInsets.all(10.0),
+                                          child: TextFormField(
+                                            focusNode: focusNode49,
+                                            onChanged: (String value) {
+                                              setState(() {});
+                                              focusNode49.requestFocus();
+                                            },
+                                            maxLength: 30,
+                                            onSaved: (value) {
+                                              object.continmeternumb = value;
+                                            },
+                                            controller:
+                                                continmeternumbController,
+                                            style: textStyle,
+                                            decoration: InputDecoration(
+                                              focusColor: Theme.of(context)
+                                                  .primaryColor,
+                                              labelStyle: TextStyle(
+                                                fontSize: 22,
+                                                fontWeight: FontWeight.w300,
+                                                color: Theme.of(context)
+                                                    .primaryColor,
+                                              ),
+                                              hintStyle: TextStyle(
+                                                fontSize: 16,
+                                                fontWeight: FontWeight.w300,
+                                                color: Theme.of(context)
+                                                    .primaryColor,
+                                              ),
+                                              labelText: '№',
+                                              hintText: '№',
+                                              helperText: '№....',
+                                              prefixIcon: Icon(
+                                                Icons.flash_on,
+                                                color: focusNode49.hasFocus ||
+                                                        continmeternumbController
+                                                            .text.isNotEmpty
+                                                    ? Theme.of(context)
+                                                        .primaryColor
+                                                    : Colors.grey,
+                                                size: 32,
+                                              ),
+                                              enabledBorder: OutlineInputBorder(
+                                                borderRadius: BorderRadius.all(
+                                                    Radius.circular(10)),
+                                                borderSide: BorderSide(
+                                                    color: Colors.grey,
+                                                    width: 2),
+                                              ),
+                                              focusedBorder: OutlineInputBorder(
+                                                borderRadius: BorderRadius.all(
+                                                    Radius.circular(20)),
+                                                borderSide: BorderSide(
+                                                    color: Theme.of(context)
+                                                        .primaryColor,
+                                                    width: 2),
+                                              ),
+                                            ),
+                                            keyboardType: TextInputType.text,
+                                          ),
+                                        ),
+                                      ),
+                                      Expanded(
+                                        child: Padding(
+                                          padding: const EdgeInsets.all(10.0),
+                                          child: TextFormField(
+                                            focusNode: focusNode48,
+                                            onChanged: (String value) {
+                                              setState(() {});
+                                              focusNode48.requestFocus();
+                                            },
+                                            maxLength: 10,
+                                            onSaved: (value) {
+                                              object.continmeterdate = value;
+                                            },
+                                            controller:
+                                                continmeterdateController,
+                                            style: textStyle,
+                                            decoration: InputDecoration(
+                                              focusColor: Theme.of(context)
+                                                  .primaryColor,
+                                              labelStyle: TextStyle(
+                                                fontSize: 22,
+                                                fontWeight: FontWeight.w300,
+                                                color: Theme.of(context)
+                                                    .primaryColor,
+                                              ),
+                                              hintStyle: TextStyle(
+                                                fontSize: 16,
+                                                fontWeight: FontWeight.w300,
+                                                color: Theme.of(context)
+                                                    .primaryColor,
+                                              ),
+                                              labelText: 'Дата поверки',
+                                              hintText: 'дата',
+                                              helperText: 'д.м.г',
+                                              prefixIcon: Icon(
+                                                Icons.flash_on,
+                                                color: focusNode48.hasFocus ||
+                                                        continmeterdateController
+                                                            .text.isNotEmpty
+                                                    ? Theme.of(context)
+                                                        .primaryColor
+                                                    : Colors.grey,
+                                                size: 32,
+                                              ),
+                                              enabledBorder: OutlineInputBorder(
+                                                borderRadius: BorderRadius.all(
+                                                    Radius.circular(10)),
+                                                borderSide: BorderSide(
+                                                    color: Colors.grey,
+                                                    width: 2),
+                                              ),
+                                              focusedBorder: OutlineInputBorder(
+                                                borderRadius: BorderRadius.all(
+                                                    Radius.circular(20)),
+                                                borderSide: BorderSide(
+                                                    color: Theme.of(context)
+                                                        .primaryColor,
+                                                    width: 2),
+                                              ),
+                                            ),
+                                            keyboardType: TextInputType.number,
+                                          ),
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                ],
+                              ),
+                            ),
+                            VerticalDivider(thickness: 4),
+                            Container(
+                              width: MediaQuery.of(context).size.width,
+                              alignment: Alignment.center,
+                              child: Column(
+                                children: [
+                                  Container(
+                                      alignment: Alignment.center,
+                                      child: Row(
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.center,
+                                        children: [
+                                          Text(
+                                            'Комплект ВИК',
+                                            style: TextStyle(
+                                                fontSize: 24,
+                                                color: Theme.of(context)
+                                                    .primaryColor,
+                                                fontWeight: FontWeight.w300),
+                                          ),
+                                          GestureDetector(
+                                            onTap: () {
+                                              setvikController.clear();
+                                              setviknumbController.clear();
+                                              setvikdateController.clear();
+                                            },
+                                            child: Icon(
+                                              Icons.delete_outline,
+                                              color: Color.fromRGBO(
+                                                  187, 30, 16, 1.0),
+                                            ),
+                                          ),
+                                        ],
+                                      )),
+                                  Padding(
+                                    padding: const EdgeInsets.all(10.0),
+                                    child: TextFormField(
+                                      focusNode: focusNode30,
+                                      onChanged: (String value) {
+                                        setState(() {});
+                                        focusNode30.requestFocus();
+                                      },
+                                      maxLength: 20,
+                                      onSaved: (value) {
+                                        object.setvik = value;
+                                      },
+                                      controller: setvikController,
+                                      style: textStyle,
+                                      decoration: InputDecoration(
+                                        labelText: 'Комплект ВИК',
+                                        hintText: 'Введите Комплект ВИК',
+                                        helperText: '№ ...',
+                                        prefixIcon: Icon(
+                                          Icons.business_center,
+                                          color: focusNode30.hasFocus ||
+                                                  setvikController
+                                                      .text.isNotEmpty
+                                              ? Theme.of(context).primaryColor
+                                              : Colors.grey,
+                                          size: 32,
+                                        ),
+                                        enabledBorder: const OutlineInputBorder(
+                                          borderRadius: BorderRadius.all(
+                                              Radius.circular(10)),
+                                          borderSide: BorderSide(
+                                              color: Colors.grey, width: 2),
+                                        ),
+                                        focusedBorder: OutlineInputBorder(
+                                          borderRadius: const BorderRadius.all(
+                                              Radius.circular(20)),
+                                          borderSide: BorderSide(
+                                              color: Theme.of(context)
+                                                  .primaryColor,
+                                              width: 2),
+                                        ),
+                                        labelStyle: TextStyle(
+                                          fontSize: 22,
+                                          fontWeight: FontWeight.w300,
+                                          color: Theme.of(context).primaryColor,
+                                        ),
+                                      ),
+                                      keyboardType: TextInputType.number,
+                                    ),
+                                  ),
+                                  Row(
+                                    children: [
+                                      Expanded(
+                                        child: Padding(
+                                          padding: const EdgeInsets.all(10.0),
+                                          child: TextFormField(
+                                            focusNode: focusNode51,
+                                            onChanged: (String value) {
+                                              setState(() {});
+                                              focusNode51.requestFocus();
+                                            },
+                                            maxLength: 30,
+                                            onSaved: (value) {
+                                              object.setviknumb = value;
+                                            },
+                                            controller: setviknumbController,
+                                            style: textStyle,
+                                            decoration: InputDecoration(
+                                              focusColor: Theme.of(context)
+                                                  .primaryColor,
+                                              labelStyle: TextStyle(
+                                                fontSize: 22,
+                                                fontWeight: FontWeight.w300,
+                                                color: Theme.of(context)
+                                                    .primaryColor,
+                                              ),
+                                              hintStyle: TextStyle(
+                                                fontSize: 16,
+                                                fontWeight: FontWeight.w300,
+                                                color: Theme.of(context)
+                                                    .primaryColor,
+                                              ),
+                                              labelText: '№',
+                                              hintText: '№',
+                                              helperText: '№....',
+                                              prefixIcon: Icon(
+                                                Icons.business_center,
+                                                color: focusNode51.hasFocus ||
+                                                        setviknumbController
+                                                            .text.isNotEmpty
+                                                    ? Theme.of(context)
+                                                        .primaryColor
+                                                    : Colors.grey,
+                                                size: 32,
+                                              ),
+                                              enabledBorder: OutlineInputBorder(
+                                                borderRadius: BorderRadius.all(
+                                                    Radius.circular(10)),
+                                                borderSide: BorderSide(
+                                                    color: Colors.grey,
+                                                    width: 2),
+                                              ),
+                                              focusedBorder: OutlineInputBorder(
+                                                borderRadius: BorderRadius.all(
+                                                    Radius.circular(20)),
+                                                borderSide: BorderSide(
+                                                    color: Theme.of(context)
+                                                        .primaryColor,
+                                                    width: 2),
+                                              ),
+                                            ),
+                                            keyboardType: TextInputType.text,
+                                          ),
+                                        ),
+                                      ),
+                                      Expanded(
+                                        child: Padding(
+                                          padding: const EdgeInsets.all(10.0),
+                                          child: TextFormField(
+                                            focusNode: focusNode50,
+                                            onChanged: (String value) {
+                                              setState(() {});
+                                              focusNode50.requestFocus();
+                                            },
+                                            maxLength: 10,
+                                            onSaved: (value) {
+                                              object.setvikdate = value;
+                                            },
+                                            controller: setvikdateController,
+                                            style: textStyle,
+                                            decoration: InputDecoration(
+                                              focusColor: Theme.of(context)
+                                                  .primaryColor,
+                                              labelStyle: TextStyle(
+                                                fontSize: 22,
+                                                fontWeight: FontWeight.w300,
+                                                color: Theme.of(context)
+                                                    .primaryColor,
+                                              ),
+                                              hintStyle: TextStyle(
+                                                fontSize: 16,
+                                                fontWeight: FontWeight.w300,
+                                                color: Theme.of(context)
+                                                    .primaryColor,
+                                              ),
+                                              labelText: 'Дата поверки',
+                                              hintText: 'дата',
+                                              helperText: 'д.м.г',
+                                              prefixIcon: Icon(
+                                                Icons.business_center,
+                                                color: focusNode50.hasFocus ||
+                                                        setvikdateController
+                                                            .text.isNotEmpty
+                                                    ? Theme.of(context)
+                                                        .primaryColor
+                                                    : Colors.grey,
+                                                size: 32,
+                                              ),
+                                              enabledBorder: OutlineInputBorder(
+                                                borderRadius: BorderRadius.all(
+                                                    Radius.circular(10)),
+                                                borderSide: BorderSide(
+                                                    color: Colors.grey,
+                                                    width: 2),
+                                              ),
+                                              focusedBorder: OutlineInputBorder(
+                                                borderRadius: BorderRadius.all(
+                                                    Radius.circular(20)),
+                                                borderSide: BorderSide(
+                                                    color: Theme.of(context)
+                                                        .primaryColor,
+                                                    width: 2),
+                                              ),
+                                            ),
+                                            keyboardType: TextInputType.number,
+                                          ),
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                ],
+                              ),
+                            ),
+                          ],
                         ),
-                        keyboardType: TextInputType.number,
                       ),
-                      SizedBox(height: 10),
-                      Row(
-                        children: [
-                          Expanded(
-                            child: TextFormField(
-                              focusNode: focusNode12,
-                              onChanged: (String value) {
-                                setState(() {});
-                                focusNode12.requestFocus();
-                              },
-                              maxLength: 30,
-                              onSaved: (value) {
-                                object.tickinsulmeternumb = value;
-                              },
-                              controller: tickinsulmeternumbController,
-                              style: textStyle,
-                              decoration: InputDecoration(
-                                focusColor: Theme.of(context).primaryColor,
-                                labelStyle: TextStyle(
-                                  fontSize: 22,
-                                  fontWeight: FontWeight.w300,
-                                  color: Theme.of(context).primaryColor,
-                                ),
-                                hintStyle: TextStyle(
-                                  fontSize: 16,
-                                  fontWeight: FontWeight.w300,
-                                  color: Theme.of(context).primaryColor,
-                                ),
-                                labelText: '№',
-                                hintText: '№',
-                                helperText: '№....',
-                                prefixIcon: Icon(
-                                  Icons.speaker_phone,
-                                  color: focusNode12.hasFocus ||
-                                          tickinsulmeternumbController
-                                              .text.isNotEmpty
-                                      ? Theme.of(context).primaryColor
-                                      : Colors.grey,
-                                  size: 32,
-                                ),
-                                enabledBorder: OutlineInputBorder(
-                                  borderRadius:
-                                      BorderRadius.all(Radius.circular(10)),
-                                  borderSide:
-                                      BorderSide(color: Colors.grey, width: 2),
-                                ),
-                                focusedBorder: OutlineInputBorder(
-                                  borderRadius:
-                                      BorderRadius.all(Radius.circular(20)),
-                                  borderSide: BorderSide(
-                                      color: Theme.of(context).primaryColor,
-                                      width: 2),
-                                ),
-                              ),
-                              keyboardType: TextInputType.text,
-                            ),
-                          ),
-                          SizedBox(width: 5),
-                          Expanded(
-                            child: TextFormField(
-                              focusNode: focusNode11,
-                              onChanged: (String value) {
-                                setState(() {});
-                                focusNode11.requestFocus();
-                              },
-                              maxLength: 10,
-                              onSaved: (value) {
-                                object.tickinsulmeterdate = value;
-                              },
-                              controller: tickinsulmeterdateController,
-                              style: textStyle,
-                              decoration: InputDecoration(
-                                focusColor: Theme.of(context).primaryColor,
-                                labelStyle: TextStyle(
-                                  fontSize: 22,
-                                  fontWeight: FontWeight.w300,
-                                  color: Theme.of(context).primaryColor,
-                                ),
-                                hintStyle: TextStyle(
-                                  fontSize: 16,
-                                  fontWeight: FontWeight.w300,
-                                  color: Theme.of(context).primaryColor,
-                                ),
-                                labelText: 'Дата поверки',
-                                hintText: 'дата',
-                                helperText: 'д.м.г',
-                                prefixIcon: Icon(
-                                  Icons.speaker_phone,
-                                  color: focusNode11.hasFocus ||
-                                          tickinsulmeterdateController
-                                              .text.isNotEmpty
-                                      ? Theme.of(context).primaryColor
-                                      : Colors.grey,
-                                  size: 32,
-                                ),
-                                enabledBorder: OutlineInputBorder(
-                                  borderRadius:
-                                      BorderRadius.all(Radius.circular(10)),
-                                  borderSide:
-                                      BorderSide(color: Colors.grey, width: 2),
-                                ),
-                                focusedBorder: OutlineInputBorder(
-                                  borderRadius:
-                                      BorderRadius.all(Radius.circular(20)),
-                                  borderSide: BorderSide(
-                                      color: Theme.of(context).primaryColor,
-                                      width: 2),
-                                ),
-                              ),
-                              keyboardType: TextInputType.number,
-                            ),
-                          ),
-                        ],
-                      ),
+
                       // SizedBox(height: 10),
                       Divider(thickness: 4),
-                      Container(
-                          alignment: Alignment.center,
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              Text(
-                                'Адгезиметр',
-                                style: TextStyle(
-                                    fontSize: 24,
-                                    color: Theme.of(context).primaryColor,
-                                    fontWeight: FontWeight.w300),
-                              ),
-                              GestureDetector(
-                                onTap: () {
-                                  adhesmeterController.clear();
-                                  adhesmeternumbController.clear();
-                                  adhesmeterdateController.clear();
-                                },
-                                child: Icon(
-                                  Icons.delete_outline,
-                                  color: Color.fromRGBO(187, 30, 16, 1.0),
-                                ),
-                              ),
-                            ],
-                          )),
-                      SizedBox(height: 10),
-                      TextFormField(
-                        focusNode: focusNode28,
-                        onChanged: (String value) {
-                          setState(() {});
-                          focusNode28.requestFocus();
-                        },
-                        maxLength: 20,
-                        onSaved: (value) {
-                          object.adhesmeter = value;
-                        },
-                        controller: adhesmeterController,
-                        style: textStyle,
-                        decoration: InputDecoration(
-                          labelText: 'Адгезиметр',
-                          hintText: 'Введите название и номер',
-                          helperText: '... № ...',
-                          prefixIcon: Icon(
-                            Icons.account_balance_outlined,
-                            color: focusNode28.hasFocus ||
-                                    adhesmeterController.text.isNotEmpty
-                                ? Theme.of(context).primaryColor
-                                : Colors.grey,
-                            size: 32,
-                          ),
-                          enabledBorder: const OutlineInputBorder(
-                            borderRadius: BorderRadius.all(Radius.circular(10)),
-                            borderSide:
-                                BorderSide(color: Colors.grey, width: 2),
-                          ),
-                          focusedBorder: OutlineInputBorder(
-                            borderRadius:
-                                const BorderRadius.all(Radius.circular(20)),
-                            borderSide: BorderSide(
-                                color: Theme.of(context).primaryColor,
-                                width: 2),
-                          ),
-                          labelStyle: TextStyle(
-                            fontSize: 22,
-                            fontWeight: FontWeight.w300,
-                            color: Theme.of(context).primaryColor,
-                          ),
-                        ),
-                        keyboardType: TextInputType.number,
-                      ),
-                      Row(
-                        children: [
-                          Expanded(
-                            child: TextFormField(
-                              focusNode: focusNode13,
-                              onChanged: (String value) {
-                                setState(() {});
-                                focusNode13.requestFocus();
-                              },
-                              maxLength: 30,
-                              onSaved: (value) {
-                                object.adhesmeternumb = value;
-                              },
-                              controller: adhesmeternumbController,
-                              style: textStyle,
-                              decoration: InputDecoration(
-                                focusColor: Theme.of(context).primaryColor,
-                                labelStyle: TextStyle(
-                                  fontSize: 22,
-                                  fontWeight: FontWeight.w300,
-                                  color: Theme.of(context).primaryColor,
-                                ),
-                                hintStyle: TextStyle(
-                                  fontSize: 16,
-                                  fontWeight: FontWeight.w300,
-                                  color: Theme.of(context).primaryColor,
-                                ),
-                                labelText: '№',
-                                hintText: '№',
-                                helperText: '№....',
-                                prefixIcon: Icon(
-                                  Icons.broken_image,
-                                  color: focusNode13.hasFocus ||
-                                          adhesmeternumbController
-                                              .text.isNotEmpty
-                                      ? Theme.of(context).primaryColor
-                                      : Colors.grey,
-                                  size: 32,
-                                ),
-                                enabledBorder: OutlineInputBorder(
-                                  borderRadius:
-                                      BorderRadius.all(Radius.circular(10)),
-                                  borderSide:
-                                      BorderSide(color: Colors.grey, width: 2),
-                                ),
-                                focusedBorder: OutlineInputBorder(
-                                  borderRadius:
-                                      BorderRadius.all(Radius.circular(20)),
-                                  borderSide: BorderSide(
-                                      color: Theme.of(context).primaryColor,
-                                      width: 2),
-                                ),
-                              ),
-                              keyboardType: TextInputType.text,
-                            ),
-                          ),
-                          SizedBox(width: 5),
-                          Expanded(
-                            child: TextFormField(
-                              focusNode: focusNode14,
-                              onChanged: (String value) {
-                                setState(() {});
-                                focusNode14.requestFocus();
-                              },
-                              maxLength: 10,
-                              onSaved: (value) {
-                                object.adhesmeterdate = value;
-                              },
-                              controller: adhesmeterdateController,
-                              style: textStyle,
-                              decoration: InputDecoration(
-                                focusColor: Theme.of(context).primaryColor,
-                                labelStyle: TextStyle(
-                                  fontSize: 22,
-                                  fontWeight: FontWeight.w300,
-                                  color: Theme.of(context).primaryColor,
-                                ),
-                                hintStyle: TextStyle(
-                                  fontSize: 16,
-                                  fontWeight: FontWeight.w300,
-                                  color: Theme.of(context).primaryColor,
-                                ),
-                                labelText: 'Дата поверки',
-                                hintText: 'дата',
-                                helperText: 'д.м.г',
-                                prefixIcon: Icon(
-                                  Icons.broken_image,
-                                  color: focusNode14.hasFocus ||
-                                          adhesmeterdateController
-                                              .text.isNotEmpty
-                                      ? Theme.of(context).primaryColor
-                                      : Colors.grey,
-                                  size: 32,
-                                ),
-                                enabledBorder: OutlineInputBorder(
-                                  borderRadius:
-                                      BorderRadius.all(Radius.circular(10)),
-                                  borderSide:
-                                      BorderSide(color: Colors.grey, width: 2),
-                                ),
-                                focusedBorder: OutlineInputBorder(
-                                  borderRadius:
-                                      BorderRadius.all(Radius.circular(20)),
-                                  borderSide: BorderSide(
-                                      color: Theme.of(context).primaryColor,
-                                      width: 2),
-                                ),
-                              ),
-                              keyboardType: TextInputType.number,
-                            ),
-                          ),
-                        ],
-                      ),
-                      // SizedBox(height: 10),
-                      Divider(thickness: 4),
-                      Container(
-                          alignment: Alignment.center,
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              Text(
-                                'Искровой дефектоскоп',
-                                style: TextStyle(
-                                    fontSize: 24,
-                                    color: Theme.of(context).primaryColor,
-                                    fontWeight: FontWeight.w300),
-                              ),
-                              GestureDetector(
-                                onTap: () {
-                                  continmeterController.clear();
-                                  continmeternumbController.clear();
-                                  continmeterdateController.clear();
-                                },
-                                child: Icon(
-                                  Icons.delete_outline,
-                                  color: Color.fromRGBO(187, 30, 16, 1.0),
-                                ),
-                              ),
-                            ],
-                          )),
-                      SizedBox(height: 10),
-                      TextFormField(
-                        focusNode: focusNode29,
-                        onChanged: (String value) {
-                          setState(() {});
-                          focusNode29.requestFocus();
-                        },
-                        maxLength: 20,
-                        onSaved: (value) {
-                          object.continmeter = value;
-                        },
-                        controller: continmeterController,
-                        style: textStyle,
-                        decoration: InputDecoration(
-                          labelText: 'Искровой дефектоскоп',
-                          hintText: 'Введите название и номер',
-                          helperText: '... № ...',
-                          prefixIcon: Icon(
-                            Icons.bolt,
-                            color: focusNode29.hasFocus ||
-                                    continmeterController.text.isNotEmpty
-                                ? Theme.of(context).primaryColor
-                                : Colors.grey,
-                            size: 32,
-                          ),
-                          enabledBorder: const OutlineInputBorder(
-                            borderRadius: BorderRadius.all(Radius.circular(10)),
-                            borderSide:
-                                BorderSide(color: Colors.grey, width: 2),
-                          ),
-                          focusedBorder: OutlineInputBorder(
-                            borderRadius:
-                                const BorderRadius.all(Radius.circular(20)),
-                            borderSide: BorderSide(
-                                color: Theme.of(context).primaryColor,
-                                width: 2),
-                          ),
-                          labelStyle: TextStyle(
-                            fontSize: 22,
-                            fontWeight: FontWeight.w300,
-                            color: Theme.of(context).primaryColor,
-                          ),
-                        ),
-                        keyboardType: TextInputType.number,
-                      ),
-                      Row(
-                        children: [
-                          Expanded(
-                            child: TextFormField(
-                              focusNode: focusNode49,
-                              onChanged: (String value) {
-                                setState(() {});
-                                focusNode49.requestFocus();
-                              },
-                              maxLength: 30,
-                              onSaved: (value) {
-                                object.continmeternumb = value;
-                              },
-                              controller: continmeternumbController,
-                              style: textStyle,
-                              decoration: InputDecoration(
-                                focusColor: Theme.of(context).primaryColor,
-                                labelStyle: TextStyle(
-                                  fontSize: 22,
-                                  fontWeight: FontWeight.w300,
-                                  color: Theme.of(context).primaryColor,
-                                ),
-                                hintStyle: TextStyle(
-                                  fontSize: 16,
-                                  fontWeight: FontWeight.w300,
-                                  color: Theme.of(context).primaryColor,
-                                ),
-                                labelText: '№',
-                                hintText: '№',
-                                helperText: '№....',
-                                prefixIcon: Icon(
-                                  Icons.flash_on,
-                                  color: focusNode49.hasFocus ||
-                                          continmeternumbController
-                                              .text.isNotEmpty
-                                      ? Theme.of(context).primaryColor
-                                      : Colors.grey,
-                                  size: 32,
-                                ),
-                                enabledBorder: OutlineInputBorder(
-                                  borderRadius:
-                                      BorderRadius.all(Radius.circular(10)),
-                                  borderSide:
-                                      BorderSide(color: Colors.grey, width: 2),
-                                ),
-                                focusedBorder: OutlineInputBorder(
-                                  borderRadius:
-                                      BorderRadius.all(Radius.circular(20)),
-                                  borderSide: BorderSide(
-                                      color: Theme.of(context).primaryColor,
-                                      width: 2),
-                                ),
-                              ),
-                              keyboardType: TextInputType.text,
-                            ),
-                          ),
-                          SizedBox(width: 5),
-                          Expanded(
-                            child: TextFormField(
-                              focusNode: focusNode48,
-                              onChanged: (String value) {
-                                setState(() {});
-                                focusNode48.requestFocus();
-                              },
-                              maxLength: 10,
-                              onSaved: (value) {
-                                object.continmeterdate = value;
-                              },
-                              controller: continmeterdateController,
-                              style: textStyle,
-                              decoration: InputDecoration(
-                                focusColor: Theme.of(context).primaryColor,
-                                labelStyle: TextStyle(
-                                  fontSize: 22,
-                                  fontWeight: FontWeight.w300,
-                                  color: Theme.of(context).primaryColor,
-                                ),
-                                hintStyle: TextStyle(
-                                  fontSize: 16,
-                                  fontWeight: FontWeight.w300,
-                                  color: Theme.of(context).primaryColor,
-                                ),
-                                labelText: 'Дата поверки',
-                                hintText: 'дата',
-                                helperText: 'д.м.г',
-                                prefixIcon: Icon(
-                                  Icons.flash_on,
-                                  color: focusNode48.hasFocus ||
-                                          continmeterdateController
-                                              .text.isNotEmpty
-                                      ? Theme.of(context).primaryColor
-                                      : Colors.grey,
-                                  size: 32,
-                                ),
-                                enabledBorder: OutlineInputBorder(
-                                  borderRadius:
-                                      BorderRadius.all(Radius.circular(10)),
-                                  borderSide:
-                                      BorderSide(color: Colors.grey, width: 2),
-                                ),
-                                focusedBorder: OutlineInputBorder(
-                                  borderRadius:
-                                      BorderRadius.all(Radius.circular(20)),
-                                  borderSide: BorderSide(
-                                      color: Theme.of(context).primaryColor,
-                                      width: 2),
-                                ),
-                              ),
-                              keyboardType: TextInputType.number,
-                            ),
-                          ),
-                        ],
-                      ),
-                      // SizedBox(height: 10),
-                      Divider(thickness: 4),
-                      Container(
-                          alignment: Alignment.center,
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              Text(
-                                'Комплект ВИК',
-                                style: TextStyle(
-                                    fontSize: 24,
-                                    color: Theme.of(context).primaryColor,
-                                    fontWeight: FontWeight.w300),
-                              ),
-                              GestureDetector(
-                                onTap: () {
-                                  setvikController.clear();
-                                  setviknumbController.clear();
-                                  setvikdateController.clear();
-                                },
-                                child: Icon(
-                                  Icons.delete_outline,
-                                  color: Color.fromRGBO(187, 30, 16, 1.0),
-                                ),
-                              ),
-                            ],
-                          )),
-                      SizedBox(height: 10),
-                      TextFormField(
-                        focusNode: focusNode30,
-                        onChanged: (String value) {
-                          setState(() {});
-                          focusNode30.requestFocus();
-                        },
-                        maxLength: 20,
-                        onSaved: (value) {
-                          object.setvik = value;
-                        },
-                        controller: setvikController,
-                        style: textStyle,
-                        decoration: InputDecoration(
-                          labelText: 'Комплект ВИК',
-                          hintText: 'Введите Комплект ВИК',
-                          helperText: '№ ...',
-                          prefixIcon: Icon(
-                            Icons.business_center,
-                            color: focusNode30.hasFocus ||
-                                    setvikController.text.isNotEmpty
-                                ? Theme.of(context).primaryColor
-                                : Colors.grey,
-                            size: 32,
-                          ),
-                          enabledBorder: const OutlineInputBorder(
-                            borderRadius: BorderRadius.all(Radius.circular(10)),
-                            borderSide:
-                                BorderSide(color: Colors.grey, width: 2),
-                          ),
-                          focusedBorder: OutlineInputBorder(
-                            borderRadius:
-                                const BorderRadius.all(Radius.circular(20)),
-                            borderSide: BorderSide(
-                                color: Theme.of(context).primaryColor,
-                                width: 2),
-                          ),
-                          labelStyle: TextStyle(
-                            fontSize: 22,
-                            fontWeight: FontWeight.w300,
-                            color: Theme.of(context).primaryColor,
-                          ),
-                        ),
-                        keyboardType: TextInputType.number,
-                      ),
-                      Row(
-                        children: [
-                          Expanded(
-                            child: TextFormField(
-                              focusNode: focusNode51,
-                              onChanged: (String value) {
-                                setState(() {});
-                                focusNode51.requestFocus();
-                              },
-                              maxLength: 30,
-                              onSaved: (value) {
-                                object.setviknumb = value;
-                              },
-                              controller: setviknumbController,
-                              style: textStyle,
-                              decoration: InputDecoration(
-                                focusColor: Theme.of(context).primaryColor,
-                                labelStyle: TextStyle(
-                                  fontSize: 22,
-                                  fontWeight: FontWeight.w300,
-                                  color: Theme.of(context).primaryColor,
-                                ),
-                                hintStyle: TextStyle(
-                                  fontSize: 16,
-                                  fontWeight: FontWeight.w300,
-                                  color: Theme.of(context).primaryColor,
-                                ),
-                                labelText: '№',
-                                hintText: '№',
-                                helperText: '№....',
-                                prefixIcon: Icon(
-                                  Icons.business_center,
-                                  color: focusNode51.hasFocus ||
-                                          setviknumbController.text.isNotEmpty
-                                      ? Theme.of(context).primaryColor
-                                      : Colors.grey,
-                                  size: 32,
-                                ),
-                                enabledBorder: OutlineInputBorder(
-                                  borderRadius:
-                                      BorderRadius.all(Radius.circular(10)),
-                                  borderSide:
-                                      BorderSide(color: Colors.grey, width: 2),
-                                ),
-                                focusedBorder: OutlineInputBorder(
-                                  borderRadius:
-                                      BorderRadius.all(Radius.circular(20)),
-                                  borderSide: BorderSide(
-                                      color: Theme.of(context).primaryColor,
-                                      width: 2),
-                                ),
-                              ),
-                              keyboardType: TextInputType.text,
-                            ),
-                          ),
-                          SizedBox(width: 5),
-                          Expanded(
-                            child: TextFormField(
-                              focusNode: focusNode50,
-                              onChanged: (String value) {
-                                setState(() {});
-                                focusNode50.requestFocus();
-                              },
-                              maxLength: 10,
-                              onSaved: (value) {
-                                object.setvikdate = value;
-                              },
-                              controller: setvikdateController,
-                              style: textStyle,
-                              decoration: InputDecoration(
-                                focusColor: Theme.of(context).primaryColor,
-                                labelStyle: TextStyle(
-                                  fontSize: 22,
-                                  fontWeight: FontWeight.w300,
-                                  color: Theme.of(context).primaryColor,
-                                ),
-                                hintStyle: TextStyle(
-                                  fontSize: 16,
-                                  fontWeight: FontWeight.w300,
-                                  color: Theme.of(context).primaryColor,
-                                ),
-                                labelText: 'Дата поверки',
-                                hintText: 'дата',
-                                helperText: 'д.м.г',
-                                prefixIcon: Icon(
-                                  Icons.business_center,
-                                  color: focusNode50.hasFocus ||
-                                          setvikdateController.text.isNotEmpty
-                                      ? Theme.of(context).primaryColor
-                                      : Colors.grey,
-                                  size: 32,
-                                ),
-                                enabledBorder: OutlineInputBorder(
-                                  borderRadius:
-                                      BorderRadius.all(Radius.circular(10)),
-                                  borderSide:
-                                      BorderSide(color: Colors.grey, width: 2),
-                                ),
-                                focusedBorder: OutlineInputBorder(
-                                  borderRadius:
-                                      BorderRadius.all(Radius.circular(20)),
-                                  borderSide: BorderSide(
-                                      color: Theme.of(context).primaryColor,
-                                      width: 2),
-                                ),
-                              ),
-                              keyboardType: TextInputType.number,
-                            ),
-                          ),
-                        ],
-                      ),
-                      const SizedBox(height: 20),
+
                       ElevatedButton(
                         style: ElevatedButton.styleFrom(
                             primary: Colors.amber,
@@ -4350,7 +6418,9 @@ class ObjectDetailState extends State<ObjectDetail> {
                                 borderRadius: BorderRadius.circular(10.0))),
                         onPressed: () => saveForm5(),
                         child: Text(
-                          isEdit ? 'Редактировать' : 'Добавить',
+                          isEdit
+                              ? 'Редактировать и закрыть'
+                              : 'Добавить и закрыть',
                           style: const TextStyle(
                               fontSize: 18.0, fontWeight: FontWeight.w300),
                         ),
@@ -4390,7 +6460,26 @@ class ObjectDetailState extends State<ObjectDetail> {
                           textAlign: TextAlign.center,
                         ),
                       ),
-                      SizedBox(height: 20),
+                      SizedBox(height: 10),
+                      Row(
+                        children: [
+                          Expanded(
+                            child: Container(
+                              alignment: Alignment.center,
+                              child: Text(
+                                'АД ${highestDegreeDController.text}',
+                                style: TextStyle(
+                                  fontSize: 24,
+                                  color: Theme.of(context).primaryColor,
+                                  fontWeight: FontWeight.w600,
+                                ),
+                                textAlign: TextAlign.center,
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
+                      SizedBox(height: 10),
                       DropdownButtonFormField(
                         isExpanded: true,
                         focusNode: focusNode32,
@@ -4431,9 +6520,11 @@ class ObjectDetailState extends State<ObjectDetail> {
                         value: object.changegloss,
                         onChanged: (String value) {
                           setState(() {
-                            focusNode32.requestFocus();
-                            object.changegloss = value;
+                            changeglossController.text = value;
                           });
+                          focusNode32.requestFocus();
+                          object.changegloss = value;
+                          calculateHighestDegreeD();
                         },
                       ),
                       const SizedBox(height: 10),
@@ -4477,9 +6568,11 @@ class ObjectDetailState extends State<ObjectDetail> {
                         value: object.changecolor,
                         onChanged: (String value) {
                           setState(() {
-                            focusNode31.requestFocus();
-                            object.changecolor = value;
+                            changecolorController.text = value;
                           });
+                          focusNode31.requestFocus();
+                          object.changecolor = value;
+                          calculateHighestDegreeD();
                         },
                       ),
                       const SizedBox(height: 10),
@@ -4523,13 +6616,23 @@ class ObjectDetailState extends State<ObjectDetail> {
                         value: object.mudretant,
                         onChanged: (String value) {
                           setState(() {
-                            focusNode33.requestFocus();
-                            object.mudretant = value;
+                            mudretantController.text = value;
                           });
+                          focusNode33.requestFocus();
+                          object.mudretant = value;
+                          calculateHighestDegreeD();
                         },
                       ),
                       const SizedBox(height: 10),
                       DropdownButtonFormField(
+                        onChanged: (String value) {
+                          setState(() {
+                            chalkingController.text = value;
+                          });
+                          focusNode34.requestFocus();
+                          object.chalking = value;
+                          calculateHighestDegreeD();
+                        },
                         isExpanded: true,
                         focusNode: focusNode34,
                         decoration: InputDecoration(
@@ -4567,12 +6670,6 @@ class ObjectDetailState extends State<ObjectDetail> {
                         }).toList(),
                         style: textStyle,
                         value: object.chalking,
-                        onChanged: (String value) {
-                          setState(() {
-                            focusNode34.requestFocus();
-                            object.chalking = value;
-                          });
-                        },
                       ),
                       SizedBox(height: 10),
                       Divider(thickness: 4),
@@ -4588,7 +6685,26 @@ class ObjectDetailState extends State<ObjectDetail> {
                           textAlign: TextAlign.center,
                         ),
                       ),
-                      SizedBox(height: 20),
+                      SizedBox(height: 10),
+                      Row(
+                        children: [
+                          Expanded(
+                            child: Container(
+                              alignment: Alignment.center,
+                              child: Text(
+                                'АЗ ${highestDegreeZController.text}',
+                                style: TextStyle(
+                                  fontSize: 24,
+                                  color: Theme.of(context).primaryColor,
+                                  fontWeight: FontWeight.w600,
+                                ),
+                                textAlign: TextAlign.center,
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
+                      SizedBox(height: 10),
                       DropdownButtonFormField(
                         isExpanded: true,
                         focusNode: focusNode59,
@@ -4629,9 +6745,12 @@ class ObjectDetailState extends State<ObjectDetail> {
                         value: object.rastresk,
                         onChanged: (String value) {
                           setState(() {
-                            focusNode59.requestFocus();
-                            object.rastresk = value;
+                            rastreskController.text = value;
                           });
+                          focusNode59.requestFocus();
+                          object.rastresk = value;
+
+                          calculateHighestDegreeZ();
                         },
                       ),
                       const SizedBox(height: 10),
@@ -4675,9 +6794,12 @@ class ObjectDetailState extends State<ObjectDetail> {
                         value: object.otslaivan,
                         onChanged: (String value) {
                           setState(() {
-                            focusNode60.requestFocus();
-                            object.otslaivan = value;
+                            otslaivanController.text = value;
                           });
+                          focusNode60.requestFocus();
+                          object.otslaivan = value;
+
+                          calculateHighestDegreeZ();
                         },
                       ),
                       const SizedBox(height: 10),
@@ -4721,9 +6843,12 @@ class ObjectDetailState extends State<ObjectDetail> {
                         value: object.vyvetriv,
                         onChanged: (String value) {
                           setState(() {
-                            focusNode58.requestFocus();
-                            object.vyvetriv = value;
+                            vyvetrivController.text = value;
                           });
+                          focusNode58.requestFocus();
+                          object.vyvetriv = value;
+
+                          calculateHighestDegreeZ();
                         },
                       ),
                       const SizedBox(height: 10),
@@ -4767,9 +6892,11 @@ class ObjectDetailState extends State<ObjectDetail> {
                         value: object.puzyr,
                         onChanged: (String value) {
                           setState(() {
-                            focusNode57.requestFocus();
-                            object.puzyr = value;
+                            puzyrController.text = value;
                           });
+                          focusNode57.requestFocus();
+                          object.puzyr = value;
+                          calculateHighestDegreeZ();
                         },
                       ),
                       SizedBox(height: 10),
@@ -4813,41 +6940,15 @@ class ObjectDetailState extends State<ObjectDetail> {
                         value: object.korroziya,
                         onChanged: (String value) {
                           setState(() {
-                            print('АЗ5 ${object.highestDegreeZ}');
-                            focusNode56.requestFocus();
-                            object.korroziya = value;
+                            korroziyaController.text = value;
                           });
+
+                          focusNode56.requestFocus();
+                          object.korroziya = value;
+
+                          calculateHighestDegreeZ();
                         },
                       ),
-                      SizedBox(height: 10),
-                      Row(
-                        children: [
-                          Expanded(
-                            child: Container(
-                              alignment: Alignment.center,
-                              child: Text(
-                                'АД ${object.highestDegreeD}, АЗ ${object.highestDegreeZ}',
-                                style: TextStyle(
-                                  fontSize: 24,
-                                  color: Theme.of(context).primaryColor,
-                                  fontWeight: FontWeight.w300,
-                                ),
-                                textAlign: TextAlign.center,
-                              ),
-                            ),
-                          ),
-                          Expanded(
-                            child: IconButton(
-                              onPressed: () {
-                                calculateHighestDegreeD();
-                                calculateHighestDegreeZ();
-                              },
-                              icon: Icon(Icons.refresh),
-                            ),
-                          )
-                        ],
-                      ),
-                      SizedBox(height: 10),
                       Divider(thickness: 4),
                       TextFormField(
                         focusNode: focusNode35,
@@ -4899,7 +7000,9 @@ class ObjectDetailState extends State<ObjectDetail> {
                                 borderRadius: BorderRadius.circular(10.0))),
                         onPressed: () => saveForm6(),
                         child: Text(
-                          isEdit ? 'Редактировать' : 'Добавить',
+                          isEdit
+                              ? 'Редактировать и закрыть'
+                              : 'Добавить и закрыть',
                           style: const TextStyle(
                               fontSize: 18.0, fontWeight: FontWeight.w300),
                         ),
@@ -5853,7 +7956,9 @@ class ObjectDetailState extends State<ObjectDetail> {
                                 borderRadius: BorderRadius.circular(10.0))),
                         onPressed: () => saveForm7(),
                         child: Text(
-                          isEdit ? 'Редактировать' : 'Добавить',
+                          isEdit
+                              ? 'Редактировать и закрыть'
+                              : 'Добавить и закрыть',
                           style: const TextStyle(
                               fontSize: 18.0, fontWeight: FontWeight.w300),
                         ),
@@ -6485,15 +8590,21 @@ class ObjectDetailState extends State<ObjectDetail> {
             object.dielcont ?? '-';
 
         sheet.cell(CellIndex.indexByString("C48")).value =
-            object.dolzhnpredskom.toString() ?? '-' + ', ' + filial.toString() ?? '-';
+            object.dolzhnpredskom.toString() ??
+                '-' + ', ' + filial.toString() ??
+                '-';
         sheet.cell(CellIndex.indexByString("I48")).value =
             object.fiopredskom.toString() ?? '-';
         sheet.cell(CellIndex.indexByString("C51")).value =
-            object.dolzhnproizvrab.toString() ?? '-' + ', ' + filial.toString() ?? '-';
+            object.dolzhnproizvrab.toString() ??
+                '-' + ', ' + filial.toString() ??
+                '-';
         sheet.cell(CellIndex.indexByString("I51")).value =
             object.fioproizvrab.toString() ?? '-';
         sheet.cell(CellIndex.indexByString("C53")).value =
-            object.dolzhnpredstzakazch.toString() ?? '-' + ', ' + filial.toString() ?? '-';
+            object.dolzhnpredstzakazch.toString() ??
+                '-' + ', ' + filial.toString() ??
+                '-';
         sheet.cell(CellIndex.indexByString("I53")).value =
             object.fiopredstzakazch ?? '-';
 
@@ -6541,12 +8652,38 @@ class ObjectDetailState extends State<ObjectDetail> {
     print('ТОЧКА РОСЫ: $dewpoint');
   }
 
+  void sredthick() {
+    double t1 = thickofdrylayController1.text.isNotEmpty
+        ? double.parse(thickofdrylayController1.text)
+        : 0.0;
+    double t2 = thickofdrylayController2.text.isNotEmpty
+        ? double.parse(thickofdrylayController2.text)
+        : 0.0;
+    double t3 = thickofdrylayController3.text.isNotEmpty
+        ? double.parse(thickofdrylayController3.text)
+        : 0.0;
+    double t4 = thickofdrylayController4.text.isNotEmpty
+        ? double.parse(thickofdrylayController4.text)
+        : 0.0;
+    double t5 = thickofdrylayController5.text.isNotEmpty
+        ? double.parse(thickofdrylayController5.text)
+        : 0.0;
+
+    double average = (t1 + t2 + t3 + t4 + t5) / 5;
+
+    setState(() {
+      thickofdrylayController.text = average.toStringAsFixed(0);
+      object.thickofdrylay = thickofdrylayController.text;
+    });
+  }
+
   void calculateHighestDegreeD() {
-    int chalking;
-    int changecolor;
-    int changegloss;
-    int mudretant;
-    int highestDegreeD;
+    int chalking = 0;
+    int changecolor = 0;
+    int changegloss = 0;
+    int mudretant = 0;
+    int highestDegreeD = 0;
+
     if (chalkingController.text != null) {
       if (chalkingController.text ==
           '0-на ткани частицы пигмента отсутствуют (кол-во отпечатков: 0)') {
@@ -6638,42 +8775,32 @@ class ObjectDetailState extends State<ObjectDetail> {
         mudretant = -1;
       }
     }
-
-    if (chalking != null &&
-        changecolor != null &&
-        changegloss != null &&
-        mudretant != null) {
-      int max = getMaxValue(changecolor, changegloss, mudretant, chalking);
-
-      if (max == changecolor) {
-        highestDegreeD = changecolor;
-      } else if (max == changegloss) {
-        highestDegreeD = changegloss;
-      } else if (max == mudretant) {
-        highestDegreeD = mudretant;
-      } else if (max == chalking) {
-        highestDegreeD = chalking;
-      }
-
-      object.highestDegreeD = highestDegreeD.toString();
-      highestDegreeDController.text = object.highestDegreeD;
-      print('АД${object.highestDegreeD}');
-    } else {
-      print('Введите числовые значения для всех полей АД');
+    if (chalking != null && chalking > highestDegreeD) {
+      highestDegreeD = chalking;
     }
-  }
+    if (changecolor != null && changecolor > highestDegreeD) {
+      highestDegreeD = changecolor;
+    }
+    if (changegloss != null && changegloss > highestDegreeD) {
+      highestDegreeD = changegloss;
+    }
+    if (mudretant != null && mudretant > highestDegreeD) {
+      highestDegreeD = mudretant;
+    }
 
-  int getMaxValue(int a, int b, int c, int d) {
-    return max(max(max(a, b), c), d);
+    setState(() {
+      highestDegreeDController.text = highestDegreeD.toString();
+      object.highestDegreeD = highestDegreeDController.text;
+    });
   }
 
   void calculateHighestDegreeZ() {
-    int rastresk;
-    int otslaivan;
-    int vyvetriv;
-    int puzyr;
-    int korroziya;
-    int highestDegreeZ;
+    int rastresk = 0;
+    int otslaivan = 0;
+    int vyvetriv = 0;
+    int puzyr = 0;
+    int korroziya = 0;
+    int highestDegreeZ = 0;
     if (rastreskController.text != null) {
       if (rastreskController.text ==
           '0-отсутствие трещин (невидимая при увелиении х10)') {
@@ -6785,38 +8912,16 @@ class ObjectDetailState extends State<ObjectDetail> {
       }
     }
 
-    if (rastresk != null &&
-        otslaivan != null &&
-        vyvetriv != null &&
-        puzyr != null &&
-        korroziya != null) {
-      int max = getMaxValueZ(rastresk, otslaivan, vyvetriv, puzyr, korroziya);
+    highestDegreeZ = korroziya > highestDegreeZ ? korroziya : highestDegreeZ;
+    highestDegreeZ = puzyr > highestDegreeZ ? puzyr : highestDegreeZ;
+    highestDegreeZ = vyvetriv > highestDegreeZ ? vyvetriv : highestDegreeZ;
+    highestDegreeZ = otslaivan > highestDegreeZ ? otslaivan : highestDegreeZ;
+    highestDegreeZ = rastresk > highestDegreeZ ? rastresk : highestDegreeZ;
 
-      if (max == rastresk) {
-        highestDegreeZ = rastresk;
-      } else if (max == otslaivan) {
-        highestDegreeZ = otslaivan;
-      } else if (max == vyvetriv) {
-        highestDegreeZ = vyvetriv;
-      } else if (max == puzyr) {
-        highestDegreeZ = puzyr;
-      } else if (max == korroziya) {
-        highestDegreeZ = korroziya;
-      }
-
-      print('АЗ1 ${object.highestDegreeZ}');
-      object.highestDegreeZ = highestDegreeZ.toString();
-      print('АЗ2 ${object.highestDegreeZ}');
-      highestDegreeZController.text = object.highestDegreeZ;
-      print('АЗ3 ${object.highestDegreeZ}');
-    } else {
-      print('Введите числовые значения для всех полей АЗ');
-    }
-    print('АЗ4 ${object.highestDegreeZ}');
-  }
-
-  int getMaxValueZ(int a, int b, int c, int d, int e) {
-    return max(max(max(max(a, b), c), d), e);
+    setState(() {
+      highestDegreeZController.text = highestDegreeZ.toString();
+      object.highestDegreeZ = highestDegreeZController.text;
+    });
   }
 
   void confirmDelete() {
@@ -6855,6 +8960,20 @@ class ObjectDetailState extends State<ObjectDetail> {
     }
   }
 
+  void saveForm12() {
+    final form = _1formKey.currentState;
+    if (form.validate()) {
+      form.save();
+      object.todoDate = DateFormat.yMMMMd().format(DateTime.now());
+      if (object.id != null) {
+        helper.updateTodo(object);
+      } else {
+        helper.insertTodo(object);
+      }
+      // Navigator.pop(context, true);
+    }
+  }
+
   void saveForm2() {
     final form = _2formKey.currentState;
     if (form.validate()) {
@@ -6866,6 +8985,20 @@ class ObjectDetailState extends State<ObjectDetail> {
         helper.insertTodo(object);
       }
       Navigator.pop(context, true);
+    }
+  }
+
+  void saveForm22() {
+    final form = _2formKey.currentState;
+    if (form.validate()) {
+      form.save();
+      object.todoDate = DateFormat.yMMMMd().format(DateTime.now());
+      if (object.id != null) {
+        helper.updateTodo(object);
+      } else {
+        helper.insertTodo(object);
+      }
+      // Navigator.pop(context, true);
     }
   }
 
@@ -6883,6 +9016,20 @@ class ObjectDetailState extends State<ObjectDetail> {
     }
   }
 
+  void saveForm32() {
+    final form = _3formKey.currentState;
+    if (form.validate()) {
+      form.save();
+      object.todoDate = DateFormat.yMMMMd().format(DateTime.now());
+      if (object.id != null) {
+        helper.updateTodo(object);
+      } else {
+        helper.insertTodo(object);
+      }
+      // Navigator.pop(context, true);
+    }
+  }
+
   void saveForm4() {
     final form = _4formKey.currentState;
     if (form.validate()) {
@@ -6894,6 +9041,20 @@ class ObjectDetailState extends State<ObjectDetail> {
         helper.insertTodo(object);
       }
       Navigator.pop(context, true);
+    }
+  }
+
+  void saveForm42() {
+    final form = _4formKey.currentState;
+    if (form.validate()) {
+      form.save();
+      object.todoDate = DateFormat.yMMMMd().format(DateTime.now());
+      if (object.id != null) {
+        helper.updateTodo(object);
+      } else {
+        helper.insertTodo(object);
+      }
+      // Navigator.pop(context, true);
     }
   }
 
@@ -6911,7 +9072,37 @@ class ObjectDetailState extends State<ObjectDetail> {
     }
   }
 
+  void saveForm52() {
+    final form = _5formKey.currentState;
+    if (form.validate()) {
+      form.save();
+      object.todoDate = DateFormat.yMMMMd().format(DateTime.now());
+      if (object.id != null) {
+        helper.updateTodo(object);
+      } else {
+        helper.insertTodo(object);
+      }
+      // Navigator.pop(context, true);
+    }
+  }
+
   void saveForm6() {
+    calculateHighestDegreeD();
+    calculateHighestDegreeZ();
+    final form = _6formKey.currentState;
+    if (form.validate()) {
+      form.save();
+      object.todoDate = DateFormat.yMMMMd().format(DateTime.now());
+      if (object.id != null) {
+        helper.updateTodo(object);
+      } else {
+        helper.insertTodo(object);
+      }
+      Navigator.pop(context, true);
+    }
+  }
+
+  void saveForm62() {
     calculateHighestDegreeD();
     calculateHighestDegreeZ();
     final form = _6formKey.currentState;
@@ -6938,6 +9129,20 @@ class ObjectDetailState extends State<ObjectDetail> {
         helper.insertTodo(object);
       }
       Navigator.pop(context, true);
+    }
+  }
+
+  void saveForm72() {
+    final form = _7formKey.currentState;
+    if (form.validate()) {
+      form.save();
+      object.todoDate = DateFormat.yMMMMd().format(DateTime.now());
+      if (object.id != null) {
+        helper.updateTodo(object);
+      } else {
+        helper.insertTodo(object);
+      }
+      // Navigator.pop(context, true);
     }
   }
 

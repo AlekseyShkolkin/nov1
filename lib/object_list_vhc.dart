@@ -138,8 +138,7 @@ class ObjectListVhCState extends State {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: <Widget>[
                         Text(
-                          descriptionParser(
-                              todos[position].zaklkachestvo ?? ''),
+                          descriptionParser(todos[position].proizvoditel ?? ''),
                           style: const TextStyle(
                               fontSize: 13.0,
                               fontWeight: FontWeight.w600,
@@ -148,13 +147,21 @@ class ObjectListVhCState extends State {
                         const SizedBox(
                           height: 15.0,
                         ),
-                        Text(
-                          'СОЗДАНО ' + todos[position].todoDate,
-                          style: const TextStyle(
-                              fontSize: 11.0,
-                              fontWeight: FontWeight.w600,
-                              color: Colors.black38),
-                        ),
+                        todos[position].dateObsl != null
+                            ? Text(
+                                'Дата обследования ' + todos[position].dateObsl,
+                                style: const TextStyle(
+                                    fontSize: 11.0,
+                                    fontWeight: FontWeight.w600,
+                                    color: Colors.black38),
+                              )
+                            : Text(
+                                'СОЗДАНО / без даты',
+                                style: const TextStyle(
+                                    fontSize: 11.0,
+                                    fontWeight: FontWeight.w600,
+                                    color: Colors.black38),
+                              ),
                       ],
                     ),
                     contentPadding:

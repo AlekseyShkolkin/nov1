@@ -86,7 +86,7 @@ class _StartPageState extends State<StartPage> {
           ),
           trailing: Badge(
             badgeContent: widget.countIp == null || widget.countIp == 0
-                ? Text('нет')
+                ? Text('')
                 : Text(widget.countIp.toString()),
             child: Icon(
               Icons.all_out_rounded,
@@ -114,7 +114,7 @@ class _StartPageState extends State<StartPage> {
           ),
           trailing: Badge(
             badgeContent: widget.countLkp == null || widget.countLkp == 0
-                ? Text('нет')
+                ? Text('')
                 : Text(widget.countLkp.toString()),
             child: Icon(
               Icons.imagesearch_roller_rounded,
@@ -142,7 +142,7 @@ class _StartPageState extends State<StartPage> {
           ),
           trailing: Badge(
             badgeContent: widget.countVhk == null || widget.countVhk == 0
-                ? Text('нет')
+                ? Text('')
                 : Text(widget.countVhk.toString()),
             child: Icon(
               Icons.playlist_add_check,

@@ -51,9 +51,17 @@ class Todo {
 
   String _apperance; //внешний вид
   String _bgcolor; // цвет
+  String _katRal;
+  String _colorRal;
+  String _photoRal;
   String _adhesionmethod; //метод адгезии
   String _photoAdhesion; //фото адгезии
   String _adhesion; //адгезия
+  String _adhesion5; //адгезия
+  String _adhesion1; //адгезия
+  String _adhesion2; //адгезия
+  String _adhesion3; //адгезия
+  String _adhesion4; //адгезия
   String _dielcont; //диэлектрическая сплошность
 
   String _thickinsulmeter; //толщиномер
@@ -143,7 +151,15 @@ class Todo {
     this._defdur,
     this._apperance,
     this._bgcolor,
+    this._katRal,
+    this._colorRal,
+    this._photoRal,
     this._adhesion,
+    this._adhesion1,
+    this._adhesion2,
+    this._adhesion3,
+    this._adhesion4,
+    this._adhesion5,
     this._adhesionmethod,
     this._photoAdhesion,
     this._dielcont,
@@ -234,7 +250,15 @@ class Todo {
     this._defdur,
     this._apperance,
     this._bgcolor,
+    this._katRal,
+    this._colorRal,
+    this._photoRal,
     this._adhesion,
+    this._adhesion1,
+    this._adhesion2,
+    this._adhesion3,
+    this._adhesion4,
+    this._adhesion5,
     this._adhesionmethod,
     this._photoAdhesion,
     this._dielcont,
@@ -328,7 +352,15 @@ class Todo {
 
   String get apperance => _apperance;
   String get bgcolor => _bgcolor;
+  String get katRal => _katRal;
+  String get colorRal => _colorRal;
+  String get photoRal => _photoRal;
   String get adhesion => _adhesion;
+  String get adhesion1 => _adhesion1;
+  String get adhesion2 => _adhesion2;
+  String get adhesion3 => _adhesion3;
+  String get adhesion4 => _adhesion4;
+  String get adhesion5 => _adhesion5;
   String get adhesionmethod => _adhesionmethod;
   String get photoAdhesion => _photoAdhesion;
   String get dielcont => _dielcont;
@@ -625,9 +657,57 @@ class Todo {
     }
   }
 
+  set katRal(String newkatRal) {
+    if ((newkatRal?.length ?? 0) <= 255) {
+      _katRal = newkatRal;
+    }
+  }
+
+  set colorRal(String newcolorRal) {
+    if ((newcolorRal?.length ?? 0) <= 255) {
+      _colorRal = newcolorRal;
+    }
+  }
+
+  set photoRal(String newphotoRal) {
+    if ((newphotoRal?.length ?? 0) <= 255) {
+      _photoRal = newphotoRal;
+    }
+  }
+
   set adhesion(String newadhesion) {
     if ((newadhesion?.length ?? 0) <= 255) {
       _adhesion = newadhesion;
+    }
+  }
+
+  set adhesion1(String newadhesion1) {
+    if ((newadhesion1?.length ?? 0) <= 255) {
+      _adhesion1 = newadhesion1;
+    }
+  }
+
+  set adhesion2(String newadhesion2) {
+    if ((newadhesion2?.length ?? 0) <= 255) {
+      _adhesion2 = newadhesion2;
+    }
+  }
+
+  set adhesion3(String newadhesion3) {
+    if ((newadhesion3?.length ?? 0) <= 255) {
+      _adhesion3 = newadhesion3;
+    }
+  }
+
+  set adhesion4(String newadhesion4) {
+    if ((newadhesion4?.length ?? 0) <= 255) {
+      _adhesion4 = newadhesion4;
+    }
+  }
+
+  set adhesion5(String newadhesion5) {
+    if ((newadhesion5?.length ?? 0) <= 255) {
+      _adhesion5 = newadhesion5;
     }
   }
 
@@ -943,7 +1023,15 @@ class Todo {
 
     map['apperance'] = _apperance;
     map['bgcolor'] = _bgcolor;
+    map['katRal'] = _katRal;
+    map['colorRal'] = _colorRal;
+    map['photoRal'] = _photoRal;
     map['adhesion'] = _adhesion;
+    map['adhesion1'] = _adhesion1;
+    map['adhesion2'] = _adhesion2;
+    map['adhesion3'] = _adhesion3;
+    map['adhesion4'] = _adhesion4;
+    map['adhesion5'] = _adhesion5;
     map['photoAdhesion'] = _photoAdhesion;
     map['adhesionmethod'] = _adhesionmethod;
     map['dielcont'] = _dielcont;
@@ -1045,7 +1133,15 @@ class Todo {
     _defdur = o['defdur'];
     _apperance = o['apperance'];
     _bgcolor = o['bgcolor'];
+    _katRal = o['katRal'];
+    _colorRal = o['colorRal'];
+    _photoRal = o['photoRal'];
     _adhesion = o['adhesion'];
+    _adhesion1 = o['adhesion1'];
+    _adhesion2 = o['adhesion2'];
+    _adhesion3 = o['adhesion3'];
+    _adhesion4 = o['adhesion4'];
+    _adhesion5 = o['adhesion5'];
     _photoAdhesion = o['photoAdhesion'];
     _adhesionmethod = o['adhesionmethod'];
     _dielcont = o['dielcont'];

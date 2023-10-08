@@ -29,7 +29,7 @@ class _PasswordScreenState extends State<PasswordScreen> {
         backgroundColor: Theme.of(context).primaryColor,
         title: Center(
           child: Text(
-            'СТРОИТЕЛЬНЫЙ КОНТРОЛЬ',
+            'КОНТРОЛЬ ПОКРЫТИЙ',
             style: TextStyle(
               fontSize: 26,
               fontWeight: FontWeight.w400,

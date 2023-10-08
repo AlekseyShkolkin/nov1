@@ -1049,8 +1049,10 @@ class ObjectDetailIpState extends State<ObjectDetailIp> {
                       TextFormField(
                         maxLength: 50,
                         onFieldSubmitted: (String value) {
-                          object.title = value;
-                          titleController.text = object.title ?? '';
+                          setState(() {
+                            object.title = value;
+                            titleController.text = object.title ?? '';
+                          });
                         },
                         validator: (String value) {
                           if (value.isEmpty) {
@@ -1109,8 +1111,11 @@ class ObjectDetailIpState extends State<ObjectDetailIp> {
                           ),
                         ),
                         onChanged: (String value) {
-                          setState(() {});
-                          focusNode1.requestFocus();
+                          setState(() {
+                            focusNode1.requestFocus();
+                            object.title = value;
+                            titleController.text = object.title ?? '';
+                          });
                         },
                       ),
                       SizedBox(height: 10),
@@ -1343,10 +1348,6 @@ class ObjectDetailIpState extends State<ObjectDetailIp> {
                           ),
                         ),
                         keyboardType: TextInputType.number,
-                        inputFormatters: [
-                          FilteringTextInputFormatter(RegExp(r'^\d+\,?\d{0,3}'),
-                              allow: true)
-                        ],
                         onChanged: (String value) {
                           setState(() {});
                           focusNode3.requestFocus();
@@ -2127,59 +2128,66 @@ class ObjectDetailIpState extends State<ObjectDetailIp> {
                       SizedBox(height: 10),
                       Column(
                         children: [
-                          Center(
-                            child: TextFormField(
-                              onChanged: (String value) {
-                                setState(() {});
-                                focusNode115.requestFocus();
-                                minipipe();
-                              },
-                              focusNode: focusNode115,
-                              maxLength: 4,
-                              onSaved: (value) {
-                                object.thickpipe1 = value;
-                              },
-                              controller: thickpipeController1,
-                              style: textStyle,
-                              decoration: InputDecoration(
-                                focusColor: Theme.of(context).primaryColor,
-                                labelStyle: TextStyle(
-                                  fontSize: 22,
-                                  fontWeight: FontWeight.w300,
-                                  color: Theme.of(context).primaryColor,
-                                ),
-                                hintStyle: TextStyle(
-                                  fontSize: 16,
-                                  fontWeight: FontWeight.w300,
-                                  color: Theme.of(context).primaryColor,
-                                ),
-                                labelText: 'Толщина стенки 12ч',
-                                hintText: 'Введите толщину стенки',
-                                helperText: 'мм',
-                                prefixIcon: Icon(
-                                  Icons.vertical_align_center_sharp,
-                                  color: (focusNode115.hasFocus ||
-                                          thickpipeController1.text.isNotEmpty)
-                                      ? Theme.of(context).primaryColor
-                                      : Colors.grey,
-                                  size: 32,
-                                ),
-                                enabledBorder: OutlineInputBorder(
-                                  borderRadius:
-                                      BorderRadius.all(Radius.circular(10)),
-                                  borderSide:
-                                      BorderSide(color: Colors.grey, width: 2),
-                                ),
-                                focusedBorder: OutlineInputBorder(
-                                  borderRadius:
-                                      BorderRadius.all(Radius.circular(20)),
-                                  borderSide: BorderSide(
+                          Row(
+                            children: [
+                              SizedBox(width: 100),
+                              Expanded(
+                                child: TextFormField(
+                                  onChanged: (String value) {
+                                    setState(() {});
+                                    focusNode115.requestFocus();
+                                    minipipe();
+                                  },
+                                  focusNode: focusNode115,
+                                  maxLength: 4,
+                                  onSaved: (value) {
+                                    object.thickpipe1 = value;
+                                  },
+                                  controller: thickpipeController1,
+                                  style: textStyle,
+                                  decoration: InputDecoration(
+                                    focusColor: Theme.of(context).primaryColor,
+                                    labelStyle: TextStyle(
+                                      fontSize: 22,
+                                      fontWeight: FontWeight.w300,
                                       color: Theme.of(context).primaryColor,
-                                      width: 2),
+                                    ),
+                                    hintStyle: TextStyle(
+                                      fontSize: 16,
+                                      fontWeight: FontWeight.w300,
+                                      color: Theme.of(context).primaryColor,
+                                    ),
+                                    labelText: '12ч',
+                                    hintText: 'Введите толщину стенки',
+                                    helperText: 'мм',
+                                    prefixIcon: Icon(
+                                      Icons.vertical_align_center_sharp,
+                                      color: (focusNode115.hasFocus ||
+                                              thickpipeController1
+                                                  .text.isNotEmpty)
+                                          ? Theme.of(context).primaryColor
+                                          : Colors.grey,
+                                      size: 32,
+                                    ),
+                                    enabledBorder: OutlineInputBorder(
+                                      borderRadius:
+                                          BorderRadius.all(Radius.circular(10)),
+                                      borderSide: BorderSide(
+                                          color: Colors.grey, width: 2),
+                                    ),
+                                    focusedBorder: OutlineInputBorder(
+                                      borderRadius:
+                                          BorderRadius.all(Radius.circular(20)),
+                                      borderSide: BorderSide(
+                                          color: Theme.of(context).primaryColor,
+                                          width: 2),
+                                    ),
+                                  ),
+                                  keyboardType: TextInputType.number,
                                 ),
                               ),
-                              keyboardType: TextInputType.number,
-                            ),
+                              SizedBox(width: 100),
+                            ],
                           ),
                           Center(
                             child: Icon(
@@ -2346,59 +2354,66 @@ class ObjectDetailIpState extends State<ObjectDetailIp> {
                               size: 55,
                             ),
                           ),
-                          Center(
-                            child: TextFormField(
-                              onChanged: (String value) {
-                                setState(() {});
-                                focusNode117.requestFocus();
-                                minipipe();
-                              },
-                              focusNode: focusNode117,
-                              maxLength: 4,
-                              onSaved: (value) {
-                                object.thickpipe3 = value;
-                              },
-                              controller: thickpipeController3,
-                              style: textStyle,
-                              decoration: InputDecoration(
-                                focusColor: Theme.of(context).primaryColor,
-                                labelStyle: TextStyle(
-                                  fontSize: 22,
-                                  fontWeight: FontWeight.w300,
-                                  color: Theme.of(context).primaryColor,
-                                ),
-                                hintStyle: TextStyle(
-                                  fontSize: 16,
-                                  fontWeight: FontWeight.w300,
-                                  color: Theme.of(context).primaryColor,
-                                ),
-                                labelText: 'Толщина стенки 6ч',
-                                hintText: 'Введите толщину стенки',
-                                helperText: 'мм',
-                                prefixIcon: Icon(
-                                  Icons.vertical_align_center_sharp,
-                                  color: (focusNode117.hasFocus ||
-                                          thickpipeController3.text.isNotEmpty)
-                                      ? Theme.of(context).primaryColor
-                                      : Colors.grey,
-                                  size: 32,
-                                ),
-                                enabledBorder: OutlineInputBorder(
-                                  borderRadius:
-                                      BorderRadius.all(Radius.circular(10)),
-                                  borderSide:
-                                      BorderSide(color: Colors.grey, width: 2),
-                                ),
-                                focusedBorder: OutlineInputBorder(
-                                  borderRadius:
-                                      BorderRadius.all(Radius.circular(20)),
-                                  borderSide: BorderSide(
+                          Row(
+                            children: [
+                              SizedBox(width: 100),
+                              Expanded(
+                                child: TextFormField(
+                                  onChanged: (String value) {
+                                    setState(() {});
+                                    focusNode117.requestFocus();
+                                    minipipe();
+                                  },
+                                  focusNode: focusNode117,
+                                  maxLength: 4,
+                                  onSaved: (value) {
+                                    object.thickpipe3 = value;
+                                  },
+                                  controller: thickpipeController3,
+                                  style: textStyle,
+                                  decoration: InputDecoration(
+                                    focusColor: Theme.of(context).primaryColor,
+                                    labelStyle: TextStyle(
+                                      fontSize: 22,
+                                      fontWeight: FontWeight.w300,
                                       color: Theme.of(context).primaryColor,
-                                      width: 2),
+                                    ),
+                                    hintStyle: TextStyle(
+                                      fontSize: 16,
+                                      fontWeight: FontWeight.w300,
+                                      color: Theme.of(context).primaryColor,
+                                    ),
+                                    labelText: '6ч',
+                                    hintText: 'Введите толщину стенки',
+                                    helperText: 'мм',
+                                    prefixIcon: Icon(
+                                      Icons.vertical_align_center_sharp,
+                                      color: (focusNode117.hasFocus ||
+                                              thickpipeController3
+                                                  .text.isNotEmpty)
+                                          ? Theme.of(context).primaryColor
+                                          : Colors.grey,
+                                      size: 32,
+                                    ),
+                                    enabledBorder: OutlineInputBorder(
+                                      borderRadius:
+                                          BorderRadius.all(Radius.circular(10)),
+                                      borderSide: BorderSide(
+                                          color: Colors.grey, width: 2),
+                                    ),
+                                    focusedBorder: OutlineInputBorder(
+                                      borderRadius:
+                                          BorderRadius.all(Radius.circular(20)),
+                                      borderSide: BorderSide(
+                                          color: Theme.of(context).primaryColor,
+                                          width: 2),
+                                    ),
+                                  ),
+                                  keyboardType: TextInputType.number,
                                 ),
                               ),
-                              keyboardType: TextInputType.number,
-                            ),
+                              SizedBox(width: 100),
+                            ],
                           ),
                         ],
                       ),
@@ -2567,1471 +2582,1594 @@ class ObjectDetailIpState extends State<ObjectDetailIp> {
                           focusNode10.requestFocus();
                         },
                       ),
-                      SizedBox(height: 20),
-                      Divider(thickness: 4),
-                      Container(
-                          alignment: Alignment.center,
-                          child: Text(
-                            'Данные о дефекте №1',
-                            style: TextStyle(
-                                fontSize: 24,
-                                color: Theme.of(context).primaryColor,
-                                fontWeight: FontWeight.w300),
-                          )),
-                      SizedBox(height: 20),
-                      DropdownButtonFormField(
-                        isExpanded: true,
-                        focusNode: focusNode11,
-                        decoration: InputDecoration(
-                            focusColor: Theme.of(context).primaryColor,
-                            labelStyle: TextStyle(
-                              fontSize: 22,
-                              fontWeight: FontWeight.w300,
-                              color: Theme.of(context).primaryColor,
-                            ),
-                            hintStyle: TextStyle(
-                              fontSize: 16,
-                              fontWeight: FontWeight.w300,
-                              color: Theme.of(context).primaryColor,
-                            ),
-                            border: OutlineInputBorder(),
-                            enabledBorder: OutlineInputBorder(
-                              borderRadius:
-                                  BorderRadius.all(Radius.circular(10)),
-                              borderSide:
-                                  BorderSide(color: Colors.grey, width: 2),
-                            ),
-                            focusedBorder: OutlineInputBorder(
-                              borderRadius:
-                                  BorderRadius.all(Radius.circular(20)),
-                              borderSide: BorderSide(
-                                  color: Theme.of(context).primaryColor,
-                                  width: 2),
-                            ),
-                            prefixIcon: Icon(
-                              Icons.ssid_chart_sharp,
-                              color: focusNode11.hasFocus ||
-                                      charmetdamageController1.text.isNotEmpty
-                                  ? Theme.of(context).primaryColor
-                                  : Colors.grey,
-                              size: 32,
-                            ),
-                            labelText: 'Характер дефекта',
-                            suffixIcon: GestureDetector(
-                                onTap: () async {
-                                  Navigator.push(
-                                    context,
-                                    MaterialPageRoute(
-                                        builder: (context) => CameraPageIp()),
-                                  ).then((value) {
-                                    setState(() async {
-                                      if (value != null) {
-                                        _imageDefmet1 = value;
-                                        if (_2formKey.currentState.validate()) {
-                                          _2formKey.currentState.save();
-                                          if (_imageDefmet1 != null) {
-                                            final Directory extDir =
-                                                await getApplicationDocumentsDirectory();
-                                            final String dirPath =
-                                                '${extDir.path}/Pictures/flutter';
-                                            await Directory(dirPath)
-                                                .create(recursive: true);
-                                            final String filePath =
-                                                '$dirPath/${DateTime.now().millisecondsSinceEpoch.toString()}.jpg';
-                                            await _imageDefmet1.copy(filePath);
-                                            object.photometdef1 = filePath;
-                                            print(
-                                                'сделали: ${object.photometdef1.toString()}');
-                                          }
-                                        }
-                                      }
-                                    });
-                                  });
-                                },
-                                child: Icon(Icons.camera_alt_sharp,
-                                    color: Color.fromRGBO(97, 153, 59, 1.0)))),
-                        items: _charmetdamage1.map((String value) {
-                          return DropdownMenuItem(
-                            value: value,
-                            child: Text(value),
-                          );
-                        }).toList(),
-                        style: textStyle,
-                        value: object.charmetdamage1,
-                        onChanged: (String value) {
-                          setState(() {});
-                          focusNode11.requestFocus();
-                          object.charmetdamage1 = value;
-                        },
-                      ),
                       SizedBox(height: 10),
-                      Container(
-                        height: 100,
-                        child: Column(
+                      Divider(thickness: 4),
+                      SingleChildScrollView(
+                        scrollDirection: Axis.horizontal,
+                        child: Row(
                           children: [
-                            Expanded(
-                              child: GestureDetector(
-                                onTap: () {
-                                  Navigator.push(
-                                    context,
-                                    MaterialPageRoute(
-                                        builder: (context) => ImageScreen(
-                                            imagePath: object.photometdef1)),
-                                  );
-                                },
-                                child: Center(
-                                  child: object.photometdef1 != null
-                                      ? Image.file(
-                                          File(object.photometdef1),
-                                          fit: BoxFit.cover,
-                                          alignment: Alignment.center,
-                                          width: 100,
-                                          height: 100,
-                                        )
-                                      : Text('Изображение отсутствует'),
-                                ),
+                            Container(
+                              width: MediaQuery.of(context).size.width,
+                              alignment: Alignment.center,
+                              child: Column(
+                                children: [
+                                  Container(
+                                      alignment: Alignment.center,
+                                      child: Text(
+                                        'Данные о дефекте №1',
+                                        style: TextStyle(
+                                            fontSize: 24,
+                                            color:
+                                                Theme.of(context).primaryColor,
+                                            fontWeight: FontWeight.w300),
+                                      )),
+                                  Padding(
+                                    padding: const EdgeInsets.all(10.0),
+                                    child: DropdownButtonFormField(
+                                      isExpanded: true,
+                                      focusNode: focusNode11,
+                                      decoration: InputDecoration(
+                                          focusColor:
+                                              Theme.of(context).primaryColor,
+                                          labelStyle: TextStyle(
+                                            fontSize: 22,
+                                            fontWeight: FontWeight.w300,
+                                            color:
+                                                Theme.of(context).primaryColor,
+                                          ),
+                                          hintStyle: TextStyle(
+                                            fontSize: 16,
+                                            fontWeight: FontWeight.w300,
+                                            color:
+                                                Theme.of(context).primaryColor,
+                                          ),
+                                          border: OutlineInputBorder(),
+                                          enabledBorder: OutlineInputBorder(
+                                            borderRadius: BorderRadius.all(
+                                                Radius.circular(10)),
+                                            borderSide: BorderSide(
+                                                color: Colors.grey, width: 2),
+                                          ),
+                                          focusedBorder: OutlineInputBorder(
+                                            borderRadius: BorderRadius.all(
+                                                Radius.circular(20)),
+                                            borderSide: BorderSide(
+                                                color: Theme.of(context)
+                                                    .primaryColor,
+                                                width: 2),
+                                          ),
+                                          prefixIcon: Icon(
+                                            Icons.ssid_chart_sharp,
+                                            color: focusNode11.hasFocus ||
+                                                    charmetdamageController1
+                                                        .text.isNotEmpty
+                                                ? Theme.of(context).primaryColor
+                                                : Colors.grey,
+                                            size: 32,
+                                          ),
+                                          labelText: 'Характер дефекта',
+                                          suffixIcon: GestureDetector(
+                                              onTap: () async {
+                                                Navigator.push(
+                                                  context,
+                                                  MaterialPageRoute(
+                                                      builder: (context) =>
+                                                          CameraPageIp()),
+                                                ).then((value) {
+                                                  setState(() async {
+                                                    if (value != null) {
+                                                      _imageDefmet1 = value;
+                                                      if (_2formKey.currentState
+                                                          .validate()) {
+                                                        _2formKey.currentState
+                                                            .save();
+                                                        if (_imageDefmet1 !=
+                                                            null) {
+                                                          final Directory
+                                                              extDir =
+                                                              await getApplicationDocumentsDirectory();
+                                                          final String dirPath =
+                                                              '${extDir.path}/Pictures/flutter';
+                                                          await Directory(
+                                                                  dirPath)
+                                                              .create(
+                                                                  recursive:
+                                                                      true);
+                                                          final String
+                                                              filePath =
+                                                              '$dirPath/${DateTime.now().millisecondsSinceEpoch.toString()}.jpg';
+                                                          await _imageDefmet1
+                                                              .copy(filePath);
+                                                          object.photometdef1 =
+                                                              filePath;
+                                                          print(
+                                                              'сделали: ${object.photometdef1.toString()}');
+                                                        }
+                                                      }
+                                                    }
+                                                  });
+                                                });
+                                              },
+                                              child: Icon(
+                                                  Icons.camera_alt_sharp,
+                                                  color: Color.fromRGBO(
+                                                      97, 153, 59, 1.0)))),
+                                      items:
+                                          _charmetdamage1.map((String value) {
+                                        return DropdownMenuItem(
+                                          value: value,
+                                          child: Text(value),
+                                        );
+                                      }).toList(),
+                                      style: textStyle,
+                                      value: object.charmetdamage1,
+                                      onChanged: (String value) {
+                                        setState(() {});
+                                        focusNode11.requestFocus();
+                                        object.charmetdamage1 = value;
+                                      },
+                                    ),
+                                  ),
+                                  SizedBox(height: 10),
+                                  Container(
+                                    height: 100,
+                                    child: Column(
+                                      children: [
+                                        Expanded(
+                                          child: GestureDetector(
+                                            onTap: () {
+                                              Navigator.push(
+                                                context,
+                                                MaterialPageRoute(
+                                                    builder: (context) =>
+                                                        ImageScreen(
+                                                            imagePath: object
+                                                                .photometdef1)),
+                                              );
+                                            },
+                                            child: Center(
+                                              child: object.photometdef1 != null
+                                                  ? Image.file(
+                                                      File(object.photometdef1),
+                                                      fit: BoxFit.cover,
+                                                      alignment:
+                                                          Alignment.center,
+                                                      width: 100,
+                                                      height: 100,
+                                                    )
+                                                  : Text(
+                                                      'Изображение отсутствует'),
+                                            ),
+                                          ),
+                                        ),
+                                      ],
+                                    ),
+                                  ),
+                                  Container(
+                                      alignment: Alignment.center,
+                                      child: Row(
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.center,
+                                        children: [
+                                          Text(
+                                            'Расположение дефекта №1',
+                                            style: TextStyle(
+                                                fontSize: 24,
+                                                color: Theme.of(context)
+                                                    .primaryColor,
+                                                fontWeight: FontWeight.w300),
+                                          ),
+                                          GestureDetector(
+                                            onTap: () {
+                                              lochourmetdamageController1
+                                                  .clear();
+                                              locrasstmetdamageController1
+                                                  .clear();
+                                              sizelengthmetdamageController1
+                                                  .clear();
+                                              sizewidthmetdamageController1
+                                                  .clear();
+                                              sizedepthmetdamageController1
+                                                  .clear();
+                                            },
+                                            child: Icon(
+                                              Icons.delete_outline,
+                                              color: Color.fromRGBO(
+                                                  187, 30, 16, 1.0),
+                                            ),
+                                          ),
+                                        ],
+                                      )),
+                                  Row(
+                                    children: [
+                                      Expanded(
+                                        child: Padding(
+                                          padding: const EdgeInsets.all(10.0),
+                                          child: TextFormField(
+                                            onChanged: (String value) {
+                                              setState(() {});
+                                              focusNode12.requestFocus();
+                                            },
+                                            focusNode: focusNode12,
+                                            maxLength: 2,
+                                            onSaved: (value) {
+                                              object.lochourmetdamage1 = value;
+                                            },
+                                            controller:
+                                                lochourmetdamageController1,
+                                            style: textStyle,
+                                            decoration: InputDecoration(
+                                              focusColor: Theme.of(context)
+                                                  .primaryColor,
+                                              labelStyle: TextStyle(
+                                                fontSize: 22,
+                                                fontWeight: FontWeight.w300,
+                                                color: Theme.of(context)
+                                                    .primaryColor,
+                                              ),
+                                              hintStyle: TextStyle(
+                                                fontSize: 16,
+                                                fontWeight: FontWeight.w300,
+                                                color: Theme.of(context)
+                                                    .primaryColor,
+                                              ),
+                                              labelText: 'Час',
+                                              hintText: '1-12',
+                                              helperText: 'ЧАС',
+                                              prefixIcon: Icon(
+                                                Icons.location_searching_sharp,
+                                                color: focusNode12.hasFocus ||
+                                                        lochourmetdamageController1
+                                                            .text.isNotEmpty
+                                                    ? Theme.of(context)
+                                                        .primaryColor
+                                                    : Colors.grey,
+                                                size: 32,
+                                              ),
+                                              enabledBorder: OutlineInputBorder(
+                                                borderRadius: BorderRadius.all(
+                                                    Radius.circular(10)),
+                                                borderSide: BorderSide(
+                                                    color: Colors.grey,
+                                                    width: 2),
+                                              ),
+                                              focusedBorder: OutlineInputBorder(
+                                                borderRadius: BorderRadius.all(
+                                                    Radius.circular(20)),
+                                                borderSide: BorderSide(
+                                                    color: Theme.of(context)
+                                                        .primaryColor,
+                                                    width: 2),
+                                              ),
+                                            ),
+                                            keyboardType: TextInputType.number,
+                                          ),
+                                        ),
+                                      ),
+                                      Expanded(
+                                        child: Padding(
+                                          padding: const EdgeInsets.all(10.0),
+                                          child: TextFormField(
+                                            onChanged: (String value) {
+                                              setState(() {});
+                                              focusNode55.requestFocus();
+                                            },
+                                            focusNode: focusNode55,
+                                            maxLength: 5,
+                                            onSaved: (value) {
+                                              object.locrasstmetdamage1 = value;
+                                            },
+                                            controller:
+                                                locrasstmetdamageController1,
+                                            style: textStyle,
+                                            decoration: InputDecoration(
+                                              focusColor: Theme.of(context)
+                                                  .primaryColor,
+                                              labelStyle: TextStyle(
+                                                fontSize: 22,
+                                                fontWeight: FontWeight.w300,
+                                                color: Theme.of(context)
+                                                    .primaryColor,
+                                              ),
+                                              hintStyle: TextStyle(
+                                                fontSize: 16,
+                                                fontWeight: FontWeight.w300,
+                                                color: Theme.of(context)
+                                                    .primaryColor,
+                                              ),
+                                              labelText: 'от Шва',
+                                              hintText: 'по ХГ',
+                                              helperText: 'мм',
+                                              prefixIcon: Icon(
+                                                Icons.location_searching_sharp,
+                                                color: focusNode55.hasFocus ||
+                                                        locrasstmetdamageController1
+                                                            .text.isNotEmpty
+                                                    ? Theme.of(context)
+                                                        .primaryColor
+                                                    : Colors.grey,
+                                                size: 32,
+                                              ),
+                                              enabledBorder: OutlineInputBorder(
+                                                borderRadius: BorderRadius.all(
+                                                    Radius.circular(10)),
+                                                borderSide: BorderSide(
+                                                    color: Colors.grey,
+                                                    width: 2),
+                                              ),
+                                              focusedBorder: OutlineInputBorder(
+                                                borderRadius: BorderRadius.all(
+                                                    Radius.circular(20)),
+                                                borderSide: BorderSide(
+                                                    color: Theme.of(context)
+                                                        .primaryColor,
+                                                    width: 2),
+                                              ),
+                                            ),
+                                            keyboardType: TextInputType.number,
+                                          ),
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                  Row(
+                                    children: [
+                                      Expanded(
+                                        child: Padding(
+                                          padding: const EdgeInsets.all(10.0),
+                                          child: TextFormField(
+                                            onChanged: (String value) {
+                                              setState(() {});
+                                              focusNode13.requestFocus();
+                                            },
+                                            focusNode: focusNode13,
+                                            maxLength: 5,
+                                            onSaved: (value) {
+                                              object.sizelengthmetdamage1 =
+                                                  value;
+                                            },
+                                            controller:
+                                                sizelengthmetdamageController1,
+                                            style: textStyle,
+                                            decoration: InputDecoration(
+                                              focusColor: Theme.of(context)
+                                                  .primaryColor,
+                                              labelStyle: TextStyle(
+                                                fontSize: 18,
+                                                fontWeight: FontWeight.w300,
+                                                color: Theme.of(context)
+                                                    .primaryColor,
+                                              ),
+                                              hintStyle: TextStyle(
+                                                fontSize: 20,
+                                                fontWeight: FontWeight.w300,
+                                                color: Theme.of(context)
+                                                    .primaryColor,
+                                              ),
+                                              labelText: 'Длина',
+                                              hintText: 'L',
+                                              helperText: 'мм',
+                                              prefixIcon: Icon(
+                                                Icons.location_searching_sharp,
+                                                color: focusNode13.hasFocus ||
+                                                        sizelengthmetdamageController1
+                                                            .text.isNotEmpty
+                                                    ? Theme.of(context)
+                                                        .primaryColor
+                                                    : Colors.grey,
+                                                size: 32,
+                                              ),
+                                              enabledBorder: OutlineInputBorder(
+                                                borderRadius: BorderRadius.all(
+                                                    Radius.circular(10)),
+                                                borderSide: BorderSide(
+                                                    color: Colors.grey,
+                                                    width: 2),
+                                              ),
+                                              focusedBorder: OutlineInputBorder(
+                                                borderRadius: BorderRadius.all(
+                                                    Radius.circular(20)),
+                                                borderSide: BorderSide(
+                                                    color: Theme.of(context)
+                                                        .primaryColor,
+                                                    width: 2),
+                                              ),
+                                            ),
+                                            keyboardType: TextInputType.number,
+                                          ),
+                                        ),
+                                      ),
+                                      Expanded(
+                                        child: Padding(
+                                          padding: const EdgeInsets.all(10.0),
+                                          child: TextFormField(
+                                            onChanged: (String value) {
+                                              setState(() {});
+                                              focusNode56.requestFocus();
+                                            },
+                                            focusNode: focusNode56,
+                                            maxLength: 5,
+                                            onSaved: (value) {
+                                              object.sizewidthmetdamage1 =
+                                                  value;
+                                            },
+                                            controller:
+                                                sizewidthmetdamageController1,
+                                            style: textStyle,
+                                            decoration: InputDecoration(
+                                              focusColor: Theme.of(context)
+                                                  .primaryColor,
+                                              labelStyle: TextStyle(
+                                                fontSize: 18,
+                                                fontWeight: FontWeight.w300,
+                                                color: Theme.of(context)
+                                                    .primaryColor,
+                                              ),
+                                              hintStyle: TextStyle(
+                                                fontSize: 20,
+                                                fontWeight: FontWeight.w300,
+                                                color: Theme.of(context)
+                                                    .primaryColor,
+                                              ),
+                                              labelText: 'Ширина',
+                                              hintText: 'W',
+                                              helperText: 'мм',
+                                              prefixIcon: Icon(
+                                                Icons.location_searching_sharp,
+                                                color: focusNode56.hasFocus ||
+                                                        sizewidthmetdamageController1
+                                                            .text.isNotEmpty
+                                                    ? Theme.of(context)
+                                                        .primaryColor
+                                                    : Colors.grey,
+                                                size: 32,
+                                              ),
+                                              enabledBorder: OutlineInputBorder(
+                                                borderRadius: BorderRadius.all(
+                                                    Radius.circular(10)),
+                                                borderSide: BorderSide(
+                                                    color: Colors.grey,
+                                                    width: 2),
+                                              ),
+                                              focusedBorder: OutlineInputBorder(
+                                                borderRadius: BorderRadius.all(
+                                                    Radius.circular(20)),
+                                                borderSide: BorderSide(
+                                                    color: Theme.of(context)
+                                                        .primaryColor,
+                                                    width: 2),
+                                              ),
+                                            ),
+                                            keyboardType: TextInputType.number,
+                                          ),
+                                        ),
+                                      ),
+                                      Expanded(
+                                        child: Padding(
+                                          padding: const EdgeInsets.all(10.0),
+                                          child: TextFormField(
+                                            onChanged: (String value) {
+                                              setState(() {});
+                                              focusNode57.requestFocus();
+                                            },
+                                            focusNode: focusNode57,
+                                            maxLength: 3,
+                                            onSaved: (value) {
+                                              object.sizedepthmetdamage1 =
+                                                  value;
+                                            },
+                                            controller:
+                                                sizedepthmetdamageController1,
+                                            style: textStyle,
+                                            decoration: InputDecoration(
+                                              focusColor: Theme.of(context)
+                                                  .primaryColor,
+                                              labelStyle: TextStyle(
+                                                fontSize: 18,
+                                                fontWeight: FontWeight.w300,
+                                                color: Theme.of(context)
+                                                    .primaryColor,
+                                              ),
+                                              hintStyle: TextStyle(
+                                                fontSize: 20,
+                                                fontWeight: FontWeight.w300,
+                                                color: Theme.of(context)
+                                                    .primaryColor,
+                                              ),
+                                              labelText: 'Глубина',
+                                              hintText: 'H',
+                                              helperText: 'мм',
+                                              prefixIcon: Icon(
+                                                Icons.location_searching_sharp,
+                                                color: focusNode57.hasFocus ||
+                                                        sizedepthmetdamageController1
+                                                            .text.isNotEmpty
+                                                    ? Theme.of(context)
+                                                        .primaryColor
+                                                    : Colors.grey,
+                                                size: 32,
+                                              ),
+                                              enabledBorder: OutlineInputBorder(
+                                                borderRadius: BorderRadius.all(
+                                                    Radius.circular(10)),
+                                                borderSide: BorderSide(
+                                                    color: Colors.grey,
+                                                    width: 2),
+                                              ),
+                                              focusedBorder: OutlineInputBorder(
+                                                borderRadius: BorderRadius.all(
+                                                    Radius.circular(20)),
+                                                borderSide: BorderSide(
+                                                    color: Theme.of(context)
+                                                        .primaryColor,
+                                                    width: 2),
+                                              ),
+                                            ),
+                                            keyboardType: TextInputType.number,
+                                          ),
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                ],
+                              ),
+                            ),
+                            VerticalDivider(thickness: 4),
+                            Container(
+                              width: MediaQuery.of(context).size.width,
+                              child: Column(
+                                children: [
+                                  Container(
+                                      alignment: Alignment.center,
+                                      child: Text(
+                                        'Данные о дефекте №2',
+                                        style: TextStyle(
+                                            fontSize: 24,
+                                            color:
+                                                Theme.of(context).primaryColor,
+                                            fontWeight: FontWeight.w300),
+                                      )),
+                                  Padding(
+                                    padding: const EdgeInsets.all(10.0),
+                                    child: DropdownButtonFormField(
+                                      isExpanded: true,
+                                      focusNode: focusNode49,
+                                      decoration: InputDecoration(
+                                          focusColor:
+                                              Theme.of(context).primaryColor,
+                                          labelStyle: TextStyle(
+                                            fontSize: 22,
+                                            fontWeight: FontWeight.w300,
+                                            color:
+                                                Theme.of(context).primaryColor,
+                                          ),
+                                          hintStyle: TextStyle(
+                                            fontSize: 16,
+                                            fontWeight: FontWeight.w300,
+                                            color:
+                                                Theme.of(context).primaryColor,
+                                          ),
+                                          border: OutlineInputBorder(),
+                                          enabledBorder: OutlineInputBorder(
+                                            borderRadius: BorderRadius.all(
+                                                Radius.circular(10)),
+                                            borderSide: BorderSide(
+                                                color: Colors.grey, width: 2),
+                                          ),
+                                          focusedBorder: OutlineInputBorder(
+                                            borderRadius: BorderRadius.all(
+                                                Radius.circular(20)),
+                                            borderSide: BorderSide(
+                                                color: Theme.of(context)
+                                                    .primaryColor,
+                                                width: 2),
+                                          ),
+                                          prefixIcon: Icon(
+                                            Icons.ssid_chart_sharp,
+                                            color: focusNode49.hasFocus ||
+                                                    charmetdamageController2
+                                                        .text.isNotEmpty
+                                                ? Theme.of(context).primaryColor
+                                                : Colors.grey,
+                                            size: 32,
+                                          ),
+                                          labelText: 'Характер дефекта',
+                                          suffixIcon: GestureDetector(
+                                              onTap: () async {
+                                                Navigator.push(
+                                                  context,
+                                                  MaterialPageRoute(
+                                                      builder: (context) =>
+                                                          CameraPageIp()),
+                                                ).then((value) {
+                                                  setState(() async {
+                                                    if (value != null) {
+                                                      _imageDefmet2 = value;
+                                                      if (_2formKey.currentState
+                                                          .validate()) {
+                                                        _2formKey.currentState
+                                                            .save();
+                                                        if (_imageDefmet2 !=
+                                                            null) {
+                                                          final Directory
+                                                              extDir =
+                                                              await getApplicationDocumentsDirectory();
+                                                          final String dirPath =
+                                                              '${extDir.path}/Pictures/flutter';
+                                                          await Directory(
+                                                                  dirPath)
+                                                              .create(
+                                                                  recursive:
+                                                                      true);
+                                                          final String
+                                                              filePath =
+                                                              '$dirPath/${DateTime.now().millisecondsSinceEpoch.toString()}.jpg';
+                                                          await _imageDefmet2
+                                                              .copy(filePath);
+                                                          object.photometdef2 =
+                                                              filePath;
+                                                          print(
+                                                              'сделали: ${object.photometdef2.toString()}');
+                                                        }
+                                                      }
+                                                    }
+                                                  });
+                                                });
+                                              },
+                                              child: Icon(
+                                                  Icons.camera_alt_sharp,
+                                                  color: Color.fromRGBO(
+                                                      97, 153, 59, 1.0)))),
+                                      items:
+                                          _charmetdamage2.map((String value) {
+                                        return DropdownMenuItem(
+                                          value: value,
+                                          child: Text(value),
+                                        );
+                                      }).toList(),
+                                      style: textStyle,
+                                      value: object.charmetdamage2,
+                                      onChanged: (String value) {
+                                        setState(() {});
+                                        focusNode49.requestFocus();
+                                        object.charmetdamage2 = value;
+                                      },
+                                    ),
+                                  ),
+                                  SizedBox(height: 10),
+                                  Container(
+                                    height: 100,
+                                    child: Column(
+                                      children: [
+                                        Expanded(
+                                          child: GestureDetector(
+                                            onTap: () {
+                                              Navigator.push(
+                                                context,
+                                                MaterialPageRoute(
+                                                    builder: (context) =>
+                                                        ImageScreen(
+                                                            imagePath: object
+                                                                .photometdef2)),
+                                              );
+                                            },
+                                            child: Center(
+                                              child: object.photometdef2 != null
+                                                  ? Image.file(
+                                                      File(object.photometdef2),
+                                                      fit: BoxFit.cover,
+                                                      alignment:
+                                                          Alignment.center,
+                                                      width: 100,
+                                                      height: 100,
+                                                    )
+                                                  : Text(
+                                                      'Изображение отсутствует'),
+                                            ),
+                                          ),
+                                        ),
+                                      ],
+                                    ),
+                                  ),
+                                  Container(
+                                      alignment: Alignment.center,
+                                      child: Row(
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.center,
+                                        children: [
+                                          Text(
+                                            'Расположение дефекта №2',
+                                            style: TextStyle(
+                                                fontSize: 24,
+                                                color: Theme.of(context)
+                                                    .primaryColor,
+                                                fontWeight: FontWeight.w300),
+                                          ),
+                                          GestureDetector(
+                                            onTap: () {
+                                              lochourmetdamageController2
+                                                  .clear();
+                                              locrasstmetdamageController2
+                                                  .clear();
+                                              sizelengthmetdamageController2
+                                                  .clear();
+                                              sizewidthmetdamageController2
+                                                  .clear();
+                                              sizedepthmetdamageController2
+                                                  .clear();
+                                            },
+                                            child: Icon(
+                                              Icons.delete_outline,
+                                              color: Color.fromRGBO(
+                                                  187, 30, 16, 1.0),
+                                            ),
+                                          ),
+                                        ],
+                                      )),
+                                  Row(
+                                    children: [
+                                      Expanded(
+                                        child: Padding(
+                                          padding: const EdgeInsets.all(10.0),
+                                          child: TextFormField(
+                                            onChanged: (String value) {
+                                              setState(() {});
+                                              focusNode32.requestFocus();
+                                            },
+                                            focusNode: focusNode32,
+                                            maxLength: 2,
+                                            onSaved: (value) {
+                                              object.lochourmetdamage2 = value;
+                                            },
+                                            controller:
+                                                lochourmetdamageController2,
+                                            style: textStyle,
+                                            decoration: InputDecoration(
+                                              focusColor: Theme.of(context)
+                                                  .primaryColor,
+                                              labelStyle: TextStyle(
+                                                fontSize: 22,
+                                                fontWeight: FontWeight.w300,
+                                                color: Theme.of(context)
+                                                    .primaryColor,
+                                              ),
+                                              hintStyle: TextStyle(
+                                                fontSize: 16,
+                                                fontWeight: FontWeight.w300,
+                                                color: Theme.of(context)
+                                                    .primaryColor,
+                                              ),
+                                              labelText: 'Час',
+                                              hintText: '1-12',
+                                              helperText: 'ЧАС',
+                                              prefixIcon: Icon(
+                                                Icons.location_searching_sharp,
+                                                color: focusNode32.hasFocus ||
+                                                        lochourmetdamageController2
+                                                            .text.isNotEmpty
+                                                    ? Theme.of(context)
+                                                        .primaryColor
+                                                    : Colors.grey,
+                                                size: 32,
+                                              ),
+                                              enabledBorder: OutlineInputBorder(
+                                                borderRadius: BorderRadius.all(
+                                                    Radius.circular(10)),
+                                                borderSide: BorderSide(
+                                                    color: Colors.grey,
+                                                    width: 2),
+                                              ),
+                                              focusedBorder: OutlineInputBorder(
+                                                borderRadius: BorderRadius.all(
+                                                    Radius.circular(20)),
+                                                borderSide: BorderSide(
+                                                    color: Theme.of(context)
+                                                        .primaryColor,
+                                                    width: 2),
+                                              ),
+                                            ),
+                                            keyboardType: TextInputType.number,
+                                          ),
+                                        ),
+                                      ),
+                                      Expanded(
+                                        child: Padding(
+                                          padding: const EdgeInsets.all(10.0),
+                                          child: TextFormField(
+                                            onChanged: (String value) {
+                                              setState(() {});
+                                              focusNode44.requestFocus();
+                                            },
+                                            focusNode: focusNode44,
+                                            maxLength: 5,
+                                            onSaved: (value) {
+                                              object.locrasstmetdamage2 = value;
+                                            },
+                                            controller:
+                                                locrasstmetdamageController2,
+                                            style: textStyle,
+                                            decoration: InputDecoration(
+                                              focusColor: Theme.of(context)
+                                                  .primaryColor,
+                                              labelStyle: TextStyle(
+                                                fontSize: 22,
+                                                fontWeight: FontWeight.w300,
+                                                color: Theme.of(context)
+                                                    .primaryColor,
+                                              ),
+                                              hintStyle: TextStyle(
+                                                fontSize: 16,
+                                                fontWeight: FontWeight.w300,
+                                                color: Theme.of(context)
+                                                    .primaryColor,
+                                              ),
+                                              labelText: 'от Шва',
+                                              hintText: 'по ХГ',
+                                              helperText: 'мм',
+                                              prefixIcon: Icon(
+                                                Icons.location_searching_sharp,
+                                                color: focusNode44.hasFocus ||
+                                                        locrasstmetdamageController2
+                                                            .text.isNotEmpty
+                                                    ? Theme.of(context)
+                                                        .primaryColor
+                                                    : Colors.grey,
+                                                size: 32,
+                                              ),
+                                              enabledBorder: OutlineInputBorder(
+                                                borderRadius: BorderRadius.all(
+                                                    Radius.circular(10)),
+                                                borderSide: BorderSide(
+                                                    color: Colors.grey,
+                                                    width: 2),
+                                              ),
+                                              focusedBorder: OutlineInputBorder(
+                                                borderRadius: BorderRadius.all(
+                                                    Radius.circular(20)),
+                                                borderSide: BorderSide(
+                                                    color: Theme.of(context)
+                                                        .primaryColor,
+                                                    width: 2),
+                                              ),
+                                            ),
+                                            keyboardType: TextInputType.number,
+                                          ),
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                  Row(
+                                    children: [
+                                      Expanded(
+                                        child: Padding(
+                                          padding: const EdgeInsets.all(10.0),
+                                          child: TextFormField(
+                                            onChanged: (String value) {
+                                              setState(() {});
+                                              focusNode70.requestFocus();
+                                            },
+                                            focusNode: focusNode70,
+                                            maxLength: 5,
+                                            onSaved: (value) {
+                                              object.sizelengthmetdamage2 =
+                                                  value;
+                                            },
+                                            controller:
+                                                sizelengthmetdamageController2,
+                                            style: textStyle,
+                                            decoration: InputDecoration(
+                                              focusColor: Theme.of(context)
+                                                  .primaryColor,
+                                              labelStyle: TextStyle(
+                                                fontSize: 18,
+                                                fontWeight: FontWeight.w300,
+                                                color: Theme.of(context)
+                                                    .primaryColor,
+                                              ),
+                                              hintStyle: TextStyle(
+                                                fontSize: 20,
+                                                fontWeight: FontWeight.w300,
+                                                color: Theme.of(context)
+                                                    .primaryColor,
+                                              ),
+                                              labelText: 'Длина',
+                                              hintText: 'L',
+                                              helperText: 'мм',
+                                              prefixIcon: Icon(
+                                                Icons.location_searching_sharp,
+                                                color: focusNode70.hasFocus ||
+                                                        sizelengthmetdamageController2
+                                                            .text.isNotEmpty
+                                                    ? Theme.of(context)
+                                                        .primaryColor
+                                                    : Colors.grey,
+                                                size: 32,
+                                              ),
+                                              enabledBorder: OutlineInputBorder(
+                                                borderRadius: BorderRadius.all(
+                                                    Radius.circular(10)),
+                                                borderSide: BorderSide(
+                                                    color: Colors.grey,
+                                                    width: 2),
+                                              ),
+                                              focusedBorder: OutlineInputBorder(
+                                                borderRadius: BorderRadius.all(
+                                                    Radius.circular(20)),
+                                                borderSide: BorderSide(
+                                                    color: Theme.of(context)
+                                                        .primaryColor,
+                                                    width: 2),
+                                              ),
+                                            ),
+                                            keyboardType: TextInputType.number,
+                                          ),
+                                        ),
+                                      ),
+                                      Expanded(
+                                        child: Padding(
+                                          padding: const EdgeInsets.all(10.0),
+                                          child: TextFormField(
+                                            onChanged: (String value) {
+                                              setState(() {});
+                                              focusNode47.requestFocus();
+                                            },
+                                            focusNode: focusNode47,
+                                            maxLength: 5,
+                                            onSaved: (value) {
+                                              object.sizewidthmetdamage2 =
+                                                  value;
+                                            },
+                                            controller:
+                                                sizewidthmetdamageController2,
+                                            style: textStyle,
+                                            decoration: InputDecoration(
+                                              focusColor: Theme.of(context)
+                                                  .primaryColor,
+                                              labelStyle: TextStyle(
+                                                fontSize: 18,
+                                                fontWeight: FontWeight.w300,
+                                                color: Theme.of(context)
+                                                    .primaryColor,
+                                              ),
+                                              hintStyle: TextStyle(
+                                                fontSize: 20,
+                                                fontWeight: FontWeight.w300,
+                                                color: Theme.of(context)
+                                                    .primaryColor,
+                                              ),
+                                              labelText: 'Ширина',
+                                              hintText: 'W',
+                                              helperText: 'мм',
+                                              prefixIcon: Icon(
+                                                Icons.location_searching_sharp,
+                                                color: focusNode47.hasFocus ||
+                                                        sizewidthmetdamageController2
+                                                            .text.isNotEmpty
+                                                    ? Theme.of(context)
+                                                        .primaryColor
+                                                    : Colors.grey,
+                                                size: 32,
+                                              ),
+                                              enabledBorder: OutlineInputBorder(
+                                                borderRadius: BorderRadius.all(
+                                                    Radius.circular(10)),
+                                                borderSide: BorderSide(
+                                                    color: Colors.grey,
+                                                    width: 2),
+                                              ),
+                                              focusedBorder: OutlineInputBorder(
+                                                borderRadius: BorderRadius.all(
+                                                    Radius.circular(20)),
+                                                borderSide: BorderSide(
+                                                    color: Theme.of(context)
+                                                        .primaryColor,
+                                                    width: 2),
+                                              ),
+                                            ),
+                                            keyboardType: TextInputType.number,
+                                          ),
+                                        ),
+                                      ),
+                                      Expanded(
+                                        child: Padding(
+                                          padding: const EdgeInsets.all(10.0),
+                                          child: TextFormField(
+                                            onChanged: (String value) {
+                                              setState(() {});
+                                              focusNode58.requestFocus();
+                                            },
+                                            focusNode: focusNode58,
+                                            maxLength: 3,
+                                            onSaved: (value) {
+                                              object.sizedepthmetdamage2 =
+                                                  value;
+                                            },
+                                            controller:
+                                                sizedepthmetdamageController2,
+                                            style: textStyle,
+                                            decoration: InputDecoration(
+                                              focusColor: Theme.of(context)
+                                                  .primaryColor,
+                                              labelStyle: TextStyle(
+                                                fontSize: 18,
+                                                fontWeight: FontWeight.w300,
+                                                color: Theme.of(context)
+                                                    .primaryColor,
+                                              ),
+                                              hintStyle: TextStyle(
+                                                fontSize: 20,
+                                                fontWeight: FontWeight.w300,
+                                                color: Theme.of(context)
+                                                    .primaryColor,
+                                              ),
+                                              labelText: 'Глубина',
+                                              hintText: 'H',
+                                              helperText: 'мм',
+                                              prefixIcon: Icon(
+                                                Icons.location_searching_sharp,
+                                                color: focusNode58.hasFocus ||
+                                                        sizedepthmetdamageController2
+                                                            .text.isNotEmpty
+                                                    ? Theme.of(context)
+                                                        .primaryColor
+                                                    : Colors.grey,
+                                                size: 32,
+                                              ),
+                                              enabledBorder: OutlineInputBorder(
+                                                borderRadius: BorderRadius.all(
+                                                    Radius.circular(10)),
+                                                borderSide: BorderSide(
+                                                    color: Colors.grey,
+                                                    width: 2),
+                                              ),
+                                              focusedBorder: OutlineInputBorder(
+                                                borderRadius: BorderRadius.all(
+                                                    Radius.circular(20)),
+                                                borderSide: BorderSide(
+                                                    color: Theme.of(context)
+                                                        .primaryColor,
+                                                    width: 2),
+                                              ),
+                                            ),
+                                            keyboardType: TextInputType.number,
+                                          ),
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                ],
+                              ),
+                            ),
+                            VerticalDivider(thickness: 4),
+                            Container(
+                              width: MediaQuery.of(context).size.width,
+                              child: Column(
+                                children: [
+                                  Container(
+                                      alignment: Alignment.center,
+                                      child: Text(
+                                        'Данные о дефекте №3',
+                                        style: TextStyle(
+                                            fontSize: 24,
+                                            color:
+                                                Theme.of(context).primaryColor,
+                                            fontWeight: FontWeight.w300),
+                                      )),
+                                  Padding(
+                                    padding: const EdgeInsets.all(10.0),
+                                    child: DropdownButtonFormField(
+                                      isExpanded: true,
+                                      focusNode: focusNode46,
+                                      decoration: InputDecoration(
+                                          focusColor:
+                                              Theme.of(context).primaryColor,
+                                          labelStyle: TextStyle(
+                                            fontSize: 22,
+                                            fontWeight: FontWeight.w300,
+                                            color:
+                                                Theme.of(context).primaryColor,
+                                          ),
+                                          hintStyle: TextStyle(
+                                            fontSize: 16,
+                                            fontWeight: FontWeight.w300,
+                                            color:
+                                                Theme.of(context).primaryColor,
+                                          ),
+                                          border: OutlineInputBorder(),
+                                          enabledBorder: OutlineInputBorder(
+                                            borderRadius: BorderRadius.all(
+                                                Radius.circular(10)),
+                                            borderSide: BorderSide(
+                                                color: Colors.grey, width: 2),
+                                          ),
+                                          focusedBorder: OutlineInputBorder(
+                                            borderRadius: BorderRadius.all(
+                                                Radius.circular(20)),
+                                            borderSide: BorderSide(
+                                                color: Theme.of(context)
+                                                    .primaryColor,
+                                                width: 2),
+                                          ),
+                                          prefixIcon: Icon(
+                                            Icons.ssid_chart_sharp,
+                                            color: focusNode46.hasFocus ||
+                                                    charmetdamageController3
+                                                        .text.isNotEmpty
+                                                ? Theme.of(context).primaryColor
+                                                : Colors.grey,
+                                            size: 32,
+                                          ),
+                                          labelText: 'Характер дефекта',
+                                          suffixIcon: GestureDetector(
+                                              onTap: () async {
+                                                Navigator.push(
+                                                  context,
+                                                  MaterialPageRoute(
+                                                      builder: (context) =>
+                                                          CameraPageIp()),
+                                                ).then((value) {
+                                                  setState(() async {
+                                                    if (value != null) {
+                                                      _imageDefmet3 = value;
+                                                      if (_2formKey.currentState
+                                                          .validate()) {
+                                                        _2formKey.currentState
+                                                            .save();
+                                                        if (_imageDefmet3 !=
+                                                            null) {
+                                                          final Directory
+                                                              extDir =
+                                                              await getApplicationDocumentsDirectory();
+                                                          final String dirPath =
+                                                              '${extDir.path}/Pictures/flutter';
+                                                          await Directory(
+                                                                  dirPath)
+                                                              .create(
+                                                                  recursive:
+                                                                      true);
+                                                          final String
+                                                              filePath =
+                                                              '$dirPath/${DateTime.now().millisecondsSinceEpoch.toString()}.jpg';
+                                                          await _imageDefmet3
+                                                              .copy(filePath);
+                                                          object.photometdef3 =
+                                                              filePath;
+                                                          print(
+                                                              'сделали: ${object.photometdef3.toString()}');
+                                                        }
+                                                      }
+                                                    }
+                                                  });
+                                                });
+                                              },
+                                              child: Icon(
+                                                  Icons.camera_alt_sharp,
+                                                  color: Color.fromRGBO(
+                                                      97, 153, 59, 1.0)))),
+                                      items:
+                                          _charmetdamage3.map((String value) {
+                                        return DropdownMenuItem(
+                                          value: value,
+                                          child: Text(value),
+                                        );
+                                      }).toList(),
+                                      style: textStyle,
+                                      value: object.charmetdamage3,
+                                      onChanged: (String value) {
+                                        setState(() {});
+                                        focusNode46.requestFocus();
+                                        object.charmetdamage3 = value;
+                                      },
+                                    ),
+                                  ),
+                                  Container(
+                                    height: 100,
+                                    child: Column(
+                                      children: [
+                                        Expanded(
+                                          child: GestureDetector(
+                                            onTap: () {
+                                              Navigator.push(
+                                                context,
+                                                MaterialPageRoute(
+                                                    builder: (context) =>
+                                                        ImageScreen(
+                                                            imagePath: object
+                                                                .photometdef3)),
+                                              );
+                                            },
+                                            child: Center(
+                                              child: object.photometdef3 != null
+                                                  ? Image.file(
+                                                      File(object.photometdef3),
+                                                      fit: BoxFit.cover,
+                                                      alignment:
+                                                          Alignment.center,
+                                                      width: 100,
+                                                      height: 100,
+                                                    )
+                                                  : Text(
+                                                      'Изображение отсутствует'),
+                                            ),
+                                          ),
+                                        ),
+                                      ],
+                                    ),
+                                  ),
+                                  SizedBox(height: 10),
+                                  Container(
+                                      alignment: Alignment.center,
+                                      child: Row(
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.center,
+                                        children: [
+                                          Text(
+                                            'Расположение дефекта №3',
+                                            style: TextStyle(
+                                                fontSize: 24,
+                                                color: Theme.of(context)
+                                                    .primaryColor,
+                                                fontWeight: FontWeight.w300),
+                                          ),
+                                          GestureDetector(
+                                            onTap: () {
+                                              lochourmetdamageController3
+                                                  .clear();
+                                              locrasstmetdamageController3
+                                                  .clear();
+                                              sizelengthmetdamageController3
+                                                  .clear();
+                                              sizewidthmetdamageController3
+                                                  .clear();
+                                              sizedepthmetdamageController3
+                                                  .clear();
+                                            },
+                                            child: Icon(
+                                              Icons.delete_outline,
+                                              color: Color.fromRGBO(
+                                                  187, 30, 16, 1.0),
+                                            ),
+                                          ),
+                                        ],
+                                      )),
+                                  Row(
+                                    children: [
+                                      Expanded(
+                                        child: Padding(
+                                          padding: const EdgeInsets.all(10.0),
+                                          child: TextFormField(
+                                            onChanged: (String value) {
+                                              setState(() {});
+                                              focusNode33.requestFocus();
+                                            },
+                                            focusNode: focusNode33,
+                                            maxLength: 2,
+                                            onSaved: (value) {
+                                              object.lochourmetdamage3 = value;
+                                            },
+                                            controller:
+                                                lochourmetdamageController3,
+                                            style: textStyle,
+                                            decoration: InputDecoration(
+                                              focusColor: Theme.of(context)
+                                                  .primaryColor,
+                                              labelStyle: TextStyle(
+                                                fontSize: 22,
+                                                fontWeight: FontWeight.w300,
+                                                color: Theme.of(context)
+                                                    .primaryColor,
+                                              ),
+                                              hintStyle: TextStyle(
+                                                fontSize: 16,
+                                                fontWeight: FontWeight.w300,
+                                                color: Theme.of(context)
+                                                    .primaryColor,
+                                              ),
+                                              labelText: 'Час',
+                                              hintText: '1-12',
+                                              helperText: 'ЧАС',
+                                              prefixIcon: Icon(
+                                                Icons.location_searching_sharp,
+                                                color: focusNode33.hasFocus ||
+                                                        lochourmetdamageController3
+                                                            .text.isNotEmpty
+                                                    ? Theme.of(context)
+                                                        .primaryColor
+                                                    : Colors.grey,
+                                                size: 32,
+                                              ),
+                                              enabledBorder: OutlineInputBorder(
+                                                borderRadius: BorderRadius.all(
+                                                    Radius.circular(10)),
+                                                borderSide: BorderSide(
+                                                    color: Colors.grey,
+                                                    width: 2),
+                                              ),
+                                              focusedBorder: OutlineInputBorder(
+                                                borderRadius: BorderRadius.all(
+                                                    Radius.circular(20)),
+                                                borderSide: BorderSide(
+                                                    color: Theme.of(context)
+                                                        .primaryColor,
+                                                    width: 2),
+                                              ),
+                                            ),
+                                            keyboardType: TextInputType.number,
+                                          ),
+                                        ),
+                                      ),
+                                      Expanded(
+                                        child: Padding(
+                                          padding: const EdgeInsets.all(10.0),
+                                          child: TextFormField(
+                                            onChanged: (String value) {
+                                              setState(() {});
+                                              focusNode45.requestFocus();
+                                            },
+                                            focusNode: focusNode45,
+                                            maxLength: 5,
+                                            onSaved: (value) {
+                                              object.locrasstmetdamage3 = value;
+                                            },
+                                            controller:
+                                                locrasstmetdamageController3,
+                                            style: textStyle,
+                                            decoration: InputDecoration(
+                                              focusColor: Theme.of(context)
+                                                  .primaryColor,
+                                              labelStyle: TextStyle(
+                                                fontSize: 22,
+                                                fontWeight: FontWeight.w300,
+                                                color: Theme.of(context)
+                                                    .primaryColor,
+                                              ),
+                                              hintStyle: TextStyle(
+                                                fontSize: 16,
+                                                fontWeight: FontWeight.w300,
+                                                color: Theme.of(context)
+                                                    .primaryColor,
+                                              ),
+                                              labelText: 'от Шва',
+                                              hintText: 'по ХГ',
+                                              helperText: 'мм',
+                                              prefixIcon: Icon(
+                                                Icons.location_searching_sharp,
+                                                color: focusNode45.hasFocus ||
+                                                        locrasstmetdamageController3
+                                                            .text.isNotEmpty
+                                                    ? Theme.of(context)
+                                                        .primaryColor
+                                                    : Colors.grey,
+                                                size: 32,
+                                              ),
+                                              enabledBorder: OutlineInputBorder(
+                                                borderRadius: BorderRadius.all(
+                                                    Radius.circular(10)),
+                                                borderSide: BorderSide(
+                                                    color: Colors.grey,
+                                                    width: 2),
+                                              ),
+                                              focusedBorder: OutlineInputBorder(
+                                                borderRadius: BorderRadius.all(
+                                                    Radius.circular(20)),
+                                                borderSide: BorderSide(
+                                                    color: Theme.of(context)
+                                                        .primaryColor,
+                                                    width: 2),
+                                              ),
+                                            ),
+                                            keyboardType: TextInputType.number,
+                                          ),
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                  Row(
+                                    children: [
+                                      Expanded(
+                                        child: Padding(
+                                          padding: const EdgeInsets.all(10.0),
+                                          child: TextFormField(
+                                            onChanged: (String value) {
+                                              setState(() {});
+                                              focusNode71.requestFocus();
+                                            },
+                                            focusNode: focusNode71,
+                                            maxLength: 5,
+                                            onSaved: (value) {
+                                              object.sizelengthmetdamage3 =
+                                                  value;
+                                            },
+                                            controller:
+                                                sizelengthmetdamageController3,
+                                            style: textStyle,
+                                            decoration: InputDecoration(
+                                              focusColor: Theme.of(context)
+                                                  .primaryColor,
+                                              labelStyle: TextStyle(
+                                                fontSize: 18,
+                                                fontWeight: FontWeight.w300,
+                                                color: Theme.of(context)
+                                                    .primaryColor,
+                                              ),
+                                              hintStyle: TextStyle(
+                                                fontSize: 20,
+                                                fontWeight: FontWeight.w300,
+                                                color: Theme.of(context)
+                                                    .primaryColor,
+                                              ),
+                                              labelText: 'Длина',
+                                              hintText: 'L',
+                                              helperText: 'мм',
+                                              prefixIcon: Icon(
+                                                Icons.location_searching_sharp,
+                                                color: focusNode71.hasFocus ||
+                                                        sizelengthmetdamageController3
+                                                            .text.isNotEmpty
+                                                    ? Theme.of(context)
+                                                        .primaryColor
+                                                    : Colors.grey,
+                                                size: 32,
+                                              ),
+                                              enabledBorder: OutlineInputBorder(
+                                                borderRadius: BorderRadius.all(
+                                                    Radius.circular(10)),
+                                                borderSide: BorderSide(
+                                                    color: Colors.grey,
+                                                    width: 2),
+                                              ),
+                                              focusedBorder: OutlineInputBorder(
+                                                borderRadius: BorderRadius.all(
+                                                    Radius.circular(20)),
+                                                borderSide: BorderSide(
+                                                    color: Theme.of(context)
+                                                        .primaryColor,
+                                                    width: 2),
+                                              ),
+                                            ),
+                                            keyboardType: TextInputType.number,
+                                          ),
+                                        ),
+                                      ),
+                                      Expanded(
+                                        child: Padding(
+                                          padding: const EdgeInsets.all(10.0),
+                                          child: TextFormField(
+                                            onChanged: (String value) {
+                                              setState(() {});
+                                              focusNode48.requestFocus();
+                                            },
+                                            focusNode: focusNode48,
+                                            maxLength: 5,
+                                            onSaved: (value) {
+                                              object.sizewidthmetdamage3 =
+                                                  value;
+                                            },
+                                            controller:
+                                                sizewidthmetdamageController3,
+                                            style: textStyle,
+                                            decoration: InputDecoration(
+                                              focusColor: Theme.of(context)
+                                                  .primaryColor,
+                                              labelStyle: TextStyle(
+                                                fontSize: 18,
+                                                fontWeight: FontWeight.w300,
+                                                color: Theme.of(context)
+                                                    .primaryColor,
+                                              ),
+                                              hintStyle: TextStyle(
+                                                fontSize: 20,
+                                                fontWeight: FontWeight.w300,
+                                                color: Theme.of(context)
+                                                    .primaryColor,
+                                              ),
+                                              labelText: 'Ширина',
+                                              hintText: 'W',
+                                              helperText: 'мм',
+                                              prefixIcon: Icon(
+                                                Icons.location_searching_sharp,
+                                                color: focusNode48.hasFocus ||
+                                                        sizewidthmetdamageController3
+                                                            .text.isNotEmpty
+                                                    ? Theme.of(context)
+                                                        .primaryColor
+                                                    : Colors.grey,
+                                                size: 32,
+                                              ),
+                                              enabledBorder: OutlineInputBorder(
+                                                borderRadius: BorderRadius.all(
+                                                    Radius.circular(10)),
+                                                borderSide: BorderSide(
+                                                    color: Colors.grey,
+                                                    width: 2),
+                                              ),
+                                              focusedBorder: OutlineInputBorder(
+                                                borderRadius: BorderRadius.all(
+                                                    Radius.circular(20)),
+                                                borderSide: BorderSide(
+                                                    color: Theme.of(context)
+                                                        .primaryColor,
+                                                    width: 2),
+                                              ),
+                                            ),
+                                            keyboardType: TextInputType.number,
+                                          ),
+                                        ),
+                                      ),
+                                      Expanded(
+                                        child: Padding(
+                                          padding: const EdgeInsets.all(10.0),
+                                          child: TextFormField(
+                                            onChanged: (String value) {
+                                              setState(() {});
+                                              focusNode59.requestFocus();
+                                            },
+                                            focusNode: focusNode59,
+                                            maxLength: 3,
+                                            onSaved: (value) {
+                                              object.sizedepthmetdamage3 =
+                                                  value;
+                                            },
+                                            controller:
+                                                sizedepthmetdamageController3,
+                                            style: textStyle,
+                                            decoration: InputDecoration(
+                                              focusColor: Theme.of(context)
+                                                  .primaryColor,
+                                              labelStyle: TextStyle(
+                                                fontSize: 18,
+                                                fontWeight: FontWeight.w300,
+                                                color: Theme.of(context)
+                                                    .primaryColor,
+                                              ),
+                                              hintStyle: TextStyle(
+                                                fontSize: 20,
+                                                fontWeight: FontWeight.w300,
+                                                color: Theme.of(context)
+                                                    .primaryColor,
+                                              ),
+                                              labelText: 'Глубина',
+                                              hintText: 'H',
+                                              helperText: 'мм',
+                                              prefixIcon: Icon(
+                                                Icons.location_searching_sharp,
+                                                color: focusNode59.hasFocus ||
+                                                        sizedepthmetdamageController3
+                                                            .text.isNotEmpty
+                                                    ? Theme.of(context)
+                                                        .primaryColor
+                                                    : Colors.grey,
+                                                size: 32,
+                                              ),
+                                              enabledBorder: OutlineInputBorder(
+                                                borderRadius: BorderRadius.all(
+                                                    Radius.circular(10)),
+                                                borderSide: BorderSide(
+                                                    color: Colors.grey,
+                                                    width: 2),
+                                              ),
+                                              focusedBorder: OutlineInputBorder(
+                                                borderRadius: BorderRadius.all(
+                                                    Radius.circular(20)),
+                                                borderSide: BorderSide(
+                                                    color: Theme.of(context)
+                                                        .primaryColor,
+                                                    width: 2),
+                                              ),
+                                            ),
+                                            keyboardType: TextInputType.number,
+                                          ),
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                ],
                               ),
                             ),
                           ],
                         ),
                       ),
-                      SizedBox(height: 20),
-                      Container(
-                          alignment: Alignment.center,
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              Text(
-                                'Расположение дефекта №1',
-                                style: TextStyle(
-                                    fontSize: 24,
-                                    color: Theme.of(context).primaryColor,
-                                    fontWeight: FontWeight.w300),
-                              ),
-                              GestureDetector(
-                                onTap: () {
-                                  lochourmetdamageController1.clear();
-                                  locrasstmetdamageController1.clear();
-                                  sizelengthmetdamageController1.clear();
-                                  sizewidthmetdamageController1.clear();
-                                  sizedepthmetdamageController1.clear();
-                                },
-                                child: Icon(
-                                  Icons.delete_outline,
-                                  color: Color.fromRGBO(187, 30, 16, 1.0),
-                                ),
-                              ),
-                            ],
-                          )),
-                      SizedBox(height: 20),
-                      Row(
-                        children: [
-                          Expanded(
-                            child: TextFormField(
-                              onChanged: (String value) {
-                                setState(() {});
-                                focusNode12.requestFocus();
-                              },
-                              focusNode: focusNode12,
-                              maxLength: 2,
-                              onSaved: (value) {
-                                object.lochourmetdamage1 = value;
-                              },
-                              controller: lochourmetdamageController1,
-                              style: textStyle,
-                              decoration: InputDecoration(
-                                focusColor: Theme.of(context).primaryColor,
-                                labelStyle: TextStyle(
-                                  fontSize: 22,
-                                  fontWeight: FontWeight.w300,
-                                  color: Theme.of(context).primaryColor,
-                                ),
-                                hintStyle: TextStyle(
-                                  fontSize: 16,
-                                  fontWeight: FontWeight.w300,
-                                  color: Theme.of(context).primaryColor,
-                                ),
-                                labelText: 'Час',
-                                hintText: '1-12',
-                                helperText: 'ЧАС',
-                                prefixIcon: Icon(
-                                  Icons.location_searching_sharp,
-                                  color: focusNode12.hasFocus ||
-                                          lochourmetdamageController1
-                                              .text.isNotEmpty
-                                      ? Theme.of(context).primaryColor
-                                      : Colors.grey,
-                                  size: 32,
-                                ),
-                                // suffixIcon: GestureDetector(
-                                //   onTap: () {
-                                //     lochourmetdamageController1.clear();
-
-                                //   },
-                                //   child: Icon(
-                                //     Icons.delete_outline,
-                                //     color: Color.fromRGBO(187, 30, 16, 1.0),
-                                //   ),
-                                // ),
-                                enabledBorder: OutlineInputBorder(
-                                  borderRadius:
-                                      BorderRadius.all(Radius.circular(10)),
-                                  borderSide:
-                                      BorderSide(color: Colors.grey, width: 2),
-                                ),
-                                focusedBorder: OutlineInputBorder(
-                                  borderRadius:
-                                      BorderRadius.all(Radius.circular(20)),
-                                  borderSide: BorderSide(
-                                      color: Theme.of(context).primaryColor,
-                                      width: 2),
-                                ),
-                              ),
-                              keyboardType: TextInputType.number,
-                            ),
-                          ),
-                          SizedBox(width: 5),
-                          Expanded(
-                            child: TextFormField(
-                              onChanged: (String value) {
-                                setState(() {});
-                                focusNode55.requestFocus();
-                              },
-                              focusNode: focusNode55,
-                              maxLength: 5,
-                              onSaved: (value) {
-                                object.locrasstmetdamage1 = value;
-                              },
-                              controller: locrasstmetdamageController1,
-                              style: textStyle,
-                              decoration: InputDecoration(
-                                focusColor: Theme.of(context).primaryColor,
-                                labelStyle: TextStyle(
-                                  fontSize: 22,
-                                  fontWeight: FontWeight.w300,
-                                  color: Theme.of(context).primaryColor,
-                                ),
-                                hintStyle: TextStyle(
-                                  fontSize: 16,
-                                  fontWeight: FontWeight.w300,
-                                  color: Theme.of(context).primaryColor,
-                                ),
-                                labelText: 'от Шва',
-                                hintText: 'по ХГ',
-                                helperText: 'мм',
-                                prefixIcon: Icon(
-                                  Icons.location_searching_sharp,
-                                  color: focusNode55.hasFocus ||
-                                          locrasstmetdamageController1
-                                              .text.isNotEmpty
-                                      ? Theme.of(context).primaryColor
-                                      : Colors.grey,
-                                  size: 32,
-                                ),
-                                // suffixIcon: GestureDetector(
-                                //   onTap: () {
-                                //     locrasstmetdamageController1.clear();
-                                //   },
-                                //   child: Icon(
-                                //     Icons.delete_outline,
-                                //     color: Color.fromRGBO(187, 30, 16, 1.0),
-                                //   ),
-                                // ),
-                                enabledBorder: OutlineInputBorder(
-                                  borderRadius:
-                                      BorderRadius.all(Radius.circular(10)),
-                                  borderSide:
-                                      BorderSide(color: Colors.grey, width: 2),
-                                ),
-                                focusedBorder: OutlineInputBorder(
-                                  borderRadius:
-                                      BorderRadius.all(Radius.circular(20)),
-                                  borderSide: BorderSide(
-                                      color: Theme.of(context).primaryColor,
-                                      width: 2),
-                                ),
-                              ),
-                              keyboardType: TextInputType.number,
-                            ),
-                          ),
-                        ],
-                      ),
-                      SizedBox(height: 10),
-                      Row(
-                        children: [
-                          Expanded(
-                            child: TextFormField(
-                              onChanged: (String value) {
-                                setState(() {});
-                                focusNode13.requestFocus();
-                              },
-                              focusNode: focusNode13,
-                              maxLength: 5,
-                              onSaved: (value) {
-                                object.sizelengthmetdamage1 = value;
-                              },
-                              controller: sizelengthmetdamageController1,
-                              style: textStyle,
-                              decoration: InputDecoration(
-                                focusColor: Theme.of(context).primaryColor,
-                                labelStyle: TextStyle(
-                                  fontSize: 18,
-                                  fontWeight: FontWeight.w300,
-                                  color: Theme.of(context).primaryColor,
-                                ),
-                                hintStyle: TextStyle(
-                                  fontSize: 20,
-                                  fontWeight: FontWeight.w300,
-                                  color: Theme.of(context).primaryColor,
-                                ),
-                                labelText: 'Длина',
-                                hintText: 'L',
-                                helperText: 'мм',
-                                prefixIcon: Icon(
-                                  Icons.location_searching_sharp,
-                                  color: focusNode13.hasFocus ||
-                                          sizelengthmetdamageController1
-                                              .text.isNotEmpty
-                                      ? Theme.of(context).primaryColor
-                                      : Colors.grey,
-                                  size: 32,
-                                ),
-                                // suffixIcon: GestureDetector(
-                                //   onTap: () {
-                                //     sizelengthmetdamageController1.clear();
-                                //   },
-                                //   child: Icon(
-                                //     Icons.delete_outline,
-                                //     color: Color.fromRGBO(187, 30, 16, 1.0),
-                                //   ),
-                                // ),
-                                enabledBorder: OutlineInputBorder(
-                                  borderRadius:
-                                      BorderRadius.all(Radius.circular(10)),
-                                  borderSide:
-                                      BorderSide(color: Colors.grey, width: 2),
-                                ),
-                                focusedBorder: OutlineInputBorder(
-                                  borderRadius:
-                                      BorderRadius.all(Radius.circular(20)),
-                                  borderSide: BorderSide(
-                                      color: Theme.of(context).primaryColor,
-                                      width: 2),
-                                ),
-                              ),
-                              keyboardType: TextInputType.number,
-                            ),
-                          ),
-                          SizedBox(width: 5),
-                          Expanded(
-                            child: TextFormField(
-                              onChanged: (String value) {
-                                setState(() {});
-                                focusNode56.requestFocus();
-                              },
-                              focusNode: focusNode56,
-                              maxLength: 5,
-                              onSaved: (value) {
-                                object.sizewidthmetdamage1 = value;
-                              },
-                              controller: sizewidthmetdamageController1,
-                              style: textStyle,
-                              decoration: InputDecoration(
-                                focusColor: Theme.of(context).primaryColor,
-                                labelStyle: TextStyle(
-                                  fontSize: 18,
-                                  fontWeight: FontWeight.w300,
-                                  color: Theme.of(context).primaryColor,
-                                ),
-                                hintStyle: TextStyle(
-                                  fontSize: 20,
-                                  fontWeight: FontWeight.w300,
-                                  color: Theme.of(context).primaryColor,
-                                ),
-                                labelText: 'Ширина',
-                                hintText: 'W',
-                                helperText: 'мм',
-                                prefixIcon: Icon(
-                                  Icons.location_searching_sharp,
-                                  color: focusNode56.hasFocus ||
-                                          sizewidthmetdamageController1
-                                              .text.isNotEmpty
-                                      ? Theme.of(context).primaryColor
-                                      : Colors.grey,
-                                  size: 32,
-                                ),
-                                // suffixIcon: GestureDetector(
-                                //   onTap: () {
-                                //     sizewidthmetdamageController1.clear();
-                                //   },
-                                //   child: Icon(
-                                //     Icons.delete_outline,
-                                //     color: Color.fromRGBO(187, 30, 16, 1.0),
-                                //   ),
-                                // ),
-                                enabledBorder: OutlineInputBorder(
-                                  borderRadius:
-                                      BorderRadius.all(Radius.circular(10)),
-                                  borderSide:
-                                      BorderSide(color: Colors.grey, width: 2),
-                                ),
-                                focusedBorder: OutlineInputBorder(
-                                  borderRadius:
-                                      BorderRadius.all(Radius.circular(20)),
-                                  borderSide: BorderSide(
-                                      color: Theme.of(context).primaryColor,
-                                      width: 2),
-                                ),
-                              ),
-                              keyboardType: TextInputType.number,
-                            ),
-                          ),
-                          SizedBox(width: 5),
-                          Expanded(
-                            child: TextFormField(
-                              onChanged: (String value) {
-                                setState(() {});
-                                focusNode57.requestFocus();
-                              },
-                              focusNode: focusNode57,
-                              maxLength: 3,
-                              onSaved: (value) {
-                                object.sizedepthmetdamage1 = value;
-                              },
-                              controller: sizedepthmetdamageController1,
-                              style: textStyle,
-                              decoration: InputDecoration(
-                                focusColor: Theme.of(context).primaryColor,
-                                labelStyle: TextStyle(
-                                  fontSize: 18,
-                                  fontWeight: FontWeight.w300,
-                                  color: Theme.of(context).primaryColor,
-                                ),
-                                hintStyle: TextStyle(
-                                  fontSize: 20,
-                                  fontWeight: FontWeight.w300,
-                                  color: Theme.of(context).primaryColor,
-                                ),
-                                labelText: 'Глубина',
-                                hintText: 'H',
-                                helperText: 'мм',
-                                prefixIcon: Icon(
-                                  Icons.location_searching_sharp,
-                                  color: focusNode57.hasFocus ||
-                                          sizedepthmetdamageController1
-                                              .text.isNotEmpty
-                                      ? Theme.of(context).primaryColor
-                                      : Colors.grey,
-                                  size: 32,
-                                ),
-                                // suffixIcon: GestureDetector(
-                                //   onTap: () {
-                                //     sizedepthmetdamageController1.clear();
-                                //   },
-                                //   child: Padding(
-                                //     padding: EdgeInsets.all(2),
-                                //     child: Icon(
-                                //       Icons.delete_outline,
-                                //       color: Color.fromRGBO(187, 30, 16, 1.0),
-                                //     ),
-                                //   ),
-                                // ),
-                                enabledBorder: OutlineInputBorder(
-                                  borderRadius:
-                                      BorderRadius.all(Radius.circular(10)),
-                                  borderSide:
-                                      BorderSide(color: Colors.grey, width: 2),
-                                ),
-                                focusedBorder: OutlineInputBorder(
-                                  borderRadius:
-                                      BorderRadius.all(Radius.circular(20)),
-                                  borderSide: BorderSide(
-                                      color: Theme.of(context).primaryColor,
-                                      width: 2),
-                                ),
-                              ),
-                              keyboardType: TextInputType.number,
-                            ),
-                          ),
-                        ],
-                      ),
-                      SizedBox(height: 20),
                       Divider(thickness: 4),
-                      Container(
-                          alignment: Alignment.center,
-                          child: Text(
-                            'Данные о дефекте №2',
-                            style: TextStyle(
-                                fontSize: 24,
-                                color: Theme.of(context).primaryColor,
-                                fontWeight: FontWeight.w300),
-                          )),
-                      SizedBox(height: 20),
-                      DropdownButtonFormField(
-                        isExpanded: true,
-                        focusNode: focusNode49,
-                        decoration: InputDecoration(
-                            focusColor: Theme.of(context).primaryColor,
-                            labelStyle: TextStyle(
-                              fontSize: 22,
-                              fontWeight: FontWeight.w300,
-                              color: Theme.of(context).primaryColor,
-                            ),
-                            hintStyle: TextStyle(
-                              fontSize: 16,
-                              fontWeight: FontWeight.w300,
-                              color: Theme.of(context).primaryColor,
-                            ),
-                            border: OutlineInputBorder(),
-                            enabledBorder: OutlineInputBorder(
-                              borderRadius:
-                                  BorderRadius.all(Radius.circular(10)),
-                              borderSide:
-                                  BorderSide(color: Colors.grey, width: 2),
-                            ),
-                            focusedBorder: OutlineInputBorder(
-                              borderRadius:
-                                  BorderRadius.all(Radius.circular(20)),
-                              borderSide: BorderSide(
-                                  color: Theme.of(context).primaryColor,
-                                  width: 2),
-                            ),
-                            prefixIcon: Icon(
-                              Icons.ssid_chart_sharp,
-                              color: focusNode49.hasFocus ||
-                                      charmetdamageController2.text.isNotEmpty
-                                  ? Theme.of(context).primaryColor
-                                  : Colors.grey,
-                              size: 32,
-                            ),
-                            labelText: 'Характер дефекта',
-                            suffixIcon: GestureDetector(
-                                onTap: () async {
-                                  Navigator.push(
-                                    context,
-                                    MaterialPageRoute(
-                                        builder: (context) => CameraPageIp()),
-                                  ).then((value) {
-                                    setState(() async {
-                                      if (value != null) {
-                                        _imageDefmet2 = value;
-                                        if (_2formKey.currentState.validate()) {
-                                          _2formKey.currentState.save();
-                                          if (_imageDefmet2 != null) {
-                                            final Directory extDir =
-                                                await getApplicationDocumentsDirectory();
-                                            final String dirPath =
-                                                '${extDir.path}/Pictures/flutter';
-                                            await Directory(dirPath)
-                                                .create(recursive: true);
-                                            final String filePath =
-                                                '$dirPath/${DateTime.now().millisecondsSinceEpoch.toString()}.jpg';
-                                            await _imageDefmet2.copy(filePath);
-                                            object.photometdef2 = filePath;
-                                            print(
-                                                'сделали: ${object.photometdef2.toString()}');
-                                          }
-                                        }
-                                      }
-                                    });
-                                  });
-                                },
-                                child: Icon(Icons.camera_alt_sharp,
-                                    color: Color.fromRGBO(97, 153, 59, 1.0)))),
-                        items: _charmetdamage2.map((String value) {
-                          return DropdownMenuItem(
-                            value: value,
-                            child: Text(value),
-                          );
-                        }).toList(),
-                        style: textStyle,
-                        value: object.charmetdamage2,
-                        onChanged: (String value) {
-                          setState(() {});
-                          focusNode49.requestFocus();
-                          object.charmetdamage2 = value;
-                        },
-                      ),
-                      SizedBox(height: 10),
-                      Container(
-                        height: 100,
-                        child: Column(
-                          children: [
-                            Expanded(
-                              child: GestureDetector(
-                                onTap: () {
-                                  Navigator.push(
-                                    context,
-                                    MaterialPageRoute(
-                                        builder: (context) => ImageScreen(
-                                            imagePath: object.photometdef2)),
-                                  );
-                                },
-                                child: Center(
-                                  child: object.photometdef2 != null
-                                      ? Image.file(
-                                          File(object.photometdef2),
-                                          fit: BoxFit.cover,
-                                          alignment: Alignment.center,
-                                          width: 100,
-                                          height: 100,
-                                        )
-                                      : Text('Изображение отсутствует'),
-                                ),
-                              ),
-                            ),
-                          ],
-                        ),
-                      ),
-                      SizedBox(height: 10),
-                      Container(
-                          alignment: Alignment.center,
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              Text(
-                                'Расположение дефекта №2',
-                                style: TextStyle(
-                                    fontSize: 24,
-                                    color: Theme.of(context).primaryColor,
-                                    fontWeight: FontWeight.w300),
-                              ),
-                              GestureDetector(
-                                onTap: () {
-                                  lochourmetdamageController2.clear();
-                                  locrasstmetdamageController2.clear();
-                                  sizelengthmetdamageController2.clear();
-                                  sizewidthmetdamageController2.clear();
-                                  sizedepthmetdamageController2.clear();
-                                },
-                                child: Icon(
-                                  Icons.delete_outline,
-                                  color: Color.fromRGBO(187, 30, 16, 1.0),
-                                ),
-                              ),
-                            ],
-                          )),
-                      SizedBox(height: 20),
-                      Row(
-                        children: [
-                          Expanded(
-                            child: TextFormField(
-                              onChanged: (String value) {
-                                setState(() {});
-                                focusNode32.requestFocus();
-                              },
-                              focusNode: focusNode32,
-                              maxLength: 2,
-                              onSaved: (value) {
-                                object.lochourmetdamage2 = value;
-                              },
-                              controller: lochourmetdamageController2,
-                              style: textStyle,
-                              decoration: InputDecoration(
-                                focusColor: Theme.of(context).primaryColor,
-                                labelStyle: TextStyle(
-                                  fontSize: 22,
-                                  fontWeight: FontWeight.w300,
-                                  color: Theme.of(context).primaryColor,
-                                ),
-                                hintStyle: TextStyle(
-                                  fontSize: 16,
-                                  fontWeight: FontWeight.w300,
-                                  color: Theme.of(context).primaryColor,
-                                ),
-                                labelText: 'Час',
-                                hintText: '1-12',
-                                helperText: 'ЧАС',
-                                prefixIcon: Icon(
-                                  Icons.location_searching_sharp,
-                                  color: focusNode32.hasFocus ||
-                                          lochourmetdamageController2
-                                              .text.isNotEmpty
-                                      ? Theme.of(context).primaryColor
-                                      : Colors.grey,
-                                  size: 32,
-                                ),
-                                // suffixIcon: GestureDetector(
-                                //   onTap: () {
-                                //     lochourmetdamageController2.clear();
-
-                                //   },
-                                //   child: Icon(
-                                //     Icons.delete_outline,
-                                //     color: Color.fromRGBO(187, 30, 16, 1.0),
-                                //   ),
-                                // ),
-                                enabledBorder: OutlineInputBorder(
-                                  borderRadius:
-                                      BorderRadius.all(Radius.circular(10)),
-                                  borderSide:
-                                      BorderSide(color: Colors.grey, width: 2),
-                                ),
-                                focusedBorder: OutlineInputBorder(
-                                  borderRadius:
-                                      BorderRadius.all(Radius.circular(20)),
-                                  borderSide: BorderSide(
-                                      color: Theme.of(context).primaryColor,
-                                      width: 2),
-                                ),
-                              ),
-                              keyboardType: TextInputType.number,
-                            ),
-                          ),
-                          SizedBox(width: 5),
-                          Expanded(
-                            child: TextFormField(
-                              onChanged: (String value) {
-                                setState(() {});
-                                focusNode44.requestFocus();
-                              },
-                              focusNode: focusNode44,
-                              maxLength: 5,
-                              onSaved: (value) {
-                                object.locrasstmetdamage2 = value;
-                              },
-                              controller: locrasstmetdamageController2,
-                              style: textStyle,
-                              decoration: InputDecoration(
-                                focusColor: Theme.of(context).primaryColor,
-                                labelStyle: TextStyle(
-                                  fontSize: 22,
-                                  fontWeight: FontWeight.w300,
-                                  color: Theme.of(context).primaryColor,
-                                ),
-                                hintStyle: TextStyle(
-                                  fontSize: 16,
-                                  fontWeight: FontWeight.w300,
-                                  color: Theme.of(context).primaryColor,
-                                ),
-                                labelText: 'от Шва',
-                                hintText: 'по ХГ',
-                                helperText: 'мм',
-                                prefixIcon: Icon(
-                                  Icons.location_searching_sharp,
-                                  color: focusNode44.hasFocus ||
-                                          locrasstmetdamageController2
-                                              .text.isNotEmpty
-                                      ? Theme.of(context).primaryColor
-                                      : Colors.grey,
-                                  size: 32,
-                                ),
-                                // suffixIcon: GestureDetector(
-                                //   onTap: () {
-                                //     locrasstmetdamageController2.clear();
-                                //   },
-                                //   child: Icon(
-                                //     Icons.delete_outline,
-                                //     color: Color.fromRGBO(187, 30, 16, 1.0),
-                                //   ),
-                                // ),
-                                enabledBorder: OutlineInputBorder(
-                                  borderRadius:
-                                      BorderRadius.all(Radius.circular(10)),
-                                  borderSide:
-                                      BorderSide(color: Colors.grey, width: 2),
-                                ),
-                                focusedBorder: OutlineInputBorder(
-                                  borderRadius:
-                                      BorderRadius.all(Radius.circular(20)),
-                                  borderSide: BorderSide(
-                                      color: Theme.of(context).primaryColor,
-                                      width: 2),
-                                ),
-                              ),
-                              keyboardType: TextInputType.number,
-                            ),
-                          ),
-                        ],
-                      ),
-                      SizedBox(height: 10),
-                      Row(
-                        children: [
-                          Expanded(
-                            child: TextFormField(
-                              onChanged: (String value) {
-                                setState(() {});
-                                focusNode70.requestFocus();
-                              },
-                              focusNode: focusNode70,
-                              maxLength: 5,
-                              onSaved: (value) {
-                                object.sizelengthmetdamage2 = value;
-                              },
-                              controller: sizelengthmetdamageController2,
-                              style: textStyle,
-                              decoration: InputDecoration(
-                                focusColor: Theme.of(context).primaryColor,
-                                labelStyle: TextStyle(
-                                  fontSize: 18,
-                                  fontWeight: FontWeight.w300,
-                                  color: Theme.of(context).primaryColor,
-                                ),
-                                hintStyle: TextStyle(
-                                  fontSize: 20,
-                                  fontWeight: FontWeight.w300,
-                                  color: Theme.of(context).primaryColor,
-                                ),
-                                labelText: 'Длина',
-                                hintText: 'L',
-                                helperText: 'мм',
-                                prefixIcon: Icon(
-                                  Icons.location_searching_sharp,
-                                  color: focusNode70.hasFocus ||
-                                          sizelengthmetdamageController2
-                                              .text.isNotEmpty
-                                      ? Theme.of(context).primaryColor
-                                      : Colors.grey,
-                                  size: 32,
-                                ),
-                                // suffixIcon: GestureDetector(
-                                //   onTap: () {
-                                //     sizelengthmetdamageController2.clear();
-                                //   },
-                                //   child: Icon(
-                                //     Icons.delete_outline,
-                                //     color: Color.fromRGBO(187, 30, 16, 1.0),
-                                //   ),
-                                // ),
-                                enabledBorder: OutlineInputBorder(
-                                  borderRadius:
-                                      BorderRadius.all(Radius.circular(10)),
-                                  borderSide:
-                                      BorderSide(color: Colors.grey, width: 2),
-                                ),
-                                focusedBorder: OutlineInputBorder(
-                                  borderRadius:
-                                      BorderRadius.all(Radius.circular(20)),
-                                  borderSide: BorderSide(
-                                      color: Theme.of(context).primaryColor,
-                                      width: 2),
-                                ),
-                              ),
-                              keyboardType: TextInputType.number,
-                            ),
-                          ),
-                          SizedBox(width: 5),
-                          Expanded(
-                            child: TextFormField(
-                              onChanged: (String value) {
-                                setState(() {});
-                                focusNode47.requestFocus();
-                              },
-                              focusNode: focusNode47,
-                              maxLength: 5,
-                              onSaved: (value) {
-                                object.sizewidthmetdamage2 = value;
-                              },
-                              controller: sizewidthmetdamageController2,
-                              style: textStyle,
-                              decoration: InputDecoration(
-                                focusColor: Theme.of(context).primaryColor,
-                                labelStyle: TextStyle(
-                                  fontSize: 18,
-                                  fontWeight: FontWeight.w300,
-                                  color: Theme.of(context).primaryColor,
-                                ),
-                                hintStyle: TextStyle(
-                                  fontSize: 20,
-                                  fontWeight: FontWeight.w300,
-                                  color: Theme.of(context).primaryColor,
-                                ),
-                                labelText: 'Ширина',
-                                hintText: 'W',
-                                helperText: 'мм',
-                                prefixIcon: Icon(
-                                  Icons.location_searching_sharp,
-                                  color: focusNode47.hasFocus ||
-                                          sizewidthmetdamageController2
-                                              .text.isNotEmpty
-                                      ? Theme.of(context).primaryColor
-                                      : Colors.grey,
-                                  size: 32,
-                                ),
-                                // suffixIcon: GestureDetector(
-                                //   onTap: () {
-                                //     sizewidthmetdamageController2.clear();
-                                //   },
-                                //   child: Icon(
-                                //     Icons.delete_outline,
-                                //     color: Color.fromRGBO(187, 30, 16, 1.0),
-                                //   ),
-                                // ),
-                                enabledBorder: OutlineInputBorder(
-                                  borderRadius:
-                                      BorderRadius.all(Radius.circular(10)),
-                                  borderSide:
-                                      BorderSide(color: Colors.grey, width: 2),
-                                ),
-                                focusedBorder: OutlineInputBorder(
-                                  borderRadius:
-                                      BorderRadius.all(Radius.circular(20)),
-                                  borderSide: BorderSide(
-                                      color: Theme.of(context).primaryColor,
-                                      width: 2),
-                                ),
-                              ),
-                              keyboardType: TextInputType.number,
-                            ),
-                          ),
-                          SizedBox(width: 5),
-                          Expanded(
-                            child: TextFormField(
-                              onChanged: (String value) {
-                                setState(() {});
-                                focusNode58.requestFocus();
-                              },
-                              focusNode: focusNode58,
-                              maxLength: 3,
-                              onSaved: (value) {
-                                object.sizedepthmetdamage2 = value;
-                              },
-                              controller: sizedepthmetdamageController2,
-                              style: textStyle,
-                              decoration: InputDecoration(
-                                focusColor: Theme.of(context).primaryColor,
-                                labelStyle: TextStyle(
-                                  fontSize: 18,
-                                  fontWeight: FontWeight.w300,
-                                  color: Theme.of(context).primaryColor,
-                                ),
-                                hintStyle: TextStyle(
-                                  fontSize: 20,
-                                  fontWeight: FontWeight.w300,
-                                  color: Theme.of(context).primaryColor,
-                                ),
-                                labelText: 'Глубина',
-                                hintText: 'H',
-                                helperText: 'мм',
-                                prefixIcon: Icon(
-                                  Icons.location_searching_sharp,
-                                  color: focusNode58.hasFocus ||
-                                          sizedepthmetdamageController2
-                                              .text.isNotEmpty
-                                      ? Theme.of(context).primaryColor
-                                      : Colors.grey,
-                                  size: 32,
-                                ),
-                                // suffixIcon: GestureDetector(
-                                //   onTap: () {
-                                //     sizedepthmetdamageController2.clear();
-                                //   },
-                                //   child: Padding(
-                                //     padding: EdgeInsets.all(2),
-                                //     child: Icon(
-                                //       Icons.delete_outline,
-                                //       color: Color.fromRGBO(187, 30, 16, 1.0),
-                                //     ),
-                                //   ),
-                                // ),
-                                enabledBorder: OutlineInputBorder(
-                                  borderRadius:
-                                      BorderRadius.all(Radius.circular(10)),
-                                  borderSide:
-                                      BorderSide(color: Colors.grey, width: 2),
-                                ),
-                                focusedBorder: OutlineInputBorder(
-                                  borderRadius:
-                                      BorderRadius.all(Radius.circular(20)),
-                                  borderSide: BorderSide(
-                                      color: Theme.of(context).primaryColor,
-                                      width: 2),
-                                ),
-                              ),
-                              keyboardType: TextInputType.number,
-                            ),
-                          ),
-                        ],
-                      ),
-                      SizedBox(height: 20),
-                      Divider(thickness: 4),
-                      Container(
-                          alignment: Alignment.center,
-                          child: Text(
-                            'Данные о дефекте №3',
-                            style: TextStyle(
-                                fontSize: 24,
-                                color: Theme.of(context).primaryColor,
-                                fontWeight: FontWeight.w300),
-                          )),
-                      SizedBox(height: 20),
-                      DropdownButtonFormField(
-                        isExpanded: true,
-                        focusNode: focusNode46,
-                        decoration: InputDecoration(
-                            focusColor: Theme.of(context).primaryColor,
-                            labelStyle: TextStyle(
-                              fontSize: 22,
-                              fontWeight: FontWeight.w300,
-                              color: Theme.of(context).primaryColor,
-                            ),
-                            hintStyle: TextStyle(
-                              fontSize: 16,
-                              fontWeight: FontWeight.w300,
-                              color: Theme.of(context).primaryColor,
-                            ),
-                            border: OutlineInputBorder(),
-                            enabledBorder: OutlineInputBorder(
-                              borderRadius:
-                                  BorderRadius.all(Radius.circular(10)),
-                              borderSide:
-                                  BorderSide(color: Colors.grey, width: 2),
-                            ),
-                            focusedBorder: OutlineInputBorder(
-                              borderRadius:
-                                  BorderRadius.all(Radius.circular(20)),
-                              borderSide: BorderSide(
-                                  color: Theme.of(context).primaryColor,
-                                  width: 2),
-                            ),
-                            prefixIcon: Icon(
-                              Icons.ssid_chart_sharp,
-                              color: focusNode46.hasFocus ||
-                                      charmetdamageController3.text.isNotEmpty
-                                  ? Theme.of(context).primaryColor
-                                  : Colors.grey,
-                              size: 32,
-                            ),
-                            labelText: 'Характер дефекта',
-                            suffixIcon: GestureDetector(
-                                onTap: () async {
-                                  Navigator.push(
-                                    context,
-                                    MaterialPageRoute(
-                                        builder: (context) => CameraPageIp()),
-                                  ).then((value) {
-                                    setState(() async {
-                                      if (value != null) {
-                                        _imageDefmet3 = value;
-                                        if (_2formKey.currentState.validate()) {
-                                          _2formKey.currentState.save();
-                                          if (_imageDefmet3 != null) {
-                                            final Directory extDir =
-                                                await getApplicationDocumentsDirectory();
-                                            final String dirPath =
-                                                '${extDir.path}/Pictures/flutter';
-                                            await Directory(dirPath)
-                                                .create(recursive: true);
-                                            final String filePath =
-                                                '$dirPath/${DateTime.now().millisecondsSinceEpoch.toString()}.jpg';
-                                            await _imageDefmet3.copy(filePath);
-                                            object.photometdef3 = filePath;
-                                            print(
-                                                'сделали: ${object.photometdef3.toString()}');
-                                          }
-                                        }
-                                      }
-                                    });
-                                  });
-                                },
-                                child: Icon(Icons.camera_alt_sharp,
-                                    color: Color.fromRGBO(97, 153, 59, 1.0)))),
-                        items: _charmetdamage3.map((String value) {
-                          return DropdownMenuItem(
-                            value: value,
-                            child: Text(value),
-                          );
-                        }).toList(),
-                        style: textStyle,
-                        value: object.charmetdamage3,
-                        onChanged: (String value) {
-                          setState(() {});
-                          focusNode46.requestFocus();
-                          object.charmetdamage3 = value;
-                        },
-                      ),
-                      SizedBox(height: 10),
-                      Container(
-                        height: 100,
-                        child: Column(
-                          children: [
-                            Expanded(
-                              child: GestureDetector(
-                                onTap: () {
-                                  Navigator.push(
-                                    context,
-                                    MaterialPageRoute(
-                                        builder: (context) => ImageScreen(
-                                            imagePath: object.photometdef3)),
-                                  );
-                                },
-                                child: Center(
-                                  child: object.photometdef3 != null
-                                      ? Image.file(
-                                          File(object.photometdef3),
-                                          fit: BoxFit.cover,
-                                          alignment: Alignment.center,
-                                          width: 100,
-                                          height: 100,
-                                        )
-                                      : Text('Изображение отсутствует'),
-                                ),
-                              ),
-                            ),
-                          ],
-                        ),
-                      ),
-                      SizedBox(height: 10),
-                      Container(
-                          alignment: Alignment.center,
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              Text(
-                                'Расположение дефекта №3',
-                                style: TextStyle(
-                                    fontSize: 24,
-                                    color: Theme.of(context).primaryColor,
-                                    fontWeight: FontWeight.w300),
-                              ),
-                              GestureDetector(
-                                onTap: () {
-                                  lochourmetdamageController3.clear();
-                                  locrasstmetdamageController3.clear();
-                                  sizelengthmetdamageController3.clear();
-                                  sizewidthmetdamageController3.clear();
-                                  sizedepthmetdamageController3.clear();
-                                },
-                                child: Icon(
-                                  Icons.delete_outline,
-                                  color: Color.fromRGBO(187, 30, 16, 1.0),
-                                ),
-                              ),
-                            ],
-                          )),
-                      SizedBox(height: 20),
-                      Row(
-                        children: [
-                          Expanded(
-                            child: TextFormField(
-                              onChanged: (String value) {
-                                setState(() {});
-                                focusNode33.requestFocus();
-                              },
-                              focusNode: focusNode33,
-                              maxLength: 2,
-                              onSaved: (value) {
-                                object.lochourmetdamage3 = value;
-                              },
-                              controller: lochourmetdamageController3,
-                              style: textStyle,
-                              decoration: InputDecoration(
-                                focusColor: Theme.of(context).primaryColor,
-                                labelStyle: TextStyle(
-                                  fontSize: 22,
-                                  fontWeight: FontWeight.w300,
-                                  color: Theme.of(context).primaryColor,
-                                ),
-                                hintStyle: TextStyle(
-                                  fontSize: 16,
-                                  fontWeight: FontWeight.w300,
-                                  color: Theme.of(context).primaryColor,
-                                ),
-                                labelText: 'Час',
-                                hintText: '1-12',
-                                helperText: 'ЧАС',
-                                prefixIcon: Icon(
-                                  Icons.location_searching_sharp,
-                                  color: focusNode33.hasFocus ||
-                                          lochourmetdamageController3
-                                              .text.isNotEmpty
-                                      ? Theme.of(context).primaryColor
-                                      : Colors.grey,
-                                  size: 32,
-                                ),
-                                // suffixIcon: GestureDetector(
-                                //   onTap: () {
-                                //     lochourmetdamageController3.clear();
-
-                                //   },
-                                //   child: Icon(
-                                //     Icons.delete_outline,
-                                //     color: Color.fromRGBO(187, 30, 16, 1.0),
-                                //   ),
-                                // ),
-                                enabledBorder: OutlineInputBorder(
-                                  borderRadius:
-                                      BorderRadius.all(Radius.circular(10)),
-                                  borderSide:
-                                      BorderSide(color: Colors.grey, width: 2),
-                                ),
-                                focusedBorder: OutlineInputBorder(
-                                  borderRadius:
-                                      BorderRadius.all(Radius.circular(20)),
-                                  borderSide: BorderSide(
-                                      color: Theme.of(context).primaryColor,
-                                      width: 2),
-                                ),
-                              ),
-                              keyboardType: TextInputType.number,
-                            ),
-                          ),
-                          SizedBox(width: 5),
-                          Expanded(
-                            child: TextFormField(
-                              onChanged: (String value) {
-                                setState(() {});
-                                focusNode45.requestFocus();
-                              },
-                              focusNode: focusNode45,
-                              maxLength: 5,
-                              onSaved: (value) {
-                                object.locrasstmetdamage3 = value;
-                              },
-                              controller: locrasstmetdamageController3,
-                              style: textStyle,
-                              decoration: InputDecoration(
-                                focusColor: Theme.of(context).primaryColor,
-                                labelStyle: TextStyle(
-                                  fontSize: 22,
-                                  fontWeight: FontWeight.w300,
-                                  color: Theme.of(context).primaryColor,
-                                ),
-                                hintStyle: TextStyle(
-                                  fontSize: 16,
-                                  fontWeight: FontWeight.w300,
-                                  color: Theme.of(context).primaryColor,
-                                ),
-                                labelText: 'от Шва',
-                                hintText: 'по ХГ',
-                                helperText: 'мм',
-                                prefixIcon: Icon(
-                                  Icons.location_searching_sharp,
-                                  color: focusNode45.hasFocus ||
-                                          locrasstmetdamageController3
-                                              .text.isNotEmpty
-                                      ? Theme.of(context).primaryColor
-                                      : Colors.grey,
-                                  size: 32,
-                                ),
-                                // suffixIcon: GestureDetector(
-                                //   onTap: () {
-                                //     locrasstmetdamageController3.clear();
-                                //   },
-                                //   child: Icon(
-                                //     Icons.delete_outline,
-                                //     color: Color.fromRGBO(187, 30, 16, 1.0),
-                                //   ),
-                                // ),
-                                enabledBorder: OutlineInputBorder(
-                                  borderRadius:
-                                      BorderRadius.all(Radius.circular(10)),
-                                  borderSide:
-                                      BorderSide(color: Colors.grey, width: 2),
-                                ),
-                                focusedBorder: OutlineInputBorder(
-                                  borderRadius:
-                                      BorderRadius.all(Radius.circular(20)),
-                                  borderSide: BorderSide(
-                                      color: Theme.of(context).primaryColor,
-                                      width: 2),
-                                ),
-                              ),
-                              keyboardType: TextInputType.number,
-                            ),
-                          ),
-                        ],
-                      ),
-                      SizedBox(height: 10),
-                      Row(
-                        children: [
-                          Expanded(
-                            child: TextFormField(
-                              onChanged: (String value) {
-                                setState(() {});
-                                focusNode71.requestFocus();
-                              },
-                              focusNode: focusNode71,
-                              maxLength: 5,
-                              onSaved: (value) {
-                                object.sizelengthmetdamage3 = value;
-                              },
-                              controller: sizelengthmetdamageController3,
-                              style: textStyle,
-                              decoration: InputDecoration(
-                                focusColor: Theme.of(context).primaryColor,
-                                labelStyle: TextStyle(
-                                  fontSize: 18,
-                                  fontWeight: FontWeight.w300,
-                                  color: Theme.of(context).primaryColor,
-                                ),
-                                hintStyle: TextStyle(
-                                  fontSize: 20,
-                                  fontWeight: FontWeight.w300,
-                                  color: Theme.of(context).primaryColor,
-                                ),
-                                labelText: 'Длина',
-                                hintText: 'L',
-                                helperText: 'мм',
-                                prefixIcon: Icon(
-                                  Icons.location_searching_sharp,
-                                  color: focusNode71.hasFocus ||
-                                          sizelengthmetdamageController3
-                                              .text.isNotEmpty
-                                      ? Theme.of(context).primaryColor
-                                      : Colors.grey,
-                                  size: 32,
-                                ),
-                                // suffixIcon: GestureDetector(
-                                //   onTap: () {
-                                //     sizelengthmetdamageController3.clear();
-                                //   },
-                                //   child: Icon(
-                                //     Icons.delete_outline,
-                                //     color: Color.fromRGBO(187, 30, 16, 1.0),
-                                //   ),
-                                // ),
-                                enabledBorder: OutlineInputBorder(
-                                  borderRadius:
-                                      BorderRadius.all(Radius.circular(10)),
-                                  borderSide:
-                                      BorderSide(color: Colors.grey, width: 2),
-                                ),
-                                focusedBorder: OutlineInputBorder(
-                                  borderRadius:
-                                      BorderRadius.all(Radius.circular(20)),
-                                  borderSide: BorderSide(
-                                      color: Theme.of(context).primaryColor,
-                                      width: 2),
-                                ),
-                              ),
-                              keyboardType: TextInputType.number,
-                            ),
-                          ),
-                          SizedBox(width: 5),
-                          Expanded(
-                            child: TextFormField(
-                              onChanged: (String value) {
-                                setState(() {});
-                                focusNode48.requestFocus();
-                              },
-                              focusNode: focusNode48,
-                              maxLength: 5,
-                              onSaved: (value) {
-                                object.sizewidthmetdamage3 = value;
-                              },
-                              controller: sizewidthmetdamageController3,
-                              style: textStyle,
-                              decoration: InputDecoration(
-                                focusColor: Theme.of(context).primaryColor,
-                                labelStyle: TextStyle(
-                                  fontSize: 18,
-                                  fontWeight: FontWeight.w300,
-                                  color: Theme.of(context).primaryColor,
-                                ),
-                                hintStyle: TextStyle(
-                                  fontSize: 20,
-                                  fontWeight: FontWeight.w300,
-                                  color: Theme.of(context).primaryColor,
-                                ),
-                                labelText: 'Ширина',
-                                hintText: 'W',
-                                helperText: 'мм',
-                                prefixIcon: Icon(
-                                  Icons.location_searching_sharp,
-                                  color: focusNode48.hasFocus ||
-                                          sizewidthmetdamageController3
-                                              .text.isNotEmpty
-                                      ? Theme.of(context).primaryColor
-                                      : Colors.grey,
-                                  size: 32,
-                                ),
-                                // suffixIcon: GestureDetector(
-                                //   onTap: () {
-                                //     sizewidthmetdamageController3.clear();
-                                //   },
-                                //   child: Icon(
-                                //     Icons.delete_outline,
-                                //     color: Color.fromRGBO(187, 30, 16, 1.0),
-                                //   ),
-                                // ),
-                                enabledBorder: OutlineInputBorder(
-                                  borderRadius:
-                                      BorderRadius.all(Radius.circular(10)),
-                                  borderSide:
-                                      BorderSide(color: Colors.grey, width: 2),
-                                ),
-                                focusedBorder: OutlineInputBorder(
-                                  borderRadius:
-                                      BorderRadius.all(Radius.circular(20)),
-                                  borderSide: BorderSide(
-                                      color: Theme.of(context).primaryColor,
-                                      width: 2),
-                                ),
-                              ),
-                              keyboardType: TextInputType.number,
-                            ),
-                          ),
-                          SizedBox(width: 5),
-                          Expanded(
-                            child: TextFormField(
-                              onChanged: (String value) {
-                                setState(() {});
-                                focusNode59.requestFocus();
-                              },
-                              focusNode: focusNode59,
-                              maxLength: 3,
-                              onSaved: (value) {
-                                object.sizedepthmetdamage3 = value;
-                              },
-                              controller: sizedepthmetdamageController3,
-                              style: textStyle,
-                              decoration: InputDecoration(
-                                focusColor: Theme.of(context).primaryColor,
-                                labelStyle: TextStyle(
-                                  fontSize: 18,
-                                  fontWeight: FontWeight.w300,
-                                  color: Theme.of(context).primaryColor,
-                                ),
-                                hintStyle: TextStyle(
-                                  fontSize: 20,
-                                  fontWeight: FontWeight.w300,
-                                  color: Theme.of(context).primaryColor,
-                                ),
-                                labelText: 'Глубина',
-                                hintText: 'H',
-                                helperText: 'мм',
-                                prefixIcon: Icon(
-                                  Icons.location_searching_sharp,
-                                  color: focusNode59.hasFocus ||
-                                          sizedepthmetdamageController3
-                                              .text.isNotEmpty
-                                      ? Theme.of(context).primaryColor
-                                      : Colors.grey,
-                                  size: 32,
-                                ),
-                                // suffixIcon: GestureDetector(
-                                //   onTap: () {
-                                //     sizedepthmetdamageController3.clear();
-                                //   },
-                                //   child: Padding(
-                                //     padding: EdgeInsets.all(2),
-                                //     child: Icon(
-                                //       Icons.delete_outline,
-                                //       color: Color.fromRGBO(187, 30, 16, 1.0),
-                                //     ),
-                                //   ),
-                                // ),
-                                enabledBorder: OutlineInputBorder(
-                                  borderRadius:
-                                      BorderRadius.all(Radius.circular(10)),
-                                  borderSide:
-                                      BorderSide(color: Colors.grey, width: 2),
-                                ),
-                                focusedBorder: OutlineInputBorder(
-                                  borderRadius:
-                                      BorderRadius.all(Radius.circular(20)),
-                                  borderSide: BorderSide(
-                                      color: Theme.of(context).primaryColor,
-                                      width: 2),
-                                ),
-                              ),
-                              keyboardType: TextInputType.number,
-                            ),
-                          ),
-                        ],
-                      ),
-                      SizedBox(height: 20),
                       ElevatedButton(
                         style: ElevatedButton.styleFrom(
                             primary:
@@ -4131,884 +4269,1065 @@ class ObjectDetailIpState extends State<ObjectDetailIp> {
                       SizedBox(height: 10),
                       Divider(thickness: 4),
                       SizedBox(height: 10),
-                      Container(
-                        alignment: Alignment.center,
+                      SingleChildScrollView(
+                        scrollDirection: Axis.horizontal,
                         child: Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
                           children: [
-                            Text(
-                              'Толщина ИП (изм№1)',
-                              style: TextStyle(
-                                  fontSize: 24,
-                                  color: Theme.of(context).primaryColor,
-                                  fontWeight: FontWeight.w300),
+                            Container(
+                              width: MediaQuery.of(context).size.width,
+                              child: Column(
+                                children: [
+                                  Container(
+                                    alignment: Alignment.center,
+                                    child: Row(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.center,
+                                      children: [
+                                        Text(
+                                          'Толщина ИП (изм№1)',
+                                          style: TextStyle(
+                                              fontSize: 24,
+                                              color: Theme.of(context)
+                                                  .primaryColor,
+                                              fontWeight: FontWeight.w300),
+                                        ),
+                                        GestureDetector(
+                                          onTap: () {
+                                            thickinsulController1.clear();
+                                            thickinsulController2.clear();
+                                            thickinsulController3.clear();
+                                            thickinsulController4.clear();
+                                            thickinsulController.clear();
+                                          },
+                                          child: Icon(
+                                            Icons.delete_outline,
+                                            color: Color.fromRGBO(
+                                                187, 30, 16, 1.0),
+                                          ),
+                                        ),
+                                      ],
+                                    ),
+                                  ),
+                                  SizedBox(height: 10),
+                                  Column(
+                                    children: [
+                                      Row(
+                                        children: [
+                                          SizedBox(width: 100),
+                                          Expanded(
+                                            child: TextFormField(
+                                              onChanged: (String value) {
+                                                setState(() {});
+                                                focusNode119.requestFocus();
+                                                minithickinsul();
+                                              },
+                                              focusNode: focusNode119,
+                                              maxLength: 4,
+                                              onSaved: (value) {
+                                                object.thickinsul1 = value;
+                                              },
+                                              controller: thickinsulController1,
+                                              style: textStyle,
+                                              decoration: InputDecoration(
+                                                focusColor: Theme.of(context)
+                                                    .primaryColor,
+                                                labelStyle: TextStyle(
+                                                  fontSize: 22,
+                                                  fontWeight: FontWeight.w300,
+                                                  color: Theme.of(context)
+                                                      .primaryColor,
+                                                ),
+                                                hintStyle: TextStyle(
+                                                  fontSize: 16,
+                                                  fontWeight: FontWeight.w300,
+                                                  color: Theme.of(context)
+                                                      .primaryColor,
+                                                ),
+                                                labelText: '12ч',
+                                                hintText:
+                                                    'Введите толщину покрытия',
+                                                helperText: 'мм',
+                                                prefixIcon: Icon(
+                                                  Icons
+                                                      .vertical_align_center_sharp,
+                                                  color: (focusNode119.hasFocus ||
+                                                          thickinsulController1
+                                                              .text.isNotEmpty)
+                                                      ? Theme.of(context)
+                                                          .primaryColor
+                                                      : Colors.grey,
+                                                  size: 32,
+                                                ),
+                                                enabledBorder:
+                                                    OutlineInputBorder(
+                                                  borderRadius:
+                                                      BorderRadius.all(
+                                                          Radius.circular(10)),
+                                                  borderSide: BorderSide(
+                                                      color: Colors.grey,
+                                                      width: 2),
+                                                ),
+                                                focusedBorder:
+                                                    OutlineInputBorder(
+                                                  borderRadius:
+                                                      BorderRadius.all(
+                                                          Radius.circular(20)),
+                                                  borderSide: BorderSide(
+                                                      color: Theme.of(context)
+                                                          .primaryColor,
+                                                      width: 2),
+                                                ),
+                                              ),
+                                              keyboardType:
+                                                  TextInputType.number,
+                                            ),
+                                          ),
+                                          SizedBox(width: 100),
+                                        ],
+                                      ),
+                                      Center(
+                                        child: Icon(
+                                          Icons.arrow_drop_down,
+                                          color: Theme.of(context).primaryColor,
+                                          size: 55,
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                  Row(
+                                    children: [
+                                      Expanded(
+                                        child: TextFormField(
+                                          onChanged: (String value) {
+                                            setState(() {});
+                                            focusNode120.requestFocus();
+                                            minithickinsul();
+                                          },
+                                          focusNode: focusNode120,
+                                          maxLength: 4,
+                                          onSaved: (value) {
+                                            object.thickinsul4 = value;
+                                          },
+                                          controller: thickinsulController4,
+                                          style: textStyle,
+                                          decoration: InputDecoration(
+                                            focusColor:
+                                                Theme.of(context).primaryColor,
+                                            labelStyle: TextStyle(
+                                              fontSize: 22,
+                                              fontWeight: FontWeight.w300,
+                                              color: Theme.of(context)
+                                                  .primaryColor,
+                                            ),
+                                            hintStyle: TextStyle(
+                                              fontSize: 22,
+                                              fontWeight: FontWeight.w300,
+                                              color: Theme.of(context)
+                                                  .primaryColor,
+                                            ),
+                                            labelText: '9ч',
+                                            hintText: '9ч',
+                                            helperText: 'мм',
+                                            enabledBorder: OutlineInputBorder(
+                                              borderRadius: BorderRadius.all(
+                                                  Radius.circular(10)),
+                                              borderSide: BorderSide(
+                                                  color: Colors.grey, width: 2),
+                                            ),
+                                            focusedBorder: OutlineInputBorder(
+                                              borderRadius: BorderRadius.all(
+                                                  Radius.circular(20)),
+                                              borderSide: BorderSide(
+                                                  color: Theme.of(context)
+                                                      .primaryColor,
+                                                  width: 2),
+                                            ),
+                                          ),
+                                          keyboardType: TextInputType.number,
+                                        ),
+                                      ),
+                                      Expanded(
+                                        child: Icon(
+                                          Icons.arrow_right,
+                                          color: Theme.of(context).primaryColor,
+                                          size: 55,
+                                        ),
+                                      ),
+                                      Container(
+                                        width: 100,
+                                        height: 100,
+                                        decoration: BoxDecoration(
+                                          shape: BoxShape.circle,
+                                          border: Border.all(
+                                            color:
+                                                Theme.of(context).primaryColor,
+                                            width: 8,
+                                          ),
+                                        ),
+                                        child: Center(
+                                          child: Text(
+                                            'мин: ${thickinsulController.text}',
+                                            textAlign: TextAlign.center,
+                                            style: TextStyle(
+                                                fontSize: 20,
+                                                color: Theme.of(context)
+                                                    .primaryColor,
+                                                fontWeight: FontWeight.w600),
+                                          ),
+                                        ),
+                                      ),
+                                      Expanded(
+                                        child: Icon(
+                                          Icons.arrow_left,
+                                          color: Theme.of(context).primaryColor,
+                                          size: 55,
+                                        ),
+                                      ),
+                                      Expanded(
+                                        child: TextFormField(
+                                          onChanged: (String value) {
+                                            setState(() {});
+                                            focusNode121.requestFocus();
+                                            minithickinsul();
+                                          },
+                                          focusNode: focusNode121,
+                                          maxLength: 4,
+                                          onSaved: (value) {
+                                            object.thickinsul2 = value;
+                                          },
+                                          controller: thickinsulController2,
+                                          style: textStyle,
+                                          decoration: InputDecoration(
+                                            focusColor:
+                                                Theme.of(context).primaryColor,
+                                            labelStyle: TextStyle(
+                                              fontSize: 22,
+                                              fontWeight: FontWeight.w300,
+                                              color: Theme.of(context)
+                                                  .primaryColor,
+                                            ),
+                                            hintStyle: TextStyle(
+                                              fontSize: 22,
+                                              fontWeight: FontWeight.w300,
+                                              color: Theme.of(context)
+                                                  .primaryColor,
+                                            ),
+                                            labelText: '3ч',
+                                            hintText: '3ч',
+                                            helperText: 'мм',
+                                            enabledBorder: OutlineInputBorder(
+                                              borderRadius: BorderRadius.all(
+                                                  Radius.circular(10)),
+                                              borderSide: BorderSide(
+                                                  color: Colors.grey, width: 2),
+                                            ),
+                                            focusedBorder: OutlineInputBorder(
+                                              borderRadius: BorderRadius.all(
+                                                  Radius.circular(20)),
+                                              borderSide: BorderSide(
+                                                  color: Theme.of(context)
+                                                      .primaryColor,
+                                                  width: 2),
+                                            ),
+                                          ),
+                                          keyboardType: TextInputType.number,
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                  Column(
+                                    children: [
+                                      Center(
+                                        child: Icon(
+                                          Icons.arrow_drop_up,
+                                          color: Theme.of(context).primaryColor,
+                                          size: 55,
+                                        ),
+                                      ),
+                                      Row(
+                                        children: [
+                                          SizedBox(width: 100),
+                                          Expanded(
+                                            child: TextFormField(
+                                              onChanged: (String value) {
+                                                setState(() {});
+                                                focusNode130.requestFocus();
+                                                minithickinsul();
+                                              },
+                                              focusNode: focusNode130,
+                                              maxLength: 4,
+                                              onSaved: (value) {
+                                                object.thickinsul3 = value;
+                                              },
+                                              controller: thickinsulController3,
+                                              style: textStyle,
+                                              decoration: InputDecoration(
+                                                focusColor: Theme.of(context)
+                                                    .primaryColor,
+                                                labelStyle: TextStyle(
+                                                  fontSize: 22,
+                                                  fontWeight: FontWeight.w300,
+                                                  color: Theme.of(context)
+                                                      .primaryColor,
+                                                ),
+                                                hintStyle: TextStyle(
+                                                  fontSize: 16,
+                                                  fontWeight: FontWeight.w300,
+                                                  color: Theme.of(context)
+                                                      .primaryColor,
+                                                ),
+                                                labelText: '6ч',
+                                                hintText:
+                                                    'Введите толщину покрытия',
+                                                helperText: 'мм',
+                                                prefixIcon: Icon(
+                                                  Icons
+                                                      .vertical_align_center_sharp,
+                                                  color: (focusNode130.hasFocus ||
+                                                          thickinsulController3
+                                                              .text.isNotEmpty)
+                                                      ? Theme.of(context)
+                                                          .primaryColor
+                                                      : Colors.grey,
+                                                  size: 32,
+                                                ),
+                                                enabledBorder:
+                                                    OutlineInputBorder(
+                                                  borderRadius:
+                                                      BorderRadius.all(
+                                                          Radius.circular(10)),
+                                                  borderSide: BorderSide(
+                                                      color: Colors.grey,
+                                                      width: 2),
+                                                ),
+                                                focusedBorder:
+                                                    OutlineInputBorder(
+                                                  borderRadius:
+                                                      BorderRadius.all(
+                                                          Radius.circular(20)),
+                                                  borderSide: BorderSide(
+                                                      color: Theme.of(context)
+                                                          .primaryColor,
+                                                      width: 2),
+                                                ),
+                                              ),
+                                              keyboardType:
+                                                  TextInputType.number,
+                                            ),
+                                          ),
+                                          SizedBox(width: 100),
+                                        ],
+                                      ),
+                                    ],
+                                  ),
+                                ],
+                              ),
                             ),
-                            GestureDetector(
-                              onTap: () {
-                                thickinsulController1.clear();
-                                thickinsulController2.clear();
-                                thickinsulController3.clear();
-                                thickinsulController4.clear();
-                                thickinsulController.clear();
-                              },
-                              child: Icon(
-                                Icons.delete_outline,
-                                color: Color.fromRGBO(187, 30, 16, 1.0),
+                            VerticalDivider(thickness: 4),
+                            Container(
+                              width: MediaQuery.of(context).size.width,
+                              child: Column(
+                                children: [
+                                  Container(
+                                      alignment: Alignment.center,
+                                      child: Row(
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.center,
+                                        children: [
+                                          Text(
+                                            'Толщина ИП (изм№2)',
+                                            style: TextStyle(
+                                                fontSize: 24,
+                                                color: Theme.of(context)
+                                                    .primaryColor,
+                                                fontWeight: FontWeight.w300),
+                                          ),
+                                          GestureDetector(
+                                            onTap: () {
+                                              thickinsulController5.clear();
+                                              thickinsulController6.clear();
+                                              thickinsulController7.clear();
+                                              thickinsulController8.clear();
+                                              thickinsulController.clear();
+                                            },
+                                            child: Icon(
+                                              Icons.delete_outline,
+                                              color: Color.fromRGBO(
+                                                  187, 30, 16, 1.0),
+                                            ),
+                                          ),
+                                        ],
+                                      )),
+                                  SizedBox(height: 10),
+                                  Column(
+                                    children: [
+                                      Row(
+                                        children: [
+                                          SizedBox(width: 100),
+                                          Expanded(
+                                            child: TextFormField(
+                                              onChanged: (String value) {
+                                                setState(() {});
+                                                focusNode122.requestFocus();
+                                                minithickinsul();
+                                              },
+                                              focusNode: focusNode122,
+                                              maxLength: 4,
+                                              onSaved: (value) {
+                                                object.thickinsul5 = value;
+                                              },
+                                              controller: thickinsulController5,
+                                              style: textStyle,
+                                              decoration: InputDecoration(
+                                                focusColor: Theme.of(context)
+                                                    .primaryColor,
+                                                labelStyle: TextStyle(
+                                                  fontSize: 22,
+                                                  fontWeight: FontWeight.w300,
+                                                  color: Theme.of(context)
+                                                      .primaryColor,
+                                                ),
+                                                hintStyle: TextStyle(
+                                                  fontSize: 16,
+                                                  fontWeight: FontWeight.w300,
+                                                  color: Theme.of(context)
+                                                      .primaryColor,
+                                                ),
+                                                labelText: '12ч',
+                                                hintText:
+                                                    'Введите толщину покрытия',
+                                                helperText: 'мм',
+                                                prefixIcon: Icon(
+                                                  Icons
+                                                      .vertical_align_center_sharp,
+                                                  color: (focusNode122.hasFocus ||
+                                                          thickinsulController5
+                                                              .text.isNotEmpty)
+                                                      ? Theme.of(context)
+                                                          .primaryColor
+                                                      : Colors.grey,
+                                                  size: 32,
+                                                ),
+                                                enabledBorder:
+                                                    OutlineInputBorder(
+                                                  borderRadius:
+                                                      BorderRadius.all(
+                                                          Radius.circular(10)),
+                                                  borderSide: BorderSide(
+                                                      color: Colors.grey,
+                                                      width: 2),
+                                                ),
+                                                focusedBorder:
+                                                    OutlineInputBorder(
+                                                  borderRadius:
+                                                      BorderRadius.all(
+                                                          Radius.circular(20)),
+                                                  borderSide: BorderSide(
+                                                      color: Theme.of(context)
+                                                          .primaryColor,
+                                                      width: 2),
+                                                ),
+                                              ),
+                                              keyboardType:
+                                                  TextInputType.number,
+                                            ),
+                                          ),
+                                          SizedBox(width: 100),
+                                        ],
+                                      ),
+                                      Center(
+                                        child: Icon(
+                                          Icons.arrow_drop_down,
+                                          color: Theme.of(context).primaryColor,
+                                          size: 55,
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                  Row(
+                                    children: [
+                                      Expanded(
+                                        child: TextFormField(
+                                          onChanged: (String value) {
+                                            setState(() {});
+                                            focusNode123.requestFocus();
+                                            minithickinsul();
+                                          },
+                                          focusNode: focusNode123,
+                                          maxLength: 4,
+                                          onSaved: (value) {
+                                            object.thickinsul6 = value;
+                                          },
+                                          controller: thickinsulController6,
+                                          style: textStyle,
+                                          decoration: InputDecoration(
+                                            focusColor:
+                                                Theme.of(context).primaryColor,
+                                            labelStyle: TextStyle(
+                                              fontSize: 22,
+                                              fontWeight: FontWeight.w300,
+                                              color: Theme.of(context)
+                                                  .primaryColor,
+                                            ),
+                                            hintStyle: TextStyle(
+                                              fontSize: 22,
+                                              fontWeight: FontWeight.w300,
+                                              color: Theme.of(context)
+                                                  .primaryColor,
+                                            ),
+                                            labelText: '9ч',
+                                            hintText: '9ч',
+                                            helperText: 'мм',
+                                            enabledBorder: OutlineInputBorder(
+                                              borderRadius: BorderRadius.all(
+                                                  Radius.circular(10)),
+                                              borderSide: BorderSide(
+                                                  color: Colors.grey, width: 2),
+                                            ),
+                                            focusedBorder: OutlineInputBorder(
+                                              borderRadius: BorderRadius.all(
+                                                  Radius.circular(20)),
+                                              borderSide: BorderSide(
+                                                  color: Theme.of(context)
+                                                      .primaryColor,
+                                                  width: 2),
+                                            ),
+                                          ),
+                                          keyboardType: TextInputType.number,
+                                        ),
+                                      ),
+                                      Expanded(
+                                        child: Icon(
+                                          Icons.arrow_right,
+                                          color: Theme.of(context).primaryColor,
+                                          size: 55,
+                                        ),
+                                      ),
+                                      Container(
+                                        width: 100,
+                                        height: 100,
+                                        decoration: BoxDecoration(
+                                          shape: BoxShape.circle,
+                                          border: Border.all(
+                                            color:
+                                                Theme.of(context).primaryColor,
+                                            width: 8,
+                                          ),
+                                        ),
+                                        child: Center(
+                                          child: Text(
+                                            'мин: ${thickinsulController.text}',
+                                            textAlign: TextAlign.center,
+                                            style: TextStyle(
+                                                fontSize: 20,
+                                                color: Theme.of(context)
+                                                    .primaryColor,
+                                                fontWeight: FontWeight.w600),
+                                          ),
+                                        ),
+                                      ),
+                                      Expanded(
+                                        child: Icon(
+                                          Icons.arrow_left,
+                                          color: Theme.of(context).primaryColor,
+                                          size: 55,
+                                        ),
+                                      ),
+                                      Expanded(
+                                        child: TextFormField(
+                                          onChanged: (String value) {
+                                            setState(() {});
+                                            focusNode124.requestFocus();
+                                            minithickinsul();
+                                          },
+                                          focusNode: focusNode124,
+                                          maxLength: 4,
+                                          onSaved: (value) {
+                                            object.thickinsul7 = value;
+                                          },
+                                          controller: thickinsulController7,
+                                          style: textStyle,
+                                          decoration: InputDecoration(
+                                            focusColor:
+                                                Theme.of(context).primaryColor,
+                                            labelStyle: TextStyle(
+                                              fontSize: 22,
+                                              fontWeight: FontWeight.w300,
+                                              color: Theme.of(context)
+                                                  .primaryColor,
+                                            ),
+                                            hintStyle: TextStyle(
+                                              fontSize: 22,
+                                              fontWeight: FontWeight.w300,
+                                              color: Theme.of(context)
+                                                  .primaryColor,
+                                            ),
+                                            labelText: '3ч',
+                                            hintText: '3ч',
+                                            helperText: 'мм',
+                                            enabledBorder: OutlineInputBorder(
+                                              borderRadius: BorderRadius.all(
+                                                  Radius.circular(10)),
+                                              borderSide: BorderSide(
+                                                  color: Colors.grey, width: 2),
+                                            ),
+                                            focusedBorder: OutlineInputBorder(
+                                              borderRadius: BorderRadius.all(
+                                                  Radius.circular(20)),
+                                              borderSide: BorderSide(
+                                                  color: Theme.of(context)
+                                                      .primaryColor,
+                                                  width: 2),
+                                            ),
+                                          ),
+                                          keyboardType: TextInputType.number,
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                  Column(
+                                    children: [
+                                      Center(
+                                        child: Icon(
+                                          Icons.arrow_drop_up,
+                                          color: Theme.of(context).primaryColor,
+                                          size: 55,
+                                        ),
+                                      ),
+                                      Row(
+                                        children: [
+                                          SizedBox(width: 100),
+                                          Expanded(
+                                            child: TextFormField(
+                                              onChanged: (String value) {
+                                                setState(() {});
+                                                focusNode125.requestFocus();
+                                                minithickinsul();
+                                              },
+                                              focusNode: focusNode125,
+                                              maxLength: 4,
+                                              onSaved: (value) {
+                                                object.thickinsul8 = value;
+                                              },
+                                              controller: thickinsulController8,
+                                              style: textStyle,
+                                              decoration: InputDecoration(
+                                                focusColor: Theme.of(context)
+                                                    .primaryColor,
+                                                labelStyle: TextStyle(
+                                                  fontSize: 22,
+                                                  fontWeight: FontWeight.w300,
+                                                  color: Theme.of(context)
+                                                      .primaryColor,
+                                                ),
+                                                hintStyle: TextStyle(
+                                                  fontSize: 16,
+                                                  fontWeight: FontWeight.w300,
+                                                  color: Theme.of(context)
+                                                      .primaryColor,
+                                                ),
+                                                labelText: '6ч',
+                                                hintText:
+                                                    'Введите толщину покрытия',
+                                                helperText: 'мм',
+                                                prefixIcon: Icon(
+                                                  Icons
+                                                      .vertical_align_center_sharp,
+                                                  color: (focusNode125.hasFocus ||
+                                                          thickinsulController8
+                                                              .text.isNotEmpty)
+                                                      ? Theme.of(context)
+                                                          .primaryColor
+                                                      : Colors.grey,
+                                                  size: 32,
+                                                ),
+                                                enabledBorder:
+                                                    OutlineInputBorder(
+                                                  borderRadius:
+                                                      BorderRadius.all(
+                                                          Radius.circular(10)),
+                                                  borderSide: BorderSide(
+                                                      color: Colors.grey,
+                                                      width: 2),
+                                                ),
+                                                focusedBorder:
+                                                    OutlineInputBorder(
+                                                  borderRadius:
+                                                      BorderRadius.all(
+                                                          Radius.circular(20)),
+                                                  borderSide: BorderSide(
+                                                      color: Theme.of(context)
+                                                          .primaryColor,
+                                                      width: 2),
+                                                ),
+                                              ),
+                                              keyboardType:
+                                                  TextInputType.number,
+                                            ),
+                                          ),
+                                          SizedBox(width: 100),
+                                        ],
+                                      ),
+                                    ],
+                                  ),
+                                ],
+                              ),
+                            ),
+                            VerticalDivider(thickness: 4),
+                            Container(
+                              width: MediaQuery.of(context).size.width,
+                              child: Column(
+                                children: [
+                                  Container(
+                                      alignment: Alignment.center,
+                                      child: Row(
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.center,
+                                        children: [
+                                          Text(
+                                            'Толщина ИП (изм№3)',
+                                            style: TextStyle(
+                                                fontSize: 24,
+                                                color: Theme.of(context)
+                                                    .primaryColor,
+                                                fontWeight: FontWeight.w300),
+                                          ),
+                                          GestureDetector(
+                                            onTap: () {
+                                              thickinsulController9.clear();
+                                              thickinsulController10.clear();
+                                              thickinsulController11.clear();
+                                              thickinsulController12.clear();
+                                              thickinsulController.clear();
+                                            },
+                                            child: Icon(
+                                              Icons.delete_outline,
+                                              color: Color.fromRGBO(
+                                                  187, 30, 16, 1.0),
+                                            ),
+                                          ),
+                                        ],
+                                      )),
+                                  SizedBox(height: 10),
+                                  Column(
+                                    children: [
+                                      Row(
+                                        children: [
+                                          SizedBox(width: 100),
+                                          Expanded(
+                                            child: TextFormField(
+                                              onChanged: (String value) {
+                                                setState(() {});
+                                                focusNode126.requestFocus();
+                                                minithickinsul();
+                                              },
+                                              focusNode: focusNode126,
+                                              maxLength: 4,
+                                              onSaved: (value) {
+                                                object.thickinsul9 = value;
+                                              },
+                                              controller: thickinsulController9,
+                                              style: textStyle,
+                                              decoration: InputDecoration(
+                                                focusColor: Theme.of(context)
+                                                    .primaryColor,
+                                                labelStyle: TextStyle(
+                                                  fontSize: 22,
+                                                  fontWeight: FontWeight.w300,
+                                                  color: Theme.of(context)
+                                                      .primaryColor,
+                                                ),
+                                                hintStyle: TextStyle(
+                                                  fontSize: 16,
+                                                  fontWeight: FontWeight.w300,
+                                                  color: Theme.of(context)
+                                                      .primaryColor,
+                                                ),
+                                                labelText: '12ч',
+                                                hintText:
+                                                    'Введите толщину покрытия',
+                                                helperText: 'мм',
+                                                prefixIcon: Icon(
+                                                  Icons
+                                                      .vertical_align_center_sharp,
+                                                  color: (focusNode126.hasFocus ||
+                                                          thickinsulController9
+                                                              .text.isNotEmpty)
+                                                      ? Theme.of(context)
+                                                          .primaryColor
+                                                      : Colors.grey,
+                                                  size: 32,
+                                                ),
+                                                enabledBorder:
+                                                    OutlineInputBorder(
+                                                  borderRadius:
+                                                      BorderRadius.all(
+                                                          Radius.circular(10)),
+                                                  borderSide: BorderSide(
+                                                      color: Colors.grey,
+                                                      width: 2),
+                                                ),
+                                                focusedBorder:
+                                                    OutlineInputBorder(
+                                                  borderRadius:
+                                                      BorderRadius.all(
+                                                          Radius.circular(20)),
+                                                  borderSide: BorderSide(
+                                                      color: Theme.of(context)
+                                                          .primaryColor,
+                                                      width: 2),
+                                                ),
+                                              ),
+                                              keyboardType:
+                                                  TextInputType.number,
+                                            ),
+                                          ),
+                                          SizedBox(width: 100),
+                                        ],
+                                      ),
+                                      Center(
+                                        child: Icon(
+                                          Icons.arrow_drop_down,
+                                          color: Theme.of(context).primaryColor,
+                                          size: 55,
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                  Row(
+                                    children: [
+                                      Expanded(
+                                        child: TextFormField(
+                                          onChanged: (String value) {
+                                            setState(() {});
+                                            focusNode127.requestFocus();
+                                            minithickinsul();
+                                          },
+                                          focusNode: focusNode127,
+                                          maxLength: 4,
+                                          onSaved: (value) {
+                                            object.thickinsul10 = value;
+                                          },
+                                          controller: thickinsulController10,
+                                          style: textStyle,
+                                          decoration: InputDecoration(
+                                            focusColor:
+                                                Theme.of(context).primaryColor,
+                                            labelStyle: TextStyle(
+                                              fontSize: 22,
+                                              fontWeight: FontWeight.w300,
+                                              color: Theme.of(context)
+                                                  .primaryColor,
+                                            ),
+                                            hintStyle: TextStyle(
+                                              fontSize: 22,
+                                              fontWeight: FontWeight.w300,
+                                              color: Theme.of(context)
+                                                  .primaryColor,
+                                            ),
+                                            labelText: '9ч',
+                                            hintText: '9ч',
+                                            helperText: 'мм',
+                                            enabledBorder: OutlineInputBorder(
+                                              borderRadius: BorderRadius.all(
+                                                  Radius.circular(10)),
+                                              borderSide: BorderSide(
+                                                  color: Colors.grey, width: 2),
+                                            ),
+                                            focusedBorder: OutlineInputBorder(
+                                              borderRadius: BorderRadius.all(
+                                                  Radius.circular(20)),
+                                              borderSide: BorderSide(
+                                                  color: Theme.of(context)
+                                                      .primaryColor,
+                                                  width: 2),
+                                            ),
+                                          ),
+                                          keyboardType: TextInputType.number,
+                                        ),
+                                      ),
+                                      Expanded(
+                                        child: Icon(
+                                          Icons.arrow_right,
+                                          color: Theme.of(context).primaryColor,
+                                          size: 55,
+                                        ),
+                                      ),
+                                      Container(
+                                        width: 100,
+                                        height: 100,
+                                        decoration: BoxDecoration(
+                                          shape: BoxShape.circle,
+                                          border: Border.all(
+                                            color:
+                                                Theme.of(context).primaryColor,
+                                            width: 8,
+                                          ),
+                                        ),
+                                        child: Center(
+                                          child: Text(
+                                            'мин: ${thickinsulController.text}',
+                                            textAlign: TextAlign.center,
+                                            style: TextStyle(
+                                                fontSize: 20,
+                                                color: Theme.of(context)
+                                                    .primaryColor,
+                                                fontWeight: FontWeight.w600),
+                                          ),
+                                        ),
+                                      ),
+                                      Expanded(
+                                        child: Icon(
+                                          Icons.arrow_left,
+                                          color: Theme.of(context).primaryColor,
+                                          size: 55,
+                                        ),
+                                      ),
+                                      Expanded(
+                                        child: TextFormField(
+                                          onChanged: (String value) {
+                                            setState(() {});
+                                            focusNode128.requestFocus();
+                                            minithickinsul();
+                                          },
+                                          focusNode: focusNode128,
+                                          maxLength: 4,
+                                          onSaved: (value) {
+                                            object.thickinsul11 = value;
+                                          },
+                                          controller: thickinsulController11,
+                                          style: textStyle,
+                                          decoration: InputDecoration(
+                                            focusColor:
+                                                Theme.of(context).primaryColor,
+                                            labelStyle: TextStyle(
+                                              fontSize: 22,
+                                              fontWeight: FontWeight.w300,
+                                              color: Theme.of(context)
+                                                  .primaryColor,
+                                            ),
+                                            hintStyle: TextStyle(
+                                              fontSize: 22,
+                                              fontWeight: FontWeight.w300,
+                                              color: Theme.of(context)
+                                                  .primaryColor,
+                                            ),
+                                            labelText: '3ч',
+                                            hintText: '3ч',
+                                            helperText: 'мм',
+                                            enabledBorder: OutlineInputBorder(
+                                              borderRadius: BorderRadius.all(
+                                                  Radius.circular(10)),
+                                              borderSide: BorderSide(
+                                                  color: Colors.grey, width: 2),
+                                            ),
+                                            focusedBorder: OutlineInputBorder(
+                                              borderRadius: BorderRadius.all(
+                                                  Radius.circular(20)),
+                                              borderSide: BorderSide(
+                                                  color: Theme.of(context)
+                                                      .primaryColor,
+                                                  width: 2),
+                                            ),
+                                          ),
+                                          keyboardType: TextInputType.number,
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                  Column(
+                                    children: [
+                                      Center(
+                                        child: Icon(
+                                          Icons.arrow_drop_up,
+                                          color: Theme.of(context).primaryColor,
+                                          size: 55,
+                                        ),
+                                      ),
+                                      Row(
+                                        children: [
+                                          SizedBox(width: 100),
+                                          Expanded(
+                                            child: TextFormField(
+                                              onChanged: (String value) {
+                                                setState(() {});
+                                                focusNode129.requestFocus();
+                                                minithickinsul();
+                                              },
+                                              focusNode: focusNode129,
+                                              maxLength: 4,
+                                              onSaved: (value) {
+                                                object.thickinsul12 = value;
+                                              },
+                                              controller:
+                                                  thickinsulController12,
+                                              style: textStyle,
+                                              decoration: InputDecoration(
+                                                focusColor: Theme.of(context)
+                                                    .primaryColor,
+                                                labelStyle: TextStyle(
+                                                  fontSize: 22,
+                                                  fontWeight: FontWeight.w300,
+                                                  color: Theme.of(context)
+                                                      .primaryColor,
+                                                ),
+                                                hintStyle: TextStyle(
+                                                  fontSize: 16,
+                                                  fontWeight: FontWeight.w300,
+                                                  color: Theme.of(context)
+                                                      .primaryColor,
+                                                ),
+                                                labelText: '6ч',
+                                                hintText:
+                                                    'Введите толщину покрытия',
+                                                helperText: 'мм',
+                                                prefixIcon: Icon(
+                                                  Icons
+                                                      .vertical_align_center_sharp,
+                                                  color: (focusNode129
+                                                              .hasFocus ||
+                                                          thickinsulController12
+                                                              .text.isNotEmpty)
+                                                      ? Theme.of(context)
+                                                          .primaryColor
+                                                      : Colors.grey,
+                                                  size: 32,
+                                                ),
+                                                enabledBorder:
+                                                    OutlineInputBorder(
+                                                  borderRadius:
+                                                      BorderRadius.all(
+                                                          Radius.circular(10)),
+                                                  borderSide: BorderSide(
+                                                      color: Colors.grey,
+                                                      width: 2),
+                                                ),
+                                                focusedBorder:
+                                                    OutlineInputBorder(
+                                                  borderRadius:
+                                                      BorderRadius.all(
+                                                          Radius.circular(20)),
+                                                  borderSide: BorderSide(
+                                                      color: Theme.of(context)
+                                                          .primaryColor,
+                                                      width: 2),
+                                                ),
+                                              ),
+                                              keyboardType:
+                                                  TextInputType.number,
+                                            ),
+                                          ),
+                                          SizedBox(width: 100),
+                                        ],
+                                      ),
+                                    ],
+                                  ),
+                                ],
                               ),
                             ),
                           ],
                         ),
                       ),
-                      SizedBox(height: 10),
-                      Column(
-                        children: [
-                          Center(
-                            child: TextFormField(
-                              onChanged: (String value) {
-                                setState(() {});
-                                focusNode119.requestFocus();
-                                minithickinsul();
-                              },
-                              focusNode: focusNode119,
-                              maxLength: 4,
-                              onSaved: (value) {
-                                object.thickinsul1 = value;
-                              },
-                              controller: thickinsulController1,
-                              style: textStyle,
-                              decoration: InputDecoration(
-                                focusColor: Theme.of(context).primaryColor,
-                                labelStyle: TextStyle(
-                                  fontSize: 22,
-                                  fontWeight: FontWeight.w300,
-                                  color: Theme.of(context).primaryColor,
-                                ),
-                                hintStyle: TextStyle(
-                                  fontSize: 16,
-                                  fontWeight: FontWeight.w300,
-                                  color: Theme.of(context).primaryColor,
-                                ),
-                                labelText: 'Толщина ИП 12ч',
-                                hintText: 'Введите толщину покрытия',
-                                helperText: 'мм',
-                                prefixIcon: Icon(
-                                  Icons.vertical_align_center_sharp,
-                                  color: (focusNode119.hasFocus ||
-                                          thickinsulController1.text.isNotEmpty)
-                                      ? Theme.of(context).primaryColor
-                                      : Colors.grey,
-                                  size: 32,
-                                ),
-                                enabledBorder: OutlineInputBorder(
-                                  borderRadius:
-                                      BorderRadius.all(Radius.circular(10)),
-                                  borderSide:
-                                      BorderSide(color: Colors.grey, width: 2),
-                                ),
-                                focusedBorder: OutlineInputBorder(
-                                  borderRadius:
-                                      BorderRadius.all(Radius.circular(20)),
-                                  borderSide: BorderSide(
-                                      color: Theme.of(context).primaryColor,
-                                      width: 2),
-                                ),
-                              ),
-                              keyboardType: TextInputType.number,
-                            ),
-                          ),
-                          Center(
-                            child: Icon(
-                              Icons.arrow_drop_down,
-                              color: Theme.of(context).primaryColor,
-                              size: 55,
-                            ),
-                          ),
-                        ],
-                      ),
-                      Row(
-                        children: [
-                          Expanded(
-                            child: TextFormField(
-                              onChanged: (String value) {
-                                setState(() {});
-                                focusNode120.requestFocus();
-                                minithickinsul();
-                              },
-                              focusNode: focusNode120,
-                              maxLength: 4,
-                              onSaved: (value) {
-                                object.thickinsul4 = value;
-                              },
-                              controller: thickinsulController4,
-                              style: textStyle,
-                              decoration: InputDecoration(
-                                focusColor: Theme.of(context).primaryColor,
-                                labelStyle: TextStyle(
-                                  fontSize: 22,
-                                  fontWeight: FontWeight.w300,
-                                  color: Theme.of(context).primaryColor,
-                                ),
-                                hintStyle: TextStyle(
-                                  fontSize: 22,
-                                  fontWeight: FontWeight.w300,
-                                  color: Theme.of(context).primaryColor,
-                                ),
-                                labelText: '9ч',
-                                hintText: '9ч',
-                                helperText: 'мм',
-                                enabledBorder: OutlineInputBorder(
-                                  borderRadius:
-                                      BorderRadius.all(Radius.circular(10)),
-                                  borderSide:
-                                      BorderSide(color: Colors.grey, width: 2),
-                                ),
-                                focusedBorder: OutlineInputBorder(
-                                  borderRadius:
-                                      BorderRadius.all(Radius.circular(20)),
-                                  borderSide: BorderSide(
-                                      color: Theme.of(context).primaryColor,
-                                      width: 2),
-                                ),
-                              ),
-                              keyboardType: TextInputType.number,
-                            ),
-                          ),
-                          Expanded(
-                            child: Icon(
-                              Icons.arrow_right,
-                              color: Theme.of(context).primaryColor,
-                              size: 55,
-                            ),
-                          ),
-                          Container(
-                            width: 100,
-                            height: 100,
-                            decoration: BoxDecoration(
-                              shape: BoxShape.circle,
-                              border: Border.all(
-                                color: Theme.of(context).primaryColor,
-                                width: 8,
-                              ),
-                            ),
-                            child: Center(
-                              child: Text(
-                                'мин: ${thickinsulController.text}',
-                                textAlign: TextAlign.center,
-                                style: TextStyle(
-                                    fontSize: 20,
-                                    color: Theme.of(context).primaryColor,
-                                    fontWeight: FontWeight.w600),
-                              ),
-                            ),
-                          ),
-                          Expanded(
-                            child: Icon(
-                              Icons.arrow_left,
-                              color: Theme.of(context).primaryColor,
-                              size: 55,
-                            ),
-                          ),
-                          Expanded(
-                            child: TextFormField(
-                              onChanged: (String value) {
-                                setState(() {});
-                                focusNode121.requestFocus();
-                                minithickinsul();
-                              },
-                              focusNode: focusNode121,
-                              maxLength: 4,
-                              onSaved: (value) {
-                                object.thickinsul2 = value;
-                              },
-                              controller: thickinsulController2,
-                              style: textStyle,
-                              decoration: InputDecoration(
-                                focusColor: Theme.of(context).primaryColor,
-                                labelStyle: TextStyle(
-                                  fontSize: 22,
-                                  fontWeight: FontWeight.w300,
-                                  color: Theme.of(context).primaryColor,
-                                ),
-                                hintStyle: TextStyle(
-                                  fontSize: 22,
-                                  fontWeight: FontWeight.w300,
-                                  color: Theme.of(context).primaryColor,
-                                ),
-                                labelText: '3ч',
-                                hintText: '3ч',
-                                helperText: 'мм',
-                                enabledBorder: OutlineInputBorder(
-                                  borderRadius:
-                                      BorderRadius.all(Radius.circular(10)),
-                                  borderSide:
-                                      BorderSide(color: Colors.grey, width: 2),
-                                ),
-                                focusedBorder: OutlineInputBorder(
-                                  borderRadius:
-                                      BorderRadius.all(Radius.circular(20)),
-                                  borderSide: BorderSide(
-                                      color: Theme.of(context).primaryColor,
-                                      width: 2),
-                                ),
-                              ),
-                              keyboardType: TextInputType.number,
-                            ),
-                          ),
-                        ],
-                      ),
-                      Column(
-                        children: [
-                          Center(
-                            child: Icon(
-                              Icons.arrow_drop_up,
-                              color: Theme.of(context).primaryColor,
-                              size: 55,
-                            ),
-                          ),
-                          Center(
-                            child: TextFormField(
-                              onChanged: (String value) {
-                                setState(() {});
-                                focusNode130.requestFocus();
-                                minithickinsul();
-                              },
-                              focusNode: focusNode130,
-                              maxLength: 4,
-                              onSaved: (value) {
-                                object.thickinsul3 = value;
-                              },
-                              controller: thickinsulController3,
-                              style: textStyle,
-                              decoration: InputDecoration(
-                                focusColor: Theme.of(context).primaryColor,
-                                labelStyle: TextStyle(
-                                  fontSize: 22,
-                                  fontWeight: FontWeight.w300,
-                                  color: Theme.of(context).primaryColor,
-                                ),
-                                hintStyle: TextStyle(
-                                  fontSize: 16,
-                                  fontWeight: FontWeight.w300,
-                                  color: Theme.of(context).primaryColor,
-                                ),
-                                labelText: 'Толщина ИП 6ч',
-                                hintText: 'Введите толщину покрытия',
-                                helperText: 'мм',
-                                prefixIcon: Icon(
-                                  Icons.vertical_align_center_sharp,
-                                  color: (focusNode130.hasFocus ||
-                                          thickinsulController3.text.isNotEmpty)
-                                      ? Theme.of(context).primaryColor
-                                      : Colors.grey,
-                                  size: 32,
-                                ),
-                                enabledBorder: OutlineInputBorder(
-                                  borderRadius:
-                                      BorderRadius.all(Radius.circular(10)),
-                                  borderSide:
-                                      BorderSide(color: Colors.grey, width: 2),
-                                ),
-                                focusedBorder: OutlineInputBorder(
-                                  borderRadius:
-                                      BorderRadius.all(Radius.circular(20)),
-                                  borderSide: BorderSide(
-                                      color: Theme.of(context).primaryColor,
-                                      width: 2),
-                                ),
-                              ),
-                              keyboardType: TextInputType.number,
-                            ),
-                          ),
-                        ],
-                      ),
-                      SizedBox(height: 10),
-                      Divider(thickness: 4),
-                      Divider(thickness: 4),
-                      SizedBox(height: 10),
-                      Container(
-                          alignment: Alignment.center,
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              Text(
-                                'Толщина ИП (изм№2)',
-                                style: TextStyle(
-                                    fontSize: 24,
-                                    color: Theme.of(context).primaryColor,
-                                    fontWeight: FontWeight.w300),
-                              ),
-                              GestureDetector(
-                                onTap: () {
-                                  thickinsulController5.clear();
-                                  thickinsulController6.clear();
-                                  thickinsulController7.clear();
-                                  thickinsulController8.clear();
-                                  thickinsulController.clear();
-                                },
-                                child: Icon(
-                                  Icons.delete_outline,
-                                  color: Color.fromRGBO(187, 30, 16, 1.0),
-                                ),
-                              ),
-                            ],
-                          )),
-                      SizedBox(height: 10),
-                      Column(
-                        children: [
-                          Center(
-                            child: TextFormField(
-                              onChanged: (String value) {
-                                setState(() {});
-                                focusNode122.requestFocus();
-                                minithickinsul();
-                              },
-                              focusNode: focusNode122,
-                              maxLength: 4,
-                              onSaved: (value) {
-                                object.thickinsul5 = value;
-                              },
-                              controller: thickinsulController5,
-                              style: textStyle,
-                              decoration: InputDecoration(
-                                focusColor: Theme.of(context).primaryColor,
-                                labelStyle: TextStyle(
-                                  fontSize: 22,
-                                  fontWeight: FontWeight.w300,
-                                  color: Theme.of(context).primaryColor,
-                                ),
-                                hintStyle: TextStyle(
-                                  fontSize: 16,
-                                  fontWeight: FontWeight.w300,
-                                  color: Theme.of(context).primaryColor,
-                                ),
-                                labelText: 'Толщина ИП 12ч',
-                                hintText: 'Введите толщину покрытия',
-                                helperText: 'мм',
-                                prefixIcon: Icon(
-                                  Icons.vertical_align_center_sharp,
-                                  color: (focusNode122.hasFocus ||
-                                          thickinsulController5.text.isNotEmpty)
-                                      ? Theme.of(context).primaryColor
-                                      : Colors.grey,
-                                  size: 32,
-                                ),
-                                enabledBorder: OutlineInputBorder(
-                                  borderRadius:
-                                      BorderRadius.all(Radius.circular(10)),
-                                  borderSide:
-                                      BorderSide(color: Colors.grey, width: 2),
-                                ),
-                                focusedBorder: OutlineInputBorder(
-                                  borderRadius:
-                                      BorderRadius.all(Radius.circular(20)),
-                                  borderSide: BorderSide(
-                                      color: Theme.of(context).primaryColor,
-                                      width: 2),
-                                ),
-                              ),
-                              keyboardType: TextInputType.number,
-                            ),
-                          ),
-                          Center(
-                            child: Icon(
-                              Icons.arrow_drop_down,
-                              color: Theme.of(context).primaryColor,
-                              size: 55,
-                            ),
-                          ),
-                        ],
-                      ),
-                      Row(
-                        children: [
-                          Expanded(
-                            child: TextFormField(
-                              onChanged: (String value) {
-                                setState(() {});
-                                focusNode123.requestFocus();
-                                minithickinsul();
-                              },
-                              focusNode: focusNode123,
-                              maxLength: 4,
-                              onSaved: (value) {
-                                object.thickinsul6 = value;
-                              },
-                              controller: thickinsulController6,
-                              style: textStyle,
-                              decoration: InputDecoration(
-                                focusColor: Theme.of(context).primaryColor,
-                                labelStyle: TextStyle(
-                                  fontSize: 22,
-                                  fontWeight: FontWeight.w300,
-                                  color: Theme.of(context).primaryColor,
-                                ),
-                                hintStyle: TextStyle(
-                                  fontSize: 22,
-                                  fontWeight: FontWeight.w300,
-                                  color: Theme.of(context).primaryColor,
-                                ),
-                                labelText: '9ч',
-                                hintText: '9ч',
-                                helperText: 'мм',
-                                enabledBorder: OutlineInputBorder(
-                                  borderRadius:
-                                      BorderRadius.all(Radius.circular(10)),
-                                  borderSide:
-                                      BorderSide(color: Colors.grey, width: 2),
-                                ),
-                                focusedBorder: OutlineInputBorder(
-                                  borderRadius:
-                                      BorderRadius.all(Radius.circular(20)),
-                                  borderSide: BorderSide(
-                                      color: Theme.of(context).primaryColor,
-                                      width: 2),
-                                ),
-                              ),
-                              keyboardType: TextInputType.number,
-                            ),
-                          ),
-                          Expanded(
-                            child: Icon(
-                              Icons.arrow_right,
-                              color: Theme.of(context).primaryColor,
-                              size: 55,
-                            ),
-                          ),
-                          Container(
-                            width: 100,
-                            height: 100,
-                            decoration: BoxDecoration(
-                              shape: BoxShape.circle,
-                              border: Border.all(
-                                color: Theme.of(context).primaryColor,
-                                width: 8,
-                              ),
-                            ),
-                            child: Center(
-                              child: Text(
-                                'мин: ${thickinsulController.text}',
-                                textAlign: TextAlign.center,
-                                style: TextStyle(
-                                    fontSize: 20,
-                                    color: Theme.of(context).primaryColor,
-                                    fontWeight: FontWeight.w600),
-                              ),
-                            ),
-                          ),
-                          Expanded(
-                            child: Icon(
-                              Icons.arrow_left,
-                              color: Theme.of(context).primaryColor,
-                              size: 55,
-                            ),
-                          ),
-                          Expanded(
-                            child: TextFormField(
-                              onChanged: (String value) {
-                                setState(() {});
-                                focusNode124.requestFocus();
-                                minithickinsul();
-                              },
-                              focusNode: focusNode124,
-                              maxLength: 4,
-                              onSaved: (value) {
-                                object.thickinsul7 = value;
-                              },
-                              controller: thickinsulController7,
-                              style: textStyle,
-                              decoration: InputDecoration(
-                                focusColor: Theme.of(context).primaryColor,
-                                labelStyle: TextStyle(
-                                  fontSize: 22,
-                                  fontWeight: FontWeight.w300,
-                                  color: Theme.of(context).primaryColor,
-                                ),
-                                hintStyle: TextStyle(
-                                  fontSize: 22,
-                                  fontWeight: FontWeight.w300,
-                                  color: Theme.of(context).primaryColor,
-                                ),
-                                labelText: '3ч',
-                                hintText: '3ч',
-                                helperText: 'мм',
-                                enabledBorder: OutlineInputBorder(
-                                  borderRadius:
-                                      BorderRadius.all(Radius.circular(10)),
-                                  borderSide:
-                                      BorderSide(color: Colors.grey, width: 2),
-                                ),
-                                focusedBorder: OutlineInputBorder(
-                                  borderRadius:
-                                      BorderRadius.all(Radius.circular(20)),
-                                  borderSide: BorderSide(
-                                      color: Theme.of(context).primaryColor,
-                                      width: 2),
-                                ),
-                              ),
-                              keyboardType: TextInputType.number,
-                            ),
-                          ),
-                        ],
-                      ),
-                      Column(
-                        children: [
-                          Center(
-                            child: Icon(
-                              Icons.arrow_drop_up,
-                              color: Theme.of(context).primaryColor,
-                              size: 55,
-                            ),
-                          ),
-                          Center(
-                            child: TextFormField(
-                              onChanged: (String value) {
-                                setState(() {});
-                                focusNode125.requestFocus();
-                                minithickinsul();
-                              },
-                              focusNode: focusNode125,
-                              maxLength: 4,
-                              onSaved: (value) {
-                                object.thickinsul8 = value;
-                              },
-                              controller: thickinsulController8,
-                              style: textStyle,
-                              decoration: InputDecoration(
-                                focusColor: Theme.of(context).primaryColor,
-                                labelStyle: TextStyle(
-                                  fontSize: 22,
-                                  fontWeight: FontWeight.w300,
-                                  color: Theme.of(context).primaryColor,
-                                ),
-                                hintStyle: TextStyle(
-                                  fontSize: 16,
-                                  fontWeight: FontWeight.w300,
-                                  color: Theme.of(context).primaryColor,
-                                ),
-                                labelText: 'Толщина ИП 6ч',
-                                hintText: 'Введите толщину покрытия',
-                                helperText: 'мм',
-                                prefixIcon: Icon(
-                                  Icons.vertical_align_center_sharp,
-                                  color: (focusNode125.hasFocus ||
-                                          thickinsulController8.text.isNotEmpty)
-                                      ? Theme.of(context).primaryColor
-                                      : Colors.grey,
-                                  size: 32,
-                                ),
-                                enabledBorder: OutlineInputBorder(
-                                  borderRadius:
-                                      BorderRadius.all(Radius.circular(10)),
-                                  borderSide:
-                                      BorderSide(color: Colors.grey, width: 2),
-                                ),
-                                focusedBorder: OutlineInputBorder(
-                                  borderRadius:
-                                      BorderRadius.all(Radius.circular(20)),
-                                  borderSide: BorderSide(
-                                      color: Theme.of(context).primaryColor,
-                                      width: 2),
-                                ),
-                              ),
-                              keyboardType: TextInputType.number,
-                            ),
-                          ),
-                        ],
-                      ),
-                      SizedBox(height: 10),
-                      Divider(thickness: 4),
-                      Divider(thickness: 4),
-                      SizedBox(height: 10),
-                      Container(
-                          alignment: Alignment.center,
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              Text(
-                                'Толщина ИП (изм№3)',
-                                style: TextStyle(
-                                    fontSize: 24,
-                                    color: Theme.of(context).primaryColor,
-                                    fontWeight: FontWeight.w300),
-                              ),
-                              GestureDetector(
-                                onTap: () {
-                                  thickinsulController9.clear();
-                                  thickinsulController10.clear();
-                                  thickinsulController11.clear();
-                                  thickinsulController12.clear();
-                                  thickinsulController.clear();
-                                },
-                                child: Icon(
-                                  Icons.delete_outline,
-                                  color: Color.fromRGBO(187, 30, 16, 1.0),
-                                ),
-                              ),
-                            ],
-                          )),
-                      SizedBox(height: 10),
-                      Column(
-                        children: [
-                          Center(
-                            child: TextFormField(
-                              onChanged: (String value) {
-                                setState(() {});
-                                focusNode126.requestFocus();
-                                minithickinsul();
-                              },
-                              focusNode: focusNode126,
-                              maxLength: 4,
-                              onSaved: (value) {
-                                object.thickinsul9 = value;
-                              },
-                              controller: thickinsulController9,
-                              style: textStyle,
-                              decoration: InputDecoration(
-                                focusColor: Theme.of(context).primaryColor,
-                                labelStyle: TextStyle(
-                                  fontSize: 22,
-                                  fontWeight: FontWeight.w300,
-                                  color: Theme.of(context).primaryColor,
-                                ),
-                                hintStyle: TextStyle(
-                                  fontSize: 16,
-                                  fontWeight: FontWeight.w300,
-                                  color: Theme.of(context).primaryColor,
-                                ),
-                                labelText: 'Толщина ИП 12ч',
-                                hintText: 'Введите толщину покрытия',
-                                helperText: 'мм',
-                                prefixIcon: Icon(
-                                  Icons.vertical_align_center_sharp,
-                                  color: (focusNode126.hasFocus ||
-                                          thickinsulController9.text.isNotEmpty)
-                                      ? Theme.of(context).primaryColor
-                                      : Colors.grey,
-                                  size: 32,
-                                ),
-                                enabledBorder: OutlineInputBorder(
-                                  borderRadius:
-                                      BorderRadius.all(Radius.circular(10)),
-                                  borderSide:
-                                      BorderSide(color: Colors.grey, width: 2),
-                                ),
-                                focusedBorder: OutlineInputBorder(
-                                  borderRadius:
-                                      BorderRadius.all(Radius.circular(20)),
-                                  borderSide: BorderSide(
-                                      color: Theme.of(context).primaryColor,
-                                      width: 2),
-                                ),
-                              ),
-                              keyboardType: TextInputType.number,
-                            ),
-                          ),
-                          Center(
-                            child: Icon(
-                              Icons.arrow_drop_down,
-                              color: Theme.of(context).primaryColor,
-                              size: 55,
-                            ),
-                          ),
-                        ],
-                      ),
-                      Row(
-                        children: [
-                          Expanded(
-                            child: TextFormField(
-                              onChanged: (String value) {
-                                setState(() {});
-                                focusNode127.requestFocus();
-                                minithickinsul();
-                              },
-                              focusNode: focusNode127,
-                              maxLength: 4,
-                              onSaved: (value) {
-                                object.thickinsul10 = value;
-                              },
-                              controller: thickinsulController10,
-                              style: textStyle,
-                              decoration: InputDecoration(
-                                focusColor: Theme.of(context).primaryColor,
-                                labelStyle: TextStyle(
-                                  fontSize: 22,
-                                  fontWeight: FontWeight.w300,
-                                  color: Theme.of(context).primaryColor,
-                                ),
-                                hintStyle: TextStyle(
-                                  fontSize: 22,
-                                  fontWeight: FontWeight.w300,
-                                  color: Theme.of(context).primaryColor,
-                                ),
-                                labelText: '9ч',
-                                hintText: '9ч',
-                                helperText: 'мм',
-                                enabledBorder: OutlineInputBorder(
-                                  borderRadius:
-                                      BorderRadius.all(Radius.circular(10)),
-                                  borderSide:
-                                      BorderSide(color: Colors.grey, width: 2),
-                                ),
-                                focusedBorder: OutlineInputBorder(
-                                  borderRadius:
-                                      BorderRadius.all(Radius.circular(20)),
-                                  borderSide: BorderSide(
-                                      color: Theme.of(context).primaryColor,
-                                      width: 2),
-                                ),
-                              ),
-                              keyboardType: TextInputType.number,
-                            ),
-                          ),
-                          Expanded(
-                            child: Icon(
-                              Icons.arrow_right,
-                              color: Theme.of(context).primaryColor,
-                              size: 55,
-                            ),
-                          ),
-                          Container(
-                            width: 100,
-                            height: 100,
-                            decoration: BoxDecoration(
-                              shape: BoxShape.circle,
-                              border: Border.all(
-                                color: Theme.of(context).primaryColor,
-                                width: 8,
-                              ),
-                            ),
-                            child: Center(
-                              child: Text(
-                                'мин: ${thickinsulController.text}',
-                                textAlign: TextAlign.center,
-                                style: TextStyle(
-                                    fontSize: 20,
-                                    color: Theme.of(context).primaryColor,
-                                    fontWeight: FontWeight.w600),
-                              ),
-                            ),
-                          ),
-                          Expanded(
-                            child: Icon(
-                              Icons.arrow_left,
-                              color: Theme.of(context).primaryColor,
-                              size: 55,
-                            ),
-                          ),
-                          Expanded(
-                            child: TextFormField(
-                              onChanged: (String value) {
-                                setState(() {});
-                                focusNode128.requestFocus();
-                                minithickinsul();
-                              },
-                              focusNode: focusNode128,
-                              maxLength: 4,
-                              onSaved: (value) {
-                                object.thickinsul11 = value;
-                              },
-                              controller: thickinsulController11,
-                              style: textStyle,
-                              decoration: InputDecoration(
-                                focusColor: Theme.of(context).primaryColor,
-                                labelStyle: TextStyle(
-                                  fontSize: 22,
-                                  fontWeight: FontWeight.w300,
-                                  color: Theme.of(context).primaryColor,
-                                ),
-                                hintStyle: TextStyle(
-                                  fontSize: 22,
-                                  fontWeight: FontWeight.w300,
-                                  color: Theme.of(context).primaryColor,
-                                ),
-                                labelText: '3ч',
-                                hintText: '3ч',
-                                helperText: 'мм',
-                                enabledBorder: OutlineInputBorder(
-                                  borderRadius:
-                                      BorderRadius.all(Radius.circular(10)),
-                                  borderSide:
-                                      BorderSide(color: Colors.grey, width: 2),
-                                ),
-                                focusedBorder: OutlineInputBorder(
-                                  borderRadius:
-                                      BorderRadius.all(Radius.circular(20)),
-                                  borderSide: BorderSide(
-                                      color: Theme.of(context).primaryColor,
-                                      width: 2),
-                                ),
-                              ),
-                              keyboardType: TextInputType.number,
-                            ),
-                          ),
-                        ],
-                      ),
-                      Column(
-                        children: [
-                          Center(
-                            child: Icon(
-                              Icons.arrow_drop_up,
-                              color: Theme.of(context).primaryColor,
-                              size: 55,
-                            ),
-                          ),
-                          Center(
-                            child: TextFormField(
-                              onChanged: (String value) {
-                                setState(() {});
-                                focusNode129.requestFocus();
-                                minithickinsul();
-                              },
-                              focusNode: focusNode129,
-                              maxLength: 4,
-                              onSaved: (value) {
-                                object.thickinsul12 = value;
-                              },
-                              controller: thickinsulController12,
-                              style: textStyle,
-                              decoration: InputDecoration(
-                                focusColor: Theme.of(context).primaryColor,
-                                labelStyle: TextStyle(
-                                  fontSize: 22,
-                                  fontWeight: FontWeight.w300,
-                                  color: Theme.of(context).primaryColor,
-                                ),
-                                hintStyle: TextStyle(
-                                  fontSize: 16,
-                                  fontWeight: FontWeight.w300,
-                                  color: Theme.of(context).primaryColor,
-                                ),
-                                labelText: 'Толщина ИП 6ч',
-                                hintText: 'Введите толщину покрытия',
-                                helperText: 'мм',
-                                prefixIcon: Icon(
-                                  Icons.vertical_align_center_sharp,
-                                  color: (focusNode129.hasFocus ||
-                                          thickinsulController12
-                                              .text.isNotEmpty)
-                                      ? Theme.of(context).primaryColor
-                                      : Colors.grey,
-                                  size: 32,
-                                ),
-                                enabledBorder: OutlineInputBorder(
-                                  borderRadius:
-                                      BorderRadius.all(Radius.circular(10)),
-                                  borderSide:
-                                      BorderSide(color: Colors.grey, width: 2),
-                                ),
-                                focusedBorder: OutlineInputBorder(
-                                  borderRadius:
-                                      BorderRadius.all(Radius.circular(20)),
-                                  borderSide: BorderSide(
-                                      color: Theme.of(context).primaryColor,
-                                      width: 2),
-                                ),
-                              ),
-                              keyboardType: TextInputType.number,
-                            ),
-                          ),
-                        ],
-                      ),
-                      SizedBox(height: 10),
                       Divider(thickness: 4),
                       SizedBox(height: 10),
                       Container(
@@ -5588,1478 +5907,1683 @@ class ObjectDetailIpState extends State<ObjectDetailIp> {
                       ),
                       SizedBox(height: 20),
                       Divider(thickness: 4),
-                      Container(
-                          alignment: Alignment.center,
-                          child: Text(
-                            'Данные о дефекте ИП №1',
-                            style: TextStyle(
-                                fontSize: 24,
-                                color: Theme.of(context).primaryColor,
-                                fontWeight: FontWeight.w300),
-                          )),
-                      SizedBox(height: 20),
-                      DropdownButtonFormField(
-                        isExpanded: true,
-                        focusNode: focusNode43,
-                        decoration: InputDecoration(
-                            focusColor: Theme.of(context).primaryColor,
-                            labelStyle: TextStyle(
-                              fontSize: 22,
-                              fontWeight: FontWeight.w300,
-                              color: Theme.of(context).primaryColor,
-                            ),
-                            hintStyle: TextStyle(
-                              fontSize: 16,
-                              fontWeight: FontWeight.w300,
-                              color: Theme.of(context).primaryColor,
-                            ),
-                            border: OutlineInputBorder(),
-                            enabledBorder: OutlineInputBorder(
-                              borderRadius:
-                                  BorderRadius.all(Radius.circular(10)),
-                              borderSide:
-                                  BorderSide(color: Colors.grey, width: 2),
-                            ),
-                            focusedBorder: OutlineInputBorder(
-                              borderRadius:
-                                  BorderRadius.all(Radius.circular(20)),
-                              borderSide: BorderSide(
-                                  color: Theme.of(context).primaryColor,
-                                  width: 2),
-                            ),
-                            prefixIcon: Icon(
-                              Icons.filter_tilt_shift_sharp,
-                              color: focusNode43.hasFocus ||
-                                      charinsuldamageController1.text.isNotEmpty
-                                  ? Theme.of(context).primaryColor
-                                  : Colors.grey,
-                              size: 32,
-                            ),
-                            labelText: 'Характер повреждения',
-                            suffixIcon: GestureDetector(
-                                onTap: () {
-                                  Navigator.push(
-                                    context,
-                                    MaterialPageRoute(
-                                        builder: (context) => CameraPageIp()),
-                                  ).then((value) {
-                                    setState(() async {
-                                      if (value != null) {
-                                        _imageDefInsul1 = value;
-
-                                        print(
-                                            'сделали: ${object.photoinsuldef1.toString()}');
-
-                                        if (_3formKey.currentState.validate()) {
-                                          _3formKey.currentState.save();
-                                          if (_imageDefInsul1 != null) {
-                                            final Directory extDir =
-                                                await getApplicationDocumentsDirectory();
-                                            final String dirPath =
-                                                '${extDir.path}/Pictures/flutter_test';
-                                            await Directory(dirPath)
-                                                .create(recursive: true);
-                                            final String filePath =
-                                                '$dirPath/${DateTime.now().millisecondsSinceEpoch.toString()}.jpg';
-                                            await _imageDefInsul1
-                                                .copy(filePath);
-                                            object.photoinsuldef1 = filePath;
-                                          }
-                                        }
-                                      }
-                                    });
-                                  });
-                                },
-                                child: Icon(Icons.camera_alt_sharp,
-                                    color: Color.fromRGBO(97, 153, 59, 1.0)))),
-                        items: _charinsuldamage1.map((String value) {
-                          return DropdownMenuItem(
-                            value: value,
-                            child: Text(value),
-                          );
-                        }).toList(),
-                        style: textStyle,
-                        value: object.charinsuldamage1,
-                        onChanged: (String value) {
-                          setState(() {});
-                          focusNode43.requestFocus();
-                          object.charinsuldamage1 = value;
-                        },
-                      ),
-                      SizedBox(height: 10),
-                      Container(
-                        height: 100,
-                        child: Column(
+                      SingleChildScrollView(
+                        scrollDirection: Axis.horizontal,
+                        child: Row(
                           children: [
-                            Expanded(
-                              child: GestureDetector(
-                                onTap: () {
-                                  Navigator.push(
-                                    context,
-                                    MaterialPageRoute(
-                                        builder: (context) => ImageScreen(
-                                            imagePath: object.photoinsuldef1)),
-                                  );
-                                },
-                                child: Center(
-                                  child: object.photoinsuldef1 != null
-                                      ? Image.file(
-                                          File(object.photoinsuldef1),
-                                          fit: BoxFit.cover,
-                                          alignment: Alignment.center,
-                                          width: 100,
-                                          height: 100,
-                                        )
-                                      : Text('Изображение отсутствует'),
-                                ),
+                            Container(
+                              width: MediaQuery.of(context).size.width,
+                              child: Column(
+                                children: [
+                                  Container(
+                                      alignment: Alignment.center,
+                                      child: Text(
+                                        'Данные о дефекте ИП №1',
+                                        style: TextStyle(
+                                            fontSize: 24,
+                                            color:
+                                                Theme.of(context).primaryColor,
+                                            fontWeight: FontWeight.w300),
+                                      )),
+                                  SizedBox(height: 20),
+                                  DropdownButtonFormField(
+                                    isExpanded: true,
+                                    focusNode: focusNode43,
+                                    decoration: InputDecoration(
+                                        focusColor:
+                                            Theme.of(context).primaryColor,
+                                        labelStyle: TextStyle(
+                                          fontSize: 22,
+                                          fontWeight: FontWeight.w300,
+                                          color: Theme.of(context).primaryColor,
+                                        ),
+                                        hintStyle: TextStyle(
+                                          fontSize: 16,
+                                          fontWeight: FontWeight.w300,
+                                          color: Theme.of(context).primaryColor,
+                                        ),
+                                        border: OutlineInputBorder(),
+                                        enabledBorder: OutlineInputBorder(
+                                          borderRadius: BorderRadius.all(
+                                              Radius.circular(10)),
+                                          borderSide: BorderSide(
+                                              color: Colors.grey, width: 2),
+                                        ),
+                                        focusedBorder: OutlineInputBorder(
+                                          borderRadius: BorderRadius.all(
+                                              Radius.circular(20)),
+                                          borderSide: BorderSide(
+                                              color: Theme.of(context)
+                                                  .primaryColor,
+                                              width: 2),
+                                        ),
+                                        prefixIcon: Icon(
+                                          Icons.filter_tilt_shift_sharp,
+                                          color: focusNode43.hasFocus ||
+                                                  charinsuldamageController1
+                                                      .text.isNotEmpty
+                                              ? Theme.of(context).primaryColor
+                                              : Colors.grey,
+                                          size: 32,
+                                        ),
+                                        labelText: 'Характер повреждения',
+                                        suffixIcon: GestureDetector(
+                                            onTap: () {
+                                              Navigator.push(
+                                                context,
+                                                MaterialPageRoute(
+                                                    builder: (context) =>
+                                                        CameraPageIp()),
+                                              ).then((value) {
+                                                setState(() async {
+                                                  if (value != null) {
+                                                    _imageDefInsul1 = value;
+
+                                                    print(
+                                                        'сделали: ${object.photoinsuldef1.toString()}');
+
+                                                    if (_3formKey.currentState
+                                                        .validate()) {
+                                                      _3formKey.currentState
+                                                          .save();
+                                                      if (_imageDefInsul1 !=
+                                                          null) {
+                                                        final Directory extDir =
+                                                            await getApplicationDocumentsDirectory();
+                                                        final String dirPath =
+                                                            '${extDir.path}/Pictures/flutter_test';
+                                                        await Directory(dirPath)
+                                                            .create(
+                                                                recursive:
+                                                                    true);
+                                                        final String filePath =
+                                                            '$dirPath/${DateTime.now().millisecondsSinceEpoch.toString()}.jpg';
+                                                        await _imageDefInsul1
+                                                            .copy(filePath);
+                                                        object.photoinsuldef1 =
+                                                            filePath;
+                                                      }
+                                                    }
+                                                  }
+                                                });
+                                              });
+                                            },
+                                            child: Icon(Icons.camera_alt_sharp,
+                                                color: Color.fromRGBO(
+                                                    97, 153, 59, 1.0)))),
+                                    items:
+                                        _charinsuldamage1.map((String value) {
+                                      return DropdownMenuItem(
+                                        value: value,
+                                        child: Text(value),
+                                      );
+                                    }).toList(),
+                                    style: textStyle,
+                                    value: object.charinsuldamage1,
+                                    onChanged: (String value) {
+                                      setState(() {});
+                                      focusNode43.requestFocus();
+                                      object.charinsuldamage1 = value;
+                                    },
+                                  ),
+                                  SizedBox(height: 10),
+                                  Container(
+                                    height: 100,
+                                    child: Column(
+                                      children: [
+                                        Expanded(
+                                          child: GestureDetector(
+                                            onTap: () {
+                                              Navigator.push(
+                                                context,
+                                                MaterialPageRoute(
+                                                    builder: (context) =>
+                                                        ImageScreen(
+                                                            imagePath: object
+                                                                .photoinsuldef1)),
+                                              );
+                                            },
+                                            child: Center(
+                                              child: object.photoinsuldef1 !=
+                                                      null
+                                                  ? Image.file(
+                                                      File(object
+                                                          .photoinsuldef1),
+                                                      fit: BoxFit.cover,
+                                                      alignment:
+                                                          Alignment.center,
+                                                      width: 100,
+                                                      height: 100,
+                                                    )
+                                                  : Text(
+                                                      'Изображение отсутствует'),
+                                            ),
+                                          ),
+                                        ),
+                                      ],
+                                    ),
+                                  ),
+                                  SizedBox(height: 20),
+                                  Container(
+                                      alignment: Alignment.center,
+                                      child: Row(
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.center,
+                                        children: [
+                                          Text(
+                                            'Расположение дефекта №1',
+                                            style: TextStyle(
+                                                fontSize: 24,
+                                                color: Theme.of(context)
+                                                    .primaryColor,
+                                                fontWeight: FontWeight.w300),
+                                          ),
+                                          GestureDetector(
+                                            onTap: () {
+                                              lochourinsuldamageController1
+                                                  .clear();
+                                              locrasstinsuldamageController1
+                                                  .clear();
+                                              sizelengthinsuldamageController1
+                                                  .clear();
+                                              sizewidthinsuldamageController1
+                                                  .clear();
+                                              sizedepthinsuldamageController1
+                                                  .clear();
+                                            },
+                                            child: Icon(
+                                              Icons.delete_outline,
+                                              color: Color.fromRGBO(
+                                                  187, 30, 16, 1.0),
+                                            ),
+                                          ),
+                                        ],
+                                      )),
+                                  SizedBox(height: 20),
+                                  Row(
+                                    children: [
+                                      Expanded(
+                                        child: TextFormField(
+                                          onChanged: (String value) {
+                                            setState(() {});
+                                            focusNode34.requestFocus();
+                                          },
+                                          focusNode: focusNode34,
+                                          maxLength: 2,
+                                          onSaved: (value) {
+                                            object.lochourinsuldamage1 = value;
+                                          },
+                                          controller:
+                                              lochourinsuldamageController1,
+                                          style: textStyle,
+                                          decoration: InputDecoration(
+                                            focusColor:
+                                                Theme.of(context).primaryColor,
+                                            labelStyle: TextStyle(
+                                              fontSize: 22,
+                                              fontWeight: FontWeight.w300,
+                                              color: Theme.of(context)
+                                                  .primaryColor,
+                                            ),
+                                            hintStyle: TextStyle(
+                                              fontSize: 16,
+                                              fontWeight: FontWeight.w300,
+                                              color: Theme.of(context)
+                                                  .primaryColor,
+                                            ),
+                                            labelText: 'Час',
+                                            hintText: '1-12',
+                                            helperText: 'ЧАС',
+                                            prefixIcon: Icon(
+                                              Icons.location_searching_sharp,
+                                              color: focusNode34.hasFocus ||
+                                                      lochourinsuldamageController1
+                                                          .text.isNotEmpty
+                                                  ? Theme.of(context)
+                                                      .primaryColor
+                                                  : Colors.grey,
+                                              size: 32,
+                                            ),
+                                            // suffixIcon: GestureDetector(
+                                            //   onTap: () {
+                                            //     lochourinsuldamageController1.clear();
+
+                                            //   },
+                                            //   child: Icon(
+                                            //     Icons.delete_outline,
+                                            //     color: Color.fromRGBO(187, 30, 16, 1.0),
+                                            //   ),
+                                            // ),
+                                            enabledBorder: OutlineInputBorder(
+                                              borderRadius: BorderRadius.all(
+                                                  Radius.circular(10)),
+                                              borderSide: BorderSide(
+                                                  color: Colors.grey, width: 2),
+                                            ),
+                                            focusedBorder: OutlineInputBorder(
+                                              borderRadius: BorderRadius.all(
+                                                  Radius.circular(20)),
+                                              borderSide: BorderSide(
+                                                  color: Theme.of(context)
+                                                      .primaryColor,
+                                                  width: 2),
+                                            ),
+                                          ),
+                                          keyboardType: TextInputType.number,
+                                        ),
+                                      ),
+                                      SizedBox(width: 5),
+                                      Expanded(
+                                        child: TextFormField(
+                                          onChanged: (String value) {
+                                            setState(() {});
+                                            focusNode60.requestFocus();
+                                          },
+                                          focusNode: focusNode60,
+                                          maxLength: 5,
+                                          onSaved: (value) {
+                                            object.locrasstinsuldamage1 = value;
+                                          },
+                                          controller:
+                                              locrasstinsuldamageController1,
+                                          style: textStyle,
+                                          decoration: InputDecoration(
+                                            focusColor:
+                                                Theme.of(context).primaryColor,
+                                            labelStyle: TextStyle(
+                                              fontSize: 22,
+                                              fontWeight: FontWeight.w300,
+                                              color: Theme.of(context)
+                                                  .primaryColor,
+                                            ),
+                                            hintStyle: TextStyle(
+                                              fontSize: 16,
+                                              fontWeight: FontWeight.w300,
+                                              color: Theme.of(context)
+                                                  .primaryColor,
+                                            ),
+                                            labelText: 'от Шва',
+                                            hintText: 'по ХГ',
+                                            helperText: 'мм',
+                                            prefixIcon: Icon(
+                                              Icons.location_searching_sharp,
+                                              color: focusNode60.hasFocus ||
+                                                      locrasstinsuldamageController1
+                                                          .text.isNotEmpty
+                                                  ? Theme.of(context)
+                                                      .primaryColor
+                                                  : Colors.grey,
+                                              size: 32,
+                                            ),
+                                            // suffixIcon: GestureDetector(
+                                            //   onTap: () {
+                                            //     locrasstinsuldamageController1.clear();
+                                            //   },
+                                            //   child: Icon(
+                                            //     Icons.delete_outline,
+                                            //     color: Color.fromRGBO(187, 30, 16, 1.0),
+                                            //   ),
+                                            // ),
+                                            enabledBorder: OutlineInputBorder(
+                                              borderRadius: BorderRadius.all(
+                                                  Radius.circular(10)),
+                                              borderSide: BorderSide(
+                                                  color: Colors.grey, width: 2),
+                                            ),
+                                            focusedBorder: OutlineInputBorder(
+                                              borderRadius: BorderRadius.all(
+                                                  Radius.circular(20)),
+                                              borderSide: BorderSide(
+                                                  color: Theme.of(context)
+                                                      .primaryColor,
+                                                  width: 2),
+                                            ),
+                                          ),
+                                          keyboardType: TextInputType.number,
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                  SizedBox(height: 10),
+                                  Row(
+                                    children: [
+                                      Expanded(
+                                        child: TextFormField(
+                                          onChanged: (String value) {
+                                            setState(() {});
+                                            focusNode72.requestFocus();
+                                          },
+                                          focusNode: focusNode72,
+                                          maxLength: 5,
+                                          onSaved: (value) {
+                                            object.sizelengthinsuldamage1 =
+                                                value;
+                                          },
+                                          controller:
+                                              sizelengthinsuldamageController1,
+                                          style: textStyle,
+                                          decoration: InputDecoration(
+                                            focusColor:
+                                                Theme.of(context).primaryColor,
+                                            labelStyle: TextStyle(
+                                              fontSize: 18,
+                                              fontWeight: FontWeight.w300,
+                                              color: Theme.of(context)
+                                                  .primaryColor,
+                                            ),
+                                            hintStyle: TextStyle(
+                                              fontSize: 20,
+                                              fontWeight: FontWeight.w300,
+                                              color: Theme.of(context)
+                                                  .primaryColor,
+                                            ),
+                                            labelText: 'Длина',
+                                            hintText: 'L',
+                                            helperText: 'мм',
+                                            prefixIcon: Icon(
+                                              Icons.location_searching_sharp,
+                                              color: focusNode72.hasFocus ||
+                                                      sizelengthinsuldamageController1
+                                                          .text.isNotEmpty
+                                                  ? Theme.of(context)
+                                                      .primaryColor
+                                                  : Colors.grey,
+                                              size: 32,
+                                            ),
+                                            // suffixIcon: GestureDetector(
+                                            //   onTap: () {
+                                            //     sizelengthinsuldamageController1.clear();
+                                            //   },
+                                            //   child: Icon(
+                                            //     Icons.delete_outline,
+                                            //     color: Color.fromRGBO(187, 30, 16, 1.0),
+                                            //   ),
+                                            // ),
+                                            enabledBorder: OutlineInputBorder(
+                                              borderRadius: BorderRadius.all(
+                                                  Radius.circular(10)),
+                                              borderSide: BorderSide(
+                                                  color: Colors.grey, width: 2),
+                                            ),
+                                            focusedBorder: OutlineInputBorder(
+                                              borderRadius: BorderRadius.all(
+                                                  Radius.circular(20)),
+                                              borderSide: BorderSide(
+                                                  color: Theme.of(context)
+                                                      .primaryColor,
+                                                  width: 2),
+                                            ),
+                                          ),
+                                          keyboardType: TextInputType.number,
+                                        ),
+                                      ),
+                                      SizedBox(width: 5),
+                                      Expanded(
+                                        child: TextFormField(
+                                          onChanged: (String value) {
+                                            setState(() {});
+                                            focusNode63.requestFocus();
+                                          },
+                                          focusNode: focusNode63,
+                                          maxLength: 5,
+                                          onSaved: (value) {
+                                            object.sizewidthinsuldamage1 =
+                                                value;
+                                          },
+                                          controller:
+                                              sizewidthinsuldamageController1,
+                                          style: textStyle,
+                                          decoration: InputDecoration(
+                                            focusColor:
+                                                Theme.of(context).primaryColor,
+                                            labelStyle: TextStyle(
+                                              fontSize: 18,
+                                              fontWeight: FontWeight.w300,
+                                              color: Theme.of(context)
+                                                  .primaryColor,
+                                            ),
+                                            hintStyle: TextStyle(
+                                              fontSize: 20,
+                                              fontWeight: FontWeight.w300,
+                                              color: Theme.of(context)
+                                                  .primaryColor,
+                                            ),
+                                            labelText: 'Ширина',
+                                            hintText: 'W',
+                                            helperText: 'мм',
+                                            prefixIcon: Icon(
+                                              Icons.location_searching_sharp,
+                                              color: focusNode63.hasFocus ||
+                                                      sizewidthinsuldamageController1
+                                                          .text.isNotEmpty
+                                                  ? Theme.of(context)
+                                                      .primaryColor
+                                                  : Colors.grey,
+                                              size: 32,
+                                            ),
+                                            // suffixIcon: GestureDetector(
+                                            //   onTap: () {
+                                            //     sizewidthinsuldamageController1.clear();
+                                            //   },
+                                            //   child: Icon(
+                                            //     Icons.delete_outline,
+                                            //     color: Color.fromRGBO(187, 30, 16, 1.0),
+                                            //   ),
+                                            // ),
+                                            enabledBorder: OutlineInputBorder(
+                                              borderRadius: BorderRadius.all(
+                                                  Radius.circular(10)),
+                                              borderSide: BorderSide(
+                                                  color: Colors.grey, width: 2),
+                                            ),
+                                            focusedBorder: OutlineInputBorder(
+                                              borderRadius: BorderRadius.all(
+                                                  Radius.circular(20)),
+                                              borderSide: BorderSide(
+                                                  color: Theme.of(context)
+                                                      .primaryColor,
+                                                  width: 2),
+                                            ),
+                                          ),
+                                          keyboardType: TextInputType.number,
+                                        ),
+                                      ),
+                                      SizedBox(width: 5),
+                                      Expanded(
+                                        child: TextFormField(
+                                          onChanged: (String value) {
+                                            setState(() {});
+                                            focusNode66.requestFocus();
+                                          },
+                                          focusNode: focusNode66,
+                                          maxLength: 3,
+                                          onSaved: (value) {
+                                            object.sizedepthinsuldamage1 =
+                                                value;
+                                          },
+                                          controller:
+                                              sizedepthinsuldamageController1,
+                                          style: textStyle,
+                                          decoration: InputDecoration(
+                                            focusColor:
+                                                Theme.of(context).primaryColor,
+                                            labelStyle: TextStyle(
+                                              fontSize: 18,
+                                              fontWeight: FontWeight.w300,
+                                              color: Theme.of(context)
+                                                  .primaryColor,
+                                            ),
+                                            hintStyle: TextStyle(
+                                              fontSize: 20,
+                                              fontWeight: FontWeight.w300,
+                                              color: Theme.of(context)
+                                                  .primaryColor,
+                                            ),
+                                            labelText: 'Глубина',
+                                            hintText: 'H',
+                                            helperText: 'мм',
+                                            prefixIcon: Icon(
+                                              Icons.location_searching_sharp,
+                                              color: focusNode66.hasFocus ||
+                                                      sizedepthinsuldamageController1
+                                                          .text.isNotEmpty
+                                                  ? Theme.of(context)
+                                                      .primaryColor
+                                                  : Colors.grey,
+                                              size: 32,
+                                            ),
+                                            // suffixIcon: GestureDetector(
+                                            //   onTap: () {
+                                            //     sizedepthinsuldamageController1.clear();
+                                            //   },
+                                            //   child: Padding(
+                                            //     padding: EdgeInsets.all(2),
+                                            //     child: Icon(
+                                            //       Icons.delete_outline,
+                                            //       color: Color.fromRGBO(187, 30, 16, 1.0),
+                                            //     ),
+                                            //   ),
+                                            // ),
+                                            enabledBorder: OutlineInputBorder(
+                                              borderRadius: BorderRadius.all(
+                                                  Radius.circular(10)),
+                                              borderSide: BorderSide(
+                                                  color: Colors.grey, width: 2),
+                                            ),
+                                            focusedBorder: OutlineInputBorder(
+                                              borderRadius: BorderRadius.all(
+                                                  Radius.circular(20)),
+                                              borderSide: BorderSide(
+                                                  color: Theme.of(context)
+                                                      .primaryColor,
+                                                  width: 2),
+                                            ),
+                                          ),
+                                          keyboardType: TextInputType.number,
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                ],
+                              ),
+                            ),
+                            VerticalDivider(thickness: 4),
+                            Container(
+                              width: MediaQuery.of(context).size.width,
+                              child: Column(
+                                children: [
+                                  Container(
+                                      alignment: Alignment.center,
+                                      child: Text(
+                                        'Данные о дефекте ИП №2',
+                                        style: TextStyle(
+                                            fontSize: 24,
+                                            color:
+                                                Theme.of(context).primaryColor,
+                                            fontWeight: FontWeight.w300),
+                                      )),
+                                  SizedBox(height: 20),
+                                  DropdownButtonFormField(
+                                    isExpanded: true,
+                                    focusNode: focusNode20,
+                                    decoration: InputDecoration(
+                                        focusColor:
+                                            Theme.of(context).primaryColor,
+                                        labelStyle: TextStyle(
+                                          fontSize: 22,
+                                          fontWeight: FontWeight.w300,
+                                          color: Theme.of(context).primaryColor,
+                                        ),
+                                        hintStyle: TextStyle(
+                                          fontSize: 16,
+                                          fontWeight: FontWeight.w300,
+                                          color: Theme.of(context).primaryColor,
+                                        ),
+                                        border: OutlineInputBorder(),
+                                        enabledBorder: OutlineInputBorder(
+                                          borderRadius: BorderRadius.all(
+                                              Radius.circular(10)),
+                                          borderSide: BorderSide(
+                                              color: Colors.grey, width: 2),
+                                        ),
+                                        focusedBorder: OutlineInputBorder(
+                                          borderRadius: BorderRadius.all(
+                                              Radius.circular(20)),
+                                          borderSide: BorderSide(
+                                              color: Theme.of(context)
+                                                  .primaryColor,
+                                              width: 2),
+                                        ),
+                                        prefixIcon: Icon(
+                                          Icons.filter_tilt_shift_sharp,
+                                          color: focusNode20.hasFocus ||
+                                                  charinsuldamageController2
+                                                      .text.isNotEmpty
+                                              ? Theme.of(context).primaryColor
+                                              : Colors.grey,
+                                          size: 32,
+                                        ),
+                                        labelText: 'Характер повреждения',
+                                        suffixIcon: GestureDetector(
+                                            onTap: () {
+                                              Navigator.push(
+                                                context,
+                                                MaterialPageRoute(
+                                                    builder: (context) =>
+                                                        CameraPageIp()),
+                                              ).then((value) {
+                                                setState(() async {
+                                                  if (value != null) {
+                                                    _imageDefInsul2 = value;
+
+                                                    print(
+                                                        'сделали: ${object.photoinsuldef2.toString()}');
+
+                                                    if (_3formKey.currentState
+                                                        .validate()) {
+                                                      _3formKey.currentState
+                                                          .save();
+                                                      if (_imageDefInsul2 !=
+                                                          null) {
+                                                        final Directory extDir =
+                                                            await getApplicationDocumentsDirectory();
+                                                        final String dirPath =
+                                                            '${extDir.path}/Pictures/flutter_test';
+                                                        await Directory(dirPath)
+                                                            .create(
+                                                                recursive:
+                                                                    true);
+                                                        final String filePath =
+                                                            '$dirPath/${DateTime.now().millisecondsSinceEpoch.toString()}.jpg';
+                                                        await _imageDefInsul2
+                                                            .copy(filePath);
+                                                        object.photoinsuldef2 =
+                                                            filePath;
+                                                      }
+                                                    }
+                                                  }
+                                                });
+                                              });
+                                            },
+                                            child: Icon(Icons.camera_alt_sharp,
+                                                color: Color.fromRGBO(
+                                                    97, 153, 59, 1.0)))),
+                                    items:
+                                        _charinsuldamage2.map((String value) {
+                                      return DropdownMenuItem(
+                                        value: value,
+                                        child: Text(value),
+                                      );
+                                    }).toList(),
+                                    style: textStyle,
+                                    value: object.charinsuldamage2,
+                                    onChanged: (String value) {
+                                      setState(() {});
+                                      focusNode20.requestFocus();
+                                      object.charinsuldamage2 = value;
+                                    },
+                                  ),
+                                  SizedBox(height: 10),
+                                  Container(
+                                    height: 100,
+                                    child: Column(
+                                      children: [
+                                        Expanded(
+                                          child: GestureDetector(
+                                            onTap: () {
+                                              Navigator.push(
+                                                context,
+                                                MaterialPageRoute(
+                                                    builder: (context) =>
+                                                        ImageScreen(
+                                                            imagePath: object
+                                                                .photoinsuldef2)),
+                                              );
+                                            },
+                                            child: Center(
+                                              child: object.photoinsuldef2 !=
+                                                      null
+                                                  ? Image.file(
+                                                      File(object
+                                                          .photoinsuldef2),
+                                                      fit: BoxFit.cover,
+                                                      alignment:
+                                                          Alignment.center,
+                                                      width: 100,
+                                                      height: 100,
+                                                    )
+                                                  : Text(
+                                                      'Изображение отсутствует'),
+                                            ),
+                                          ),
+                                        ),
+                                      ],
+                                    ),
+                                  ),
+                                  SizedBox(height: 10),
+                                  Container(
+                                      alignment: Alignment.center,
+                                      child: Row(
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.center,
+                                        children: [
+                                          Text(
+                                            'Расположение дефекта №2',
+                                            style: TextStyle(
+                                                fontSize: 24,
+                                                color: Theme.of(context)
+                                                    .primaryColor,
+                                                fontWeight: FontWeight.w300),
+                                          ),
+                                          GestureDetector(
+                                            onTap: () {
+                                              lochourinsuldamageController2
+                                                  .clear();
+                                              locrasstinsuldamageController2
+                                                  .clear();
+                                              sizelengthinsuldamageController2
+                                                  .clear();
+                                              sizewidthinsuldamageController2
+                                                  .clear();
+                                              sizedepthinsuldamageController2
+                                                  .clear();
+                                            },
+                                            child: Icon(
+                                              Icons.delete_outline,
+                                              color: Color.fromRGBO(
+                                                  187, 30, 16, 1.0),
+                                            ),
+                                          ),
+                                        ],
+                                      )),
+                                  SizedBox(height: 20),
+                                  Row(
+                                    children: [
+                                      Expanded(
+                                        child: TextFormField(
+                                          onChanged: (String value) {
+                                            setState(() {});
+                                            focusNode42.requestFocus();
+                                          },
+                                          focusNode: focusNode42,
+                                          maxLength: 2,
+                                          onSaved: (value) {
+                                            object.lochourinsuldamage2 = value;
+                                          },
+                                          controller:
+                                              lochourinsuldamageController2,
+                                          style: textStyle,
+                                          decoration: InputDecoration(
+                                            focusColor:
+                                                Theme.of(context).primaryColor,
+                                            labelStyle: TextStyle(
+                                              fontSize: 22,
+                                              fontWeight: FontWeight.w300,
+                                              color: Theme.of(context)
+                                                  .primaryColor,
+                                            ),
+                                            hintStyle: TextStyle(
+                                              fontSize: 16,
+                                              fontWeight: FontWeight.w300,
+                                              color: Theme.of(context)
+                                                  .primaryColor,
+                                            ),
+                                            labelText: 'Час',
+                                            hintText: '1-12',
+                                            helperText: 'ЧАС',
+                                            prefixIcon: Icon(
+                                              Icons.location_searching_sharp,
+                                              color: focusNode42.hasFocus ||
+                                                      lochourinsuldamageController2
+                                                          .text.isNotEmpty
+                                                  ? Theme.of(context)
+                                                      .primaryColor
+                                                  : Colors.grey,
+                                              size: 32,
+                                            ),
+                                            // suffixIcon: GestureDetector(
+                                            //   onTap: () {
+                                            //     lochourinsuldamageController2.clear();
+
+                                            //   },
+                                            //   child: Icon(
+                                            //     Icons.delete_outline,
+                                            //     color: Color.fromRGBO(187, 30, 16, 1.0),
+                                            //   ),
+                                            // ),
+                                            enabledBorder: OutlineInputBorder(
+                                              borderRadius: BorderRadius.all(
+                                                  Radius.circular(10)),
+                                              borderSide: BorderSide(
+                                                  color: Colors.grey, width: 2),
+                                            ),
+                                            focusedBorder: OutlineInputBorder(
+                                              borderRadius: BorderRadius.all(
+                                                  Radius.circular(20)),
+                                              borderSide: BorderSide(
+                                                  color: Theme.of(context)
+                                                      .primaryColor,
+                                                  width: 2),
+                                            ),
+                                          ),
+                                          keyboardType: TextInputType.number,
+                                        ),
+                                      ),
+                                      SizedBox(width: 10),
+                                      Expanded(
+                                        child: TextFormField(
+                                          onChanged: (String value) {
+                                            setState(() {});
+                                            focusNode61.requestFocus();
+                                          },
+                                          focusNode: focusNode61,
+                                          maxLength: 5,
+                                          onSaved: (value) {
+                                            object.locrasstinsuldamage2 = value;
+                                          },
+                                          controller:
+                                              locrasstinsuldamageController2,
+                                          style: textStyle,
+                                          decoration: InputDecoration(
+                                            focusColor:
+                                                Theme.of(context).primaryColor,
+                                            labelStyle: TextStyle(
+                                              fontSize: 22,
+                                              fontWeight: FontWeight.w300,
+                                              color: Theme.of(context)
+                                                  .primaryColor,
+                                            ),
+                                            hintStyle: TextStyle(
+                                              fontSize: 16,
+                                              fontWeight: FontWeight.w300,
+                                              color: Theme.of(context)
+                                                  .primaryColor,
+                                            ),
+                                            labelText: 'от Шва',
+                                            hintText: 'по ХГ',
+                                            helperText: 'мм',
+                                            prefixIcon: Icon(
+                                              Icons.location_searching_sharp,
+                                              color: focusNode61.hasFocus ||
+                                                      locrasstinsuldamageController2
+                                                          .text.isNotEmpty
+                                                  ? Theme.of(context)
+                                                      .primaryColor
+                                                  : Colors.grey,
+                                              size: 32,
+                                            ),
+                                            // suffixIcon: GestureDetector(
+                                            //   onTap: () {
+                                            //     locrasstinsuldamageController2.clear();
+                                            //   },
+                                            //   child: Icon(
+                                            //     Icons.delete_outline,
+                                            //     color: Color.fromRGBO(187, 30, 16, 1.0),
+                                            //   ),
+                                            // ),
+                                            enabledBorder: OutlineInputBorder(
+                                              borderRadius: BorderRadius.all(
+                                                  Radius.circular(10)),
+                                              borderSide: BorderSide(
+                                                  color: Colors.grey, width: 2),
+                                            ),
+                                            focusedBorder: OutlineInputBorder(
+                                              borderRadius: BorderRadius.all(
+                                                  Radius.circular(20)),
+                                              borderSide: BorderSide(
+                                                  color: Theme.of(context)
+                                                      .primaryColor,
+                                                  width: 2),
+                                            ),
+                                          ),
+                                          keyboardType: TextInputType.number,
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                  SizedBox(height: 10),
+                                  Row(
+                                    children: [
+                                      Expanded(
+                                        child: TextFormField(
+                                          onChanged: (String value) {
+                                            setState(() {});
+                                            focusNode73.requestFocus();
+                                          },
+                                          focusNode: focusNode73,
+                                          maxLength: 5,
+                                          onSaved: (value) {
+                                            object.sizelengthinsuldamage2 =
+                                                value;
+                                          },
+                                          controller:
+                                              sizelengthinsuldamageController2,
+                                          style: textStyle,
+                                          decoration: InputDecoration(
+                                            focusColor:
+                                                Theme.of(context).primaryColor,
+                                            labelStyle: TextStyle(
+                                              fontSize: 18,
+                                              fontWeight: FontWeight.w300,
+                                              color: Theme.of(context)
+                                                  .primaryColor,
+                                            ),
+                                            hintStyle: TextStyle(
+                                              fontSize: 20,
+                                              fontWeight: FontWeight.w300,
+                                              color: Theme.of(context)
+                                                  .primaryColor,
+                                            ),
+                                            labelText: 'Длина',
+                                            hintText: 'L',
+                                            helperText: 'мм',
+                                            prefixIcon: Icon(
+                                              Icons.location_searching_sharp,
+                                              color: focusNode73.hasFocus ||
+                                                      sizelengthinsuldamageController2
+                                                          .text.isNotEmpty
+                                                  ? Theme.of(context)
+                                                      .primaryColor
+                                                  : Colors.grey,
+                                              size: 32,
+                                            ),
+                                            // suffixIcon: GestureDetector(
+                                            //   onTap: () {
+                                            //     sizelengthinsuldamageController2.clear();
+                                            //   },
+                                            //   child: Icon(
+                                            //     Icons.delete_outline,
+                                            //     color: Color.fromRGBO(187, 30, 16, 1.0),
+                                            //   ),
+                                            // ),
+                                            enabledBorder: OutlineInputBorder(
+                                              borderRadius: BorderRadius.all(
+                                                  Radius.circular(10)),
+                                              borderSide: BorderSide(
+                                                  color: Colors.grey, width: 2),
+                                            ),
+                                            focusedBorder: OutlineInputBorder(
+                                              borderRadius: BorderRadius.all(
+                                                  Radius.circular(20)),
+                                              borderSide: BorderSide(
+                                                  color: Theme.of(context)
+                                                      .primaryColor,
+                                                  width: 2),
+                                            ),
+                                          ),
+                                          keyboardType: TextInputType.number,
+                                        ),
+                                      ),
+                                      SizedBox(width: 5),
+                                      Expanded(
+                                        child: TextFormField(
+                                          onChanged: (String value) {
+                                            setState(() {});
+                                            focusNode64.requestFocus();
+                                          },
+                                          focusNode: focusNode64,
+                                          maxLength: 5,
+                                          onSaved: (value) {
+                                            object.sizewidthinsuldamage2 =
+                                                value;
+                                          },
+                                          controller:
+                                              sizewidthinsuldamageController2,
+                                          style: textStyle,
+                                          decoration: InputDecoration(
+                                            focusColor:
+                                                Theme.of(context).primaryColor,
+                                            labelStyle: TextStyle(
+                                              fontSize: 18,
+                                              fontWeight: FontWeight.w300,
+                                              color: Theme.of(context)
+                                                  .primaryColor,
+                                            ),
+                                            hintStyle: TextStyle(
+                                              fontSize: 20,
+                                              fontWeight: FontWeight.w300,
+                                              color: Theme.of(context)
+                                                  .primaryColor,
+                                            ),
+                                            labelText: 'Ширина',
+                                            hintText: 'W',
+                                            helperText: 'мм',
+                                            prefixIcon: Icon(
+                                              Icons.location_searching_sharp,
+                                              color: focusNode64.hasFocus ||
+                                                      sizewidthinsuldamageController2
+                                                          .text.isNotEmpty
+                                                  ? Theme.of(context)
+                                                      .primaryColor
+                                                  : Colors.grey,
+                                              size: 32,
+                                            ),
+                                            // suffixIcon: GestureDetector(
+                                            //   onTap: () {
+                                            //     sizewidthinsuldamageController2.clear();
+                                            //   },
+                                            //   child: Icon(
+                                            //     Icons.delete_outline,
+                                            //     color: Color.fromRGBO(187, 30, 16, 1.0),
+                                            //   ),
+                                            // ),
+                                            enabledBorder: OutlineInputBorder(
+                                              borderRadius: BorderRadius.all(
+                                                  Radius.circular(10)),
+                                              borderSide: BorderSide(
+                                                  color: Colors.grey, width: 2),
+                                            ),
+                                            focusedBorder: OutlineInputBorder(
+                                              borderRadius: BorderRadius.all(
+                                                  Radius.circular(20)),
+                                              borderSide: BorderSide(
+                                                  color: Theme.of(context)
+                                                      .primaryColor,
+                                                  width: 2),
+                                            ),
+                                          ),
+                                          keyboardType: TextInputType.number,
+                                        ),
+                                      ),
+                                      SizedBox(width: 5),
+                                      Expanded(
+                                        child: TextFormField(
+                                          onChanged: (String value) {
+                                            setState(() {});
+                                            focusNode67.requestFocus();
+                                          },
+                                          focusNode: focusNode67,
+                                          maxLength: 3,
+                                          onSaved: (value) {
+                                            object.sizedepthinsuldamage2 =
+                                                value;
+                                          },
+                                          controller:
+                                              sizedepthinsuldamageController2,
+                                          style: textStyle,
+                                          decoration: InputDecoration(
+                                            focusColor:
+                                                Theme.of(context).primaryColor,
+                                            labelStyle: TextStyle(
+                                              fontSize: 18,
+                                              fontWeight: FontWeight.w300,
+                                              color: Theme.of(context)
+                                                  .primaryColor,
+                                            ),
+                                            hintStyle: TextStyle(
+                                              fontSize: 20,
+                                              fontWeight: FontWeight.w300,
+                                              color: Theme.of(context)
+                                                  .primaryColor,
+                                            ),
+                                            labelText: 'Глубина',
+                                            hintText: 'H',
+                                            helperText: 'мм',
+                                            prefixIcon: Icon(
+                                              Icons.location_searching_sharp,
+                                              color: focusNode67.hasFocus ||
+                                                      sizedepthinsuldamageController2
+                                                          .text.isNotEmpty
+                                                  ? Theme.of(context)
+                                                      .primaryColor
+                                                  : Colors.grey,
+                                              size: 32,
+                                            ),
+                                            // suffixIcon: GestureDetector(
+                                            //   onTap: () {
+                                            //     sizedepthinsuldamageController2.clear();
+                                            //   },
+                                            //   child: Padding(
+                                            //     padding: EdgeInsets.all(2),
+                                            //     child: Icon(
+                                            //       Icons.delete_outline,
+                                            //       color: Color.fromRGBO(187, 30, 16, 1.0),
+                                            //     ),
+                                            //   ),
+                                            // ),
+                                            enabledBorder: OutlineInputBorder(
+                                              borderRadius: BorderRadius.all(
+                                                  Radius.circular(10)),
+                                              borderSide: BorderSide(
+                                                  color: Colors.grey, width: 2),
+                                            ),
+                                            focusedBorder: OutlineInputBorder(
+                                              borderRadius: BorderRadius.all(
+                                                  Radius.circular(20)),
+                                              borderSide: BorderSide(
+                                                  color: Theme.of(context)
+                                                      .primaryColor,
+                                                  width: 2),
+                                            ),
+                                          ),
+                                          keyboardType: TextInputType.number,
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                ],
+                              ),
+                            ),
+                            VerticalDivider(thickness: 4),
+                            Container(
+                              width: MediaQuery.of(context).size.width,
+                              child: Column(
+                                children: [
+                                  Container(
+                                      alignment: Alignment.center,
+                                      child: Text(
+                                        'Данные о дефекте ИП №3',
+                                        style: TextStyle(
+                                            fontSize: 24,
+                                            color:
+                                                Theme.of(context).primaryColor,
+                                            fontWeight: FontWeight.w300),
+                                      )),
+                                  SizedBox(height: 20),
+                                  DropdownButtonFormField(
+                                    isExpanded: true,
+                                    focusNode: focusNode35,
+                                    decoration: InputDecoration(
+                                        focusColor:
+                                            Theme.of(context).primaryColor,
+                                        labelStyle: TextStyle(
+                                          fontSize: 22,
+                                          fontWeight: FontWeight.w300,
+                                          color: Theme.of(context).primaryColor,
+                                        ),
+                                        hintStyle: TextStyle(
+                                          fontSize: 16,
+                                          fontWeight: FontWeight.w300,
+                                          color: Theme.of(context).primaryColor,
+                                        ),
+                                        border: OutlineInputBorder(),
+                                        enabledBorder: OutlineInputBorder(
+                                          borderRadius: BorderRadius.all(
+                                              Radius.circular(10)),
+                                          borderSide: BorderSide(
+                                              color: Colors.grey, width: 2),
+                                        ),
+                                        focusedBorder: OutlineInputBorder(
+                                          borderRadius: BorderRadius.all(
+                                              Radius.circular(20)),
+                                          borderSide: BorderSide(
+                                              color: Theme.of(context)
+                                                  .primaryColor,
+                                              width: 2),
+                                        ),
+                                        prefixIcon: Icon(
+                                          Icons.filter_tilt_shift_sharp,
+                                          color: focusNode35.hasFocus ||
+                                                  charinsuldamageController3
+                                                      .text.isNotEmpty
+                                              ? Theme.of(context).primaryColor
+                                              : Colors.grey,
+                                          size: 32,
+                                        ),
+                                        labelText: 'Характер повреждения',
+                                        suffixIcon: GestureDetector(
+                                            onTap: () {
+                                              Navigator.push(
+                                                context,
+                                                MaterialPageRoute(
+                                                    builder: (context) =>
+                                                        CameraPageIp()),
+                                              ).then((value) {
+                                                setState(() async {
+                                                  if (value != null) {
+                                                    _imageDefInsul3 = value;
+
+                                                    print(
+                                                        'сделали: ${object.photoinsuldef3.toString()}');
+
+                                                    if (_3formKey.currentState
+                                                        .validate()) {
+                                                      _3formKey.currentState
+                                                          .save();
+                                                      if (_imageDefInsul3 !=
+                                                          null) {
+                                                        final Directory extDir =
+                                                            await getApplicationDocumentsDirectory();
+                                                        final String dirPath =
+                                                            '${extDir.path}/Pictures/flutter_test';
+                                                        await Directory(dirPath)
+                                                            .create(
+                                                                recursive:
+                                                                    true);
+                                                        final String filePath =
+                                                            '$dirPath/${DateTime.now().millisecondsSinceEpoch.toString()}.jpg';
+                                                        await _imageDefInsul3
+                                                            .copy(filePath);
+                                                        object.photoinsuldef3 =
+                                                            filePath;
+                                                      }
+                                                    }
+                                                  }
+                                                });
+                                              });
+                                            },
+                                            child: Icon(Icons.camera_alt_sharp,
+                                                color: Color.fromRGBO(
+                                                    97, 153, 59, 1.0)))),
+                                    items:
+                                        _charinsuldamage3.map((String value) {
+                                      return DropdownMenuItem(
+                                        value: value,
+                                        child: Text(value),
+                                      );
+                                    }).toList(),
+                                    style: textStyle,
+                                    value: object.charinsuldamage3,
+                                    onChanged: (String value) {
+                                      setState(() {});
+                                      focusNode35.requestFocus();
+                                      object.charinsuldamage3 = value;
+                                    },
+                                  ),
+                                  SizedBox(height: 10),
+                                  Container(
+                                    height: 100,
+                                    child: Column(
+                                      children: [
+                                        Expanded(
+                                          child: GestureDetector(
+                                            onTap: () {
+                                              Navigator.push(
+                                                context,
+                                                MaterialPageRoute(
+                                                    builder: (context) =>
+                                                        ImageScreen(
+                                                            imagePath: object
+                                                                .photoinsuldef3)),
+                                              );
+                                            },
+                                            child: Center(
+                                              child: object.photoinsuldef3 !=
+                                                      null
+                                                  ? Image.file(
+                                                      File(object
+                                                          .photoinsuldef3),
+                                                      fit: BoxFit.cover,
+                                                      alignment:
+                                                          Alignment.center,
+                                                      width: 100,
+                                                      height: 100,
+                                                    )
+                                                  : Text(
+                                                      'Изображение отсутствует'),
+                                            ),
+                                          ),
+                                        ),
+                                      ],
+                                    ),
+                                  ),
+                                  SizedBox(height: 10),
+                                  Container(
+                                      alignment: Alignment.center,
+                                      child: Row(
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.center,
+                                        children: [
+                                          Text(
+                                            'Расположение дефекта №3',
+                                            style: TextStyle(
+                                                fontSize: 24,
+                                                color: Theme.of(context)
+                                                    .primaryColor,
+                                                fontWeight: FontWeight.w300),
+                                          ),
+                                          GestureDetector(
+                                            onTap: () {
+                                              lochourinsuldamageController3
+                                                  .clear();
+                                              locrasstinsuldamageController3
+                                                  .clear();
+                                              sizelengthinsuldamageController3
+                                                  .clear();
+                                              sizewidthinsuldamageController3
+                                                  .clear();
+                                              sizedepthinsuldamageController3
+                                                  .clear();
+                                            },
+                                            child: Icon(
+                                              Icons.delete_outline,
+                                              color: Color.fromRGBO(
+                                                  187, 30, 16, 1.0),
+                                            ),
+                                          ),
+                                        ],
+                                      )),
+                                  SizedBox(height: 20),
+                                  Row(
+                                    children: [
+                                      Expanded(
+                                        child: TextFormField(
+                                          onChanged: (String value) {
+                                            setState(() {});
+                                            focusNode69.requestFocus();
+                                          },
+                                          focusNode: focusNode69,
+                                          maxLength: 2,
+                                          onSaved: (value) {
+                                            object.lochourinsuldamage3 = value;
+                                          },
+                                          controller:
+                                              lochourinsuldamageController3,
+                                          style: textStyle,
+                                          decoration: InputDecoration(
+                                            focusColor:
+                                                Theme.of(context).primaryColor,
+                                            labelStyle: TextStyle(
+                                              fontSize: 22,
+                                              fontWeight: FontWeight.w300,
+                                              color: Theme.of(context)
+                                                  .primaryColor,
+                                            ),
+                                            hintStyle: TextStyle(
+                                              fontSize: 16,
+                                              fontWeight: FontWeight.w300,
+                                              color: Theme.of(context)
+                                                  .primaryColor,
+                                            ),
+                                            labelText: 'Час',
+                                            hintText: '1-12',
+                                            helperText: 'ЧАС',
+                                            prefixIcon: Icon(
+                                              Icons.location_searching_sharp,
+                                              color: focusNode69.hasFocus ||
+                                                      lochourinsuldamageController3
+                                                          .text.isNotEmpty
+                                                  ? Theme.of(context)
+                                                      .primaryColor
+                                                  : Colors.grey,
+                                              size: 32,
+                                            ),
+                                            // suffixIcon: GestureDetector(
+                                            //   onTap: () {
+                                            //     lochourinsuldamageController3.clear();
+
+                                            //   },
+                                            //   child: Icon(
+                                            //     Icons.delete_outline,
+                                            //     color: Color.fromRGBO(187, 30, 16, 1.0),
+                                            //   ),
+                                            // ),
+                                            enabledBorder: OutlineInputBorder(
+                                              borderRadius: BorderRadius.all(
+                                                  Radius.circular(10)),
+                                              borderSide: BorderSide(
+                                                  color: Colors.grey, width: 2),
+                                            ),
+                                            focusedBorder: OutlineInputBorder(
+                                              borderRadius: BorderRadius.all(
+                                                  Radius.circular(20)),
+                                              borderSide: BorderSide(
+                                                  color: Theme.of(context)
+                                                      .primaryColor,
+                                                  width: 2),
+                                            ),
+                                          ),
+                                          keyboardType: TextInputType.number,
+                                        ),
+                                      ),
+                                      SizedBox(width: 5),
+                                      Expanded(
+                                        child: TextFormField(
+                                          onChanged: (String value) {
+                                            setState(() {});
+                                            focusNode62.requestFocus();
+                                          },
+                                          focusNode: focusNode62,
+                                          maxLength: 5,
+                                          onSaved: (value) {
+                                            object.locrasstinsuldamage3 = value;
+                                          },
+                                          controller:
+                                              locrasstinsuldamageController3,
+                                          style: textStyle,
+                                          decoration: InputDecoration(
+                                            focusColor:
+                                                Theme.of(context).primaryColor,
+                                            labelStyle: TextStyle(
+                                              fontSize: 22,
+                                              fontWeight: FontWeight.w300,
+                                              color: Theme.of(context)
+                                                  .primaryColor,
+                                            ),
+                                            hintStyle: TextStyle(
+                                              fontSize: 16,
+                                              fontWeight: FontWeight.w300,
+                                              color: Theme.of(context)
+                                                  .primaryColor,
+                                            ),
+                                            labelText: 'от Шва',
+                                            hintText: 'по ХГ',
+                                            helperText: 'мм',
+                                            prefixIcon: Icon(
+                                              Icons.location_searching_sharp,
+                                              color: focusNode62.hasFocus ||
+                                                      locrasstinsuldamageController3
+                                                          .text.isNotEmpty
+                                                  ? Theme.of(context)
+                                                      .primaryColor
+                                                  : Colors.grey,
+                                              size: 32,
+                                            ),
+                                            // suffixIcon: GestureDetector(
+                                            //   onTap: () {
+                                            //     locrasstinsuldamageController3.clear();
+                                            //   },
+                                            //   child: Icon(
+                                            //     Icons.delete_outline,
+                                            //     color: Color.fromRGBO(187, 30, 16, 1.0),
+                                            //   ),
+                                            // ),
+                                            enabledBorder: OutlineInputBorder(
+                                              borderRadius: BorderRadius.all(
+                                                  Radius.circular(10)),
+                                              borderSide: BorderSide(
+                                                  color: Colors.grey, width: 2),
+                                            ),
+                                            focusedBorder: OutlineInputBorder(
+                                              borderRadius: BorderRadius.all(
+                                                  Radius.circular(20)),
+                                              borderSide: BorderSide(
+                                                  color: Theme.of(context)
+                                                      .primaryColor,
+                                                  width: 2),
+                                            ),
+                                          ),
+                                          keyboardType: TextInputType.number,
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                  SizedBox(height: 10),
+                                  Row(
+                                    children: [
+                                      Expanded(
+                                        child: TextFormField(
+                                          onChanged: (String value) {
+                                            setState(() {});
+                                            focusNode74.requestFocus();
+                                          },
+                                          focusNode: focusNode74,
+                                          maxLength: 5,
+                                          onSaved: (value) {
+                                            object.sizelengthinsuldamage3 =
+                                                value;
+                                          },
+                                          controller:
+                                              sizelengthinsuldamageController3,
+                                          style: textStyle,
+                                          decoration: InputDecoration(
+                                            focusColor:
+                                                Theme.of(context).primaryColor,
+                                            labelStyle: TextStyle(
+                                              fontSize: 18,
+                                              fontWeight: FontWeight.w300,
+                                              color: Theme.of(context)
+                                                  .primaryColor,
+                                            ),
+                                            hintStyle: TextStyle(
+                                              fontSize: 20,
+                                              fontWeight: FontWeight.w300,
+                                              color: Theme.of(context)
+                                                  .primaryColor,
+                                            ),
+                                            labelText: 'Длина',
+                                            hintText: 'L',
+                                            helperText: 'мм',
+                                            prefixIcon: Icon(
+                                              Icons.location_searching_sharp,
+                                              color: focusNode74.hasFocus ||
+                                                      sizelengthinsuldamageController3
+                                                          .text.isNotEmpty
+                                                  ? Theme.of(context)
+                                                      .primaryColor
+                                                  : Colors.grey,
+                                              size: 32,
+                                            ),
+                                            // suffixIcon: GestureDetector(
+                                            //   onTap: () {
+                                            //     sizelengthinsuldamageController3.clear();
+                                            //   },
+                                            //   child: Icon(
+                                            //     Icons.delete_outline,
+                                            //     color: Color.fromRGBO(187, 30, 16, 1.0),
+                                            //   ),
+                                            // ),
+                                            enabledBorder: OutlineInputBorder(
+                                              borderRadius: BorderRadius.all(
+                                                  Radius.circular(10)),
+                                              borderSide: BorderSide(
+                                                  color: Colors.grey, width: 2),
+                                            ),
+                                            focusedBorder: OutlineInputBorder(
+                                              borderRadius: BorderRadius.all(
+                                                  Radius.circular(20)),
+                                              borderSide: BorderSide(
+                                                  color: Theme.of(context)
+                                                      .primaryColor,
+                                                  width: 2),
+                                            ),
+                                          ),
+                                          keyboardType: TextInputType.number,
+                                        ),
+                                      ),
+                                      SizedBox(width: 5),
+                                      Expanded(
+                                        child: TextFormField(
+                                          onChanged: (String value) {
+                                            setState(() {});
+                                            focusNode65.requestFocus();
+                                          },
+                                          focusNode: focusNode65,
+                                          maxLength: 5,
+                                          onSaved: (value) {
+                                            object.sizewidthinsuldamage3 =
+                                                value;
+                                          },
+                                          controller:
+                                              sizewidthinsuldamageController3,
+                                          style: textStyle,
+                                          decoration: InputDecoration(
+                                            focusColor:
+                                                Theme.of(context).primaryColor,
+                                            labelStyle: TextStyle(
+                                              fontSize: 18,
+                                              fontWeight: FontWeight.w300,
+                                              color: Theme.of(context)
+                                                  .primaryColor,
+                                            ),
+                                            hintStyle: TextStyle(
+                                              fontSize: 20,
+                                              fontWeight: FontWeight.w300,
+                                              color: Theme.of(context)
+                                                  .primaryColor,
+                                            ),
+                                            labelText: 'Ширина',
+                                            hintText: 'W',
+                                            helperText: 'мм',
+                                            prefixIcon: Icon(
+                                              Icons.location_searching_sharp,
+                                              color: focusNode65.hasFocus ||
+                                                      sizewidthinsuldamageController3
+                                                          .text.isNotEmpty
+                                                  ? Theme.of(context)
+                                                      .primaryColor
+                                                  : Colors.grey,
+                                              size: 32,
+                                            ),
+                                            // suffixIcon: GestureDetector(
+                                            //   onTap: () {
+                                            //     sizewidthinsuldamageController3.clear();
+                                            //   },
+                                            //   child: Icon(
+                                            //     Icons.delete_outline,
+                                            //     color: Color.fromRGBO(187, 30, 16, 1.0),
+                                            //   ),
+                                            // ),
+                                            enabledBorder: OutlineInputBorder(
+                                              borderRadius: BorderRadius.all(
+                                                  Radius.circular(10)),
+                                              borderSide: BorderSide(
+                                                  color: Colors.grey, width: 2),
+                                            ),
+                                            focusedBorder: OutlineInputBorder(
+                                              borderRadius: BorderRadius.all(
+                                                  Radius.circular(20)),
+                                              borderSide: BorderSide(
+                                                  color: Theme.of(context)
+                                                      .primaryColor,
+                                                  width: 2),
+                                            ),
+                                          ),
+                                          keyboardType: TextInputType.number,
+                                        ),
+                                      ),
+                                      SizedBox(width: 5),
+                                      Expanded(
+                                        child: TextFormField(
+                                          onChanged: (String value) {
+                                            setState(() {});
+                                            focusNode68.requestFocus();
+                                          },
+                                          focusNode: focusNode68,
+                                          maxLength: 3,
+                                          onSaved: (value) {
+                                            object.sizedepthinsuldamage3 =
+                                                value;
+                                          },
+                                          controller:
+                                              sizedepthinsuldamageController3,
+                                          style: textStyle,
+                                          decoration: InputDecoration(
+                                            focusColor:
+                                                Theme.of(context).primaryColor,
+                                            labelStyle: TextStyle(
+                                              fontSize: 18,
+                                              fontWeight: FontWeight.w300,
+                                              color: Theme.of(context)
+                                                  .primaryColor,
+                                            ),
+                                            hintStyle: TextStyle(
+                                              fontSize: 20,
+                                              fontWeight: FontWeight.w300,
+                                              color: Theme.of(context)
+                                                  .primaryColor,
+                                            ),
+                                            labelText: 'Глубина',
+                                            hintText: 'H',
+                                            helperText: 'мм',
+                                            prefixIcon: Icon(
+                                              Icons.location_searching_sharp,
+                                              color: focusNode68.hasFocus ||
+                                                      sizedepthinsuldamageController3
+                                                          .text.isNotEmpty
+                                                  ? Theme.of(context)
+                                                      .primaryColor
+                                                  : Colors.grey,
+                                              size: 32,
+                                            ),
+                                            // suffixIcon: GestureDetector(
+                                            //   onTap: () {
+                                            //     sizedepthinsuldamageController3.clear();
+                                            //   },
+                                            //   child: Padding(
+                                            //     padding: EdgeInsets.all(2),
+                                            //     child: Icon(
+                                            //       Icons.delete_outline,
+                                            //       color: Color.fromRGBO(187, 30, 16, 1.0),
+                                            //     ),
+                                            //   ),
+                                            // ),
+                                            enabledBorder: OutlineInputBorder(
+                                              borderRadius: BorderRadius.all(
+                                                  Radius.circular(10)),
+                                              borderSide: BorderSide(
+                                                  color: Colors.grey, width: 2),
+                                            ),
+                                            focusedBorder: OutlineInputBorder(
+                                              borderRadius: BorderRadius.all(
+                                                  Radius.circular(20)),
+                                              borderSide: BorderSide(
+                                                  color: Theme.of(context)
+                                                      .primaryColor,
+                                                  width: 2),
+                                            ),
+                                          ),
+                                          keyboardType: TextInputType.number,
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                ],
                               ),
                             ),
                           ],
                         ),
                       ),
-                      SizedBox(height: 20),
-                      Container(
-                          alignment: Alignment.center,
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              Text(
-                                'Расположение дефекта №1',
-                                style: TextStyle(
-                                    fontSize: 24,
-                                    color: Theme.of(context).primaryColor,
-                                    fontWeight: FontWeight.w300),
-                              ),
-                              GestureDetector(
-                                onTap: () {
-                                  lochourinsuldamageController1.clear();
-                                  locrasstinsuldamageController1.clear();
-                                  sizelengthinsuldamageController1.clear();
-                                  sizewidthinsuldamageController1.clear();
-                                  sizedepthinsuldamageController1.clear();
-                                },
-                                child: Icon(
-                                  Icons.delete_outline,
-                                  color: Color.fromRGBO(187, 30, 16, 1.0),
-                                ),
-                              ),
-                            ],
-                          )),
-                      SizedBox(height: 20),
-                      Row(
-                        children: [
-                          Expanded(
-                            child: TextFormField(
-                              onChanged: (String value) {
-                                setState(() {});
-                                focusNode34.requestFocus();
-                              },
-                              focusNode: focusNode34,
-                              maxLength: 2,
-                              onSaved: (value) {
-                                object.lochourinsuldamage1 = value;
-                              },
-                              controller: lochourinsuldamageController1,
-                              style: textStyle,
-                              decoration: InputDecoration(
-                                focusColor: Theme.of(context).primaryColor,
-                                labelStyle: TextStyle(
-                                  fontSize: 22,
-                                  fontWeight: FontWeight.w300,
-                                  color: Theme.of(context).primaryColor,
-                                ),
-                                hintStyle: TextStyle(
-                                  fontSize: 16,
-                                  fontWeight: FontWeight.w300,
-                                  color: Theme.of(context).primaryColor,
-                                ),
-                                labelText: 'Час',
-                                hintText: '1-12',
-                                helperText: 'ЧАС',
-                                prefixIcon: Icon(
-                                  Icons.location_searching_sharp,
-                                  color: focusNode34.hasFocus ||
-                                          lochourinsuldamageController1
-                                              .text.isNotEmpty
-                                      ? Theme.of(context).primaryColor
-                                      : Colors.grey,
-                                  size: 32,
-                                ),
-                                // suffixIcon: GestureDetector(
-                                //   onTap: () {
-                                //     lochourinsuldamageController1.clear();
-
-                                //   },
-                                //   child: Icon(
-                                //     Icons.delete_outline,
-                                //     color: Color.fromRGBO(187, 30, 16, 1.0),
-                                //   ),
-                                // ),
-                                enabledBorder: OutlineInputBorder(
-                                  borderRadius:
-                                      BorderRadius.all(Radius.circular(10)),
-                                  borderSide:
-                                      BorderSide(color: Colors.grey, width: 2),
-                                ),
-                                focusedBorder: OutlineInputBorder(
-                                  borderRadius:
-                                      BorderRadius.all(Radius.circular(20)),
-                                  borderSide: BorderSide(
-                                      color: Theme.of(context).primaryColor,
-                                      width: 2),
-                                ),
-                              ),
-                              keyboardType: TextInputType.number,
-                            ),
-                          ),
-                          SizedBox(width: 5),
-                          Expanded(
-                            child: TextFormField(
-                              onChanged: (String value) {
-                                setState(() {});
-                                focusNode60.requestFocus();
-                              },
-                              focusNode: focusNode60,
-                              maxLength: 5,
-                              onSaved: (value) {
-                                object.locrasstinsuldamage1 = value;
-                              },
-                              controller: locrasstinsuldamageController1,
-                              style: textStyle,
-                              decoration: InputDecoration(
-                                focusColor: Theme.of(context).primaryColor,
-                                labelStyle: TextStyle(
-                                  fontSize: 22,
-                                  fontWeight: FontWeight.w300,
-                                  color: Theme.of(context).primaryColor,
-                                ),
-                                hintStyle: TextStyle(
-                                  fontSize: 16,
-                                  fontWeight: FontWeight.w300,
-                                  color: Theme.of(context).primaryColor,
-                                ),
-                                labelText: 'от Шва',
-                                hintText: 'по ХГ',
-                                helperText: 'мм',
-                                prefixIcon: Icon(
-                                  Icons.location_searching_sharp,
-                                  color: focusNode60.hasFocus ||
-                                          locrasstinsuldamageController1
-                                              .text.isNotEmpty
-                                      ? Theme.of(context).primaryColor
-                                      : Colors.grey,
-                                  size: 32,
-                                ),
-                                // suffixIcon: GestureDetector(
-                                //   onTap: () {
-                                //     locrasstinsuldamageController1.clear();
-                                //   },
-                                //   child: Icon(
-                                //     Icons.delete_outline,
-                                //     color: Color.fromRGBO(187, 30, 16, 1.0),
-                                //   ),
-                                // ),
-                                enabledBorder: OutlineInputBorder(
-                                  borderRadius:
-                                      BorderRadius.all(Radius.circular(10)),
-                                  borderSide:
-                                      BorderSide(color: Colors.grey, width: 2),
-                                ),
-                                focusedBorder: OutlineInputBorder(
-                                  borderRadius:
-                                      BorderRadius.all(Radius.circular(20)),
-                                  borderSide: BorderSide(
-                                      color: Theme.of(context).primaryColor,
-                                      width: 2),
-                                ),
-                              ),
-                              keyboardType: TextInputType.number,
-                            ),
-                          ),
-                        ],
-                      ),
-                      SizedBox(height: 10),
-                      Row(
-                        children: [
-                          Expanded(
-                            child: TextFormField(
-                              onChanged: (String value) {
-                                setState(() {});
-                                focusNode72.requestFocus();
-                              },
-                              focusNode: focusNode72,
-                              maxLength: 5,
-                              onSaved: (value) {
-                                object.sizelengthinsuldamage1 = value;
-                              },
-                              controller: sizelengthinsuldamageController1,
-                              style: textStyle,
-                              decoration: InputDecoration(
-                                focusColor: Theme.of(context).primaryColor,
-                                labelStyle: TextStyle(
-                                  fontSize: 18,
-                                  fontWeight: FontWeight.w300,
-                                  color: Theme.of(context).primaryColor,
-                                ),
-                                hintStyle: TextStyle(
-                                  fontSize: 20,
-                                  fontWeight: FontWeight.w300,
-                                  color: Theme.of(context).primaryColor,
-                                ),
-                                labelText: 'Длина',
-                                hintText: 'L',
-                                helperText: 'мм',
-                                prefixIcon: Icon(
-                                  Icons.location_searching_sharp,
-                                  color: focusNode72.hasFocus ||
-                                          sizelengthinsuldamageController1
-                                              .text.isNotEmpty
-                                      ? Theme.of(context).primaryColor
-                                      : Colors.grey,
-                                  size: 32,
-                                ),
-                                // suffixIcon: GestureDetector(
-                                //   onTap: () {
-                                //     sizelengthinsuldamageController1.clear();
-                                //   },
-                                //   child: Icon(
-                                //     Icons.delete_outline,
-                                //     color: Color.fromRGBO(187, 30, 16, 1.0),
-                                //   ),
-                                // ),
-                                enabledBorder: OutlineInputBorder(
-                                  borderRadius:
-                                      BorderRadius.all(Radius.circular(10)),
-                                  borderSide:
-                                      BorderSide(color: Colors.grey, width: 2),
-                                ),
-                                focusedBorder: OutlineInputBorder(
-                                  borderRadius:
-                                      BorderRadius.all(Radius.circular(20)),
-                                  borderSide: BorderSide(
-                                      color: Theme.of(context).primaryColor,
-                                      width: 2),
-                                ),
-                              ),
-                              keyboardType: TextInputType.number,
-                            ),
-                          ),
-                          SizedBox(width: 5),
-                          Expanded(
-                            child: TextFormField(
-                              onChanged: (String value) {
-                                setState(() {});
-                                focusNode63.requestFocus();
-                              },
-                              focusNode: focusNode63,
-                              maxLength: 5,
-                              onSaved: (value) {
-                                object.sizewidthinsuldamage1 = value;
-                              },
-                              controller: sizewidthinsuldamageController1,
-                              style: textStyle,
-                              decoration: InputDecoration(
-                                focusColor: Theme.of(context).primaryColor,
-                                labelStyle: TextStyle(
-                                  fontSize: 18,
-                                  fontWeight: FontWeight.w300,
-                                  color: Theme.of(context).primaryColor,
-                                ),
-                                hintStyle: TextStyle(
-                                  fontSize: 20,
-                                  fontWeight: FontWeight.w300,
-                                  color: Theme.of(context).primaryColor,
-                                ),
-                                labelText: 'Ширина',
-                                hintText: 'W',
-                                helperText: 'мм',
-                                prefixIcon: Icon(
-                                  Icons.location_searching_sharp,
-                                  color: focusNode63.hasFocus ||
-                                          sizewidthinsuldamageController1
-                                              .text.isNotEmpty
-                                      ? Theme.of(context).primaryColor
-                                      : Colors.grey,
-                                  size: 32,
-                                ),
-                                // suffixIcon: GestureDetector(
-                                //   onTap: () {
-                                //     sizewidthinsuldamageController1.clear();
-                                //   },
-                                //   child: Icon(
-                                //     Icons.delete_outline,
-                                //     color: Color.fromRGBO(187, 30, 16, 1.0),
-                                //   ),
-                                // ),
-                                enabledBorder: OutlineInputBorder(
-                                  borderRadius:
-                                      BorderRadius.all(Radius.circular(10)),
-                                  borderSide:
-                                      BorderSide(color: Colors.grey, width: 2),
-                                ),
-                                focusedBorder: OutlineInputBorder(
-                                  borderRadius:
-                                      BorderRadius.all(Radius.circular(20)),
-                                  borderSide: BorderSide(
-                                      color: Theme.of(context).primaryColor,
-                                      width: 2),
-                                ),
-                              ),
-                              keyboardType: TextInputType.number,
-                            ),
-                          ),
-                          SizedBox(width: 5),
-                          Expanded(
-                            child: TextFormField(
-                              onChanged: (String value) {
-                                setState(() {});
-                                focusNode66.requestFocus();
-                              },
-                              focusNode: focusNode66,
-                              maxLength: 3,
-                              onSaved: (value) {
-                                object.sizedepthinsuldamage1 = value;
-                              },
-                              controller: sizedepthinsuldamageController1,
-                              style: textStyle,
-                              decoration: InputDecoration(
-                                focusColor: Theme.of(context).primaryColor,
-                                labelStyle: TextStyle(
-                                  fontSize: 18,
-                                  fontWeight: FontWeight.w300,
-                                  color: Theme.of(context).primaryColor,
-                                ),
-                                hintStyle: TextStyle(
-                                  fontSize: 20,
-                                  fontWeight: FontWeight.w300,
-                                  color: Theme.of(context).primaryColor,
-                                ),
-                                labelText: 'Глубина',
-                                hintText: 'H',
-                                helperText: 'мм',
-                                prefixIcon: Icon(
-                                  Icons.location_searching_sharp,
-                                  color: focusNode66.hasFocus ||
-                                          sizedepthinsuldamageController1
-                                              .text.isNotEmpty
-                                      ? Theme.of(context).primaryColor
-                                      : Colors.grey,
-                                  size: 32,
-                                ),
-                                // suffixIcon: GestureDetector(
-                                //   onTap: () {
-                                //     sizedepthinsuldamageController1.clear();
-                                //   },
-                                //   child: Padding(
-                                //     padding: EdgeInsets.all(2),
-                                //     child: Icon(
-                                //       Icons.delete_outline,
-                                //       color: Color.fromRGBO(187, 30, 16, 1.0),
-                                //     ),
-                                //   ),
-                                // ),
-                                enabledBorder: OutlineInputBorder(
-                                  borderRadius:
-                                      BorderRadius.all(Radius.circular(10)),
-                                  borderSide:
-                                      BorderSide(color: Colors.grey, width: 2),
-                                ),
-                                focusedBorder: OutlineInputBorder(
-                                  borderRadius:
-                                      BorderRadius.all(Radius.circular(20)),
-                                  borderSide: BorderSide(
-                                      color: Theme.of(context).primaryColor,
-                                      width: 2),
-                                ),
-                              ),
-                              keyboardType: TextInputType.number,
-                            ),
-                          ),
-                        ],
-                      ),
-                      SizedBox(height: 20),
-                      Divider(thickness: 4),
-                      Container(
-                          alignment: Alignment.center,
-                          child: Text(
-                            'Данные о дефекте ИП №2',
-                            style: TextStyle(
-                                fontSize: 24,
-                                color: Theme.of(context).primaryColor,
-                                fontWeight: FontWeight.w300),
-                          )),
-                      SizedBox(height: 20),
-                      DropdownButtonFormField(
-                        isExpanded: true,
-                        focusNode: focusNode20,
-                        decoration: InputDecoration(
-                            focusColor: Theme.of(context).primaryColor,
-                            labelStyle: TextStyle(
-                              fontSize: 22,
-                              fontWeight: FontWeight.w300,
-                              color: Theme.of(context).primaryColor,
-                            ),
-                            hintStyle: TextStyle(
-                              fontSize: 16,
-                              fontWeight: FontWeight.w300,
-                              color: Theme.of(context).primaryColor,
-                            ),
-                            border: OutlineInputBorder(),
-                            enabledBorder: OutlineInputBorder(
-                              borderRadius:
-                                  BorderRadius.all(Radius.circular(10)),
-                              borderSide:
-                                  BorderSide(color: Colors.grey, width: 2),
-                            ),
-                            focusedBorder: OutlineInputBorder(
-                              borderRadius:
-                                  BorderRadius.all(Radius.circular(20)),
-                              borderSide: BorderSide(
-                                  color: Theme.of(context).primaryColor,
-                                  width: 2),
-                            ),
-                            prefixIcon: Icon(
-                              Icons.filter_tilt_shift_sharp,
-                              color: focusNode20.hasFocus ||
-                                      charinsuldamageController2.text.isNotEmpty
-                                  ? Theme.of(context).primaryColor
-                                  : Colors.grey,
-                              size: 32,
-                            ),
-                            labelText: 'Характер повреждения',
-                            suffixIcon: GestureDetector(
-                                onTap: () {
-                                  Navigator.push(
-                                    context,
-                                    MaterialPageRoute(
-                                        builder: (context) => CameraPageIp()),
-                                  ).then((value) {
-                                    setState(() async {
-                                      if (value != null) {
-                                        _imageDefInsul2 = value;
-
-                                        print(
-                                            'сделали: ${object.photoinsuldef2.toString()}');
-
-                                        if (_3formKey.currentState.validate()) {
-                                          _3formKey.currentState.save();
-                                          if (_imageDefInsul2 != null) {
-                                            final Directory extDir =
-                                                await getApplicationDocumentsDirectory();
-                                            final String dirPath =
-                                                '${extDir.path}/Pictures/flutter_test';
-                                            await Directory(dirPath)
-                                                .create(recursive: true);
-                                            final String filePath =
-                                                '$dirPath/${DateTime.now().millisecondsSinceEpoch.toString()}.jpg';
-                                            await _imageDefInsul2
-                                                .copy(filePath);
-                                            object.photoinsuldef2 = filePath;
-                                          }
-                                        }
-                                      }
-                                    });
-                                  });
-                                },
-                                child: Icon(Icons.camera_alt_sharp,
-                                    color: Color.fromRGBO(97, 153, 59, 1.0)))),
-                        items: _charinsuldamage2.map((String value) {
-                          return DropdownMenuItem(
-                            value: value,
-                            child: Text(value),
-                          );
-                        }).toList(),
-                        style: textStyle,
-                        value: object.charinsuldamage2,
-                        onChanged: (String value) {
-                          setState(() {});
-                          focusNode20.requestFocus();
-                          object.charinsuldamage2 = value;
-                        },
-                      ),
-                      SizedBox(height: 10),
-                      Container(
-                        height: 100,
-                        child: Column(
-                          children: [
-                            Expanded(
-                              child: GestureDetector(
-                                onTap: () {
-                                  Navigator.push(
-                                    context,
-                                    MaterialPageRoute(
-                                        builder: (context) => ImageScreen(
-                                            imagePath: object.photoinsuldef2)),
-                                  );
-                                },
-                                child: Center(
-                                  child: object.photoinsuldef2 != null
-                                      ? Image.file(
-                                          File(object.photoinsuldef2),
-                                          fit: BoxFit.cover,
-                                          alignment: Alignment.center,
-                                          width: 100,
-                                          height: 100,
-                                        )
-                                      : Text('Изображение отсутствует'),
-                                ),
-                              ),
-                            ),
-                          ],
-                        ),
-                      ),
-                      SizedBox(height: 10),
-                      Container(
-                          alignment: Alignment.center,
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              Text(
-                                'Расположение дефекта №2',
-                                style: TextStyle(
-                                    fontSize: 24,
-                                    color: Theme.of(context).primaryColor,
-                                    fontWeight: FontWeight.w300),
-                              ),
-                              GestureDetector(
-                                onTap: () {
-                                  lochourinsuldamageController2.clear();
-                                  locrasstinsuldamageController2.clear();
-                                  sizelengthinsuldamageController2.clear();
-                                  sizewidthinsuldamageController2.clear();
-                                  sizedepthinsuldamageController2.clear();
-                                },
-                                child: Icon(
-                                  Icons.delete_outline,
-                                  color: Color.fromRGBO(187, 30, 16, 1.0),
-                                ),
-                              ),
-                            ],
-                          )),
-                      SizedBox(height: 20),
-                      Row(
-                        children: [
-                          Expanded(
-                            child: TextFormField(
-                              onChanged: (String value) {
-                                setState(() {});
-                                focusNode42.requestFocus();
-                              },
-                              focusNode: focusNode42,
-                              maxLength: 2,
-                              onSaved: (value) {
-                                object.lochourinsuldamage2 = value;
-                              },
-                              controller: lochourinsuldamageController2,
-                              style: textStyle,
-                              decoration: InputDecoration(
-                                focusColor: Theme.of(context).primaryColor,
-                                labelStyle: TextStyle(
-                                  fontSize: 22,
-                                  fontWeight: FontWeight.w300,
-                                  color: Theme.of(context).primaryColor,
-                                ),
-                                hintStyle: TextStyle(
-                                  fontSize: 16,
-                                  fontWeight: FontWeight.w300,
-                                  color: Theme.of(context).primaryColor,
-                                ),
-                                labelText: 'Час',
-                                hintText: '1-12',
-                                helperText: 'ЧАС',
-                                prefixIcon: Icon(
-                                  Icons.location_searching_sharp,
-                                  color: focusNode42.hasFocus ||
-                                          lochourinsuldamageController2
-                                              .text.isNotEmpty
-                                      ? Theme.of(context).primaryColor
-                                      : Colors.grey,
-                                  size: 32,
-                                ),
-                                // suffixIcon: GestureDetector(
-                                //   onTap: () {
-                                //     lochourinsuldamageController2.clear();
-
-                                //   },
-                                //   child: Icon(
-                                //     Icons.delete_outline,
-                                //     color: Color.fromRGBO(187, 30, 16, 1.0),
-                                //   ),
-                                // ),
-                                enabledBorder: OutlineInputBorder(
-                                  borderRadius:
-                                      BorderRadius.all(Radius.circular(10)),
-                                  borderSide:
-                                      BorderSide(color: Colors.grey, width: 2),
-                                ),
-                                focusedBorder: OutlineInputBorder(
-                                  borderRadius:
-                                      BorderRadius.all(Radius.circular(20)),
-                                  borderSide: BorderSide(
-                                      color: Theme.of(context).primaryColor,
-                                      width: 2),
-                                ),
-                              ),
-                              keyboardType: TextInputType.number,
-                            ),
-                          ),
-                          SizedBox(width: 10),
-                          Expanded(
-                            child: TextFormField(
-                              onChanged: (String value) {
-                                setState(() {});
-                                focusNode61.requestFocus();
-                              },
-                              focusNode: focusNode61,
-                              maxLength: 5,
-                              onSaved: (value) {
-                                object.locrasstinsuldamage2 = value;
-                              },
-                              controller: locrasstinsuldamageController2,
-                              style: textStyle,
-                              decoration: InputDecoration(
-                                focusColor: Theme.of(context).primaryColor,
-                                labelStyle: TextStyle(
-                                  fontSize: 22,
-                                  fontWeight: FontWeight.w300,
-                                  color: Theme.of(context).primaryColor,
-                                ),
-                                hintStyle: TextStyle(
-                                  fontSize: 16,
-                                  fontWeight: FontWeight.w300,
-                                  color: Theme.of(context).primaryColor,
-                                ),
-                                labelText: 'от Шва',
-                                hintText: 'по ХГ',
-                                helperText: 'мм',
-                                prefixIcon: Icon(
-                                  Icons.location_searching_sharp,
-                                  color: focusNode61.hasFocus ||
-                                          locrasstinsuldamageController2
-                                              .text.isNotEmpty
-                                      ? Theme.of(context).primaryColor
-                                      : Colors.grey,
-                                  size: 32,
-                                ),
-                                // suffixIcon: GestureDetector(
-                                //   onTap: () {
-                                //     locrasstinsuldamageController2.clear();
-                                //   },
-                                //   child: Icon(
-                                //     Icons.delete_outline,
-                                //     color: Color.fromRGBO(187, 30, 16, 1.0),
-                                //   ),
-                                // ),
-                                enabledBorder: OutlineInputBorder(
-                                  borderRadius:
-                                      BorderRadius.all(Radius.circular(10)),
-                                  borderSide:
-                                      BorderSide(color: Colors.grey, width: 2),
-                                ),
-                                focusedBorder: OutlineInputBorder(
-                                  borderRadius:
-                                      BorderRadius.all(Radius.circular(20)),
-                                  borderSide: BorderSide(
-                                      color: Theme.of(context).primaryColor,
-                                      width: 2),
-                                ),
-                              ),
-                              keyboardType: TextInputType.number,
-                            ),
-                          ),
-                        ],
-                      ),
-                      SizedBox(height: 10),
-                      Row(
-                        children: [
-                          Expanded(
-                            child: TextFormField(
-                              onChanged: (String value) {
-                                setState(() {});
-                                focusNode73.requestFocus();
-                              },
-                              focusNode: focusNode73,
-                              maxLength: 5,
-                              onSaved: (value) {
-                                object.sizelengthinsuldamage2 = value;
-                              },
-                              controller: sizelengthinsuldamageController2,
-                              style: textStyle,
-                              decoration: InputDecoration(
-                                focusColor: Theme.of(context).primaryColor,
-                                labelStyle: TextStyle(
-                                  fontSize: 18,
-                                  fontWeight: FontWeight.w300,
-                                  color: Theme.of(context).primaryColor,
-                                ),
-                                hintStyle: TextStyle(
-                                  fontSize: 20,
-                                  fontWeight: FontWeight.w300,
-                                  color: Theme.of(context).primaryColor,
-                                ),
-                                labelText: 'Длина',
-                                hintText: 'L',
-                                helperText: 'мм',
-                                prefixIcon: Icon(
-                                  Icons.location_searching_sharp,
-                                  color: focusNode73.hasFocus ||
-                                          sizelengthinsuldamageController2
-                                              .text.isNotEmpty
-                                      ? Theme.of(context).primaryColor
-                                      : Colors.grey,
-                                  size: 32,
-                                ),
-                                // suffixIcon: GestureDetector(
-                                //   onTap: () {
-                                //     sizelengthinsuldamageController2.clear();
-                                //   },
-                                //   child: Icon(
-                                //     Icons.delete_outline,
-                                //     color: Color.fromRGBO(187, 30, 16, 1.0),
-                                //   ),
-                                // ),
-                                enabledBorder: OutlineInputBorder(
-                                  borderRadius:
-                                      BorderRadius.all(Radius.circular(10)),
-                                  borderSide:
-                                      BorderSide(color: Colors.grey, width: 2),
-                                ),
-                                focusedBorder: OutlineInputBorder(
-                                  borderRadius:
-                                      BorderRadius.all(Radius.circular(20)),
-                                  borderSide: BorderSide(
-                                      color: Theme.of(context).primaryColor,
-                                      width: 2),
-                                ),
-                              ),
-                              keyboardType: TextInputType.number,
-                            ),
-                          ),
-                          SizedBox(width: 5),
-                          Expanded(
-                            child: TextFormField(
-                              onChanged: (String value) {
-                                setState(() {});
-                                focusNode64.requestFocus();
-                              },
-                              focusNode: focusNode64,
-                              maxLength: 5,
-                              onSaved: (value) {
-                                object.sizewidthinsuldamage2 = value;
-                              },
-                              controller: sizewidthinsuldamageController2,
-                              style: textStyle,
-                              decoration: InputDecoration(
-                                focusColor: Theme.of(context).primaryColor,
-                                labelStyle: TextStyle(
-                                  fontSize: 18,
-                                  fontWeight: FontWeight.w300,
-                                  color: Theme.of(context).primaryColor,
-                                ),
-                                hintStyle: TextStyle(
-                                  fontSize: 20,
-                                  fontWeight: FontWeight.w300,
-                                  color: Theme.of(context).primaryColor,
-                                ),
-                                labelText: 'Ширина',
-                                hintText: 'W',
-                                helperText: 'мм',
-                                prefixIcon: Icon(
-                                  Icons.location_searching_sharp,
-                                  color: focusNode64.hasFocus ||
-                                          sizewidthinsuldamageController2
-                                              .text.isNotEmpty
-                                      ? Theme.of(context).primaryColor
-                                      : Colors.grey,
-                                  size: 32,
-                                ),
-                                // suffixIcon: GestureDetector(
-                                //   onTap: () {
-                                //     sizewidthinsuldamageController2.clear();
-                                //   },
-                                //   child: Icon(
-                                //     Icons.delete_outline,
-                                //     color: Color.fromRGBO(187, 30, 16, 1.0),
-                                //   ),
-                                // ),
-                                enabledBorder: OutlineInputBorder(
-                                  borderRadius:
-                                      BorderRadius.all(Radius.circular(10)),
-                                  borderSide:
-                                      BorderSide(color: Colors.grey, width: 2),
-                                ),
-                                focusedBorder: OutlineInputBorder(
-                                  borderRadius:
-                                      BorderRadius.all(Radius.circular(20)),
-                                  borderSide: BorderSide(
-                                      color: Theme.of(context).primaryColor,
-                                      width: 2),
-                                ),
-                              ),
-                              keyboardType: TextInputType.number,
-                            ),
-                          ),
-                          SizedBox(width: 5),
-                          Expanded(
-                            child: TextFormField(
-                              onChanged: (String value) {
-                                setState(() {});
-                                focusNode67.requestFocus();
-                              },
-                              focusNode: focusNode67,
-                              maxLength: 3,
-                              onSaved: (value) {
-                                object.sizedepthinsuldamage2 = value;
-                              },
-                              controller: sizedepthinsuldamageController2,
-                              style: textStyle,
-                              decoration: InputDecoration(
-                                focusColor: Theme.of(context).primaryColor,
-                                labelStyle: TextStyle(
-                                  fontSize: 18,
-                                  fontWeight: FontWeight.w300,
-                                  color: Theme.of(context).primaryColor,
-                                ),
-                                hintStyle: TextStyle(
-                                  fontSize: 20,
-                                  fontWeight: FontWeight.w300,
-                                  color: Theme.of(context).primaryColor,
-                                ),
-                                labelText: 'Глубина',
-                                hintText: 'H',
-                                helperText: 'мм',
-                                prefixIcon: Icon(
-                                  Icons.location_searching_sharp,
-                                  color: focusNode67.hasFocus ||
-                                          sizedepthinsuldamageController2
-                                              .text.isNotEmpty
-                                      ? Theme.of(context).primaryColor
-                                      : Colors.grey,
-                                  size: 32,
-                                ),
-                                // suffixIcon: GestureDetector(
-                                //   onTap: () {
-                                //     sizedepthinsuldamageController2.clear();
-                                //   },
-                                //   child: Padding(
-                                //     padding: EdgeInsets.all(2),
-                                //     child: Icon(
-                                //       Icons.delete_outline,
-                                //       color: Color.fromRGBO(187, 30, 16, 1.0),
-                                //     ),
-                                //   ),
-                                // ),
-                                enabledBorder: OutlineInputBorder(
-                                  borderRadius:
-                                      BorderRadius.all(Radius.circular(10)),
-                                  borderSide:
-                                      BorderSide(color: Colors.grey, width: 2),
-                                ),
-                                focusedBorder: OutlineInputBorder(
-                                  borderRadius:
-                                      BorderRadius.all(Radius.circular(20)),
-                                  borderSide: BorderSide(
-                                      color: Theme.of(context).primaryColor,
-                                      width: 2),
-                                ),
-                              ),
-                              keyboardType: TextInputType.number,
-                            ),
-                          ),
-                        ],
-                      ),
-                      SizedBox(height: 20),
-                      Divider(thickness: 4),
-                      Container(
-                          alignment: Alignment.center,
-                          child: Text(
-                            'Данные о дефекте ИП №3',
-                            style: TextStyle(
-                                fontSize: 24,
-                                color: Theme.of(context).primaryColor,
-                                fontWeight: FontWeight.w300),
-                          )),
-                      SizedBox(height: 20),
-                      DropdownButtonFormField(
-                        isExpanded: true,
-                        focusNode: focusNode35,
-                        decoration: InputDecoration(
-                            focusColor: Theme.of(context).primaryColor,
-                            labelStyle: TextStyle(
-                              fontSize: 22,
-                              fontWeight: FontWeight.w300,
-                              color: Theme.of(context).primaryColor,
-                            ),
-                            hintStyle: TextStyle(
-                              fontSize: 16,
-                              fontWeight: FontWeight.w300,
-                              color: Theme.of(context).primaryColor,
-                            ),
-                            border: OutlineInputBorder(),
-                            enabledBorder: OutlineInputBorder(
-                              borderRadius:
-                                  BorderRadius.all(Radius.circular(10)),
-                              borderSide:
-                                  BorderSide(color: Colors.grey, width: 2),
-                            ),
-                            focusedBorder: OutlineInputBorder(
-                              borderRadius:
-                                  BorderRadius.all(Radius.circular(20)),
-                              borderSide: BorderSide(
-                                  color: Theme.of(context).primaryColor,
-                                  width: 2),
-                            ),
-                            prefixIcon: Icon(
-                              Icons.filter_tilt_shift_sharp,
-                              color: focusNode35.hasFocus ||
-                                      charinsuldamageController3.text.isNotEmpty
-                                  ? Theme.of(context).primaryColor
-                                  : Colors.grey,
-                              size: 32,
-                            ),
-                            labelText: 'Характер повреждения',
-                            suffixIcon: GestureDetector(
-                                onTap: () {
-                                  Navigator.push(
-                                    context,
-                                    MaterialPageRoute(
-                                        builder: (context) => CameraPageIp()),
-                                  ).then((value) {
-                                    setState(() async {
-                                      if (value != null) {
-                                        _imageDefInsul3 = value;
-
-                                        print(
-                                            'сделали: ${object.photoinsuldef3.toString()}');
-
-                                        if (_3formKey.currentState.validate()) {
-                                          _3formKey.currentState.save();
-                                          if (_imageDefInsul3 != null) {
-                                            final Directory extDir =
-                                                await getApplicationDocumentsDirectory();
-                                            final String dirPath =
-                                                '${extDir.path}/Pictures/flutter_test';
-                                            await Directory(dirPath)
-                                                .create(recursive: true);
-                                            final String filePath =
-                                                '$dirPath/${DateTime.now().millisecondsSinceEpoch.toString()}.jpg';
-                                            await _imageDefInsul3
-                                                .copy(filePath);
-                                            object.photoinsuldef3 = filePath;
-                                          }
-                                        }
-                                      }
-                                    });
-                                  });
-                                },
-                                child: Icon(Icons.camera_alt_sharp,
-                                    color: Color.fromRGBO(97, 153, 59, 1.0)))),
-                        items: _charinsuldamage3.map((String value) {
-                          return DropdownMenuItem(
-                            value: value,
-                            child: Text(value),
-                          );
-                        }).toList(),
-                        style: textStyle,
-                        value: object.charinsuldamage3,
-                        onChanged: (String value) {
-                          setState(() {});
-                          focusNode35.requestFocus();
-                          object.charinsuldamage3 = value;
-                        },
-                      ),
-                      SizedBox(height: 10),
-                      Container(
-                        height: 100,
-                        child: Column(
-                          children: [
-                            Expanded(
-                              child: GestureDetector(
-                                onTap: () {
-                                  Navigator.push(
-                                    context,
-                                    MaterialPageRoute(
-                                        builder: (context) => ImageScreen(
-                                            imagePath: object.photoinsuldef3)),
-                                  );
-                                },
-                                child: Center(
-                                  child: object.photoinsuldef3 != null
-                                      ? Image.file(
-                                          File(object.photoinsuldef3),
-                                          fit: BoxFit.cover,
-                                          alignment: Alignment.center,
-                                          width: 100,
-                                          height: 100,
-                                        )
-                                      : Text('Изображение отсутствует'),
-                                ),
-                              ),
-                            ),
-                          ],
-                        ),
-                      ),
-                      SizedBox(height: 10),
-                      Container(
-                          alignment: Alignment.center,
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              Text(
-                                'Расположение дефекта №3',
-                                style: TextStyle(
-                                    fontSize: 24,
-                                    color: Theme.of(context).primaryColor,
-                                    fontWeight: FontWeight.w300),
-                              ),
-                              GestureDetector(
-                                onTap: () {
-                                  lochourinsuldamageController3.clear();
-                                  locrasstinsuldamageController3.clear();
-                                  sizelengthinsuldamageController3.clear();
-                                  sizewidthinsuldamageController3.clear();
-                                  sizedepthinsuldamageController3.clear();
-                                },
-                                child: Icon(
-                                  Icons.delete_outline,
-                                  color: Color.fromRGBO(187, 30, 16, 1.0),
-                                ),
-                              ),
-                            ],
-                          )),
-                      SizedBox(height: 20),
-                      Row(
-                        children: [
-                          Expanded(
-                            child: TextFormField(
-                              onChanged: (String value) {
-                                setState(() {});
-                                focusNode69.requestFocus();
-                              },
-                              focusNode: focusNode69,
-                              maxLength: 2,
-                              onSaved: (value) {
-                                object.lochourinsuldamage3 = value;
-                              },
-                              controller: lochourinsuldamageController3,
-                              style: textStyle,
-                              decoration: InputDecoration(
-                                focusColor: Theme.of(context).primaryColor,
-                                labelStyle: TextStyle(
-                                  fontSize: 22,
-                                  fontWeight: FontWeight.w300,
-                                  color: Theme.of(context).primaryColor,
-                                ),
-                                hintStyle: TextStyle(
-                                  fontSize: 16,
-                                  fontWeight: FontWeight.w300,
-                                  color: Theme.of(context).primaryColor,
-                                ),
-                                labelText: 'Час',
-                                hintText: '1-12',
-                                helperText: 'ЧАС',
-                                prefixIcon: Icon(
-                                  Icons.location_searching_sharp,
-                                  color: focusNode69.hasFocus ||
-                                          lochourinsuldamageController3
-                                              .text.isNotEmpty
-                                      ? Theme.of(context).primaryColor
-                                      : Colors.grey,
-                                  size: 32,
-                                ),
-                                // suffixIcon: GestureDetector(
-                                //   onTap: () {
-                                //     lochourinsuldamageController3.clear();
-
-                                //   },
-                                //   child: Icon(
-                                //     Icons.delete_outline,
-                                //     color: Color.fromRGBO(187, 30, 16, 1.0),
-                                //   ),
-                                // ),
-                                enabledBorder: OutlineInputBorder(
-                                  borderRadius:
-                                      BorderRadius.all(Radius.circular(10)),
-                                  borderSide:
-                                      BorderSide(color: Colors.grey, width: 2),
-                                ),
-                                focusedBorder: OutlineInputBorder(
-                                  borderRadius:
-                                      BorderRadius.all(Radius.circular(20)),
-                                  borderSide: BorderSide(
-                                      color: Theme.of(context).primaryColor,
-                                      width: 2),
-                                ),
-                              ),
-                              keyboardType: TextInputType.number,
-                            ),
-                          ),
-                          SizedBox(width: 5),
-                          Expanded(
-                            child: TextFormField(
-                              onChanged: (String value) {
-                                setState(() {});
-                                focusNode62.requestFocus();
-                              },
-                              focusNode: focusNode62,
-                              maxLength: 5,
-                              onSaved: (value) {
-                                object.locrasstinsuldamage3 = value;
-                              },
-                              controller: locrasstinsuldamageController3,
-                              style: textStyle,
-                              decoration: InputDecoration(
-                                focusColor: Theme.of(context).primaryColor,
-                                labelStyle: TextStyle(
-                                  fontSize: 22,
-                                  fontWeight: FontWeight.w300,
-                                  color: Theme.of(context).primaryColor,
-                                ),
-                                hintStyle: TextStyle(
-                                  fontSize: 16,
-                                  fontWeight: FontWeight.w300,
-                                  color: Theme.of(context).primaryColor,
-                                ),
-                                labelText: 'от Шва',
-                                hintText: 'по ХГ',
-                                helperText: 'мм',
-                                prefixIcon: Icon(
-                                  Icons.location_searching_sharp,
-                                  color: focusNode62.hasFocus ||
-                                          locrasstinsuldamageController3
-                                              .text.isNotEmpty
-                                      ? Theme.of(context).primaryColor
-                                      : Colors.grey,
-                                  size: 32,
-                                ),
-                                // suffixIcon: GestureDetector(
-                                //   onTap: () {
-                                //     locrasstinsuldamageController3.clear();
-                                //   },
-                                //   child: Icon(
-                                //     Icons.delete_outline,
-                                //     color: Color.fromRGBO(187, 30, 16, 1.0),
-                                //   ),
-                                // ),
-                                enabledBorder: OutlineInputBorder(
-                                  borderRadius:
-                                      BorderRadius.all(Radius.circular(10)),
-                                  borderSide:
-                                      BorderSide(color: Colors.grey, width: 2),
-                                ),
-                                focusedBorder: OutlineInputBorder(
-                                  borderRadius:
-                                      BorderRadius.all(Radius.circular(20)),
-                                  borderSide: BorderSide(
-                                      color: Theme.of(context).primaryColor,
-                                      width: 2),
-                                ),
-                              ),
-                              keyboardType: TextInputType.number,
-                            ),
-                          ),
-                        ],
-                      ),
-                      SizedBox(height: 10),
-                      Row(
-                        children: [
-                          Expanded(
-                            child: TextFormField(
-                              onChanged: (String value) {
-                                setState(() {});
-                                focusNode74.requestFocus();
-                              },
-                              focusNode: focusNode74,
-                              maxLength: 5,
-                              onSaved: (value) {
-                                object.sizelengthinsuldamage3 = value;
-                              },
-                              controller: sizelengthinsuldamageController3,
-                              style: textStyle,
-                              decoration: InputDecoration(
-                                focusColor: Theme.of(context).primaryColor,
-                                labelStyle: TextStyle(
-                                  fontSize: 18,
-                                  fontWeight: FontWeight.w300,
-                                  color: Theme.of(context).primaryColor,
-                                ),
-                                hintStyle: TextStyle(
-                                  fontSize: 20,
-                                  fontWeight: FontWeight.w300,
-                                  color: Theme.of(context).primaryColor,
-                                ),
-                                labelText: 'Длина',
-                                hintText: 'L',
-                                helperText: 'мм',
-                                prefixIcon: Icon(
-                                  Icons.location_searching_sharp,
-                                  color: focusNode74.hasFocus ||
-                                          sizelengthinsuldamageController3
-                                              .text.isNotEmpty
-                                      ? Theme.of(context).primaryColor
-                                      : Colors.grey,
-                                  size: 32,
-                                ),
-                                // suffixIcon: GestureDetector(
-                                //   onTap: () {
-                                //     sizelengthinsuldamageController3.clear();
-                                //   },
-                                //   child: Icon(
-                                //     Icons.delete_outline,
-                                //     color: Color.fromRGBO(187, 30, 16, 1.0),
-                                //   ),
-                                // ),
-                                enabledBorder: OutlineInputBorder(
-                                  borderRadius:
-                                      BorderRadius.all(Radius.circular(10)),
-                                  borderSide:
-                                      BorderSide(color: Colors.grey, width: 2),
-                                ),
-                                focusedBorder: OutlineInputBorder(
-                                  borderRadius:
-                                      BorderRadius.all(Radius.circular(20)),
-                                  borderSide: BorderSide(
-                                      color: Theme.of(context).primaryColor,
-                                      width: 2),
-                                ),
-                              ),
-                              keyboardType: TextInputType.number,
-                            ),
-                          ),
-                          SizedBox(width: 5),
-                          Expanded(
-                            child: TextFormField(
-                              onChanged: (String value) {
-                                setState(() {});
-                                focusNode65.requestFocus();
-                              },
-                              focusNode: focusNode65,
-                              maxLength: 5,
-                              onSaved: (value) {
-                                object.sizewidthinsuldamage3 = value;
-                              },
-                              controller: sizewidthinsuldamageController3,
-                              style: textStyle,
-                              decoration: InputDecoration(
-                                focusColor: Theme.of(context).primaryColor,
-                                labelStyle: TextStyle(
-                                  fontSize: 18,
-                                  fontWeight: FontWeight.w300,
-                                  color: Theme.of(context).primaryColor,
-                                ),
-                                hintStyle: TextStyle(
-                                  fontSize: 20,
-                                  fontWeight: FontWeight.w300,
-                                  color: Theme.of(context).primaryColor,
-                                ),
-                                labelText: 'Ширина',
-                                hintText: 'W',
-                                helperText: 'мм',
-                                prefixIcon: Icon(
-                                  Icons.location_searching_sharp,
-                                  color: focusNode65.hasFocus ||
-                                          sizewidthinsuldamageController3
-                                              .text.isNotEmpty
-                                      ? Theme.of(context).primaryColor
-                                      : Colors.grey,
-                                  size: 32,
-                                ),
-                                // suffixIcon: GestureDetector(
-                                //   onTap: () {
-                                //     sizewidthinsuldamageController3.clear();
-                                //   },
-                                //   child: Icon(
-                                //     Icons.delete_outline,
-                                //     color: Color.fromRGBO(187, 30, 16, 1.0),
-                                //   ),
-                                // ),
-                                enabledBorder: OutlineInputBorder(
-                                  borderRadius:
-                                      BorderRadius.all(Radius.circular(10)),
-                                  borderSide:
-                                      BorderSide(color: Colors.grey, width: 2),
-                                ),
-                                focusedBorder: OutlineInputBorder(
-                                  borderRadius:
-                                      BorderRadius.all(Radius.circular(20)),
-                                  borderSide: BorderSide(
-                                      color: Theme.of(context).primaryColor,
-                                      width: 2),
-                                ),
-                              ),
-                              keyboardType: TextInputType.number,
-                            ),
-                          ),
-                          SizedBox(width: 5),
-                          Expanded(
-                            child: TextFormField(
-                              onChanged: (String value) {
-                                setState(() {});
-                                focusNode68.requestFocus();
-                              },
-                              focusNode: focusNode68,
-                              maxLength: 3,
-                              onSaved: (value) {
-                                object.sizedepthinsuldamage3 = value;
-                              },
-                              controller: sizedepthinsuldamageController3,
-                              style: textStyle,
-                              decoration: InputDecoration(
-                                focusColor: Theme.of(context).primaryColor,
-                                labelStyle: TextStyle(
-                                  fontSize: 18,
-                                  fontWeight: FontWeight.w300,
-                                  color: Theme.of(context).primaryColor,
-                                ),
-                                hintStyle: TextStyle(
-                                  fontSize: 20,
-                                  fontWeight: FontWeight.w300,
-                                  color: Theme.of(context).primaryColor,
-                                ),
-                                labelText: 'Глубина',
-                                hintText: 'H',
-                                helperText: 'мм',
-                                prefixIcon: Icon(
-                                  Icons.location_searching_sharp,
-                                  color: focusNode68.hasFocus ||
-                                          sizedepthinsuldamageController3
-                                              .text.isNotEmpty
-                                      ? Theme.of(context).primaryColor
-                                      : Colors.grey,
-                                  size: 32,
-                                ),
-                                // suffixIcon: GestureDetector(
-                                //   onTap: () {
-                                //     sizedepthinsuldamageController3.clear();
-                                //   },
-                                //   child: Padding(
-                                //     padding: EdgeInsets.all(2),
-                                //     child: Icon(
-                                //       Icons.delete_outline,
-                                //       color: Color.fromRGBO(187, 30, 16, 1.0),
-                                //     ),
-                                //   ),
-                                // ),
-                                enabledBorder: OutlineInputBorder(
-                                  borderRadius:
-                                      BorderRadius.all(Radius.circular(10)),
-                                  borderSide:
-                                      BorderSide(color: Colors.grey, width: 2),
-                                ),
-                                focusedBorder: OutlineInputBorder(
-                                  borderRadius:
-                                      BorderRadius.all(Radius.circular(20)),
-                                  borderSide: BorderSide(
-                                      color: Theme.of(context).primaryColor,
-                                      width: 2),
-                                ),
-                              ),
-                              keyboardType: TextInputType.number,
-                            ),
-                          ),
-                        ],
-                      ),
-                      SizedBox(height: 20),
                       Divider(thickness: 4),
                       ElevatedButton(
                         style: ElevatedButton.styleFrom(
@@ -11279,7 +11803,7 @@ class ObjectDetailIpState extends State<ObjectDetailIp> {
         sheet.cell(CellIndex.indexByString("H49")).value =
             object.thickinsul3 ?? '-';
         sheet.cell(CellIndex.indexByString("J49")).value =
-            object.thickinsul2 ?? '-';
+            object.thickinsul4 ?? '-';
 
         sheet.cell(CellIndex.indexByString("A63")).value =
             object.charmetdamage1 ?? '-';
@@ -11291,13 +11815,13 @@ class ObjectDetailIpState extends State<ObjectDetailIp> {
             object.thickpipe ?? '-';
 
         sheet.cell(CellIndex.indexByString("D68")).value =
-            object.thickpipe ?? '-';
+            object.thickpipe1 ?? '-';
         sheet.cell(CellIndex.indexByString("F68")).value =
-            object.thickpipe ?? '-';
+            object.thickpipe2 ?? '-';
         sheet.cell(CellIndex.indexByString("H68")).value =
-            object.thickpipe ?? '-';
+            object.thickpipe3 ?? '-';
         sheet.cell(CellIndex.indexByString("J68")).value =
-            object.thickpipe ?? '-';
+            object.thickpipe4 ?? '-';
 
         sheet.cell(CellIndex.indexByString("H68")).value =
             object.thickpipe ?? '-';

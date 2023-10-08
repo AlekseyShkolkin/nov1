@@ -138,7 +138,7 @@ class _ObjectListState extends State<ObjectList> {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: <Widget>[
                         Text(
-                          descriptionParser(todos[position].description ?? ''),
+                          descriptionParser(todos[position].squareclear ?? ''),
                           style: const TextStyle(
                               fontSize: 13.0,
                               fontWeight: FontWeight.w600,
@@ -147,13 +147,22 @@ class _ObjectListState extends State<ObjectList> {
                         const SizedBox(
                           height: 15.0,
                         ), // it smell
-                        Text(
-                          'СОЗДАНО ' + todos[position].todoDate,
-                          style: const TextStyle(
-                              fontSize: 11.0,
-                              fontWeight: FontWeight.w600,
-                              color: Colors.black38),
-                        ),
+                        todos[position].dateObsl1 != null
+                            ? Text(
+                                'Дата обследования ' +
+                                    todos[position].dateObsl1,
+                                style: const TextStyle(
+                                    fontSize: 11.0,
+                                    fontWeight: FontWeight.w600,
+                                    color: Colors.black38),
+                              )
+                            : Text(
+                                'СОЗДАНО / без даты',
+                                style: const TextStyle(
+                                    fontSize: 11.0,
+                                    fontWeight: FontWeight.w600,
+                                    color: Colors.black38),
+                              ),
                       ],
                     ),
                     contentPadding:

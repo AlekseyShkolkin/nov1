@@ -53,8 +53,7 @@ dependencies:
   open_file: ^3.3.2
   geolocator: ^6.2.1
   encrypt: ^5.0.1
- 
-  
+  flutter_launcher_icons: ">=0.9.0 <0.13.0"
   
  
   
@@ -64,6 +63,11 @@ dependencies:
 dev_dependencies:
   flutter_test:
     sdk: flutter
+
+flutter_icons:
+  image_path: "assets/images/logo.png"
+  android: true
+  ios: true    
 
   # The "flutter_lints" package below contains a set of recommended lints to
   # encourage good coding practices. The lint set provided by the package is
@@ -131,7 +135,6 @@ flutter:
     - assets/images/dust4.jpg
     - assets/images/dust5.jpg
     - assets/images/roughness.jpg
-    - assets/images/logo2.png
     - assets/images/defaultimage.png
     - assets/images/p1Ma1.jpg
     - assets/images/p1Ma2.jpg
@@ -166,6 +169,223 @@ flutter:
     - assets/images/r_2.jpg 
     - assets/images/r_3.jpg 
     - assets/images/r_4.jpg 
+    - assets/images/1000.jpg
+    - assets/images/1001.jpg
+    - assets/images/1002.jpg
+    - assets/images/1003.jpg
+    - assets/images/1004.jpg
+    - assets/images/1005.jpg
+    - assets/images/1006.jpg
+    - assets/images/1007.jpg
+    - assets/images/1011.jpg
+    - assets/images/1012.jpg
+    - assets/images/1013.jpg
+    - assets/images/1014.jpg
+    - assets/images/1015.jpg
+    - assets/images/1016.jpg
+    - assets/images/1017.jpg
+    - assets/images/1018.jpg
+    - assets/images/1019.jpg
+    - assets/images/1020.jpg
+    - assets/images/1021.jpg
+    - assets/images/1023.jpg
+    - assets/images/1024.jpg
+    - assets/images/1026.jpg
+    - assets/images/1027.jpg
+    - assets/images/1028.jpg
+    - assets/images/1032.jpg
+    - assets/images/1033.jpg
+    - assets/images/1034.jpg
+    - assets/images/1035.jpg
+    - assets/images/1036.jpg
+    - assets/images/1037.jpg
+    - assets/images/2000.jpg
+    - assets/images/2001.jpg
+    - assets/images/2002.jpg
+    - assets/images/2003.jpg
+    - assets/images/2004.jpg
+    - assets/images/2005.jpg
+    - assets/images/2007.jpg
+    - assets/images/2008.jpg
+    - assets/images/2009.jpg
+    - assets/images/2010.jpg
+    - assets/images/2011.jpg
+    - assets/images/2012.jpg
+    - assets/images/2013.jpg
+    - assets/images/2017.jpg
+    - assets/images/3000.jpg
+    - assets/images/3001.jpg
+    - assets/images/3002.jpg
+    - assets/images/3003.jpg
+    - assets/images/3004.jpg
+    - assets/images/3005.jpg
+    - assets/images/3007.jpg
+    - assets/images/3009.jpg
+    - assets/images/3011.jpg
+    - assets/images/3012.jpg
+    - assets/images/3013.jpg
+    - assets/images/3014.jpg
+    - assets/images/3015.jpg
+    - assets/images/3016.jpg
+    - assets/images/3017.jpg
+    - assets/images/3018.jpg
+    - assets/images/3020.jpg
+    - assets/images/3022.jpg
+    - assets/images/3024.jpg
+    - assets/images/3026.jpg
+    - assets/images/3027.jpg
+    - assets/images/3028.jpg
+    - assets/images/3031.jpg
+    - assets/images/3032.jpg
+    - assets/images/3033.jpg
+    - assets/images/4001.jpg
+    - assets/images/4002.jpg
+    - assets/images/4003.jpg
+    - assets/images/4004.jpg
+    - assets/images/4005.jpg
+    - assets/images/4006.jpg
+    - assets/images/4007.jpg
+    - assets/images/4008.jpg
+    - assets/images/4009.jpg
+    - assets/images/4010.jpg
+    - assets/images/4011.jpg
+    - assets/images/4012.jpg
+    - assets/images/5000.jpg
+    - assets/images/5001.jpg
+    - assets/images/5002.jpg
+    - assets/images/5003.jpg
+    - assets/images/5004.jpg
+    - assets/images/5005.jpg
+    - assets/images/5007.jpg
+    - assets/images/5008.jpg
+    - assets/images/5009.jpg
+    - assets/images/5010.jpg
+    - assets/images/5011.jpg
+    - assets/images/5012.jpg
+    - assets/images/5013.jpg
+    - assets/images/5014.jpg
+    - assets/images/5015.jpg
+    - assets/images/5017.jpg
+    - assets/images/5018.jpg
+    - assets/images/5019.jpg
+    - assets/images/5020.jpg
+    - assets/images/5021.jpg
+    - assets/images/5022.jpg
+    - assets/images/5023.jpg
+    - assets/images/5024.jpg
+    - assets/images/5025.jpg
+    - assets/images/5026.jpg
+    - assets/images/6000.jpg
+    - assets/images/6001.jpg
+    - assets/images/6002.jpg
+    - assets/images/6003.jpg
+    - assets/images/6004.jpg
+    - assets/images/6005.jpg
+    - assets/images/6006.jpg
+    - assets/images/6007.jpg
+    - assets/images/6008.jpg
+    - assets/images/6009.jpg
+    - assets/images/6010.jpg
+    - assets/images/6011.jpg
+    - assets/images/6012.jpg
+    - assets/images/6013.jpg
+    - assets/images/6014.jpg
+    - assets/images/6015.jpg
+    - assets/images/6016.jpg
+    - assets/images/6017.jpg
+    - assets/images/6018.jpg
+    - assets/images/6019.jpg
+    - assets/images/6020.jpg
+    - assets/images/6021.jpg
+    - assets/images/6022.jpg
+    - assets/images/6024.jpg
+    - assets/images/6025.jpg
+    - assets/images/6026.jpg
+    - assets/images/6027.jpg
+    - assets/images/6028.jpg
+    - assets/images/6029.jpg
+    - assets/images/6032.jpg
+    - assets/images/6033.jpg
+    - assets/images/6034.jpg
+    - assets/images/6035.jpg
+    - assets/images/6036.jpg
+    - assets/images/6037.jpg
+    - assets/images/6038.jpg
+    - assets/images/6039.jpg
+    - assets/images/7000.jpg
+    - assets/images/7001.jpg
+    - assets/images/7002.jpg
+    - assets/images/7003.jpg
+    - assets/images/7004.jpg
+    - assets/images/7005.jpg
+    - assets/images/7006.jpg
+    - assets/images/7008.jpg
+    - assets/images/7009.jpg
+    - assets/images/7010.jpg
+    - assets/images/7011.jpg
+    - assets/images/7012.jpg
+    - assets/images/7013.jpg
+    - assets/images/7015.jpg
+    - assets/images/7016.jpg
+    - assets/images/7021.jpg
+    - assets/images/7022.jpg
+    - assets/images/7023.jpg
+    - assets/images/7024.jpg
+    - assets/images/7026.jpg
+    - assets/images/7030.jpg
+    - assets/images/7031.jpg
+    - assets/images/7032.jpg
+    - assets/images/7033.jpg
+    - assets/images/7034.jpg
+    - assets/images/7035.jpg
+    - assets/images/7036.jpg
+    - assets/images/7037.jpg
+    - assets/images/7038.jpg
+    - assets/images/7039.jpg
+    - assets/images/7040.jpg
+    - assets/images/7042.jpg
+    - assets/images/7043.jpg
+    - assets/images/7044.jpg
+    - assets/images/7045.jpg
+    - assets/images/7046.jpg
+    - assets/images/7047.jpg
+    - assets/images/7048.jpg
+    - assets/images/8000.jpg
+    - assets/images/8001.jpg
+    - assets/images/8002.jpg
+    - assets/images/8003.jpg
+    - assets/images/8004.jpg
+    - assets/images/8007.jpg
+    - assets/images/8008.jpg
+    - assets/images/8011.jpg
+    - assets/images/8012.jpg
+    - assets/images/8014.jpg
+    - assets/images/8015.jpg
+    - assets/images/8016.jpg
+    - assets/images/8017.jpg
+    - assets/images/8019.jpg
+    - assets/images/8022.jpg
+    - assets/images/8023.jpg
+    - assets/images/8024.jpg
+    - assets/images/8025.jpg
+    - assets/images/8028.jpg
+    - assets/images/8029.jpg
+    - assets/images/9001.jpg
+    - assets/images/9002.jpg
+    - assets/images/9003.jpg
+    - assets/images/9004.jpg
+    - assets/images/9005.jpg
+    - assets/images/9006.jpg
+    - assets/images/9007.jpg
+    - assets/images/9010.jpg
+    - assets/images/9011.jpg
+    - assets/images/9012.jpg
+    - assets/images/9016.jpg
+    - assets/images/9017.jpg
+    - assets/images/9018.jpg
+    - assets/images/9022.jpg
+    - assets/images/9023.jpg
+
 
 
   # An image asset can refer to one or more resolution-specific "variants", see
