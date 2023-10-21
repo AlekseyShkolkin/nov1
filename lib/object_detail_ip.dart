@@ -25,6 +25,9 @@ class ObjectDetailIpState extends State<ObjectDetailIp> {
   Todo object;
   String locationData = '';
 
+  DateTime dateObsl1; // Дата выбранная для dateObsl1
+  DateTime dateObsl2; // Дата выбранная для dateObsl2
+
   FocusNode focusNode1 = FocusNode();
   FocusNode focusNode2 = FocusNode();
   FocusNode focusNode3 = FocusNode();
@@ -1049,10 +1052,10 @@ class ObjectDetailIpState extends State<ObjectDetailIp> {
                       TextFormField(
                         maxLength: 50,
                         onFieldSubmitted: (String value) {
-                          setState(() {
-                            object.title = value;
-                            titleController.text = object.title ?? '';
-                          });
+                          // setState(() {
+                          object.title = value;
+                          // titleController.text = object.title ?? '';
+                          // });
                         },
                         validator: (String value) {
                           if (value.isEmpty) {
@@ -1113,8 +1116,8 @@ class ObjectDetailIpState extends State<ObjectDetailIp> {
                         onChanged: (String value) {
                           setState(() {
                             focusNode1.requestFocus();
-                            object.title = value;
-                            titleController.text = object.title ?? '';
+                            // object.title = value;
+                            // titleController.text = object.title ?? '';
                           });
                         },
                       ),
@@ -1159,13 +1162,14 @@ class ObjectDetailIpState extends State<ObjectDetailIp> {
                                 context: context,
                                 initialDate: DateTime.now(),
                                 firstDate: DateTime(2015),
-                                lastDate: DateTime(2030),
+                                lastDate: dateObsl2 ?? DateTime(2100),
                                 locale: const Locale("ru",
                                     "RU"), // Установите локаль на русский язык
                               );
 
                               if (selectedDate != null) {
                                 setState(() {
+                                  dateObsl1 = selectedDate;
                                   dateObslController.text =
                                       DateFormat('dd.MM.yyyy')
                                           .format(selectedDate);
@@ -1201,15 +1205,16 @@ class ObjectDetailIpState extends State<ObjectDetailIp> {
                               onPressed: () async {
                                 DateTime selectedDate = await showDatePicker(
                                   context: context,
-                                  initialDate: DateTime.now(),
-                                  firstDate: DateTime(2015),
-                                  lastDate: DateTime(2030),
+                                  initialDate: dateObsl2 ?? DateTime.now(),
+                                  firstDate: dateObsl1 ?? DateTime.now(),
+                                  lastDate: DateTime(2100),
                                   locale: const Locale("ru",
                                       "RU"), // Установите локаль на русский язык
                                 );
 
                                 if (selectedDate != null) {
                                   setState(() {
+                                    dateObsl2 = selectedDate;
                                     dateObsl2Controller.text =
                                         DateFormat('dd.MM.yyyy')
                                             .format(selectedDate);
@@ -9197,7 +9202,7 @@ class ObjectDetailIpState extends State<ObjectDetailIp> {
                       Container(
                           alignment: Alignment.center,
                           child: Text(
-                            'ПАРАМЕТРЫ ОКРАШИВАЕМОЙ СРЕДЫ',
+                            'ПАРАМЕТРЫ СРЕДЫ',
                             style: TextStyle(
                                 fontSize: 24,
                                 color: Theme.of(context).primaryColor,
@@ -9628,8 +9633,9 @@ class ObjectDetailIpState extends State<ObjectDetailIp> {
                       TextFormField(
                         focusNode: focusNode27,
                         onChanged: (String value) {
-                          setState(() {});
-                          focusNode27.requestFocus();
+                          setState(() {
+                            focusNode27.requestFocus();
+                          });
                         },
                         maxLength: 30,
                         onSaved: (value) {
@@ -9676,114 +9682,137 @@ class ObjectDetailIpState extends State<ObjectDetailIp> {
                       ),
                       SizedBox(height: 10),
                       Row(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        mainAxisAlignment: MainAxisAlignment.start,
                         children: [
                           Expanded(
-                            child: TextFormField(
-                              focusNode: focusNode101,
-                              onChanged: (String value) {
-                                setState(() {});
-                                focusNode101.requestFocus();
-                              },
-                              maxLength: 30,
-                              onSaved: (value) {
-                                object.tickinsulmeternumb = value;
-                              },
-                              controller: tickinsulmeternumbController,
-                              style: textStyle,
-                              decoration: InputDecoration(
-                                focusColor: Theme.of(context).primaryColor,
-                                labelStyle: TextStyle(
-                                  fontSize: 22,
-                                  fontWeight: FontWeight.w300,
-                                  color: Theme.of(context).primaryColor,
+                            child: Padding(
+                              padding: const EdgeInsets.all(5.0),
+                              child: TextFormField(
+                                focusNode: focusNode101,
+                                onChanged: (String value) {
+                                  setState(() {
+                                    focusNode101.requestFocus();
+                                  });
+                                },
+                                maxLength: 30,
+                                onSaved: (value) {
+                                  object.tickinsulmeternumb = value;
+                                },
+                                controller: tickinsulmeternumbController,
+                                style: textStyle,
+                                decoration: InputDecoration(
+                                  focusColor: Theme.of(context).primaryColor,
+                                  labelStyle: TextStyle(
+                                    fontSize: 22,
+                                    fontWeight: FontWeight.w300,
+                                    color: Theme.of(context).primaryColor,
+                                  ),
+                                  hintStyle: TextStyle(
+                                    fontSize: 16,
+                                    fontWeight: FontWeight.w300,
+                                    color: Theme.of(context).primaryColor,
+                                  ),
+                                  labelText: '№',
+                                  hintText: '№',
+                                  helperText: '№....',
+                                  prefixIcon: Icon(
+                                    Icons.speaker_phone,
+                                    color: focusNode101.hasFocus ||
+                                            tickinsulmeternumbController
+                                                .text.isNotEmpty
+                                        ? Theme.of(context).primaryColor
+                                        : Colors.grey,
+                                    size: 32,
+                                  ),
+                                  enabledBorder: OutlineInputBorder(
+                                    borderRadius:
+                                        BorderRadius.all(Radius.circular(10)),
+                                    borderSide: BorderSide(
+                                        color: Colors.grey, width: 2),
+                                  ),
+                                  focusedBorder: OutlineInputBorder(
+                                    borderRadius:
+                                        BorderRadius.all(Radius.circular(20)),
+                                    borderSide: BorderSide(
+                                        color: Theme.of(context).primaryColor,
+                                        width: 2),
+                                  ),
                                 ),
-                                hintStyle: TextStyle(
-                                  fontSize: 16,
-                                  fontWeight: FontWeight.w300,
-                                  color: Theme.of(context).primaryColor,
-                                ),
-                                labelText: '№',
-                                hintText: '№',
-                                helperText: '№....',
-                                prefixIcon: Icon(
-                                  Icons.speaker_phone,
-                                  color: focusNode101.hasFocus ||
-                                          tickinsulmeternumbController
-                                              .text.isNotEmpty
-                                      ? Theme.of(context).primaryColor
-                                      : Colors.grey,
-                                  size: 32,
-                                ),
-                                enabledBorder: OutlineInputBorder(
-                                  borderRadius:
-                                      BorderRadius.all(Radius.circular(10)),
-                                  borderSide:
-                                      BorderSide(color: Colors.grey, width: 2),
-                                ),
-                                focusedBorder: OutlineInputBorder(
-                                  borderRadius:
-                                      BorderRadius.all(Radius.circular(20)),
-                                  borderSide: BorderSide(
-                                      color: Theme.of(context).primaryColor,
-                                      width: 2),
-                                ),
+                                keyboardType: TextInputType.text,
                               ),
-                              keyboardType: TextInputType.text,
                             ),
                           ),
-                          SizedBox(width: 5),
-                          Expanded(
-                            child: TextFormField(
-                              focusNode: focusNode102,
-                              onChanged: (String value) {
-                                setState(() {});
-                                focusNode102.requestFocus();
-                              },
-                              maxLength: 10,
-                              onSaved: (value) {
-                                object.tickinsulmeterdate = value;
-                              },
-                              controller: tickinsulmeterdateController,
-                              style: textStyle,
-                              decoration: InputDecoration(
-                                focusColor: Theme.of(context).primaryColor,
-                                labelStyle: TextStyle(
-                                  fontSize: 22,
-                                  fontWeight: FontWeight.w300,
-                                  color: Theme.of(context).primaryColor,
+                          Padding(
+                            padding: const EdgeInsets.all(5.0),
+                            child: Container(
+                              height: 56,
+                              decoration: BoxDecoration(
+                                border: Border.all(
+                                  color: Colors.grey,
+                                  width: 2.0,
                                 ),
-                                hintStyle: TextStyle(
-                                  fontSize: 16,
-                                  fontWeight: FontWeight.w300,
-                                  color: Theme.of(context).primaryColor,
-                                ),
-                                labelText: 'Дата поверки',
-                                hintText: 'дата',
-                                helperText: 'д.м.г',
-                                prefixIcon: Icon(
-                                  Icons.speaker_phone,
-                                  color: focusNode102.hasFocus ||
-                                          tickinsulmeterdateController
-                                              .text.isNotEmpty
-                                      ? Theme.of(context).primaryColor
-                                      : Colors.grey,
-                                  size: 32,
-                                ),
-                                enabledBorder: OutlineInputBorder(
-                                  borderRadius:
-                                      BorderRadius.all(Radius.circular(10)),
-                                  borderSide:
-                                      BorderSide(color: Colors.grey, width: 2),
-                                ),
-                                focusedBorder: OutlineInputBorder(
-                                  borderRadius:
-                                      BorderRadius.all(Radius.circular(20)),
-                                  borderSide: BorderSide(
-                                      color: Theme.of(context).primaryColor,
-                                      width: 2),
-                                ),
+                                borderRadius: BorderRadius.circular(10.0),
                               ),
-                              keyboardType: TextInputType.number,
+                              child: Row(
+                                children: [
+                                  Padding(
+                                    padding: const EdgeInsets.all(5.0),
+                                    child: IconButton(
+                                      focusNode: focusNode102,
+                                      onPressed: () async {
+                                        DateTime currentDay = DateTime.now();
+                                        DateTime initialDay = currentDay
+                                            .subtract(Duration(days: 3 * 365));
+                                        DateTime selectedDate =
+                                            await showDatePicker(
+                                          context: context,
+                                          initialDate: DateTime.now(),
+                                          firstDate: initialDay,
+                                          lastDate: DateTime.now(),
+                                          locale: const Locale("ru",
+                                              "RU"), // Установите локаль на русский язык
+                                        );
+
+                                        if (selectedDate != null) {
+                                          setState(() {
+                                            tickinsulmeterdateController.text =
+                                                DateFormat('dd.MM.yyyy')
+                                                    .format(selectedDate);
+                                            object.tickinsulmeterdate =
+                                                tickinsulmeterdateController
+                                                    .text;
+                                          });
+                                        }
+                                      },
+                                      icon: Icon(
+                                        Icons.calendar_month_outlined,
+                                        color: focusNode102.hasFocus ||
+                                                tickinsulmeterdateController
+                                                    .text.isNotEmpty
+                                            ? Theme.of(context).primaryColor
+                                            : Colors.grey,
+                                        size: 32,
+                                      ),
+                                    ),
+                                  ),
+                                  SizedBox(width: 10),
+                                  Padding(
+                                    padding: const EdgeInsets.all(5.0),
+                                    child: Container(
+                                      alignment: Alignment.center,
+                                      child: Text(
+                                        tickinsulmeterdateController.text,
+                                        style: TextStyle(
+                                          fontSize: 24,
+                                          color: Theme.of(context).primaryColor,
+                                          fontWeight: FontWeight.w300,
+                                        ),
+                                      ),
+                                    ),
+                                  ),
+                                ],
+                              ),
                             ),
                           ),
                         ],
@@ -9816,12 +9845,12 @@ class ObjectDetailIpState extends State<ObjectDetailIp> {
                             ],
                           )),
                       SizedBox(height: 10),
-
                       TextFormField(
                         focusNode: focusNode28,
                         onChanged: (String value) {
-                          setState(() {});
-                          focusNode28.requestFocus();
+                          setState(() {
+                            focusNode28.requestFocus();
+                          });
                         },
                         maxLength: 30,
                         onSaved: (value) {
@@ -9867,114 +9896,137 @@ class ObjectDetailIpState extends State<ObjectDetailIp> {
                       ),
                       SizedBox(height: 10),
                       Row(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        mainAxisAlignment: MainAxisAlignment.start,
                         children: [
                           Expanded(
-                            child: TextFormField(
-                              focusNode: focusNode103,
-                              onChanged: (String value) {
-                                setState(() {});
-                                focusNode103.requestFocus();
-                              },
-                              maxLength: 30,
-                              onSaved: (value) {
-                                object.tickmetallmeternumb = value;
-                              },
-                              controller: tickmetallmeternumbController,
-                              style: textStyle,
-                              decoration: InputDecoration(
-                                focusColor: Theme.of(context).primaryColor,
-                                labelStyle: TextStyle(
-                                  fontSize: 22,
-                                  fontWeight: FontWeight.w300,
-                                  color: Theme.of(context).primaryColor,
+                            child: Padding(
+                              padding: const EdgeInsets.all(5.0),
+                              child: TextFormField(
+                                focusNode: focusNode103,
+                                onChanged: (String value) {
+                                  setState(() {
+                                    focusNode103.requestFocus();
+                                  });
+                                },
+                                maxLength: 30,
+                                onSaved: (value) {
+                                  object.tickmetallmeternumb = value;
+                                },
+                                controller: tickmetallmeternumbController,
+                                style: textStyle,
+                                decoration: InputDecoration(
+                                  focusColor: Theme.of(context).primaryColor,
+                                  labelStyle: TextStyle(
+                                    fontSize: 22,
+                                    fontWeight: FontWeight.w300,
+                                    color: Theme.of(context).primaryColor,
+                                  ),
+                                  hintStyle: TextStyle(
+                                    fontSize: 16,
+                                    fontWeight: FontWeight.w300,
+                                    color: Theme.of(context).primaryColor,
+                                  ),
+                                  labelText: '№',
+                                  hintText: '№',
+                                  helperText: '№....',
+                                  prefixIcon: Icon(
+                                    Icons.speaker_phone,
+                                    color: focusNode103.hasFocus ||
+                                            tickmetallmeternumbController
+                                                .text.isNotEmpty
+                                        ? Theme.of(context).primaryColor
+                                        : Colors.grey,
+                                    size: 32,
+                                  ),
+                                  enabledBorder: OutlineInputBorder(
+                                    borderRadius:
+                                        BorderRadius.all(Radius.circular(10)),
+                                    borderSide: BorderSide(
+                                        color: Colors.grey, width: 2),
+                                  ),
+                                  focusedBorder: OutlineInputBorder(
+                                    borderRadius:
+                                        BorderRadius.all(Radius.circular(20)),
+                                    borderSide: BorderSide(
+                                        color: Theme.of(context).primaryColor,
+                                        width: 2),
+                                  ),
                                 ),
-                                hintStyle: TextStyle(
-                                  fontSize: 16,
-                                  fontWeight: FontWeight.w300,
-                                  color: Theme.of(context).primaryColor,
-                                ),
-                                labelText: '№',
-                                hintText: '№',
-                                helperText: '№....',
-                                prefixIcon: Icon(
-                                  Icons.speaker_phone,
-                                  color: focusNode103.hasFocus ||
-                                          tickmetallmeternumbController
-                                              .text.isNotEmpty
-                                      ? Theme.of(context).primaryColor
-                                      : Colors.grey,
-                                  size: 32,
-                                ),
-                                enabledBorder: OutlineInputBorder(
-                                  borderRadius:
-                                      BorderRadius.all(Radius.circular(10)),
-                                  borderSide:
-                                      BorderSide(color: Colors.grey, width: 2),
-                                ),
-                                focusedBorder: OutlineInputBorder(
-                                  borderRadius:
-                                      BorderRadius.all(Radius.circular(20)),
-                                  borderSide: BorderSide(
-                                      color: Theme.of(context).primaryColor,
-                                      width: 2),
-                                ),
+                                keyboardType: TextInputType.text,
                               ),
-                              keyboardType: TextInputType.text,
                             ),
                           ),
-                          SizedBox(width: 5),
-                          Expanded(
-                            child: TextFormField(
-                              focusNode: focusNode104,
-                              onChanged: (String value) {
-                                setState(() {});
-                                focusNode104.requestFocus();
-                              },
-                              maxLength: 10,
-                              onSaved: (value) {
-                                object.tickmetallmeterdate = value;
-                              },
-                              controller: tickmetallmeterdateController,
-                              style: textStyle,
-                              decoration: InputDecoration(
-                                focusColor: Theme.of(context).primaryColor,
-                                labelStyle: TextStyle(
-                                  fontSize: 22,
-                                  fontWeight: FontWeight.w300,
-                                  color: Theme.of(context).primaryColor,
+                          Padding(
+                            padding: const EdgeInsets.all(5.0),
+                            child: Container(
+                              height: 56,
+                              decoration: BoxDecoration(
+                                border: Border.all(
+                                  color: Colors.grey,
+                                  width: 2.0,
                                 ),
-                                hintStyle: TextStyle(
-                                  fontSize: 16,
-                                  fontWeight: FontWeight.w300,
-                                  color: Theme.of(context).primaryColor,
-                                ),
-                                labelText: 'Дата поверки',
-                                hintText: 'дата',
-                                helperText: 'д.м.г',
-                                prefixIcon: Icon(
-                                  Icons.speaker_phone,
-                                  color: focusNode104.hasFocus ||
-                                          tickmetallmeterdateController
-                                              .text.isNotEmpty
-                                      ? Theme.of(context).primaryColor
-                                      : Colors.grey,
-                                  size: 32,
-                                ),
-                                enabledBorder: OutlineInputBorder(
-                                  borderRadius:
-                                      BorderRadius.all(Radius.circular(10)),
-                                  borderSide:
-                                      BorderSide(color: Colors.grey, width: 2),
-                                ),
-                                focusedBorder: OutlineInputBorder(
-                                  borderRadius:
-                                      BorderRadius.all(Radius.circular(20)),
-                                  borderSide: BorderSide(
-                                      color: Theme.of(context).primaryColor,
-                                      width: 2),
-                                ),
+                                borderRadius: BorderRadius.circular(10.0),
                               ),
-                              keyboardType: TextInputType.number,
+                              child: Row(
+                                children: [
+                                  Padding(
+                                    padding: const EdgeInsets.all(5.0),
+                                    child: IconButton(
+                                      focusNode: focusNode104,
+                                      onPressed: () async {
+                                        DateTime currentDay = DateTime.now();
+                                        DateTime initialDay = currentDay
+                                            .subtract(Duration(days: 3 * 365));
+                                        DateTime selectedDate =
+                                            await showDatePicker(
+                                          context: context,
+                                          initialDate: DateTime.now(),
+                                          firstDate: initialDay,
+                                          lastDate: DateTime.now(),
+                                          locale: const Locale("ru",
+                                              "RU"), // Установите локаль на русский язык
+                                        );
+
+                                        if (selectedDate != null) {
+                                          setState(() {
+                                            tickmetallmeterdateController.text =
+                                                DateFormat('dd.MM.yyyy')
+                                                    .format(selectedDate);
+                                            object.tickmetallmeterdate =
+                                                tickmetallmeterdateController
+                                                    .text;
+                                          });
+                                        }
+                                      },
+                                      icon: Icon(
+                                        Icons.calendar_month_outlined,
+                                        color: focusNode104.hasFocus ||
+                                                tickmetallmeterdateController
+                                                    .text.isNotEmpty
+                                            ? Theme.of(context).primaryColor
+                                            : Colors.grey,
+                                        size: 32,
+                                      ),
+                                    ),
+                                  ),
+                                  SizedBox(width: 10),
+                                  Padding(
+                                    padding: const EdgeInsets.all(5.0),
+                                    child: Container(
+                                      alignment: Alignment.center,
+                                      child: Text(
+                                        tickmetallmeterdateController.text,
+                                        style: TextStyle(
+                                          fontSize: 24,
+                                          color: Theme.of(context).primaryColor,
+                                          fontWeight: FontWeight.w300,
+                                        ),
+                                      ),
+                                    ),
+                                  ),
+                                ],
+                              ),
                             ),
                           ),
                         ],
@@ -10010,8 +10062,9 @@ class ObjectDetailIpState extends State<ObjectDetailIp> {
                       TextFormField(
                         focusNode: focusNode29,
                         onChanged: (String value) {
-                          setState(() {});
-                          focusNode29.requestFocus();
+                          setState(() {
+                            focusNode29.requestFocus();
+                          });
                         },
                         maxLength: 30,
                         onSaved: (value) {
@@ -10055,115 +10108,138 @@ class ObjectDetailIpState extends State<ObjectDetailIp> {
                         ),
                         keyboardType: TextInputType.text,
                       ),
+                      SizedBox(height: 10),
                       Row(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        mainAxisAlignment: MainAxisAlignment.start,
                         children: [
                           Expanded(
-                            child: TextFormField(
-                              focusNode: focusNode105,
-                              onChanged: (String value) {
-                                setState(() {});
-                                focusNode105.requestFocus();
-                              },
-                              maxLength: 30,
-                              onSaved: (value) {
-                                object.adhesmeternumb = value;
-                              },
-                              controller: adhesmeternumbController,
-                              style: textStyle,
-                              decoration: InputDecoration(
-                                focusColor: Theme.of(context).primaryColor,
-                                labelStyle: TextStyle(
-                                  fontSize: 22,
-                                  fontWeight: FontWeight.w300,
-                                  color: Theme.of(context).primaryColor,
+                            child: Padding(
+                              padding: const EdgeInsets.all(5.0),
+                              child: TextFormField(
+                                focusNode: focusNode105,
+                                onChanged: (String value) {
+                                  setState(() {
+                                    focusNode105.requestFocus();
+                                  });
+                                },
+                                maxLength: 30,
+                                onSaved: (value) {
+                                  object.adhesmeternumb = value;
+                                },
+                                controller: adhesmeternumbController,
+                                style: textStyle,
+                                decoration: InputDecoration(
+                                  focusColor: Theme.of(context).primaryColor,
+                                  labelStyle: TextStyle(
+                                    fontSize: 22,
+                                    fontWeight: FontWeight.w300,
+                                    color: Theme.of(context).primaryColor,
+                                  ),
+                                  hintStyle: TextStyle(
+                                    fontSize: 16,
+                                    fontWeight: FontWeight.w300,
+                                    color: Theme.of(context).primaryColor,
+                                  ),
+                                  labelText: '№',
+                                  hintText: '№',
+                                  helperText: '№....',
+                                  prefixIcon: Icon(
+                                    Icons.broken_image,
+                                    color: focusNode105.hasFocus ||
+                                            adhesmeternumbController
+                                                .text.isNotEmpty
+                                        ? Theme.of(context).primaryColor
+                                        : Colors.grey,
+                                    size: 32,
+                                  ),
+                                  enabledBorder: OutlineInputBorder(
+                                    borderRadius:
+                                        BorderRadius.all(Radius.circular(10)),
+                                    borderSide: BorderSide(
+                                        color: Colors.grey, width: 2),
+                                  ),
+                                  focusedBorder: OutlineInputBorder(
+                                    borderRadius:
+                                        BorderRadius.all(Radius.circular(20)),
+                                    borderSide: BorderSide(
+                                        color: Theme.of(context).primaryColor,
+                                        width: 2),
+                                  ),
                                 ),
-                                hintStyle: TextStyle(
-                                  fontSize: 16,
-                                  fontWeight: FontWeight.w300,
-                                  color: Theme.of(context).primaryColor,
-                                ),
-                                labelText: '№',
-                                hintText: '№',
-                                helperText: '№....',
-                                prefixIcon: Icon(
-                                  Icons.broken_image,
-                                  color: focusNode105.hasFocus ||
-                                          adhesmeternumbController
-                                              .text.isNotEmpty
-                                      ? Theme.of(context).primaryColor
-                                      : Colors.grey,
-                                  size: 32,
-                                ),
-                                enabledBorder: OutlineInputBorder(
-                                  borderRadius:
-                                      BorderRadius.all(Radius.circular(10)),
-                                  borderSide:
-                                      BorderSide(color: Colors.grey, width: 2),
-                                ),
-                                focusedBorder: OutlineInputBorder(
-                                  borderRadius:
-                                      BorderRadius.all(Radius.circular(20)),
-                                  borderSide: BorderSide(
-                                      color: Theme.of(context).primaryColor,
-                                      width: 2),
-                                ),
+                                keyboardType: TextInputType.text,
                               ),
-                              keyboardType: TextInputType.text,
                             ),
                           ),
-                          SizedBox(width: 5),
-                          Expanded(
-                            child: TextFormField(
-                              focusNode: focusNode106,
-                              onChanged: (String value) {
-                                setState(() {});
-                                focusNode106.requestFocus();
-                              },
-                              maxLength: 10,
-                              onSaved: (value) {
-                                object.adhesmeterdate = value;
-                              },
-                              controller: adhesmeterdateController,
-                              style: textStyle,
-                              decoration: InputDecoration(
-                                focusColor: Theme.of(context).primaryColor,
-                                labelStyle: TextStyle(
-                                  fontSize: 22,
-                                  fontWeight: FontWeight.w300,
-                                  color: Theme.of(context).primaryColor,
+                          Padding(
+                            padding: const EdgeInsets.all(5.0),
+                            child: Container(
+                              height: 56,
+                              decoration: BoxDecoration(
+                                border: Border.all(
+                                  color: Colors.grey,
+                                  width: 2.0,
                                 ),
-                                hintStyle: TextStyle(
-                                  fontSize: 16,
-                                  fontWeight: FontWeight.w300,
-                                  color: Theme.of(context).primaryColor,
-                                ),
-                                labelText: 'Дата поверки',
-                                hintText: 'дата',
-                                helperText: 'д.м.г',
-                                prefixIcon: Icon(
-                                  Icons.broken_image,
-                                  color: focusNode106.hasFocus ||
-                                          adhesmeterdateController
-                                              .text.isNotEmpty
-                                      ? Theme.of(context).primaryColor
-                                      : Colors.grey,
-                                  size: 32,
-                                ),
-                                enabledBorder: OutlineInputBorder(
-                                  borderRadius:
-                                      BorderRadius.all(Radius.circular(10)),
-                                  borderSide:
-                                      BorderSide(color: Colors.grey, width: 2),
-                                ),
-                                focusedBorder: OutlineInputBorder(
-                                  borderRadius:
-                                      BorderRadius.all(Radius.circular(20)),
-                                  borderSide: BorderSide(
-                                      color: Theme.of(context).primaryColor,
-                                      width: 2),
-                                ),
+                                borderRadius: BorderRadius.circular(10.0),
                               ),
-                              keyboardType: TextInputType.number,
+                              child: Row(
+                                children: [
+                                  Padding(
+                                    padding: const EdgeInsets.all(5.0),
+                                    child: IconButton(
+                                      focusNode: focusNode106,
+                                      onPressed: () async {
+                                        DateTime currentDay = DateTime.now();
+                                        DateTime initialDay = currentDay
+                                            .subtract(Duration(days: 3 * 365));
+                                        DateTime selectedDate =
+                                            await showDatePicker(
+                                          context: context,
+                                          initialDate: DateTime.now(),
+                                          firstDate: initialDay,
+                                          lastDate: DateTime.now(),
+                                          locale: const Locale("ru",
+                                              "RU"), // Установите локаль на русский язык
+                                        );
+
+                                        if (selectedDate != null) {
+                                          setState(() {
+                                            adhesmeterdateController.text =
+                                                DateFormat('dd.MM.yyyy')
+                                                    .format(selectedDate);
+                                            object.adhesmeterdate =
+                                                adhesmeterdateController.text;
+                                          });
+                                        }
+                                      },
+                                      icon: Icon(
+                                        Icons.calendar_month_outlined,
+                                        color: focusNode106.hasFocus ||
+                                                adhesmeterdateController
+                                                    .text.isNotEmpty
+                                            ? Theme.of(context).primaryColor
+                                            : Colors.grey,
+                                        size: 32,
+                                      ),
+                                    ),
+                                  ),
+                                  SizedBox(width: 10),
+                                  Padding(
+                                    padding: const EdgeInsets.all(5.0),
+                                    child: Container(
+                                      alignment: Alignment.center,
+                                      child: Text(
+                                        adhesmeterdateController.text,
+                                        style: TextStyle(
+                                          fontSize: 24,
+                                          color: Theme.of(context).primaryColor,
+                                          fontWeight: FontWeight.w300,
+                                        ),
+                                      ),
+                                    ),
+                                  ),
+                                ],
+                              ),
                             ),
                           ),
                         ],
@@ -10199,8 +10275,9 @@ class ObjectDetailIpState extends State<ObjectDetailIp> {
                       TextFormField(
                         focusNode: focusNode30,
                         onChanged: (String value) {
-                          setState(() {});
-                          focusNode30.requestFocus();
+                          setState(() {
+                            focusNode30.requestFocus();
+                          });
                         },
                         maxLength: 30,
                         onSaved: (value) {
@@ -10244,115 +10321,139 @@ class ObjectDetailIpState extends State<ObjectDetailIp> {
                         ),
                         keyboardType: TextInputType.text,
                       ),
+                      SizedBox(height: 10),
                       Row(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        mainAxisAlignment: MainAxisAlignment.start,
                         children: [
                           Expanded(
-                            child: TextFormField(
-                              focusNode: focusNode107,
-                              onChanged: (String value) {
-                                setState(() {});
-                                focusNode107.requestFocus();
-                              },
-                              maxLength: 30,
-                              onSaved: (value) {
-                                object.continmeternumb = value;
-                              },
-                              controller: continmeternumbController,
-                              style: textStyle,
-                              decoration: InputDecoration(
-                                focusColor: Theme.of(context).primaryColor,
-                                labelStyle: TextStyle(
-                                  fontSize: 22,
-                                  fontWeight: FontWeight.w300,
-                                  color: Theme.of(context).primaryColor,
+                            child: Padding(
+                              padding: const EdgeInsets.all(5.0),
+                              child: TextFormField(
+                                focusNode: focusNode107,
+                                onChanged: (String value) {
+                                  setState(() {
+                                    focusNode107.requestFocus();
+                                  });
+                                },
+                                maxLength: 30,
+                                onSaved: (value) {
+                                  object.continmeternumb = value;
+                                },
+                                controller: continmeternumbController,
+                                style: textStyle,
+                                decoration: InputDecoration(
+                                  focusColor: Theme.of(context).primaryColor,
+                                  labelStyle: TextStyle(
+                                    fontSize: 22,
+                                    fontWeight: FontWeight.w300,
+                                    color: Theme.of(context).primaryColor,
+                                  ),
+                                  hintStyle: TextStyle(
+                                    fontSize: 16,
+                                    fontWeight: FontWeight.w300,
+                                    color: Theme.of(context).primaryColor,
+                                  ),
+                                  labelText: '№',
+                                  hintText: '№',
+                                  helperText: '№....',
+                                  prefixIcon: Icon(
+                                    Icons.flash_on,
+                                    color: focusNode107.hasFocus ||
+                                            continmeternumbController
+                                                .text.isNotEmpty
+                                        ? Theme.of(context).primaryColor
+                                        : Colors.grey,
+                                    size: 32,
+                                  ),
+                                  enabledBorder: OutlineInputBorder(
+                                    borderRadius:
+                                        BorderRadius.all(Radius.circular(10)),
+                                    borderSide: BorderSide(
+                                        color: Colors.grey, width: 2),
+                                  ),
+                                  focusedBorder: OutlineInputBorder(
+                                    borderRadius:
+                                        BorderRadius.all(Radius.circular(20)),
+                                    borderSide: BorderSide(
+                                        color: Theme.of(context).primaryColor,
+                                        width: 2),
+                                  ),
                                 ),
-                                hintStyle: TextStyle(
-                                  fontSize: 16,
-                                  fontWeight: FontWeight.w300,
-                                  color: Theme.of(context).primaryColor,
-                                ),
-                                labelText: '№',
-                                hintText: '№',
-                                helperText: '№....',
-                                prefixIcon: Icon(
-                                  Icons.flash_on,
-                                  color: focusNode107.hasFocus ||
-                                          continmeternumbController
-                                              .text.isNotEmpty
-                                      ? Theme.of(context).primaryColor
-                                      : Colors.grey,
-                                  size: 32,
-                                ),
-                                enabledBorder: OutlineInputBorder(
-                                  borderRadius:
-                                      BorderRadius.all(Radius.circular(10)),
-                                  borderSide:
-                                      BorderSide(color: Colors.grey, width: 2),
-                                ),
-                                focusedBorder: OutlineInputBorder(
-                                  borderRadius:
-                                      BorderRadius.all(Radius.circular(20)),
-                                  borderSide: BorderSide(
-                                      color: Theme.of(context).primaryColor,
-                                      width: 2),
-                                ),
+                                keyboardType: TextInputType.text,
                               ),
-                              keyboardType: TextInputType.text,
                             ),
                           ),
                           SizedBox(width: 5),
-                          Expanded(
-                            child: TextFormField(
-                              focusNode: focusNode108,
-                              onChanged: (String value) {
-                                setState(() {});
-                                focusNode108.requestFocus();
-                              },
-                              maxLength: 10,
-                              onSaved: (value) {
-                                object.continmeterdate = value;
-                              },
-                              controller: continmeterdateController,
-                              style: textStyle,
-                              decoration: InputDecoration(
-                                focusColor: Theme.of(context).primaryColor,
-                                labelStyle: TextStyle(
-                                  fontSize: 22,
-                                  fontWeight: FontWeight.w300,
-                                  color: Theme.of(context).primaryColor,
+                          Padding(
+                            padding: const EdgeInsets.all(5.0),
+                            child: Container(
+                              height: 56,
+                              decoration: BoxDecoration(
+                                border: Border.all(
+                                  color: Colors.grey,
+                                  width: 2.0,
                                 ),
-                                hintStyle: TextStyle(
-                                  fontSize: 16,
-                                  fontWeight: FontWeight.w300,
-                                  color: Theme.of(context).primaryColor,
-                                ),
-                                labelText: 'Дата поверки',
-                                hintText: 'дата',
-                                helperText: 'д.м.г',
-                                prefixIcon: Icon(
-                                  Icons.flash_on,
-                                  color: focusNode108.hasFocus ||
-                                          continmeterdateController
-                                              .text.isNotEmpty
-                                      ? Theme.of(context).primaryColor
-                                      : Colors.grey,
-                                  size: 32,
-                                ),
-                                enabledBorder: OutlineInputBorder(
-                                  borderRadius:
-                                      BorderRadius.all(Radius.circular(10)),
-                                  borderSide:
-                                      BorderSide(color: Colors.grey, width: 2),
-                                ),
-                                focusedBorder: OutlineInputBorder(
-                                  borderRadius:
-                                      BorderRadius.all(Radius.circular(20)),
-                                  borderSide: BorderSide(
-                                      color: Theme.of(context).primaryColor,
-                                      width: 2),
-                                ),
+                                borderRadius: BorderRadius.circular(10.0),
                               ),
-                              keyboardType: TextInputType.number,
+                              child: Row(
+                                children: [
+                                  Padding(
+                                    padding: const EdgeInsets.all(5.0),
+                                    child: IconButton(
+                                      focusNode: focusNode108,
+                                      onPressed: () async {
+                                        DateTime currentDay = DateTime.now();
+                                        DateTime initialDay = currentDay
+                                            .subtract(Duration(days: 3 * 365));
+                                        DateTime selectedDate =
+                                            await showDatePicker(
+                                          context: context,
+                                          initialDate: DateTime.now(),
+                                          firstDate: initialDay,
+                                          lastDate: DateTime.now(),
+                                          locale: const Locale("ru",
+                                              "RU"), // Установите локаль на русский язык
+                                        );
+
+                                        if (selectedDate != null) {
+                                          setState(() {
+                                            continmeterdateController.text =
+                                                DateFormat('dd.MM.yyyy')
+                                                    .format(selectedDate);
+                                            object.continmeterdate =
+                                                continmeterdateController.text;
+                                          });
+                                        }
+                                      },
+                                      icon: Icon(
+                                        Icons.calendar_month_outlined,
+                                        color: focusNode108.hasFocus ||
+                                                continmeterdateController
+                                                    .text.isNotEmpty
+                                            ? Theme.of(context).primaryColor
+                                            : Colors.grey,
+                                        size: 32,
+                                      ),
+                                    ),
+                                  ),
+                                  SizedBox(width: 10),
+                                  Padding(
+                                    padding: const EdgeInsets.all(5.0),
+                                    child: Container(
+                                      alignment: Alignment.center,
+                                      child: Text(
+                                        continmeterdateController.text,
+                                        style: TextStyle(
+                                          fontSize: 24,
+                                          color: Theme.of(context).primaryColor,
+                                          fontWeight: FontWeight.w300,
+                                        ),
+                                      ),
+                                    ),
+                                  ),
+                                ],
+                              ),
                             ),
                           ),
                         ],
@@ -10388,8 +10489,9 @@ class ObjectDetailIpState extends State<ObjectDetailIp> {
                       TextFormField(
                         focusNode: focusNode31,
                         onChanged: (String value) {
-                          setState(() {});
-                          focusNode31.requestFocus();
+                          setState(() {
+                            focusNode31.requestFocus();
+                          });
                         },
                         maxLength: 30,
                         onSaved: (value) {
@@ -10433,113 +10535,138 @@ class ObjectDetailIpState extends State<ObjectDetailIp> {
                         ),
                         keyboardType: TextInputType.text,
                       ),
+                      SizedBox(height: 10),
                       Row(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        mainAxisAlignment: MainAxisAlignment.start,
                         children: [
                           Expanded(
-                            child: TextFormField(
-                              focusNode: focusNode109,
-                              onChanged: (String value) {
-                                setState(() {});
-                                focusNode109.requestFocus();
-                              },
-                              maxLength: 30,
-                              onSaved: (value) {
-                                object.setviknumb = value;
-                              },
-                              controller: setviknumbController,
-                              style: textStyle,
-                              decoration: InputDecoration(
-                                focusColor: Theme.of(context).primaryColor,
-                                labelStyle: TextStyle(
-                                  fontSize: 22,
-                                  fontWeight: FontWeight.w300,
-                                  color: Theme.of(context).primaryColor,
+                            child: Padding(
+                              padding: const EdgeInsets.all(5.0),
+                              child: TextFormField(
+                                focusNode: focusNode109,
+                                onChanged: (String value) {
+                                  setState(() {
+                                    focusNode109.requestFocus();
+                                  });
+                                },
+                                maxLength: 30,
+                                onSaved: (value) {
+                                  object.setviknumb = value;
+                                },
+                                controller: setviknumbController,
+                                style: textStyle,
+                                decoration: InputDecoration(
+                                  focusColor: Theme.of(context).primaryColor,
+                                  labelStyle: TextStyle(
+                                    fontSize: 22,
+                                    fontWeight: FontWeight.w300,
+                                    color: Theme.of(context).primaryColor,
+                                  ),
+                                  hintStyle: TextStyle(
+                                    fontSize: 16,
+                                    fontWeight: FontWeight.w300,
+                                    color: Theme.of(context).primaryColor,
+                                  ),
+                                  labelText: '№',
+                                  hintText: '№',
+                                  helperText: '№....',
+                                  prefixIcon: Icon(
+                                    Icons.business_center,
+                                    color: focusNode109.hasFocus ||
+                                            setviknumbController.text.isNotEmpty
+                                        ? Theme.of(context).primaryColor
+                                        : Colors.grey,
+                                    size: 32,
+                                  ),
+                                  enabledBorder: OutlineInputBorder(
+                                    borderRadius:
+                                        BorderRadius.all(Radius.circular(10)),
+                                    borderSide: BorderSide(
+                                        color: Colors.grey, width: 2),
+                                  ),
+                                  focusedBorder: OutlineInputBorder(
+                                    borderRadius:
+                                        BorderRadius.all(Radius.circular(20)),
+                                    borderSide: BorderSide(
+                                        color: Theme.of(context).primaryColor,
+                                        width: 2),
+                                  ),
                                 ),
-                                hintStyle: TextStyle(
-                                  fontSize: 16,
-                                  fontWeight: FontWeight.w300,
-                                  color: Theme.of(context).primaryColor,
-                                ),
-                                labelText: '№',
-                                hintText: '№',
-                                helperText: '№....',
-                                prefixIcon: Icon(
-                                  Icons.business_center,
-                                  color: focusNode109.hasFocus ||
-                                          setviknumbController.text.isNotEmpty
-                                      ? Theme.of(context).primaryColor
-                                      : Colors.grey,
-                                  size: 32,
-                                ),
-                                enabledBorder: OutlineInputBorder(
-                                  borderRadius:
-                                      BorderRadius.all(Radius.circular(10)),
-                                  borderSide:
-                                      BorderSide(color: Colors.grey, width: 2),
-                                ),
-                                focusedBorder: OutlineInputBorder(
-                                  borderRadius:
-                                      BorderRadius.all(Radius.circular(20)),
-                                  borderSide: BorderSide(
-                                      color: Theme.of(context).primaryColor,
-                                      width: 2),
-                                ),
+                                keyboardType: TextInputType.text,
                               ),
-                              keyboardType: TextInputType.text,
                             ),
                           ),
                           SizedBox(width: 5),
-                          Expanded(
-                            child: TextFormField(
-                              focusNode: focusNode110,
-                              onChanged: (String value) {
-                                setState(() {});
-                                focusNode110.requestFocus();
-                              },
-                              maxLength: 10,
-                              onSaved: (value) {
-                                object.setvikdate = value;
-                              },
-                              controller: setvikdateController,
-                              style: textStyle,
-                              decoration: InputDecoration(
-                                focusColor: Theme.of(context).primaryColor,
-                                labelStyle: TextStyle(
-                                  fontSize: 22,
-                                  fontWeight: FontWeight.w300,
-                                  color: Theme.of(context).primaryColor,
+                          Padding(
+                            padding: const EdgeInsets.all(5.0),
+                            child: Container(
+                              height: 56,
+                              decoration: BoxDecoration(
+                                border: Border.all(
+                                  color: Colors.grey,
+                                  width: 2.0,
                                 ),
-                                hintStyle: TextStyle(
-                                  fontSize: 16,
-                                  fontWeight: FontWeight.w300,
-                                  color: Theme.of(context).primaryColor,
-                                ),
-                                labelText: 'Дата поверки',
-                                hintText: 'дата',
-                                helperText: 'д.м.г',
-                                prefixIcon: Icon(
-                                  Icons.business_center,
-                                  color: focusNode110.hasFocus ||
-                                          setvikdateController.text.isNotEmpty
-                                      ? Theme.of(context).primaryColor
-                                      : Colors.grey,
-                                  size: 32,
-                                ),
-                                enabledBorder: OutlineInputBorder(
-                                  borderRadius:
-                                      BorderRadius.all(Radius.circular(10)),
-                                  borderSide:
-                                      BorderSide(color: Colors.grey, width: 2),
-                                ),
-                                focusedBorder: OutlineInputBorder(
-                                  borderRadius:
-                                      BorderRadius.all(Radius.circular(20)),
-                                  borderSide: BorderSide(
-                                      color: Theme.of(context).primaryColor,
-                                      width: 2),
-                                ),
+                                borderRadius: BorderRadius.circular(10.0),
                               ),
-                              keyboardType: TextInputType.number,
+                              child: Row(
+                                children: [
+                                  Padding(
+                                    padding: const EdgeInsets.all(5.0),
+                                    child: IconButton(
+                                      focusNode: focusNode110,
+                                      onPressed: () async {
+                                        DateTime currentDay = DateTime.now();
+                                        DateTime initialDay = currentDay
+                                            .subtract(Duration(days: 3 * 365));
+                                        DateTime selectedDate =
+                                            await showDatePicker(
+                                          context: context,
+                                          initialDate: DateTime.now(),
+                                          firstDate: initialDay,
+                                          lastDate: DateTime.now(),
+                                          locale: const Locale("ru",
+                                              "RU"), // Установите локаль на русский язык
+                                        );
+
+                                        if (selectedDate != null) {
+                                          setState(() {
+                                            setvikdateController.text =
+                                                DateFormat('dd.MM.yyyy')
+                                                    .format(selectedDate);
+                                            object.setvikdate =
+                                                setvikdateController.text;
+                                          });
+                                        }
+                                      },
+                                      icon: Icon(
+                                        Icons.calendar_month_outlined,
+                                        color: focusNode110.hasFocus ||
+                                                setvikdateController
+                                                    .text.isNotEmpty
+                                            ? Theme.of(context).primaryColor
+                                            : Colors.grey,
+                                        size: 32,
+                                      ),
+                                    ),
+                                  ),
+                                  SizedBox(width: 10),
+                                  Padding(
+                                    padding: const EdgeInsets.all(5.0),
+                                    child: Container(
+                                      alignment: Alignment.center,
+                                      child: Text(
+                                        setvikdateController.text,
+                                        style: TextStyle(
+                                          fontSize: 24,
+                                          color: Theme.of(context).primaryColor,
+                                          fontWeight: FontWeight.w300,
+                                        ),
+                                      ),
+                                    ),
+                                  ),
+                                ],
+                              ),
                             ),
                           ),
                         ],

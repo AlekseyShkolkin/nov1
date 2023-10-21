@@ -21,6 +21,9 @@ class ObjectDetailVhC extends StatefulWidget {
 class ObjectDetailVhCState extends State<ObjectDetailVhC> {
   Todo object;
 
+  DateTime dateObsl1; // Дата выбранная для dateObsl1
+  DateTime dateObsl2; // Дата выбранная для dateObsl2
+
   FocusNode focusNode1 = FocusNode();
   FocusNode focusNode2 = FocusNode();
   FocusNode focusNode3 = FocusNode();
@@ -617,13 +620,14 @@ class ObjectDetailVhCState extends State<ObjectDetailVhC> {
                                 context: context,
                                 initialDate: DateTime.now(),
                                 firstDate: DateTime(2015),
-                                lastDate: DateTime(2030),
+                                lastDate: dateObsl2 ?? DateTime(2100),
                                 locale: const Locale("ru",
                                     "RU"), // Установите локаль на русский язык
                               );
 
                               if (selectedDate != null) {
                                 setState(() {
+                                  dateObsl1 = selectedDate;
                                   dateProizvController.text =
                                       DateFormat('dd.MM.yyyy')
                                           .format(selectedDate);
@@ -659,15 +663,16 @@ class ObjectDetailVhCState extends State<ObjectDetailVhC> {
                               onPressed: () async {
                                 DateTime selectedDate = await showDatePicker(
                                   context: context,
-                                  initialDate: DateTime.now(),
-                                  firstDate: DateTime(2015),
-                                  lastDate: DateTime(2030),
+                                  initialDate: dateObsl2 ?? DateTime.now(),
+                                  firstDate: dateObsl1 ?? DateTime.now(),
+                                  lastDate: DateTime(2100),
                                   locale: const Locale("ru",
                                       "RU"), // Установите локаль на русский язык
                                 );
 
                                 if (selectedDate != null) {
                                   setState(() {
+                                    dateObsl2 = selectedDate;
                                     dateObslController.text =
                                         DateFormat('dd.MM.yyyy')
                                             .format(selectedDate);
