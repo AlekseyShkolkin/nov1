@@ -1281,14 +1281,22 @@ class ObjectDetailState extends State<ObjectDetail> {
                         ),
                       ),
                       IconButton(
-                        icon: const Icon(Icons.delete),
+                        icon: Icon(
+                          Icons.delete,
+                          color: Color.fromRGBO(187, 30, 16, 1.0),
+                          size: 32,
+                        ),
                         onPressed: () {
                           debugPrint('Click Floated Back.');
                           confirmDelete();
                         },
                       ),
                       IconButton(
-                        icon: const Icon(Icons.save),
+                        icon: Icon(
+                          Icons.save,
+                          color: Theme.of(context).accentColor,
+                          size: 32,
+                        ),
                         onPressed: () {
                           if (_1formKey.currentState != null) {
                             _1formKey.currentState.validate();
@@ -1327,7 +1335,11 @@ class ObjectDetailState extends State<ObjectDetail> {
                         ),
                       ),
                       IconButton(
-                        icon: const Icon(Icons.save),
+                        icon: Icon(
+                          Icons.save,
+                          color: Theme.of(context).accentColor,
+                          size: 32,
+                        ),
                         onPressed: () {
                           if (_1formKey.currentState != null) {
                             _1formKey.currentState.validate();

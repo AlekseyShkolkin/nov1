@@ -323,14 +323,22 @@ class ObjectDetailVhCState extends State<ObjectDetailVhC> {
                         ),
                       ),
                       IconButton(
-                        icon: const Icon(Icons.delete),
+                        icon: Icon(
+                          Icons.delete,
+                          color: Color.fromRGBO(187, 30, 16, 1.0),
+                          size: 32,
+                        ),
                         onPressed: () {
                           debugPrint('Click Floated Back.');
                           confirmDelete();
                         },
                       ),
                       IconButton(
-                        icon: const Icon(Icons.save),
+                        icon: Icon(
+                          Icons.save,
+                          color: Theme.of(context).accentColor,
+                          size: 32,
+                        ),
                         onPressed: () {
                           if (_1formKey.currentState != null) {
                             _1formKey.currentState.validate();
@@ -363,7 +371,11 @@ class ObjectDetailVhCState extends State<ObjectDetailVhC> {
                         ),
                       ),
                       IconButton(
-                        icon: const Icon(Icons.save),
+                        icon: Icon(
+                          Icons.save,
+                          color: Theme.of(context).accentColor,
+                          size: 32,
+                        ),
                         onPressed: () {
                           if (_1formKey.currentState != null) {
                             _1formKey.currentState.validate();
@@ -2942,6 +2954,9 @@ class ObjectDetailVhCState extends State<ObjectDetailVhC> {
                                     ),
                                   ),
                                   Row(
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
+                                    mainAxisAlignment: MainAxisAlignment.start,
                                     children: [
                                       Expanded(
                                         child: Padding(
@@ -3007,67 +3022,89 @@ class ObjectDetailVhCState extends State<ObjectDetailVhC> {
                                           ),
                                         ),
                                       ),
-                                      Expanded(
-                                        child: Padding(
-                                          padding: const EdgeInsets.all(10.0),
-                                          child: TextFormField(
-                                            focusNode: focusNode38,
-                                            onChanged: (String value) {
-                                              setState(() {
-                                                focusNode38.requestFocus();
-                                              });
-                                            },
-                                            maxLength: 10,
-                                            onSaved: (value) {
-                                              object.pribordate1 = value;
-                                            },
-                                            controller: pribordate1Controller,
-                                            style: textStyle,
-                                            decoration: InputDecoration(
-                                              focusColor: Theme.of(context)
-                                                  .primaryColor,
-                                              labelStyle: TextStyle(
-                                                fontSize: 22,
-                                                fontWeight: FontWeight.w300,
-                                                color: Theme.of(context)
-                                                    .primaryColor,
-                                              ),
-                                              hintStyle: TextStyle(
-                                                fontSize: 16,
-                                                fontWeight: FontWeight.w300,
-                                                color: Theme.of(context)
-                                                    .primaryColor,
-                                              ),
-                                              labelText: 'Дата поверки',
-                                              hintText: 'дата',
-                                              helperText: 'д.м.г',
-                                              prefixIcon: Icon(
-                                                Icons.power,
-                                                color: focusNode38.hasFocus ||
-                                                        pribordate1Controller
-                                                            .text.isNotEmpty
-                                                    ? Theme.of(context)
-                                                        .primaryColor
-                                                    : Colors.grey,
-                                                size: 32,
-                                              ),
-                                              enabledBorder: OutlineInputBorder(
-                                                borderRadius: BorderRadius.all(
-                                                    Radius.circular(10)),
-                                                borderSide: BorderSide(
-                                                    color: Colors.grey,
-                                                    width: 2),
-                                              ),
-                                              focusedBorder: OutlineInputBorder(
-                                                borderRadius: BorderRadius.all(
-                                                    Radius.circular(20)),
-                                                borderSide: BorderSide(
-                                                    color: Theme.of(context)
-                                                        .primaryColor,
-                                                    width: 2),
-                                              ),
+                                      Padding(
+                                        padding: const EdgeInsets.all(10.0),
+                                        child: Container(
+                                          height: 56,
+                                          decoration: BoxDecoration(
+                                            border: Border.all(
+                                              color: Colors.grey,
+                                              width: 2.0,
                                             ),
-                                            keyboardType: TextInputType.number,
+                                            borderRadius:
+                                                BorderRadius.circular(10.0),
+                                          ),
+                                          child: Row(
+                                            children: [
+                                              Padding(
+                                                padding:
+                                                    const EdgeInsets.all(5.0),
+                                                child: IconButton(
+                                                  focusNode: focusNode38,
+                                                  onPressed: () async {
+                                                    DateTime currentDay =
+                                                        DateTime.now();
+                                                    DateTime initialDay =
+                                                        currentDay.subtract(
+                                                            Duration(
+                                                                days: 3 * 365));
+                                                    DateTime selectedDate =
+                                                        await showDatePicker(
+                                                      context: context,
+                                                      initialDate:
+                                                          DateTime.now(),
+                                                      firstDate: initialDay,
+                                                      lastDate: DateTime.now(),
+                                                      locale: const Locale("ru",
+                                                          "RU"), // Установите локаль на русский язык
+                                                    );
+
+                                                    if (selectedDate != null) {
+                                                      setState(() {
+                                                        pribordate1Controller
+                                                            .text = DateFormat(
+                                                                'dd.MM.yyyy')
+                                                            .format(
+                                                                selectedDate);
+                                                        object.pribordate1 =
+                                                            pribordate1Controller
+                                                                .text;
+                                                      });
+                                                    }
+                                                  },
+                                                  icon: Icon(
+                                                    Icons
+                                                        .calendar_month_outlined,
+                                                    color: focusNode38
+                                                                .hasFocus ||
+                                                            pribordate1Controller
+                                                                .text.isNotEmpty
+                                                        ? Theme.of(context)
+                                                            .primaryColor
+                                                        : Colors.grey,
+                                                    size: 32,
+                                                  ),
+                                                ),
+                                              ),
+                                              SizedBox(width: 10),
+                                              Padding(
+                                                padding:
+                                                    const EdgeInsets.all(10.0),
+                                                child: Container(
+                                                  alignment: Alignment.center,
+                                                  child: Text(
+                                                    pribordate1Controller.text,
+                                                    style: TextStyle(
+                                                      fontSize: 24,
+                                                      color: Theme.of(context)
+                                                          .primaryColor,
+                                                      fontWeight:
+                                                          FontWeight.w300,
+                                                    ),
+                                                  ),
+                                                ),
+                                              ),
+                                            ],
                                           ),
                                         ),
                                       ),
@@ -3168,6 +3205,9 @@ class ObjectDetailVhCState extends State<ObjectDetailVhC> {
                                     ),
                                   ),
                                   Row(
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
+                                    mainAxisAlignment: MainAxisAlignment.start,
                                     children: [
                                       Expanded(
                                         child: Padding(
@@ -3233,67 +3273,89 @@ class ObjectDetailVhCState extends State<ObjectDetailVhC> {
                                           ),
                                         ),
                                       ),
-                                      Expanded(
-                                        child: Padding(
-                                          padding: const EdgeInsets.all(10.0),
-                                          child: TextFormField(
-                                            focusNode: focusNode41,
-                                            onChanged: (String value) {
-                                              setState(() {
-                                                focusNode41.requestFocus();
-                                              });
-                                            },
-                                            maxLength: 10,
-                                            onSaved: (value) {
-                                              object.pribordate2 = value;
-                                            },
-                                            controller: pribordate2Controller,
-                                            style: textStyle,
-                                            decoration: InputDecoration(
-                                              focusColor: Theme.of(context)
-                                                  .primaryColor,
-                                              labelStyle: TextStyle(
-                                                fontSize: 22,
-                                                fontWeight: FontWeight.w300,
-                                                color: Theme.of(context)
-                                                    .primaryColor,
-                                              ),
-                                              hintStyle: TextStyle(
-                                                fontSize: 16,
-                                                fontWeight: FontWeight.w300,
-                                                color: Theme.of(context)
-                                                    .primaryColor,
-                                              ),
-                                              labelText: 'Дата поверки',
-                                              hintText: 'дата',
-                                              helperText: 'д.м.г',
-                                              prefixIcon: Icon(
-                                                Icons.speaker_phone,
-                                                color: focusNode41.hasFocus ||
-                                                        pribordate2Controller
-                                                            .text.isNotEmpty
-                                                    ? Theme.of(context)
-                                                        .primaryColor
-                                                    : Colors.grey,
-                                                size: 32,
-                                              ),
-                                              enabledBorder: OutlineInputBorder(
-                                                borderRadius: BorderRadius.all(
-                                                    Radius.circular(10)),
-                                                borderSide: BorderSide(
-                                                    color: Colors.grey,
-                                                    width: 2),
-                                              ),
-                                              focusedBorder: OutlineInputBorder(
-                                                borderRadius: BorderRadius.all(
-                                                    Radius.circular(20)),
-                                                borderSide: BorderSide(
-                                                    color: Theme.of(context)
-                                                        .primaryColor,
-                                                    width: 2),
-                                              ),
+                                      Padding(
+                                        padding: const EdgeInsets.all(10.0),
+                                        child: Container(
+                                          height: 56,
+                                          decoration: BoxDecoration(
+                                            border: Border.all(
+                                              color: Colors.grey,
+                                              width: 2.0,
                                             ),
-                                            keyboardType: TextInputType.number,
+                                            borderRadius:
+                                                BorderRadius.circular(10.0),
+                                          ),
+                                          child: Row(
+                                            children: [
+                                              Padding(
+                                                padding:
+                                                    const EdgeInsets.all(5.0),
+                                                child: IconButton(
+                                                  focusNode: focusNode41,
+                                                  onPressed: () async {
+                                                    DateTime currentDay =
+                                                        DateTime.now();
+                                                    DateTime initialDay =
+                                                        currentDay.subtract(
+                                                            Duration(
+                                                                days: 3 * 365));
+                                                    DateTime selectedDate =
+                                                        await showDatePicker(
+                                                      context: context,
+                                                      initialDate:
+                                                          DateTime.now(),
+                                                      firstDate: initialDay,
+                                                      lastDate: DateTime.now(),
+                                                      locale: const Locale("ru",
+                                                          "RU"), // Установите локаль на русский язык
+                                                    );
+
+                                                    if (selectedDate != null) {
+                                                      setState(() {
+                                                        pribordate2Controller
+                                                            .text = DateFormat(
+                                                                'dd.MM.yyyy')
+                                                            .format(
+                                                                selectedDate);
+                                                        object.pribordate2 =
+                                                            pribordate2Controller
+                                                                .text;
+                                                      });
+                                                    }
+                                                  },
+                                                  icon: Icon(
+                                                    Icons
+                                                        .calendar_month_outlined,
+                                                    color: focusNode41
+                                                                .hasFocus ||
+                                                            pribordate2Controller
+                                                                .text.isNotEmpty
+                                                        ? Theme.of(context)
+                                                            .primaryColor
+                                                        : Colors.grey,
+                                                    size: 32,
+                                                  ),
+                                                ),
+                                              ),
+                                              SizedBox(width: 10),
+                                              Padding(
+                                                padding:
+                                                    const EdgeInsets.all(10.0),
+                                                child: Container(
+                                                  alignment: Alignment.center,
+                                                  child: Text(
+                                                    pribordate2Controller.text,
+                                                    style: TextStyle(
+                                                      fontSize: 24,
+                                                      color: Theme.of(context)
+                                                          .primaryColor,
+                                                      fontWeight:
+                                                          FontWeight.w300,
+                                                    ),
+                                                  ),
+                                                ),
+                                              ),
+                                            ],
                                           ),
                                         ),
                                       ),
@@ -3394,6 +3456,9 @@ class ObjectDetailVhCState extends State<ObjectDetailVhC> {
                                     ),
                                   ),
                                   Row(
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
+                                    mainAxisAlignment: MainAxisAlignment.start,
                                     children: [
                                       Expanded(
                                         child: Padding(
@@ -3459,67 +3524,89 @@ class ObjectDetailVhCState extends State<ObjectDetailVhC> {
                                           ),
                                         ),
                                       ),
-                                      Expanded(
-                                        child: Padding(
-                                          padding: const EdgeInsets.all(10.0),
-                                          child: TextFormField(
-                                            focusNode: focusNode44,
-                                            onChanged: (String value) {
-                                              setState(() {
-                                                focusNode44.requestFocus();
-                                              });
-                                            },
-                                            maxLength: 10,
-                                            onSaved: (value) {
-                                              object.pribordate3 = value;
-                                            },
-                                            controller: pribordate3Controller,
-                                            style: textStyle,
-                                            decoration: InputDecoration(
-                                              focusColor: Theme.of(context)
-                                                  .primaryColor,
-                                              labelStyle: TextStyle(
-                                                fontSize: 22,
-                                                fontWeight: FontWeight.w300,
-                                                color: Theme.of(context)
-                                                    .primaryColor,
-                                              ),
-                                              hintStyle: TextStyle(
-                                                fontSize: 16,
-                                                fontWeight: FontWeight.w300,
-                                                color: Theme.of(context)
-                                                    .primaryColor,
-                                              ),
-                                              labelText: 'Дата поверки',
-                                              hintText: 'дата',
-                                              helperText: 'д.м.г',
-                                              prefixIcon: Icon(
-                                                Icons.build,
-                                                color: focusNode44.hasFocus ||
-                                                        pribordate3Controller
-                                                            .text.isNotEmpty
-                                                    ? Theme.of(context)
-                                                        .primaryColor
-                                                    : Colors.grey,
-                                                size: 32,
-                                              ),
-                                              enabledBorder: OutlineInputBorder(
-                                                borderRadius: BorderRadius.all(
-                                                    Radius.circular(10)),
-                                                borderSide: BorderSide(
-                                                    color: Colors.grey,
-                                                    width: 2),
-                                              ),
-                                              focusedBorder: OutlineInputBorder(
-                                                borderRadius: BorderRadius.all(
-                                                    Radius.circular(20)),
-                                                borderSide: BorderSide(
-                                                    color: Theme.of(context)
-                                                        .primaryColor,
-                                                    width: 2),
-                                              ),
+                                      Padding(
+                                        padding: const EdgeInsets.all(10.0),
+                                        child: Container(
+                                          height: 56,
+                                          decoration: BoxDecoration(
+                                            border: Border.all(
+                                              color: Colors.grey,
+                                              width: 2.0,
                                             ),
-                                            keyboardType: TextInputType.number,
+                                            borderRadius:
+                                                BorderRadius.circular(10.0),
+                                          ),
+                                          child: Row(
+                                            children: [
+                                              Padding(
+                                                padding:
+                                                    const EdgeInsets.all(5.0),
+                                                child: IconButton(
+                                                  focusNode: focusNode44,
+                                                  onPressed: () async {
+                                                    DateTime currentDay =
+                                                        DateTime.now();
+                                                    DateTime initialDay =
+                                                        currentDay.subtract(
+                                                            Duration(
+                                                                days: 3 * 365));
+                                                    DateTime selectedDate =
+                                                        await showDatePicker(
+                                                      context: context,
+                                                      initialDate:
+                                                          DateTime.now(),
+                                                      firstDate: initialDay,
+                                                      lastDate: DateTime.now(),
+                                                      locale: const Locale("ru",
+                                                          "RU"), // Установите локаль на русский язык
+                                                    );
+
+                                                    if (selectedDate != null) {
+                                                      setState(() {
+                                                        pribordate3Controller
+                                                            .text = DateFormat(
+                                                                'dd.MM.yyyy')
+                                                            .format(
+                                                                selectedDate);
+                                                        object.pribordate3 =
+                                                            pribordate3Controller
+                                                                .text;
+                                                      });
+                                                    }
+                                                  },
+                                                  icon: Icon(
+                                                    Icons
+                                                        .calendar_month_outlined,
+                                                    color: focusNode44
+                                                                .hasFocus ||
+                                                            pribordate3Controller
+                                                                .text.isNotEmpty
+                                                        ? Theme.of(context)
+                                                            .primaryColor
+                                                        : Colors.grey,
+                                                    size: 32,
+                                                  ),
+                                                ),
+                                              ),
+                                              SizedBox(width: 10),
+                                              Padding(
+                                                padding:
+                                                    const EdgeInsets.all(10.0),
+                                                child: Container(
+                                                  alignment: Alignment.center,
+                                                  child: Text(
+                                                    pribordate3Controller.text,
+                                                    style: TextStyle(
+                                                      fontSize: 24,
+                                                      color: Theme.of(context)
+                                                          .primaryColor,
+                                                      fontWeight:
+                                                          FontWeight.w300,
+                                                    ),
+                                                  ),
+                                                ),
+                                              ),
+                                            ],
                                           ),
                                         ),
                                       ),
@@ -3620,6 +3707,9 @@ class ObjectDetailVhCState extends State<ObjectDetailVhC> {
                                     ),
                                   ),
                                   Row(
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
+                                    mainAxisAlignment: MainAxisAlignment.start,
                                     children: [
                                       Expanded(
                                         child: Padding(
@@ -3685,67 +3775,89 @@ class ObjectDetailVhCState extends State<ObjectDetailVhC> {
                                           ),
                                         ),
                                       ),
-                                      Expanded(
-                                        child: Padding(
-                                          padding: const EdgeInsets.all(10.0),
-                                          child: TextFormField(
-                                            focusNode: focusNode47,
-                                            onChanged: (String value) {
-                                              setState(() {
-                                                focusNode47.requestFocus();
-                                              });
-                                            },
-                                            maxLength: 10,
-                                            onSaved: (value) {
-                                              object.pribordate4 = value;
-                                            },
-                                            controller: pribordate4Controller,
-                                            style: textStyle,
-                                            decoration: InputDecoration(
-                                              focusColor: Theme.of(context)
-                                                  .primaryColor,
-                                              labelStyle: TextStyle(
-                                                fontSize: 22,
-                                                fontWeight: FontWeight.w300,
-                                                color: Theme.of(context)
-                                                    .primaryColor,
-                                              ),
-                                              hintStyle: TextStyle(
-                                                fontSize: 16,
-                                                fontWeight: FontWeight.w300,
-                                                color: Theme.of(context)
-                                                    .primaryColor,
-                                              ),
-                                              labelText: 'Дата поверки',
-                                              hintText: 'дата',
-                                              helperText: 'д.м.г',
-                                              prefixIcon: Icon(
-                                                Icons.mode_edit,
-                                                color: focusNode47.hasFocus ||
-                                                        pribordate4Controller
-                                                            .text.isNotEmpty
-                                                    ? Theme.of(context)
-                                                        .primaryColor
-                                                    : Colors.grey,
-                                                size: 32,
-                                              ),
-                                              enabledBorder: OutlineInputBorder(
-                                                borderRadius: BorderRadius.all(
-                                                    Radius.circular(10)),
-                                                borderSide: BorderSide(
-                                                    color: Colors.grey,
-                                                    width: 2),
-                                              ),
-                                              focusedBorder: OutlineInputBorder(
-                                                borderRadius: BorderRadius.all(
-                                                    Radius.circular(20)),
-                                                borderSide: BorderSide(
-                                                    color: Theme.of(context)
-                                                        .primaryColor,
-                                                    width: 2),
-                                              ),
+                                      Padding(
+                                        padding: const EdgeInsets.all(10.0),
+                                        child: Container(
+                                          height: 56,
+                                          decoration: BoxDecoration(
+                                            border: Border.all(
+                                              color: Colors.grey,
+                                              width: 2.0,
                                             ),
-                                            keyboardType: TextInputType.number,
+                                            borderRadius:
+                                                BorderRadius.circular(10.0),
+                                          ),
+                                          child: Row(
+                                            children: [
+                                              Padding(
+                                                padding:
+                                                    const EdgeInsets.all(5.0),
+                                                child: IconButton(
+                                                  focusNode: focusNode47,
+                                                  onPressed: () async {
+                                                    DateTime currentDay =
+                                                        DateTime.now();
+                                                    DateTime initialDay =
+                                                        currentDay.subtract(
+                                                            Duration(
+                                                                days: 3 * 365));
+                                                    DateTime selectedDate =
+                                                        await showDatePicker(
+                                                      context: context,
+                                                      initialDate:
+                                                          DateTime.now(),
+                                                      firstDate: initialDay,
+                                                      lastDate: DateTime.now(),
+                                                      locale: const Locale("ru",
+                                                          "RU"), // Установите локаль на русский язык
+                                                    );
+
+                                                    if (selectedDate != null) {
+                                                      setState(() {
+                                                        pribordate4Controller
+                                                            .text = DateFormat(
+                                                                'dd.MM.yyyy')
+                                                            .format(
+                                                                selectedDate);
+                                                        object.pribordate4 =
+                                                            pribordate4Controller
+                                                                .text;
+                                                      });
+                                                    }
+                                                  },
+                                                  icon: Icon(
+                                                    Icons
+                                                        .calendar_month_outlined,
+                                                    color: focusNode47
+                                                                .hasFocus ||
+                                                            pribordate4Controller
+                                                                .text.isNotEmpty
+                                                        ? Theme.of(context)
+                                                            .primaryColor
+                                                        : Colors.grey,
+                                                    size: 32,
+                                                  ),
+                                                ),
+                                              ),
+                                              SizedBox(width: 10),
+                                              Padding(
+                                                padding:
+                                                    const EdgeInsets.all(10.0),
+                                                child: Container(
+                                                  alignment: Alignment.center,
+                                                  child: Text(
+                                                    pribordate4Controller.text,
+                                                    style: TextStyle(
+                                                      fontSize: 24,
+                                                      color: Theme.of(context)
+                                                          .primaryColor,
+                                                      fontWeight:
+                                                          FontWeight.w300,
+                                                    ),
+                                                  ),
+                                                ),
+                                              ),
+                                            ],
                                           ),
                                         ),
                                       ),
@@ -3846,6 +3958,9 @@ class ObjectDetailVhCState extends State<ObjectDetailVhC> {
                                     ),
                                   ),
                                   Row(
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
+                                    mainAxisAlignment: MainAxisAlignment.start,
                                     children: [
                                       Expanded(
                                         child: Padding(
@@ -3911,67 +4026,89 @@ class ObjectDetailVhCState extends State<ObjectDetailVhC> {
                                           ),
                                         ),
                                       ),
-                                      Expanded(
-                                        child: Padding(
-                                          padding: const EdgeInsets.all(10.0),
-                                          child: TextFormField(
-                                            focusNode: focusNode50,
-                                            onChanged: (String value) {
-                                              setState(() {
-                                                focusNode50.requestFocus();
-                                              });
-                                            },
-                                            maxLength: 10,
-                                            onSaved: (value) {
-                                              object.pribordate5 = value;
-                                            },
-                                            controller: pribordate5Controller,
-                                            style: textStyle,
-                                            decoration: InputDecoration(
-                                              focusColor: Theme.of(context)
-                                                  .primaryColor,
-                                              labelStyle: TextStyle(
-                                                fontSize: 22,
-                                                fontWeight: FontWeight.w300,
-                                                color: Theme.of(context)
-                                                    .primaryColor,
-                                              ),
-                                              hintStyle: TextStyle(
-                                                fontSize: 16,
-                                                fontWeight: FontWeight.w300,
-                                                color: Theme.of(context)
-                                                    .primaryColor,
-                                              ),
-                                              labelText: 'Дата поверки',
-                                              hintText: 'дата',
-                                              helperText: 'д.м.г',
-                                              prefixIcon: Icon(
-                                                Icons.work,
-                                                color: focusNode50.hasFocus ||
-                                                        pribordate5Controller
-                                                            .text.isNotEmpty
-                                                    ? Theme.of(context)
-                                                        .primaryColor
-                                                    : Colors.grey,
-                                                size: 32,
-                                              ),
-                                              enabledBorder: OutlineInputBorder(
-                                                borderRadius: BorderRadius.all(
-                                                    Radius.circular(10)),
-                                                borderSide: BorderSide(
-                                                    color: Colors.grey,
-                                                    width: 2),
-                                              ),
-                                              focusedBorder: OutlineInputBorder(
-                                                borderRadius: BorderRadius.all(
-                                                    Radius.circular(20)),
-                                                borderSide: BorderSide(
-                                                    color: Theme.of(context)
-                                                        .primaryColor,
-                                                    width: 2),
-                                              ),
+                                      Padding(
+                                        padding: const EdgeInsets.all(10.0),
+                                        child: Container(
+                                          height: 56,
+                                          decoration: BoxDecoration(
+                                            border: Border.all(
+                                              color: Colors.grey,
+                                              width: 2.0,
                                             ),
-                                            keyboardType: TextInputType.number,
+                                            borderRadius:
+                                                BorderRadius.circular(10.0),
+                                          ),
+                                          child: Row(
+                                            children: [
+                                              Padding(
+                                                padding:
+                                                    const EdgeInsets.all(5.0),
+                                                child: IconButton(
+                                                  focusNode: focusNode50,
+                                                  onPressed: () async {
+                                                    DateTime currentDay =
+                                                        DateTime.now();
+                                                    DateTime initialDay =
+                                                        currentDay.subtract(
+                                                            Duration(
+                                                                days: 3 * 365));
+                                                    DateTime selectedDate =
+                                                        await showDatePicker(
+                                                      context: context,
+                                                      initialDate:
+                                                          DateTime.now(),
+                                                      firstDate: initialDay,
+                                                      lastDate: DateTime.now(),
+                                                      locale: const Locale("ru",
+                                                          "RU"), // Установите локаль на русский язык
+                                                    );
+
+                                                    if (selectedDate != null) {
+                                                      setState(() {
+                                                        pribordate5Controller
+                                                            .text = DateFormat(
+                                                                'dd.MM.yyyy')
+                                                            .format(
+                                                                selectedDate);
+                                                        object.pribordate5 =
+                                                            pribordate5Controller
+                                                                .text;
+                                                      });
+                                                    }
+                                                  },
+                                                  icon: Icon(
+                                                    Icons
+                                                        .calendar_month_outlined,
+                                                    color: focusNode50
+                                                                .hasFocus ||
+                                                            pribordate5Controller
+                                                                .text.isNotEmpty
+                                                        ? Theme.of(context)
+                                                            .primaryColor
+                                                        : Colors.grey,
+                                                    size: 32,
+                                                  ),
+                                                ),
+                                              ),
+                                              SizedBox(width: 10),
+                                              Padding(
+                                                padding:
+                                                    const EdgeInsets.all(10.0),
+                                                child: Container(
+                                                  alignment: Alignment.center,
+                                                  child: Text(
+                                                    pribordate5Controller.text,
+                                                    style: TextStyle(
+                                                      fontSize: 24,
+                                                      color: Theme.of(context)
+                                                          .primaryColor,
+                                                      fontWeight:
+                                                          FontWeight.w300,
+                                                    ),
+                                                  ),
+                                                ),
+                                              ),
+                                            ],
                                           ),
                                         ),
                                       ),

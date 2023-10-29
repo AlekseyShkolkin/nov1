@@ -173,6 +173,9 @@ class Todo {
   String _setvik;
   String _setviknumb;
   String _setvikdate;
+  String _multimeter;
+  String _multimeternumb;
+  String _multimeterdate;
 
   String _description;
   String _date;
@@ -363,6 +366,9 @@ class Todo {
     this._setvik,
     this._setviknumb,
     this._setvikdate,
+    this._multimeter,
+    this._multimeternumb,
+    this._multimeterdate,
     this._filial,
     this._dolzhnpredskom,
     this._fiopredskom,
@@ -541,6 +547,9 @@ class Todo {
     this._setvik,
     this._setviknumb,
     this._setvikdate,
+    this._multimeter,
+    this._multimeternumb,
+    this._multimeterdate,
     this._filial,
     this._dolzhnpredskom,
     this._fiopredskom,
@@ -737,6 +746,9 @@ class Todo {
   String get setvik => _setvik;
   String get setviknumb => _setviknumb;
   String get setvikdate => _setvikdate;
+  String get multimeter => _multimeter;
+  String get multimeternumb => _multimeternumb;
+  String get multimeterdate => _multimeterdate;
 
   String get filial => _filial;
   String get dolzhnpredskom => _dolzhnpredskom;
@@ -1696,6 +1708,24 @@ class Todo {
     }
   }
 
+  set multimeter(String newmultimeter) {
+    if ((newmultimeter?.length ?? 0) <= 255) {
+      _multimeter = newmultimeter;
+    }
+  }
+
+  set multimeternumb(String newmultimeternumb) {
+    if ((newmultimeternumb?.length ?? 0) <= 255) {
+      _multimeternumb = newmultimeternumb;
+    }
+  }
+
+  set multimeterdate(String newmultimeterdate) {
+    if ((newmultimeterdate?.length ?? 0) <= 255) {
+      _multimeterdate = newmultimeterdate;
+    }
+  }
+
   set filial(String newfilial) {
     if ((newfilial?.length ?? 0) <= 255) {
       _filial = newfilial;
@@ -1956,6 +1986,10 @@ class Todo {
     map['setviknumb'] = _setviknumb;
     map['setvikdate'] = _setvikdate;
 
+    map['multimeter'] = _multimeter;
+    map['multimeternumb'] = _multimeternumb;
+    map['multimeterdate'] = _multimeterdate;
+
     map['photo'] = _photo;
 
     map['photometdef1'] = _photometdef1;
@@ -2162,6 +2196,10 @@ class Todo {
     _setvik = o['setvik'];
     _setviknumb = o['setviknumb'];
     _setvikdate = o['setvikdate'];
+
+    _multimeter = o['multimeter'];
+    _multimeternumb = o['multimeternumb'];
+    _multimeterdate = o['multimeterdate'];
 
     _photo = o['photo'];
 

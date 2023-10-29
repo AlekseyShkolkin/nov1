@@ -178,6 +178,7 @@ class ObjectDetailIpState extends State<ObjectDetailIp> {
   FocusNode focusNode148 = FocusNode(); //free
   FocusNode focusNode149 = FocusNode(); //free
   FocusNode focusNode150 = FocusNode(); //free
+  FocusNode focusNode151 = FocusNode(); //free
 
   File _image;
 
@@ -640,6 +641,9 @@ class ObjectDetailIpState extends State<ObjectDetailIp> {
   TextEditingController setvikController = TextEditingController();
   TextEditingController setviknumbController = TextEditingController();
   TextEditingController setvikdateController = TextEditingController();
+  TextEditingController multimeterController = TextEditingController();
+  TextEditingController multimeternumbController = TextEditingController();
+  TextEditingController multimeterdateController = TextEditingController();
 
   TextEditingController osnovanieController = TextEditingController();
   TextEditingController descriptionController = TextEditingController();
@@ -827,6 +831,9 @@ class ObjectDetailIpState extends State<ObjectDetailIp> {
     setvikController.text = object.setvik ?? '';
     setviknumbController.text = object.setviknumb ?? '';
     setvikdateController.text = object.setvikdate ?? '';
+    multimeterController.text = object.multimeter ?? '';
+    multimeternumbController.text = object.multimeternumb ?? '';
+    multimeterdateController.text = object.multimeterdate ?? '';
 
     osnovanieController.text = object.osnovanie ?? '';
     descriptionController.text = object.description ?? '';
@@ -885,14 +892,22 @@ class ObjectDetailIpState extends State<ObjectDetailIp> {
                         ),
                       ),
                       IconButton(
-                        icon: Icon(Icons.delete),
+                        icon: Icon(
+                          Icons.delete,
+                          color: Color.fromRGBO(187, 30, 16, 1.0),
+                          size: 32,
+                        ),
                         onPressed: () {
                           debugPrint('Click Floated Back.');
                           confirmDelete();
                         },
                       ),
                       IconButton(
-                        icon: Icon(Icons.save),
+                        icon: Icon(
+                          Icons.save,
+                          color: Theme.of(context).accentColor,
+                          size: 32,
+                        ),
                         onPressed: () {
                           if (_1formKey.currentState != null) {
                             _1formKey.currentState.validate();
@@ -934,7 +949,11 @@ class ObjectDetailIpState extends State<ObjectDetailIp> {
                         ),
                       ),
                       IconButton(
-                        icon: Icon(Icons.save),
+                        icon: Icon(
+                          Icons.save,
+                          color: Theme.of(context).accentColor,
+                          size: 32,
+                        ),
                         onPressed: () {
                           if (_1formKey.currentState != null) {
                             _1formKey.currentState.validate();
@@ -9789,7 +9808,7 @@ class ObjectDetailIpState extends State<ObjectDetailIp> {
                                         Icons.calendar_month_outlined,
                                         color: focusNode102.hasFocus ||
                                                 tickinsulmeterdateController
-                                                    .text.isNotEmpty
+                                                    .text.isNot                 Empty
                                             ? Theme.of(context).primaryColor
                                             : Colors.grey,
                                         size: 32,
@@ -10657,6 +10676,219 @@ class ObjectDetailIpState extends State<ObjectDetailIp> {
                                       alignment: Alignment.center,
                                       child: Text(
                                         setvikdateController.text,
+                                        style: TextStyle(
+                                          fontSize: 24,
+                                          color: Theme.of(context).primaryColor,
+                                          fontWeight: FontWeight.w300,
+                                        ),
+                                      ),
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
+                      Divider(thickness: 4),
+                      Container(
+                          alignment: Alignment.center,
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              Text(
+                                'Мультиметр',
+                                style: TextStyle(
+                                    fontSize: 24,
+                                    color: Theme.of(context).primaryColor,
+                                    fontWeight: FontWeight.w300),
+                              ),
+                              GestureDetector(
+                                onTap: () {
+                                  multimeterController.clear();
+                                  multimeternumbController.clear();
+                                  multimeterdateController.clear();
+                                },
+                                child: Icon(
+                                  Icons.delete_outline,
+                                  color: Color.fromRGBO(187, 30, 16, 1.0),
+                                ),
+                              ),
+                            ],
+                          )),
+                      SizedBox(height: 10),
+                      TextFormField(
+                        focusNode: focusNode149,
+                        onChanged: (String value) {
+                          setState(() {
+                            focusNode149.requestFocus();
+                          });
+                        },
+                        maxLength: 30,
+                        onSaved: (value) {
+                          object.multimeter = value;
+                        },
+                        controller: multimeterController,
+                        style: textStyle,
+                        decoration: InputDecoration(
+                          focusColor: Theme.of(context).primaryColor,
+                          labelStyle: TextStyle(
+                            fontSize: 22,
+                            fontWeight: FontWeight.w300,
+                            color: Theme.of(context).primaryColor,
+                          ),
+                          hintStyle: TextStyle(
+                            fontSize: 16,
+                            fontWeight: FontWeight.w300,
+                            color: Theme.of(context).primaryColor,
+                          ),
+                          labelText: 'Мультиметр',
+                          hintText: 'Введите наименование',
+                          prefixIcon: Icon(
+                            Icons.business_center,
+                            color: focusNode149.hasFocus ||
+                                    multimeterController.text.isNotEmpty
+                                ? Theme.of(context).primaryColor
+                                : Colors.grey,
+                            size: 32,
+                          ),
+                          enabledBorder: OutlineInputBorder(
+                            borderRadius: BorderRadius.all(Radius.circular(10)),
+                            borderSide:
+                                BorderSide(color: Colors.grey, width: 2),
+                          ),
+                          focusedBorder: OutlineInputBorder(
+                            borderRadius: BorderRadius.all(Radius.circular(20)),
+                            borderSide: BorderSide(
+                                color: Theme.of(context).primaryColor,
+                                width: 2),
+                          ),
+                        ),
+                        keyboardType: TextInputType.text,
+                      ),
+                      SizedBox(height: 10),
+                      Row(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        mainAxisAlignment: MainAxisAlignment.start,
+                        children: [
+                          Expanded(
+                            child: Padding(
+                              padding: const EdgeInsets.all(5.0),
+                              child: TextFormField(
+                                focusNode: focusNode150,
+                                onChanged: (String value) {
+                                  setState(() {
+                                    focusNode150.requestFocus();
+                                  });
+                                },
+                                maxLength: 30,
+                                onSaved: (value) {
+                                  object.multimeternumb = value;
+                                },
+                                controller: multimeternumbController,
+                                style: textStyle,
+                                decoration: InputDecoration(
+                                  focusColor: Theme.of(context).primaryColor,
+                                  labelStyle: TextStyle(
+                                    fontSize: 22,
+                                    fontWeight: FontWeight.w300,
+                                    color: Theme.of(context).primaryColor,
+                                  ),
+                                  hintStyle: TextStyle(
+                                    fontSize: 16,
+                                    fontWeight: FontWeight.w300,
+                                    color: Theme.of(context).primaryColor,
+                                  ),
+                                  labelText: '№',
+                                  hintText: '№',
+                                  helperText: '№....',
+                                  prefixIcon: Icon(
+                                    Icons.business_center,
+                                    color: focusNode150.hasFocus ||
+                                            multimeternumbController
+                                                .text.isNotEmpty
+                                        ? Theme.of(context).primaryColor
+                                        : Colors.grey,
+                                    size: 32,
+                                  ),
+                                  enabledBorder: OutlineInputBorder(
+                                    borderRadius:
+                                        BorderRadius.all(Radius.circular(10)),
+                                    borderSide: BorderSide(
+                                        color: Colors.grey, width: 2),
+                                  ),
+                                  focusedBorder: OutlineInputBorder(
+                                    borderRadius:
+                                        BorderRadius.all(Radius.circular(20)),
+                                    borderSide: BorderSide(
+                                        color: Theme.of(context).primaryColor,
+                                        width: 2),
+                                  ),
+                                ),
+                                keyboardType: TextInputType.text,
+                              ),
+                            ),
+                          ),
+                          SizedBox(width: 5),
+                          Padding(
+                            padding: const EdgeInsets.all(5.0),
+                            child: Container(
+                              height: 56,
+                              decoration: BoxDecoration(
+                                border: Border.all(
+                                  color: Colors.grey,
+                                  width: 2.0,
+                                ),
+                                borderRadius: BorderRadius.circular(10.0),
+                              ),
+                              child: Row(
+                                children: [
+                                  Padding(
+                                    padding: const EdgeInsets.all(5.0),
+                                    child: IconButton(
+                                      focusNode: focusNode151,
+                                      onPressed: () async {
+                                        DateTime currentDay = DateTime.now();
+                                        DateTime initialDay = currentDay
+                                            .subtract(Duration(days: 3 * 365));
+                                        DateTime selectedDate =
+                                            await showDatePicker(
+                                          context: context,
+                                          initialDate: DateTime.now(),
+                                          firstDate: initialDay,
+                                          lastDate: DateTime.now(),
+                                          locale: const Locale("ru",
+                                              "RU"), // Установите локаль на русский язык
+                                        );
+
+                                        if (selectedDate != null) {
+                                          setState(() {
+                                            multimeterdateController.text =
+                                                DateFormat('dd.MM.yyyy')
+                                                    .format(selectedDate);
+                                            object.multimeterdate =
+                                                multimeterdateController.text;
+                                          });
+                                        }
+                                      },
+                                      icon: Icon(
+                                        Icons.calendar_month_outlined,
+                                        color: focusNode151.hasFocus ||
+                                                multimeterdateController
+                                                    .text.isNotEmpty
+                                            ? Theme.of(context).primaryColor
+                                            : Colors.grey,
+                                        size: 32,
+                                      ),
+                                    ),
+                                  ),
+                                  SizedBox(width: 10),
+                                  Padding(
+                                    padding: const EdgeInsets.all(5.0),
+                                    child: Container(
+                                      alignment: Alignment.center,
+                                      child: Text(
+                                        multimeterdateController.text,
                                         style: TextStyle(
                                           fontSize: 24,
                                           color: Theme.of(context).primaryColor,
