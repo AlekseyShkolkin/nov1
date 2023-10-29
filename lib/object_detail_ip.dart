@@ -9808,7 +9808,7 @@ class ObjectDetailIpState extends State<ObjectDetailIp> {
                                         Icons.calendar_month_outlined,
                                         color: focusNode102.hasFocus ||
                                                 tickinsulmeterdateController
-                                                    .text.isNot                 Empty
+                                                    .text.isNotEmpty
                                             ? Theme.of(context).primaryColor
                                             : Colors.grey,
                                         size: 32,
